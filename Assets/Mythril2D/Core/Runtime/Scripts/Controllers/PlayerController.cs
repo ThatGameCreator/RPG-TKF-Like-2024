@@ -114,7 +114,7 @@ namespace Gyvr.Mythril2D
                 //if (interactionTarget.gameObject.layer == LayerMask.GetMask(GameManager.Config.mosterLayer))
                 if (interactionTarget.gameObject.GetComponent<Monster>() != null)
                 {
-                    Debug.Log("moster loot");
+                    //Debug.Log("moster loot");
                     if (GameManager.Player.isLooting == true)
                     {
                         GameManager.Player.CancelLooting();
@@ -143,6 +143,8 @@ namespace Gyvr.Mythril2D
 
         private void OnOpenGameMenu(InputAction.CallbackContext context)
         {
+            GameManager.Player.CancelLooting();
+
             GameManager.NotificationSystem.gameMenuRequested.Invoke();
         }
 

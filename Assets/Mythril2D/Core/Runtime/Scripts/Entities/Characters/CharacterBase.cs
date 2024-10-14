@@ -459,6 +459,8 @@ namespace Gyvr.Mythril2D
 
                 TryPush(damageOutput);
 
+                //Debug.Log(this);
+
                 if (damageOutput.attacker is CharacterBase)
                 {
                     provokedEvent.Invoke((CharacterBase)damageOutput.attacker);

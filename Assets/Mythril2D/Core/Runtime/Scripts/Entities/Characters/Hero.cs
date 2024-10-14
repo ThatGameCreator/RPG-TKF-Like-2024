@@ -154,7 +154,7 @@ namespace Gyvr.Mythril2D
                 
             if (m_lootingTime > m_lootingRequiredtTime)
             {
-                GameManager.NotificationSystem.audioStopPlaybackRequested.Invoke(m_lootedSound);
+                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
 
                 m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
 
@@ -162,8 +162,13 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        // 感觉在这个框架下，要么做成技能，放到玩家下，要么得用个监听去监听其他行为来取消/
+        // 不然一个拓展性不会，再者不停在Update中检测也不好
         public void CancelLooting()
         {
+            //TerminateCasting();
+            Debug.Log("CancelLooting");
+
             m_lootingTime = 0f;
             m_isLooting = false;
             m_lootingObject = null;
@@ -172,6 +177,7 @@ namespace Gyvr.Mythril2D
 
         public void OnStartLooting(GameObject lootingObject)
         {
+            SetMovementDirection(Vector2.zero);
             m_isLooting = true;
             m_lootingObject = lootingObject;
             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootingSound);

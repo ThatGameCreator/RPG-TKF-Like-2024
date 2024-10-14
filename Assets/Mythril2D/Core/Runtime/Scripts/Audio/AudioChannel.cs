@@ -66,6 +66,7 @@ namespace Gyvr.Mythril2D
                 m_audioSource.Stop();
             }
         }
+
         private IEnumerator FadeOutAndStop()
         {
             float fadeDuration = 1.0f; // 假设淡出时间为1秒
@@ -85,10 +86,19 @@ namespace Gyvr.Mythril2D
 
         public void Play(AudioClipResolver audioClipResolver)
         {
-            AudioClip audioClip = audioClipResolver.GetClip();
+            AudioClip newClip = audioClipResolver.GetClip();
+
+            // 如果当前有正在播放的音效，且不是同一个音效，停止它
+            if (m_lastPlayedClip != null && m_lastPlayedClip.GetClip() != newClip)
+            {
+                Stop(); // 停止之前的音效
+            }
+
+            // 记录当前播放的音效
             m_lastPlayedClip = audioClipResolver;
 
-            if (audioClip != null)
+            // 开始播放新的音效
+            if (newClip != null)
             {
                 if (m_audioChannelMode == EAudioChannelMode.Exclusive)
                 {
@@ -97,11 +107,11 @@ namespace Gyvr.Mythril2D
                         StopCoroutine(m_transitionCoroutine);
                     }
 
-                    m_transitionCoroutine = StartCoroutine(FadeOutAndIn(audioClip));
+                    m_transitionCoroutine = StartCoroutine(FadeOutAndIn(newClip));
                 }
                 else
                 {
-                    m_audioSource.PlayOneShot(audioClip);
+                    m_audioSource.PlayOneShot(newClip);
                 }
             }
         }

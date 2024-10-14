@@ -19,6 +19,8 @@ namespace Gyvr.Mythril2D
                     break;
 
                 case EAction.Remove:
+                    // 怎么感觉这个释放者才是玩家
+                    //GameManager.Player.CancelLooting();
                     GameManager.Player.Damage(new DamageOutputDescriptor
                     {
                         attacker = null,

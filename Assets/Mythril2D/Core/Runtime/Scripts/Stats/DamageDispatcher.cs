@@ -10,6 +10,7 @@ namespace Gyvr.Mythril2D
 
             if (targetCharacter != null)
             {
+                GameManager.Player.CancelLooting();
                 return targetCharacter.Damage(damageOutput);
             }
 
