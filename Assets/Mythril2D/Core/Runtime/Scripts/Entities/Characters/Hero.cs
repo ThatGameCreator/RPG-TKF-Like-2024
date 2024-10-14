@@ -45,6 +45,8 @@ namespace Gyvr.Mythril2D
         public bool isLooting => m_isLooting;
         private bool m_isLooting = false;
         private GameObject m_lootingObject = null;
+        public float lootingTime => m_lootingTime;
+        public float lootingRequiredtTime => m_lootingRequiredtTime;
         private float m_lootingTime = 0f;
         private float m_lootingRequiredtTime = 2f;
 
