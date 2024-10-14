@@ -72,7 +72,7 @@ namespace Gyvr.Mythril2D
         {
             float current, max; current = max = 0;
 
-            if (useStamina && m_stat == EStat.Stamina)
+            if (useStamina)
             {
                 current = GameManager.Player.GetStamina();
                 max = GameManager.Player.maxStamina;

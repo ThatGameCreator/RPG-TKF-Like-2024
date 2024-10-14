@@ -5004,7 +5004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4928962304513780148, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       propertyPath: m_CategoryHash
-      value: 0.003363743
+      value: 0.009161512
       objectReference: {fileID: 0}
     - target: {fileID: 4928962304513780152, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       propertyPath: m_Controller
@@ -5099,7 +5099,9 @@ MonoBehaviour:
   m_invincibleOnHit: 1
   m_abilitiesRoot: {fileID: 961596124167247530}
   m_additionalAbilities: []
+  m_nowMoveSpeed: 3
   m_moveSpeed: 3
+  m_runSpeed: 5
   m_pushIntensityScale: 1
   m_pushResistanceScale: 1
   m_movementMode: 0
@@ -5110,8 +5112,8 @@ MonoBehaviour:
   m_moveXAnimationParameter: moveX
   m_moveYAnimationParameter: moveY
   m_isMovingAnimationParameter: isMoving
+  m_isRunningAnimationParameter: isRunning
   m_dashAnimationParameter: dash
-  m_isLootedAnimationParameter: isLooted
   directionChangedEventOfMe:
     m_PersistentCalls:
       m_Calls: []
@@ -5125,6 +5127,14 @@ MonoBehaviour:
   m_levelUpSound: {fileID: 11400000, guid: fa526493f8160bf4291fe92c6ef1d6e1, type: 2}
   m_restoreHealthOnLevelUp: 1
   m_restoreManaOnLevelUp: 1
+  staminaMultiplier: 10
+  timeBeforeStaminaRengeStarts: 1.5
+  staminaValueIncrement: 2
+  staminaTimeIncrement: 0.1
+  isNowCanRun: 0
+  isExecutingAction: 0
+  m_lootingSound: {fileID: 11400000, guid: 46301b4e2889a2e4d97c463be7d9fcb4, type: 2}
+  m_lootedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
   references:
     version: 2
     RefIds:

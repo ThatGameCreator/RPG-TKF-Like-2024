@@ -24,7 +24,6 @@ namespace Gyvr.Mythril2D
         public GameObject interactionTarget => m_interactionTarget;
 
         private GameObject m_interactionTarget = null;
-        //public GameObject m_interactionTarget = null;
 
         private CharacterBase m_character = null;
 
@@ -112,8 +111,24 @@ namespace Gyvr.Mythril2D
 
             if (interactionTarget)
             {
-                ActiveInteracting();
-                return true;
+                //if (interactionTarget.gameObject.layer == LayerMask.GetMask(GameManager.Config.mosterLayer))
+                if (interactionTarget.gameObject.GetComponent<Monster>() != null)
+                {
+                    Debug.Log("moster loot");
+                    if (GameManager.Player.isLooting == true)
+                    {
+                        GameManager.Player.CancelLooting();
+                    }
+                    else
+                    {
+                        GameManager.Player.OnStartLooting(interactionTarget);
+                    }
+                }
+                else
+                {
+                    ActiveInteracting();
+                    return true;
+                }
             }
 
             return false;

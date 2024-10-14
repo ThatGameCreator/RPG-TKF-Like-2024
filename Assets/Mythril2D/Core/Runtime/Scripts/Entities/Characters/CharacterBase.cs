@@ -80,7 +80,6 @@ namespace Gyvr.Mythril2D
         [SerializeField] private string m_isMovingAnimationParameter = "isMoving";
         [SerializeField] private string m_isRunningAnimationParameter = "isRunning";
         [SerializeField] private string m_dashAnimationParameter = "dash";
-        [SerializeField] private string m_isLootedAnimationParameter = "isLooted";
 
         // Public Events
         [HideInInspector] public UnityEvent<Vector2> directionChangedEventOfMe = new UnityEvent<Vector2>();
@@ -793,6 +792,7 @@ namespace Gyvr.Mythril2D
 
             }
         }
+
         public void AvoidOverlapped(Vector2 direction)
         {
             Debug.Log("AvoidOverlapped" + gameObject.transform.name);

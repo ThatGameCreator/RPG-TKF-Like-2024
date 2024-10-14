@@ -38,6 +38,16 @@ namespace Gyvr.Mythril2D
         public UnityEvent<float> currentStaminaChanged => m_currentStats.staminaChanged;
         public UnityEvent<float> maxStaminaChanged => m_maxStats.staminaChanged;
 
+        [Header("Loot")]
+        [SerializeField] private AudioClipResolver m_lootingSound;
+        [SerializeField] private AudioClipResolver m_lootedSound;
+
+        public bool isLooting => m_isLooting;
+        private bool m_isLooting = false;
+        private GameObject m_lootingObject = null;
+        private float m_lootingTime = 0f;
+        private float m_lootingRequiredtTime = 2f;
+
 
         public int experience => m_experience;
         public int nextLevelExperience => GetTotalExpRequirement(m_level + 1);
@@ -126,8 +136,45 @@ namespace Gyvr.Mythril2D
 
         private void Update()
         {
-             //Debug.Log("consumStamina = " + m_currentStats.Stamina);
-            if (useStamina) HandleStamina();
+            if (useStamina == true) HandleStamina();
+
+            if (m_isLooting == true) OnTryLooting();
+        }
+
+        private void OnTryLooting()
+        {
+            if(movementDirection == Vector2.zero)
+            {
+                m_lootingTime += Time.deltaTime;
+            }
+            else
+            {
+                CancelLooting();
+            }
+                
+            if (m_lootingTime > m_lootingRequiredtTime)
+            {
+                GameManager.NotificationSystem.audioStopPlaybackRequested.Invoke(m_lootedSound);
+
+                m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
+
+                CancelLooting(); 
+            }
+        }
+
+        public void CancelLooting()
+        {
+            m_lootingTime = 0f;
+            m_isLooting = false;
+            m_lootingObject = null;
+            GameManager.NotificationSystem.audioStopPlaybackRequested.Invoke(m_lootingSound);
+        }
+
+        public void OnStartLooting(GameObject lootingObject)
+        {
+            m_isLooting = true;
+            m_lootingObject = lootingObject;
+            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootingSound);
         }
 
         private void OnStaminaChanged(float previous)
@@ -178,20 +225,7 @@ namespace Gyvr.Mythril2D
                     regeneratingStamina = null;
                 }
 
-                //staminaTimer += Time.deltaTime;
-                //seconds = staminaTimer % 60;
-                //if(seconds > 1)
-                //{
-                //    float consumStamina = staminaMultiplier * seconds;
-                //    Debug.Log("consumStamina = " + consumStamina);
-                //    ConsumeStamina((int)consumStamina);
-                //    seconds -= 1;
-                //}
-                //staminaTimer += Time.deltaTime;
-                //StartCoroutine(TimerRoutine());
-
                 m_currentStats.Stamina -= staminaMultiplier * Time.deltaTime;
-                //m_currentStats[EStat.Stamina] -= staminaMultiplier * Time.deltaTime;
 
                 if (m_currentStats.Stamina < 0) m_currentStats.Stamina = 0;
 

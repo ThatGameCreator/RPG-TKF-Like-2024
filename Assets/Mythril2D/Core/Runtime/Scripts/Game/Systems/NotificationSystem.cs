@@ -57,5 +57,6 @@ namespace Gyvr.Mythril2D
 
         [Header("Audio")]
         public UnityEvent<AudioClipResolver> audioPlaybackRequested = new UnityEvent<AudioClipResolver>();
+        public UnityEvent<AudioClipResolver> audioStopPlaybackRequested = new UnityEvent<AudioClipResolver>();
     }
 }

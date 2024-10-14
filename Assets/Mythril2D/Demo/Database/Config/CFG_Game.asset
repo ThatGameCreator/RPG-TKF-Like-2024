@@ -16,6 +16,7 @@ MonoBehaviour:
   gameplayScene: Gameplay
   mainMenuSceneName: Main Menu
   interactionLayer: Interaction
+  mosterLayer: Default
   projectileLayer: Projectile
   hitboxLayer: Hitbox
   layersIgnoredByProjectiles:
@@ -29,7 +30,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 3656
+      m_Bits: 3592
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0

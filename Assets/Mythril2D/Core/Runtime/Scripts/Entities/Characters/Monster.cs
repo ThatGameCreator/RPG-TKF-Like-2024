@@ -84,7 +84,7 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        private bool LootFinished()
+        public bool LootFinished()
         {
             if (m_looted == false)
             {
@@ -109,13 +109,6 @@ namespace Gyvr.Mythril2D
 
                 return true;
             }
-            return false;
-        }
-
-        public bool OnLooting()
-        {
-
-
             return false;
         }
 
