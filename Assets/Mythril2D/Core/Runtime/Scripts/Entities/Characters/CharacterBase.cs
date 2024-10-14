@@ -119,8 +119,6 @@ namespace Gyvr.Mythril2D
         protected ObservableStats m_maxStats = new ObservableStats();
         private UnityEvent m_destroyed = new UnityEvent();
 
-        private bool m_deleteLayerMask = false;
-
         // Move Private Members
         private List<RaycastHit2D> m_castCollisions = new List<RaycastHit2D>();
         private Vector2 m_movementDirection;
@@ -146,15 +144,10 @@ namespace Gyvr.Mythril2D
 
             // 放这里还没开始实例化 会报错
             //int layermask = GameManager.Config.collisionContactFilter.layerMask;
-            //layermask &= ~(1 << 6);
-            //GameManager.Config.collisionContactFilter.layerMask = layermask;
         }
 
         // 好像不能写 start 后面的子类还有其他方法要执行
-        //protected void Start()
-        //{
-        //}
-
+        //protected void Start(){ }
         private void OnDestroy()
         {
             m_destroyed.Invoke();
@@ -163,15 +156,12 @@ namespace Gyvr.Mythril2D
         private void OnStatsChanged(Stats previous)
         {
             // 似乎是在这里初始化属性和生命值
-            //Debug.Log("OnStatsChanged m_currentStats" + m_currentStats.stats[EStat.Health]);
 
             Stats difference = m_maxStats.stats - previous;
             Stats newCurrentStats = m_currentStats.stats + difference;
             // Make sure we don't kill the character when updating its maximum stats
             newCurrentStats[EStat.Health] = math.max(newCurrentStats[EStat.Health], 1);
             m_currentStats.Set(newCurrentStats);
-
-            //Debug.Log("OnStatsChanged m_currentStats" + m_currentStats.stats[EStat.Health]);
         }
 
         private void OnCurrentStatsChanged(Stats previous)
@@ -619,30 +609,6 @@ namespace Gyvr.Mythril2D
         private void FixedUpdate()
         {
 
-            if (m_deleteLayerMask == false)
-            {
-                // 为什么会穿过敌人？
-
-                // the default GameManager.Config.collisionContactFilter.layerMask is NULL
-                //LayerMask originalLayerMask = GameManager.Config.collisionContactFilter.layerMask; 
-                //originalLayerMask |= (1 << LayerMask.GetMask(GameManager.Config.interactionLayer));
-
-                //LayerMask originalLayerMask = (1 << 6);
-                //int layer = ~(1 << 0);
-                //layer &= ~(1 << 0);
-                //layer &= ~(1 << 6);
-                //layer &= ~(1 << 6);
-                //layer &= ~(1 << 9);
-                //layer &= ~(1 << 10);
-                //layer &= ~(1 << 11);
-                int layermask = GameManager.Config.collisionContactFilter.layerMask;
-                layermask &= ~(1 << 6);
-                GameManager.Config.collisionContactFilter.layerMask = layermask;
-                //Debug.Log("layerMask = " + layermask);
-                //Debug.Log("layerMask = " + GameManager.Config.collisionContactFilter.layerMask);
-                m_deleteLayerMask = true;
-            }
-
             if (m_pushed)
             {
                 if (m_pushIntensity > 0.2f)
@@ -769,30 +735,6 @@ namespace Gyvr.Mythril2D
                 m_castCollisions, // List of collisions to store the found collisions into after the Cast is finished
                 speed * Time.fixedDeltaTime + Constants.CollisionOffset
             ); // The amount to cast equal to the movement plus an offset
-
-
-            //Collider2D[] colliders = Physics2D.OverlapCircleAll(m_rigidbody.transform.position, 0.75f, LayerMask.GetMask(GameManager.Config.interactionLayer));
-            //Collider2D[] colliders = Physics2D.OverlapCircleAll(m_rigidbody.transform.position, 0.3f, LayerMask.GetMask(GameManager.Config.interactionLayer));
-            //bool isAllColliderInteracted = true;
-            //foreach (Collider2D collider in colliders)
-            //{
-            //    if (collider.gameObject != this.gameObject)
-            //    {
-            //        Debug.Log("count = " + count + collider.transform.name + " " + collider.gameObject.layer);
-            //        if (collider.gameObject.layer == LayerMask.GetMask(GameManager.Config.interactionLayer))
-            //        {
-            //            Debug.Log("isAllColliderInteracted false");
-            //            isAllColliderInteracted = false;
-            //        }
-            //    }
-            //}
-
-            //count = math.max(0, count-colliders.Length);
-            //Debug.Log("count = " + count);
-
-            //if (count == 0 && isAllColliderInteracted == true)
-            // 使用移动对象位置和设置可以穿过碰撞体都不太合理，会产生太多需要额外判断的条件
-            // 如果单一使用可能还能接受，但如果考虑到其他对象环境等碰撞体的话，就要囊括更多的判断条件
 
             if (count == 0)
             {
