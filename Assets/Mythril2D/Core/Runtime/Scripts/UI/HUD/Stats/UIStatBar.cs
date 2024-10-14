@@ -76,13 +76,13 @@ namespace Gyvr.Mythril2D
             {
                 current = GameManager.Player.GetStamina();
                 max = GameManager.Player.maxStamina;
-                m_label.text = "Stamina";
+                //m_label.text = "Stamina";
             }
             else
             {
                 current = m_target.currentStats[m_stat];
                 max = m_target.stats[m_stat];
-                m_label.text = GameManager.Config.GetTermDefinition(m_stat).shortName;
+                //m_label.text = GameManager.Config.GetTermDefinition(m_stat).shortName;
             }
 
             float previousSliderValue = m_slider.value;
@@ -100,7 +100,7 @@ namespace Gyvr.Mythril2D
                 Shake();
             }
 
-            m_sliderText.text = StringFormatter.Format("{0}/{1}", current, max);
+            m_sliderText.text = StringFormatter.Format("{0} / {1}", current, max);
         }
 
         private void Shake()

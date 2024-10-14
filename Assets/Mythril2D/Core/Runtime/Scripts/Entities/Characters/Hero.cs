@@ -20,7 +20,7 @@ namespace Gyvr.Mythril2D
 
         [Header("Stamina Paramenters")]
         // 每秒消耗多少耐力
-        [SerializeField] private float staminaMultiplier = 10;
+        [SerializeField] private float staminaMultiplier = 7;
         // 耐力回复前，等待时间
         [SerializeField] private float timeBeforeStaminaRengeStarts = 1.5f;
         // 每次单位耐力回复量
