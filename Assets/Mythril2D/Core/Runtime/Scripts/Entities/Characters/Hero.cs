@@ -124,6 +124,8 @@ namespace Gyvr.Mythril2D
         // private new void Awake(){}
         private new void Awake()
         {
+            isPlayer = true;
+
             m_maxStats.staminaChanged.AddListener(OnStaminaChanged);
 
             base.Awake();
@@ -510,7 +512,7 @@ namespace Gyvr.Mythril2D
             m_destroyOnDeath = false; 
             base.OnDeath();
 
-            GameManager.NotificationSystem.deathScreenRequested.Invoke();
+            //GameManager.NotificationSystem.deathScreenRequested.Invoke();
         }
     }
 }

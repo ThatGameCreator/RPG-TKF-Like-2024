@@ -12,6 +12,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private GameConfig m_config = null;
 
         // Public Static Members
+        public static String currentSaveFileName => SaveSystem.saveFileName;
         public static Hero Player => PlayerSystem.PlayerInstance;
         public static EventSystem EventSystem => EventSystem.current;
         public static GameConfig Config => _instance.m_config;

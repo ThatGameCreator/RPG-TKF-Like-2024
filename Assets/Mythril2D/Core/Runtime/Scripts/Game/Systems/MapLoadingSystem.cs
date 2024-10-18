@@ -14,6 +14,7 @@ namespace Gyvr.Mythril2D
     public class MapLoadingSystem : AGameSystem
     {
         [Header("Settings")]
+        // 如果委托传送，则会先执行存档在执行传送
         [SerializeField] private bool m_delegateTransitionResponsability = false;
 
         private string m_currentMap = string.Empty;
@@ -35,6 +36,9 @@ namespace Gyvr.Mythril2D
 
         public void RequestTransition(string map, Action onMapUnloaded = null, Action onMapLoaded = null, Action onCompletion = null)
         {
+            // 传送地图也要设置当前地图
+            //SetActiveMap(map);
+
             GameManager.NotificationSystem.mapTransitionStarted.Invoke();
 
             if (m_delegateTransitionResponsability)
@@ -105,6 +109,7 @@ namespace Gyvr.Mythril2D
 
                 operation.completed += (op) =>
                 {
+                    Debug.Log("SetActiveMap");
                     SetActiveMap(map);
                     GameManager.NotificationSystem.mapLoaded.Invoke();
                     onCompletion?.Invoke();

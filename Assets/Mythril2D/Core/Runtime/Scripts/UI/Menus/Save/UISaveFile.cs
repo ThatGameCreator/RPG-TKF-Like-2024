@@ -58,12 +58,24 @@ namespace Gyvr.Mythril2D
             {
                 m_details.text = "New Game";
                 m_isEmpty = true;
-                m_cancelButton.gameObject.SetActive(false);
+
+                if (m_cancelButton != null)
+                {
+                    m_cancelButton.gameObject.SetActive(false);
+                }
+
+                // 如果设为自动存档的话，似乎就不需要手动存档了，直接删掉存档界面了
                 //if (m_action == SaveFileActionType.Load)
                 //{
                 //    m_button.interactable = false;
                 //}
+
+                //if (m_action == SaveFileActionType.Save)
+                //{
+                //    m_button.interactable = false;
+                //}
             }
+            
         }
 
         public void OnPointerEnter(PointerEventData eventData)

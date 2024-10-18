@@ -53,7 +53,7 @@ namespace Gyvr.Mythril2D
 
         private void OnSaveFileClicked(SaveFileActionDesc desc)
         {
-            Debug.Log("Main Menu OnSaveFileClicked");
+            //Debug.Log("Main Menu OnSaveFileClicked");
             SceneManager.LoadSceneAsync(GameManager.Config.gameplayScene).completed += (operation) =>
             {
                 switch (desc.action)

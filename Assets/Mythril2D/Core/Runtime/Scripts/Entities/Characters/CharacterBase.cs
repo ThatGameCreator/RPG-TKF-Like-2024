@@ -117,6 +117,7 @@ namespace Gyvr.Mythril2D
         protected ObservableStats m_currentStats = new ObservableStats();
         protected ObservableStats m_maxStats = new ObservableStats();
         private UnityEvent m_destroyed = new UnityEvent();
+        protected bool isPlayer = false;
 
         // Move Private Members
         private List<RaycastHit2D> m_castCollisions = new List<RaycastHit2D>();
@@ -564,6 +565,8 @@ namespace Gyvr.Mythril2D
 
             else
             {
+                Debug.Log("Die");
+
                 Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
                 Array.ForEach(colliders, (collider) => collider.enabled = false);
             }
@@ -571,8 +574,9 @@ namespace Gyvr.Mythril2D
 
         protected virtual void OnDeath()
         {
-            if (m_destroyOnDeath == true)
+            if (m_destroyOnDeath == true && isPlayer == false)
             {
+                Debug.Log("OnDeath");
                 Destroy(gameObject);
             }
         }
@@ -601,11 +605,33 @@ namespace Gyvr.Mythril2D
         private void OnDeathAnimationStart()
         {
             DisableActions(EActionFlags.All);
+
+            TryPlayDeadAnimation();
         }
 
         private void OnDeathAnimationEnd()
         {
             OnDeath();
+        }
+
+        private void OnDeadAnimationStart()
+        {
+            // 恢复血量 
+            m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
+            m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
+            m_currentStats.Stamina = GameManager.Player.maxStamina;
+
+            // 传送到复活点
+            GameManager.MapLoadingSystem.RequestTransition("Testscene");
+
+            // 保存数据
+            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+
+            EnableActions(EActionFlags.All);
+
+            // 恢复碰撞体
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+            Array.ForEach(colliders, (collider) => collider.enabled = true);
         }
 
         #region Movement

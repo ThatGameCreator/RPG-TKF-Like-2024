@@ -46,7 +46,7 @@ namespace Gyvr.Mythril2D
 
         private void OnSaveFileClicked(SaveFileActionDesc desc)
         {
-            Debug.Log("UI Save OnSaveFileClicked");
+            //Debug.Log("UI Save OnSaveFileClicked");
 
             GameManager.SaveSystem.SaveToFile(desc.filename);
             UpdateUI();
