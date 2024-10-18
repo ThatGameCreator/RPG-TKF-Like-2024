@@ -26,6 +26,10 @@ namespace Gyvr.Mythril2D
         [Header("References")]
         [SerializeField] private TextMeshProUGUI m_details = null;
         [SerializeField] private Button m_button = null;
+        [SerializeField] private Button m_cancelButton = null;
+        [SerializeField] private UIMainMenu m_UIMainMenu = null;
+        [SerializeField] private SaveFile m_saveFile = null;
+
 
         public string saveFileName => m_saveFileName;
         public Button button => m_button;
@@ -42,20 +46,23 @@ namespace Gyvr.Mythril2D
         {
             SaveFileData saveFile;
 
+            // Each button try to check their Save Data
+            // The button will show the Character name of Save data
             if (SaveSystem.TryExtractingSaveData(m_saveFileName, out saveFile))
             {
                 m_details.text = saveFile.header;
                 m_isEmpty = false;
             }
+            // 
             else
             {
-                m_details.text = "Empty";
+                m_details.text = "New Game";
                 m_isEmpty = true;
-
-                if (m_action == SaveFileActionType.Load)
-                {
-                    m_button.interactable = false;
-                }
+                m_cancelButton.gameObject.SetActive(false);
+                //if (m_action == SaveFileActionType.Load)
+                //{
+                //    m_button.interactable = false;
+                //}
             }
         }
 
@@ -66,12 +73,20 @@ namespace Gyvr.Mythril2D
 
         public void OnClick()
         {
-            SendMessageUpwards("OnSaveFileClicked", new SaveFileActionDesc
+            // 没有存档尝试新建
+            if (m_isEmpty == true)
             {
-                action = m_action,
-                filename = m_saveFileName
+                m_UIMainMenu.StartNewGameFromDefaultSaveFile(m_saveFile);
+            }
+            else
+            {
+                SendMessageUpwards("OnSaveFileClicked", new SaveFileActionDesc
+                {
+                    action = m_action,
+                    filename = m_saveFileName
 
-            }, SendMessageOptions.RequireReceiver);
+                }, SendMessageOptions.RequireReceiver);
+            }
         }
     }
 }

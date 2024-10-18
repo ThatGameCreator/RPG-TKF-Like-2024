@@ -36,6 +36,12 @@ namespace Gyvr.Mythril2D
 
             m_character.TryPlayDashAnimation();
 
+            // 没有粒子效果
+            //if (m_dashParticleSystem != null)
+            //{
+            //    m_dashParticleSystem.Play();
+            //}
+
             // 在主方法执行不需要在这里再扣一次
             //ConsumeStamina();
 

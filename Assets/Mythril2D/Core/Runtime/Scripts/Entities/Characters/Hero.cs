@@ -169,7 +169,7 @@ namespace Gyvr.Mythril2D
         public void CancelLooting()
         {
             //TerminateCasting();
-            Debug.Log("CancelLooting");
+            //Debug.Log("CancelLooting");
 
             m_lootingTime = 0f;
             m_isLooting = false;
@@ -244,6 +244,7 @@ namespace Gyvr.Mythril2D
                     EndPlayRunAnimation();
                 }
             }
+            // 好像当时忘记修一个bug，现在只能检测 run 的时候的状态 其他比如攻击和冲刺等并不能检测，导致可以一边做动作一边恢复耐力
             // 耐力值不满，且没有冲刺，且耐力回复未开启
             if (m_currentStats.Stamina < maxStamina && isExecutingAction == false && regeneratingStamina == null)
             {
@@ -503,9 +504,12 @@ namespace Gyvr.Mythril2D
 
         protected override void OnDeath()
         {
+            //Debug.Log("Hero Death");
+
             // Prevents the Hero GameObject from being destroyed, so it can be used in the death screen.
             m_destroyOnDeath = false; 
             base.OnDeath();
+
             GameManager.NotificationSystem.deathScreenRequested.Invoke();
         }
     }

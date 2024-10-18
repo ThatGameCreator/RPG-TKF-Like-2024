@@ -52,7 +52,7 @@ namespace Gyvr.Mythril2D
             if (m_character.tag == "Player")
             {
                 // 如果只在玩家释放的时候取消搜刮，那么怪物攻击玩家的时候可能会拾取
-                Debug.Log("TerminateCasting");
+                //Debug.Log("TerminateCasting");
                 GameManager.Player.CancelLooting();
             }
                 

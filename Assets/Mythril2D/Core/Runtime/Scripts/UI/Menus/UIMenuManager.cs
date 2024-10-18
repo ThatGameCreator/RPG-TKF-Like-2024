@@ -82,6 +82,9 @@ namespace Gyvr.Mythril2D
 
         private void PushMenu(IUIMenu menu, params object[] args)
         {
+
+            //Debug.Log("PushMenu");
+
             if (m_menuStack.Count > 0 && m_menuStack.Peek() != null)
             {
                 IUIMenu previousMenu = m_menuStack.Peek();

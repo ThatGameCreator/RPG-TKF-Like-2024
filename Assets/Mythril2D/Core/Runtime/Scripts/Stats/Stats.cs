@@ -8,7 +8,7 @@ namespace Gyvr.Mythril2D
     {
         Health = 0,
         Mana = 1,
-        Stamina = 2,
+        None = 2,
         PhysicalAttack = 3,
         MagicalAttack = 4,
         PhysicalDefense = 5,

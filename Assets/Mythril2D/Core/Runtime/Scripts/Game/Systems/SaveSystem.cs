@@ -71,7 +71,6 @@ namespace Gyvr.Mythril2D
             else
             {
                 Debug.LogError($"Loading failed!");
-
             }
         }
 

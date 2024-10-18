@@ -167,6 +167,7 @@ namespace Gyvr.Mythril2D
         {
             if (m_currentStats[EStat.Health] == 0)
             {
+
                 Die();
             }
         }
@@ -347,6 +348,7 @@ namespace Gyvr.Mythril2D
         {
             if (m_animator && m_hasDeathAnimation)
             {
+                //Debug.Log("SetTrigger");
                 m_animator.SetTrigger(m_deathAnimationParameter);
                 return true;
             }
@@ -550,10 +552,16 @@ namespace Gyvr.Mythril2D
         {
             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
 
-            if (!TryPlayDeathAnimation())
+            //Debug.Log("Die");
+            // 执行子类 Hero 的 OnDeath 方法中的监听事件才会调用Death界面
+            // 为什么如果有 Exit Time 就会变成 false ?
+            if (TryPlayDeathAnimation() == false)
             {
-                 OnDeath();
+                //Debug.Log("TryPlayDeathAnimation");
+                // 也就说如果在这里执行的话，就会播放动画瞬间就执行了函数，而不会等待动画播放完毕
+                OnDeath();
             }
+
             else
             {
                 Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
@@ -563,7 +571,7 @@ namespace Gyvr.Mythril2D
 
         protected virtual void OnDeath()
         {
-            if (m_destroyOnDeath)
+            if (m_destroyOnDeath == true)
             {
                 Destroy(gameObject);
             }

@@ -8,7 +8,7 @@ namespace Gyvr.Mythril2D
     public class UIStatBar : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private TextMeshProUGUI m_label = null;
+        //[SerializeField] private TextMeshProUGUI m_label = null;
         [SerializeField] private Slider m_slider = null;
         [SerializeField] private TextMeshProUGUI m_sliderText = null;
 
