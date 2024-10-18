@@ -622,7 +622,7 @@ namespace Gyvr.Mythril2D
             m_currentStats.Stamina = GameManager.Player.maxStamina;
 
             // 传送到复活点
-            GameManager.MapLoadingSystem.RequestTransition("Testscene");
+            GameManager.MapLoadingSystem.RequestTransition("Testscene", null, null, null, true);
 
             // 保存数据
             GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);

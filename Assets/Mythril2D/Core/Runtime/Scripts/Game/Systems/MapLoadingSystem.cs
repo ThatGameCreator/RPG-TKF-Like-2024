@@ -16,8 +16,15 @@ namespace Gyvr.Mythril2D
         [Header("Settings")]
         // 如果委托传送，则会先执行存档在执行传送
         [SerializeField] private bool m_delegateTransitionResponsability = false;
+        [SerializeField] private GameObject m_defaultResurrection = null;
 
         private string m_currentMap = string.Empty;
+        private Vector2 m_currentResurrectionPostion = new Vector2();
+
+        public void SetSaveResurrectionPostion(Vector2 postion)
+        {
+            m_currentResurrectionPostion = postion;
+        }
 
         public void SetActiveMap(string map)
         {
@@ -34,7 +41,7 @@ namespace Gyvr.Mythril2D
             return m_currentMap != string.Empty;
         }
 
-        public void RequestTransition(string map, Action onMapUnloaded = null, Action onMapLoaded = null, Action onCompletion = null)
+        public void RequestTransition(string map, Action onMapUnloaded = null, Action onMapLoaded = null, Action onCompletion = null, bool hasDestionationPosition = false)
         {
             // 传送地图也要设置当前地图
             //SetActiveMap(map);
@@ -48,6 +55,19 @@ namespace Gyvr.Mythril2D
             else
             {
                 ExecuteTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
+            }
+
+            if(hasDestionationPosition == true)
+            {
+                if (m_currentResurrectionPostion == null)
+                {
+                    GameManager.Player.transform.position = m_defaultResurrection.transform.position;
+                }
+                else
+                {
+                    GameManager.Player.transform.position = m_currentResurrectionPostion;
+                }
+                
             }
         }
 
@@ -109,7 +129,7 @@ namespace Gyvr.Mythril2D
 
                 operation.completed += (op) =>
                 {
-                    Debug.Log("SetActiveMap");
+                    Debug.Log("SetActiveMap" + map);
                     SetActiveMap(map);
                     GameManager.NotificationSystem.mapLoaded.Invoke();
                     onCompletion?.Invoke();
