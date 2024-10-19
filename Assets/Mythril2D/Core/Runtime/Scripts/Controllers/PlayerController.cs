@@ -195,6 +195,7 @@ namespace Gyvr.Mythril2D
             }
 
             m_character.Push(m_dirction, m_dashStrength, m_dashResistance, faceOppositeDirection: true);
+
             if (m_dashParticleSystem != null)
             {
                 m_dashParticleSystem.Play();

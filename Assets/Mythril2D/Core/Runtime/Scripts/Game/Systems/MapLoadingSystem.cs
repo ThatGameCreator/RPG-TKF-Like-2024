@@ -16,7 +16,8 @@ namespace Gyvr.Mythril2D
         [Header("Settings")]
         // 如果委托传送，则会先执行存档在执行传送
         [SerializeField] private bool m_delegateTransitionResponsability = false;
-        [SerializeField] private GameObject m_defaultResurrection = null;
+        [SerializeField] private GameObject m_defaultResurrectionPostion = null;
+        [SerializeField] private string m_defaultResurrectionMap = null;
 
         private string m_currentMap = string.Empty;
         private Vector2 m_currentResurrectionPostion = new Vector2();
@@ -41,33 +42,46 @@ namespace Gyvr.Mythril2D
             return m_currentMap != string.Empty;
         }
 
-        public void RequestTransition(string map, Action onMapUnloaded = null, Action onMapLoaded = null, Action onCompletion = null, bool hasDestionationPosition = false)
+        public void RequestTransition(string map = null, Action onMapUnloaded = null, Action onMapLoaded = null, Action onCompletion = null, bool hasDestionationPosition = false)
         {
+            if(map == null)
+            {
+                SetActiveMap(m_defaultResurrectionMap);
+            }
+            
             // 传送地图也要设置当前地图
+            // 好像在这里设置会出问题
             //SetActiveMap(map);
 
             GameManager.NotificationSystem.mapTransitionStarted.Invoke();
 
-            if (m_delegateTransitionResponsability)
+            if (map != GameManager.MapLoadingSystem.GetCurrentMapName())
             {
-                DelegateTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
-            }
-            else
-            {
-                ExecuteTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
+                if (m_delegateTransitionResponsability)
+                {
+                    DelegateTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
+                }
+                else
+                {
+                    ExecuteTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
+                }
             }
 
             if(hasDestionationPosition == true)
             {
-                if (m_currentResurrectionPostion == null)
-                {
-                    GameManager.Player.transform.position = m_defaultResurrection.transform.position;
-                }
-                else
-                {
-                    GameManager.Player.transform.position = m_currentResurrectionPostion;
-                }
-                
+                TeloportPlayerPosition();
+            }
+        }
+
+        private void TeloportPlayerPosition()
+        {
+            if (m_currentResurrectionPostion == null)
+            {
+                GameManager.Player.transform.position = m_defaultResurrectionPostion.transform.position;
+            }
+            else
+            {
+                GameManager.Player.transform.position = m_currentResurrectionPostion;
             }
         }
 

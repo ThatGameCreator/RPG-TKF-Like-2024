@@ -383,6 +383,11 @@ namespace Gyvr.Mythril2D
         {
             if (m_animator && m_hasRunningAnimation)
             {
+                if (GameManager.Player.runParticleSystem != null)
+                {
+                    GameManager.Player.runParticleSystem.Play();
+                }
+
                 m_nowMoveSpeed = m_runSpeed;
                 m_animator.SetBool(m_isRunningAnimationParameter, true);
                 GameManager.Player.isExecutingAction = true;
@@ -398,6 +403,11 @@ namespace Gyvr.Mythril2D
             // 可能是因为松开按键后 还执行了一段时间 但Run状态机已经转换为 false
             if (m_animator && m_hasRunningAnimation)
             {
+                if (GameManager.Player.runParticleSystem != null)
+                {
+                    GameManager.Player.runParticleSystem.Stop();
+                }
+
                 m_nowMoveSpeed = m_moveSpeed;
                 m_animator.SetBool(m_isRunningAnimationParameter, false);
                 GameManager.Player.isExecutingAction = false; 
@@ -612,26 +622,6 @@ namespace Gyvr.Mythril2D
         private void OnDeathAnimationEnd()
         {
             OnDeath();
-        }
-
-        private void OnDeadAnimationStart()
-        {
-            // 恢复血量 
-            m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
-            m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
-            m_currentStats.Stamina = GameManager.Player.maxStamina;
-
-            // 传送到复活点
-            GameManager.MapLoadingSystem.RequestTransition("Testscene", null, null, null, true);
-
-            // 保存数据
-            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
-
-            EnableActions(EActionFlags.All);
-
-            // 恢复碰撞体
-            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
-            Array.ForEach(colliders, (collider) => collider.enabled = true);
         }
 
         #region Movement

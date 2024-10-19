@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using UnityEngine.Events;
 using UnityEngine.SocialPlatforms.Impl;
 using Unity.VisualScripting.YamlDotNet.Core.Tokens;
+using System;
 
 namespace Gyvr.Mythril2D
 {
@@ -17,6 +18,12 @@ namespace Gyvr.Mythril2D
         [Header("Hero")]
         [SerializeField] private bool m_restoreHealthOnLevelUp = true;
         [SerializeField] private bool m_restoreManaOnLevelUp = true;
+
+        [Header("Particle")]
+        [SerializeField] private ParticleSystem m_dashParticleSystem = null;
+        [SerializeField] private ParticleSystem m_runParticleSystem = null;
+        public ParticleSystem dashParticleSystem => m_dashParticleSystem;
+        public ParticleSystem runParticleSystem => m_runParticleSystem;
 
         [Header("Stamina Paramenters")]
         // 每秒消耗多少耐力
@@ -82,6 +89,30 @@ namespace Gyvr.Mythril2D
         private DashAbilitySheet m_dashAbility = null;
 
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
+
+
+
+        private void OnDeadAnimationStart()
+        {
+            Debug.Log("OnDeadAnimationStart");
+
+            // 恢复血量 
+            m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
+            m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
+            m_currentStats.Stamina = GameManager.Player.maxStamina;
+
+            // 传送到复活点
+            GameManager.MapLoadingSystem.RequestTransition(null, null, null, null, true);
+
+            // 保存数据
+            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+
+            EnableActions(EActionFlags.All);
+
+            // 恢复碰撞体
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+            Array.ForEach(colliders, (collider) => collider.enabled = true);
+        }
 
         public int GetTotalExpRequirement(int level)
         {
