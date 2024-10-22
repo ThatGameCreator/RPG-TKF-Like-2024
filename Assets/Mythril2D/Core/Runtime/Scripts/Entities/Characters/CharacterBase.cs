@@ -80,7 +80,6 @@ namespace Gyvr.Mythril2D
         [SerializeField] private string m_isMovingAnimationParameter = "isMoving";
         [SerializeField] private string m_isRunningAnimationParameter = "isRunning";
         [SerializeField] private string m_dashAnimationParameter = "dash";
-        [SerializeField] private string m_isLootedAnimationParameter = "isLooted";
 
         // Public Events
         [HideInInspector] public UnityEvent<Vector2> directionChangedEventOfMe = new UnityEvent<Vector2>();
@@ -118,8 +117,7 @@ namespace Gyvr.Mythril2D
         protected ObservableStats m_currentStats = new ObservableStats();
         protected ObservableStats m_maxStats = new ObservableStats();
         private UnityEvent m_destroyed = new UnityEvent();
-
-        private bool m_deleteLayerMask = false;
+        protected bool isPlayer = false;
 
         // Move Private Members
         private List<RaycastHit2D> m_castCollisions = new List<RaycastHit2D>();
@@ -146,15 +144,10 @@ namespace Gyvr.Mythril2D
 
             // 放这里还没开始实例化 会报错
             //int layermask = GameManager.Config.collisionContactFilter.layerMask;
-            //layermask &= ~(1 << 6);
-            //GameManager.Config.collisionContactFilter.layerMask = layermask;
         }
 
         // 好像不能写 start 后面的子类还有其他方法要执行
-        //protected void Start()
-        //{
-        //}
-
+        //protected void Start(){ }
         private void OnDestroy()
         {
             m_destroyed.Invoke();
@@ -163,21 +156,19 @@ namespace Gyvr.Mythril2D
         private void OnStatsChanged(Stats previous)
         {
             // 似乎是在这里初始化属性和生命值
-            //Debug.Log("OnStatsChanged m_currentStats" + m_currentStats.stats[EStat.Health]);
 
             Stats difference = m_maxStats.stats - previous;
             Stats newCurrentStats = m_currentStats.stats + difference;
             // Make sure we don't kill the character when updating its maximum stats
             newCurrentStats[EStat.Health] = math.max(newCurrentStats[EStat.Health], 1);
             m_currentStats.Set(newCurrentStats);
-
-            //Debug.Log("OnStatsChanged m_currentStats" + m_currentStats.stats[EStat.Health]);
         }
 
         private void OnCurrentStatsChanged(Stats previous)
         {
             if (m_currentStats[EStat.Health] == 0)
             {
+
                 Die();
             }
         }
@@ -358,6 +349,7 @@ namespace Gyvr.Mythril2D
         {
             if (m_animator && m_hasDeathAnimation)
             {
+                //Debug.Log("SetTrigger");
                 m_animator.SetTrigger(m_deathAnimationParameter);
                 return true;
             }
@@ -391,6 +383,11 @@ namespace Gyvr.Mythril2D
         {
             if (m_animator && m_hasRunningAnimation)
             {
+                if (GameManager.Player.runParticleSystem != null)
+                {
+                    GameManager.Player.runParticleSystem.Play();
+                }
+
                 m_nowMoveSpeed = m_runSpeed;
                 m_animator.SetBool(m_isRunningAnimationParameter, true);
                 GameManager.Player.isExecutingAction = true;
@@ -406,6 +403,11 @@ namespace Gyvr.Mythril2D
             // 可能是因为松开按键后 还执行了一段时间 但Run状态机已经转换为 false
             if (m_animator && m_hasRunningAnimation)
             {
+                if (GameManager.Player.runParticleSystem != null)
+                {
+                    GameManager.Player.runParticleSystem.Stop();
+                }
+
                 m_nowMoveSpeed = m_moveSpeed;
                 m_animator.SetBool(m_isRunningAnimationParameter, false);
                 GameManager.Player.isExecutingAction = false; 
@@ -469,6 +471,8 @@ namespace Gyvr.Mythril2D
                 DamageInputDescriptor damageInput = DamageSolver.SolveDamageInput(this, damageOutput);
 
                 TryPush(damageOutput);
+
+                //Debug.Log(this);
 
                 if (damageOutput.attacker is CharacterBase)
                 {
@@ -559,12 +563,20 @@ namespace Gyvr.Mythril2D
         {
             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
 
-            if (!TryPlayDeathAnimation())
+            //Debug.Log("Die");
+            // 执行子类 Hero 的 OnDeath 方法中的监听事件才会调用Death界面
+            // 为什么如果有 Exit Time 就会变成 false ?
+            if (TryPlayDeathAnimation() == false)
             {
-                 OnDeath();
+                //Debug.Log("TryPlayDeathAnimation");
+                // 也就说如果在这里执行的话，就会播放动画瞬间就执行了函数，而不会等待动画播放完毕
+                OnDeath();
             }
+
             else
             {
+                Debug.Log("Die");
+
                 Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
                 Array.ForEach(colliders, (collider) => collider.enabled = false);
             }
@@ -572,8 +584,9 @@ namespace Gyvr.Mythril2D
 
         protected virtual void OnDeath()
         {
-            if (m_destroyOnDeath)
+            if (m_destroyOnDeath == true && isPlayer == false)
             {
+                //Debug.Log("OnDeath");
                 Destroy(gameObject);
             }
         }
@@ -602,11 +615,17 @@ namespace Gyvr.Mythril2D
         private void OnDeathAnimationStart()
         {
             DisableActions(EActionFlags.All);
+
+            TryPlayDeadAnimation();
         }
 
         private void OnDeathAnimationEnd()
         {
             OnDeath();
+
+            // 传送到复活点
+            // 应该得放在死亡动画播放后传送，不然死亡动画播放完都站起来了再传送也太奇怪了
+            GameManager.MapLoadingSystem.RequestTransition(null, null, null, null, true);
         }
 
         #region Movement
@@ -618,30 +637,6 @@ namespace Gyvr.Mythril2D
 
         private void FixedUpdate()
         {
-
-            if (m_deleteLayerMask == false)
-            {
-                // 为什么会穿过敌人？
-
-                // the default GameManager.Config.collisionContactFilter.layerMask is NULL
-                //LayerMask originalLayerMask = GameManager.Config.collisionContactFilter.layerMask; 
-                //originalLayerMask |= (1 << LayerMask.GetMask(GameManager.Config.interactionLayer));
-
-                //LayerMask originalLayerMask = (1 << 6);
-                //int layer = ~(1 << 0);
-                //layer &= ~(1 << 0);
-                //layer &= ~(1 << 6);
-                //layer &= ~(1 << 6);
-                //layer &= ~(1 << 9);
-                //layer &= ~(1 << 10);
-                //layer &= ~(1 << 11);
-                int layermask = GameManager.Config.collisionContactFilter.layerMask;
-                layermask &= ~(1 << 6);
-                GameManager.Config.collisionContactFilter.layerMask = layermask;
-                //Debug.Log("layerMask = " + layermask);
-                //Debug.Log("layerMask = " + GameManager.Config.collisionContactFilter.layerMask);
-                m_deleteLayerMask = true;
-            }
 
             if (m_pushed)
             {
@@ -770,30 +765,6 @@ namespace Gyvr.Mythril2D
                 speed * Time.fixedDeltaTime + Constants.CollisionOffset
             ); // The amount to cast equal to the movement plus an offset
 
-
-            //Collider2D[] colliders = Physics2D.OverlapCircleAll(m_rigidbody.transform.position, 0.75f, LayerMask.GetMask(GameManager.Config.interactionLayer));
-            //Collider2D[] colliders = Physics2D.OverlapCircleAll(m_rigidbody.transform.position, 0.3f, LayerMask.GetMask(GameManager.Config.interactionLayer));
-            //bool isAllColliderInteracted = true;
-            //foreach (Collider2D collider in colliders)
-            //{
-            //    if (collider.gameObject != this.gameObject)
-            //    {
-            //        Debug.Log("count = " + count + collider.transform.name + " " + collider.gameObject.layer);
-            //        if (collider.gameObject.layer == LayerMask.GetMask(GameManager.Config.interactionLayer))
-            //        {
-            //            Debug.Log("isAllColliderInteracted false");
-            //            isAllColliderInteracted = false;
-            //        }
-            //    }
-            //}
-
-            //count = math.max(0, count-colliders.Length);
-            //Debug.Log("count = " + count);
-
-            //if (count == 0 && isAllColliderInteracted == true)
-            // 使用移动对象位置和设置可以穿过碰撞体都不太合理，会产生太多需要额外判断的条件
-            // 如果单一使用可能还能接受，但如果考虑到其他对象环境等碰撞体的话，就要囊括更多的判断条件
-
             if (count == 0)
             {
                 m_lastSuccessfullMoveDirection = direction * speed;
@@ -851,6 +822,7 @@ namespace Gyvr.Mythril2D
 
             }
         }
+
         public void AvoidOverlapped(Vector2 direction)
         {
             Debug.Log("AvoidOverlapped" + gameObject.transform.name);

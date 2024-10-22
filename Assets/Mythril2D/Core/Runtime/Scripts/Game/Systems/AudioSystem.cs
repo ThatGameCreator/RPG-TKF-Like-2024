@@ -21,17 +21,20 @@ namespace Gyvr.Mythril2D
         const string kMasterVolumePlayerPrefsKey = kVolumePlayerPrefsKey + "Master";
         const float kDefaultMasterVolume = 0.5f;
 
+        private AudioClipResolver currentAudioClipResolver = null;
         private float m_masterVolume = kDefaultMasterVolume;
 
         public override void OnSystemStart()
         {
             LoadSettings();
             GameManager.NotificationSystem.audioPlaybackRequested.AddListener(DispatchAudioPlaybackRequest);
+            GameManager.NotificationSystem.audioStopPlaybackRequested.AddListener(StopAudioPlaybackRequest);
         }
 
         public override void OnSystemStop()
         {
             GameManager.NotificationSystem.audioPlaybackRequested.RemoveListener(DispatchAudioPlaybackRequest);
+            GameManager.NotificationSystem.audioStopPlaybackRequested.RemoveListener(StopAudioPlaybackRequest);
             SaveSettings();
         }
 
@@ -69,7 +72,21 @@ namespace Gyvr.Mythril2D
         {
             if (audioClipResolver && m_audioChannels.TryGetValue(audioClipResolver.targetChannel, out AudioChannel channel))
             {
-                channel.Play(audioClipResolver);
+                currentAudioClipResolver = audioClipResolver;
+                channel.Play(currentAudioClipResolver);
+            }
+        }
+
+        private void StopAudioPlaybackRequest(AudioClipResolver audioClipResolver)
+        {
+            if (audioClipResolver && m_audioChannels.TryGetValue(audioClipResolver.targetChannel, out AudioChannel channel))
+            {
+                // 检查当前正在播放的音效是否与请求的音效相同
+                if (channel.CurrentClip == audioClipResolver.GetClip())
+                {
+                    // 停止播放
+                    channel.Stop();
+                }
             }
         }
 

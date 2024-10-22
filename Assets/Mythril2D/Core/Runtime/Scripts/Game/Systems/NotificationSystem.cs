@@ -5,6 +5,7 @@ namespace Gyvr.Mythril2D
 {
     public class NotificationSystem : AGameSystem
     {
+        // 如果事件是统一定义在这的？那么我们有些放在其他地方自己定义的事件是不是也得放在这？
         [Header("Gameplay Events")]
         public UnityEvent<MonsterSheet> monsterKilled = new UnityEvent<MonsterSheet>();
         public UnityEvent<CharacterBase, DamageInputDescriptor> damageApplied = new UnityEvent<CharacterBase, DamageInputDescriptor>();
@@ -57,5 +58,6 @@ namespace Gyvr.Mythril2D
 
         [Header("Audio")]
         public UnityEvent<AudioClipResolver> audioPlaybackRequested = new UnityEvent<AudioClipResolver>();
+        public UnityEvent<AudioClipResolver> audioStopPlaybackRequested = new UnityEvent<AudioClipResolver>();
     }
 }

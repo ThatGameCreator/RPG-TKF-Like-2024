@@ -24,7 +24,9 @@ namespace Gyvr.Mythril2D
             FireAbility3,
             OpenGameMenu,
             Submit,
-            Cancel
+            Cancel,
+            Run,
+            Dash,
         }
 
         public enum EButtonState

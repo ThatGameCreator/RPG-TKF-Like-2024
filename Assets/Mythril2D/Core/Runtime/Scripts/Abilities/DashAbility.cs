@@ -32,9 +32,12 @@ namespace Gyvr.Mythril2D
 
             m_character.Push(m_dirction, m_sheet.dashStrength, m_sheet.dashResistance, faceOppositeDirection: true);
 
-            m_particleSystem.Play();
-
             m_character.TryPlayDashAnimation();
+
+            if (GameManager.Player.dashParticleSystem != null)
+            {
+                GameManager.Player.dashParticleSystem.Play();
+            }
 
             // 在主方法执行不需要在这里再扣一次
             //ConsumeStamina();

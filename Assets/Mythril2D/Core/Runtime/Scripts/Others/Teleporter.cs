@@ -54,7 +54,7 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        void TeloportPlayerPosition()
+        private void TeloportPlayerPosition()
         {
             GameObject destionationGameObject = GameObject.Find(m_destinationGameObjectName);
 

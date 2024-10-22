@@ -5,6 +5,9 @@ namespace Gyvr.Mythril2D
 {
     public class SaveSystem : AGameSystem
     {
+        public string saveFileName => m_saveFileName;
+        private string m_saveFileName = "SAVEFILE_A";
+
         public void LoadDefaultSaveFile(SaveFile saveFile)
         {
             SaveFileData newSaveFile = DuplicateSaveFile(saveFile.content);
@@ -59,6 +62,8 @@ namespace Gyvr.Mythril2D
 
         public void LoadFromFile(string saveFileName)
         {
+            m_saveFileName = saveFileName;
+
             Debug.Log($"Loading from {saveFileName}...");
 
             SaveFileData saveFile;
@@ -71,12 +76,16 @@ namespace Gyvr.Mythril2D
             else
             {
                 Debug.LogError($"Loading failed!");
-
             }
         }
 
         public void SaveToFile(string saveFileName)
         {
+            m_saveFileName = saveFileName;
+            
+            // 测试的时候没有绑定存档所以为空
+            //Debug.Log("saveFileName = " + saveFileName);
+
             string filepath = Path.GetFullPath(Path.Combine(Application.persistentDataPath, saveFileName));
 
             Debug.Log($"Saving to {filepath}...");

@@ -8,7 +8,7 @@ namespace Gyvr.Mythril2D
     public class UIStatBar : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private TextMeshProUGUI m_label = null;
+        //[SerializeField] private TextMeshProUGUI m_label = null;
         [SerializeField] private Slider m_slider = null;
         [SerializeField] private TextMeshProUGUI m_sliderText = null;
 
@@ -36,7 +36,7 @@ namespace Gyvr.Mythril2D
             m_target = GameManager.Player;
 
             // 如果我这样写 target 却是 CharacterBase 会不会怪物的 UI Bar 更新的时候就会报错
-            // 不对啊 这获取的不是 player 吗那么应该只对应玩家吧
+            // 这获取的是 player 那么应该只对应玩家
             m_target.maxStatsChanged.AddListener(OnStatsChanged);
             m_target.currentStatsChanged.AddListener(OnStatsChanged);
 
@@ -70,19 +70,19 @@ namespace Gyvr.Mythril2D
 
         private void UpdateUI()
         {
-            m_label.text = GameManager.Config.GetTermDefinition(m_stat).shortName;
-
             float current, max; current = max = 0;
 
-            if (useStamina && m_stat == EStat.Stamina)
+            if (useStamina)
             {
                 current = GameManager.Player.GetStamina();
                 max = GameManager.Player.maxStamina;
+                //m_label.text = "Stamina";
             }
             else
             {
                 current = m_target.currentStats[m_stat];
                 max = m_target.stats[m_stat];
+                //m_label.text = GameManager.Config.GetTermDefinition(m_stat).shortName;
             }
 
             float previousSliderValue = m_slider.value;
@@ -100,7 +100,7 @@ namespace Gyvr.Mythril2D
                 Shake();
             }
 
-            m_sliderText.text = StringFormatter.Format("{0}/{1}", current, max);
+            m_sliderText.text = StringFormatter.Format("{0} / {1}", current, max);
         }
 
         private void Shake()

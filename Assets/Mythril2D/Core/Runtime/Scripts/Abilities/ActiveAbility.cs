@@ -1,4 +1,5 @@
-﻿using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Gyvr.Mythril2D
 {
@@ -47,6 +48,14 @@ namespace Gyvr.Mythril2D
 
         protected void TerminateCasting()
         {
+            // 这个玩家和怪物都会播放
+            if (m_character.tag == "Player")
+            {
+                // 如果只在玩家释放的时候取消搜刮，那么怪物攻击玩家的时候可能会拾取
+                //Debug.Log("TerminateCasting");
+                GameManager.Player.CancelLooting();
+            }
+                
             m_character.EnableActions(m_sheet.disabledActionsWhileCasting);
             m_onAbilityEndedCallback?.Invoke();
             m_onAbilityEndedCallback = null;

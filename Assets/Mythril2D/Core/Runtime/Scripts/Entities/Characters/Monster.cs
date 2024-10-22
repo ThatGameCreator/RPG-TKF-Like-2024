@@ -73,18 +73,11 @@ namespace Gyvr.Mythril2D
                 // cancel the playing animation
                 this.transform.Find("Pivot").gameObject.SetActive(false);
 
-                //GameObject lootbox = this.transform.Find("Lootbox").gameObject;
-                //lootbox.SetActive(true);
-                //CheckOverlappedObject();
-
-                //CapsuleCollider2D m_capsuleCollider = this.gameObject.GetComponent<CapsuleCollider2D>();
-                //m_capsuleCollider.isTrigger = true;
-
                 SetLayerRecursively(this.gameObject, LayerMask.NameToLayer("Interaction"));
             }
         }
 
-        private bool LootFinished()
+        public bool LootFinished()
         {
             if (m_looted == false)
             {
@@ -99,23 +92,10 @@ namespace Gyvr.Mythril2D
 
                 OnDeath();
 
-                // cancel interaction
-                //SetLayerRecursively(this.gameObject, LayerMask.NameToLayer("Default"));
-
-                //animator.SetBool(m_isLootedAnimationParameter, true); private key
-                //animator.SetBool("isLooted", true);
-
                 m_looted = true;
 
                 return true;
             }
-            return false;
-        }
-
-        public bool OnLooting()
-        {
-
-
             return false;
         }
 

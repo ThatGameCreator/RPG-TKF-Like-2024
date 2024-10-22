@@ -29,7 +29,8 @@ namespace Gyvr.Mythril2D
                 eraseButton.interactable = !saveFile.isEmpty;
             }
         }
-
+        
+        // 从这里进入新游戏
         public void StartNewGameFromDefaultSaveFile(SaveFile saveFile)
         {
             SceneManager.LoadSceneAsync(GameManager.Config.gameplayScene).completed += (operation) =>
@@ -52,6 +53,7 @@ namespace Gyvr.Mythril2D
 
         private void OnSaveFileClicked(SaveFileActionDesc desc)
         {
+            //Debug.Log("Main Menu OnSaveFileClicked");
             SceneManager.LoadSceneAsync(GameManager.Config.gameplayScene).completed += (operation) =>
             {
                 switch (desc.action)

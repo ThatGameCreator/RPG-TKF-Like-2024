@@ -22,6 +22,7 @@ namespace Gyvr.Mythril2D
 
         [Header("Actions")]
         [SerializeReference, SubclassSelector] private ICommand m_toExecute;
+        [SerializeReference, SubclassSelector] private ICommand[] m_toExecutes;
 
         [Header("Settings")]
         [SerializeField] private int m_frameDelay = 0;
@@ -43,7 +44,18 @@ namespace Gyvr.Mythril2D
 
         private void Execute()
         {
-            m_toExecute?.Execute();
+            if(m_toExecutes != null)
+            {
+                foreach (var toExecute in m_toExecutes)
+                {
+                    toExecute?.Execute();
+                }
+            }
+            else
+            {
+                m_toExecute?.Execute();
+            }
+
         }
 
         private void Start() => AttemptExecution(EActivationEvent.OnStart);

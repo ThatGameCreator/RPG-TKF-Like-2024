@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using UnityEngine.Events;
 using UnityEngine.SocialPlatforms.Impl;
 using Unity.VisualScripting.YamlDotNet.Core.Tokens;
+using System;
 
 namespace Gyvr.Mythril2D
 {
@@ -18,9 +19,15 @@ namespace Gyvr.Mythril2D
         [SerializeField] private bool m_restoreHealthOnLevelUp = true;
         [SerializeField] private bool m_restoreManaOnLevelUp = true;
 
+        [Header("Particle")]
+        [SerializeField] private ParticleSystem m_dashParticleSystem = null;
+        [SerializeField] private ParticleSystem m_runParticleSystem = null;
+        public ParticleSystem dashParticleSystem => m_dashParticleSystem;
+        public ParticleSystem runParticleSystem => m_runParticleSystem;
+
         [Header("Stamina Paramenters")]
         // 每秒消耗多少耐力
-        [SerializeField] private float staminaMultiplier = 10;
+        [SerializeField] private float staminaMultiplier = 7;
         // 耐力回复前，等待时间
         [SerializeField] private float timeBeforeStaminaRengeStarts = 1.5f;
         // 每次单位耐力回复量
@@ -37,6 +44,18 @@ namespace Gyvr.Mythril2D
         private Coroutine regeneratingStamina;
         public UnityEvent<float> currentStaminaChanged => m_currentStats.staminaChanged;
         public UnityEvent<float> maxStaminaChanged => m_maxStats.staminaChanged;
+
+        [Header("Loot")]
+        [SerializeField] private AudioClipResolver m_lootingSound;
+        [SerializeField] private AudioClipResolver m_lootedSound;
+
+        public bool isLooting => m_isLooting;
+        private bool m_isLooting = false;
+        private GameObject m_lootingObject = null;
+        public float lootingTime => m_lootingTime;
+        public float lootingRequiredtTime => m_lootingRequiredtTime;
+        private float m_lootingTime = 0f;
+        private float m_lootingRequiredtTime = 2f;
 
 
         public int experience => m_experience;
@@ -70,6 +89,27 @@ namespace Gyvr.Mythril2D
         private DashAbilitySheet m_dashAbility = null;
 
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
+
+
+
+        private void OnDeadAnimationStart()
+        {
+            Debug.Log("OnDeadAnimationStart");
+
+            // 恢复血量 
+            m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
+            m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
+            m_currentStats.Stamina = GameManager.Player.maxStamina;
+
+            // 保存数据
+            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+
+            EnableActions(EActionFlags.All);
+
+            // 恢复碰撞体
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+            Array.ForEach(colliders, (collider) => collider.enabled = true);
+        }
 
         public int GetTotalExpRequirement(int level)
         {
@@ -112,6 +152,8 @@ namespace Gyvr.Mythril2D
         // private new void Awake(){}
         private new void Awake()
         {
+            isPlayer = true;
+
             m_maxStats.staminaChanged.AddListener(OnStaminaChanged);
 
             base.Awake();
@@ -126,8 +168,51 @@ namespace Gyvr.Mythril2D
 
         private void Update()
         {
-             //Debug.Log("consumStamina = " + m_currentStats.Stamina);
-            if (useStamina) HandleStamina();
+            if (useStamina == true) HandleStamina();
+
+            if (m_isLooting == true) OnTryLooting();
+        }
+
+        private void OnTryLooting()
+        {
+            if(movementDirection == Vector2.zero)
+            {
+                m_lootingTime += Time.deltaTime;
+            }
+            else
+            {
+                CancelLooting();
+            }
+                
+            if (m_lootingTime > m_lootingRequiredtTime)
+            {
+                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+
+                m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
+
+                CancelLooting(); 
+            }
+        }
+
+        // 感觉在这个框架下，要么做成技能，放到玩家下，要么得用个监听去监听其他行为来取消/
+        // 不然一个拓展性不会，再者不停在Update中检测也不好
+        public void CancelLooting()
+        {
+            //TerminateCasting();
+            //Debug.Log("CancelLooting");
+
+            m_lootingTime = 0f;
+            m_isLooting = false;
+            m_lootingObject = null;
+            GameManager.NotificationSystem.audioStopPlaybackRequested.Invoke(m_lootingSound);
+        }
+
+        public void OnStartLooting(GameObject lootingObject)
+        {
+            SetMovementDirection(Vector2.zero);
+            m_isLooting = true;
+            m_lootingObject = lootingObject;
+            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootingSound);
         }
 
         private void OnStaminaChanged(float previous)
@@ -178,20 +263,7 @@ namespace Gyvr.Mythril2D
                     regeneratingStamina = null;
                 }
 
-                //staminaTimer += Time.deltaTime;
-                //seconds = staminaTimer % 60;
-                //if(seconds > 1)
-                //{
-                //    float consumStamina = staminaMultiplier * seconds;
-                //    Debug.Log("consumStamina = " + consumStamina);
-                //    ConsumeStamina((int)consumStamina);
-                //    seconds -= 1;
-                //}
-                //staminaTimer += Time.deltaTime;
-                //StartCoroutine(TimerRoutine());
-
                 m_currentStats.Stamina -= staminaMultiplier * Time.deltaTime;
-                //m_currentStats[EStat.Stamina] -= staminaMultiplier * Time.deltaTime;
 
                 if (m_currentStats.Stamina < 0) m_currentStats.Stamina = 0;
 
@@ -202,6 +274,7 @@ namespace Gyvr.Mythril2D
                     EndPlayRunAnimation();
                 }
             }
+            // 好像当时忘记修一个bug，现在只能检测 run 的时候的状态 其他比如攻击和冲刺等并不能检测，导致可以一边做动作一边恢复耐力
             // 耐力值不满，且没有冲刺，且耐力回复未开启
             if (m_currentStats.Stamina < maxStamina && isExecutingAction == false && regeneratingStamina == null)
             {
@@ -461,10 +534,13 @@ namespace Gyvr.Mythril2D
 
         protected override void OnDeath()
         {
+            //Debug.Log("Hero Death");
+
             // Prevents the Hero GameObject from being destroyed, so it can be used in the death screen.
             m_destroyOnDeath = false; 
             base.OnDeath();
-            GameManager.NotificationSystem.deathScreenRequested.Invoke();
+
+            //GameManager.NotificationSystem.deathScreenRequested.Invoke();
         }
     }
 }

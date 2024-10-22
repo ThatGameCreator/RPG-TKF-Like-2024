@@ -16,6 +16,7 @@ MonoBehaviour:
   gameplayScene: Gameplay
   mainMenuSceneName: Main Menu
   interactionLayer: Interaction
+  mosterLayer: Default
   projectileLayer: Projectile
   hitboxLayer: Hitbox
   layersIgnoredByProjectiles:
@@ -29,7 +30,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 3656
+      m_Bits: 3592
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -37,7 +38,7 @@ MonoBehaviour:
   cameraShakeSources: 1
   onTheGoCraftingStation: {fileID: 11400000, guid: 655d6294ee66b2740b36bac6c4a2fb5e, type: 2}
   canCriticalHit: 1
-  canMissHit: 1
+  canMissHit: 0
   m_gameTerms:
     m_keys:
     - currency

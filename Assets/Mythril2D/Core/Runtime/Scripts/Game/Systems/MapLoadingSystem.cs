@@ -14,9 +14,18 @@ namespace Gyvr.Mythril2D
     public class MapLoadingSystem : AGameSystem
     {
         [Header("Settings")]
+        // 如果委托传送，则会先执行存档在执行传送
         [SerializeField] private bool m_delegateTransitionResponsability = false;
+        [SerializeField] private GameObject m_defaultResurrectionPostion = null;
+        [SerializeField] private string m_defaultResurrectionMap = null;
 
         private string m_currentMap = string.Empty;
+        private Vector2 m_currentResurrectionPostion = new Vector2();
+
+        public void SetSaveResurrectionPostion(Vector2 postion)
+        {
+            m_currentResurrectionPostion = postion;
+        }
 
         public void SetActiveMap(string map)
         {
@@ -33,17 +42,50 @@ namespace Gyvr.Mythril2D
             return m_currentMap != string.Empty;
         }
 
-        public void RequestTransition(string map, Action onMapUnloaded = null, Action onMapLoaded = null, Action onCompletion = null)
+        public void RequestTransition(string map = null, Action onMapUnloaded = null, Action onMapLoaded = null, Action onCompletion = null, bool hasDestionationPosition = false)
         {
+            if(map == null)
+            {
+                map = m_defaultResurrectionMap;
+            }
+            
+            // 传送地图也要设置当前地图
+            // 好像在这里设置会出问题
+            //SetActiveMap(map);
+
             GameManager.NotificationSystem.mapTransitionStarted.Invoke();
 
-            if (m_delegateTransitionResponsability)
+            if (map != GameManager.MapLoadingSystem.GetCurrentMapName())
             {
-                DelegateTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
+                if (m_delegateTransitionResponsability)
+                {
+                    DelegateTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
+                }
+                else
+                {
+                    ExecuteTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
+                }
+            }
+
+            if(hasDestionationPosition == true)
+            {
+                TeloportPlayerPosition();
+
+                // 不调用这个方法会设全部 Input Action 为 False
+                // 地图传送后也会调用一次，应该加点判断啥的
+                GameManager.NotificationSystem.mapTransitionCompleted.Invoke();
+            }
+        }
+
+        private void TeloportPlayerPosition()
+        {
+            if (m_currentResurrectionPostion == null)
+            {
+                GameManager.Player.transform.position = m_defaultResurrectionPostion.transform.position;
             }
             else
             {
-                ExecuteTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
+                GameManager.Player.transform.position = m_currentResurrectionPostion;
             }
         }
 
@@ -71,6 +113,8 @@ namespace Gyvr.Mythril2D
             {
                 loadAction();
             }
+
+            Debug.Log("onCompletion = " + onCompletion);
         }
 
         private void UnloadMap(string map, Action onCompletion)
@@ -105,6 +149,7 @@ namespace Gyvr.Mythril2D
 
                 operation.completed += (op) =>
                 {
+                    Debug.Log("SetActiveMap" + map);
                     SetActiveMap(map);
                     GameManager.NotificationSystem.mapLoaded.Invoke();
                     onCompletion?.Invoke();
@@ -123,6 +168,8 @@ namespace Gyvr.Mythril2D
              
             // the "?." similar to if (onCompletion != null) onCompletion.Invoke();
             onCompletion?.Invoke();
+
+            Debug.Log("onCompletion = " + onCompletion);
         }
     }
 }
