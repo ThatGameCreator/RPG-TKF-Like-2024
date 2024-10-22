@@ -586,7 +586,7 @@ namespace Gyvr.Mythril2D
         {
             if (m_destroyOnDeath == true && isPlayer == false)
             {
-                Debug.Log("OnDeath");
+                //Debug.Log("OnDeath");
                 Destroy(gameObject);
             }
         }
@@ -622,6 +622,10 @@ namespace Gyvr.Mythril2D
         private void OnDeathAnimationEnd()
         {
             OnDeath();
+
+            // 传送到复活点
+            // 应该得放在死亡动画播放后传送，不然死亡动画播放完都站起来了再传送也太奇怪了
+            GameManager.MapLoadingSystem.RequestTransition(null, null, null, null, true);
         }
 
         #region Movement

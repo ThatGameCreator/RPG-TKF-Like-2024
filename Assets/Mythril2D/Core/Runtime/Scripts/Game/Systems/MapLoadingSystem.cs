@@ -46,7 +46,7 @@ namespace Gyvr.Mythril2D
         {
             if(map == null)
             {
-                SetActiveMap(m_defaultResurrectionMap);
+                map = m_defaultResurrectionMap;
             }
             
             // 传送地图也要设置当前地图
@@ -70,6 +70,10 @@ namespace Gyvr.Mythril2D
             if(hasDestionationPosition == true)
             {
                 TeloportPlayerPosition();
+
+                // 不调用这个方法会设全部 Input Action 为 False
+                // 地图传送后也会调用一次，应该加点判断啥的
+                GameManager.NotificationSystem.mapTransitionCompleted.Invoke();
             }
         }
 
@@ -109,6 +113,8 @@ namespace Gyvr.Mythril2D
             {
                 loadAction();
             }
+
+            Debug.Log("onCompletion = " + onCompletion);
         }
 
         private void UnloadMap(string map, Action onCompletion)
@@ -162,6 +168,8 @@ namespace Gyvr.Mythril2D
              
             // the "?." similar to if (onCompletion != null) onCompletion.Invoke();
             onCompletion?.Invoke();
+
+            Debug.Log("onCompletion = " + onCompletion);
         }
     }
 }
