@@ -111,19 +111,30 @@ namespace Gyvr.Mythril2D
 
             if (interactionTarget)
             {
+                Monster localMonster = interactionTarget.gameObject.GetComponent<Monster>();
+                Chest localChest = interactionTarget.gameObject.GetComponent<Chest>();
+
                 //if (interactionTarget.gameObject.layer == LayerMask.GetMask(GameManager.Config.mosterLayer))
-                if (interactionTarget.gameObject.GetComponent<Monster>() != null)
+                if (localMonster != null || localChest != null)
                 {
                     //Debug.Log("moster loot");
                     if (GameManager.Player.isLooting == true)
                     {
                         GameManager.Player.CancelLooting();
                     }
+
+                    // 打开过一次宝箱就播放文本
+                    else if(localChest.opened == true)
+                    {
+                        ActiveInteracting();
+                    }
+
                     else
                     {
                         GameManager.Player.OnStartLooting(interactionTarget);
                     }
                 }
+                
                 else
                 {
                     ActiveInteracting();

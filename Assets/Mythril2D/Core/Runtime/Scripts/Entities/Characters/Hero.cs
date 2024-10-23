@@ -58,7 +58,8 @@ namespace Gyvr.Mythril2D
         private float m_lootingTime = 0f;
         private float m_lootingRequiredtTime = 2f;
 
-        [SerializeField] private Light2D m_light = null;
+        [Header("Light")]
+        [SerializeField] private Light2D m_heroLight = null;
 
 
         public int experience => m_experience;

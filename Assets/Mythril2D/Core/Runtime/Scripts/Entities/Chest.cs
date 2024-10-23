@@ -25,6 +25,7 @@ namespace Gyvr.Mythril2D
 
         private bool m_hasOpeningAnimation = false;
         private bool m_hasRevealAnimation = false;
+        public bool opened => m_opened;
         private bool m_opened = false;
 
         protected void Awake()
