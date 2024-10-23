@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.SocialPlatforms.Impl;
 using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using System;
+using FunkyCode;
 
 namespace Gyvr.Mythril2D
 {
@@ -56,6 +57,8 @@ namespace Gyvr.Mythril2D
         public float lootingRequiredtTime => m_lootingRequiredtTime;
         private float m_lootingTime = 0f;
         private float m_lootingRequiredtTime = 2f;
+
+        [SerializeField] private Light2D m_light = null;
 
 
         public int experience => m_experience;
