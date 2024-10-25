@@ -8,14 +8,16 @@ namespace Gyvr.Mythril2D
     {
         [SerializeField] private LightingManager2D m_lightingManager = null;
         [SerializeField] private float m_maxBrightness = 0.5f;
-        [SerializeField] private float m_remainDayAndNightTime = 60f;
-        private float m_currentTime = 60f;
+        [SerializeField] private float m_eachRemainDayAndNightTime = 180f;
+        private float m_currentTime = 180f;
 
         public LightingManager2D lightingManager => m_lightingManager;
+        public float eachRemainDayAndNightTime => m_eachRemainDayAndNightTime;
+        public float currentTime => m_currentTime;
 
         private void Update()
         {
-            Debug.Log("DarknessColor" + m_lightingManager.profile.DarknessColor);
+            //Debug.Log("DarknessColor" + m_lightingManager.profile.DarknessColor);
 
             m_currentTime -= Time.deltaTime;
 
@@ -23,15 +25,15 @@ namespace Gyvr.Mythril2D
             {
                 float newBrightness = m_lightingManager.profile.DarknessColor.r;
 
-                //  maxWhite = 0.5 -> black = 0
-                newBrightness = (float) (0.5 * (m_currentTime / m_remainDayAndNightTime));
+                //  maxWhite = m_maxBrightness -> black = 0
+                newBrightness = (float) (m_maxBrightness * (m_currentTime / m_eachRemainDayAndNightTime));
 
                 m_lightingManager.profile.DarknessColor = new Color(newBrightness, newBrightness, newBrightness, 1);
 
-                Debug.Log("newBrightness" + newBrightness);
+                //Debug.Log("newBrightness" + newBrightness);
             }
 
-            else if (Mathf.Approximately(1.0f, m_currentTime / m_remainDayAndNightTime))
+            else if (Mathf.Approximately(1.0f, m_currentTime / m_eachRemainDayAndNightTime))
             {
                 m_lightingManager.profile.DarknessColor = new Color(0, 0, 0, 1);
             }
