@@ -347,7 +347,8 @@ namespace FunkyCode.LightingSettings
 	}
 	public enum ManagerInstance
 	{
-		Static,
+        Nothing,
+        Static,
 		DontDestroyOnLoad,
 		Dynamic
 	}

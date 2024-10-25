@@ -8,6 +8,9 @@ using UnityEngine.SocialPlatforms.Impl;
 using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using System;
 using FunkyCode;
+using FunkyCode.LightingSettings;
+using UnityEditor;
+using static FunkyCode.ProfileEditor;
 
 namespace Gyvr.Mythril2D
 {
@@ -60,7 +63,7 @@ namespace Gyvr.Mythril2D
 
         [Header("Light")]
         [SerializeField] private Light2D m_heroLight = null;
-
+        public float newColor = 0;
 
         public int experience => m_experience;
         public int nextLevelExperience => GetTotalExpRequirement(m_level + 1);
@@ -98,8 +101,6 @@ namespace Gyvr.Mythril2D
 
         private void OnDeadAnimationStart()
         {
-            Debug.Log("OnDeadAnimationStart");
-
             // »Ö¸´ÑªÁ¿ 
             m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
             m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
@@ -162,7 +163,6 @@ namespace Gyvr.Mythril2D
 
             base.Awake();
             //m_currentStats.changed.AddListener(HandleStamina);
-            
         }
 
         private void Start()

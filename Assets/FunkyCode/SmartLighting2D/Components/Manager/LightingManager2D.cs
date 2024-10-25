@@ -3,8 +3,8 @@ using FunkyCode.LightingSettings;
 
 namespace FunkyCode
 {
-	[ExecuteInEditMode] 
-	public class LightingManager2D : LightingMonoBehaviour
+	[ExecuteInEditMode]
+    public class LightingManager2D : LightingMonoBehaviour
 	{
 		private static LightingManager2D instance;
 
@@ -83,7 +83,10 @@ namespace FunkyCode
 			{
 				switch(Lighting2D.ProjectSettings.managerInstance)
 				{
-					case LightingSettings.ManagerInstance.Static:
+                    case LightingSettings.ManagerInstance.Nothing:
+                        return;
+
+                    case LightingSettings.ManagerInstance.Static:
 					case LightingSettings.ManagerInstance.DontDestroyOnLoad:
 						
 						Debug.LogWarning("Smart Lighting2D: Lighting Manager duplicate was found, new instance destroyed.", gameObject);

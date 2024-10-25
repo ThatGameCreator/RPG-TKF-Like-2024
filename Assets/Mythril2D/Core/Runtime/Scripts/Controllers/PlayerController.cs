@@ -124,7 +124,7 @@ namespace Gyvr.Mythril2D
                     }
 
                     // 打开过一次宝箱就播放文本
-                    else if(localChest.opened == true)
+                    else if(localChest != null && localChest.opened == true)
                     {
                         ActiveInteracting();
                     }

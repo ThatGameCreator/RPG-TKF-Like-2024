@@ -148,6 +148,8 @@ namespace FunkyCode
 				rect = new Vector4(0, 0, 1, 1);
 			}
 
+            Debug.Log("Color = " + color);
+
 			bool gameView = !isSceneView;
 
 			if (gameView)
@@ -211,7 +213,7 @@ namespace FunkyCode
 					break;
 				}
 			}
-				else
+			else
 			{
 				switch(id)
 				{
