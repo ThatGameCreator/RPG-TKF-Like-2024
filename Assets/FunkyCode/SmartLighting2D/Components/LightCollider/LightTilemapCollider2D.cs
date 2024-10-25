@@ -95,7 +95,7 @@ namespace FunkyCode
 
 			UpdateLayerList();
 
-			LightingManager2D.Get();
+			//LightingManager2D.Get();
 
 			rectangle.SetGameObject(gameObject);
 			isometric.SetGameObject(gameObject);

@@ -28,7 +28,7 @@ namespace FunkyCode
 		{
 			List.Add(this);
 
-			LightingManager2D.Get();
+			//LightingManager2D.Get();
 
 			rectangle.SetGameObject(gameObject);
 			superTilemapEditor.SetGameObject(gameObject);

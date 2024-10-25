@@ -226,7 +226,7 @@ namespace FunkyCode
 				freeForm = new LightFreeForm();
 			}
 
-			LightingManager2D.Get();
+			//LightingManager2D.Get();
 
 			collidersInside.Clear();
 

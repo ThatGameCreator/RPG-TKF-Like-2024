@@ -91,7 +91,7 @@ namespace FunkyCode
 			superTilemapEditor.eventsInit = false;
 			superTilemapEditor.SetGameObject(gameObject);
 
-			LightingManager2D.Get();
+			//LightingManager2D.Get();
 
 			Initialize();
 		}

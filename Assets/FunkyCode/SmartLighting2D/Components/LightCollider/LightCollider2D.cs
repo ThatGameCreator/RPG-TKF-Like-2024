@@ -119,7 +119,7 @@ namespace FunkyCode
 
 			UpdateLayerList();
 
-			LightingManager2D.Get();
+			//LightingManager2D.Get();
 
 			Initialize();
 

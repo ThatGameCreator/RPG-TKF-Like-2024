@@ -1,3 +1,4 @@
+using FunkyCode;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ namespace Gyvr.Mythril2D
         public static GameManager Instance => _instance;
 
         // System Access Shortcuts
+        public static LightingSystem LightingSystem => GetSystem<LightingSystem>();
         public static AudioSystem AudioSystem => GetSystem<AudioSystem>();
         public static DialogueSystem DialogueSystem => GetSystem<DialogueSystem>();
         public static GameFlagSystem GameFlagSystem => GetSystem<GameFlagSystem>();
@@ -47,7 +49,7 @@ namespace Gyvr.Mythril2D
 
         private void OnEnable()
         {
-            if (m_systems.ContainsKey(typeof(NotificationSystem)))
+           if (m_systems.ContainsKey(typeof(NotificationSystem)))
             {
                 NotificationSystem.mapLoaded.AddListener(OnMapLoaded);
                 NotificationSystem.mapUnloaded.AddListener(OnMapUnloaded);

@@ -41,7 +41,7 @@ namespace FunkyCode
 		{
 			List.Add(this);
 
-			LightingManager2D.Get();
+			//LightingManager2D.Get();
 		}
 
 		public void OnDisable()
