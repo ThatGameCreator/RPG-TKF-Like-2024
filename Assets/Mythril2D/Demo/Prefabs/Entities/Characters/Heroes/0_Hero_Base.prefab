@@ -9704,7 +9704,7 @@ GameObject:
   - component: {fileID: 5416717094334081774}
   - component: {fileID: 340086387587714928}
   m_Layer: 0
-  m_Name: Light 2D
+  m_Name: Self Eyesight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9978,7 +9978,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 5416717094334081774}
     - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1

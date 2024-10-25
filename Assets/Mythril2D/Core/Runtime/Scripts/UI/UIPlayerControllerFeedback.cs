@@ -28,17 +28,13 @@ namespace Gyvr.Mythril2D
 
             if (target)
             {
-                if (!m_interactionButtonFeedback.isActiveAndEnabled)
-                {
-                    m_interactionButtonFeedback.gameObject.SetActive(true);
-                }
-
-                m_interactionButtonFeedback.transform.position = target.transform.position + m_offset;
-                m_ButtonSpriteRenderer.color = Color.Lerp(m_ButtonSpriteRenderer.color, m_initialButtonSpriteColor, m_showAnimationSpeed * Time.unscaledDeltaTime);
-
                 Hero hero = GameManager.Player;
                 if (hero.isLooting)
                 {
+                    // Button disappear
+                    SetButtonDisappear();
+
+                    // Bar Active
                     if (!m_interactionBarFeedback.isActiveAndEnabled)
                     {
                         m_interactionBarFeedback.gameObject.SetActive(true);
@@ -49,14 +45,29 @@ namespace Gyvr.Mythril2D
                 }
                 else
                 {
+                    // Bar disappear
                     m_interactionBarFeedback.gameObject.SetActive(false);
+
+                    // Button Active
+                    if (!m_interactionButtonFeedback.isActiveAndEnabled)
+                    {
+                        m_interactionButtonFeedback.gameObject.SetActive(true);
+                    }
+
+                    m_interactionButtonFeedback.transform.position = target.transform.position + m_offset;
+                    m_ButtonSpriteRenderer.color = Color.Lerp(m_ButtonSpriteRenderer.color, m_initialButtonSpriteColor, m_showAnimationSpeed * Time.unscaledDeltaTime);
                 }
             }
             else
             {
-                m_ButtonSpriteRenderer.color = Color.Lerp(m_ButtonSpriteRenderer.color, new Color(1.0f, 1.0f, 1.0f, 0.0f), m_hideAnimationSpeed * Time.unscaledDeltaTime);
+                SetButtonDisappear();
                 m_interactionBarFeedback.gameObject.SetActive(false);
             }
+        }
+
+        private void SetButtonDisappear()
+        {
+            m_ButtonSpriteRenderer.color = Color.Lerp(m_ButtonSpriteRenderer.color, new Color(1.0f, 1.0f, 1.0f, 0.0f), m_hideAnimationSpeed * Time.unscaledDeltaTime);
         }
     }
 }

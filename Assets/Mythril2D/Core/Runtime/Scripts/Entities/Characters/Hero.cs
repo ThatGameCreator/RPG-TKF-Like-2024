@@ -61,9 +61,8 @@ namespace Gyvr.Mythril2D
         private float m_lootingTime = 0f;
         private float m_lootingRequiredtTime = 2f;
 
-        [Header("Light")]
+        [Header("Eyesight")]
         [SerializeField] private Light2D m_heroLight = null;
-        public float newColor = 0;
 
         public int experience => m_experience;
         public int nextLevelExperience => GetTotalExpRequirement(m_level + 1);
