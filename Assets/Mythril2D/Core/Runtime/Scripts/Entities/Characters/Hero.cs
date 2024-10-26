@@ -96,9 +96,16 @@ namespace Gyvr.Mythril2D
 
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
 
-
-
         private void OnDeadAnimationStart()
+        {
+            Debug.Log("OnDeadAnimationStart");
+
+            SetLookAtDirection(Vector2.right);
+
+            TryPlayRevivalAnimation();
+        }
+
+        private void OnDeadAnimationEnd()
         {
             // 恢复血量 
             m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
@@ -108,11 +115,16 @@ namespace Gyvr.Mythril2D
             // 保存数据
             GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
 
-            EnableActions(EActionFlags.All);
-
             // 恢复碰撞体
             Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
             Array.ForEach(colliders, (collider) => collider.enabled = true);
+        }
+
+        private void OnRevivalAnimationEnd()
+        {
+            Debug.Log("OnRevivalAnimationEnd");
+
+            EnableActions(EActionFlags.All);
         }
 
         public int GetTotalExpRequirement(int level)

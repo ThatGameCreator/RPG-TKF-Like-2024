@@ -74,6 +74,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private string m_hitAnimationParameter = "hit";
         [SerializeField] private string m_deathAnimationParameter = "death";
         [SerializeField] private string m_deadAnimationParameter = "dead";
+        [SerializeField] private string m_revivalAnimationParameter = "Revival";
         [SerializeField] private string m_invincibleAnimationParameter = "invincible";
         [SerializeField] private string m_moveXAnimationParameter = "moveX";
         [SerializeField] private string m_moveYAnimationParameter = "moveY";
@@ -106,6 +107,7 @@ namespace Gyvr.Mythril2D
         private EActionFlags m_actionFlags = EActionFlags.All;
         private bool m_hasDeathAnimation = false;
         private bool m_hasDeadAnimation = false;
+        private bool m_hasRevivalAnimation = false;
         private bool m_hasHitAnimation = false;
         private bool m_hasInvincibleAnimation = false;
         private bool m_invincibleAnimationPlaying = false;
@@ -177,9 +179,11 @@ namespace Gyvr.Mythril2D
         {
             if (m_animator)
             {
+                Debug.Log("m_revivalAnimationParameter = " + m_revivalAnimationParameter);
                 m_hasHitAnimation = AnimationUtils.HasParameter(m_animator, m_hitAnimationParameter);
                 m_hasDeathAnimation = AnimationUtils.HasParameter(m_animator, m_deathAnimationParameter);
                 m_hasDeadAnimation = AnimationUtils.HasParameter(m_animator, m_deadAnimationParameter);
+                m_hasRevivalAnimation = AnimationUtils.HasParameter(m_animator, m_revivalAnimationParameter);
                 m_hasInvincibleAnimation = AnimationUtils.HasParameter(m_animator, m_invincibleAnimationParameter);
                 m_hasDashAnimation = AnimationUtils.HasParameter(m_animator, m_dashAnimationParameter);
                 m_hasRunningAnimation = AnimationUtils.HasParameter(m_animator, m_isRunningAnimationParameter);
@@ -362,6 +366,19 @@ namespace Gyvr.Mythril2D
             if (m_animator && m_hasDeadAnimation)
             {
                 m_animator.SetTrigger(m_deadAnimationParameter);
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool TryPlayRevivalAnimation()
+        {
+            Debug.Log("m_hasRevivalAnimation = " + m_hasRevivalAnimation);
+
+            if (m_animator && m_hasRevivalAnimation)
+            {
+                m_animator.SetTrigger(m_revivalAnimationParameter);
                 return true;
             }
 
@@ -614,6 +631,8 @@ namespace Gyvr.Mythril2D
 
         private void OnDeathAnimationStart()
         {
+            Debug.Log("OnDeathAnimationStart");
+
             DisableActions(EActionFlags.All);
 
             TryPlayDeadAnimation();
@@ -621,10 +640,10 @@ namespace Gyvr.Mythril2D
 
         private void OnDeathAnimationEnd()
         {
+            Debug.Log("OnDeathAnimationEnd");
+
             OnDeath();
 
-            // 传送到复活点
-            // 应该得放在死亡动画播放后传送，不然死亡动画播放完都站起来了再传送也太奇怪了
             GameManager.MapLoadingSystem.RequestTransition(null, null, null, null, true);
         }
 
@@ -700,6 +719,7 @@ namespace Gyvr.Mythril2D
             Vector3 direction = target.position - transform.position;
             SetLookAtDirection(direction.x);
         }
+
         public void SetLookAtDirection(Vector2 direction)
         {
             if (direction.x != 0.0f || direction.y != 0.0f)
