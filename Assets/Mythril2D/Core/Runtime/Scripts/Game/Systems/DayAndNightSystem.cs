@@ -17,8 +17,6 @@ namespace Gyvr.Mythril2D
 
         private void Update()
         {
-            //Debug.Log("DarknessColor" + m_lightingManager.profile.DarknessColor);
-
             m_currentTime -= Time.deltaTime;
 
             if(m_currentTime > 0f)
@@ -29,8 +27,6 @@ namespace Gyvr.Mythril2D
                 newBrightness = (float) (m_maxBrightness * (m_currentTime / m_eachRemainDayAndNightTime));
 
                 m_lightingManager.profile.DarknessColor = new Color(newBrightness, newBrightness, newBrightness, 1);
-
-                //Debug.Log("newBrightness" + newBrightness);
             }
 
             else if (Mathf.Approximately(1.0f, m_currentTime / m_eachRemainDayAndNightTime))
