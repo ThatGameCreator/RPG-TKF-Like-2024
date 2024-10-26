@@ -166,6 +166,10 @@ namespace Gyvr.Mythril2D
 
         private void Start()
         {
+            // 感觉如果粒子效果设置为 isloop 这个启动游戏时候就会启用 所以试着在 Awake 中关闭
+            // 好像 Awake 的时候还没新建好人物报错了， 试试在 Start 中
+            GameManager.Player.runParticleSystem.Stop();
+
             UpdateStats();
         }
 

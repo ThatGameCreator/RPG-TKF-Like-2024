@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
-    public class DayAndNightSystem : AGameSystem
+    public class DayNightSystem : AGameSystem
     {
         [SerializeField] private LightingManager2D m_lightingManager = null;
         [SerializeField] private float m_maxBrightness = 0.5f;
