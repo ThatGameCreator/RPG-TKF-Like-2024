@@ -3,6 +3,7 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
+using static Codice.CM.Common.CmCallContext;
 
 namespace Gyvr.Mythril2D
 {
@@ -16,7 +17,7 @@ namespace Gyvr.Mythril2D
         // [缓动血量]-缓慢掉血,  自己复制出来的Fill_1
         [SerializeField] private RectTransform m_midtFillRect;
         [SerializeField] private TextMeshProUGUI m_sliderText = null;
-        [SerializeField] private float m_aniamtionSpeed = 0.1f; // 掉血速度
+        [SerializeField] private float m_aniamtionSpeed = 0.001f; // 掉血速度
 
         [Header("General Settings")]
         [SerializeField] private bool useStamina = false;
@@ -29,13 +30,14 @@ namespace Gyvr.Mythril2D
         [SerializeField] private float m_shakeDuration = 0.2f;
 
 
-        private bool isStartSettingEnd = false;  // 初始设置
+        private bool isStartSettingEnd = false;     // 初始设置
         private bool isTurnMidAnimationOn = false;  // 是否可以开始掉血
+        private bool isStillChange = false; 
+        private float nowWaitingTime = 0f;
+        private float shouldWaitingTime = 1f;
         private float statTotalChangedValue = 0f;
         private float statStartChangedValue = 0f;     // 缓慢掉血的血条-缓动起点
         private float statEndChangedValue = 0f;       // 缓慢掉血的血条-缓动终点
-        private float statNowChangedValue = 0f;
-        private float animationSpeed = 0.1f;
 
         //private CharacterBase m_target = null;
         // 可能是因为我们把怪物的血条关了？所以现在这个基类没有报错
@@ -98,24 +100,31 @@ namespace Gyvr.Mythril2D
             // 启动过渡动画
             if (isTurnMidAnimationOn)
             {
-                // 计算即将变化的锚点值
-                //statNowChangedValue = Mathf.Lerp(statStartChangedValue, statEndChangedValue, animationSpeed);
+                nowWaitingTime -= Time.deltaTime;
 
-                //statNowChangedValue -= StatsValueToAnchor(Time.deltaTime * m_aniamtionSpeed);
-
-                var NowChangedValue = StatsValueToAnchor(Time.deltaTime * m_aniamtionSpeed);
-
-                statTotalChangedValue -= NowChangedValue;
-
-                // 锚点赋值 y 是顶部滑动条的值
-                m_midtFillRect.anchorMax = new Vector2(m_midtFillRect.anchorMax.x - NowChangedValue, m_topFillRect.anchorMax.y);
-
-                Debug.Log(String.Format("statTotalChangedValue，NowChangedValue = {0}, {1}", statTotalChangedValue, NowChangedValue));
-                Debug.Log(String.Format("statNowChangedValue，statEndChangedValue = {0}, {1}", statNowChangedValue, statEndChangedValue));
-
-                if (statTotalChangedValue <= 0)
+                // 如果仍然有变化 得先停一会 不执行后面函数
+                if (isStillChange == true)
                 {
-                    isTurnMidAnimationOn = false;   // 关闭过渡效果
+                    nowWaitingTime = shouldWaitingTime;
+
+                    isStillChange = false;
+                }
+
+                if (nowWaitingTime < 0f)
+                {
+                    // 还以为为什么用局部变量跟上面的speed实际变化速度不一样
+                    // 原来是因为编辑器改了那个值 所以实际上并不是 0.001f
+                    statTotalChangedValue -= m_aniamtionSpeed;
+
+                    // 锚点赋值 y 是顶部滑动条的值
+                    m_midtFillRect.anchorMax = new Vector2(m_midtFillRect.anchorMax.x - m_aniamtionSpeed, m_topFillRect.anchorMax.y);
+
+                    // 如果一直不满会无法回复中间的条
+                    // 如果回复的速度比等待速度快，那么先退到 now 和 end 一样，就会导致虚血在中间
+                    if (statTotalChangedValue <= 0f || Mathf.Approximately(1.0f, statStartChangedValue / statEndChangedValue))
+                    {
+                        isTurnMidAnimationOn = false;   // 关闭过渡效果
+                    }
                 }
             }
         }
@@ -146,7 +155,6 @@ namespace Gyvr.Mythril2D
             // 取个整数 避免精力值有小数点
             current = math.floor(current);
 
-
             m_slider.value = current;
 
             ChangeMiddleBar(current, previousSliderValue);
@@ -161,7 +169,6 @@ namespace Gyvr.Mythril2D
 
                 // 初始的时候让[实际血量]和[缓动血量]一致
                 m_midtFillRect.anchorMax = m_topFillRect.anchorMax;
-                //statLastChangedValue = m_topFillRect.anchorMax.x;
             }
 
             if (m_slider.value < previousSliderValue && CanShake() && m_shakeOnDecrease)
@@ -180,30 +187,27 @@ namespace Gyvr.Mythril2D
         // 启动减血效果(此时Slider的value已经变化过了, [实际血量]已经变化)
         public void ChangeMiddleBar(float current, float previous)
         {
-
             if (current < previous) {
-                statNowChangedValue = StatsValueToAnchor(previous);
+                statStartChangedValue = StatsValueToAnchor(previous);
 
                 statEndChangedValue = StatsValueToAnchor(current);
 
-                statTotalChangedValue += statEndChangedValue - statNowChangedValue;
+                statTotalChangedValue += statStartChangedValue - statEndChangedValue;
 
-                //statStartChangedValue = statLastChangedValue;
-
-                //statEndChangedValue = m_topFillRect.anchorMax.x;
-
-                isTurnMidAnimationOn = true;
+                isStillChange = isTurnMidAnimationOn = true;
             }
-            // 如果是增加则直接赋值 不需要动画
-            else
+
+            // 增加且动画关闭的时候
+            // 问题应该是动画并没有关闭 但是增加了
+            // 如果是恢复数值 并且当前的虚血小于实际血量则直接赋值
+            if (current > previous && m_midtFillRect.anchorMax.x < m_topFillRect.anchorMax.x)
             {
-                statEndChangedValue = statNowChangedValue = StatsValueToAnchor(current);
+                statTotalChangedValue = 0f;
+
+                statEndChangedValue = statStartChangedValue = StatsValueToAnchor(m_slider.value);
 
                 m_midtFillRect.anchorMax = m_topFillRect.anchorMax;
-
-                statTotalChangedValue = 0f;
             }
-
         }
 
         private void Shake()
