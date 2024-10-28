@@ -101,7 +101,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -109,12 +109,12 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -3, y: 8}
+      - - {x: -8, y: -8}
         - {x: -8, y: 2}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
+        - {x: -3, y: 8}
         - {x: 8, y: 8}
-      tessellationDetail: 0
+        - {x: 8, y: -8}
+      tessellationDetail: 1
       bones: []
       spriteID: d9160e7bebbc244408f7fa49f089d455
       internalID: 794955216
@@ -127,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 64
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -136,6 +136,7 @@ TextureImporter:
       outline: []
       physicsShape:
       - - {x: -8, y: 8}
+        - {x: -7.999998, y: 0.4797516}
         - {x: -8, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
@@ -152,7 +153,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
+        y: 96
         width: 16
         height: 16
       alignment: 0
@@ -178,7 +179,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -192,8 +193,8 @@ TextureImporter:
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: 2c6cd29f4fcfdf84f9c047b09bfd9e68
-      internalID: -749739252
+      spriteID: 61d2c271e0110144ebeb2c07de9a3ab0
+      internalID: 1666000763
       vertices: []
       indices: 
       edges: []
@@ -203,7 +204,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 48
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -217,8 +218,8 @@ TextureImporter:
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: 0b11144d3b8894442bf06023b0fd3e5f
-      internalID: -703856166
+      spriteID: b22b3a2518080194eaa038b8571c3eed
+      internalID: 101471469
       vertices: []
       indices: 
       edges: []
@@ -228,6 +229,106 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c345adaab3eed4c9193ea83823b920
+      internalID: 1076571317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Wall_Outside_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: eea0bdbdda1da5a429e9a0b53a842316
+      internalID: 1721098922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Wall_Outside_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203643bb47918c943b8c4806db035dac
+      internalID: 1637170908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Wall_Outside_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: df24f6649aaead64ab953997fe426df9
+      internalID: -976014355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Wall_Outside_9
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 48
         width: 16
         height: 16
@@ -242,108 +343,8 @@ TextureImporter:
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: 4b8cd834bab4c104b9adf58f9094ec34
-      internalID: -1657590159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Wall_Outside_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3aace1dd9580b7f439af9b2f933444d9
-      internalID: -1827643608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Wall_Outside_7
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1540b691007b62642b1559f489c97acc
-      internalID: 1752798807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Wall_Outside_8
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4ebd48eb33b10d45bbf915638219e72
-      internalID: -1129193968
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Wall_Outside_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -8}
-        - {x: 8, y: -8}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72ce5f30ede51304cb85ebb72f7e27fe
-      internalID: 590866123
+      spriteID: b15b50c52d0b21e499b7fa57b283975d
+      internalID: -667418149
       vertices: []
       indices: 
       edges: []
@@ -353,7 +354,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -367,8 +368,8 @@ TextureImporter:
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: b7158cbc6831a064d870993234d48ada
-      internalID: -1743450229
+      spriteID: 4b0beac1519b4c84499a25ddcd879a5c
+      internalID: -246390263
       vertices: []
       indices: 
       edges: []
@@ -378,7 +379,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -392,8 +393,8 @@ TextureImporter:
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: c575ceebaa54a8e4491485ff4a5efdce
-      internalID: -1881508938
+      spriteID: 6a88c9f091d6a73428d56759ecc46055
+      internalID: 1830962747
       vertices: []
       indices: 
       edges: []
@@ -403,34 +404,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -8, y: 8}
-        - {x: -8, y: -3}
-        - {x: -3, y: -8}
-        - {x: 4, y: -8}
-        - {x: 8, y: -6}
-        - {x: 8, y: 8}
-      tessellationDetail: 0
-      bones: []
-      spriteID: ded569397762d2545afe59612cec8fc6
-      internalID: -1903249115
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Wall_Outside_13
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -446,8 +420,35 @@ TextureImporter:
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: 515a00211be215b498b9aad3caf3fd06
-      internalID: -161137351
+      spriteID: e216e9e24ccc5f249a85cde27c7fb46a
+      internalID: 435724192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Wall_Outside_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -6}
+        - {x: -4, y: -8}
+        - {x: 3, y: -8}
+        - {x: 8, y: -6}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c47e45b53e046a4c9bd3ed3ad3f47b3
+      internalID: -1711229770
       vertices: []
       indices: 
       edges: []
@@ -457,7 +458,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -473,8 +474,108 @@ TextureImporter:
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: 79f4b8c7027ef1047a44627201356e65
-      internalID: 431144088
+      spriteID: 3ff80784ca828794b92ff90c5da6de0c
+      internalID: -2053130239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Wall_Outside_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd256ca7cfb105c4182ba8ffc461e923
+      internalID: -1103644655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Wall_Outside_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9f94ebc86d1a294b81d73e8b4acc24e
+      internalID: 277551509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Wall_Outside_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87bc973b60d822c4a8d926b242067685
+      internalID: -1757223496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Wall_Outside_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61d9a4c2fb0992c4691a0dd8f2403ef0
+      internalID: -1228966832
       vertices: []
       indices: 
       edges: []
@@ -492,19 +593,23 @@ TextureImporter:
     nameFileIdTable:
       Cave_Wall_Outside_0: 794955216
       Cave_Wall_Outside_1: 3168134
-      Cave_Wall_Outside_10: -1743450229
-      Cave_Wall_Outside_11: -1881508938
-      Cave_Wall_Outside_12: -1903249115
-      Cave_Wall_Outside_13: -161137351
-      Cave_Wall_Outside_14: 431144088
+      Cave_Wall_Outside_10: -246390263
+      Cave_Wall_Outside_11: 1830962747
+      Cave_Wall_Outside_12: 435724192
+      Cave_Wall_Outside_13: -1711229770
+      Cave_Wall_Outside_14: -2053130239
+      Cave_Wall_Outside_15: -1103644655
+      Cave_Wall_Outside_16: 277551509
+      Cave_Wall_Outside_17: -1757223496
+      Cave_Wall_Outside_18: -1228966832
       Cave_Wall_Outside_2: -1418627426
-      Cave_Wall_Outside_3: -749739252
-      Cave_Wall_Outside_4: -703856166
-      Cave_Wall_Outside_5: -1657590159
-      Cave_Wall_Outside_6: -1827643608
-      Cave_Wall_Outside_7: 1752798807
-      Cave_Wall_Outside_8: -1129193968
-      Cave_Wall_Outside_9: 590866123
+      Cave_Wall_Outside_3: 1666000763
+      Cave_Wall_Outside_4: 101471469
+      Cave_Wall_Outside_5: 1076571317
+      Cave_Wall_Outside_6: 1721098922
+      Cave_Wall_Outside_7: 1637170908
+      Cave_Wall_Outside_8: -976014355
+      Cave_Wall_Outside_9: -667418149
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
