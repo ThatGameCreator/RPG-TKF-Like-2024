@@ -61,7 +61,7 @@ namespace Gyvr.Mythril2D
             // 好像在这里设置会出问题
             //SetActiveMap(map);
 
-            onCompletion = () =>
+            onCompletion += () =>
             {
                 if (eTeleportType != ETeleportType.None)
                 {
@@ -83,7 +83,6 @@ namespace Gyvr.Mythril2D
                     ExecuteTransition(map, onMapUnloaded, onMapLoaded, onCompletion);
                 }
             }
-
         }
 
         private void TryExcutePositionTelepot(ETeleportType eTeleportType, string destinationGameObjectName) {
