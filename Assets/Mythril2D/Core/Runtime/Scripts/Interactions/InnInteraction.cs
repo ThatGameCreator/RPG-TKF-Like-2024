@@ -6,7 +6,7 @@ namespace Gyvr.Mythril2D
     [Serializable]
     public class InnInteraction : IInteraction
     {
-       [Header("Dialogues")]
+        [Header("Dialogues")]
         [SerializeField] private DialogueSequence m_dialogueIfCanPay = null;
         [SerializeField] private DialogueSequence m_dialogueIfCannotPay = null;
 

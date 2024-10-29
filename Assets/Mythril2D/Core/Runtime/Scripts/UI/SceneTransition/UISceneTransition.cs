@@ -16,7 +16,7 @@ namespace Gyvr.Mythril2D
         private bool m_hasFadeOutAnimation = false;
         private bool m_hasSkipFadeOutAnimation = false;
 
-        private MapLoadingDelegationParams m_mapLoadingDelegationParams = null;
+        private TeleportLoadingDelegationParams m_teleportLoadingDelegationParams = null;
 
         private void Awake()
         {
@@ -29,17 +29,17 @@ namespace Gyvr.Mythril2D
 
         private void OnEnable()
         {
-            GameManager.NotificationSystem.mapTransitionDelegationRequested.AddListener(OnMapTransitionDelegationRequested);
+            GameManager.NotificationSystem.mapTransitionDelegationRequested.AddListener(OnTeleportTransitionDelegationRequested);
         }
 
         private void OnDisable()
         {
-            GameManager.NotificationSystem.mapTransitionDelegationRequested.RemoveListener(OnMapTransitionDelegationRequested);
+            GameManager.NotificationSystem.mapTransitionDelegationRequested.RemoveListener(OnTeleportTransitionDelegationRequested);
         }
 
-        private void OnMapTransitionDelegationRequested(MapLoadingDelegationParams delegationParams)
+        private void OnTeleportTransitionDelegationRequested(TeleportLoadingDelegationParams delegationParams)
         {
-            m_mapLoadingDelegationParams = delegationParams;
+            m_teleportLoadingDelegationParams = delegationParams;
 
             if (delegationParams.unloadDelegate != null)
             {
@@ -49,7 +49,7 @@ namespace Gyvr.Mythril2D
             {
                 TryShowBlackScreen();
 
-                m_mapLoadingDelegationParams.loadDelegate(() =>
+                m_teleportLoadingDelegationParams.loadDelegate(() =>
                 {
                     TryPlayFadeInTransition();
                 });
@@ -59,9 +59,9 @@ namespace Gyvr.Mythril2D
         // Invoked by the StateMessageDispatcher attached to the FadeOut animation in the animation controller 
         private void OnFadeOutCompleted()
         {
-            m_mapLoadingDelegationParams.unloadDelegate(() =>
+            m_teleportLoadingDelegationParams.unloadDelegate(() =>
             {
-                m_mapLoadingDelegationParams.loadDelegate(() =>
+                m_teleportLoadingDelegationParams.loadDelegate(() =>
                 {
                     TryPlayFadeInTransition();
                 });
@@ -71,7 +71,7 @@ namespace Gyvr.Mythril2D
         // Invoked by the StateMessageDispatcher attached to the FadeIn animation in the animation controller 
         private void OnFadeInCompleted()
         {
-            m_mapLoadingDelegationParams.completionDelegate();
+            m_teleportLoadingDelegationParams.completionDelegate();
         }
 
         public bool TryPlayFadeInTransition()

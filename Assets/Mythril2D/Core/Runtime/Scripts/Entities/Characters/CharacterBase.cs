@@ -179,7 +179,6 @@ namespace Gyvr.Mythril2D
         {
             if (m_animator)
             {
-                Debug.Log("m_revivalAnimationParameter = " + m_revivalAnimationParameter);
                 m_hasHitAnimation = AnimationUtils.HasParameter(m_animator, m_hitAnimationParameter);
                 m_hasDeathAnimation = AnimationUtils.HasParameter(m_animator, m_deathAnimationParameter);
                 m_hasDeadAnimation = AnimationUtils.HasParameter(m_animator, m_deadAnimationParameter);
@@ -644,7 +643,7 @@ namespace Gyvr.Mythril2D
 
             OnDeath();
 
-            GameManager.MapLoadingSystem.RequestTransition(null, null, null, null, true);
+            GameManager.TeleportLoadingSystem.RequestTransition(null, null, null, null, ETeleportType.Revival);
         }
 
         #region Movement

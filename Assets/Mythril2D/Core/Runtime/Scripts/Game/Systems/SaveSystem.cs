@@ -118,7 +118,7 @@ namespace Gyvr.Mythril2D
             GameManager.InventorySystem.LoadDataBlock(saveFile.inventory);
             GameManager.JournalSystem.LoadDataBlock(saveFile.journal);
             GameManager.PlayerSystem.LoadDataBlock(saveFile.player);
-            GameManager.MapLoadingSystem.RequestTransition(saveFile.map);
+            GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map);
         }
 
         private string GenerateSavefileHeader()
@@ -141,7 +141,7 @@ namespace Gyvr.Mythril2D
             return new SaveFileData
             {
                 header = GenerateSavefileHeader(),
-                map = GameManager.MapLoadingSystem.GetCurrentMapName(),
+                map = GameManager.TeleportLoadingSystem.GetCurrentMapName(),
                 gameFlags = GameManager.GameFlagSystem.CreateDataBlock(),
                 inventory = GameManager.InventorySystem.CreateDataBlock(),
                 journal = GameManager.JournalSystem.CreateDataBlock(),

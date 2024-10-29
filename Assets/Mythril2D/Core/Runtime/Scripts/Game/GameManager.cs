@@ -31,7 +31,7 @@ namespace Gyvr.Mythril2D
         public static JournalSystem JournalSystem => GetSystem<JournalSystem>();
         public static NotificationSystem NotificationSystem => GetSystem<NotificationSystem>();
         public static SaveSystem SaveSystem => GetSystem<SaveSystem>();
-        public static MapLoadingSystem MapLoadingSystem => GetSystem<MapLoadingSystem>();
+        public static TeleportLoadingSystem TeleportLoadingSystem => GetSystem<TeleportLoadingSystem>();
         public static PlayerSystem PlayerSystem => GetSystem<PlayerSystem>();
         public static PhysicsSystem PhysicsSystem => GetSystem<PhysicsSystem>();
 
