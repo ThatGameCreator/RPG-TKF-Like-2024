@@ -57,6 +57,8 @@ namespace Gyvr.Mythril2D
 
         public void OnDisableDayNightSystem()
         {
+            m_currentTime = m_maxRemainTime;
+
             isOnEnableSystem = false;
 
             m_timeReminder.gameObject.SetActive(false);

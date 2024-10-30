@@ -65,7 +65,7 @@ namespace Gyvr.Mythril2D
             {
                 if (eTeleportType != ETeleportType.None)
                 {
-                    //Debug.Log(String.Format("TryExcutePositionTelepot"));
+                    Debug.Log(String.Format("TryExcutePositionTelepot"));
                     TryExcutePositionTelepot(eTeleportType, destinationGameObjectName);
                 }
             };
@@ -97,15 +97,15 @@ namespace Gyvr.Mythril2D
             }
             else if (eTeleportType == ETeleportType.Normal)
             {
-                //Debug.Log(String.Format("ETeleportType.Normal"));
+                Debug.Log(String.Format("ETeleportType.Normal"));
 
                 if (destinationGameObjectName == null)
                 {
-                    Debug.LogWarning("Destination GameObject Name is Null.");
+                    Debug.Log("Destination GameObject Name is Null.");
                 }
                 else
                 {
-                    //Debug.Log(String.Format("TeloportPlayerPosition"));
+                    Debug.Log(String.Format("TeloportPlayerPosition"));
 
                     TeloportPlayerPosition(destinationGameObjectName);
                 }
