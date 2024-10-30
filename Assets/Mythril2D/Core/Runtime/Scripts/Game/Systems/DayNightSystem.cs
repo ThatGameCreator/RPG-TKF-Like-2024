@@ -21,38 +21,45 @@ namespace Gyvr.Mythril2D
 
         private void Update()
         {
-            if (isOnEnableSystem) {
-                m_currentTime -= Time.deltaTime;
+            if (isOnEnableSystem == true) {
+                UpdateDayNightSystem();
+            }
+        }
 
-                if (m_currentTime > 0f)
-                {
-                    float newBrightness = m_lightingManager.profile.DarknessColor.r;
+        private void UpdateDayNightSystem()
+        {
+            m_currentTime -= Time.deltaTime;
 
-                    //  maxWhite = m_maxBrightness -> black = 0
-                    newBrightness = (float)(m_maxBrightness * (m_currentTime / m_maxRemainTime));
+            if (m_currentTime > 0f)
+            {
+                float newBrightness = m_lightingManager.profile.DarknessColor.r;
 
-                    m_lightingManager.profile.DarknessColor = new Color(newBrightness, newBrightness, newBrightness, 1);
-                }
+                //  maxWhite = m_maxBrightness -> black = 0
+                newBrightness = (float)(m_maxBrightness * (m_currentTime / m_maxRemainTime));
 
-                else if (Mathf.Approximately(1.0f, m_currentTime / m_maxRemainTime))
-                {
-                    m_lightingManager.profile.DarknessColor = new Color(0, 0, 0, 1);
-                }
+                m_lightingManager.profile.DarknessColor = new Color(newBrightness, newBrightness, newBrightness, 1);
             }
 
+            else if (Mathf.Approximately(1.0f, m_currentTime / m_maxRemainTime))
+            {
+                m_lightingManager.profile.DarknessColor = new Color(0, 0, 0, 1);
+            }
         }
 
-
-
-        private void OnEnableTimeSystem()
+        public void OnEnableDayNightSystem()
         {
-        
+            m_currentTime = m_maxRemainTime;
+
+            isOnEnableSystem = true;
+
+            m_timeReminder.gameObject.SetActive(true);
         }
 
-        private void OnDisableTimeSystem()
+        public void OnDisableDayNightSystem()
         {
+            isOnEnableSystem = false;
 
+            m_timeReminder.gameObject.SetActive(false);
         }
-
     }
 }

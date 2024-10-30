@@ -249,6 +249,8 @@ namespace Gyvr.Mythril2D
 
                 GameManager.TeleportLoadingSystem.RequestTransition("Pilgrimage_Place", null, null, null, ETeleportType.Normal, "Player_Spawner");
 
+                GameManager.DayAndNightSystem.OnDisableDayNightSystem();
+
                 CancelEvacuate();
             }
         }

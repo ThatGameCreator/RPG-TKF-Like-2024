@@ -22,8 +22,9 @@ namespace Gyvr.Mythril2D
                     {
                         GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_holeDatabase.getInSound);
 
-                        GameManager.TeleportLoadingSystem.RequestTransition("That_Abyss", null, null, null, ETeleportType.Normal, "PS_Small_Corner");
-
+                        GameManager.TeleportLoadingSystem.RequestTransition("That_Abyss", null, null, 
+                            () => {GameManager.DayAndNightSystem.OnEnableDayNightSystem(); }, 
+                            ETeleportType.Normal, "PS_Small_Corner");
 
                     }
                     
