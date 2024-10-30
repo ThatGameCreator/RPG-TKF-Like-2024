@@ -729,6 +729,7 @@ namespace Gyvr.Mythril2D
                 directionChangedEventOfMe.Invoke(direction);
             }
         }
+
         public void SetLookAtDirection(float direction)
         {
             if (direction != 0.0f)

@@ -49,6 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 3619733683065585668
+  m_evacuatingSound: {fileID: 11400000, guid: 46301b4e2889a2e4d97c463be7d9fcb4, type: 2}
+  m_evacuatedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
+  m_isEvacuating: 0
   references:
     version: 2
     RefIds:
@@ -57,7 +60,8 @@ MonoBehaviour:
       data:
         m_dialogueIfWantGetOut: {fileID: 11400000, guid: cd360fbdad694854fa309301f90dab3f, type: 2}
         m_dialogueIfDontWantGetOut: {fileID: 0}
-        m_evacuationPoint: {fileID: 11400000, guid: b3a22b4922e086a408ff5e3e79207b69, type: 2}
+        m_evacuationPointDatabase: {fileID: 11400000, guid: b3a22b4922e086a408ff5e3e79207b69, type: 2}
+        m_evacuationPoint: {fileID: 1296178238096688444}
 --- !u!61 &1556421927812608288
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -61,6 +61,17 @@ namespace Gyvr.Mythril2D
         private float m_lootingTime = 0f;
         private float m_lootingRequiredtTime = 2f;
 
+        [Header("Evacuation")]
+        [SerializeField] private AudioClipResolver m_evacuatingSound;
+        [SerializeField] private AudioClipResolver m_evacuatedSound;
+
+        private float m_evacuatingTime = 0f;
+        private bool m_isEvacuating = false;
+        private float m_evacuatingRequiredtTime = 3f;
+        public float evacuatingTime => m_evacuatingTime;
+        public bool isEvacuating => m_isEvacuating;
+        public float evacuatingRequiredtTime => m_evacuatingRequiredtTime;
+
         [Header("Eyesight")]
         [SerializeField] private Light2D m_heroLight = null;
 
@@ -191,11 +202,18 @@ namespace Gyvr.Mythril2D
             if (useStamina == true) HandleStamina();
 
             if (m_isLooting == true) OnTryLooting();
+
+            if (m_isEvacuating == true) OnTryEvacuating();
+        }
+
+        public bool CheckIsPlayerMoving()
+        {
+            return movementDirection == Vector2.zero;
         }
 
         private void OnTryLooting()
         {
-            if(movementDirection == Vector2.zero)
+            if (CheckIsPlayerMoving())
             {
                 m_lootingTime += Time.deltaTime;
             }
@@ -203,23 +221,59 @@ namespace Gyvr.Mythril2D
             {
                 CancelLooting();
             }
-                
+
             if (m_lootingTime > m_lootingRequiredtTime)
             {
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
 
                 m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
 
-                CancelLooting(); 
+                CancelLooting();
+            }
+        }
+
+        private void OnTryEvacuating()
+        {
+            if (GameManager.Player.CheckIsPlayerMoving())
+            {
+                m_evacuatingTime += Time.deltaTime;
+            }
+            else
+            {
+                CancelEvacuate();
+            }
+
+            if (m_evacuatingTime > m_evacuatingRequiredtTime)
+            {
+                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_evacuatedSound);
+
+                GameManager.TeleportLoadingSystem.RequestTransition("Pilgrimage_Place", null, null, null, ETeleportType.Normal, "Player_Spawner");
+
+                CancelEvacuate();
             }
         }
 
         // 感觉在这个框架下，要么做成技能，放到玩家下，要么得用个监听去监听其他行为来取消/
         // 不然一个拓展性不会，再者不停在Update中检测也不好
+        private void CancelEvacuate()
+        {
+            //TerminateCasting();
+
+            m_evacuatingTime = 0f;
+            m_isEvacuating = false;
+            GameManager.NotificationSystem.audioStopPlaybackRequested.Invoke(m_evacuatingSound);
+        }
+
+        public void OnStarEvacuate()
+        {
+            GameManager.Player.SetMovementDirection(Vector2.zero);
+            m_isEvacuating = true;
+            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_evacuatingSound);
+        }
+
         public void CancelLooting()
         {
             //TerminateCasting();
-            //Debug.Log("CancelLooting");
 
             m_lootingTime = 0f;
             m_isLooting = false;

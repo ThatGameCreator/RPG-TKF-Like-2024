@@ -677,16 +677,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interaction:
-    rid: 3619733683065585669
+    rid: 3619733706678730752
   references:
     version: 2
     RefIds:
-    - rid: 3619733683065585669
+    - rid: 3619733706678730752
       type: {class: AbyssHoleInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_dialogueIfWantGetin: {fileID: 11400000, guid: 85a3724bc8f8e6f42a113422d80c77cc, type: 2}
         m_dialogueIfDontWantGetin: {fileID: 0}
-        m_hole: {fileID: 11400000, guid: fd42f7cbce8ec224a80f2edafd13150e, type: 2}
+        m_holeDatabase: {fileID: 11400000, guid: fd42f7cbce8ec224a80f2edafd13150e, type: 2}
 --- !u!50 &664002426
 Rigidbody2D:
   serializedVersion: 4

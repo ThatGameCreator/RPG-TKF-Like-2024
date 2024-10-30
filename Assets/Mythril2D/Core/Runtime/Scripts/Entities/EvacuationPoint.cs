@@ -6,7 +6,6 @@ namespace Gyvr.Mythril2D
 {
     public class EvacuationPoint : Entity
     {
-
     }
 }
 

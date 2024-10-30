@@ -10,19 +10,21 @@ namespace Gyvr.Mythril2D
         [SerializeField] private DialogueSequence m_dialogueIfWantGetin = null;
         [SerializeField] private DialogueSequence m_dialogueIfDontWantGetin = null;
 
-        [SerializeField] private HoleDatabase m_hole = null;
+        [SerializeField] private HoleDatabase m_holeDatabase = null;
 
         public bool TryExecute(CharacterBase source, IInteractionTarget target)
         {
-            if (m_hole != null)
+            if (m_holeDatabase != null)
             {
                 target.Say(m_dialogueIfWantGetin, (messages) =>
                 {
                     if (messages.Contains(EDialogueMessageType.Accept))
                     {
-                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_hole.getInSound);
+                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_holeDatabase.getInSound);
 
                         GameManager.TeleportLoadingSystem.RequestTransition("That_Abyss", null, null, null, ETeleportType.Normal, "PS_Small_Corner");
+
+
                     }
                     
                 });

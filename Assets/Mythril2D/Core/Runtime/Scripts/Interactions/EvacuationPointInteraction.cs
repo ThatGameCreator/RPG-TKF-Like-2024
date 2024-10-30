@@ -10,7 +10,9 @@ namespace Gyvr.Mythril2D
         [SerializeField] private DialogueSequence m_dialogueIfWantGetOut = null;
         [SerializeField] private DialogueSequence m_dialogueIfDontWantGetOut = null;
 
-        [SerializeField] private EvacuationPointDatabase m_evacuationPoint = null;
+        [Header("Reference")]
+        [SerializeField] private EvacuationPointDatabase m_evacuationPointDatabase = null;
+        [SerializeField] private EvacuationPoint m_evacuationPoint = null;
 
         public bool TryExecute(CharacterBase source, IInteractionTarget target)
         {
@@ -20,9 +22,7 @@ namespace Gyvr.Mythril2D
             {
                 if (messages.Contains(EDialogueMessageType.Accept))
                 {
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_evacuationPoint.getInSound);
-
-                    GameManager.TeleportLoadingSystem.RequestTransition("Pilgrimage_Place", null, null, null, ETeleportType.Normal, "Player_Spawner");
+                    GameManager.Player.OnStarEvacuate();
 
                     isExcuted = true;
                 }
@@ -32,6 +32,5 @@ namespace Gyvr.Mythril2D
             return isExcuted;
         }
 
-        private
     }
 }
