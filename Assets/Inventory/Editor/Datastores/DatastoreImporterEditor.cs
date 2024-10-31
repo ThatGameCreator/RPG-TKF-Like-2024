@@ -103,7 +103,7 @@ namespace Inventory.Editor.Datastores
         private static void SaveScene()
         {
 #if UNITY_EDITOR
-            EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
+            UnityEditor.SceneManagement.EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
 #endif
         }
     }

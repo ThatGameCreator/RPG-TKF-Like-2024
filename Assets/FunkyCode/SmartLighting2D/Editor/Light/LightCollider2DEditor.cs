@@ -1,13 +1,15 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using FunkyCode.LightingSettings;
 using FunkyCode.LightSettings;
 
 namespace FunkyCode
 {
-	[CanEditMultipleObjects]
+
+#if UNITY_EDITOR
+
+    [CanEditMultipleObjects]
 	[CustomEditor(typeof(LightCollider2D))]
 	public class LightCollider2DEditor : Editor
 	{
@@ -239,11 +241,14 @@ namespace FunkyCode
 
 				if (!EditorApplication.isPlaying)
 				{
-					EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+					UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
 				}
 
 				LightingManager2D.ForceUpdate();
 			}
 		}
 	}
+
+#endif
+
 }

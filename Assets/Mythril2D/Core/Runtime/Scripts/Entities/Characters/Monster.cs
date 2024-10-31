@@ -1,10 +1,5 @@
-using Codice.CM.Client.Differences;
-using Codice.CM.Common;
 using System;
-using System.Threading;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Gyvr.Mythril2D
 {

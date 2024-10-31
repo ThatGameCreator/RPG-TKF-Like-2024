@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿
+#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 using FunkyCode.LightingSettings;
 using FunkyCode.LightSettings;
@@ -650,3 +653,4 @@ namespace FunkyCode
 		}
 	}
 }
+#endif

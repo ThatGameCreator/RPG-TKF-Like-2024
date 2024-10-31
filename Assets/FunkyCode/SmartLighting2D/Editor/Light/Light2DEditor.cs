@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
 using FunkyCode.LightingSettings;
 using FunkyCode.LightSettings;
 using FunkyCode.Utilities;
+
+
+#if UNITY_EDITOR
 
 namespace FunkyCode
 {
@@ -412,7 +413,7 @@ namespace FunkyCode
 				{
 					EditorUtility.SetDirty(target);
 	
-					EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+					UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
 				}
 			}
 		}
@@ -681,7 +682,7 @@ namespace FunkyCode
 
 				if (!EditorApplication.isPlaying)
 				{
-					EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+					UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
 				}
 			}
 		}
@@ -832,3 +833,4 @@ namespace FunkyCode
 		}
 	}
 }
+#endif

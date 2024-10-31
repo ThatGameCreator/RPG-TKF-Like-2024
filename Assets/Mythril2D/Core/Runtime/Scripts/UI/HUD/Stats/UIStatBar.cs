@@ -3,7 +3,6 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
-using static Codice.CM.Common.CmCallContext;
 
 namespace Gyvr.Mythril2D
 {

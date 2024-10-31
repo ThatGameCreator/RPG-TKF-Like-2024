@@ -1,7 +1,6 @@
 using System.Linq;
 using Inventory.Scripts.Core.Holders;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -134,7 +133,7 @@ namespace Inventory.Editor.Holders
 
         private static void SaveScene()
         {
-            EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
+            UnityEditor.SceneManagement.EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
         }
     }
 }

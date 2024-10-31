@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿
+#if UNITY_EDITOR
+
+using UnityEngine;
 using UnityEditor;
 
 namespace FunkyCode
@@ -72,3 +75,4 @@ namespace FunkyCode
 
     }
 }
+#endif

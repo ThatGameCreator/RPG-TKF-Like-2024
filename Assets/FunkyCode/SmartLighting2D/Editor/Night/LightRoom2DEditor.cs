@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿
+#if UNITY_EDITOR
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
 
 namespace FunkyCode
 	{
@@ -23,7 +24,7 @@ namespace FunkyCode
 			if (GUI.changed) {
 				if (EditorApplication.isPlaying == false) {
 					EditorUtility.SetDirty(script);
-					EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+					UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
 
 					LightingManager2D.ForceUpdate();
 				}
@@ -39,3 +40,4 @@ namespace FunkyCode
 		}
 	}
 }
+#endif

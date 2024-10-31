@@ -1,7 +1,8 @@
-﻿using UnityEditor;
+﻿
+#if UNITY_EDITOR
+
+using UnityEditor;
 using UnityEngine;
-using UnityEditor.SceneManagement;
-using UnityEngine.SceneManagement;
 using FunkyCode.LightTilemapCollider;
 
 namespace FunkyCode
@@ -108,7 +109,7 @@ namespace FunkyCode
 				if (!EditorApplication.isPlaying)
 				{
 					EditorUtility.SetDirty(target);
-					EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+                    UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
 				}
 			}
 		}
@@ -127,3 +128,4 @@ namespace FunkyCode
 		}
 	}
 }
+#endif

@@ -3,7 +3,9 @@ using UnityEngine;
 
 namespace FunkyCode.Utilities
 {
-	[CanEditMultipleObjects]
+#if UNITY_EDITOR
+
+    [CanEditMultipleObjects]
 	[CustomEditor(typeof(Mesh2D))]
 	public class Mesh2DEditor : Editor {
 
@@ -25,4 +27,6 @@ namespace FunkyCode.Utilities
 			}
 		}
 	}
+#endif
+
 }

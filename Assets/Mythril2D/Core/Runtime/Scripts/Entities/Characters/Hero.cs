@@ -1,16 +1,10 @@
-using Codice.CM.Client.Differences;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 using UnityEngine.Events;
-using UnityEngine.SocialPlatforms.Impl;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using System;
 using FunkyCode;
-using FunkyCode.LightingSettings;
-using UnityEditor;
-using static FunkyCode.ProfileEditor;
 
 namespace Gyvr.Mythril2D
 {

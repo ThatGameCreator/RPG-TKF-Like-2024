@@ -1,5 +1,4 @@
 ﻿using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using FunkyCode.LightingSettings;
@@ -7,7 +6,9 @@ using FunkyCode.LightSettings;
 
 namespace FunkyCode
 {
-	[CanEditMultipleObjects]
+#if UNITY_EDITOR
+
+    [CanEditMultipleObjects]
 	[CustomEditor(typeof(DayLightCollider2D))]
 	public class DayLightCollider2DEditor : Editor
 	{
@@ -211,7 +212,7 @@ namespace FunkyCode
 
 				if (!EditorApplication.isPlaying)
 				{
-					EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
+					UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEngine.SceneManagement.SceneManager.GetActiveScene());
 				}
 			}
 		}
@@ -291,4 +292,6 @@ namespace FunkyCode
 			return(false);
 		}
 	}
+#endif
+
 }

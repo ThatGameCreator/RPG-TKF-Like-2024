@@ -1,13 +1,8 @@
-using Codice.CM.Common;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Gyvr.Mythril2D
 {

@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
+using UnityEditor;
 using UnityEngine;
 
 using UnityEngine.Tilemaps;
@@ -43,7 +45,7 @@ namespace FunkyCode
 			return(pos);
 		}
 
-		[MenuItem("GameObject/2D Light/Light/Light", false, 4)]
+        [MenuItem("GameObject/2D Light/Light/Light", false, 4)]
 		static void CreateLightSource()
 		{	
 			GameObject newGameObject = new GameObject("Light 2D");
@@ -191,5 +193,8 @@ namespace FunkyCode
 
 			newGameObject.transform.position = GetCameraPoint();
 		}
-	}
+
+
+    }
 }
+#endif
