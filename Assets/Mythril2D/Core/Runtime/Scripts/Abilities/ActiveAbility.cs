@@ -27,9 +27,10 @@ namespace Gyvr.Mythril2D
         {
             if(m_character.tag == "Player")
                 //return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost && m_character.currentStats[EStat.Stamina] >= m_sheet.staminaCost;
-                //return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost && GameManager.Player.GetStamina() >= m_sheet.staminaCost;
                 // 想了想感觉应该不足精力的时候也能释放，直接扣到0就好
-                return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost;
+                // 如果不加判断，好像即便0也能释放技能了
+                //return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost;
+                return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost && GameManager.Player.GetStamina() >= m_sheet.staminaCost;
             else
                 return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost;
         }

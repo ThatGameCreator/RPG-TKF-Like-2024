@@ -21,7 +21,7 @@ namespace Gyvr.Mythril2D
         public static GameManager Instance => _instance;
 
         // System Access Shortcuts
-        public static DayNightSystem DayAndNightSystem => GetSystem<DayNightSystem>();
+        public static DayNightSystem DayNightSystem => GetSystem<DayNightSystem>();
         public static AudioSystem AudioSystem => GetSystem<AudioSystem>();
         public static DialogueSystem DialogueSystem => GetSystem<DialogueSystem>();
         public static GameFlagSystem GameFlagSystem => GetSystem<GameFlagSystem>();

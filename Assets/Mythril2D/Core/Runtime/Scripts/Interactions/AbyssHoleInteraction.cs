@@ -43,7 +43,7 @@ namespace Gyvr.Mythril2D
 
                                 //OnTransitionComplete(teleports.GetComponentsInChildren<Transform>()[randomNumber].name);
 
-                                GameManager.DayAndNightSystem.OnEnableDayNightSystem();
+                                GameManager.DayNightSystem.OnEnableDayNightSystem();
                             }, 
                             ETeleportType.Normal, teleportName[UnityEngine.Random.Range(0, teleportName.Length)]);
 

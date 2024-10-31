@@ -31,13 +31,13 @@ namespace Gyvr.Mythril2D
                 m_Text.color = Color.white;
 
                 // 这里感觉应该传送的时候获取一次就可以了，没必要一直更新计算
-                int totalCurrentSecond = (int)GameManager.DayAndNightSystem.currentTime;
+                int totalCurrentSecond = (int)GameManager.DayNightSystem.currentTime;
                 int currentMinute = totalCurrentSecond % 3600 / 60;
                 int currentSecond = totalCurrentSecond % 3600 % 60;
 
                 // 感觉有点浪费资源？每次都要判断 是不是能够用监听什么
                 // 或者整个一秒执行一次之类的
-                if (m_isTextBeRed == false && totalCurrentSecond <= GameManager.DayAndNightSystem.maxEmergencyTime)
+                if (m_isTextBeRed == false && totalCurrentSecond <= GameManager.DayNightSystem.maxEmergencyTime)
                 {
                     m_Text.color = Color.red;
                 }

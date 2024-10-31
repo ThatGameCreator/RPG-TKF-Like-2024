@@ -249,7 +249,7 @@ namespace Gyvr.Mythril2D
 
                 GameManager.TeleportLoadingSystem.RequestTransition("Pilgrimage_Place", null, null, null, ETeleportType.Normal, "Player_Spawner");
 
-                GameManager.DayAndNightSystem.OnDisableDayNightSystem();
+                GameManager.DayNightSystem.OnDisableDayNightSystem();
 
                 CancelEvacuate();
             }
@@ -615,6 +615,8 @@ namespace Gyvr.Mythril2D
             // Prevents the Hero GameObject from being destroyed, so it can be used in the death screen.
             m_destroyOnDeath = false; 
             base.OnDeath();
+
+            GameManager.DayNightSystem.OnDisableDayNightSystem();
 
             GameManager.NotificationSystem.deathScreenRequested.Invoke();
         }

@@ -44,9 +44,10 @@ MonoBehaviour:
       usedPoints: 0
       experience: 0
       missingCurrentStats:
-        m_values: 0000000000000000000000000000000000000000000000000000000000000000
+        m_values: 000000000000000000000000000000000000000000000000000000000000000000000000
+      missingCurrentStamina: 0
       customStats:
-        m_values: 0000000000000000000000000000000000000000000000000000000000000000
+        m_values: 000000000000000000000000000000000000000000000000000000000000000000000000
       equipments: []
       bonusAbilities: []
       equippedAbilities:
@@ -54,6 +55,7 @@ MonoBehaviour:
         m_guid: ad16c9de90a854d52a520b25daa92915
       - m_instance: {fileID: 11400000, guid: ff56951987085044c8054f9957fd01c4, type: 2}
         m_guid: ff56951987085044c8054f9957fd01c4
+      dashAbility: {fileID: 0}
       position: {x: 1.5, y: 3.5, z: 0}
   references:
     version: 2

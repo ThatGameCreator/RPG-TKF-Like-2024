@@ -35,7 +35,7 @@ namespace Gyvr.Mythril2D
                 float newBrightness = m_lightingManager.profile.DarknessColor.r;
 
                 //  maxWhite = m_maxBrightness -> black = 0
-                newBrightness = (float)(m_maxBrightness * (m_currentTime / m_maxRemainTime));
+                newBrightness = (float)(m_maxBrightness * (m_currentTime / (m_maxRemainTime - m_maxEmergencyTime)));
 
                 // 同样rgb等于设置灰度
                 m_lightingManager.profile.DarknessColor = new Color(newBrightness, newBrightness, newBrightness, 1);
@@ -49,7 +49,7 @@ namespace Gyvr.Mythril2D
 
                     m_currentTime = 0f;
 
-                    m_lightingManager.profile.DarknessColor = Color.black;
+                    GameManager.NotificationSystem.deathScreenRequested.Invoke();
                 }
             }
         }

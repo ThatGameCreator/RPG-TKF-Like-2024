@@ -24,6 +24,7 @@ namespace Gyvr.Mythril2D
         // 如果委托传送，则会先执行存档在执行传送
         [SerializeField] private bool m_delegateTransitionResponsability = false;
         [SerializeField] private GameObject m_defaultResurrectionPostion = null;
+        [SerializeField] private Vector2 m_defaultRevivalPostion = Vector2.zero;
         [SerializeField] private string m_defaultResurrectionMap = null;
 
         private string m_currentMap = string.Empty;
@@ -114,14 +115,23 @@ namespace Gyvr.Mythril2D
 
         protected void RevivalTeloportPlayerPosition()
         {
-            if (m_currentRevivalPostion == null)
-            {
-                GameManager.Player.transform.position = m_defaultResurrectionPostion.transform.position;
-            }
-            else
-            {
-                GameManager.Player.transform.position = m_currentRevivalPostion;
-            }
+
+            var playerSpawner = GameObject.Find("Player_Spawner");
+
+            GameManager.Player.transform.position = playerSpawner.transform.position;
+
+            //if (m_currentRevivalPostion == null)
+            //{
+            //    var playerSpawner = GameObject.Find("Player_Spawner");
+
+            //    m_defaultResurrectionPostion
+
+            //    GameManager.Player.transform.position = m_defaultResurrectionPostion.transform.position;
+            //}
+            //else
+            //{
+            //    GameManager.Player.transform.position = m_currentRevivalPostion;
+            //}
         }
 
         protected bool TeloportPlayerPosition(string m_destinationGameObjectName)

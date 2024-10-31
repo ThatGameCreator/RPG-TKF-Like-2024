@@ -118,7 +118,8 @@ namespace Gyvr.Mythril2D
             GameManager.InventorySystem.LoadDataBlock(saveFile.inventory);
             GameManager.JournalSystem.LoadDataBlock(saveFile.journal);
             GameManager.PlayerSystem.LoadDataBlock(saveFile.player);
-            GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map);
+            GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map, null, null, null, ETeleportType.Revival);
+            //GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map);
         }
 
         private string GenerateSavefileHeader()
