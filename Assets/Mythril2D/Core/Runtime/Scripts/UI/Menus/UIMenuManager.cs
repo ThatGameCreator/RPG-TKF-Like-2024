@@ -32,7 +32,7 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.spellBookRequested.AddListener(OnAbilitiesRequested);
             GameManager.NotificationSystem.settingsRequested.AddListener(OnSettingsRequested);
             GameManager.NotificationSystem.saveMenuRequested.AddListener(OnSaveMenuRequested);
-            //GameManager.NotificationSystem.deathScreenRequested.AddListener(OnDeathScreenRequested);
+            GameManager.NotificationSystem.deathScreenRequested.AddListener(OnDeathScreenRequested);
 
             m_gameMenu.Init();
             m_shop.Init();
@@ -150,6 +150,6 @@ namespace Gyvr.Mythril2D
 
         private void OnSaveMenuRequested() => PushMenu(m_save);
 
-        //private void OnDeathScreenRequested() => PushMenu(m_death);
+        private void OnDeathScreenRequested() => PushMenu(m_death);
     }
 }

@@ -113,23 +113,23 @@ namespace Gyvr.Mythril2D
 
             // 设置复活后人物朝向
             SetLookAtDirection(Vector2.right);
-
-            TryPlayRevivalAnimation();
         }
 
         private void OnDeadAnimationEnd()
         {
+            GameManager.TeleportLoadingSystem.RequestTransition(null, null, null, null, ETeleportType.Revival);
+
             // 恢复血量 
             m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
             m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
             m_currentStats.Stamina = GameManager.Player.maxStamina;
 
-            // 保存数据
-            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
-
             // 恢复碰撞体
             Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
             Array.ForEach(colliders, (collider) => collider.enabled = true);
+
+            // 保存数据
+            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
         }
 
         private void OnRevivalAnimationEnd()
@@ -616,7 +616,7 @@ namespace Gyvr.Mythril2D
             m_destroyOnDeath = false; 
             base.OnDeath();
 
-            //GameManager.NotificationSystem.deathScreenRequested.Invoke();
+            GameManager.NotificationSystem.deathScreenRequested.Invoke();
         }
     }
 }

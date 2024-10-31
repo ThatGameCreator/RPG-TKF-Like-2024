@@ -373,10 +373,12 @@ namespace Gyvr.Mythril2D
 
         public bool TryPlayRevivalAnimation()
         {
-            Debug.Log("m_hasRevivalAnimation = " + m_hasRevivalAnimation);
+            Debug.Log("TryPlayRevivalAnimation = ");
 
             if (m_animator && m_hasRevivalAnimation)
             {
+                Debug.Log("m_hasRevivalAnimation = " + m_hasRevivalAnimation);
+
                 m_animator.SetTrigger(m_revivalAnimationParameter);
                 return true;
             }
@@ -630,7 +632,7 @@ namespace Gyvr.Mythril2D
 
         private void OnDeathAnimationStart()
         {
-            Debug.Log("OnDeathAnimationStart");
+            //Debug.Log("OnDeathAnimationStart");
 
             DisableActions(EActionFlags.All);
 
@@ -642,8 +644,6 @@ namespace Gyvr.Mythril2D
             Debug.Log("OnDeathAnimationEnd");
 
             OnDeath();
-
-            GameManager.TeleportLoadingSystem.RequestTransition(null, null, null, null, ETeleportType.Revival);
         }
 
         #region Movement
