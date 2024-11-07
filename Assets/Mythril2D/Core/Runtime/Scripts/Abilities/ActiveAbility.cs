@@ -19,8 +19,13 @@ namespace Gyvr.Mythril2D
             m_onAbilityEndedCallback = onAbilityEnded;
             m_character.DisableActions(m_sheet.disabledActionsWhileCasting);
             Fire();
-            ConsumeMana();
-            ConsumeStamina();
+
+            // 避免敌人也有魔法值消耗 导致最终无法释放技能
+            if (m_character.tag == "Player")
+            {
+                ConsumeMana();
+                ConsumeStamina();
+            }
         }
 
         public virtual bool CanFire()
