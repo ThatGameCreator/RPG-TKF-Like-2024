@@ -32,13 +32,7 @@ namespace Gyvr.Mythril2D
             {
                 m_currentTime -= Time.deltaTime;
 
-                float newBrightness = m_lightingManager.profile.DarknessColor.r;
-
-                //  maxWhite = m_maxBrightness -> black = 0
-                newBrightness = (float)(m_maxBrightness * (m_currentTime / (m_maxRemainTime - m_maxEmergencyTime)));
-
-                // 同样rgb等于设置灰度
-                m_lightingManager.profile.DarknessColor = new Color(newBrightness, newBrightness, newBrightness, 1);
+                UpdateBrightness();
             }
 
             else if (m_currentTime < 0f)
@@ -54,6 +48,17 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        private void UpdateBrightness()
+        {
+            float newBrightness = m_lightingManager.profile.DarknessColor.r;
+
+            //  maxWhite = m_maxBrightness -> black = 0
+            newBrightness = (float)(m_maxBrightness * (m_currentTime / (m_maxRemainTime - m_maxEmergencyTime)));
+
+            // 同样rgb等于设置灰度
+            m_lightingManager.profile.DarknessColor = new Color(newBrightness, newBrightness, newBrightness, 1);
+        }
+
         public void OnEnableDayNightSystem()
         {
             m_currentTime = m_maxRemainTime;
@@ -66,6 +71,9 @@ namespace Gyvr.Mythril2D
         public void OnDisableDayNightSystem()
         {
             m_currentTime = m_maxRemainTime;
+
+            // 设置系统不启用了 所以需要手动更新下亮度
+            UpdateBrightness();
 
             isOnEnableSystem = false;
 
