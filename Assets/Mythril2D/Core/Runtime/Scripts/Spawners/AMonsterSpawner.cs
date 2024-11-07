@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 namespace Gyvr.Mythril2D
@@ -14,7 +15,9 @@ namespace Gyvr.Mythril2D
     public abstract class AMonsterSpawner : MonoBehaviour
     {
         [Header("General Settings")]
-        [SerializeField] private MonsterSpawn[] m_monsters = null;
+        //[SerializeField] private MonsterSpawn[] m_monsters = null;
+        [SerializeField] private GameObject monsterPrefab = null;
+        [SerializeField] private int rate = 100;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_minLevel = Stats.MinLevel;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_maxLevel = Stats.MaxLevel;
 
@@ -40,32 +43,34 @@ namespace Gyvr.Mythril2D
 
         protected abstract Vector2 FindSpawnLocation();
 
-        private bool Validate()
-        {
-            int rateSum = 0;
+        //private bool Validate()
+        //{
+        //    int rateSum = 0;
 
-            foreach (MonsterSpawn monster in m_monsters)
-            {
-                rateSum += monster.rate;
-            }
+        //    foreach (MonsterSpawn monster in m_monsters)
+        //    {
+        //        rateSum += monster.rate;
+        //    }
 
-            return m_valid = rateSum == 100;
-        }
+        //    return m_valid = rateSum == 100;
+        //}
 
         private void Prespawn()
         {
-            if (Validate())
-            {
-                Array.Sort(m_monsters, (a, b) => a.rate.CompareTo(b.rate));
+            //if (Validate() == true)
+            //{
+            //    //Array.Sort(m_monsters, (a, b) => a.rate.CompareTo(b.rate));
 
-                for (int i = 0; i < m_monstersToPrespawn; ++i)
-                {
-                    TrySpawn();
-                }
-            }
-            else
+                
+            //}
+            //else
+            //{
+            //    Debug.LogError("MonsterSpawner validation failed. Make sure the total spawn rate is equal to 100");
+            //}
+
+            for (int i = 0; i < m_monstersToPrespawn; ++i)
             {
-                Debug.LogError("MonsterSpawner validation failed. Make sure the total spawn rate is equal to 100");
+                TrySpawn();
             }
         }
 
@@ -93,19 +98,27 @@ namespace Gyvr.Mythril2D
         {
             int randomNumber = UnityEngine.Random.Range(0, 100);
 
-            foreach (MonsterSpawn monster in m_monsters)
+            if (randomNumber <= rate)
             {
-                if (randomNumber <= monster.rate)
-                {
-                    return monster.prefab;
-                }
-                else
-                {
-                    randomNumber -= monster.rate;
-                }
+                return monsterPrefab;
+            }
+            else
+            {
+                return null;
             }
 
-            return null;
+            //foreach (MonsterSpawn monster in m_monsters)
+            //{
+            //    if (randomNumber <= monster.rate)
+            //    {
+            //        return monster.prefab;
+            //    }
+            //    else
+            //    {
+            //        //randomNumber -= monster.rate;
+            //    }
+            //}
+
         }
 
         private bool CanSpawn()
@@ -137,6 +150,7 @@ namespace Gyvr.Mythril2D
                 if (monsterComponent)
                 {
                     monsterComponent.SetLevel(UnityEngine.Random.Range(m_minLevel, m_maxLevel));
+                    // 如果这里增加对销毁的监听 为什么不需要考虑上面怪物数量的 -- ？
                     monsterComponent.destroyed.AddListener(() => m_spawnedMonsters.Remove(monsterComponent));
                     m_spawnedMonsters.Add(monsterComponent);
                 }
