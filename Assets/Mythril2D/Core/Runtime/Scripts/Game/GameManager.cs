@@ -20,7 +20,10 @@ namespace Gyvr.Mythril2D
         public static DatabaseRegistry Database => _instance.m_config.databaseRegistry;
         public static GameManager Instance => _instance;
 
+
+
         // System Access Shortcuts
+        public static UIManagerSystem UIManagerSystem => GetSystem<UIManagerSystem>();
         public static DayNightSystem DayNightSystem => GetSystem<DayNightSystem>();
         public static AudioSystem AudioSystem => GetSystem<AudioSystem>();
         public static DialogueSystem DialogueSystem => GetSystem<DialogueSystem>();

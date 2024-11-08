@@ -44,7 +44,9 @@ namespace Gyvr.Mythril2D
 
         public void RevivePlayer()
         {
-            Hide();
+            GameManager.UIManagerSystem.UIMenu.PopDeathMenu();
+
+            GameManager.DayNightSystem.OnDisableDayNightSystem();
 
             // 暂时不懂这个 GameStateSystem 是来干嘛的，但是如果不添加这个状态可能会一直卡在 UI 层
             // 而导致没办法控制人物各种行为？

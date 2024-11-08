@@ -97,6 +97,16 @@ namespace Gyvr.Mythril2D
             Show(menu, args);
         }
 
+        public void PopDeathMenu()
+        {
+            if (!GameManager.DialogueSystem.Main.IsPlaying())
+            {
+                Debug.Log("PopDeathMenu ");
+
+                PopMenu();
+            }
+        }
+
         private void PopMenu()
         {
             if (m_menuStack.Count > 0 && m_menuStack.Peek().CanPop())

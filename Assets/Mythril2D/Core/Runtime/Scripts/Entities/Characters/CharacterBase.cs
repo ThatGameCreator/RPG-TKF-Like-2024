@@ -368,11 +368,11 @@ namespace Gyvr.Mythril2D
 
         public bool TryPlayRevivalAnimation()
         {
-            Debug.Log("TryPlayRevivalAnimation = ");
+            //Debug.Log("TryPlayRevivalAnimation = ");
 
             if (m_animator && m_hasRevivalAnimation)
             {
-                Debug.Log("m_hasRevivalAnimation = " + m_hasRevivalAnimation);
+                //Debug.Log("m_hasRevivalAnimation = " + m_hasRevivalAnimation);
 
                 m_animator.SetTrigger(m_revivalAnimationParameter);
                 return true;

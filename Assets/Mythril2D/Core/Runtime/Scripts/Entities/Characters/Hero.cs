@@ -128,7 +128,7 @@ namespace Gyvr.Mythril2D
 
         private void OnRevivalAnimationEnd()
         {
-            Debug.Log("OnRevivalAnimationEnd");
+            //Debug.Log("OnRevivalAnimationEnd");
 
             EnableActions(EActionFlags.All);
         }
@@ -351,6 +351,11 @@ namespace Gyvr.Mythril2D
                 regeneratingStamina = StartCoroutine(RegenerateStamina());
             }
 
+        }
+
+        public void SetPlayerHealthToZero()
+        {
+            m_currentStats[EStat.Health] = 0;
         }
 
         private IEnumerator RegenerateStamina()
@@ -609,6 +614,8 @@ namespace Gyvr.Mythril2D
             // Prevents the Hero GameObject from being destroyed, so it can be used in the death screen.
             m_destroyOnDeath = false; 
             base.OnDeath();
+
+            GameManager.InventorySystem.EmptyBag();
 
             GameManager.DayNightSystem.OnDisableDayNightSystem();
 

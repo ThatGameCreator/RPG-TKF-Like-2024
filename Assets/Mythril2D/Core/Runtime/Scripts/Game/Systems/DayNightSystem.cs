@@ -43,12 +43,14 @@ namespace Gyvr.Mythril2D
 
                     m_currentTime = 0f;
 
-                    GameManager.NotificationSystem.deathScreenRequested.Invoke();
+                    GameManager.Player.SetPlayerHealthToZero();
+
+                    //GameManager.NotificationSystem.deathScreenRequested.Invoke();
                 }
             }
         }
 
-        private void UpdateBrightness()
+        public void UpdateBrightness()
         {
             float newBrightness = m_lightingManager.profile.DarknessColor.r;
 

@@ -147,6 +147,12 @@ namespace Gyvr.Mythril2D
             return success;
         }
 
+        public void EmptyBag()
+        {
+            m_money = 0;
+            m_items = new Dictionary<Item, int>();
+        }
+
         public void LoadDataBlock(InventoryDataBlock block)
         {
             m_money = block.money;
