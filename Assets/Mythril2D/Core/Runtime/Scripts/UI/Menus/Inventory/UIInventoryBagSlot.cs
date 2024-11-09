@@ -65,6 +65,7 @@ namespace Gyvr.Mythril2D
         private void Awake()
         {
             m_button.onClick.AddListener(OnSlotClicked);
+
         }
 
         private void OnSlotClicked()

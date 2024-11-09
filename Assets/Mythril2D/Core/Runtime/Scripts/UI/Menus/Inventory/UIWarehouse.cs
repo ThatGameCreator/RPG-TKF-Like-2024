@@ -15,12 +15,15 @@ namespace Gyvr.Mythril2D
 
         public void Show(params object[] args)
         {
+            GameManager.WarehouseSystem.isOpenning = true;
             UpdateUI();
             gameObject.SetActive(true);
         }
 
         public void Hide()
         {
+            GameManager.WarehouseSystem.isOpenning = false;
+
             gameObject.SetActive(false);
         }
 

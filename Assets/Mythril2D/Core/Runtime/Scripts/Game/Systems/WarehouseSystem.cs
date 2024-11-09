@@ -22,6 +22,8 @@ namespace Gyvr.Mythril2D
         private int m_warehouseMoney = 0;
         private Dictionary<Item, int> m_warehouseItems = new Dictionary<Item, int>();
 
+        public bool isOpenning = false;
+
         public int GetItemCount(Item item)
         {
             if (warehouseItems.TryGetValue(item, out int count))
@@ -66,46 +68,12 @@ namespace Gyvr.Mythril2D
             return value <= warehouseMoney;
         }
 
-        public bool HasItemInBag(Item item, int quantity = 1)
+        public bool HasItemInWarehouse(Item item, int quantity = 1)
         {
             return warehouseItems.ContainsKey(item) && warehouseItems[item] >= quantity;
         }
 
-        public Equipment GetEquipment(EEquipmentType type)
-        {
-            if (GameManager.Player.equipments.ContainsKey(type))
-            {
-                return GameManager.Player.equipments[type];
-            }
-
-            return null;
-        }
-
-        public void Equip(Equipment equipment)
-        {
-            Debug.Assert(equipment, "Cannot equip a null equipment");
-
-            Equipment previousEquipment = GameManager.Player.Equip(equipment);
-
-            RemoveFromBag(equipment, 1, true);
-
-            if (previousEquipment)
-            {
-                AddToBag(previousEquipment, 1, true);
-            }
-        }
-
-        public void UnEquip(EEquipmentType type)
-        {
-            Equipment previousEquipment = GameManager.Player.Unequip(type);
-
-            if (previousEquipment)
-            {
-                AddToBag(previousEquipment, 1, true);
-            }
-        }
-
-        public void AddToBag(Item item, int quantity = 1, bool forceNoEvent = false)
+        public void AddToWarehouse(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             if (!warehouseItems.ContainsKey(item))
             {
@@ -122,7 +90,7 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public bool RemoveFromBag(Item item, int quantity = 1, bool forceNoEvent = false)
+        public bool RemoveFromWarehouse(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             bool success = false;
 

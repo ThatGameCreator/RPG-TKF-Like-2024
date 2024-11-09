@@ -8,6 +8,7 @@ namespace Gyvr.Mythril2D
         public string header;
         public string map;
         public JournalDataBlock journal;
+        public WarehouseDataBlock warehouse;
         public InventoryDataBlock inventory;
         public GameFlagsDataBlock gameFlags;
         public PlayerDataBlock player;

@@ -30,16 +30,33 @@ namespace Gyvr.Mythril2D
 
         public override void Use(CharacterBase user, EItemLocation location)
         {
-            if (location == EItemLocation.Bag)
+            if (GameManager.WarehouseSystem.isOpenning == true)
             {
-                GameManager.InventorySystem.Equip(this);
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_equipAudio);
+                if (location == EItemLocation.Bag)
+                {
+                    GameManager.InventorySystem.RemoveFromBag(this);
+                    GameManager.WarehouseSystem.AddToWarehouse(this);
+                }
+                else
+                {
+                    GameManager.InventorySystem.AddToBag(this);
+                    GameManager.WarehouseSystem.RemoveFromWarehouse(this);
+                }
             }
             else
             {
-                GameManager.InventorySystem.UnEquip(type);
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_unequipAudio);
+                if (location == EItemLocation.Bag)
+                {
+                    GameManager.InventorySystem.Equip(this);
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_equipAudio);
+                }
+                else
+                {
+                    GameManager.InventorySystem.UnEquip(type);
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_unequipAudio);
+                }
             }
+            
         }
     }
 }

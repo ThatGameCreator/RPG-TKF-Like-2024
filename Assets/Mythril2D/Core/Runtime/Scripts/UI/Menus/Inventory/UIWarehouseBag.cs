@@ -13,6 +13,11 @@ namespace Gyvr.Mythril2D
         private UIInventoryWarehouseSlot[] m_slots = null;
         private EItemCategory m_category = 0;
 
+        private void Start()
+        {
+            GameManager.NotificationSystem.UICategorySelected.AddListener(OnBagCategorySelected);
+        }
+
         public void Init()
         {
             m_slots = GetComponentsInChildren<UIInventoryWarehouseSlot>();

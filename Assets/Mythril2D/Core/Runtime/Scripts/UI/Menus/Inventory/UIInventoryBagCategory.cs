@@ -32,7 +32,8 @@ namespace Gyvr.Mythril2D
 
         public void OnSelect(BaseEventData eventData)
         {
-            SendMessageUpwards("OnBagCategorySelected", m_category, SendMessageOptions.RequireReceiver);
+            GameManager.NotificationSystem.UICategorySelected.Invoke(m_category);
+            //SendMessageUpwards("OnBagCategorySelected", m_category, SendMessageOptions.RequireReceiver);
         }
     }
 }

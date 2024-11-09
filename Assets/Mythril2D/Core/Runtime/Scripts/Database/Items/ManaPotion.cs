@@ -13,20 +13,37 @@ namespace Gyvr.Mythril2D
 
         public override void Use(CharacterBase target, EItemLocation location)
         {
-            if (target.currentStats[EStat.Mana] < target.stats[EStat.Mana])
-            {
-                int previousMana = target.currentStats[EStat.Mana];
-                target.RecoverMana(m_manaToRestore);
-                int currentMana = target.currentStats[EStat.Mana];
-                int diff = currentMana - previousMana;
 
-                GameManager.DialogueSystem.Main.PlayNow("You recover {0} <mana>", diff);
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_drinkAudio);
-                GameManager.GetSystem<InventorySystem>().RemoveFromBag(this);
+            if (GameManager.WarehouseSystem.isOpenning == true)
+            {
+                if (location == EItemLocation.Bag)
+                {
+                    GameManager.InventorySystem.RemoveFromBag(this);
+                    GameManager.WarehouseSystem.AddToWarehouse(this);
+                }
+                else
+                {
+                    GameManager.InventorySystem.AddToBag(this);
+                    GameManager.WarehouseSystem.RemoveFromWarehouse(this);
+                }
             }
             else
             {
-                base.Use(target, location);
+                if (target.currentStats[EStat.Mana] < target.stats[EStat.Mana])
+                {
+                    int previousMana = target.currentStats[EStat.Mana];
+                    target.RecoverMana(m_manaToRestore);
+                    int currentMana = target.currentStats[EStat.Mana];
+                    int diff = currentMana - previousMana;
+
+                    GameManager.DialogueSystem.Main.PlayNow("You recover {0} <mana>", diff);
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_drinkAudio);
+                    GameManager.GetSystem<InventorySystem>().RemoveFromBag(this);
+                }
+                else
+                {
+                    base.Use(target, location);
+                }
             }
         }
     }
