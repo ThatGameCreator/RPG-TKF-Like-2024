@@ -617,6 +617,8 @@ namespace Gyvr.Mythril2D
 
             GameManager.InventorySystem.EmptyBag();
 
+            GameManager.InventorySystem.UnEquipAll();
+
             GameManager.DayNightSystem.OnDisableDayNightSystem();
 
             GameManager.NotificationSystem.deathScreenRequested.Invoke();

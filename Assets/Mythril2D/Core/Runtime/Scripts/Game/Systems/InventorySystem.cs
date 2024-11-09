@@ -104,6 +104,15 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        public void UnEquipAll()
+        {
+            foreach (EEquipmentType type in Enum.GetValues(typeof(EEquipmentType)))
+            {
+                GameManager.Player.Unequip(type);
+            }
+        }
+
+
         public void AddToBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             if (!backpackItems.ContainsKey(item))

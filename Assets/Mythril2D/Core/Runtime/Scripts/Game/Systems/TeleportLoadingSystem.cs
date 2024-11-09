@@ -62,7 +62,7 @@ namespace Gyvr.Mythril2D
             // 好像在这里设置会出问题
             //SetActiveMap(map);
 
-            onCompletion += () =>
+            onMapLoaded += () =>
             {
                 if (eTeleportType != ETeleportType.None)
                 {
@@ -98,7 +98,7 @@ namespace Gyvr.Mythril2D
             }
             else if (eTeleportType == ETeleportType.Normal)
             {
-                Debug.Log(String.Format("ETeleportType.Normal"));
+                //Debug.Log(String.Format("ETeleportType.Normal"));
 
                 if (destinationGameObjectName == null)
                 {
