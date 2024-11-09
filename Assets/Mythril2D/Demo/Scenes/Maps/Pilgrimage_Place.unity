@@ -491,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7705433755873018643, guid: f8d828ea292310b4191d706de7a5d2b7, type: 3}
       propertyPath: m_toExecutes.Array.data[0]
-      value: 3619733663110397954
+      value: 8303503225474252801
       objectReference: {fileID: 0}
     - target: {fileID: 7705433755873018643, guid: f8d828ea292310b4191d706de7a5d2b7, type: 3}
       propertyPath: managedReferences[3619733435513569286]
@@ -502,11 +502,19 @@ PrefabInstance:
       value: Gyvr.Mythril2D Gyvr.Mythril2D.PlayDialogueSequence
       objectReference: {fileID: 0}
     - target: {fileID: 7705433755873018643, guid: f8d828ea292310b4191d706de7a5d2b7, type: 3}
+      propertyPath: managedReferences[8303503225474252801]
+      value: Gyvr.Mythril2D Gyvr.Mythril2D.SaveResurrectionPostion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7705433755873018643, guid: f8d828ea292310b4191d706de7a5d2b7, type: 3}
       propertyPath: managedReferences[3619733663110397954].m_speaker
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7705433755873018643, guid: f8d828ea292310b4191d706de7a5d2b7, type: 3}
       propertyPath: managedReferences[3619733435513569286].m_gameObject
+      value: 
+      objectReference: {fileID: 129094320}
+    - target: {fileID: 7705433755873018643, guid: f8d828ea292310b4191d706de7a5d2b7, type: 3}
+      propertyPath: managedReferences[8303503225474252801].m_gameObject
       value: 
       objectReference: {fileID: 129094320}
     - target: {fileID: 7705433755873018643, guid: f8d828ea292310b4191d706de7a5d2b7, type: 3}

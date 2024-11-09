@@ -81,6 +81,8 @@ namespace Gyvr.Mythril2D
 
         public void SaveToFile(string saveFileName)
         {
+            GameManager.NotificationSystem.saveStart.Invoke();
+
             m_saveFileName = saveFileName;
             
             // 测试的时候没有绑定存档所以为空
@@ -110,6 +112,8 @@ namespace Gyvr.Mythril2D
             {
                 Debug.LogError($"Saving failed: {e.Message}");
             }
+
+            GameManager.NotificationSystem.saveEnd.Invoke();
         }
 
         public void LoadSaveFile(SaveFileData saveFile)

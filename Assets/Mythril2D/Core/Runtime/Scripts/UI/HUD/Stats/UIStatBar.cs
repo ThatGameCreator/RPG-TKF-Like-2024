@@ -33,7 +33,7 @@ namespace Gyvr.Mythril2D
         private bool isTurnMidAnimationOn = false;  // 是否可以开始掉血
         private bool isStillChange = false; 
         private float nowWaitingTime = 0f;
-        private float shouldWaitingTime = 1f;
+        private float shouldWaitingTime = 0.5f;
         private float statTotalChangedValue = 0f;
         private float statStartChangedValue = 0f;     // 缓慢掉血的血条-缓动起点
         private float statEndChangedValue = 0f;       // 缓慢掉血的血条-缓动终点

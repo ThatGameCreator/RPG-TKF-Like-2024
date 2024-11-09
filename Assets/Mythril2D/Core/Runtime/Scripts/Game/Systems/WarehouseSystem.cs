@@ -86,7 +86,7 @@ namespace Gyvr.Mythril2D
 
             if (!forceNoEvent)
             {
-                GameManager.NotificationSystem.itemAdded.Invoke(item, quantity);
+                //GameManager.NotificationSystem.itemAdded.Invoke(item, quantity);
             }
         }
 
@@ -110,7 +110,7 @@ namespace Gyvr.Mythril2D
 
             if (!forceNoEvent)
             {
-                GameManager.NotificationSystem.itemRemoved.Invoke(item, quantity);
+                //GameManager.NotificationSystem.itemRemoved.Invoke(item, quantity);
             }
 
             return success;

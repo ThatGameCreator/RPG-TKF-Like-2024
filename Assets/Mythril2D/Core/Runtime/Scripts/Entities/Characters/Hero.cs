@@ -121,9 +121,12 @@ namespace Gyvr.Mythril2D
                 Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
                 Array.ForEach(colliders, (collider) => collider.enabled = true);
 
+                
+            } ,
+            () => {
                 // ±£´æÊý¾Ý
                 GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
-            } , null, ETeleportType.Revival);
+            }, ETeleportType.Revival);
         }
 
         private void OnRevivalAnimationEnd()
@@ -241,9 +244,9 @@ namespace Gyvr.Mythril2D
             {
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_evacuatedSound);
 
-                GameManager.TeleportLoadingSystem.RequestTransition("Pilgrimage_Place", null, () => {
+                GameManager.TeleportLoadingSystem.RequestTransition("Pilgrimage_Place", null, null, () => {
                     GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
-                }, null, ETeleportType.Normal, "Player_Spawner");
+                }, ETeleportType.Normal, "Player_Spawner");
 
                 GameManager.DayNightSystem.OnDisableDayNightSystem();
 

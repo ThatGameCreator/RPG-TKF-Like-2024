@@ -36,6 +36,8 @@ namespace Gyvr.Mythril2D
         public UnityEvent mapTransitionCompleted = new UnityEvent();
         public UnityEvent mapLoaded = new UnityEvent();
         public UnityEvent mapUnloaded = new UnityEvent();
+        public UnityEvent saveStart = new UnityEvent();
+        public UnityEvent saveEnd = new UnityEvent();
         public UnityEvent<Hero> playerSpawned = new UnityEvent<Hero>();
 
         public UnityEvent<TeleportLoadingDelegationParams> mapTransitionDelegationRequested = new UnityEvent<TeleportLoadingDelegationParams>();
