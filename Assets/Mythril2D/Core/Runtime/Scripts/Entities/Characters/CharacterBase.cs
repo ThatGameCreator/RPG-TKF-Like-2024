@@ -636,7 +636,7 @@ namespace Gyvr.Mythril2D
 
         private void OnDeathAnimationEnd()
         {
-            Debug.Log("OnDeathAnimationEnd");
+            //Debug.Log("OnDeathAnimationEnd");
 
             OnDeath();
         }

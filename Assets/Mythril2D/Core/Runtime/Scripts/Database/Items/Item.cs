@@ -5,6 +5,7 @@ namespace Gyvr.Mythril2D
     public enum EItemLocation
     {
         Bag,
+        Warehouse,
         Equipment
     }
 

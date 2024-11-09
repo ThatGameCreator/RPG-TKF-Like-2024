@@ -45,6 +45,7 @@ namespace Gyvr.Mythril2D
         public UnityEvent<CraftingStation> craftRequested = new UnityEvent<CraftingStation>();
         public UnityEvent gameMenuRequested = new UnityEvent();
         public UnityEvent statsRequested = new UnityEvent();
+        public UnityEvent warehouseRequested = new UnityEvent();
         public UnityEvent inventoryRequested = new UnityEvent();
         public UnityEvent journalRequested = new UnityEvent();
         public UnityEvent spellBookRequested = new UnityEvent();

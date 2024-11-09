@@ -49,7 +49,7 @@ namespace Gyvr.Mythril2D
         {
             int usedSlots = 0;
 
-            Dictionary<Item, int> items = GameManager.InventorySystem.items;
+            Dictionary<Item, int> items = GameManager.InventorySystem.backpackItems;
 
             foreach (KeyValuePair<Item, int> entry in items)
             {

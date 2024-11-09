@@ -88,7 +88,7 @@ namespace Gyvr.Mythril2D
 
         private void UpdatePlayerMoneyDisplay()
         {
-            int currentMoney = GameManager.InventorySystem.money;
+            int currentMoney = GameManager.InventorySystem.backpackMoney;
             int selectedItemPrice = 0;
             ETransactionType transactionType = ETransactionType.Buy;
 
@@ -113,12 +113,12 @@ namespace Gyvr.Mythril2D
 
             if (selectedItemPrice == 0)
             {
-                m_money.text = GameManager.InventorySystem.money.ToString();
+                m_money.text = GameManager.InventorySystem.backpackMoney.ToString();
             }
             else
             {
                 m_money.text = string.Format("{0}\n({1}{2})",
-                    GameManager.InventorySystem.money,
+                    GameManager.InventorySystem.backpackMoney,
                     transactionType == ETransactionType.Buy ? "-" : "+",
                     selectedItemPrice);
             }
@@ -157,7 +157,7 @@ namespace Gyvr.Mythril2D
         {
             int itemPrice = m_shop.GetPrice(item, ETransactionType.Buy);
 
-            if (GameManager.InventorySystem.money >= itemPrice)
+            if (GameManager.InventorySystem.backpackMoney >= itemPrice)
             {
                 GameManager.InventorySystem.RemoveMoney(itemPrice);
                 GameManager.InventorySystem.AddToBag(item);

@@ -103,7 +103,7 @@ namespace Gyvr.Mythril2D
 
         private void OnDeadAnimationStart()
         {
-            Debug.Log("OnDeadAnimationStart");
+            //Debug.Log("OnDeadAnimationStart");
 
             // 设置复活后人物朝向
             SetLookAtDirection(Vector2.right);

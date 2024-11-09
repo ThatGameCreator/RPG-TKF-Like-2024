@@ -15,15 +15,15 @@ namespace Gyvr.Mythril2D
 
     public class InventorySystem : AGameSystem, IDataBlockHandler<InventoryDataBlock>
     {
-        public int money => m_money;
-        public Dictionary<Item, int> items => m_items;
+        public int backpackMoney => m_backpackMoney;
+        public Dictionary<Item, int> backpackItems => m_backpackItems;
 
-        private int m_money = 0;
-        private Dictionary<Item, int> m_items = new Dictionary<Item, int>();
+        private int m_backpackMoney = 0;
+        private Dictionary<Item, int> m_backpackItems = new Dictionary<Item, int>();
 
         public int GetItemCount(Item item)
         {
-            if (items.TryGetValue(item, out int count))
+            if (backpackItems.TryGetValue(item, out int count))
             {
                 return count;
             }
@@ -35,7 +35,7 @@ namespace Gyvr.Mythril2D
         {
             if (value > 0)
             {
-                m_money += value;
+                m_backpackMoney += value;
                 GameManager.NotificationSystem.moneyAdded.Invoke(value);
             }
         }
@@ -44,7 +44,7 @@ namespace Gyvr.Mythril2D
         {
             if (value > 0)
             {
-                m_money = math.max(money - value, 0);
+                m_backpackMoney = math.max(backpackMoney - value, 0);
                 GameManager.NotificationSystem.moneyRemoved.Invoke(value);
             }
         }
@@ -62,12 +62,12 @@ namespace Gyvr.Mythril2D
 
         public bool HasSufficientFunds(int value)
         {
-            return value <= money;
+            return value <= backpackMoney;
         }
 
         public bool HasItemInBag(Item item, int quantity = 1)
         {
-            return items.ContainsKey(item) && items[item] >= quantity;
+            return backpackItems.ContainsKey(item) && backpackItems[item] >= quantity;
         }
 
         public Equipment GetEquipment(EEquipmentType type)
@@ -106,13 +106,13 @@ namespace Gyvr.Mythril2D
 
         public void AddToBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
-            if (!items.ContainsKey(item))
+            if (!backpackItems.ContainsKey(item))
             {
-                items.Add(item, quantity);
+                backpackItems.Add(item, quantity);
             }
             else
             {
-                items[item] += quantity;
+                backpackItems[item] += quantity;
             }
 
             if (!forceNoEvent)
@@ -125,15 +125,15 @@ namespace Gyvr.Mythril2D
         {
             bool success = false;
 
-            if (items.ContainsKey(item))
+            if (backpackItems.ContainsKey(item))
             {
-                if (quantity >= items[item])
+                if (quantity >= backpackItems[item])
                 {
-                    items.Remove(item);
+                    backpackItems.Remove(item);
                 }
                 else
                 {
-                    items[item] -= quantity;
+                    backpackItems[item] -= quantity;
                 }
 
                 success = true;
@@ -149,22 +149,22 @@ namespace Gyvr.Mythril2D
 
         public void EmptyBag()
         {
-            m_money = 0;
-            m_items = new Dictionary<Item, int>();
+            m_backpackMoney = 0;
+            m_backpackItems = new Dictionary<Item, int>();
         }
 
         public void LoadDataBlock(InventoryDataBlock block)
         {
-            m_money = block.money;
-            m_items = block.items.ToDictionary(kvp => GameManager.Database.LoadFromReference(kvp.Key), kvp => kvp.Value);
+            m_backpackMoney = block.money;
+            m_backpackItems = block.items.ToDictionary(kvp => GameManager.Database.LoadFromReference(kvp.Key), kvp => kvp.Value);
         }
 
         public InventoryDataBlock CreateDataBlock()
         {
             return new InventoryDataBlock
             {
-                money = m_money,
-                items = new SerializableDictionary<DatabaseEntryReference<Item>, int>(m_items.ToDictionary(kvp => GameManager.Database.CreateReference(kvp.Key), kvp => kvp.Value))
+                money = m_backpackMoney,
+                items = new SerializableDictionary<DatabaseEntryReference<Item>, int>(m_backpackItems.ToDictionary(kvp => GameManager.Database.CreateReference(kvp.Key), kvp => kvp.Value))
             };
         }
     }

@@ -12,6 +12,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private UIShop m_shop = null;
         [SerializeField] private UICraft m_craft = null;
         [SerializeField] private UICharacter m_stats = null;
+        [SerializeField] private UIWarehouse m_warehouse = null;
         [SerializeField] private UIInventory m_inventory = null;
         [SerializeField] private UIJournal m_journal = null;
         [SerializeField] private UIAbilities m_abilities = null;
@@ -28,6 +29,7 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.craftRequested.AddListener(OnCraftRequested);
             GameManager.NotificationSystem.statsRequested.AddListener(OnStatsRequested);
             GameManager.NotificationSystem.journalRequested.AddListener(OnJournalRequested);
+            GameManager.NotificationSystem.warehouseRequested.AddListener(OnWarehouseRequested);
             GameManager.NotificationSystem.inventoryRequested.AddListener(OnInventoryRequested);
             GameManager.NotificationSystem.spellBookRequested.AddListener(OnAbilitiesRequested);
             GameManager.NotificationSystem.settingsRequested.AddListener(OnSettingsRequested);
@@ -39,6 +41,7 @@ namespace Gyvr.Mythril2D
             m_craft.Init();
             m_stats.Init();
             m_journal.Init();
+            m_warehouse.Init();
             m_inventory.Init();
             m_abilities.Init();
             m_settings.Init();
@@ -155,6 +158,8 @@ namespace Gyvr.Mythril2D
         private void OnStatsRequested() => PushMenu(m_stats);
 
         private void OnJournalRequested() => PushMenu(m_journal);
+
+        private void OnWarehouseRequested() => PushMenu(m_warehouse);
 
         private void OnInventoryRequested() => PushMenu(m_inventory);
 

@@ -30,6 +30,7 @@ namespace Gyvr.Mythril2D
         public static GameFlagSystem GameFlagSystem => GetSystem<GameFlagSystem>();
         public static GameStateSystem GameStateSystem => GetSystem<GameStateSystem>();
         public static InputSystem InputSystem => GetSystem<InputSystem>();
+        public static WarehouseSystem WarehouseSystem => GetSystem<WarehouseSystem>();
         public static InventorySystem InventorySystem => GetSystem<InventorySystem>();
         public static JournalSystem JournalSystem => GetSystem<JournalSystem>();
         public static NotificationSystem NotificationSystem => GetSystem<NotificationSystem>();
