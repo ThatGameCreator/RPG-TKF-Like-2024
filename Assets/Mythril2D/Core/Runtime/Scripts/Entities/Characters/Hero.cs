@@ -111,19 +111,19 @@ namespace Gyvr.Mythril2D
 
         private void OnDeadAnimationEnd()
         {
-            GameManager.TeleportLoadingSystem.RequestTransition(null, null, null, null, ETeleportType.Revival);
+            GameManager.TeleportLoadingSystem.RequestTransition(null, null, () => {
+                // 恢复血量 
+                m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
+                m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
+                m_currentStats.Stamina = GameManager.Player.maxStamina;
 
-            // 恢复血量 
-            m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
-            m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
-            m_currentStats.Stamina = GameManager.Player.maxStamina;
+                // 恢复碰撞体
+                Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+                Array.ForEach(colliders, (collider) => collider.enabled = true);
 
-            // 恢复碰撞体
-            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
-            Array.ForEach(colliders, (collider) => collider.enabled = true);
-
-            // 保存数据
-            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+                // 保存数据
+                GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+            } , null, ETeleportType.Revival);
         }
 
         private void OnRevivalAnimationEnd()
@@ -241,7 +241,9 @@ namespace Gyvr.Mythril2D
             {
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_evacuatedSound);
 
-                GameManager.TeleportLoadingSystem.RequestTransition("Pilgrimage_Place", null, null, null, ETeleportType.Normal, "Player_Spawner");
+                GameManager.TeleportLoadingSystem.RequestTransition("Pilgrimage_Place", null, () => {
+                    GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+                }, null, ETeleportType.Normal, "Player_Spawner");
 
                 GameManager.DayNightSystem.OnDisableDayNightSystem();
 
