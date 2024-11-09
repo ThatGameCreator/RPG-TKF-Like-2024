@@ -19,7 +19,11 @@ namespace Gyvr.Mythril2D
             gameObject.SetActive(true);
         }
 
-        public bool CanPop() => false;
+        //public bool CanPop() => false;
+        // 死亡界面不应该能够回退 所以这里设置为 false 无法pop
+        public bool CanPop(){
+            return false;
+        }
 
         public void Hide()
         {

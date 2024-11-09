@@ -101,9 +101,13 @@ namespace Gyvr.Mythril2D
         {
             if (!GameManager.DialogueSystem.Main.IsPlaying())
             {
-                Debug.Log("PopDeathMenu ");
+                IUIMenu menu = m_menuStack.Pop();
+                Hide(menu);
 
-                PopMenu();
+                if (m_menuStack.Count > 0)
+                {
+                    Show(m_menuStack.Peek());
+                }
             }
         }
 
