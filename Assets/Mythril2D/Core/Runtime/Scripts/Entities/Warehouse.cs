@@ -12,7 +12,6 @@ namespace Gyvr.Mythril2D
         [Header("Warehouse Settings")]
         [SerializeField] private string m_gameFlagID = "warehouse_00";
         [SerializeField] private string m_openedAnimationParameter = "opened";
-        [SerializeField] private string m_closedAnimationParameter = "closed";
         [SerializeField] private string m_contentRevealAnimationParameter = "reveal";
         [SerializeField] private float m_contentRevealIconCycleDuration = 1.0f;
 
@@ -20,7 +19,6 @@ namespace Gyvr.Mythril2D
         [SerializeField] private AudioClipResolver m_openingSound;
 
         private bool m_hasOpeningAnimation = false;
-        private bool m_hasClosingAnimation = false;
         private bool m_hasRevealAnimation = false;
         private bool m_opened = false;
 
@@ -32,7 +30,6 @@ namespace Gyvr.Mythril2D
             if (m_warehouAnimator)
             {
                 m_hasOpeningAnimation = AnimationUtils.HasParameter(m_warehouAnimator, m_openedAnimationParameter);
-                m_hasClosingAnimation = AnimationUtils.HasParameter(m_warehouAnimator, m_closedAnimationParameter);
             }
 
         }
@@ -83,6 +80,8 @@ namespace Gyvr.Mythril2D
         {
             if (m_opened == false)
             {
+                GameManager.Player.DisableActions(EActionFlags.All);
+
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openingSound);
 
                 TryPlayOpeningAnimation(true);
@@ -100,6 +99,8 @@ namespace Gyvr.Mythril2D
         {
             if (m_opened == true)
             {
+                GameManager.Player.EnableActions(EActionFlags.All);
+
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openingSound);
 
                 TryPlayClosingAnimation(true);
