@@ -18,6 +18,7 @@ namespace Gyvr.Mythril2D
             GameManager.WarehouseSystem.isOpenning = true;
             UpdateUI();
             gameObject.SetActive(true);
+
         }
 
         public void Hide()
@@ -25,6 +26,8 @@ namespace Gyvr.Mythril2D
             GameManager.WarehouseSystem.isOpenning = false;
 
             gameObject.SetActive(false);
+
+            GameManager.NotificationSystem.UIWarehouseClosed.Invoke();
         }
 
         public void EnableInteractions(bool enable)

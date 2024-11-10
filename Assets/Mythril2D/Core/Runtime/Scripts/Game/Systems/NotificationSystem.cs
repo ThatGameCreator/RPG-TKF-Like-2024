@@ -65,6 +65,8 @@ namespace Gyvr.Mythril2D
 
         [Header("UI")]
         public UnityEvent<EItemCategory> UICategorySelected = new UnityEvent<EItemCategory>();
+        public UnityEvent UIWarehouseClosed = new UnityEvent();
+
 
     }
 }
