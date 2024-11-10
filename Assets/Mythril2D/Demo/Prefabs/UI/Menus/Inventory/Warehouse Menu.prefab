@@ -47,6 +47,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8617979674579721650}
   - component: {fileID: 320460954513279210}
+  - component: {fileID: 1752691965627725329}
   m_Layer: 0
   m_Name: Currency
   m_TagString: Untagged
@@ -102,6 +103,24 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1752691965627725329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589429609854649335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fa40c00c93ab848bd09b1910f5f93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_warehouseIncreaseAllButton: {fileID: 5926924487277490809}
+  m_warehouseIncreaseTenButton: {fileID: 6978017644609839426}
+  m_warehouseIncreaseOneButton: {fileID: 7395697313829117409}
+  m_backpackIncreaseAllButton: {fileID: 4868951821559504090}
+  m_backpackIncreaseTenButton: {fileID: 8937713288493565794}
+  m_backpackIncreaseOneButton: {fileID: 3747528373317024283}
 --- !u!1 &823717109045679196
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +135,7 @@ GameObject:
   - component: {fileID: 7958179688639192028}
   - component: {fileID: 1997290172820716822}
   m_Layer: 5
-  m_Name: Decrease 1
+  m_Name: Warehouse One Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +301,7 @@ GameObject:
   - component: {fileID: 230638050249126919}
   - component: {fileID: 6081271712414263195}
   m_Layer: 5
-  m_Name: Increase 1
+  m_Name: Backpack One Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,7 +467,7 @@ GameObject:
   - component: {fileID: 2256151530839461285}
   - component: {fileID: 7975735144343030157}
   m_Layer: 5
-  m_Name: Decrease 3
+  m_Name: Warehouse All Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -677,7 +696,7 @@ GameObject:
   - component: {fileID: 5472803475605921614}
   - component: {fileID: 9174012673484746232}
   m_Layer: 5
-  m_Name: Decrease 2
+  m_Name: Warehouse Ten Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -909,7 +928,7 @@ GameObject:
   - component: {fileID: 3747528373317024283}
   - component: {fileID: 6267524087992790459}
   m_Layer: 5
-  m_Name: Increase 3
+  m_Name: Backpack All Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,7 +1091,7 @@ GameObject:
   - component: {fileID: 8406583058106135737}
   - component: {fileID: 5471220816990454911}
   m_Layer: 5
-  m_Name: Content
+  m_Name: Currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1143,7 +1162,7 @@ GameObject:
   - component: {fileID: 6546657935557484188}
   - component: {fileID: 8366321855325835353}
   m_Layer: 5
-  m_Name: Increase 2
+  m_Name: Backpack Ten Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1312,6 +1331,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4316644103916174349, guid: b2ba0543c6aec69438df35a7838c0772, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 168
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316644103916174349, guid: b2ba0543c6aec69438df35a7838c0772, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1321,7 +1344,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4316644103916174450, guid: b2ba0543c6aec69438df35a7838c0772, type: 3}
       propertyPath: m_margin.x
-      value: 97.71336
+      value: 89.91221
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316644103916174450, guid: b2ba0543c6aec69438df35a7838c0772, type: 3}
+      propertyPath: m_margin.z
+      value: -27.418
       objectReference: {fileID: 0}
     - target: {fileID: 4316644104912823035, guid: b2ba0543c6aec69438df35a7838c0772, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3312,6 +3339,7 @@ MonoBehaviour:
   m_warehouseMoney: {fileID: 4267049664552937323}
   m_bag: {fileID: 2701922813987029620}
   m_warehouse: {fileID: 2394347323840236003}
+  m_uiCurrency: {fileID: 1752691965627725329}
 --- !u!224 &5900663707253536619 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 625290108352659364, guid: ee85c269e6f86154493a270ec83506e2, type: 3}

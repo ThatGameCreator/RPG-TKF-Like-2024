@@ -39,7 +39,7 @@ namespace Gyvr.Mythril2D
             if (value > 0)
             {
                 m_warehouseMoney += value;
-                GameManager.NotificationSystem.moneyAdded.Invoke(value);
+                //GameManager.NotificationSystem.moneyAdded.Invoke(value);
             }
         }
 
@@ -48,7 +48,7 @@ namespace Gyvr.Mythril2D
             if (value > 0)
             {
                 m_warehouseMoney = math.max(warehouseMoney - value, 0);
-                GameManager.NotificationSystem.moneyRemoved.Invoke(value);
+                //GameManager.NotificationSystem.moneyRemoved.Invoke(value);
             }
         }
 

@@ -2,6 +2,7 @@ using log4net.Core;
 using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gyvr.Mythril2D
 {
@@ -12,11 +13,15 @@ namespace Gyvr.Mythril2D
         [SerializeField] private TextMeshProUGUI m_warehouseMoney = null;
         [SerializeField] private UIInventoryBag m_bag = null;
         [SerializeField] private UIWarehouseBag m_warehouse = null;
+        [SerializeField] private UIWarehouseCurrency m_uiCurrency = null;
 
         public void Init()
         {
             m_bag.Init();
             m_warehouse.Init();
+            m_uiCurrency.RegisterCallbacks(
+                OnWarehouseAllButtonPressed, OnWarehouseTenButtonPressed, OnWarehouseOneButtonPressed,
+                OnBackpackOneButtonPressed, OnBackpackTenButtonPressed, OnBackpackAllButtonPressed);
         }
 
         public void Show(params object[] args)
@@ -88,5 +93,70 @@ namespace Gyvr.Mythril2D
 
         private void OnBagItemClicked(Item item) => OnItemClicked(item, EItemLocation.Bag);
         private void OnWarehouseItemClicked(Item item) => OnItemClicked(item, EItemLocation.Warehouse);
+
+        public void OnWarehouseAllButtonPressed(Button button)
+        {
+            GameManager.WarehouseSystem.AddMoney(GameManager.InventorySystem.backpackMoney);
+
+            GameManager.InventorySystem.RemoveMoney(GameManager.InventorySystem.backpackMoney);
+
+            UpdateUI();
+        }
+
+        public void OnWarehouseTenButtonPressed(Button button)
+        {
+            if (GameManager.InventorySystem.HasSufficientFunds(10))
+            {
+                GameManager.WarehouseSystem.AddMoney(10);
+
+                GameManager.InventorySystem.RemoveMoney(10);
+
+                UpdateUI();
+            }
+        }
+
+        public void OnWarehouseOneButtonPressed(Button button)
+        {
+            if (GameManager.InventorySystem.HasSufficientFunds(1))
+            {
+                GameManager.WarehouseSystem.AddMoney(1);
+
+                GameManager.InventorySystem.RemoveMoney(1);
+
+                UpdateUI();
+            }
+        }
+
+        public void OnBackpackAllButtonPressed(Button button)
+        {
+            GameManager.InventorySystem.AddMoney(GameManager.WarehouseSystem.warehouseMoney);
+
+            GameManager.WarehouseSystem.RemoveMoney(GameManager.WarehouseSystem.warehouseMoney);
+
+            UpdateUI();
+        }
+
+        public void OnBackpackTenButtonPressed(Button button)
+        {
+            if (GameManager.WarehouseSystem.HasSufficientFunds(10)){
+                GameManager.InventorySystem.AddMoney(10);
+
+                GameManager.WarehouseSystem.RemoveMoney(10);
+
+                UpdateUI();
+            }
+        }
+
+        public void OnBackpackOneButtonPressed(Button button)
+        {
+            if (GameManager.WarehouseSystem.HasSufficientFunds(1))
+            {
+                GameManager.InventorySystem.AddMoney(1);
+
+                GameManager.WarehouseSystem.RemoveMoney(1);
+
+                UpdateUI();
+            }
+        }
     }
 }
