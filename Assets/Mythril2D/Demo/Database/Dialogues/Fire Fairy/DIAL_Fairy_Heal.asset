@@ -16,12 +16,12 @@ MonoBehaviour:
   - ' Just a few souls will recover your strength.'
   options:
   - name: Accept
-    sequence: {fileID: 11400000, guid: ec0f6b328b289e545a9b01790a9a3e24, type: 2}
+    sequence: {fileID: 0}
     message:
       type: 2
       customMessage: Heal
   - name: Decline
-    sequence: {fileID: 11400000, guid: d423b639437a50040b91c5583d990dc9, type: 2}
+    sequence: {fileID: 0}
     message:
       type: 3
       customMessage: Upgrade

@@ -46,6 +46,7 @@ namespace Gyvr.Mythril2D
 
                                 if (messages.Contains(EDialogueMessageType.Accept))
                                 {
+                                    target.Say(m_dialogueIfCanPayHeal);
                                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_inn.healingSound);
                                     GameManager.InventorySystem.RemoveMoney(m_inn.price);
                                     GameManager.Player.Heal(m_inn.healAmount);
