@@ -14,6 +14,7 @@ namespace Gyvr.Mythril2D
         // Private Members
         private DialogueTree m_dialogueTree = null;
         private DialogueNode m_currentNode = null;
+        private DialogueNode m_LastNode = null;
         private Queue<DialogueTree> m_dialogueQueue = new Queue<DialogueTree>();
 
         public void AddToQueue(DialogueTree dialogue)
@@ -64,7 +65,7 @@ namespace Gyvr.Mythril2D
         {
             m_dialogueTree.OnNodeExecuted(m_currentNode, option);
 
-            m_currentNode.toExecuteOnCompletion?.Execute();
+            //m_currentNode.toExecuteOnCompletion?.Execute();
 
             SetCurrentNode(m_currentNode.GetNext(option));
         }
@@ -94,11 +95,15 @@ namespace Gyvr.Mythril2D
             if (m_currentNode == null)
             {
                 OnLastNodeReached();
+
+                m_LastNode.toExecuteOnCompletion?.Execute();
             }
             else
             {
                 m_currentNode.toExecuteOnStart?.Execute();
             }
+
+            m_LastNode = node;
         }
 
         private void OnLastNodeReached()

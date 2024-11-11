@@ -10,28 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e17463e893d4fc49015a09b61e97ad, type: 3}
-  m_Name: DIAL_Inn_Offer
+  m_Name: DIAL_Fairy_Upgrade
   m_EditorClassIdentifier: 
   lines:
-  - Welcome to the Drunk Rat Inn! Would you like to drink a restorative drink for
-    only {0} <currency>?
-  options:
-  - name: Can Pay
-    sequence: {fileID: 11400000, guid: b67aff0e202c3ef4395eb23cd0b88e50, type: 2}
-    message:
-      type: 2
-      customMessage: 
-  - name: Cannot Pay
-    sequence: {fileID: 11400000, guid: 8e0c12c50a585c148a752a0191cbf968, type: 2}
-    message:
-      type: 3
-      customMessage: 
+  - As you wish. Let the souls transform into your might.
+  - Come closer... now close your eyes.
+  options: []
   toExecuteOnStart:
     rid: -2
   toExecuteOnCompletion:
-    rid: -2
+    rid: 8303503270640091146
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 8303503270640091146
+      type: {class: OpenUpgradeMenu, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
+      data: 
