@@ -113,21 +113,25 @@ namespace Gyvr.Mythril2D
         {
             GameManager.TeleportLoadingSystem.RequestTransition(null, null, () => {
                 // 恢复血量 
-                m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
-                m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
+                m_currentStats[EStat.Health] = 1;
+                m_currentStats[EStat.Mana] = 1;
                 m_currentStats.Stamina = GameManager.Player.maxStamina;
 
                 // 恢复碰撞体
                 Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
                 Array.ForEach(colliders, (collider) => collider.enabled = true);
-
-                
             } ,
             () => {
-                // 保存数据
-                GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+                StartCoroutine(SaveWithDelay());
             }, ETeleportType.Revival);
         }
+
+        private IEnumerator SaveWithDelay()
+        {
+            yield return new WaitForSeconds(1f); // 等待一秒
+            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName); // 保存数据
+        }
+
 
         private void OnRevivalAnimationEnd()
         {
