@@ -2593,15 +2593,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4316644105286767361, guid: 451dcf6aa18b94c089b06dab87df8161, type: 3}
       propertyPath: m_termID
-      value: experience
+      value: souls
       objectReference: {fileID: 0}
     - target: {fileID: 4316644105286767361, guid: 451dcf6aa18b94c089b06dab87df8161, type: 3}
       propertyPath: m_textFormat
       value: '{0} Req.'
       objectReference: {fileID: 0}
+    - target: {fileID: 4316644105286767361, guid: 451dcf6aa18b94c089b06dab87df8161, type: 3}
+      propertyPath: m_displayMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4316644105286767363, guid: 451dcf6aa18b94c089b06dab87df8161, type: 3}
       propertyPath: m_Name
-      value: Experience
+      value: Souls
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
