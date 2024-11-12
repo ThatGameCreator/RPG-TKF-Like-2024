@@ -72,7 +72,8 @@ namespace Gyvr.Mythril2D
 
         public void OnDisableDayNightSystem()
         {
-            m_currentTime = m_maxRemainTime;
+            m_currentTime = 0;
+            //m_currentTime = m_maxRemainTime;
 
             // 设置系统不启用了 所以需要手动更新下亮度
             UpdateBrightness();

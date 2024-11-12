@@ -1,5 +1,3 @@
-using log4net.Core;
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
