@@ -8,10 +8,15 @@ namespace Gyvr.Mythril2D
         public string saveFileName => m_saveFileName;
         private string m_saveFileName = "SAVEFILE_A";
 
-        public void LoadDefaultSaveFile(SaveFile saveFile)
+        public void SetSaveFileName()
+        {
+        }
+
+        public void LoadDefaultSaveFile(SaveFile saveFile, string saveFileName)
         {
             SaveFileData newSaveFile = DuplicateSaveFile(saveFile.content);
-            LoadSaveFile(newSaveFile);
+
+            LoadSaveFile(newSaveFile, saveFileName);
         }
 
         /**
@@ -62,6 +67,9 @@ namespace Gyvr.Mythril2D
 
         public void LoadFromFile(string saveFileName)
         {
+
+            Debug.Log(saveFileName);
+
             m_saveFileName = saveFileName;
 
             Debug.Log($"Loading from {saveFileName}...");
@@ -103,8 +111,8 @@ namespace Gyvr.Mythril2D
                     using (StreamWriter writer = new StreamWriter(stream))
                     {
                         writer.Write(dataToStore);
-                        Debug.Log($"Saving succeeded!");
 
+                        Debug.Log($"Saving succeeded!");
                     }
                 }
             }
@@ -124,6 +132,24 @@ namespace Gyvr.Mythril2D
             GameManager.JournalSystem.LoadDataBlock(saveFile.journal);
             GameManager.PlayerSystem.LoadDataBlock(saveFile.player);
             GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map, null, null, null, ETeleportType.Revival);
+            //GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map);
+        }
+
+        public void LoadSaveFile(SaveFileData saveFile, string saveFileName)
+        {
+            Debug.Log(saveFileName);
+
+            m_saveFileName = saveFileName;
+
+            GameManager.GameFlagSystem.LoadDataBlock(saveFile.gameFlags);
+            GameManager.WarehouseSystem.LoadDataBlock(saveFile.warehouse);
+            GameManager.InventorySystem.LoadDataBlock(saveFile.inventory);
+            GameManager.JournalSystem.LoadDataBlock(saveFile.journal);
+            GameManager.PlayerSystem.LoadDataBlock(saveFile.player);
+            GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map, null, null, () =>
+            {
+                GameManager.SaveSystem.SaveToFile(saveFileName);
+            }, ETeleportType.Revival);
             //GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map);
         }
 

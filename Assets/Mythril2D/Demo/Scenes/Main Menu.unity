@@ -328,6 +328,12 @@ MonoBehaviour:
   mapUnloaded:
     m_PersistentCalls:
       m_Calls: []
+  saveStart:
+    m_PersistentCalls:
+      m_Calls: []
+  saveEnd:
+    m_PersistentCalls:
+      m_Calls: []
   playerSpawned:
     m_PersistentCalls:
       m_Calls: []
@@ -344,6 +350,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   statsRequested:
+    m_PersistentCalls:
+      m_Calls: []
+  warehouseRequested:
     m_PersistentCalls:
       m_Calls: []
   inventoryRequested:
@@ -382,6 +391,12 @@ MonoBehaviour:
   audioStopPlaybackRequested:
     m_PersistentCalls:
       m_Calls: []
+  UICategorySelected:
+    m_PersistentCalls:
+      m_Calls: []
+  UIWarehouseClosed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &289465312
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +409,7 @@ GameObject:
   - component: {fileID: 289465315}
   - component: {fileID: 289465314}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,9 +430,9 @@ RectTransform:
   m_Father: {fileID: 2051102862}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 880, y: 0}
+  m_SizeDelta: {x: 1620, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &289465314
 MonoBehaviour:
@@ -439,7 +454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: That Abyss
+  m_text: T H A T   A B Y S S
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6110912d936a1841a5ca533caadca87, type: 2}
   m_sharedMaterial: {fileID: -2039489033487393319, guid: f6110912d936a1841a5ca533caadca87, type: 2}
@@ -466,8 +481,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 180
+  m_fontSizeBase: 180
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -565,6 +580,7 @@ MonoBehaviour:
     rid: -2
   m_toExecute:
     rid: 2152590067567689748
+  m_toExecutes: []
   m_frameDelay: 0
   references:
     version: 2
@@ -1380,7 +1396,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 16
+  m_Spacing: 60
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1676,7 +1692,7 @@ MonoBehaviour:
   m_button: {fileID: 735899150}
   m_cancelButton: {fileID: 1025384118}
   m_UIMainMenu: {fileID: 1242435141}
-  m_saveFile: {fileID: 11400000, guid: 888034daa68407b479a6065f2e0020e5, type: 2}
+  m_saveFile: {fileID: 11400000, guid: 514fc631b602302458fe48aeeb07eefb, type: 2}
 --- !u!1 &758179554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2242,7 @@ MonoBehaviour:
   m_button: {fileID: 1188554842}
   m_cancelButton: {fileID: 1280618793}
   m_UIMainMenu: {fileID: 1242435141}
-  m_saveFile: {fileID: 11400000, guid: 888034daa68407b479a6065f2e0020e5, type: 2}
+  m_saveFile: {fileID: 11400000, guid: 514fc631b602302458fe48aeeb07eefb, type: 2}
 --- !u!1 &1242435137
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,7 +2677,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 16
+  m_Spacing: 32
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -3421,7 +3437,7 @@ MonoBehaviour:
   m_button: {fileID: 2051603036}
   m_cancelButton: {fileID: 1968769762}
   m_UIMainMenu: {fileID: 1242435141}
-  m_saveFile: {fileID: 11400000, guid: 888034daa68407b479a6065f2e0020e5, type: 2}
+  m_saveFile: {fileID: 11400000, guid: 514fc631b602302458fe48aeeb07eefb, type: 2}
 --- !u!1 &2096261496
 GameObject:
   m_ObjectHideFlags: 0

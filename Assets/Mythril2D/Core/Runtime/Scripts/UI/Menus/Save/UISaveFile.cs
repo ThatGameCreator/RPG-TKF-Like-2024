@@ -85,18 +85,20 @@ namespace Gyvr.Mythril2D
 
         public void OnClick()
         {
+            Debug.Log(saveFileName);
+
             // 没有存档尝试新建
             if (m_isEmpty == true)
             {
-                m_UIMainMenu.StartNewGameFromDefaultSaveFile(m_saveFile);
+                m_UIMainMenu.StartNewGameFromDefaultSaveFile(m_saveFile, saveFileName);
             }
             else
             {
                 SendMessageUpwards("OnSaveFileClicked", new SaveFileActionDesc
                 {
                     action = m_action,
-                    filename = m_saveFileName
-
+                    filename = m_saveFileName,
+                    
                 }, SendMessageOptions.RequireReceiver);
             }
         }

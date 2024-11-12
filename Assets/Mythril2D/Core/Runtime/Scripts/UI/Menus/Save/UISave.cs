@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Codice.Utils;
+using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
@@ -47,6 +48,8 @@ namespace Gyvr.Mythril2D
         private void OnSaveFileClicked(SaveFileActionDesc desc)
         {
             //Debug.Log("UI Save OnSaveFileClicked");
+
+            Debug.Log(desc.filename);
 
             GameManager.SaveSystem.SaveToFile(desc.filename);
             UpdateUI();

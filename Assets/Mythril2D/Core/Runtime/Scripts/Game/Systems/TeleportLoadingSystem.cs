@@ -66,7 +66,7 @@ namespace Gyvr.Mythril2D
             {
                 if (eTeleportType != ETeleportType.None)
                 {
-                    Debug.Log(String.Format("TryExcutePositionTelepot"));
+                    //Debug.Log(String.Format("TryExcutePositionTelepot"));
                     TryExcutePositionTelepot(eTeleportType, destinationGameObjectName);
                 }
             };
