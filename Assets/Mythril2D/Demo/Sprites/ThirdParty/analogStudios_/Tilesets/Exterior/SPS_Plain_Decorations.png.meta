@@ -1354,7 +1354,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1362,6 +1362,31 @@ TextureImporter:
       bones: []
       spriteID: 93a325c71326fd5408641eb2e112ca05
       internalID: -172697970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_Plain_Decorations_0
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -6, y: -5}
+        - {x: -6, y: 2}
+        - {x: 6, y: 2}
+        - {x: 6, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f733eab94a66d64aa83ae3d6480d168
+      internalID: -610084723
       vertices: []
       indices: 
       edges: []
@@ -1377,6 +1402,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      SPS_Plain_Decorations_0: -610084723
       plainDecorations_0: -1682446895
       plainDecorations_1: 1110091598
       plainDecorations_10: -461659193
