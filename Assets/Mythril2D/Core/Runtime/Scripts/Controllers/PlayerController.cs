@@ -112,9 +112,11 @@ namespace Gyvr.Mythril2D
             {
                 Monster localMonster = interactionTarget.gameObject.GetComponent<Monster>();
                 Chest localChest = interactionTarget.gameObject.GetComponent<Chest>();
+                DeadBody localDeadBody = interactionTarget.gameObject.GetComponent<DeadBody>();
+                SurfaceItem localSurfaceItem = interactionTarget.gameObject.GetComponent<SurfaceItem>();
 
                 //if (interactionTarget.gameObject.layer == LayerMask.GetMask(GameManager.Config.mosterLayer))
-                if (localMonster != null || localChest != null)
+                if (localMonster != null || localChest != null || localDeadBody != null || localSurfaceItem != null)
                 {
                     //Debug.Log("moster loot");
                     if (GameManager.Player.isLooting == true)
