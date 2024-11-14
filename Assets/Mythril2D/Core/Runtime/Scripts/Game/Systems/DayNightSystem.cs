@@ -19,6 +19,8 @@ namespace Gyvr.Mythril2D
         public float currentTime => m_currentTime;
         private bool isOnEnableSystem = false;
 
+
+
         private void Update()
         {
             if (isOnEnableSystem == true) {
