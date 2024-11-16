@@ -200,6 +200,8 @@ namespace FunkyCode.Rendering.Light
             {
                 Camera camera = Camera.main;
 
+                Debug.Log(camera);
+
                 Vector2 pos = LightingPosition.GetPosition2D(-camera.transform.position);
 
                 drawOffset = light.transform2D.position + pos;

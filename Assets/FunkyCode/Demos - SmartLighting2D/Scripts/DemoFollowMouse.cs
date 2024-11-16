@@ -17,6 +17,8 @@ public class DemoFollowMouse : MonoBehaviour {
 		if (Camera.main == null) {
 			return(Vector2.zero);
 		}
-		return(Camera.main.ScreenToWorldPoint (Input.mousePosition));
+        Debug.Log(Camera.main);
+
+        return (Camera.main.ScreenToWorldPoint (Input.mousePosition));
 	}
 }

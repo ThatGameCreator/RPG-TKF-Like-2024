@@ -19,10 +19,17 @@ namespace Gyvr.Mythril2D
         public float currentTime => m_currentTime;
         private bool isOnEnableSystem = false;
 
-
+        // 设不设置在这里更新这个亮度并没有作用，感觉这个光源系统并没有真正启用
+        //private void Awake()
+        //{
+        //    m_currentTime = -1f;
+        //}
 
         private void Update()
         {
+            //UpdateBrightness();
+            //Debug.Log(m_lightingManager.profile.DarknessColor);
+
             if (isOnEnableSystem == true) {
                 UpdateDayNightSystem();
             }
@@ -41,6 +48,8 @@ namespace Gyvr.Mythril2D
             {
                 if (isOnEnableSystem == true)
                 {
+                    Debug.Log("UpdateDayNightSystem OnDisableDayNightSystem");
+
                     OnDisableDayNightSystem();
 
                     m_currentTime = 0f;

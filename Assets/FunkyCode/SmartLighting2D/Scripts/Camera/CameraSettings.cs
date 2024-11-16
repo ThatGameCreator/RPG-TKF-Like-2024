@@ -124,6 +124,9 @@ namespace FunkyCode
 				case CameraType.MainCamera:
 
 					camera = Camera.main;
+
+                    //Debug.Log(camera);
+
 					if (camera && !camera.orthographic)
 							return null;
 

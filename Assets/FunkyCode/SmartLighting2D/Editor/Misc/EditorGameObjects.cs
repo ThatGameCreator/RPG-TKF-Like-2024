@@ -20,9 +20,12 @@ namespace FunkyCode
 				else if (Camera.main != null)
 			{
 				camera = Camera.main;
-			}
-			
-			return(camera);
+
+                Debug.Log(camera);
+
+            }
+
+            return (camera);
 		}
 
 		static public Vector3 GetCameraPoint()

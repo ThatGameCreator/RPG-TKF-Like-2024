@@ -13,7 +13,9 @@ namespace FunkyCode.Rendering
 
             if (light.IsPixelPerfect())
             {
-                var camera = Camera.main;
+                Camera camera = Camera.main;
+
+                Debug.Log(camera);
 
                 float cameraRotation = LightingPosition.GetCameraRotation(camera);
                 Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, cameraRotation), Vector3.one);
@@ -43,7 +45,9 @@ namespace FunkyCode.Rendering
 
             if (light.IsPixelPerfect())
             {
-                var camera = Camera.main;
+                Camera camera = Camera.main;
+
+                Debug.Log(camera);
 
                 float cameraRotation = LightingPosition.GetCameraRotation(camera);
                 Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, cameraRotation), Vector3.one);

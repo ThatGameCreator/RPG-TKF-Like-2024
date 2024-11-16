@@ -42,7 +42,9 @@ namespace FunkyCode
 
 			var c = lightmapPreset.darknessColor;
 
-			var color = new Vector4(c.r, c.g, c.b, c.a);
+            Debug.Log(c);
+
+            var color = new Vector4(c.r, c.g, c.b, c.a);
 
 			if (lightTexture == null)
 			{

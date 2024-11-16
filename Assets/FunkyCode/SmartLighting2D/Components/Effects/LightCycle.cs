@@ -86,6 +86,8 @@ namespace FunkyCode
 
                 LightingSettings.LightmapPreset lightmapPreset = lightmapPresets.list[i];
                 lightmapPreset.darknessColor = color;
+
+                Debug.Log(lightmapPreset.darknessColor);
             }
         }
     }

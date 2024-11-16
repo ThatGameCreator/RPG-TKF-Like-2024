@@ -133,6 +133,8 @@ namespace FunkyCode
 
 			Vector4 color = new Vector4(c.r, c.g, c.b, c.a);
 
+            Debug.Log(color);
+
 			if (lightTexture == null)
 			{
 				Debug.Log("light texture null");

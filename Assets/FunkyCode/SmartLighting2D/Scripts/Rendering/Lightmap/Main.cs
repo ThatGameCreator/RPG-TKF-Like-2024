@@ -13,6 +13,8 @@ namespace FunkyCode.Rendering.Lightmap
 			if (Rendering.Day.Main.IsDrawing(camera, lightmapPreset))
 			{
 				DarknessColor(camera, lightmapPreset);
+
+                Debug.Log(lightmapPreset.darknessColor);
 			}
 			
 			var layerSettings = lightmapPreset.lightLayers.Get();
@@ -43,7 +45,10 @@ namespace FunkyCode.Rendering.Lightmap
 		private static void DarknessColor(Camera camera, LightmapPreset lightmapPreset)
 		{
 			Color color = lightmapPreset.darknessColor;
-			if (color.a > 0)
+
+            Debug.Log(color);
+
+            if (color.a > 0)
 			{
 				Material material = Lighting2D.Materials.GetAlphaColor(); // use dedicated shader?
 				material.mainTexture = null;

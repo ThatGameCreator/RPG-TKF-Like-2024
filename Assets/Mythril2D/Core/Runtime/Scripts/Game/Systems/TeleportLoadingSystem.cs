@@ -206,6 +206,7 @@ namespace Gyvr.Mythril2D
                 Debug.Log($"Loading Map {map}...");
 
                 AsyncOperation operation = SceneManager.LoadSceneAsync(map, LoadSceneMode.Additive);
+                //AsyncOperation operation = SceneManager.LoadSceneAsync(map);
 
                 operation.completed += (op) =>
                 {

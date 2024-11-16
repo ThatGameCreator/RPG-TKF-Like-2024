@@ -85,7 +85,7 @@ namespace Gyvr.Mythril2D
 
         public void OnClick()
         {
-            Debug.Log(saveFileName);
+            //Debug.Log(saveFileName);
 
             // 没有存档尝试新建
             if (m_isEmpty == true)

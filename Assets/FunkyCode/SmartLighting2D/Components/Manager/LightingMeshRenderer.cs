@@ -163,9 +163,13 @@ namespace FunkyCode
 
 			if (id.IsPixelPerfect())
 			{
-				var camera = Camera.main;
+                Debug.Log(Camera.main);
 
-				var cameraSize = LightingRender2D.GetSize(camera);
+				Camera camera = Camera.main;
+
+                Debug.Log(camera);
+
+                var cameraSize = LightingRender2D.GetSize(camera);
 				var cameraPosition = LightingPosition.GetPosition2D(-camera.transform.position);
 
 				transform.position = new Vector3(cameraPosition.x, cameraPosition.y, id.transform.position.z);

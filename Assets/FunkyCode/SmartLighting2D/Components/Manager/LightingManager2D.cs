@@ -40,7 +40,7 @@ namespace FunkyCode
 
 		public static void ForceUpdate() {}
 		
-		static public LightingManager2D Get()
+		public static LightingManager2D Get()
 		{
 			if (instance != null)
 			{
@@ -135,7 +135,9 @@ namespace FunkyCode
 		// use only late update?
 		private void Update()
 		{
-			if (Lighting2D.Disable)
+            //Debug.Log(profile.DarknessColor);
+
+            if (Lighting2D.Disable)
 			{
 				return;
 			}
@@ -194,8 +196,10 @@ namespace FunkyCode
 			if (Lighting2D.Profile.qualitySettings.updateMethod == LightingSettings.UpdateMethod.LateUpdate)
 			{
 				Rendering.Manager.Main.Render();
-			}
-		}
+
+                //Debug.Log("LateUpdate");
+            }
+        }
 
 		public void SetupProfile()
 		{
