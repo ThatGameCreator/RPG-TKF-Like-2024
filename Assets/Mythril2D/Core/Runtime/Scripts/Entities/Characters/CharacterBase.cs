@@ -48,7 +48,6 @@ namespace Gyvr.Mythril2D
         [Header("References")]
         [SerializeField] protected Animator m_animator = null;
         [SerializeField] private Rigidbody2D m_rigidbody = null;
-        [SerializeField] private SpriteRenderer m_spriteRenderer = null;
 
         [Header("General Settings")]
         [Range(Stats.MinLevel, Stats.MaxLevel)]

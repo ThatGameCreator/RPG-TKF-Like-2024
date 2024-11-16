@@ -14,7 +14,7 @@ namespace FunkyCode.Rendering.Lightmap
 			{
 				DarknessColor(camera, lightmapPreset);
 
-                Debug.Log(lightmapPreset.darknessColor);
+                //Debug.Log(lightmapPreset.darknessColor);
 			}
 			
 			var layerSettings = lightmapPreset.lightLayers.Get();
@@ -46,7 +46,7 @@ namespace FunkyCode.Rendering.Lightmap
 		{
 			Color color = lightmapPreset.darknessColor;
 
-            Debug.Log(color);
+            //Debug.Log(color);
 
             if (color.a > 0)
 			{

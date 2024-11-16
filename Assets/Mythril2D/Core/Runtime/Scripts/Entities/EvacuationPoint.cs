@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
-    public class EvacuationPoint : Entity
+    public class EvacuationPoint : OtherEntity
     {
         [SerializeField] BoxCollider2D m_boxCollider2D = null;
 

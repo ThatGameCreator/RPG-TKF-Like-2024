@@ -1,13 +1,13 @@
+using FunkyCode;
 using System.Collections;
 using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
-    public class Warehouse : Entity
+    public class Warehouse : OtherEntity
     {
         [Header("References")]
         [SerializeField] private Animator m_warehouAnimator = null;
-        [SerializeField] private SpriteRenderer m_contentSpriteRenderer = null;
 
         [Header("Warehouse Settings")]
         [SerializeField] private string m_gameFlagID = "warehouse_00";
@@ -21,7 +21,6 @@ namespace Gyvr.Mythril2D
         private bool m_hasOpeningAnimation = false;
         private bool m_hasRevealAnimation = false;
         private bool m_opened = false;
-
 
         protected void Awake()
         {

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5733890042131917493}
   - component: {fileID: 5733890042131917481}
   - component: {fileID: 2029841558491097812}
+  - component: {fileID: 8159657198629886296}
+  - component: {fileID: 3541559015267394186}
   m_Layer: 6
   m_Name: Warehouse
   m_TagString: Untagged
@@ -168,8 +170,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 8303503225474252800
+  m_spriteRenderer: {fileID: 5733890042131917494}
+  m_lightEventListener: {fileID: 3541559015267394186}
+  m_showAnimationSpeed: 10
+  m_hideAnimationSpeed: 10
   m_warehouAnimator: {fileID: 5733890042131917493}
-  m_contentSpriteRenderer: {fileID: 0}
   m_gameFlagID: warehouse_00
   m_openedAnimationParameter: opened
   m_contentRevealAnimationParameter: reveal
@@ -182,6 +187,57 @@ MonoBehaviour:
       type: {class: WarehouseInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_warehouse: {fileID: 2029841558491097812}
+--- !u!114 &8159657198629886296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733890042131917492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowType: 3
+  shadowLayer: 0
+  shadowDistance: 0
+  shadowDistanceMin: 0
+  shadowDistanceMax: 0
+  shadowTranslucency: 1
+  maskType: 0
+  maskLit: 0
+  maskPivot: 0
+  maskLayer: 0
+  maskLitCustom: 1
+  bumpMapMode:
+    type: 0
+    textureType: 0
+    texture: {fileID: 0}
+    sprite: {fileID: 0}
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 5733890042131917494}
+  mainShape:
+    shadowType: 3
+    maskType: 0
+    maskPivot: 0
+    transform: {fileID: 5733890042131917495}
+--- !u!114 &3541559015267394186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733890042131917492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10005d7ce600784e93451bdcd95fa31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDistance: 0
+  visability: 0
 --- !u!1 &9081863071045509013
 GameObject:
   m_ObjectHideFlags: 0

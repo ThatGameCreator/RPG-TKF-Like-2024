@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
-    public class DeadBody : Entity
+    public class DeadBody : OtherEntity
     {
         [Header("References")]
 

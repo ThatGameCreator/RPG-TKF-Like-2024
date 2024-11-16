@@ -17,6 +17,11 @@ namespace Gyvr.Mythril2D
             UpdateStats();
         }
 
+        private void Update()
+        {
+            UpdateFieldOfWar();
+        }
+
         private void Start()
         {
             if (m_permanentDeath && GameManager.GameFlagSystem.Get(m_gameFlagID))

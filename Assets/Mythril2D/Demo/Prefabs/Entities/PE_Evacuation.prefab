@@ -9,10 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3173284316470414239}
-  - component: {fileID: 1296178238096688444}
   - component: {fileID: 1556421927812608288}
   - component: {fileID: 5329245976872981853}
   - component: {fileID: 2727569325517639539}
+  - component: {fileID: 1296178238096688444}
+  - component: {fileID: 2694157109529852542}
+  - component: {fileID: 1929075094338402123}
   m_Layer: 6
   m_Name: PE_Evacuation
   m_TagString: Untagged
@@ -35,31 +37,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1296178238096688444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7021901359812454104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f292ca86cfd9594eb75dd940331217e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_interaction:
-    rid: 3619733683065585668
-  m_boxCollider2D: {fileID: 1556421927812608288}
-  references:
-    version: 2
-    RefIds:
-    - rid: 3619733683065585668
-      type: {class: EvacuationPointInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
-      data:
-        m_dialogueIfWantGetOut: {fileID: 11400000, guid: cd360fbdad694854fa309301f90dab3f, type: 2}
-        m_dialogueIfDontWantGetOut: {fileID: 0}
-        m_evacuationPointDatabase: {fileID: 11400000, guid: b3a22b4922e086a408ff5e3e79207b69, type: 2}
-        m_evacuationPoint: {fileID: 1296178238096688444}
 --- !u!61 &1556421927812608288
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -184,3 +161,83 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1296178238096688444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7021901359812454104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f292ca86cfd9594eb75dd940331217e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_interaction:
+    rid: 3619733683065585668
+  m_spriteRenderer: {fileID: 2727569325517639539}
+  m_lightEventListener: {fileID: 2694157109529852542}
+  m_showAnimationSpeed: 10
+  m_hideAnimationSpeed: 10
+  m_boxCollider2D: {fileID: 1556421927812608288}
+  references:
+    version: 2
+    RefIds:
+    - rid: 3619733683065585668
+      type: {class: EvacuationPointInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
+      data:
+        m_dialogueIfWantGetOut: {fileID: 11400000, guid: cd360fbdad694854fa309301f90dab3f, type: 2}
+        m_dialogueIfDontWantGetOut: {fileID: 0}
+        m_evacuationPointDatabase: {fileID: 11400000, guid: b3a22b4922e086a408ff5e3e79207b69, type: 2}
+        m_evacuationPoint: {fileID: 1296178238096688444}
+--- !u!114 &2694157109529852542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7021901359812454104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10005d7ce600784e93451bdcd95fa31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDistance: 0
+  visability: 0
+--- !u!114 &1929075094338402123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7021901359812454104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowType: 3
+  shadowLayer: 0
+  shadowDistance: 1
+  shadowDistanceMin: 0
+  shadowDistanceMax: 0
+  shadowTranslucency: 1
+  maskType: 0
+  maskLit: 0
+  maskPivot: 0
+  maskLayer: 0
+  maskLitCustom: 1
+  bumpMapMode:
+    type: 0
+    textureType: 0
+    texture: {fileID: 0}
+    sprite: {fileID: 0}
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 2727569325517639539}
+  mainShape:
+    shadowType: 3
+    maskType: 0
+    maskPivot: 0
+    transform: {fileID: 3173284316470414239}

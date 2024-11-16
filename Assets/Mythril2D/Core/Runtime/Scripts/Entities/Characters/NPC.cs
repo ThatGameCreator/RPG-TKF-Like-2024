@@ -1,10 +1,17 @@
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 namespace Gyvr.Mythril2D
 {
     public class NPC : Character<NPCSheet>
     {
         [SerializeField] private UINPCIcon m_npcIcon = null;
+
+        SpriteResolver m_spriteResolver = null;
+        private void Update()
+        {
+            UpdateFieldOfWar();
+        }
 
         private void Start()
         {

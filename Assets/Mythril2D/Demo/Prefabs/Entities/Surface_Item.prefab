@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3423380997195486025}
   - component: {fileID: 3423380997195486038}
   - component: {fileID: 4072860861002323889}
+  - component: {fileID: 4955676541213193783}
+  - component: {fileID: 6515981674182898838}
   m_Layer: 6
   m_Name: Surface_Item
   m_TagString: Untagged
@@ -145,6 +147,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 8303503312880140292
+  m_spriteRenderer: {fileID: 3423380997195486025}
+  m_lightEventListener: {fileID: 6515981674182898838}
+  m_showAnimationSpeed: 10
+  m_hideAnimationSpeed: 10
   m_loot:
     entries:
     - item: {fileID: 11400000, guid: 7716cee2da79443a88980e270d01588b, type: 2}
@@ -159,3 +165,54 @@ MonoBehaviour:
       type: {class: SurfaceItemInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_surfaceItem: {fileID: 4072860861002323889}
+--- !u!114 &4955676541213193783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423380997195486027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowType: 3
+  shadowLayer: 0
+  shadowDistance: 1
+  shadowDistanceMin: 0
+  shadowDistanceMax: 0
+  shadowTranslucency: 1
+  maskType: 0
+  maskLit: 0
+  maskPivot: 0
+  maskLayer: 0
+  maskLitCustom: 1
+  bumpMapMode:
+    type: 0
+    textureType: 0
+    texture: {fileID: 0}
+    sprite: {fileID: 0}
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 3423380997195486025}
+  mainShape:
+    shadowType: 3
+    maskType: 0
+    maskPivot: 0
+    transform: {fileID: 3423380997195486024}
+--- !u!114 &6515981674182898838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423380997195486027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10005d7ce600784e93451bdcd95fa31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDistance: 0
+  visability: 0

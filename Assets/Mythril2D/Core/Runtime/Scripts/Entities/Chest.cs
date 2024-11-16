@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
-    public class Chest : Entity
+    public class Chest : OtherEntity
     {
         [Header("References")]
         [SerializeField] private Animator m_chestAnimator = null;

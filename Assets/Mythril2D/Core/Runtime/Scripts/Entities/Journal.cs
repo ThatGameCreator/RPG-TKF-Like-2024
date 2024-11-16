@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
-    public class Journal : Entity
+    public class Journal : OtherEntity
     {
 
     }

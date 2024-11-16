@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 5733890042131917481}
   - component: {fileID: 5733890042131917482}
   - component: {fileID: 8073955503684347179}
+  - component: {fileID: 1499653012271325872}
   m_Layer: 6
   m_Name: Chest
   m_TagString: Untagged
@@ -247,6 +248,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 2152590473451798558
+  m_spriteRenderer: {fileID: 5733890042131917494}
+  m_lightEventListener: {fileID: 1499653012271325872}
+  m_showAnimationSpeed: 10
+  m_hideAnimationSpeed: 10
   m_chestAnimator: {fileID: 5733890042131917493}
   m_contentAnimator: {fileID: 5733890043223343128}
   m_contentSpriteRenderer: {fileID: 5733890043223343129}
@@ -286,18 +291,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5733890042131917492}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shadowType: 3
   shadowLayer: 0
-  shadowDistance: 0
-  shadowDistanceMin: 0.5
-  shadowDistanceMax: 1
-  shadowTranslucency: 0
-  maskType: 1
+  shadowDistance: 1
+  shadowDistanceMin: 0
+  shadowDistanceMax: 0
+  shadowTranslucency: 1
+  maskType: 0
   maskLit: 0
   maskPivot: 0
   maskLayer: 0
@@ -313,9 +318,23 @@ MonoBehaviour:
     spriteRenderer: {fileID: 5733890042131917494}
   mainShape:
     shadowType: 3
-    maskType: 1
+    maskType: 0
     maskPivot: 0
     transform: {fileID: 5733890042131917495}
+--- !u!114 &1499653012271325872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5733890042131917492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10005d7ce600784e93451bdcd95fa31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDistance: 0
+  visability: 0
 --- !u!1 &5733890043223343142
 GameObject:
   m_ObjectHideFlags: 0
