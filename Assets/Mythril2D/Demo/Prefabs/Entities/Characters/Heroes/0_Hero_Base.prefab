@@ -9837,8 +9837,8 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.17735851, g: 0.17735851, b: 0.17735851, a: 1}
-  size: 4
+  color: {r: 0.4867924, g: 0.4867924, b: 0.4867924, a: 1}
+  size: 8
   spotAngleInner: 360
   spotAngleOuter: 360
   coreSize: 0.5
@@ -10100,17 +10100,6 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4390082571606135468, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
   m_PrefabInstance: {fileID: 1366979822650768168}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4451619859432447468 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3404484145176520388, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
-  m_PrefabInstance: {fileID: 1366979822650768168}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d10005d7ce600784e93451bdcd95fa31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &6241793362411393680 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4928962304513780152, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
@@ -10159,7 +10148,7 @@ MonoBehaviour:
   m_interaction:
     rid: -2
   m_spriteRenderer: {fileID: 6241793362411393681}
-  m_lightEventListener: {fileID: 4451619859432447468}
+  m_lightEventListener: {fileID: 0}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
   m_animator: {fileID: 6241793362411393680}

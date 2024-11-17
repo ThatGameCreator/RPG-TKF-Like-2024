@@ -16,8 +16,12 @@ MonoBehaviour:
   m_displayName: Skeleton
   m_abilitiesPerLevel:
     m_keys:
+    - {fileID: 11400000, guid: d451884129ab461459ca4a2fad3148b6, type: 2}
     - {fileID: 11400000, guid: aee583002dde78a4e9594256eb9c8b73, type: 2}
-    m_values: 01000000
+    - {fileID: 11400000, guid: 22aa39870b9f5cd4690bfd6312f87500, type: 2}
+    - {fileID: 11400000, guid: 61c9fa7a114b7df4dac12bed8e5a7409, type: 2}
+    - {fileID: 11400000, guid: 722f0c9823cf545ce8e44925ed60ab80, type: 2}
+    m_values: 0100000001000000010000000100000001000000
   m_hitAudio: {fileID: 11400000, guid: a4e5377a4fc466b41889cf9f0874ca00, type: 2}
   m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
   stats:

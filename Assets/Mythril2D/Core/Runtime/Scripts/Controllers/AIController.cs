@@ -58,6 +58,42 @@ namespace Gyvr.Mythril2D
             m_initialPosition = transform.position;
         }
 
+        // 获取技能是在Awake所以得在Start后面执行这个更改
+        private void Start()
+        {
+            // Find the first triggerable ability available on the character and set distance
+            foreach (AbilityBase ability in m_character.abilityInstances)
+            {
+                if (ability is ITriggerableAbility)
+                {
+                    // 获取 AbilitySheet
+                    AbilitySheet abilitySheet = ability.abilitySheet;
+
+                    // 确认是否为 DamageAbilitySheet 类型
+                    if (abilitySheet is DamageAbilitySheet damageAbilitySheet)
+                    {
+                        // 访问 DamageDescriptor
+                        DamageDescriptor damageDescriptor = damageAbilitySheet.damageDescriptor;
+
+                        // 获取 distanceType 属性
+                        EDistanceType distanceType = damageDescriptor.distanceType;
+
+                        if (distanceType == EDistanceType.Melee)
+                        {
+                            // 0.25时候 好像太短会让玩家进入到碰撞体中，导致检测不到对象
+                            m_attackTriggerRadius = 0.75f;
+                        }
+                        else
+                        {
+                            m_attackTriggerRadius = 6.0f;
+                            m_attackCooldown = 3.0f;
+                        }
+                    }
+                    break; // 如果只需要处理第一个符合条件的技能，可以在这里中断循环
+                }
+            }
+        }
+
         private void OnEnable()
         {
             m_character.provokedEvent.AddListener(OnProvoked);
@@ -135,8 +171,10 @@ namespace Gyvr.Mythril2D
 
         private void CheckIfTargetOutOfRange(float distanceToTarget)
         {
-            float distanceToInitialPosition = Vector2.Distance(m_initialPosition, transform.position);
+            float distanceToInitialPosition = Vector2.Distance(m_initialPosition, this.transform.position);
+
             bool isTooFarFromInitialPosition = distanceToInitialPosition > m_resetFromInitialPositionRadius;
+
             bool isTooFarFromTarget = distanceToTarget > m_resetFromTargetDistanceRadius;
 
             if (isTooFarFromInitialPosition || isTooFarFromTarget)
@@ -233,8 +271,15 @@ namespace Gyvr.Mythril2D
             {
                 float distanceToTarget = Vector2.Distance(m_target.position, transform.position);
 
-                TryToAttackTarget(distanceToTarget);
-                CheckIfTargetOutOfRange(distanceToTarget);
+                // 如果目标在攻击范围内，则尝试攻击
+                if (distanceToTarget < m_attackTriggerRadius)
+                {
+                    TryToAttackTarget(distanceToTarget);
+                }
+                else // 目标不在攻击范围内时才检查追逐逻辑
+                {
+                    CheckIfTargetOutOfRange(distanceToTarget);
+                }
             }
 
             UpdateTargetPosition();

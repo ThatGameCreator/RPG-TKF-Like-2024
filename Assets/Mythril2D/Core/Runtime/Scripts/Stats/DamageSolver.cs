@@ -69,7 +69,7 @@ namespace Gyvr.Mythril2D
                     input.flatDamages,
                     input.scaledDamages,
                     input.scale,
-                    GetOffensiveStat(attacker.stats, input.type));
+                    GetOffensiveStat(attacker.stats, input.damageType));
 
                 if (GameManager.Config.canCriticalHit && EvaluateCritical(attacker.stats[EStat.Luck]))
                 {
@@ -82,7 +82,8 @@ namespace Gyvr.Mythril2D
                     source = EDamageSource.Character,
                     attacker = attacker,
                     damage = damage,
-                    type = input.type,
+                    damageType = input.damageType,
+                    distanceType = input.distanceType,
                     flags = damageFlags
                 };
             }
@@ -93,7 +94,8 @@ namespace Gyvr.Mythril2D
                     source = EDamageSource.Unknown,
                     attacker = null,
                     damage = input.flatDamages,
-                    type = input.type,
+                    damageType = input.damageType,
+                    distanceType = input.distanceType,
                     flags = EDamageFlag.None
                 };
             }
@@ -105,7 +107,7 @@ namespace Gyvr.Mythril2D
             {
                 CharacterBase attacker = output.attacker as CharacterBase;
 
-                int damage = CalculateDamageIn(output.damage, GetDefensiveStat(defender.stats, output.type));
+                int damage = CalculateDamageIn(output.damage, GetDefensiveStat(defender.stats, output.damageType));
                 bool missed =
                     GameManager.Config.canMissHit ?
                     EvaluateMiss(attacker.stats[EStat.Agility], defender.stats[EStat.Agility]) :

@@ -24,6 +24,13 @@ namespace Gyvr.Mythril2D
         Magical
     }
 
+    public enum EDistanceType
+    {
+        None,
+        Melee,
+        Ranged,
+    }
+
     /// <summary>
     /// Damage settings
     /// </summary>
@@ -33,7 +40,8 @@ namespace Gyvr.Mythril2D
         public int flatDamages;
         public int scaledDamages;
         public float scale;
-        public EDamageType type;
+        public EDamageType damageType;
+        public EDistanceType distanceType;
     }
 
     /// <summary>
@@ -44,7 +52,8 @@ namespace Gyvr.Mythril2D
         public EDamageSource source;
         public object attacker;
         public int damage;
-        public EDamageType type;
+        public EDamageType damageType;
+        public EDistanceType distanceType;
         public EDamageFlag flags;
     }
 

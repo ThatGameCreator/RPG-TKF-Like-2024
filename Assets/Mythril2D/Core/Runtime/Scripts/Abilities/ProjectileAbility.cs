@@ -53,8 +53,11 @@ namespace Gyvr.Mythril2D
             
             float angleOffset = (m_sheet.spread / m_sheet.projectileCount) * (projectileIndex - (int)(m_sheet.projectileCount / 2.0f));
             angleOffset = m_sheet.projectileCount % 2 == 0 ? (projectileIndex >= (int)(m_sheet.projectileCount / 2.0f) ? angleOffset + m_sheet.spread / m_sheet.projectileCount : angleOffset):angleOffset;
+
+
             //float angleOffset = (m_sheet.spread / m_sheet.projectileCount) * projectileIndex - (m_sheet.spread / 2.0f);
-            Debug.Log("angleOffset:" + angleOffset + ",projectileIndex:" + projectileIndex + "m_sheet" + m_sheet.name);
+            //Debug.Log("angleOffset:" + angleOffset + ",projectileIndex:" + projectileIndex + "m_sheet" + m_sheet.name);
+
             Vector3 offestSum = Quaternion.AngleAxis(angleOffset, lookAtLeft ? Vector3.forward : Vector3.back).eulerAngles + offestRotation.eulerAngles;
             direction = Quaternion.Euler(offestSum) * direction;
             //direction = Quaternion.AngleAxis(angleOffset, lookAtLeft ? Vector3.forward : Vector3.back) * direction;

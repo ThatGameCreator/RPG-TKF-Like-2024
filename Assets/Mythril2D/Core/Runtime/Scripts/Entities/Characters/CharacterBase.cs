@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -136,7 +137,15 @@ namespace Gyvr.Mythril2D
             m_currentStats.changed.AddListener(OnCurrentStatsChanged);
 
             CheckForAnimations();
-            InitializeAbilities();
+
+            if (isPlayer == true)
+            {
+                InitializeAbilities();
+            }
+            else
+            {
+                InitializeAbilities();
+            }
 
             // 放这里还没开始实例化 会报错
             //int layermask = GameManager.Config.collisionContactFilter.layerMask;
@@ -187,19 +196,61 @@ namespace Gyvr.Mythril2D
         {
             IEnumerable<AbilitySheet> characterSpecificAvailableAbilities = characterSheet.GetAvailableAbilitiesAtLevel(m_level);
 
-            foreach (AbilitySheet ability in characterSpecificAvailableAbilities)
+            if (isPlayer)
             {
-                AddAbility(ability);
-            }
-
-            if (m_additionalAbilities != null)
-            {
-                foreach (AbilitySheet ability in m_additionalAbilities)
+                // 玩家：按照原来的逻辑添加技能
+                foreach (AbilitySheet ability in characterSpecificAvailableAbilities)
                 {
                     AddAbility(ability);
                 }
+
+                if (m_additionalAbilities != null)
+                {
+                    foreach (AbilitySheet ability in m_additionalAbilities)
+                    {
+                        AddAbility(ability);
+                    }
+                }
+            }
+            else
+            {
+                // 怪物：随机添加技能
+                if (characterSpecificAvailableAbilities.Any())
+                {
+                    AddRandomAbility(characterSpecificAvailableAbilities);
+                }
+
+                if (m_additionalAbilities != null && m_additionalAbilities.Any())
+                {
+                    AddRandomAbility(m_additionalAbilities);
+                }
+            }
+
+        }
+
+        private void AddRandomAbility(IEnumerable<AbilitySheet> abilityPool)
+        {
+            // 检查技能池是否为空
+            if (abilityPool == null || !abilityPool.Any())
+            {
+                Debug.LogWarning("Ability pool is empty. No ability added.");
+                return;
+            }
+
+            // 从技能池中随机选择一个技能
+            AbilitySheet randomAbility = abilityPool.ElementAt(UnityEngine.Random.Range(0, abilityPool.Count()));
+
+            // 添加该技能
+            if (AddAbility(randomAbility))
+            {
+                //Debug.Log($"Random ability {randomAbility.name} has been added.");
+            }
+            else
+            {
+                //Debug.Log($"Ability {randomAbility.name} already exists and was not added.");
             }
         }
+
 
         protected virtual bool AddAbility(AbilitySheet ability)
         {

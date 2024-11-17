@@ -16,6 +16,7 @@ MonoBehaviour:
   m_displayName: Baton Stroke
   m_description: A simple yet effective attack with a staff
   m_prefab: {fileID: 7884856398598054234, guid: 5d4b52437ff2c4b409c1a29b2427fb67, type: 3}
+  m_staminaCost: 0
   m_manaCost: 0
   m_abilityStateManagementMode: 0
   m_canInterupt: 0
@@ -25,4 +26,5 @@ MonoBehaviour:
     flatDamages: 0
     scaledDamages: 0
     scale: 0.75
-    type: 1
+    damageType: 1
+    distanceType: 1

@@ -22,7 +22,7 @@ namespace Gyvr.Mythril2D
 
         protected void UpdateFieldOfWar()
         {
-            Debug.Log("UpdateFieldOfWar");
+            //Debug.Log("UpdateFieldOfWar");
 
             if (m_spriteRenderer != null)
             {

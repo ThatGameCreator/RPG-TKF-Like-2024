@@ -16,6 +16,7 @@ MonoBehaviour:
   m_displayName: Triple Shot
   m_description: Throw 3 arrows in a cone, but does slightly less damages per arrow
   m_prefab: {fileID: 7041185181918867506, guid: 17c8dfd7408d5ad4f9755371ded29e70, type: 3}
+  m_staminaCost: 0
   m_manaCost: 1
   m_abilityStateManagementMode: 0
   m_canInterupt: 1
@@ -25,7 +26,8 @@ MonoBehaviour:
     flatDamages: 0
     scaledDamages: 0
     scale: 0.5
-    type: 1
+    damageType: 1
+    distanceType: 2
   m_projectileSpeed: 15
   m_projectileCount: 3
   m_spread: 30
