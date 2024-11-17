@@ -30,12 +30,12 @@ namespace Gyvr.Mythril2D
                 var materialColor = m_spriteRenderer.material.color;
 
                 // 目标颜色
-                Color targetColor = m_lightEventListener.visability >= 0.7f
+                Color targetColor = m_lightEventListener.visability >= 0.5f
                     ? m_initialSpriteColor
                     : new Color(materialColor.r, materialColor.g, materialColor.b, 0f);
 
                 // 插值更新颜色
-                float animationSpeed = m_lightEventListener.visability >= 0.7f
+                float animationSpeed = m_lightEventListener.visability >= 0.5f
                     ? m_showAnimationSpeed
                     : m_hideAnimationSpeed;
 

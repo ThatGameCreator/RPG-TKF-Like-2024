@@ -346,6 +346,43 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Cave_Exit_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 14, y: -14}
+        - {x: 14, y: -15}
+        - {x: 12, y: -15}
+        - {x: 12, y: -16}
+        - {x: 8, y: -16}
+        - {x: 8, y: -15}
+        - {x: -8, y: -15}
+        - {x: -8, y: -16}
+        - {x: -12, y: -16}
+        - {x: -12, y: -15}
+        - {x: -14, y: -15}
+        - {x: -14, y: -14}
+        - {x: -16, y: -14}
+        - {x: -16, y: 16}
+        - {x: 16, y: 16}
+        - {x: 16, y: -14}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f9302972b20548439d49902456482b3
+      internalID: 320096553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -359,6 +396,7 @@ TextureImporter:
     nameFileIdTable:
       Cave_Exit_0: -449869052
       Cave_Exit_1: -1115447360
+      Cave_Exit_10: 320096553
       Cave_Exit_2: -256413523
       Cave_Exit_3: -1491037783
       Cave_Exit_4: -1863197825
