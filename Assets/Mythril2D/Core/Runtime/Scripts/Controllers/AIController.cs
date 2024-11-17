@@ -81,7 +81,7 @@ namespace Gyvr.Mythril2D
                         if (distanceType == EDistanceType.Melee)
                         {
                             // 0.25时候 好像太短会让玩家进入到碰撞体中，导致检测不到对象
-                            m_attackTriggerRadius = 0.75f;
+                            m_attackTriggerRadius = 1.0f;
                         }
                         else
                         {

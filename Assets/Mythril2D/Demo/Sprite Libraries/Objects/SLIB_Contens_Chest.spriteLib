@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Closed
+    m_Hash: 57362642
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Closed
+      m_Hash: 57362642
+      m_Sprite: {fileID: -1419540960, guid: d55bf093062e83848b4b7deebbc36b52, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1102979991, guid: 9152f21db15ccee46b0fd00c3c615553, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: Transition
+    m_Hash: 944284810
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: chest_1
+      m_Hash: 348680787
+      m_Sprite: {fileID: -233708102, guid: d55bf093062e83848b4b7deebbc36b52, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1137799495, guid: 9152f21db15ccee46b0fd00c3c615553, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: Opened
+    m_Hash: 721035885
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Opened
+      m_Hash: 721035885
+      m_Sprite: {fileID: 86743324, guid: d55bf093062e83848b4b7deebbc36b52, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1091148418, guid: 9152f21db15ccee46b0fd00c3c615553, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  m_PrimaryLibraryGUID: 783988e569c3e644681a98a8eac56edf
+  m_ModificationHash: 638674549573971202
+  m_Version: 1
