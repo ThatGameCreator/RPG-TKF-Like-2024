@@ -9837,8 +9837,8 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.4867924, g: 0.4867924, b: 0.4867924, a: 1}
-  size: 8
+  color: {r: 0.07169801, g: 0.07169801, b: 0.07169801, a: 1}
+  size: 1
   spotAngleInner: 360
   spotAngleOuter: 360
   coreSize: 0.5
@@ -10011,6 +10011,99 @@ MonoBehaviour:
     y: 50
   m_duration: 0.12
   m_criticalHitAmplitudeModifier: 2
+--- !u!1 &8232223717861777571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 173860390523813784}
+  - component: {fileID: 2794800349918259998}
+  m_Layer: 0
+  m_Name: Self Light Sight For Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &173860390523813784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232223717861777571}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6241793363770211169}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2794800349918259998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232223717861777571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a34663ca705a54eac3205e225a6d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightType: 1
+  lightPresetId: 0
+  eventPresetId: 0
+  lightLayer: 0
+  occlusionLayer: 0
+  translucentLayer: 0
+  translucentPresetId: 0
+  color: {r: 0.3056603, g: 0.3056603, b: 0.3056603, a: 1}
+  size: 8
+  spotAngleInner: 360
+  spotAngleOuter: 360
+  coreSize: 0.5
+  falloff: 0
+  lightStrength: 0
+  outerAngle: 15
+  lightRadius: 1
+  shadowDistanceClose: 0
+  shadowDistanceFar: 0
+  maskTranslucencyQuality: 1
+  maskTranslucencyStrength: 0.5
+  applyRotation: 0
+  textureSize: 1
+  meshMode:
+    enable: 0
+    alpha: 0.5
+    shader: 0
+    materials:
+    - {fileID: 0}
+    sortingLayer:
+      name: Default
+      Order: 0
+  bumpMap:
+    intensity: 1
+    depth: 1
+  whenInsideCollider: 0
+  lightSprite: 1
+  sprite: {fileID: 21300000, guid: 4b8f7314cdf26b148af1b178e90065d5, type: 3}
+  spriteFlipX: 0
+  spriteFlipY: 0
+  freeFormFalloff: 1
+  freeFormPoint: 1
+  freeFormFalloffStrength: 1
+  freeFormPoints:
+    points:
+    - {x: 1, y: 0}
+    - {x: -0.50000006, y: 0.8660254}
+    - {x: -0.4999999, y: -0.86602545}
+  drawingEnabled: 1
+  drawingTranslucencyEnabled: 0
 --- !u!1001 &1366979822650768168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10076,6 +10169,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8828027125167162452}
+    - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 173860390523813784}
     - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
       addedObject: {fileID: 922906447861095075}

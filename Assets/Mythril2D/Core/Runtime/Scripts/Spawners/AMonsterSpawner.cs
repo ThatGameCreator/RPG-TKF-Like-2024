@@ -16,7 +16,8 @@ namespace Gyvr.Mythril2D
     {
         [Header("General Settings")]
         //[SerializeField] private MonsterSpawn[] m_monsters = null;
-        [SerializeField] private GameObject monsterPrefab = null;
+        [SerializeField] private bool isUseGroup = false;
+        [SerializeField] private GameObject monsterPrefabs = null;
         [SerializeField] private int rate = 100;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_minLevel = Stats.MinLevel;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_maxLevel = Stats.MaxLevel;
@@ -43,31 +44,8 @@ namespace Gyvr.Mythril2D
 
         protected abstract Vector2 FindSpawnLocation();
 
-        //private bool Validate()
-        //{
-        //    int rateSum = 0;
-
-        //    foreach (MonsterSpawn monster in m_monsters)
-        //    {
-        //        rateSum += monster.rate;
-        //    }
-
-        //    return m_valid = rateSum == 100;
-        //}
-
         private void Prespawn()
         {
-            //if (Validate() == true)
-            //{
-            //    //Array.Sort(m_monsters, (a, b) => a.rate.CompareTo(b.rate));
-
-                
-            //}
-            //else
-            //{
-            //    Debug.LogError("MonsterSpawner validation failed. Make sure the total spawn rate is equal to 100");
-            //}
-
             for (int i = 0; i < m_monstersToPrespawn; ++i)
             {
                 TrySpawn();
@@ -100,25 +78,12 @@ namespace Gyvr.Mythril2D
 
             if (randomNumber <= rate)
             {
-                return monsterPrefab;
+                return monsterPrefabs;
             }
             else
             {
                 return null;
             }
-
-            //foreach (MonsterSpawn monster in m_monsters)
-            //{
-            //    if (randomNumber <= monster.rate)
-            //    {
-            //        return monster.prefab;
-            //    }
-            //    else
-            //    {
-            //        //randomNumber -= monster.rate;
-            //    }
-            //}
-
         }
 
         private bool CanSpawn()
@@ -139,29 +104,49 @@ namespace Gyvr.Mythril2D
             Vector2 position = FindSpawnLocation();
             GameObject monster = FindMonsterToSpawn();
 
-            if (monster)
+            if (monster != null)
             {
                 GameObject instance = Instantiate(monster, position, Quaternion.identity, transform);
                 instance.transform.parent = null;
 
-                Monster monsterComponent = instance.GetComponent<Monster>();
-                ++m_totalSpawnedMonsterCount;
-
-                if (monsterComponent)
+                if (isUseGroup == true)
                 {
-                    monsterComponent.SetLevel(UnityEngine.Random.Range(m_minLevel, m_maxLevel));
-                    // 如果这里增加对销毁的监听 为什么不需要考虑上面怪物数量的 -- ？
-                    monsterComponent.destroyed.AddListener(() => m_spawnedMonsters.Remove(monsterComponent));
-                    m_spawnedMonsters.Add(monsterComponent);
+                    MonsterGroup monsterGroup = instance.GetComponent<MonsterGroup>();
+
+                    foreach (Monster child in monsterGroup.monsters)
+                    {
+                        SetMonster(child);
+                    }
                 }
                 else
                 {
-                    Debug.LogError("No Monster component found on the monster prefab");
+                    Monster monsterComponent = instance.GetComponent<Monster>();
+                    ++m_totalSpawnedMonsterCount;
+
+                    SetMonster(monsterComponent);
                 }
             }
             else
             {
                 Debug.LogError("Couldn't find a monster to spawn, please check your spawn rates and make sure their sum is 100");
+            }
+        }
+
+        private void SetMonster(Monster monster)
+        {
+            if (monster)
+            {
+                // 设置子对象怪物等级
+                monster.SetLevel(UnityEngine.Random.Range(m_minLevel, m_maxLevel));
+
+                // 添加销毁监听
+                // 如果这里增加对销毁的监听 为什么不需要考虑上面怪物数量的 -- ？
+                monster.destroyed.AddListener(() => m_spawnedMonsters.Remove(monster));
+                m_spawnedMonsters.Add(monster);
+            }
+            else
+            {
+                Debug.LogError("No Monster component found on the monster prefab");
             }
         }
     }

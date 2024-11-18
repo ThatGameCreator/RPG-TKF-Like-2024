@@ -21,6 +21,7 @@ MonoBehaviour:
   hitboxLayer: Hitbox
   layersIgnoredByProjectiles:
   - Collision A
+  - Collision C
   collisionContactFilter:
     useTriggers: 0
     useLayerMask: 1
