@@ -767,7 +767,7 @@ namespace Gyvr.Mythril2D
         public void SetLookAtDirection(Transform target)
         {
             Vector3 direction = target.position - transform.position;
-            SetLookAtDirection(direction.x, direction.y);
+            SetLookAtDirection(direction.x);
         }
 
         public void SetLookAtDirection(Vector2 direction)
@@ -781,27 +781,29 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public void SetLookAtDirection(float xAngle, float yAngle)
+        public void SetXAndYAngle(float xAngle, float yAngle)
         {
             m_FaceToTargetXAngle = xAngle;
             m_FaceToTargetYAngle = yAngle;    
 
-            if (m_spriteRenderer)
-            {
-                // 判断水平方向是否需要翻转
-                bool isFacingLeft = xAngle < 0;
+            //if (m_spriteRenderer)
+            //{
+            //    // 判断水平方向是否需要翻转
+            //    bool isFacingLeft = xAngle < 0;
 
-                // 根据水平角度设置 flipX
-                if (m_spriteRenderer.flipX != isFacingLeft)
-                {
-                    m_spriteRenderer.flipX = isFacingLeft;
-                    directionChangedEvent.Invoke(isFacingLeft ? EDirection.Left : EDirection.Right);
-                    //SetLookAtDirection(isFacingLeft ? EDirection.Left : EDirection.Right);
-                }
-            }
+            //    // 根据水平角度设置 flipX
+            //    if (m_spriteRenderer.flipX != isFacingLeft)
+            //    {
+            //        Debug.Log("flipX");
+
+            //        m_spriteRenderer.flipX = isFacingLeft;
+            //        directionChangedEvent.Invoke(isFacingLeft ? EDirection.Left : EDirection.Right);
+            //        //SetLookAtDirection(isFacingLeft ? EDirection.Left : EDirection.Right);
+            //    }
+            //}
         }
 
-        public void SetLookAtDirectionOld(float direction)
+        public void SetLookAtDirection(float direction)
         {
             if (direction != 0.0f)
             {

@@ -348,12 +348,10 @@ namespace Gyvr.Mythril2D
 
         public void FaceTarget()
         {
-            if (m_character.Can(EActionFlags.Move) && m_target)
+            if (m_character.Can(EActionFlags.Move) && m_target != null)
             {
                 // 计算目标的方向向量
                 Vector3 directionToTarget = m_target.position - transform.position;
-
-                //Debug.Log("directionToTarget = " + directionToTarget);
 
                 // 使方向向量标准化，避免速度放大
                 directionToTarget.Normalize();
@@ -367,7 +365,9 @@ namespace Gyvr.Mythril2D
                 float yAngle = Mathf.Asin(directionToTarget.y) * Mathf.Rad2Deg;
 
                 // 使用 SetLookAtDirection 来设置怪物的朝向，传递两个角度
-                m_character.SetLookAtDirection(xAngle, yAngle);
+                m_character.SetXAndYAngle(xAngle, yAngle);
+
+                m_character.SetLookAtDirection(directionToTarget.x); // Make sure the AI face its target
             }
         }
 
@@ -424,6 +424,7 @@ namespace Gyvr.Mythril2D
             else
             {
                 m_character.SetMovementDirection(Vector2.zero);
+
                 FaceTarget();
             }
         }

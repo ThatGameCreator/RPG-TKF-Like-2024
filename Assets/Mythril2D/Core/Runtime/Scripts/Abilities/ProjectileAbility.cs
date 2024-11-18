@@ -97,7 +97,7 @@ namespace Gyvr.Mythril2D
             float targetXAngle = m_character.FaceToTargetXAngle;
             float targetYAngle = m_character.FaceToTargetYAngle;
 
-            Debug.Log("targetXAngle, targetYAngle" + m_character.FaceToTargetXAngle + " + " + m_character.FaceToTargetYAngle);
+            //Debug.Log("targetXAngle, targetYAngle" + m_character.FaceToTargetXAngle + " + " + m_character.FaceToTargetYAngle);
 
             // 使用目标的X和Y角度来计算方向
             Vector3 direction = new Vector3(Mathf.Cos(targetYAngle * Mathf.Deg2Rad) * Mathf.Cos(targetXAngle * Mathf.Deg2Rad),
