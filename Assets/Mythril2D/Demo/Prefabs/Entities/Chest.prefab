@@ -144,10 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 0
-  m_labelHash: 0
+  m_CategoryHash: 4.443281e-13
+  m_labelHash: 4.443281e-13
   m_SpriteKey: 0
-  m_SpriteHash: 425254030
+  m_SpriteHash: 329186667
 --- !u!212 &5733890042131917494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1419540960, guid: d55bf093062e83848b4b7deebbc36b52, type: 3}
+  m_Sprite: {fileID: 86743324, guid: d55bf093062e83848b4b7deebbc36b52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -253,7 +253,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.017000496}
+  m_Offset: {x: 0, y: -0.0008574426}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.25}
@@ -264,7 +264,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75255966, y: 0.66599905}
+  m_Size: {x: 0.75255966, y: 0.6302832}
   m_EdgeRadius: 0
 --- !u!114 &5733890042131917482
 MonoBehaviour:
@@ -297,8 +297,8 @@ MonoBehaviour:
   m_openedAnimationParameter: opened
   m_contentRevealAnimationParameter: reveal
   m_contentRevealIconCycleDuration: 1
-  m_noItemDialogue: {fileID: 11400000, guid: e634ee7dda9a046c490a07565b301121, type: 2}
-  m_hasItemDialogue: {fileID: 11400000, guid: 814829904a4ff47edb9309830cad5b56, type: 2}
+  m_noItemDialogue: {fileID: 0}
+  m_hasItemDialogue: {fileID: 0}
   m_openingSound: {fileID: 11400000, guid: 9f507ff38646b6547a26362dec8eb8f3, type: 2}
   references:
     version: 2
@@ -308,16 +308,11 @@ MonoBehaviour:
       data:
         m_interactions:
         - rid: 2152590473451798559
-        - rid: 2722357154162147328
         m_interruptionPolicy: 0
     - rid: 2152590473451798559
       type: {class: ChestInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_chest: {fileID: 5733890042131917482}
-    - rid: 2722357154162147328
-      type: {class: DialogueInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
-      data:
-        m_sequence: {fileID: 11400000, guid: d7dc34232de6a1e45bbb27de19b0a04f, type: 2}
 --- !u!114 &8073955503684347179
 MonoBehaviour:
   m_ObjectHideFlags: 0

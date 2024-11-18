@@ -61,10 +61,10 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 2177
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rigidbody: {fileID: 8861177874032413957}
-  m_animator: {fileID: 0}
+  m_animator: {fileID: 4264957498353365726}
   m_reverseRotation: 0
   m_maxDuration: 2
   m_destroyAnimationParameter: destroy
