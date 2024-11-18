@@ -725,9 +725,11 @@ MonoBehaviour:
   provokedEvent:
     m_PersistentCalls:
       m_Calls: []
+  isPlayer: 0
   m_sheet: {fileID: 0}
   m_permanentDeath: 0
   m_gameFlagID: monster_00
+  m_aiController: {fileID: 5709888431689883737}
   references:
     version: 2
     RefIds:
@@ -749,6 +751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_character: {fileID: -592417340943693092}
   m_rigidbody: {fileID: 8526076313025978402}
+  navMeshAgent: {fileID: 0}
   m_detectionRadius: 5
   m_resetFromInitialPositionRadius: 10
   m_resetFromTargetDistanceRadius: 10
@@ -759,6 +762,9 @@ MonoBehaviour:
   m_cannotSeeTargetRetargetCooldown: 1
   m_attackTriggerRadius: 1
   m_attackCooldown: 1
+  m_weightMemoryFactor: 0.7
+  m_randomExplorationWeight: 0.1
+  initialDirectionCount: 8
 --- !u!4 &1069940213459907271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}

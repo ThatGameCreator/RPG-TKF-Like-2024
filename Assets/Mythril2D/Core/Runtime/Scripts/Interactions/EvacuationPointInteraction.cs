@@ -12,7 +12,6 @@ namespace Gyvr.Mythril2D
 
         [Header("Reference")]
         [SerializeField] private EvacuationPointDatabase m_evacuationPointDatabase = null;
-        [SerializeField] private EvacuationPoint m_evacuationPoint = null;
 
         public bool TryExecute(CharacterBase source, IInteractionTarget target)
         {

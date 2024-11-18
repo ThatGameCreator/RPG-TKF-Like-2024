@@ -7,7 +7,6 @@ namespace Gyvr.Mythril2D
     {
         [SerializeField] private UINPCIcon m_npcIcon = null;
 
-        SpriteResolver m_spriteResolver = null;
         private void Update()
         {
             UpdateFieldOfWar();

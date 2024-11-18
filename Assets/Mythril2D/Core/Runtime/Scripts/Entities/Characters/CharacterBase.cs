@@ -97,6 +97,9 @@ namespace Gyvr.Mythril2D
         public UnityEvent destroyed => m_destroyed;
         public EActionFlags actionFlags => m_actionFlags;
         public Vector2 movementDirection => m_movementDirection;
+        public float FaceToTargetXAngle => m_FaceToTargetXAngle;
+        public float FaceToTargetYAngle => m_FaceToTargetYAngle;
+
 
         // Character Base Private Members
         private EActionFlags m_actionFlags = EActionFlags.All;
@@ -114,7 +117,7 @@ namespace Gyvr.Mythril2D
         protected ObservableStats m_currentStats = new ObservableStats();
         protected ObservableStats m_maxStats = new ObservableStats();
         private UnityEvent m_destroyed = new UnityEvent();
-        protected bool isPlayer = false;
+        public bool isPlayer = false;
 
         // Move Private Members
         private List<RaycastHit2D> m_castCollisions = new List<RaycastHit2D>();
@@ -126,6 +129,9 @@ namespace Gyvr.Mythril2D
         private float m_pushResistance = 0.0f;
 
         protected bool m_destroyOnDeath = true;
+        private float m_FaceToTargetXAngle = 0f;
+        private float m_FaceToTargetYAngle = 0f;
+
 
         protected virtual void Awake()
         {
@@ -761,7 +767,7 @@ namespace Gyvr.Mythril2D
         public void SetLookAtDirection(Transform target)
         {
             Vector3 direction = target.position - transform.position;
-            SetLookAtDirection(direction.x);
+            SetLookAtDirection(direction.x, direction.y);
         }
 
         public void SetLookAtDirection(Vector2 direction)
@@ -775,7 +781,27 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public void SetLookAtDirection(float direction)
+        public void SetLookAtDirection(float xAngle, float yAngle)
+        {
+            m_FaceToTargetXAngle = xAngle;
+            m_FaceToTargetYAngle = yAngle;    
+
+            if (m_spriteRenderer)
+            {
+                // 判断水平方向是否需要翻转
+                bool isFacingLeft = xAngle < 0;
+
+                // 根据水平角度设置 flipX
+                if (m_spriteRenderer.flipX != isFacingLeft)
+                {
+                    m_spriteRenderer.flipX = isFacingLeft;
+                    directionChangedEvent.Invoke(isFacingLeft ? EDirection.Left : EDirection.Right);
+                    //SetLookAtDirection(isFacingLeft ? EDirection.Left : EDirection.Right);
+                }
+            }
+        }
+
+        public void SetLookAtDirectionOld(float direction)
         {
             if (direction != 0.0f)
             {

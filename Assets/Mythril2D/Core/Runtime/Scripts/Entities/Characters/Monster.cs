@@ -8,6 +8,9 @@ namespace Gyvr.Mythril2D
         [Header("Monster Settings")]
         [SerializeField] private bool m_permanentDeath = false;
         [SerializeField] private string m_gameFlagID = "monster_00";
+        [SerializeField] private AIController m_aiController;
+
+        public AIController aiController => m_aiController;
 
         private bool m_looted = false;
 

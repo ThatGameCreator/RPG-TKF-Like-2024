@@ -21,7 +21,21 @@ MonoBehaviour:
   hitboxLayer: Hitbox
   layersIgnoredByProjectiles:
   - Collision A
-  - Collision C
+  - Collision D
+  monsterCollisionContactFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 3584
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
   collisionContactFilter:
     useTriggers: 0
     useLayerMask: 1
@@ -31,7 +45,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 3592
+      m_Bits: 7688
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
