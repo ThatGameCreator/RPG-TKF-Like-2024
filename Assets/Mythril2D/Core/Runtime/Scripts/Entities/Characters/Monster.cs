@@ -9,6 +9,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private bool m_permanentDeath = false;
         [SerializeField] private string m_gameFlagID = "monster_00";
         [SerializeField] private AIController m_aiController;
+        [SerializeField] private GameObject m_weaponObject = null;
 
         public AIController aiController => m_aiController;
 
@@ -74,7 +75,7 @@ namespace Gyvr.Mythril2D
                 //Array.ForEach(colliders, (collider) => collider.enabled = false);
 
                 // cancel the playing animation
-                this.transform.Find("Pivot").gameObject.SetActive(false);
+                m_weaponObject.transform.gameObject.SetActive(false);
 
                 SetLayerRecursively(this.gameObject, LayerMask.NameToLayer("Interaction"));
             }

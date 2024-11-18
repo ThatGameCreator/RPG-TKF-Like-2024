@@ -37,7 +37,6 @@ namespace Gyvr.Mythril2D
                 // 想了想感觉应该不足精力的时候也能释放，直接扣到0就好
                 // 如果不加判断，好像即便0也能释放技能了
                 //return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost;
-
                 return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost && GameManager.Player.GetStamina() >= m_sheet.staminaCost;
             }
             else
@@ -68,6 +67,8 @@ namespace Gyvr.Mythril2D
             {
                 // 如果只在玩家释放的时候取消搜刮，那么怪物攻击玩家的时候可能会拾取
                 //Debug.Log("TerminateCasting");
+                GameManager.Player.isExecutingAction = false;
+
                 GameManager.Player.CancelLooting();
             }
                 

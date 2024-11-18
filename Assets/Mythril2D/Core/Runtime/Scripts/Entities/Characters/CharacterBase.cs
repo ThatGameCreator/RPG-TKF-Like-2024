@@ -371,6 +371,12 @@ namespace Gyvr.Mythril2D
 
             if (ability.CanFire())
             {
+                if (isPlayer)
+                {
+                    //Debug.Log("isPlayer");
+                    GameManager.Player.isExecutingAction = true;
+                }
+
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(abilityBase.abilitySheet.fireAudio);
 
                 bool isAbilityStateAutomaticallyManaged = abilityBase.abilitySheet.abilityStateManagementMode == AbilitySheet.EAbilityStateManagementMode.Automatic;
@@ -450,7 +456,9 @@ namespace Gyvr.Mythril2D
 
         public bool TryPlayRunAnimation()
         {
-            if (m_animator && m_hasRunningAnimation)
+            if (GameManager.Player.isDashFinished == false && 
+                GameManager.Player.isExecutingAction == false && 
+                m_animator && m_hasRunningAnimation)
             {
                 if (GameManager.Player.runParticleSystem != null)
                 {
@@ -459,7 +467,7 @@ namespace Gyvr.Mythril2D
 
                 m_nowMoveSpeed = m_runSpeed;
                 m_animator.SetBool(m_isRunningAnimationParameter, true);
-                GameManager.Player.isExecutingAction = true;
+                GameManager.Player.isRunning = true;
                 return true;
             }
 
@@ -479,17 +487,18 @@ namespace Gyvr.Mythril2D
 
                 m_nowMoveSpeed = m_moveSpeed;
                 m_animator.SetBool(m_isRunningAnimationParameter, false);
-                GameManager.Player.isExecutingAction = false; 
+                GameManager.Player.isRunning = false; 
                 return true;
             }
             return false;
         }
 
+
         public bool TryPlayDashAnimation()
         {
-            if (GameManager.Player.isNowCanRun && m_animator && m_hasDashAnimation)
+            //if (GameManager.Player.isNowCanRun && m_animator && m_hasDashAnimation)
+            if (m_animator && m_hasDashAnimation)
             {
-
                 m_animator.SetTrigger(m_dashAnimationParameter);
                 return true;
             }

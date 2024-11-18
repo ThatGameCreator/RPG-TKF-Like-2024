@@ -21,9 +21,22 @@ namespace Gyvr.Mythril2D
             return base.CanFire() && !m_character.IsBeingPushed();
         }
 
+        public void OnDashAnimationEnd()
+        {
+            //Debug.Log("OnDashAnimationEnd");
+
+            if (!m_character.dead)
+            {
+                TerminateCasting();
+            }
+        }
+
         protected override void Fire()
         {
             //Debug.Log("Fire Dash");
+
+            GameManager.Player.isDashFinished = false;
+
             m_dirction =
                 m_character.IsMoving() ?
                 m_character.movementDirection :
@@ -39,10 +52,26 @@ namespace Gyvr.Mythril2D
                 GameManager.Player.dashParticleSystem.Play();
             }
 
+            // 启动协程等待动画结束
+            StartCoroutine(WaitForDashAnimation());
+
             // 在主方法执行不需要在这里再扣一次
             //ConsumeStamina();
 
-            TerminateCasting();
+            //TerminateCasting();
         }
+
+        // 协程：等待动画结束后调用 TerminateCasting
+        private IEnumerator WaitForDashAnimation()
+        {
+            // 等待当前动画播放完成
+            while (GameManager.Player.isDashFinished == false)
+            {
+                yield return null;
+            }
+
+            TerminateCasting(); // 动画播放完成后调用
+        }
+
     }
 }

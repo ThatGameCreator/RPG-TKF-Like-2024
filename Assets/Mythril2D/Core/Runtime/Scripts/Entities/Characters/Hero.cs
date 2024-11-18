@@ -38,6 +38,7 @@ namespace Gyvr.Mythril2D
 
         public bool isNowCanRun = false;
         public bool isExecutingAction = false;
+        public bool isRunning = false;
         private bool useStamina = true;
         private Coroutine regeneratingStamina;
         public UnityEvent<float> currentStaminaChanged => m_currentStats.staminaChanged;
@@ -101,6 +102,8 @@ namespace Gyvr.Mythril2D
 
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
 
+        public bool isDashFinished = false;
+
         private void OnDeadAnimationStart()
         {
             //Debug.Log("OnDeadAnimationStart");
@@ -138,6 +141,16 @@ namespace Gyvr.Mythril2D
             //Debug.Log("OnRevivalAnimationEnd");
 
             EnableActions(EActionFlags.All);
+        }
+
+        public void OnDashAnimationEnd()
+        {
+            //Debug.Log("OnDashAnimationEnd");
+
+            if (!dead)
+            {
+                isDashFinished = true;
+            }
         }
 
         public int GetTotalExpRequirement(int level)
@@ -331,9 +344,8 @@ namespace Gyvr.Mythril2D
 
         private void HandleStamina()
         {
-
             // 冲刺状态，且有移动输入，处理耐力
-            if (isExecutingAction == true && movementDirection != Vector2.zero)
+            if (isRunning == true && movementDirection != Vector2.zero)
             {
                 // 如果耐力回复协程开启，中断
                 if (regeneratingStamina != null)
@@ -342,6 +354,7 @@ namespace Gyvr.Mythril2D
                     regeneratingStamina = null;
                 }
 
+                // 如果其他技能也用同一个bool isExecutingAction来开启 则会导致不是跑步也会扣精力值
                 m_currentStats.Stamina -= staminaMultiplier * Time.deltaTime;
 
                 if (m_currentStats.Stamina < 0) m_currentStats.Stamina = 0;
@@ -353,18 +366,15 @@ namespace Gyvr.Mythril2D
                     EndPlayRunAnimation();
                 }
             }
+
             // 好像当时忘记修一个bug，现在只能检测 run 的时候的状态 其他比如攻击和冲刺等并不能检测，导致可以一边做动作一边恢复耐力
             // 耐力值不满，且没有冲刺，且耐力回复未开启
-            if (m_currentStats.Stamina < maxStamina && isExecutingAction == false && regeneratingStamina == null)
+            if (m_currentStats.Stamina < maxStamina && isRunning == false && isExecutingAction == false && regeneratingStamina == null)
             {
+                //Debug.Log("RegenerateStamina");
+                Debug.Log(isExecutingAction);
                 regeneratingStamina = StartCoroutine(RegenerateStamina());
             }
-
-        }
-
-        public void SetPlayerHealthToZero()
-        {
-            m_currentStats[EStat.Health] = 0;
         }
 
         private IEnumerator RegenerateStamina()
@@ -372,7 +382,8 @@ namespace Gyvr.Mythril2D
             yield return new WaitForSeconds(timeBeforeStaminaRengeStarts);
 
             WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
-            while (m_currentStats.Stamina < maxStamina)
+
+            while (isExecutingAction == false && m_currentStats.Stamina < maxStamina)
             {
                 // 大于0，可以使用冲刺
                 if (m_currentStats.Stamina > 0f) isNowCanRun = true;
@@ -386,6 +397,11 @@ namespace Gyvr.Mythril2D
             }
             // 耐力回复完毕，引用置空
             regeneratingStamina = null;
+        }
+
+        public void SetPlayerHealthToZero()
+        {
+            m_currentStats[EStat.Health] = 0;
         }
 
         public Equipment Equip(Equipment equipment)
