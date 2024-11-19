@@ -1,13 +1,9 @@
-using Codice.CM.Common;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
-using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Gyvr.Mythril2D
 {
@@ -53,7 +49,6 @@ namespace Gyvr.Mythril2D
         [Header("References")]
         [SerializeField] protected Animator m_animator = null;
         [SerializeField] private Rigidbody2D m_rigidbody = null;
-        [SerializeField] private SpriteRenderer m_spriteRenderer = null;
 
         [Header("General Settings")]
         [Range(Stats.MinLevel, Stats.MaxLevel)]
@@ -74,6 +69,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private string m_hitAnimationParameter = "hit";
         [SerializeField] private string m_deathAnimationParameter = "death";
         [SerializeField] private string m_deadAnimationParameter = "dead";
+        [SerializeField] private string m_revivalAnimationParameter = "Revival";
         [SerializeField] private string m_invincibleAnimationParameter = "invincible";
         [SerializeField] private string m_moveXAnimationParameter = "moveX";
         [SerializeField] private string m_moveYAnimationParameter = "moveY";
@@ -101,11 +97,15 @@ namespace Gyvr.Mythril2D
         public UnityEvent destroyed => m_destroyed;
         public EActionFlags actionFlags => m_actionFlags;
         public Vector2 movementDirection => m_movementDirection;
+        public float FaceToTargetXAngle => m_FaceToTargetXAngle;
+        public float FaceToTargetYAngle => m_FaceToTargetYAngle;
+
 
         // Character Base Private Members
         private EActionFlags m_actionFlags = EActionFlags.All;
         private bool m_hasDeathAnimation = false;
         private bool m_hasDeadAnimation = false;
+        private bool m_hasRevivalAnimation = false;
         private bool m_hasHitAnimation = false;
         private bool m_hasInvincibleAnimation = false;
         private bool m_invincibleAnimationPlaying = false;
@@ -117,7 +117,7 @@ namespace Gyvr.Mythril2D
         protected ObservableStats m_currentStats = new ObservableStats();
         protected ObservableStats m_maxStats = new ObservableStats();
         private UnityEvent m_destroyed = new UnityEvent();
-        protected bool isPlayer = false;
+        public bool isPlayer = false;
 
         // Move Private Members
         private List<RaycastHit2D> m_castCollisions = new List<RaycastHit2D>();
@@ -129,18 +129,34 @@ namespace Gyvr.Mythril2D
         private float m_pushResistance = 0.0f;
 
         protected bool m_destroyOnDeath = true;
+        private float m_FaceToTargetXAngle = 0f;
+        private float m_FaceToTargetYAngle = 0f;
+
 
         protected virtual void Awake()
         {
             Debug.Assert(m_animator, ErrorMessages.InspectorMissingComponentReference<Animator>());
-            Debug.Assert(m_spriteRenderer, ErrorMessages.InspectorMissingComponentReference<SpriteRenderer>());
+
+            foreach (SpriteRenderer spriteRenderer in m_spriteRenderer)
+            {
+                Debug.Assert(spriteRenderer, ErrorMessages.InspectorMissingComponentReference<SpriteRenderer>());
+            }
+
             Debug.Assert(m_rigidbody, ErrorMessages.InspectorMissingComponentReference<Rigidbody2D>());
 
             m_maxStats.changed.AddListener(OnStatsChanged);
             m_currentStats.changed.AddListener(OnCurrentStatsChanged);
 
             CheckForAnimations();
-            InitializeAbilities();
+
+            if (isPlayer == true)
+            {
+                InitializeAbilities();
+            }
+            else
+            {
+                InitializeAbilities();
+            }
 
             // 放这里还没开始实例化 会报错
             //int layermask = GameManager.Config.collisionContactFilter.layerMask;
@@ -180,6 +196,7 @@ namespace Gyvr.Mythril2D
                 m_hasHitAnimation = AnimationUtils.HasParameter(m_animator, m_hitAnimationParameter);
                 m_hasDeathAnimation = AnimationUtils.HasParameter(m_animator, m_deathAnimationParameter);
                 m_hasDeadAnimation = AnimationUtils.HasParameter(m_animator, m_deadAnimationParameter);
+                m_hasRevivalAnimation = AnimationUtils.HasParameter(m_animator, m_revivalAnimationParameter);
                 m_hasInvincibleAnimation = AnimationUtils.HasParameter(m_animator, m_invincibleAnimationParameter);
                 m_hasDashAnimation = AnimationUtils.HasParameter(m_animator, m_dashAnimationParameter);
                 m_hasRunningAnimation = AnimationUtils.HasParameter(m_animator, m_isRunningAnimationParameter);
@@ -190,19 +207,61 @@ namespace Gyvr.Mythril2D
         {
             IEnumerable<AbilitySheet> characterSpecificAvailableAbilities = characterSheet.GetAvailableAbilitiesAtLevel(m_level);
 
-            foreach (AbilitySheet ability in characterSpecificAvailableAbilities)
+            if (isPlayer)
             {
-                AddAbility(ability);
-            }
-
-            if (m_additionalAbilities != null)
-            {
-                foreach (AbilitySheet ability in m_additionalAbilities)
+                // 玩家：按照原来的逻辑添加技能
+                foreach (AbilitySheet ability in characterSpecificAvailableAbilities)
                 {
                     AddAbility(ability);
                 }
+
+                if (m_additionalAbilities != null)
+                {
+                    foreach (AbilitySheet ability in m_additionalAbilities)
+                    {
+                        AddAbility(ability);
+                    }
+                }
+            }
+            else
+            {
+                // 怪物：随机添加技能
+                if (characterSpecificAvailableAbilities.Any())
+                {
+                    AddRandomAbility(characterSpecificAvailableAbilities);
+                }
+
+                if (m_additionalAbilities != null && m_additionalAbilities.Any())
+                {
+                    AddRandomAbility(m_additionalAbilities);
+                }
+            }
+
+        }
+
+        private void AddRandomAbility(IEnumerable<AbilitySheet> abilityPool)
+        {
+            // 检查技能池是否为空
+            if (abilityPool == null || !abilityPool.Any())
+            {
+                Debug.LogWarning("Ability pool is empty. No ability added.");
+                return;
+            }
+
+            // 从技能池中随机选择一个技能
+            AbilitySheet randomAbility = abilityPool.ElementAt(UnityEngine.Random.Range(0, abilityPool.Count()));
+
+            // 添加该技能
+            if (AddAbility(randomAbility))
+            {
+                //Debug.Log($"Random ability {randomAbility.name} has been added.");
+            }
+            else
+            {
+                //Debug.Log($"Ability {randomAbility.name} already exists and was not added.");
             }
         }
+
 
         protected virtual bool AddAbility(AbilitySheet ability)
         {
@@ -317,6 +376,12 @@ namespace Gyvr.Mythril2D
 
             if (ability.CanFire())
             {
+                if (isPlayer)
+                {
+                    //Debug.Log("isPlayer");
+                    GameManager.Player.isExecutingAction = true;
+                }
+
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(abilityBase.abilitySheet.fireAudio);
 
                 bool isAbilityStateAutomaticallyManaged = abilityBase.abilitySheet.abilityStateManagementMode == AbilitySheet.EAbilityStateManagementMode.Automatic;
@@ -368,6 +433,21 @@ namespace Gyvr.Mythril2D
             return false;
         }
 
+        public bool TryPlayRevivalAnimation()
+        {
+            //Debug.Log("TryPlayRevivalAnimation = ");
+
+            if (m_animator && m_hasRevivalAnimation)
+            {
+                //Debug.Log("m_hasRevivalAnimation = " + m_hasRevivalAnimation);
+
+                m_animator.SetTrigger(m_revivalAnimationParameter);
+                return true;
+            }
+
+            return false;
+        }
+
         public bool TryPlayInvincibleAnimation()
         {
             if (m_animator && m_hasInvincibleAnimation)
@@ -381,7 +461,9 @@ namespace Gyvr.Mythril2D
 
         public bool TryPlayRunAnimation()
         {
-            if (m_animator && m_hasRunningAnimation)
+            if (GameManager.Player.isDashFinished == false && 
+                GameManager.Player.isExecutingAction == false && 
+                m_animator && m_hasRunningAnimation)
             {
                 if (GameManager.Player.runParticleSystem != null)
                 {
@@ -390,7 +472,7 @@ namespace Gyvr.Mythril2D
 
                 m_nowMoveSpeed = m_runSpeed;
                 m_animator.SetBool(m_isRunningAnimationParameter, true);
-                GameManager.Player.isExecutingAction = true;
+                GameManager.Player.isRunning = true;
                 return true;
             }
 
@@ -410,17 +492,18 @@ namespace Gyvr.Mythril2D
 
                 m_nowMoveSpeed = m_moveSpeed;
                 m_animator.SetBool(m_isRunningAnimationParameter, false);
-                GameManager.Player.isExecutingAction = false; 
+                GameManager.Player.isRunning = false; 
                 return true;
             }
             return false;
         }
 
+
         public bool TryPlayDashAnimation()
         {
-            if (GameManager.Player.isNowCanRun && m_animator && m_hasDashAnimation)
+            //if (GameManager.Player.isNowCanRun && m_animator && m_hasDashAnimation)
+            if (m_animator && m_hasDashAnimation)
             {
-
                 m_animator.SetTrigger(m_dashAnimationParameter);
                 return true;
             }
@@ -614,6 +697,8 @@ namespace Gyvr.Mythril2D
 
         private void OnDeathAnimationStart()
         {
+            //Debug.Log("OnDeathAnimationStart");
+
             DisableActions(EActionFlags.All);
 
             TryPlayDeadAnimation();
@@ -621,11 +706,9 @@ namespace Gyvr.Mythril2D
 
         private void OnDeathAnimationEnd()
         {
-            OnDeath();
+            //Debug.Log("OnDeathAnimationEnd");
 
-            // 传送到复活点
-            // 应该得放在死亡动画播放后传送，不然死亡动画播放完都站起来了再传送也太奇怪了
-            GameManager.MapLoadingSystem.RequestTransition(null, null, null, null, true);
+            OnDeath();
         }
 
         #region Movement
@@ -700,16 +783,27 @@ namespace Gyvr.Mythril2D
             Vector3 direction = target.position - transform.position;
             SetLookAtDirection(direction.x);
         }
+
         public void SetLookAtDirection(Vector2 direction)
         {
             if (direction.x != 0.0f || direction.y != 0.0f)
             {
-                EDirection myEDirection = direction.x >= 0.0f ? EDirection.Right : EDirection.Left;
-                bool wasFlipped = m_spriteRenderer.flipX;
-                m_spriteRenderer.flipX = myEDirection == EDirection.Left;
-                directionChangedEventOfMe.Invoke(direction);
+                foreach (SpriteRenderer spriteRenderer in m_spriteRenderer)
+                {
+                    EDirection myEDirection = direction.x >= 0.0f ? EDirection.Right : EDirection.Left;
+                    bool wasFlipped = spriteRenderer.flipX;
+                    spriteRenderer.flipX = myEDirection == EDirection.Left;
+                    directionChangedEventOfMe.Invoke(direction);
+                }
             }
         }
+
+        public void SetXAndYAngle(float xAngle, float yAngle)
+        {
+            m_FaceToTargetXAngle = xAngle;
+            m_FaceToTargetYAngle = yAngle;    
+        }
+
         public void SetLookAtDirection(float direction)
         {
             if (direction != 0.0f)
@@ -720,22 +814,30 @@ namespace Gyvr.Mythril2D
 
         public void SetLookAtDirection(EDirection direction)
         {
-            if (m_spriteRenderer)
+            
+            foreach (SpriteRenderer spriteRenderer in m_spriteRenderer)
             {
-                bool wasFlipped = m_spriteRenderer.flipX;
-
-                if ((m_spriteRenderer.flipX = direction == EDirection.Left) != wasFlipped)
+                if (spriteRenderer)
                 {
-                    directionChangedEvent.Invoke(direction);
+                    bool wasFlipped = spriteRenderer.flipX;
+
+                    if ((spriteRenderer.flipX = direction == EDirection.Left) != wasFlipped)
+                    {
+                        directionChangedEvent.Invoke(direction);
+                    }
                 }
             }
         }
 
         public EDirection GetLookAtDirection()
         {
-            if (m_spriteRenderer)
+
+            foreach (SpriteRenderer spriteRenderer in m_spriteRenderer)
             {
-                return m_spriteRenderer.flipX ? EDirection.Left : EDirection.Right;
+                if (spriteRenderer)
+                {
+                    return spriteRenderer.flipX ? EDirection.Left : EDirection.Right;
+                }
             }
 
             return EDirection.Default;

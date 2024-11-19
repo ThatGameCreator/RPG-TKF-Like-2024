@@ -2,7 +2,7 @@
 
 namespace Gyvr.Mythril2D
 {
-    public class CommandTrigger : MonoBehaviour
+    public class CommandTrigger : Entity
     {
         public enum EActivationEvent
         {
@@ -27,9 +27,14 @@ namespace Gyvr.Mythril2D
         [Header("Settings")]
         [SerializeField] private int m_frameDelay = 0;
 
-        private void AttemptExecution(EActivationEvent currentEvent, GameObject go = null)
+        protected override void Start()
         {
-            if (currentEvent == m_activationEvent && (!go || go == GameManager.Player.gameObject) && (m_condition?.Evaluate() ?? true))
+            base.Start();
+        }
+
+        public void AttemptExecution(EActivationEvent currentEvent, GameObject go = null)
+        {
+            if (currentEvent == m_activationEvent && (go == null || go == GameManager.Player.gameObject) && (m_condition?.Evaluate() ?? true))
             {
                 if (m_frameDelay <= 0)
                 {
@@ -58,7 +63,8 @@ namespace Gyvr.Mythril2D
 
         }
 
-        private void Start() => AttemptExecution(EActivationEvent.OnStart);
+        //private void Start() => AttemptExecution(EActivationEvent.OnStart);
+
         private void Update() => AttemptExecution(EActivationEvent.OnUpdate);
         private void OnEnable() => AttemptExecution(EActivationEvent.OnEnable);
         private void OnDisable() => AttemptExecution(EActivationEvent.OnDisable);

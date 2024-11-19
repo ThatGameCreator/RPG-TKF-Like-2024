@@ -1418,9 +1418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26c3445e4cc448f5bc87d5512604a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_monsters:
-  - prefab: {fileID: 2284344020550481804, guid: 2dfe91060b0726d458dd79c2f27cdeb1, type: 3}
-    rate: 100
+  isUseGroup: 0
+  monsterPrefabs: {fileID: 0}
+  rate: 100
   m_minLevel: 1
   m_maxLevel: 1
   m_spawnCooldown: 5

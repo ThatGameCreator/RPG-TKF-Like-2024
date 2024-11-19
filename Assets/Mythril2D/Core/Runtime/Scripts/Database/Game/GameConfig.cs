@@ -59,6 +59,7 @@ namespace Gyvr.Mythril2D
         public string projectileLayer = "Projectile";
         public string hitboxLayer = "Hitbox";
         public string[] layersIgnoredByProjectiles;
+        public ContactFilter2D monsterCollisionContactFilter;
         public ContactFilter2D collisionContactFilter;
 
         [Header("Visual Settings")]

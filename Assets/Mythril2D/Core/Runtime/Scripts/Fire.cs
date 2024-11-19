@@ -2,11 +2,13 @@ using UnityEngine;
 using Gyvr.Mythril2D;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Windows;
 
 public class Fire : MonoBehaviour
 {
     [SerializeField] private int m_damageAmount = 1;
     [SerializeField] private EDamageType m_damageType = EDamageType.Physical;
+    [SerializeField] private EDistanceType m_distanceType = EDistanceType.Ranged;
     // Time in seconds between each damage application
     [SerializeField] private float m_damageInterval = 1.0f;
 
@@ -71,7 +73,8 @@ public class Fire : MonoBehaviour
                         source = EDamageSource.Unknown,
                         attacker = this,
                         damage = m_damageAmount,
-                        type = m_damageType,
+                        damageType = m_damageType,
+                        distanceType = m_distanceType,
                         flags = EDamageFlag.None
                     });
                 }

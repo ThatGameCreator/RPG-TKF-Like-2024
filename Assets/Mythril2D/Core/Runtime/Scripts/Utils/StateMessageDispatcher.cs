@@ -55,6 +55,7 @@ namespace Gyvr.Mythril2D
                     break;
 
                 case EMessagePropagationMode.SendMessageUpwards:
+                    //Debug.Log("SendMessageUpwards");
                     source.SendMessageUpwards(messageData.message, messageData.options);
                     break;
             }

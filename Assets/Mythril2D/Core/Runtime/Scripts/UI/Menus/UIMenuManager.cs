@@ -12,6 +12,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private UIShop m_shop = null;
         [SerializeField] private UICraft m_craft = null;
         [SerializeField] private UICharacter m_stats = null;
+        [SerializeField] private UIWarehouse m_warehouse = null;
         [SerializeField] private UIInventory m_inventory = null;
         [SerializeField] private UIJournal m_journal = null;
         [SerializeField] private UIAbilities m_abilities = null;
@@ -28,17 +29,19 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.craftRequested.AddListener(OnCraftRequested);
             GameManager.NotificationSystem.statsRequested.AddListener(OnStatsRequested);
             GameManager.NotificationSystem.journalRequested.AddListener(OnJournalRequested);
+            GameManager.NotificationSystem.warehouseRequested.AddListener(OnWarehouseRequested);
             GameManager.NotificationSystem.inventoryRequested.AddListener(OnInventoryRequested);
             GameManager.NotificationSystem.spellBookRequested.AddListener(OnAbilitiesRequested);
             GameManager.NotificationSystem.settingsRequested.AddListener(OnSettingsRequested);
             GameManager.NotificationSystem.saveMenuRequested.AddListener(OnSaveMenuRequested);
-            //GameManager.NotificationSystem.deathScreenRequested.AddListener(OnDeathScreenRequested);
+            GameManager.NotificationSystem.deathScreenRequested.AddListener(OnDeathScreenRequested);
 
             m_gameMenu.Init();
             m_shop.Init();
             m_craft.Init();
             m_stats.Init();
             m_journal.Init();
+            m_warehouse.Init();
             m_inventory.Init();
             m_abilities.Init();
             m_settings.Init();
@@ -82,7 +85,6 @@ namespace Gyvr.Mythril2D
 
         private void PushMenu(IUIMenu menu, params object[] args)
         {
-
             //Debug.Log("PushMenu");
 
             if (m_menuStack.Count > 0 && m_menuStack.Peek() != null)
@@ -95,6 +97,20 @@ namespace Gyvr.Mythril2D
             menu.OnMenuPushed();
             GameManager.GameStateSystem.AddLayer(EGameState.Menu);
             Show(menu, args);
+        }
+
+        public void PopDeathMenu()
+        {
+            if (!GameManager.DialogueSystem.Main.IsPlaying())
+            {
+                IUIMenu menu = m_menuStack.Pop();
+                Hide(menu);
+
+                if (m_menuStack.Count > 0)
+                {
+                    Show(m_menuStack.Peek());
+                }
+            }
         }
 
         private void PopMenu()
@@ -142,6 +158,8 @@ namespace Gyvr.Mythril2D
 
         private void OnJournalRequested() => PushMenu(m_journal);
 
+        private void OnWarehouseRequested() => PushMenu(m_warehouse);
+
         private void OnInventoryRequested() => PushMenu(m_inventory);
 
         private void OnAbilitiesRequested() => PushMenu(m_abilities);
@@ -150,6 +168,6 @@ namespace Gyvr.Mythril2D
 
         private void OnSaveMenuRequested() => PushMenu(m_save);
 
-        //private void OnDeathScreenRequested() => PushMenu(m_death);
+        private void OnDeathScreenRequested() => PushMenu(m_death);
     }
 }

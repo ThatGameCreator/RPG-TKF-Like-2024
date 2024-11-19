@@ -5,7 +5,7 @@ namespace Gyvr.Mythril2D
     public enum EVerticalDirection { None, Up, Down }
     public enum EHorizontalDirection { None, Left, Right }
 
-    public class Teleporter : MonoBehaviour
+    public class Teleporter : TeleportLoadingSystem
     {
         [Header("Destination Settings")]
         [SerializeField] private string m_destinationMap = string.Empty;
@@ -39,32 +39,19 @@ namespace Gyvr.Mythril2D
                 // Debug.Log(m_destinationMap);
 
                 // same map teleport
-                if (m_destinationMap == GameManager.MapLoadingSystem.GetCurrentMapName())
+                if (m_destinationMap == GameManager.TeleportLoadingSystem.GetCurrentMapName())
                 {
-                    TeloportPlayerPosition();
+                    _teleportationInProgress = TeloportPlayerPosition(m_destinationGameObjectName);
                 }
                 else
                 {
-                    GameManager.MapLoadingSystem.RequestTransition(m_destinationMap, null, () =>
+                    GameManager.TeleportLoadingSystem.RequestTransition(m_destinationMap, null, () =>
                     {
-                        TeloportPlayerPosition();
+                        _teleportationInProgress = TeloportPlayerPosition(m_destinationGameObjectName);
                     });
                 }
-
             }
         }
 
-        private void TeloportPlayerPosition()
-        {
-            GameObject destionationGameObject = GameObject.Find(m_destinationGameObjectName);
-
-            if (destionationGameObject)
-            {
-                GameManager.Player.transform.position = destionationGameObject.transform.position;
-            }
-
-            // end of teleport
-            _teleportationInProgress = false;
-        }
     }
 }

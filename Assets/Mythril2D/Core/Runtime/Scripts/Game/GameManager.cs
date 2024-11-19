@@ -1,3 +1,4 @@
+using FunkyCode;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,17 +20,22 @@ namespace Gyvr.Mythril2D
         public static DatabaseRegistry Database => _instance.m_config.databaseRegistry;
         public static GameManager Instance => _instance;
 
+
+
         // System Access Shortcuts
+        public static UIManagerSystem UIManagerSystem => GetSystem<UIManagerSystem>();
+        public static DayNightSystem DayNightSystem => GetSystem<DayNightSystem>();
         public static AudioSystem AudioSystem => GetSystem<AudioSystem>();
         public static DialogueSystem DialogueSystem => GetSystem<DialogueSystem>();
         public static GameFlagSystem GameFlagSystem => GetSystem<GameFlagSystem>();
         public static GameStateSystem GameStateSystem => GetSystem<GameStateSystem>();
         public static InputSystem InputSystem => GetSystem<InputSystem>();
+        public static WarehouseSystem WarehouseSystem => GetSystem<WarehouseSystem>();
         public static InventorySystem InventorySystem => GetSystem<InventorySystem>();
         public static JournalSystem JournalSystem => GetSystem<JournalSystem>();
         public static NotificationSystem NotificationSystem => GetSystem<NotificationSystem>();
         public static SaveSystem SaveSystem => GetSystem<SaveSystem>();
-        public static MapLoadingSystem MapLoadingSystem => GetSystem<MapLoadingSystem>();
+        public static TeleportLoadingSystem TeleportLoadingSystem => GetSystem<TeleportLoadingSystem>();
         public static PlayerSystem PlayerSystem => GetSystem<PlayerSystem>();
         public static PhysicsSystem PhysicsSystem => GetSystem<PhysicsSystem>();
 
@@ -47,7 +53,7 @@ namespace Gyvr.Mythril2D
 
         private void OnEnable()
         {
-            if (m_systems.ContainsKey(typeof(NotificationSystem)))
+           if (m_systems.ContainsKey(typeof(NotificationSystem)))
             {
                 NotificationSystem.mapLoaded.AddListener(OnMapLoaded);
                 NotificationSystem.mapUnloaded.AddListener(OnMapUnloaded);

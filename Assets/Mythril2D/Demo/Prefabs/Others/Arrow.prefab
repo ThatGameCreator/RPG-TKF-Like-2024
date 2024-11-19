@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8861177874032413957}
   - component: {fileID: 8861177874032413958}
   - component: {fileID: 895966249480542025}
+  - component: {fileID: 4264957498353365726}
   m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
@@ -27,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8861177874032413953}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8861177874032413954
 BoxCollider2D:
@@ -60,10 +61,10 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 2177
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -120,10 +121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rigidbody: {fileID: 8861177874032413957}
-  m_animator: {fileID: 0}
+  m_animator: {fileID: 4264957498353365726}
   m_reverseRotation: 0
   m_maxDuration: 2
   m_destroyAnimationParameter: destroy
+  m_collisionSound: {fileID: 0}
 --- !u!212 &895966249480542025
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -176,3 +178,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!95 &4264957498353365726
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8861177874032413953}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ece9ae8b2a561b745af38e19be4235b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

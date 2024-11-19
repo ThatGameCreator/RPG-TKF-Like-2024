@@ -22,7 +22,7 @@ namespace Gyvr.Mythril2D
             lines.Add(new AbilityDescriptionLine
             {
                 header = "Type",
-                content = m_damageDescriptor.type.ToString()
+                content = m_damageDescriptor.damageType.ToString()
             });
         }
     }

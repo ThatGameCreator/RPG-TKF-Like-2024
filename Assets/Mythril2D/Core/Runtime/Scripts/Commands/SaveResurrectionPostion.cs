@@ -10,8 +10,10 @@ namespace Gyvr.Mythril2D
 
         public void Execute()
         {
-            Debug.Log("SaveResurrectionPostion");
-            GameManager.MapLoadingSystem.SetSaveResurrectionPostion(m_gameObject.transform.position);
+            //Debug.Log("SaveResurrectionPostion");
+
+            //GameManager.TeleportLoadingSystem.SetSaveResurrectionPostion(m_gameObject.transform.position);
+
             GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
         }
     }

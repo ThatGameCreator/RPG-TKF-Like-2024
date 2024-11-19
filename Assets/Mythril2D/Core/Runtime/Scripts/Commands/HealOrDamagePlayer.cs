@@ -26,7 +26,7 @@ namespace Gyvr.Mythril2D
                         attacker = null,
                         damage = math.abs(m_amount),
                         flags = EDamageFlag.Default,
-                        type = EDamageType.None,
+                        damageType = EDamageType.None,
                         source = EDamageSource.Unknown
                     });
                     break;

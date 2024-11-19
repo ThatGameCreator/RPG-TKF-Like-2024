@@ -4,7 +4,6 @@ using Inventory.Scripts.Core.ScriptableObjects;
 using Inventory.Scripts.Core.ScriptableObjects.Configuration.Anchors;
 using Inventory.Scripts.Windows;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -267,7 +266,7 @@ namespace Inventory.Editor
 
         private static void SaveScene()
         {
-            EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
+            UnityEditor.SceneManagement.EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
         }
     }
 }

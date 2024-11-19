@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Gyvr.Mythril2D
 {
@@ -36,15 +37,20 @@ namespace Gyvr.Mythril2D
         public UnityEvent mapTransitionCompleted = new UnityEvent();
         public UnityEvent mapLoaded = new UnityEvent();
         public UnityEvent mapUnloaded = new UnityEvent();
+        public UnityEvent saveStart = new UnityEvent();
+        public UnityEvent saveEnd = new UnityEvent();
         public UnityEvent<Hero> playerSpawned = new UnityEvent<Hero>();
+        public UnityEvent<Hero, Entity> playerTryInteracte = new UnityEvent<Hero, Entity>();
+        public UnityEvent<Hero, Entity> playerEndInteracte = new UnityEvent<Hero, Entity>();
 
-        public UnityEvent<MapLoadingDelegationParams> mapTransitionDelegationRequested = new UnityEvent<MapLoadingDelegationParams>();
+        public UnityEvent<TeleportLoadingDelegationParams> mapTransitionDelegationRequested = new UnityEvent<TeleportLoadingDelegationParams>();
 
         [Header("User Interface")]
         public UnityEvent<Shop> shopRequested = new UnityEvent<Shop>();
         public UnityEvent<CraftingStation> craftRequested = new UnityEvent<CraftingStation>();
         public UnityEvent gameMenuRequested = new UnityEvent();
         public UnityEvent statsRequested = new UnityEvent();
+        public UnityEvent warehouseRequested = new UnityEvent();
         public UnityEvent inventoryRequested = new UnityEvent();
         public UnityEvent journalRequested = new UnityEvent();
         public UnityEvent spellBookRequested = new UnityEvent();
@@ -59,5 +65,11 @@ namespace Gyvr.Mythril2D
         [Header("Audio")]
         public UnityEvent<AudioClipResolver> audioPlaybackRequested = new UnityEvent<AudioClipResolver>();
         public UnityEvent<AudioClipResolver> audioStopPlaybackRequested = new UnityEvent<AudioClipResolver>();
+
+        [Header("UI")]
+        public UnityEvent<EItemCategory> UICategorySelected = new UnityEvent<EItemCategory>();
+        public UnityEvent UIWarehouseClosed = new UnityEvent();
+
+
     }
 }

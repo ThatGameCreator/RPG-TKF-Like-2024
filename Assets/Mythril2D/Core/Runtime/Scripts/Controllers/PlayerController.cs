@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,9 +20,9 @@ namespace Gyvr.Mythril2D
         [SerializeField] private ParticleSystem m_dashParticleSystem = null;
         private Vector2 m_dirction = Vector2.zero;
 
-        public GameObject interactionTarget => m_interactionTarget;
+        public Entity interactionTarget => m_interactionTarget;
 
-        private GameObject m_interactionTarget = null;
+        private Entity m_interactionTarget = null;
 
         private CharacterBase m_character = null;
 
@@ -49,7 +48,7 @@ namespace Gyvr.Mythril2D
 
         private void Start()
         {
-            GameManager.InputSystem.gameplay.interact.performed += OnInteract;
+            GameManager.InputSystem.gameplay.interact.performed += OnInputInteract;
             GameManager.InputSystem.gameplay.fireAbility1.performed += OnFireAbility1;
             GameManager.InputSystem.gameplay.fireAbility2.performed += OnFireAbility2;
             GameManager.InputSystem.gameplay.fireAbility3.performed += OnFireAbility3;
@@ -63,7 +62,7 @@ namespace Gyvr.Mythril2D
 
         private void OnDestroy()
         {
-            GameManager.InputSystem.gameplay.interact.performed -= OnInteract;
+            GameManager.InputSystem.gameplay.interact.performed -= OnInputInteract;
             GameManager.InputSystem.gameplay.fireAbility1.performed -= OnFireAbility1;
             GameManager.InputSystem.gameplay.fireAbility2.performed -= OnFireAbility2;
             GameManager.InputSystem.gameplay.fireAbility3.performed -= OnFireAbility3;
@@ -77,26 +76,35 @@ namespace Gyvr.Mythril2D
 
         private void Update()
         {
+            // 他这个不停获取是为了能够在接近物体的时候会弹出一个可互动的按钮
             m_interactionTarget = GetInteractibleObject();
         }
 
-        public GameObject GetInteractibleObject()
+        public Entity GetInteractibleObject()
         {
             if (m_character.Can(EActionFlags.Interact))
             {
-                Collider2D[] colliders = Physics2D.OverlapCircleAll(m_interactionPivot.position, m_interactionDistance, LayerMask.GetMask(GameManager.Config.interactionLayer));
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(m_interactionPivot.position, m_interactionDistance, 
+                    LayerMask.GetMask(GameManager.Config.interactionLayer));
+                
                 Array.Sort(colliders, (x, y) =>
                 {
                     return Vector3.Distance(m_interactionPivot.position, x.transform.position).CompareTo(
                         Vector3.Distance(m_interactionPivot.position, y.transform.position));
                 });
+                
                 foreach (Collider2D collider in colliders)
                 {
                     Vector3 a = m_movementDirection;
                     Vector3 b = (collider.transform.position + new Vector3(collider.offset.x, collider.offset.y, 0)) - m_interactionPivot.position;
+
                     if (Vector3.Dot(a, b) > 0)
                     {
-                        return collider.gameObject;
+                        Entity entity = collider.GetComponent<Entity>();
+                        if (entity != null)
+                        {
+                            return entity;
+                        }
                     }
                 }
             }
@@ -106,29 +114,12 @@ namespace Gyvr.Mythril2D
 
         private bool TryInteracting()
         {
-            //Debug.Log("Trying Interaction");
-            GameObject interactionTarget = GetInteractibleObject();
+            Entity interactionTarget = GetInteractibleObject();
 
             if (interactionTarget)
             {
-                //if (interactionTarget.gameObject.layer == LayerMask.GetMask(GameManager.Config.mosterLayer))
-                if (interactionTarget.gameObject.GetComponent<Monster>() != null)
-                {
-                    //Debug.Log("moster loot");
-                    if (GameManager.Player.isLooting == true)
-                    {
-                        GameManager.Player.CancelLooting();
-                    }
-                    else
-                    {
-                        GameManager.Player.OnStartLooting(interactionTarget);
-                    }
-                }
-                else
-                {
-                    ActiveInteracting();
-                    return true;
-                }
+                ActiveInteracting();
+                return true;
             }
 
             return false;
@@ -136,9 +127,11 @@ namespace Gyvr.Mythril2D
 
         private void ActiveInteracting()
         {
-            //Debug.Log("Active Interaction");
+            Debug.Log("Active Interaction");
+
             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_interactionSound);
-            interactionTarget.SendMessageUpwards("OnInteract", m_character);
+
+            GameManager.NotificationSystem.playerTryInteracte.Invoke(GameManager.Player, interactionTarget);
         }
 
         private void OnOpenGameMenu(InputAction.CallbackContext context)
@@ -169,7 +162,10 @@ namespace Gyvr.Mythril2D
         {
             if (context.performed == true)
             {
-                m_character.TryPlayRunAnimation();
+                if (GameManager.Player.currentStamina > 0)
+                {
+                    m_character.TryPlayRunAnimation();
+                }
             }
         }
 
@@ -215,7 +211,7 @@ namespace Gyvr.Mythril2D
             else return false;
         }
 
-        private void OnInteract(InputAction.CallbackContext context) => TryInteracting();
+        private void OnInputInteract(InputAction.CallbackContext context) =>  TryInteracting();
 
         private void OnFireAbility1(InputAction.CallbackContext context) => FireAbilityAtIndex(0);
         private void OnFireAbility2(InputAction.CallbackContext context) => FireAbilityAtIndex(1);

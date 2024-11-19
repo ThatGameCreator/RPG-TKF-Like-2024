@@ -8,6 +8,7 @@
         public const string Mythril2D_Characters = Mythril2D + "Characters/";
         public const string Mythril2D_Dialogues = Mythril2D + "Dialogues/";
         public const string Mythril2D_Game = Mythril2D + "Game/";
+        public const string Mythril2D_Abyss = Mythril2D + "Abyss/";
         public const string Mythril2D_Inns = Mythril2D + "Inns/";
         public const string Mythril2D_Items = Mythril2D + "Items/";
         public const string Mythril2D_Crafting = Mythril2D + "Crafting/";

@@ -25,6 +25,14 @@ namespace Gyvr.Mythril2D
             m_animator?.SetTrigger(m_fireAnimationParameter);
         }
 
+        public void OnChargeAnimationStart()
+        {
+            if (m_character.isPlayer == false)
+            {
+                m_character.GetComponent<Monster>().aiController.FaceTarget();
+            }
+        }
+
         public void OnChargeAnimationEnd()
         {
             if (!m_character.dead)
@@ -38,28 +46,99 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        private void ThrowProjectile(int projectileIndex)
+        private void ThrowProjectileOld(int projectileIndex)
         {
             GameObject projectileInstance = m_projectilePool.GetAvailableInstance();
+
             projectileInstance.transform.position = m_projectileSpawnPoint.position;
+
             Quaternion offestRotation = m_projectileSpawnPoint.parent.parent.localRotation;
+
             projectileInstance.SetActive(true);
+
             Projectile projectile = projectileInstance.GetComponent<Projectile>();
+
+            projectile.Throw(DamageSolver.SolveDamageOutput(m_character, m_sheet.damageDescriptor), SetPlayerProjectileAngle(projectileIndex, offestRotation), m_sheet.projectileSpeed);
+        }
+
+        private Vector3 SetPlayerProjectileAngle(int projectileIndex, Quaternion offestRotation)
+        {
             bool lookAtLeft = m_character.GetLookAtDirection() == EDirection.Left;
+
             Vector3 direction =
-                lookAtLeft ?
-                Vector3.left :
-                Vector3.right;
-            
+                    lookAtLeft ?
+                    Vector3.left :
+                    Vector3.right;
+
             float angleOffset = (m_sheet.spread / m_sheet.projectileCount) * (projectileIndex - (int)(m_sheet.projectileCount / 2.0f));
-            angleOffset = m_sheet.projectileCount % 2 == 0 ? (projectileIndex >= (int)(m_sheet.projectileCount / 2.0f) ? angleOffset + m_sheet.spread / m_sheet.projectileCount : angleOffset):angleOffset;
-            //float angleOffset = (m_sheet.spread / m_sheet.projectileCount) * projectileIndex - (m_sheet.spread / 2.0f);
-            Debug.Log("angleOffset:" + angleOffset + ",projectileIndex:" + projectileIndex + "m_sheet" + m_sheet.name);
+
+            angleOffset = m_sheet.projectileCount % 2 == 0 ?
+                (projectileIndex >= (int)(m_sheet.projectileCount / 2.0f)
+                ? angleOffset + m_sheet.spread / m_sheet.projectileCount : angleOffset) : angleOffset;
+
             Vector3 offestSum = Quaternion.AngleAxis(angleOffset, lookAtLeft ? Vector3.forward : Vector3.back).eulerAngles + offestRotation.eulerAngles;
+
             direction = Quaternion.Euler(offestSum) * direction;
             //direction = Quaternion.AngleAxis(angleOffset, lookAtLeft ? Vector3.forward : Vector3.back) * direction;
 
-            projectile.Throw(DamageSolver.SolveDamageOutput(m_character, m_sheet.damageDescriptor), direction, m_sheet.projectileSpeed);
+            return direction;
+        }
+
+        private Vector3 SetMonsterProjectileAngle(int projectileIndex, Quaternion offestRotation)
+        {
+            // 攻击前再设置一下
+            // 偷懒这样写，但感觉肯定有问题
+            // 尝试攻击前重置了一次，这里发射的时候又重置了一次
+            // 感觉实际上应该在对应事件中朝向
+            // 而且这个用GetComponent也太蠢了
+            m_character.GetComponent<Monster>().aiController.FaceTarget();
+
+            // 获取目标的X和Y角度
+            float targetXAngle = m_character.FaceToTargetXAngle;
+            float targetYAngle = m_character.FaceToTargetYAngle;
+
+            //Debug.Log("targetXAngle, targetYAngle" + m_character.FaceToTargetXAngle + " + " + m_character.FaceToTargetYAngle);
+
+            // 使用目标的X和Y角度来计算方向
+            Vector3 direction = new Vector3(Mathf.Cos(targetYAngle * Mathf.Deg2Rad) * Mathf.Cos(targetXAngle * Mathf.Deg2Rad),
+                                            Mathf.Sin(targetYAngle * Mathf.Deg2Rad),
+                                            Mathf.Cos(targetYAngle * Mathf.Deg2Rad) * Mathf.Sin(targetXAngle * Mathf.Deg2Rad));
+
+            // 处理角度偏移
+            float angleOffset = (m_sheet.spread / m_sheet.projectileCount) * (projectileIndex - (int)(m_sheet.projectileCount / 2.0f));
+
+            angleOffset = m_sheet.projectileCount % 2 == 0 ?
+                (projectileIndex >= (int)(m_sheet.projectileCount / 2.0f)
+                ? angleOffset + m_sheet.spread / m_sheet.projectileCount : angleOffset) : angleOffset;
+
+            // 使用偏移角度来调整方向
+            direction = Quaternion.Euler(0, 0, angleOffset) * direction;
+
+            return direction;
+        }
+
+        private void ThrowProjectile(int projectileIndex)
+        {
+            GameObject projectileInstance = m_projectilePool.GetAvailableInstance();
+
+            projectileInstance.transform.position = m_projectileSpawnPoint.position;
+
+            Quaternion offestRotation = m_projectileSpawnPoint.parent.parent.localRotation;
+
+            projectileInstance.SetActive(true);
+
+            Projectile projectile = projectileInstance.GetComponent<Projectile>();
+
+            if(m_character.isPlayer == true)
+            {
+                projectile.Throw(DamageSolver.SolveDamageOutput(m_character, m_sheet.damageDescriptor), 
+                    SetPlayerProjectileAngle(projectileIndex, offestRotation), m_sheet.projectileSpeed);
+            }
+            else
+            {
+                projectile.Throw(DamageSolver.SolveDamageOutput(m_character, m_sheet.damageDescriptor), 
+                    SetMonsterProjectileAngle(projectileIndex, offestRotation), m_sheet.projectileSpeed);
+            }
         }
     }
 }

@@ -8,10 +8,15 @@ namespace Gyvr.Mythril2D
         public string saveFileName => m_saveFileName;
         private string m_saveFileName = "SAVEFILE_A";
 
-        public void LoadDefaultSaveFile(SaveFile saveFile)
+        public void SetSaveFileName()
+        {
+        }
+
+        public void LoadDefaultSaveFile(SaveFile saveFile, string saveFileName)
         {
             SaveFileData newSaveFile = DuplicateSaveFile(saveFile.content);
-            LoadSaveFile(newSaveFile);
+
+            LoadSaveFile(newSaveFile, saveFileName);
         }
 
         /**
@@ -62,6 +67,9 @@ namespace Gyvr.Mythril2D
 
         public void LoadFromFile(string saveFileName)
         {
+
+            Debug.Log(saveFileName);
+
             m_saveFileName = saveFileName;
 
             Debug.Log($"Loading from {saveFileName}...");
@@ -81,6 +89,8 @@ namespace Gyvr.Mythril2D
 
         public void SaveToFile(string saveFileName)
         {
+            GameManager.NotificationSystem.saveStart.Invoke();
+
             m_saveFileName = saveFileName;
             
             // 测试的时候没有绑定存档所以为空
@@ -101,8 +111,8 @@ namespace Gyvr.Mythril2D
                     using (StreamWriter writer = new StreamWriter(stream))
                     {
                         writer.Write(dataToStore);
-                        Debug.Log($"Saving succeeded!");
 
+                        Debug.Log($"Saving succeeded!");
                     }
                 }
             }
@@ -110,15 +120,37 @@ namespace Gyvr.Mythril2D
             {
                 Debug.LogError($"Saving failed: {e.Message}");
             }
+
+            GameManager.NotificationSystem.saveEnd.Invoke();
         }
 
         public void LoadSaveFile(SaveFileData saveFile)
         {
             GameManager.GameFlagSystem.LoadDataBlock(saveFile.gameFlags);
+            GameManager.WarehouseSystem.LoadDataBlock(saveFile.warehouse);
             GameManager.InventorySystem.LoadDataBlock(saveFile.inventory);
             GameManager.JournalSystem.LoadDataBlock(saveFile.journal);
             GameManager.PlayerSystem.LoadDataBlock(saveFile.player);
-            GameManager.MapLoadingSystem.RequestTransition(saveFile.map);
+            GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map, null, null, null, ETeleportType.Revival);
+            //GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map);
+        }
+
+        public void LoadSaveFile(SaveFileData saveFile, string saveFileName)
+        {
+            Debug.Log(saveFileName);
+
+            m_saveFileName = saveFileName;
+
+            GameManager.GameFlagSystem.LoadDataBlock(saveFile.gameFlags);
+            GameManager.WarehouseSystem.LoadDataBlock(saveFile.warehouse);
+            GameManager.InventorySystem.LoadDataBlock(saveFile.inventory);
+            GameManager.JournalSystem.LoadDataBlock(saveFile.journal);
+            GameManager.PlayerSystem.LoadDataBlock(saveFile.player);
+            GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map, null, null, () =>
+            {
+                GameManager.SaveSystem.SaveToFile(saveFileName);
+            }, ETeleportType.Revival);
+            //GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map);
         }
 
         private string GenerateSavefileHeader()
@@ -141,8 +173,9 @@ namespace Gyvr.Mythril2D
             return new SaveFileData
             {
                 header = GenerateSavefileHeader(),
-                map = GameManager.MapLoadingSystem.GetCurrentMapName(),
+                map = GameManager.TeleportLoadingSystem.GetCurrentMapName(),
                 gameFlags = GameManager.GameFlagSystem.CreateDataBlock(),
+                warehouse = GameManager.WarehouseSystem.CreateDataBlock(),
                 inventory = GameManager.InventorySystem.CreateDataBlock(),
                 journal = GameManager.JournalSystem.CreateDataBlock(),
                 player = GameManager.PlayerSystem.CreateDataBlock()

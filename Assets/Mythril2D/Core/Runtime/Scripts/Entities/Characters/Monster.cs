@@ -1,10 +1,5 @@
-using Codice.CM.Client.Differences;
-using Codice.CM.Common;
 using System;
-using System.Threading;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Gyvr.Mythril2D
 {
@@ -13,6 +8,11 @@ namespace Gyvr.Mythril2D
         [Header("Monster Settings")]
         [SerializeField] private bool m_permanentDeath = false;
         [SerializeField] private string m_gameFlagID = "monster_00";
+        [SerializeField] private AIController m_aiController;
+        [SerializeField] private GameObject m_weaponObject = null;
+        [SerializeField] protected float m_lootedTime = 2.0f;
+
+        public AIController aiController => m_aiController;
 
         private bool m_looted = false;
 
@@ -22,12 +22,29 @@ namespace Gyvr.Mythril2D
             UpdateStats();
         }
 
-        private void Start()
+        private void Update()
         {
+            UpdateFieldOfWar();
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+
             if (m_permanentDeath && GameManager.GameFlagSystem.Get(m_gameFlagID))
             {
                 Destroy(gameObject);
             }
+        }
+
+        public override void OnStartInteract(CharacterBase sender, Entity target)
+        {
+            if (target != this)
+            {
+                return;
+            }
+
+            GameManager.Player.OnTryStartLoot(target, m_lootedTime);
         }
 
         public void SetLevel(int level)
@@ -71,7 +88,7 @@ namespace Gyvr.Mythril2D
                 //Array.ForEach(colliders, (collider) => collider.enabled = false);
 
                 // cancel the playing animation
-                this.transform.Find("Pivot").gameObject.SetActive(false);
+                m_weaponObject.transform.gameObject.SetActive(false);
 
                 SetLayerRecursively(this.gameObject, LayerMask.NameToLayer("Interaction"));
             }

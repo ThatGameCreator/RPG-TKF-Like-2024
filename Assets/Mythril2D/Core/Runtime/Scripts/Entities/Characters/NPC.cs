@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 namespace Gyvr.Mythril2D
 {
@@ -6,8 +7,15 @@ namespace Gyvr.Mythril2D
     {
         [SerializeField] private UINPCIcon m_npcIcon = null;
 
-        private void Start()
+        private void Update()
         {
+            UpdateFieldOfWar();
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+
             GameManager.NotificationSystem.questUnlocked.AddListener(OnQuestStatusChanged);
             GameManager.NotificationSystem.questAvailabilityChanged.AddListener(OnQuestAvailabilityChanged);
             GameManager.NotificationSystem.questCompleted.AddListener(OnQuestStatusChanged);
@@ -18,8 +26,10 @@ namespace Gyvr.Mythril2D
             UpdateIndicator();
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+
             GameManager.NotificationSystem.questUnlocked.RemoveListener(OnQuestStatusChanged);
             GameManager.NotificationSystem.questAvailabilityChanged.AddListener(OnQuestAvailabilityChanged);
             GameManager.NotificationSystem.questCompleted.RemoveListener(OnQuestStatusChanged);
@@ -53,10 +63,18 @@ namespace Gyvr.Mythril2D
 
         public override string GetSpeakerName() => characterSheet.displayName;
 
-        public override void OnInteract(CharacterBase sender)
+        public override void OnStartInteract(CharacterBase sender, Entity target)
         {
+            if (target != this)
+            {
+                return;
+            }
+
+            Debug.Log("OnStartInteract");
+
             SetLookAtDirection(sender.transform);
-            base.OnInteract(sender);
+
+            base.OnStartInteract(sender, target);
         }
 
         public void SetIconType(UINPCIcon.EIconType iconType)

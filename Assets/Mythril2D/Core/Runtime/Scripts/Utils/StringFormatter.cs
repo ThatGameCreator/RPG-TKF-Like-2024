@@ -1,4 +1,6 @@
-﻿namespace Gyvr.Mythril2D
+﻿using UnityEngine;
+
+namespace Gyvr.Mythril2D
 {
     public static class StringFormatter
     {

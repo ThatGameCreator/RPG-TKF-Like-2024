@@ -664,7 +664,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4928962302919589960, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5709888431689883737}
+    - targetCorrespondingSourceObject: {fileID: 7316959013917636646, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 592473561582033894}
+    - targetCorrespondingSourceObject: {fileID: 7316959013917636646, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8353303478986409928}
   m_SourcePrefab: {fileID: 100100000, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+--- !u!1 &290412488508111464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5672777907548866790, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+  m_PrefabInstance: {fileID: 5385744322253468302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1069940213459907270 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4928962302919589960, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
@@ -684,26 +695,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 3619733157857984532
+  m_spriteRenderer:
+  - {fileID: 1069940215254817591}
+  - {fileID: 3567045199918684122}
+  m_lightEventListener: {fileID: 592473561582033894}
+  m_showAnimationSpeed: 10
+  m_hideAnimationSpeed: 10
   m_animator: {fileID: 1069940215254817590}
   m_rigidbody: {fileID: 8526076313025978402}
-  m_spriteRenderer: {fileID: 1069940215254817591}
   m_level: 1
   m_invincibleOnHit: 0
   m_abilitiesRoot: {fileID: 6133405294004707084}
   m_additionalAbilities: []
+  m_nowMoveSpeed: 3
   m_moveSpeed: 3
+  m_runSpeed: 5
   m_pushIntensityScale: 1
   m_pushResistanceScale: 1
   m_movementMode: 0
   m_hitAnimationParameter: hit
   m_deathAnimationParameter: death
   m_deadAnimationParameter: dead
+  m_revivalAnimationParameter: Revival
   m_invincibleAnimationParameter: invincible
   m_moveXAnimationParameter: moveX
   m_moveYAnimationParameter: moveY
   m_isMovingAnimationParameter: isMoving
+  m_isRunningAnimationParameter: isRunning
   m_dashAnimationParameter: dash
-  m_isLootedAnimationParameter: isLooted
   directionChangedEventOfMe:
     m_PersistentCalls:
       m_Calls: []
@@ -713,9 +732,12 @@ MonoBehaviour:
   provokedEvent:
     m_PersistentCalls:
       m_Calls: []
+  isPlayer: 0
   m_sheet: {fileID: 0}
   m_permanentDeath: 0
   m_gameFlagID: monster_00
+  m_aiController: {fileID: 5709888431689883737}
+  m_weaponObject: {fileID: 290412488508111464}
   references:
     version: 2
     RefIds:
@@ -747,6 +769,9 @@ MonoBehaviour:
   m_cannotSeeTargetRetargetCooldown: 1
   m_attackTriggerRadius: 1
   m_attackCooldown: 1
+  m_weightMemoryFactor: 0.7
+  m_randomExplorationWeight: 0.1
+  initialDirectionCount: 8
 --- !u!4 &1069940213459907271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
@@ -762,9 +787,75 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4928962304513780153, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
   m_PrefabInstance: {fileID: 5385744322253468302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3401641147437255336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7316959013917636646, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+  m_PrefabInstance: {fileID: 5385744322253468302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &592473561582033894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401641147437255336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10005d7ce600784e93451bdcd95fa31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDistance: 0
+  visability: 0
+--- !u!114 &8353303478986409928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401641147437255336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowType: 3
+  shadowLayer: 0
+  shadowDistance: 1
+  shadowDistanceMin: 0
+  shadowDistanceMax: 0
+  shadowTranslucency: 1
+  maskType: 0
+  maskLit: 0
+  maskPivot: 0
+  maskLayer: 0
+  maskLitCustom: 1
+  bumpMapMode:
+    type: 0
+    textureType: 0
+    texture: {fileID: 0}
+    sprite: {fileID: 0}
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 0}
+  mainShape:
+    shadowType: 3
+    maskType: 0
+    maskPivot: 0
+    transform: {fileID: 8234635836988491630}
+--- !u!212 &3567045199918684122 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8880730510160356692, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+  m_PrefabInstance: {fileID: 5385744322253468302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6133405294004707084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2278885679164829058, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+  m_PrefabInstance: {fileID: 5385744322253468302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8234635836988491630 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4105396404033697248, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
   m_PrefabInstance: {fileID: 5385744322253468302}
   m_PrefabAsset: {fileID: 0}
 --- !u!50 &8526076313025978402 stripped

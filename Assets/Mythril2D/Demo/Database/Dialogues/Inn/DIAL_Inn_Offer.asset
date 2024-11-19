@@ -16,12 +16,12 @@ MonoBehaviour:
   - Welcome to the Drunk Rat Inn! Would you like to drink a restorative drink for
     only {0} <currency>?
   options:
-  - name: Accept
+  - name: Can Pay
     sequence: {fileID: 11400000, guid: b67aff0e202c3ef4395eb23cd0b88e50, type: 2}
     message:
       type: 2
       customMessage: 
-  - name: Cancel
+  - name: Cannot Pay
     sequence: {fileID: 11400000, guid: 8e0c12c50a585c148a752a0191cbf968, type: 2}
     message:
       type: 3

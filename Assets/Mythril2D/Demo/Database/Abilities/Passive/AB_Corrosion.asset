@@ -16,13 +16,15 @@ MonoBehaviour:
   m_displayName: Corrosion
   m_description: Burns anything on contact
   m_prefab: {fileID: 5434529868547144446, guid: 76944e717ca96af4fa1ab458037d4425, type: 3}
+  m_staminaCost: 0
   m_manaCost: 0
   m_abilityStateManagementMode: 0
   m_canInterupt: 0
   m_disabledActionsWhileCasting: 0
   m_fireAudio: {fileID: 0}
   m_damageDescriptor:
-    flatDamages: 0
+    flatDamages: 1
     scaledDamages: 0
     scale: 1
-    type: 2
+    damageType: 2
+    distanceType: 1

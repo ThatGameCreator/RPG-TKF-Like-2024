@@ -125,12 +125,12 @@ namespace Gyvr.Mythril2D
             
             if (selectedRecipeCost == 0)
             {
-                m_money.text = GameManager.InventorySystem.money.ToString();
+                m_money.text = GameManager.InventorySystem.backpackMoney.ToString();
             }
             else
             {
                 m_money.text = string.Format("{0}\n({1}{2})",
-                    GameManager.InventorySystem.money,
+                    GameManager.InventorySystem.backpackMoney,
                     selectedRecipeCost > 0 ? "-" : "+",
                     math.abs(selectedRecipeCost));
             }

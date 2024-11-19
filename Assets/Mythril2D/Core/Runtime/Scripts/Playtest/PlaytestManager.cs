@@ -31,7 +31,7 @@ namespace Gyvr.Mythril2D
                     save.player.position = m_scenario.transform.position;
 
                     GameManager.SaveSystem.LoadSaveFile(save);
-                    GameManager.MapLoadingSystem.SetActiveMap(scene);
+                    GameManager.TeleportLoadingSystem.SetActiveMap(scene);
                 };
             }
         }

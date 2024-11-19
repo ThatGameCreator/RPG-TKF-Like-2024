@@ -2,7 +2,6 @@ using UnityEditor;
 using UnityEditor.Overlays;
 using UnityEngine.UIElements;
 using System.Linq;
-using UnityEditor.SceneManagement;
 
 namespace Gyvr.Mythril2D
 {
@@ -19,7 +18,7 @@ namespace Gyvr.Mythril2D
             foreach (var scene in scenes)
             {
                 var button = new Button() { text = scene.Split('/').Last() };
-                button.clicked += () => EditorSceneManager.OpenScene(scene);
+                button.clicked += () => UnityEditor.SceneManagement.EditorSceneManager.OpenScene(scene);
                 root.Add(button);
             }
 

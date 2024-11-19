@@ -6,7 +6,7 @@ namespace Gyvr.Mythril2D
     [Serializable]
     public class InnInteraction : IInteraction
     {
-       [Header("Dialogues")]
+        [Header("Dialogues")]
         [SerializeField] private DialogueSequence m_dialogueIfCanPay = null;
         [SerializeField] private DialogueSequence m_dialogueIfCannotPay = null;
 
@@ -21,8 +21,12 @@ namespace Gyvr.Mythril2D
                 {
                     target.Say(m_dialogueIfCanPay, (messages) =>
                     {
+                        //Debug.Log("m_dialogueIfCanPay");
+
                         if (messages.Contains(EDialogueMessageType.Accept))
                         {
+                            //Debug.Log("Accept");
+
                             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_inn.healingSound);
                             GameManager.InventorySystem.RemoveMoney(m_inn.price);
                             GameManager.Player.Heal(m_inn.healAmount);

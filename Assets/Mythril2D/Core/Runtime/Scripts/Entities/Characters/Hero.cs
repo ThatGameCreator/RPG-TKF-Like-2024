@@ -1,12 +1,10 @@
-using Codice.CM.Client.Differences;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 using UnityEngine.Events;
-using UnityEngine.SocialPlatforms.Impl;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using System;
+using FunkyCode;
 
 namespace Gyvr.Mythril2D
 {
@@ -40,6 +38,7 @@ namespace Gyvr.Mythril2D
 
         public bool isNowCanRun = false;
         public bool isExecutingAction = false;
+        public bool isRunning = false;
         private bool useStamina = true;
         private Coroutine regeneratingStamina;
         public UnityEvent<float> currentStaminaChanged => m_currentStats.staminaChanged;
@@ -51,12 +50,25 @@ namespace Gyvr.Mythril2D
 
         public bool isLooting => m_isLooting;
         private bool m_isLooting = false;
-        private GameObject m_lootingObject = null;
+        private Entity m_lootingObject = null;
         public float lootingTime => m_lootingTime;
         public float lootingRequiredtTime => m_lootingRequiredtTime;
         private float m_lootingTime = 0f;
         private float m_lootingRequiredtTime = 2f;
 
+        [Header("Evacuation")]
+        [SerializeField] private AudioClipResolver m_evacuatingSound;
+        [SerializeField] private AudioClipResolver m_evacuatedSound;
+
+        private float m_evacuatingTime = 0f;
+        private bool m_isEvacuating = false;
+        private float m_evacuatingRequiredtTime = 3f;
+        public float evacuatingTime => m_evacuatingTime;
+        public bool isEvacuating => m_isEvacuating;
+        public float evacuatingRequiredtTime => m_evacuatingRequiredtTime;
+
+        [Header("Eyesight")]
+        [SerializeField] private Light2D m_heroLight = null;
 
         public int experience => m_experience;
         public int nextLevelExperience => GetTotalExpRequirement(m_level + 1);
@@ -90,25 +102,55 @@ namespace Gyvr.Mythril2D
 
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
 
-
+        public bool isDashFinished = false;
 
         private void OnDeadAnimationStart()
         {
-            Debug.Log("OnDeadAnimationStart");
+            //Debug.Log("OnDeadAnimationStart");
 
-            // 恢复血量 
-            m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
-            m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
-            m_currentStats.Stamina = GameManager.Player.maxStamina;
+            // 设置复活后人物朝向
+            SetLookAtDirection(Vector2.right);
+        }
 
-            // 保存数据
-            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+        private void OnDeadAnimationEnd()
+        {
+            GameManager.TeleportLoadingSystem.RequestTransition(null, null, () => {
+                // 恢复血量 
+                m_currentStats[EStat.Health] = 1;
+                m_currentStats[EStat.Mana] = 1;
+                m_currentStats.Stamina = GameManager.Player.maxStamina;
+
+                // 恢复碰撞体
+                Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+                Array.ForEach(colliders, (collider) => collider.enabled = true);
+            } ,
+            () => {
+                StartCoroutine(SaveWithDelay());
+            }, ETeleportType.Revival);
+        }
+
+        private IEnumerator SaveWithDelay()
+        {
+            yield return new WaitForSeconds(1f); // 等待一秒
+            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName); // 保存数据
+        }
+
+
+        private void OnRevivalAnimationEnd()
+        {
+            //Debug.Log("OnRevivalAnimationEnd");
 
             EnableActions(EActionFlags.All);
+        }
 
-            // 恢复碰撞体
-            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
-            Array.ForEach(colliders, (collider) => collider.enabled = true);
+        public void OnDashAnimationEnd()
+        {
+            //Debug.Log("OnDashAnimationEnd");
+
+            if (!dead)
+            {
+                isDashFinished = true;
+            }
         }
 
         public int GetTotalExpRequirement(int level)
@@ -158,11 +200,17 @@ namespace Gyvr.Mythril2D
 
             base.Awake();
             //m_currentStats.changed.AddListener(HandleStamina);
-            
         }
 
-        private void Start()
+        protected override void Start()
         {
+            // 这个感觉应该不需要执行一次监听 tryexcute
+
+
+            // 感觉如果粒子效果设置为 isloop 这个启动游戏时候就会启用 所以试着在 Awake 中关闭
+            // 好像 Awake 的时候还没新建好人物报错了， 试试在 Start 中
+            GameManager.Player.runParticleSystem.Stop();
+
             UpdateStats();
         }
 
@@ -171,11 +219,18 @@ namespace Gyvr.Mythril2D
             if (useStamina == true) HandleStamina();
 
             if (m_isLooting == true) OnTryLooting();
+
+            if (m_isEvacuating == true) OnTryEvacuating();
+        }
+
+        public bool CheckIsPlayerMoving()
+        {
+            return movementDirection == Vector2.zero;
         }
 
         private void OnTryLooting()
         {
-            if(movementDirection == Vector2.zero)
+            if (CheckIsPlayerMoving())
             {
                 m_lootingTime += Time.deltaTime;
             }
@@ -183,23 +238,64 @@ namespace Gyvr.Mythril2D
             {
                 CancelLooting();
             }
-                
+
             if (m_lootingTime > m_lootingRequiredtTime)
             {
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
 
-                m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
+                //m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
+                GameManager.NotificationSystem.playerEndInteracte.Invoke(GameManager.Player, m_lootingObject);
 
-                CancelLooting(); 
+                CancelLooting();
+            }
+        }
+
+        private void OnTryEvacuating()
+        {
+            if (GameManager.Player.CheckIsPlayerMoving())
+            {
+                m_evacuatingTime += Time.deltaTime;
+            }
+            else
+            {
+                CancelEvacuate();
+            }
+
+            if (m_evacuatingTime > m_evacuatingRequiredtTime)
+            {
+                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_evacuatedSound);
+
+                GameManager.TeleportLoadingSystem.RequestTransition("Pilgrimage_Place", null, null, () => {
+                    GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+                }, ETeleportType.Normal, "Player_Spawner");
+
+                GameManager.DayNightSystem.OnDisableDayNightSystem();
+
+                CancelEvacuate();
             }
         }
 
         // 感觉在这个框架下，要么做成技能，放到玩家下，要么得用个监听去监听其他行为来取消/
         // 不然一个拓展性不会，再者不停在Update中检测也不好
+        private void CancelEvacuate()
+        {
+            //TerminateCasting();
+
+            m_evacuatingTime = 0f;
+            m_isEvacuating = false;
+            GameManager.NotificationSystem.audioStopPlaybackRequested.Invoke(m_evacuatingSound);
+        }
+
+        public void OnStarEvacuate()
+        {
+            GameManager.Player.SetMovementDirection(Vector2.zero);
+            m_isEvacuating = true;
+            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_evacuatingSound);
+        }
+
         public void CancelLooting()
         {
             //TerminateCasting();
-            //Debug.Log("CancelLooting");
 
             m_lootingTime = 0f;
             m_isLooting = false;
@@ -207,12 +303,29 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.audioStopPlaybackRequested.Invoke(m_lootingSound);
         }
 
-        public void OnStartLooting(GameObject lootingObject)
+        public void OnStartLooting(Entity lootingObject, float targetLootTime)
         {
+            m_lootingRequiredtTime = targetLootTime;
+
             SetMovementDirection(Vector2.zero);
+
             m_isLooting = true;
+
             m_lootingObject = lootingObject;
+
             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootingSound);
+        }
+
+        public void OnTryStartLoot(Entity interactionTargett, float targetLootTime)
+        {
+            if (GameManager.Player.isLooting == true)
+            {
+                CancelLooting();
+            }
+            else
+            {
+                OnStartLooting(interactionTargett, targetLootTime);
+            }
         }
 
         private void OnStaminaChanged(float previous)
@@ -252,9 +365,8 @@ namespace Gyvr.Mythril2D
 
         private void HandleStamina()
         {
-
             // 冲刺状态，且有移动输入，处理耐力
-            if (isExecutingAction == true && movementDirection != Vector2.zero)
+            if (isRunning == true && movementDirection != Vector2.zero)
             {
                 // 如果耐力回复协程开启，中断
                 if (regeneratingStamina != null)
@@ -263,6 +375,7 @@ namespace Gyvr.Mythril2D
                     regeneratingStamina = null;
                 }
 
+                // 如果其他技能也用同一个bool isExecutingAction来开启 则会导致不是跑步也会扣精力值
                 m_currentStats.Stamina -= staminaMultiplier * Time.deltaTime;
 
                 if (m_currentStats.Stamina < 0) m_currentStats.Stamina = 0;
@@ -274,13 +387,15 @@ namespace Gyvr.Mythril2D
                     EndPlayRunAnimation();
                 }
             }
+
             // 好像当时忘记修一个bug，现在只能检测 run 的时候的状态 其他比如攻击和冲刺等并不能检测，导致可以一边做动作一边恢复耐力
             // 耐力值不满，且没有冲刺，且耐力回复未开启
-            if (m_currentStats.Stamina < maxStamina && isExecutingAction == false && regeneratingStamina == null)
+            if (m_currentStats.Stamina < maxStamina && isRunning == false && isExecutingAction == false && regeneratingStamina == null)
             {
+                //Debug.Log("RegenerateStamina");
+                //Debug.Log(isExecutingAction);
                 regeneratingStamina = StartCoroutine(RegenerateStamina());
             }
-
         }
 
         private IEnumerator RegenerateStamina()
@@ -288,7 +403,8 @@ namespace Gyvr.Mythril2D
             yield return new WaitForSeconds(timeBeforeStaminaRengeStarts);
 
             WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
-            while (m_currentStats.Stamina < maxStamina)
+
+            while (isExecutingAction == false && m_currentStats.Stamina < maxStamina)
             {
                 // 大于0，可以使用冲刺
                 if (m_currentStats.Stamina > 0f) isNowCanRun = true;
@@ -302,6 +418,11 @@ namespace Gyvr.Mythril2D
             }
             // 耐力回复完毕，引用置空
             regeneratingStamina = null;
+        }
+
+        public void SetPlayerHealthToZero()
+        {
+            m_currentStats[EStat.Health] = 0;
         }
 
         public Equipment Equip(Equipment equipment)
@@ -540,7 +661,13 @@ namespace Gyvr.Mythril2D
             m_destroyOnDeath = false; 
             base.OnDeath();
 
-            //GameManager.NotificationSystem.deathScreenRequested.Invoke();
+            GameManager.InventorySystem.EmptyBag();
+
+            GameManager.InventorySystem.UnEquipAll();
+
+            GameManager.DayNightSystem.OnDisableDayNightSystem();
+
+            GameManager.NotificationSystem.deathScreenRequested.Invoke();
         }
     }
 }

@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Gyvr.Mythril2D
 {
-    public class Chest : Entity
+    public class Chest : OtherEntity
     {
         [Header("References")]
         [SerializeField] private Animator m_chestAnimator = null;
@@ -25,6 +26,7 @@ namespace Gyvr.Mythril2D
 
         private bool m_hasOpeningAnimation = false;
         private bool m_hasRevealAnimation = false;
+        public bool opened => m_opened;
         private bool m_opened = false;
 
         protected void Awake()
@@ -44,12 +46,33 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             if (m_singleUse && GameManager.GameFlagSystem.Get(m_gameFlagID))
             {
                 m_opened = true;
                 TryPlayOpeningAnimation(m_opened);
+            }
+        }
+
+        public override void OnStartInteract(CharacterBase sender, Entity target)
+        {
+            if (target != this)
+            {
+                return;
+            }
+
+            if (this.opened == false)
+            {
+                Debug.Log(target);
+
+                GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+            }
+            else
+            {
+                base.OnEndInteract(sender, target);
             }
         }
 
@@ -111,22 +134,29 @@ namespace Gyvr.Mythril2D
                     {
                         foreach (var entry in m_loot.entries)
                         {
-                            GameManager.DialogueSystem.Main.AddToQueue(
-                                m_hasItemDialogue.ToDialogueTree(
-                                    string.Empty, $"{entry.item.displayName} x{entry.quantity}"
-                                )
-                            );
+                            if (m_hasItemDialogue)
+                                {
+                                    GameManager.DialogueSystem.Main.AddToQueue(
+                                    m_hasItemDialogue.ToDialogueTree(
+                                        string.Empty, $"{entry.item.displayName} x{entry.quantity}"
+                                    )
+                                );
+                            }
 
                             GameManager.InventorySystem.AddToBag(entry.item, entry.quantity);
                         }
 
                         if (m_loot.money != 0)
                         {
-                            GameManager.DialogueSystem.Main.AddToQueue(
-                                m_hasItemDialogue.ToDialogueTree(
-                                    string.Empty, $"{m_loot.money} <currency.fullName>"
-                                )
-                            );
+                            if (m_hasItemDialogue)
+                            {
+                                GameManager.DialogueSystem.Main.AddToQueue(
+                                    m_hasItemDialogue.ToDialogueTree(
+                                        string.Empty, $"{m_loot.money} <currency.fullName>"
+                                    )
+                                );
+                            }
+
 
                             GameManager.InventorySystem.AddMoney(m_loot.money);
                         }
@@ -134,12 +164,15 @@ namespace Gyvr.Mythril2D
                 }
                 else
                 {
-                    GameManager.DialogueSystem.Main.AddToQueue(
-                        m_noItemDialogue.ToDialogueTree(string.Empty)
-                    );
+                    if (m_hasItemDialogue)
+                    {
+                        GameManager.DialogueSystem.Main.AddToQueue(
+                            m_noItemDialogue.ToDialogueTree(string.Empty)
+                        );
+                    }
                 }
 
-                GameManager.DialogueSystem.Main.PlayQueue();
+                //GameManager.DialogueSystem.Main.PlayQueue();
 
                 m_opened = true;
 

@@ -13,13 +13,19 @@ namespace Gyvr.Mythril2D
         private UIInventoryBagSlot[] m_slots = null;
         private EItemCategory m_category = 0;
 
+        private void Start()
+        {
+            GameManager.NotificationSystem.UICategorySelected.AddListener(OnBagCategorySelected);
+        }
+
         public void Init()
         {
             m_slots = GetComponentsInChildren<UIInventoryBagSlot>();
 
+            // 没get到他为什么要设置为反过来 我在grid组件里面重新设置为 topleft 然后把这个b代码给注释掉了
             // Because we display slots from bottom right to top left, we need to reverse them here to make sure we fill
             // them from top left to bottom right.
-            Array.Reverse(m_slots);
+            //Array.Reverse(m_slots);
 
             foreach (var category in m_categories)
             {
@@ -48,7 +54,7 @@ namespace Gyvr.Mythril2D
         {
             int usedSlots = 0;
 
-            Dictionary<Item, int> items = GameManager.InventorySystem.items;
+            Dictionary<Item, int> items = GameManager.InventorySystem.backpackItems;
 
             foreach (KeyValuePair<Item, int> entry in items)
             {

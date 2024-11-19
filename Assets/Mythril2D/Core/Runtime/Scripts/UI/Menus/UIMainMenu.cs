@@ -31,11 +31,11 @@ namespace Gyvr.Mythril2D
         }
         
         // 从这里进入新游戏
-        public void StartNewGameFromDefaultSaveFile(SaveFile saveFile)
+        public void StartNewGameFromDefaultSaveFile(SaveFile saveFile, string saveFileName)
         {
             SceneManager.LoadSceneAsync(GameManager.Config.gameplayScene).completed += (operation) =>
             {
-                GameManager.SaveSystem.LoadDefaultSaveFile(saveFile);
+                GameManager.SaveSystem.LoadDefaultSaveFile(saveFile, saveFileName);
             };
         }
 
@@ -53,7 +53,8 @@ namespace Gyvr.Mythril2D
 
         private void OnSaveFileClicked(SaveFileActionDesc desc)
         {
-            //Debug.Log("Main Menu OnSaveFileClicked");
+            Debug.Log("Main Menu OnSaveFileClicked");
+
             SceneManager.LoadSceneAsync(GameManager.Config.gameplayScene).completed += (operation) =>
             {
                 switch (desc.action)
