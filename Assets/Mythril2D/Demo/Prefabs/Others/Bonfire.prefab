@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 3411237137396577708}
   - component: {fileID: 4776625083856212204}
   - component: {fileID: 5911495197006405559}
+  - component: {fileID: 8896269556150638779}
   - component: {fileID: 2405838401956387511}
   - component: {fileID: 4306543411354716546}
   - component: {fileID: 6362132511525872467}
@@ -298,6 +299,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffee5d69b1fbd0c419cb7de89f3b252f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_interaction:
+    rid: -2
+  m_spriteRenderer: {fileID: 0}
+  m_lightEventListener: {fileID: 0}
+  m_showAnimationSpeed: 10
+  m_hideAnimationSpeed: 10
   m_activationEvent: 7
   m_condition:
     rid: -2
@@ -320,6 +327,29 @@ MonoBehaviour:
       type: {class: SaveResurrectionPostion, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_gameObject: {fileID: 1135642598488375374}
+--- !u!114 &8896269556150638779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456772636041493637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70411c176abcb04999548ea4e5a08fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_interaction:
+    rid: -2
+  m_spriteRenderer: {fileID: 0}
+  m_lightEventListener: {fileID: 0}
+  m_showAnimationSpeed: 10
+  m_hideAnimationSpeed: 10
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!61 &2405838401956387511
 BoxCollider2D:
   m_ObjectHideFlags: 0

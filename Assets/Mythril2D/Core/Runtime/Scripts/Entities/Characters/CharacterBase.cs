@@ -794,22 +794,6 @@ namespace Gyvr.Mythril2D
         {
             m_FaceToTargetXAngle = xAngle;
             m_FaceToTargetYAngle = yAngle;    
-
-            //if (m_spriteRenderer)
-            //{
-            //    // 判断水平方向是否需要翻转
-            //    bool isFacingLeft = xAngle < 0;
-
-            //    // 根据水平角度设置 flipX
-            //    if (m_spriteRenderer.flipX != isFacingLeft)
-            //    {
-            //        Debug.Log("flipX");
-
-            //        m_spriteRenderer.flipX = isFacingLeft;
-            //        directionChangedEvent.Invoke(isFacingLeft ? EDirection.Left : EDirection.Right);
-            //        //SetLookAtDirection(isFacingLeft ? EDirection.Left : EDirection.Right);
-            //    }
-            //}
         }
 
         public void SetLookAtDirection(float direction)

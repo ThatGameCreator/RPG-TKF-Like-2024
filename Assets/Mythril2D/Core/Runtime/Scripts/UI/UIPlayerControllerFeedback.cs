@@ -24,7 +24,7 @@ namespace Gyvr.Mythril2D
 
         private void Update()
         {
-            GameObject target = m_playerController.interactionTarget;
+            Entity target = m_playerController.interactionTarget;
 
             if (target)
             {

@@ -26,8 +26,10 @@ namespace Gyvr.Mythril2D
             UpdateFieldOfWar();
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             if (m_permanentDeath && GameManager.GameFlagSystem.Get(m_gameFlagID))
             {
                 Destroy(gameObject);

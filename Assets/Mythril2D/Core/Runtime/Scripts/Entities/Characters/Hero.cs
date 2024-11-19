@@ -50,7 +50,7 @@ namespace Gyvr.Mythril2D
 
         public bool isLooting => m_isLooting;
         private bool m_isLooting = false;
-        private GameObject m_lootingObject = null;
+        private Entity m_lootingObject = null;
         public float lootingTime => m_lootingTime;
         public float lootingRequiredtTime => m_lootingRequiredtTime;
         private float m_lootingTime = 0f;
@@ -202,8 +202,11 @@ namespace Gyvr.Mythril2D
             //m_currentStats.changed.AddListener(HandleStamina);
         }
 
-        private void Start()
+        protected override void Start()
         {
+            // 这个感觉应该不需要执行一次监听 tryexcute
+
+
             // 感觉如果粒子效果设置为 isloop 这个启动游戏时候就会启用 所以试着在 Awake 中关闭
             // 好像 Awake 的时候还没新建好人物报错了， 试试在 Start 中
             GameManager.Player.runParticleSystem.Stop();
@@ -299,7 +302,7 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.audioStopPlaybackRequested.Invoke(m_lootingSound);
         }
 
-        public void OnStartLooting(GameObject lootingObject)
+        public void OnStartLooting(Entity lootingObject)
         {
             SetMovementDirection(Vector2.zero);
             m_isLooting = true;
@@ -372,7 +375,7 @@ namespace Gyvr.Mythril2D
             if (m_currentStats.Stamina < maxStamina && isRunning == false && isExecutingAction == false && regeneratingStamina == null)
             {
                 //Debug.Log("RegenerateStamina");
-                Debug.Log(isExecutingAction);
+                //Debug.Log(isExecutingAction);
                 regeneratingStamina = StartCoroutine(RegenerateStamina());
             }
         }

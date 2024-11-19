@@ -16,12 +16,6 @@ namespace Gyvr.Mythril2D
 
         private bool m_opened = false;
 
-
-        private void Start()
-        {
-
-        }
-
         public bool TryLooted()
         {
             if (m_opened == false)

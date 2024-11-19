@@ -33,8 +33,10 @@ namespace Gyvr.Mythril2D
 
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             GameManager.NotificationSystem.UIWarehouseClosed.AddListener(TryClose);
         }
 

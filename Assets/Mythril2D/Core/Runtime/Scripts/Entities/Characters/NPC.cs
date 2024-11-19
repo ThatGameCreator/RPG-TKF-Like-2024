@@ -12,8 +12,10 @@ namespace Gyvr.Mythril2D
             UpdateFieldOfWar();
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+
             GameManager.NotificationSystem.questUnlocked.AddListener(OnQuestStatusChanged);
             GameManager.NotificationSystem.questAvailabilityChanged.AddListener(OnQuestAvailabilityChanged);
             GameManager.NotificationSystem.questCompleted.AddListener(OnQuestStatusChanged);
@@ -59,10 +61,11 @@ namespace Gyvr.Mythril2D
 
         public override string GetSpeakerName() => characterSheet.displayName;
 
-        public override void OnInteract(CharacterBase sender)
+        public override void OnInteract(CharacterBase sender, Entity target)
         {
             SetLookAtDirection(sender.transform);
-            base.OnInteract(sender);
+
+            base.OnInteract(sender, target);
         }
 
         public void SetIconType(UINPCIcon.EIconType iconType)

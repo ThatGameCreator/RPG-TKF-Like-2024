@@ -2,10 +2,11 @@ using FunkyCode;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Gyvr.Mythril2D
 {
-    public class Entity : MonoBehaviour, IInteractionTarget
+    public class  Entity : MonoBehaviour, IInteractionTarget
     {
         [Header("Entity Settings")]
         [SerializeReference, SubclassSelector] private IInteraction m_interaction = null;
@@ -19,6 +20,11 @@ namespace Gyvr.Mythril2D
         [SerializeField] private float m_hideAnimationSpeed = 10f;
 
         private Color m_initialSpriteColor = Color.white;
+
+        protected virtual void Start()
+        {
+            GameManager.NotificationSystem.playerTryInteracte.AddListener(OnInteract);
+        }
 
         protected void UpdateFieldOfWar()
         {
@@ -57,8 +63,12 @@ namespace Gyvr.Mythril2D
             GameManager.DialogueSystem.Main.PlayNow(dialogueTree);
         }
 
-        public virtual void OnInteract(CharacterBase sender)
+        public virtual void OnInteract(CharacterBase sender, Entity target)
         {
+            if (target != this)
+                return;
+
+            // 左边是发起互动对象 右边是被互动对象
             m_interaction?.TryExecute(sender, this);
         }
     }

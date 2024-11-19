@@ -45,7 +45,7 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        private void Start()
+        protected override void Start()
         {
             if (m_singleUse && GameManager.GameFlagSystem.Get(m_gameFlagID))
             {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Gyvr.Mythril2D
 {
@@ -39,6 +40,7 @@ namespace Gyvr.Mythril2D
         public UnityEvent saveStart = new UnityEvent();
         public UnityEvent saveEnd = new UnityEvent();
         public UnityEvent<Hero> playerSpawned = new UnityEvent<Hero>();
+        public UnityEvent<Hero, Entity> playerTryInteracte = new UnityEvent<Hero, Entity>();
 
         public UnityEvent<TeleportLoadingDelegationParams> mapTransitionDelegationRequested = new UnityEvent<TeleportLoadingDelegationParams>();
 
