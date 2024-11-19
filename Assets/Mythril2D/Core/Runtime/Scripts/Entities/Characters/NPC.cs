@@ -26,8 +26,10 @@ namespace Gyvr.Mythril2D
             UpdateIndicator();
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+
             GameManager.NotificationSystem.questUnlocked.RemoveListener(OnQuestStatusChanged);
             GameManager.NotificationSystem.questAvailabilityChanged.AddListener(OnQuestAvailabilityChanged);
             GameManager.NotificationSystem.questCompleted.RemoveListener(OnQuestStatusChanged);
@@ -61,11 +63,18 @@ namespace Gyvr.Mythril2D
 
         public override string GetSpeakerName() => characterSheet.displayName;
 
-        public override void OnInteract(CharacterBase sender, Entity target)
+        public override void OnStartInteract(CharacterBase sender, Entity target)
         {
+            if (target != this)
+            {
+                return;
+            }
+
+            Debug.Log("OnStartInteract");
+
             SetLookAtDirection(sender.transform);
 
-            base.OnInteract(sender, target);
+            base.OnStartInteract(sender, target);
         }
 
         public void SetIconType(UINPCIcon.EIconType iconType)

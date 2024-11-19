@@ -244,7 +244,7 @@ namespace Gyvr.Mythril2D
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
 
                 //m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
-                GameManager.NotificationSystem.playerTryInteracte.Invoke(GameManager.Player, m_lootingObject);
+                GameManager.NotificationSystem.playerEndInteracte.Invoke(GameManager.Player, m_lootingObject);
 
                 CancelLooting();
             }
@@ -303,12 +303,29 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.audioStopPlaybackRequested.Invoke(m_lootingSound);
         }
 
-        public void OnStartLooting(Entity lootingObject)
+        public void OnStartLooting(Entity lootingObject, float targetLootTime)
         {
+            m_lootingRequiredtTime = targetLootTime;
+
             SetMovementDirection(Vector2.zero);
+
             m_isLooting = true;
+
             m_lootingObject = lootingObject;
+
             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootingSound);
+        }
+
+        public void OnTryStartLoot(Entity interactionTargett, float targetLootTime)
+        {
+            if (GameManager.Player.isLooting == true)
+            {
+                CancelLooting();
+            }
+            else
+            {
+                OnStartLooting(interactionTargett, targetLootTime);
+            }
         }
 
         private void OnStaminaChanged(float previous)

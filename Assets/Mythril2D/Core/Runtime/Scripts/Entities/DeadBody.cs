@@ -16,6 +16,16 @@ namespace Gyvr.Mythril2D
 
         private bool m_opened = false;
 
+        public override void OnStartInteract(CharacterBase sender, Entity target)
+        {
+            if (target != this)
+            {
+                return;
+            }
+
+            GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+        }
+
         public bool TryLooted()
         {
             if (m_opened == false)

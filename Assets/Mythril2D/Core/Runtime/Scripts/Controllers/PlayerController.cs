@@ -114,42 +114,12 @@ namespace Gyvr.Mythril2D
 
         private bool TryInteracting()
         {
-            //Debug.Log("Trying Interaction");
             Entity interactionTarget = GetInteractibleObject();
 
             if (interactionTarget)
             {
-                Monster localMonster = interactionTarget.gameObject.GetComponent<Monster>();
-                Chest localChest = interactionTarget.gameObject.GetComponent<Chest>();
-                DeadBody localDeadBody = interactionTarget.gameObject.GetComponent<DeadBody>();
-                SurfaceItem localSurfaceItem = interactionTarget.gameObject.GetComponent<SurfaceItem>();
-
-                //if (interactionTarget.gameObject.layer == LayerMask.GetMask(GameManager.Config.mosterLayer))
-                if (localMonster != null || localChest != null || localDeadBody != null || localSurfaceItem != null)
-                {
-                    //Debug.Log("moster loot");
-                    if (GameManager.Player.isLooting == true)
-                    {
-                        GameManager.Player.CancelLooting();
-                    }
-
-                    // 打开过一次宝箱就播放文本
-                    else if(localChest != null && localChest.opened == true)
-                    {
-                        ActiveInteracting();
-                    }
-
-                    else
-                    {
-                        GameManager.Player.OnStartLooting(interactionTarget);
-                    }
-                }
-                
-                else
-                {
-                    ActiveInteracting();
-                    return true;
-                }
+                ActiveInteracting();
+                return true;
             }
 
             return false;
@@ -157,13 +127,11 @@ namespace Gyvr.Mythril2D
 
         private void ActiveInteracting()
         {
-            //Debug.Log("Active Interaction");
+            Debug.Log("Active Interaction");
 
             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_interactionSound);
 
             GameManager.NotificationSystem.playerTryInteracte.Invoke(GameManager.Player, interactionTarget);
-
-            //interactionTarget.SendMessageUpwards("OnInteract", m_character);
         }
 
         private void OnOpenGameMenu(InputAction.CallbackContext context)

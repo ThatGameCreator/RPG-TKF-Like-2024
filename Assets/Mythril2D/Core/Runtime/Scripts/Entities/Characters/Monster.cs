@@ -10,6 +10,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private string m_gameFlagID = "monster_00";
         [SerializeField] private AIController m_aiController;
         [SerializeField] private GameObject m_weaponObject = null;
+        [SerializeField] protected float m_lootedTime = 2.0f;
 
         public AIController aiController => m_aiController;
 
@@ -34,6 +35,16 @@ namespace Gyvr.Mythril2D
             {
                 Destroy(gameObject);
             }
+        }
+
+        public override void OnStartInteract(CharacterBase sender, Entity target)
+        {
+            if (target != this)
+            {
+                return;
+            }
+
+            GameManager.Player.OnTryStartLoot(target, m_lootedTime);
         }
 
         public void SetLevel(int level)

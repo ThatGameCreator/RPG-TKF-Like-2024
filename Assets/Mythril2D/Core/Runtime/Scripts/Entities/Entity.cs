@@ -24,7 +24,16 @@ namespace Gyvr.Mythril2D
 
         protected virtual void Start()
         {
-            GameManager.NotificationSystem.playerTryInteracte.AddListener(OnInteract);
+            GameManager.NotificationSystem.playerTryInteracte.AddListener(OnStartInteract);
+
+            GameManager.NotificationSystem.playerEndInteracte.AddListener(OnEndInteract);
+        }
+
+        protected virtual void OnDestroy()
+        {
+            GameManager.NotificationSystem.playerTryInteracte.RemoveListener(OnStartInteract);
+
+            GameManager.NotificationSystem.playerEndInteracte.RemoveListener(OnEndInteract);
         }
 
         protected void UpdateFieldOfWar()
@@ -67,10 +76,23 @@ namespace Gyvr.Mythril2D
             GameManager.DialogueSystem.Main.PlayNow(dialogueTree);
         }
 
-        public virtual void OnInteract(CharacterBase sender, Entity target)
+        public virtual void OnStartInteract(CharacterBase sender, Entity target)
         {
             if (target != this)
+            {
                 return;
+            }
+
+            // 左边是发起互动对象 右边是被互动对象
+            m_interaction?.TryExecute(sender, this);
+        }
+
+        public virtual void OnEndInteract(CharacterBase sender, Entity target)
+        {
+            if (target != this)
+            {
+                return;
+            }
 
             // 左边是发起互动对象 右边是被互动对象
             m_interaction?.TryExecute(sender, this);
