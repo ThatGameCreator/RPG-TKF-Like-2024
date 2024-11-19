@@ -14,7 +14,8 @@ namespace Gyvr.Mythril2D
         public virtual string GetSpeakerName() => string.Empty;
 
         [Header("Lighting")]
-        [SerializeField] protected SpriteRenderer m_spriteRenderer = null;
+        // 第一个是自己的精灵 其他的是阴影
+        [SerializeField] protected SpriteRenderer[] m_spriteRenderer = null;
         [SerializeField] protected LightEventListener m_lightEventListener = null;
         [SerializeField] private float m_showAnimationSpeed = 10f;
         [SerializeField] private float m_hideAnimationSpeed = 10f;
@@ -32,20 +33,23 @@ namespace Gyvr.Mythril2D
 
             if (m_spriteRenderer != null)
             {
-                // 缓存材质的颜色
-                var materialColor = m_spriteRenderer.material.color;
+                foreach (SpriteRenderer spriteRenderer in m_spriteRenderer)
+                {
+                    // 缓存材质的颜色
+                    Color materialColor = spriteRenderer.material.color;
 
-                // 目标颜色
-                Color targetColor = m_lightEventListener.visability >= 0.5f
-                    ? m_initialSpriteColor
-                    : new Color(materialColor.r, materialColor.g, materialColor.b, 0f);
+                    // 目标颜色
+                    Color targetColor = m_lightEventListener.visability >= 0.5f
+                        ? m_initialSpriteColor
+                        : new Color(materialColor.r, materialColor.g, materialColor.b, 0f);
 
-                // 插值更新颜色
-                float animationSpeed = m_lightEventListener.visability >= 0.5f
-                    ? m_showAnimationSpeed
-                    : m_hideAnimationSpeed;
+                    // 插值更新颜色
+                    float animationSpeed = m_lightEventListener.visability >= 0.5f
+                        ? m_showAnimationSpeed
+                        : m_hideAnimationSpeed;
 
-                m_spriteRenderer.material.color = Color.Lerp(materialColor, targetColor, animationSpeed * Time.unscaledDeltaTime);
+                    spriteRenderer.material.color = Color.Lerp(materialColor, targetColor, animationSpeed * Time.unscaledDeltaTime);
+                }
             }
         }
 

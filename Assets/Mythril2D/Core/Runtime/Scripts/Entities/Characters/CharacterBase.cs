@@ -136,7 +136,12 @@ namespace Gyvr.Mythril2D
         protected virtual void Awake()
         {
             Debug.Assert(m_animator, ErrorMessages.InspectorMissingComponentReference<Animator>());
-            Debug.Assert(m_spriteRenderer, ErrorMessages.InspectorMissingComponentReference<SpriteRenderer>());
+
+            foreach (SpriteRenderer spriteRenderer in m_spriteRenderer)
+            {
+                Debug.Assert(spriteRenderer, ErrorMessages.InspectorMissingComponentReference<SpriteRenderer>());
+            }
+
             Debug.Assert(m_rigidbody, ErrorMessages.InspectorMissingComponentReference<Rigidbody2D>());
 
             m_maxStats.changed.AddListener(OnStatsChanged);
@@ -783,10 +788,13 @@ namespace Gyvr.Mythril2D
         {
             if (direction.x != 0.0f || direction.y != 0.0f)
             {
-                EDirection myEDirection = direction.x >= 0.0f ? EDirection.Right : EDirection.Left;
-                bool wasFlipped = m_spriteRenderer.flipX;
-                m_spriteRenderer.flipX = myEDirection == EDirection.Left;
-                directionChangedEventOfMe.Invoke(direction);
+                foreach (SpriteRenderer spriteRenderer in m_spriteRenderer)
+                {
+                    EDirection myEDirection = direction.x >= 0.0f ? EDirection.Right : EDirection.Left;
+                    bool wasFlipped = spriteRenderer.flipX;
+                    spriteRenderer.flipX = myEDirection == EDirection.Left;
+                    directionChangedEventOfMe.Invoke(direction);
+                }
             }
         }
 
@@ -806,22 +814,30 @@ namespace Gyvr.Mythril2D
 
         public void SetLookAtDirection(EDirection direction)
         {
-            if (m_spriteRenderer)
+            
+            foreach (SpriteRenderer spriteRenderer in m_spriteRenderer)
             {
-                bool wasFlipped = m_spriteRenderer.flipX;
-
-                if ((m_spriteRenderer.flipX = direction == EDirection.Left) != wasFlipped)
+                if (spriteRenderer)
                 {
-                    directionChangedEvent.Invoke(direction);
+                    bool wasFlipped = spriteRenderer.flipX;
+
+                    if ((spriteRenderer.flipX = direction == EDirection.Left) != wasFlipped)
+                    {
+                        directionChangedEvent.Invoke(direction);
+                    }
                 }
             }
         }
 
         public EDirection GetLookAtDirection()
         {
-            if (m_spriteRenderer)
+
+            foreach (SpriteRenderer spriteRenderer in m_spriteRenderer)
             {
-                return m_spriteRenderer.flipX ? EDirection.Left : EDirection.Right;
+                if (spriteRenderer)
+                {
+                    return spriteRenderer.flipX ? EDirection.Left : EDirection.Right;
+                }
             }
 
             return EDirection.Default;

@@ -233,7 +233,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 2152590473451798530
-  m_spriteRenderer: {fileID: 267762870989917498}
+  m_spriteRenderer:
+  - {fileID: 267762870989917498}
+  - {fileID: 4390667313610080727}
   m_lightEventListener: {fileID: 6366349834063817765}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
@@ -268,6 +270,7 @@ MonoBehaviour:
   provokedEvent:
     m_PersistentCalls:
       m_Calls: []
+  isPlayer: 0
   m_sheet: {fileID: 0}
   m_npcIcon: {fileID: 2515723411655190729}
   references:
@@ -338,6 +341,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useDistance: 0
   visability: 0
+--- !u!212 &4390667313610080727 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8880730510160356692, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+  m_PrefabInstance: {fileID: 5174770045673350275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6372667702664300801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2278885679164829058, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}

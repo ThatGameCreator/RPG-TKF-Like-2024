@@ -243,7 +243,8 @@ namespace Gyvr.Mythril2D
             {
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
 
-                m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
+                //m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
+                GameManager.NotificationSystem.playerTryInteracte.Invoke(GameManager.Player, m_lootingObject);
 
                 CancelLooting();
             }

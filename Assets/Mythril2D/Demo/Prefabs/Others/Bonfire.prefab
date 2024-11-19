@@ -227,11 +227,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3411237137396577708}
   - component: {fileID: 4776625083856212204}
-  - component: {fileID: 5911495197006405559}
   - component: {fileID: 8896269556150638779}
   - component: {fileID: 2405838401956387511}
   - component: {fileID: 4306543411354716546}
   - component: {fileID: 6362132511525872467}
+  - component: {fileID: 6690544171842028159}
+  - component: {fileID: 1048742508096135004}
   m_Layer: 6
   m_Name: Bonfire
   m_TagString: Untagged
@@ -287,46 +288,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5911495197006405559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5456772636041493637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffee5d69b1fbd0c419cb7de89f3b252f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_interaction:
-    rid: -2
-  m_spriteRenderer: {fileID: 0}
-  m_lightEventListener: {fileID: 0}
-  m_showAnimationSpeed: 10
-  m_hideAnimationSpeed: 10
-  m_activationEvent: 7
-  m_condition:
-    rid: -2
-  m_toExecute:
-    rid: 2152590066560270346
-  m_toExecutes:
-  - rid: 8303503225474252801
-  m_frameDelay: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 2152590066560270346
-      type: {class: PlayDialogueSequence, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
-      data:
-        m_dialogueSequence: {fileID: 11400000, guid: a8ddd21246905c8458a08f9bf1bc0663, type: 2}
-        m_speaker: 
-    - rid: 8303503225474252801
-      type: {class: SaveResurrectionPostion, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
-      data:
-        m_gameObject: {fileID: 1135642598488375374}
 --- !u!114 &8896269556150638779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,16 +301,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interaction:
-    rid: -2
-  m_spriteRenderer: {fileID: 0}
-  m_lightEventListener: {fileID: 0}
+    rid: 8303503458993963013
+  m_spriteRenderer:
+  - {fileID: 4306543411354716546}
+  m_lightEventListener: {fileID: 1048742508096135004}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 8303503458993963013
+      type: {class: CommandInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
+      data:
+        m_command:
+          rid: 8303503458993963014
+    - rid: 8303503458993963014
+      type: {class: SaveResurrectionPostion, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
+      data:
+        m_gameObject: {fileID: 1135642598488375374}
 --- !u!61 &2405838401956387511
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -468,6 +437,57 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6690544171842028159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456772636041493637}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783dbbad6a59184fa58aa75d79bcc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowType: 1
+  shadowLayer: 0
+  shadowDistance: 1
+  shadowDistanceMin: 0
+  shadowDistanceMax: 0
+  shadowTranslucency: 1
+  maskType: 0
+  maskLit: 0
+  maskPivot: 0
+  maskLayer: 0
+  maskLitCustom: 1
+  bumpMapMode:
+    type: 0
+    textureType: 0
+    texture: {fileID: 0}
+    sprite: {fileID: 0}
+    invertX: 0
+    invertY: 0
+    depth: 1
+    spriteRenderer: {fileID: 4306543411354716546}
+  mainShape:
+    shadowType: 1
+    maskType: 0
+    maskPivot: 0
+    transform: {fileID: 3411237137396577708}
+--- !u!114 &1048742508096135004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456772636041493637}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10005d7ce600784e93451bdcd95fa31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDistance: 0
+  visability: 0
 --- !u!1 &5511718309384287616
 GameObject:
   m_ObjectHideFlags: 0

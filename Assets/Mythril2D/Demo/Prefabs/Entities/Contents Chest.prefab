@@ -280,7 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 2152590473451798558
-  m_spriteRenderer: {fileID: 5733890042131917494}
+  m_spriteRenderer:
+  - {fileID: 5733890042131917494}
   m_lightEventListener: {fileID: 1499653012271325872}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10

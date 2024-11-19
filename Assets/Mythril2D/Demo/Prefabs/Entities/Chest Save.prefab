@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 0
-  m_labelHash: 0
+  m_CategoryHash: 6.9143887e-37
+  m_labelHash: 6.9143887e-37
   m_SpriteKey: 0
   m_SpriteHash: 425254030
 --- !u!212 &5733890042131917494
@@ -280,7 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 2152590473451798558
-  m_spriteRenderer: {fileID: 5733890042131917494}
+  m_spriteRenderer:
+  - {fileID: 5733890042131917494}
   m_lightEventListener: {fileID: 1499653012271325872}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10

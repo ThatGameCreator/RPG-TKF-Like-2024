@@ -695,7 +695,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 3619733157857984532
-  m_spriteRenderer: {fileID: 1069940215254817591}
+  m_spriteRenderer:
+  - {fileID: 1069940215254817591}
+  - {fileID: 3567045199918684122}
   m_lightEventListener: {fileID: 592473561582033894}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
@@ -841,6 +843,11 @@ MonoBehaviour:
     maskType: 0
     maskPivot: 0
     transform: {fileID: 8234635836988491630}
+--- !u!212 &3567045199918684122 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8880730510160356692, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+  m_PrefabInstance: {fileID: 5385744322253468302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6133405294004707084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2278885679164829058, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}

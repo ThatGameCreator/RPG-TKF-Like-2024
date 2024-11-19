@@ -10243,7 +10243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: -2
-  m_spriteRenderer: {fileID: 6241793362411393681}
+  m_spriteRenderer:
+  - {fileID: 6241793362411393681}
+  - {fileID: 7622005640468979324}
   m_lightEventListener: {fileID: 0}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
@@ -10278,6 +10280,7 @@ MonoBehaviour:
   provokedEvent:
     m_PersistentCalls:
       m_Calls: []
+  isPlayer: 0
   m_sheet: {fileID: 0}
   m_levelUpSound: {fileID: 11400000, guid: fa526493f8160bf4291fe92c6ef1d6e1, type: 2}
   m_restoreHealthOnLevelUp: 0
@@ -10290,11 +10293,13 @@ MonoBehaviour:
   staminaTimeIncrement: 0.1
   isNowCanRun: 0
   isExecutingAction: 0
+  isRunning: 0
   m_lootingSound: {fileID: 11400000, guid: 46301b4e2889a2e4d97c463be7d9fcb4, type: 2}
   m_lootedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
   m_evacuatingSound: {fileID: 11400000, guid: 46301b4e2889a2e4d97c463be7d9fcb4, type: 2}
   m_evacuatedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
   m_heroLight: {fileID: 340086387587714928}
+  isDashFinished: 0
   references:
     version: 2
     RefIds:
@@ -10303,5 +10308,10 @@ MonoBehaviour:
 --- !u!4 &6241793363770211169 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+  m_PrefabInstance: {fileID: 1366979822650768168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7622005640468979324 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8880730510160356692, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
   m_PrefabInstance: {fileID: 1366979822650768168}
   m_PrefabAsset: {fileID: 0}
