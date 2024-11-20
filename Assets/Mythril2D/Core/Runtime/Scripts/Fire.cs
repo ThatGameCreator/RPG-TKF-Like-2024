@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Windows;
 
-public class NeedleTrap : OtherEntity
+public class Fire : MonoBehaviour
 {
     [SerializeField] private int m_damageAmount = 1;
     [SerializeField] private EDamageType m_damageType = EDamageType.Physical;
@@ -16,6 +16,10 @@ public class NeedleTrap : OtherEntity
     private HashSet<Collider2D> m_collidersInTrigger = new HashSet<Collider2D>();
     private Coroutine m_damageCoroutine;
 
+    private void OnDisable()
+    {
+        //Debug.Log(this);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
