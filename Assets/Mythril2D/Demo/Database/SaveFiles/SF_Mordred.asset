@@ -26,6 +26,11 @@ MonoBehaviour:
       activeQuests: []
       fullfilledQuests: []
       completedQuests: []
+    warehouse:
+      money: 0
+      items:
+        m_keys: []
+        m_values: 
     inventory:
       money: 100
       items:
@@ -34,7 +39,11 @@ MonoBehaviour:
           m_guid: 7716cee2da79443a88980e270d01588b
         - m_instance: {fileID: 11400000, guid: 3a76970755e80814d9d79a3f02caba3c, type: 2}
           m_guid: 3a76970755e80814d9d79a3f02caba3c
-        m_values: 0100000001000000
+        - m_instance: {fileID: 11400000, guid: 48cb8c471a4ea2b4cb2fd0336ba4446a, type: 2}
+          m_guid: 48cb8c471a4ea2b4cb2fd0336ba4446a
+        - m_instance: {fileID: 11400000, guid: c44316eef694d7e429c8867f9d01f296, type: 2}
+          m_guid: c44316eef694d7e429c8867f9d01f296
+        m_values: 01000000010000000200000001000000
     gameFlags:
       flags: []
     player:
