@@ -162,6 +162,8 @@ namespace Gyvr.Mythril2D
         {
             if (context.performed == true)
             {
+                //Debug.Log("OnRun");
+
                 if (GameManager.Player.currentStamina > 0)
                 {
                     m_character.TryPlayRunAnimation();

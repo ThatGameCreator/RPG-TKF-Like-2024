@@ -461,7 +461,9 @@ namespace Gyvr.Mythril2D
 
         public bool TryPlayRunAnimation()
         {
-            if (GameManager.Player.isDashFinished == false && 
+            //Debug.Log(GameManager.Player.isDashFinishing);
+
+            if (GameManager.Player.isDashFinishing == false && 
                 GameManager.Player.isExecutingAction == false && 
                 m_animator && m_hasRunningAnimation)
             {

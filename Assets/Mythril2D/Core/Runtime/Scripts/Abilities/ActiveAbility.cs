@@ -77,6 +77,16 @@ namespace Gyvr.Mythril2D
             m_onAbilityEndedCallback = null;
         }
 
+        protected void TerminateDashCasting()
+        {
+            GameManager.Player.isDashFinishing = false;
+            GameManager.Player.isExecutingAction = false;
+
+            m_character.EnableActions(m_sheet.disabledActionsWhileCasting);
+            m_onAbilityEndedCallback?.Invoke();
+            m_onAbilityEndedCallback = null;
+        }
+
         protected abstract void Fire();
 
         public AbilityBase GetAbilityBase() => this;

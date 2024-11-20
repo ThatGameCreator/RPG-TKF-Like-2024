@@ -99,10 +99,10 @@ namespace Gyvr.Mythril2D
         //ScriptableObject.ctor is not allowed to be called from a MonoBehaviour constructor (or instance field initializer), call it in Awake or Start instead. 
         //private DashAbilitySheet m_dashAbility = ScriptableObject.CreateInstance<DashAbilitySheet>();
         private DashAbilitySheet m_dashAbility = null;
+        public bool isDashFinishing = false;
 
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
 
-        public bool isDashFinished = false;
 
         private void OnDeadAnimationStart()
         {
@@ -149,7 +149,7 @@ namespace Gyvr.Mythril2D
 
             if (!dead)
             {
-                isDashFinished = true;
+                isDashFinishing = false;
             }
         }
 
@@ -365,36 +365,41 @@ namespace Gyvr.Mythril2D
 
         private void HandleStamina()
         {
-            // 冲刺状态，且有移动输入，处理耐力
-            if (isRunning == true && movementDirection != Vector2.zero)
+            // 感觉这到处用布尔值判断，确实不如直接把这个b方法放到技能里面
+            // 但想了想，这个也没有动画，如果要做到技能里面似乎也得拓展一点其他东西
+            if (isDashFinishing == false && isExecutingAction == false)
             {
-                // 如果耐力回复协程开启，中断
-                if (regeneratingStamina != null)
+                // 冲刺状态，且有移动输入，处理耐力
+                if (isRunning == true && movementDirection != Vector2.zero)
                 {
-                    StopCoroutine(regeneratingStamina);
-                    regeneratingStamina = null;
+                    // 如果耐力回复协程开启，中断
+                    if (regeneratingStamina != null)
+                    {
+                        StopCoroutine(regeneratingStamina);
+                        regeneratingStamina = null;
+                    }
+
+                    // 如果其他技能也用同一个bool isExecutingAction来开启 则会导致不是跑步也会扣精力值
+                    m_currentStats.Stamina -= staminaMultiplier * Time.deltaTime;
+
+                    if (m_currentStats.Stamina < 0) m_currentStats.Stamina = 0;
+
+                    // 耐力值归零，禁止使用冲刺
+                    if (m_currentStats.Stamina <= 0)
+                    {
+                        isNowCanRun = false;
+                        EndPlayRunAnimation();
+                    }
                 }
 
-                // 如果其他技能也用同一个bool isExecutingAction来开启 则会导致不是跑步也会扣精力值
-                m_currentStats.Stamina -= staminaMultiplier * Time.deltaTime;
-
-                if (m_currentStats.Stamina < 0) m_currentStats.Stamina = 0;
-
-                // 耐力值归零，禁止使用冲刺
-                if (m_currentStats.Stamina <= 0)
+                // 好像当时忘记修一个bug，现在只能检测 run 的时候的状态 其他比如攻击和冲刺等并不能检测，导致可以一边做动作一边恢复耐力
+                // 耐力值不满，且没有冲刺，且耐力回复未开启
+                if (m_currentStats.Stamina < maxStamina && isRunning == false && regeneratingStamina == null)
                 {
-                    isNowCanRun = false;
-                    EndPlayRunAnimation();
+                    //Debug.Log("RegenerateStamina");
+                    //Debug.Log(isExecutingAction);
+                    regeneratingStamina = StartCoroutine(RegenerateStamina());
                 }
-            }
-
-            // 好像当时忘记修一个bug，现在只能检测 run 的时候的状态 其他比如攻击和冲刺等并不能检测，导致可以一边做动作一边恢复耐力
-            // 耐力值不满，且没有冲刺，且耐力回复未开启
-            if (m_currentStats.Stamina < maxStamina && isRunning == false && isExecutingAction == false && regeneratingStamina == null)
-            {
-                //Debug.Log("RegenerateStamina");
-                //Debug.Log(isExecutingAction);
-                regeneratingStamina = StartCoroutine(RegenerateStamina());
             }
         }
 
@@ -404,7 +409,7 @@ namespace Gyvr.Mythril2D
 
             WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
 
-            while (isExecutingAction == false && m_currentStats.Stamina < maxStamina)
+            while (isDashFinishing == false && isExecutingAction == false && m_currentStats.Stamina < maxStamina)
             {
                 // 大于0，可以使用冲刺
                 if (m_currentStats.Stamina > 0f) isNowCanRun = true;
