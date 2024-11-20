@@ -133,16 +133,22 @@ namespace Gyvr.Mythril2D
             {
                 Item item = m_shop.items[i];
 
+                // 获取物品的 GUID
+                string itemGUID = GameManager.Database.DatabaseEntryToGUID(item);
+
+                // 实例化 UIShopEntry 并初始化
                 GameObject itemSlot = Instantiate(m_shopEntryPrefab, m_itemSlotsRoot.transform);
                 UIShopEntry inventoryBagSlot = itemSlot.GetComponent<UIShopEntry>();
 
                 if (inventoryBagSlot)
                 {
-                    inventoryBagSlot.Initialize(item);
+                    // 传递物品的 GUID 而不是 Item 实例
+                    inventoryBagSlot.Initialize(itemGUID);
                     m_slots[i] = inventoryBagSlot;
                 }
             }
         }
+
 
         private void ClearSlots()
         {

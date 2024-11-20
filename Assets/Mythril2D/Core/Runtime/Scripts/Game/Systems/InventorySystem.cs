@@ -10,26 +10,17 @@ namespace Gyvr.Mythril2D
     public struct InventoryDataBlock
     {
         public int money;
-        public SerializableDictionary<DatabaseEntryReference<Item>, int> items;
+        public SerializableDictionary<DatabaseEntryReference<StringDatabaseEntryReference>, int> items;
     }
 
     public class InventorySystem : AGameSystem, IDataBlockHandler<InventoryDataBlock>
     {
         public int backpackMoney => m_backpackMoney;
-        public Dictionary<Item, int> backpackItems => m_backpackItems;
+        public Dictionary<string, int> backpackItems => m_backpackItems;
 
         private int m_backpackMoney = 0;
-        private Dictionary<Item, int> m_backpackItems = new Dictionary<Item, int>();
-
-        public int GetItemCount(Item item)
-        {
-            if (backpackItems.TryGetValue(item, out int count))
-            {
-                return count;
-            }
-
-            return 0;
-        }
+        //private Dictionary<Item, int> m_backpackItems = new Dictionary<Item, int>();
+        private Dictionary<string, int> m_backpackItems = new Dictionary<string, int>();
 
         public void AddMoney(int value)
         {
@@ -63,11 +54,6 @@ namespace Gyvr.Mythril2D
         public bool HasSufficientFunds(int value)
         {
             return value <= backpackMoney;
-        }
-
-        public bool HasItemInBag(Item item, int quantity = 1)
-        {
-            return backpackItems.ContainsKey(item) && backpackItems[item] >= quantity;
         }
 
         public Equipment GetEquipment(EEquipmentType type)
@@ -113,66 +99,153 @@ namespace Gyvr.Mythril2D
         }
 
 
-        public void AddToBag(Item item, int quantity = 1, bool forceNoEvent = false)
+        public int GetItemCount(Item item)
         {
-            if (!backpackItems.ContainsKey(item))
+            // 如果物品可堆叠，通过堆叠数返回数量
+            if (item.isStackable)
             {
-                backpackItems.Add(item, quantity);
+                if (backpackItems.TryGetValue(item.uniqueID, out int count))
+                {
+                    return count;
+                }
             }
             else
             {
-                backpackItems[item] += quantity;
+                // 对于不可堆叠物品，返回物品实例的数量
+                return backpackItems
+                    .Where(kvp => kvp.Key == item.uniqueID)
+                    .Count();
             }
 
+            return 0;
+        }
+
+        public bool HasItemInBag(Item item, int quantity = 1)
+        {
+            if (item.isStackable)
+            {
+                return backpackItems.ContainsKey(item.uniqueID) && backpackItems[item.uniqueID] >= quantity;
+            }
+            else
+            {
+                // 对于不可堆叠物品，检查是否有足够的不同实例
+                return backpackItems
+                    .Where(kvp => kvp.Key == item.uniqueID)
+                    .Count() >= quantity;
+            }
+        }
+
+        public void AddToBag(Item item, int quantity = 1, bool forceNoEvent = false)
+        {
+            if (item.isStackable)
+            {
+                // 可堆叠物品：增加数量
+                if (!backpackItems.ContainsKey(item.uniqueID))
+                {
+                    backpackItems.Add(item.uniqueID, quantity);
+                }
+                else
+                {
+                    backpackItems[item.uniqueID] += quantity;
+                }
+            }
+            else
+            {
+                // 不可堆叠物品：创建新实例并根据uniqueID添加
+                for (int i = 0; i < quantity; i++)
+                {
+                    // 创建唯一副本并为其分配一个新的 uniqueID
+                    Item newItem = CreateUniqueItem(item);
+                    backpackItems.Add(newItem.uniqueID, 1); // 每个副本的数量默认是 1
+                }
+            }
+
+            // 通知物品添加事件
             if (!forceNoEvent)
             {
-                if (GameManager.WarehouseSystem.isOpenning == false)
+                if (!GameManager.WarehouseSystem.isOpenning)
                 {
                     GameManager.NotificationSystem.itemAdded.Invoke(item, quantity);
                 }
             }
         }
 
+        private Item CreateUniqueItem(Item baseItem)
+        {
+            // 根据基础物品创建一个独立副本（此处需要实际实现逻辑，例如生成新引用或标记）
+            Item newItem = ScriptableObject.Instantiate(baseItem);
+            newItem.name = $"{baseItem.name}_{System.Guid.NewGuid()}"; // 使用唯一 GUID 标识
+            return newItem;
+        }
+
+
         public bool RemoveFromBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             bool success = false;
 
-            if (backpackItems.ContainsKey(item))
+            if (item.isStackable)
             {
-                if (quantity >= backpackItems[item])
+                // 可堆叠物品：减少数量
+                if (backpackItems.ContainsKey(item.uniqueID))
                 {
-                    backpackItems.Remove(item);
+                    if (quantity >= backpackItems[item.uniqueID])
+                    {
+                        backpackItems.Remove(item.uniqueID);
+                    }
+                    else
+                    {
+                        backpackItems[item.uniqueID] -= quantity;
+                    }
+
+                    success = true;
                 }
-                else
+            }
+            else
+            {
+                // 不可堆叠物品：按实例逐个删除
+                int removed = 0;
+                var itemsToRemove = backpackItems
+                    .Where(kvp => kvp.Key == item.uniqueID)
+                    .Take(quantity)
+                    .ToList();
+
+                foreach (var kvp in itemsToRemove)
                 {
-                    backpackItems[item] -= quantity;
+                    backpackItems.Remove(kvp.Key);
+                    removed++;
                 }
 
-                success = true;
+                success = removed == quantity;
             }
 
-            if (!forceNoEvent)
+            // 通知物品移除事件
+            if (!forceNoEvent && success)
             {
-                if(GameManager.WarehouseSystem.isOpenning == false)
+                if (!GameManager.WarehouseSystem.isOpenning)
                 {
                     GameManager.NotificationSystem.itemRemoved.Invoke(item, quantity);
-
                 }
             }
 
             return success;
+
         }
+
 
         public void EmptyBag()
         {
             m_backpackMoney = 0;
-            m_backpackItems = new Dictionary<Item, int>();
+            m_backpackItems = new Dictionary<string, int>(); // 使用 uniqueID 作为字典的键
         }
 
         public void LoadDataBlock(InventoryDataBlock block)
         {
             m_backpackMoney = block.money;
-            m_backpackItems = block.items.ToDictionary(kvp => GameManager.Database.LoadFromReference(kvp.Key), kvp => kvp.Value);
+
+            // 使用 uniqueID 字段将 StringDatabaseEntryReference 转换为 string
+            m_backpackItems = block.items.ToDictionary(
+                kvp => kvp.Key.guid,  // 假设 StringDatabaseEntryReference 有 uniqueID 字段
+                kvp => kvp.Value);
         }
 
         public InventoryDataBlock CreateDataBlock()
@@ -180,7 +253,17 @@ namespace Gyvr.Mythril2D
             return new InventoryDataBlock
             {
                 money = m_backpackMoney,
-                items = new SerializableDictionary<DatabaseEntryReference<Item>, int>(m_backpackItems.ToDictionary(kvp => GameManager.Database.CreateReference(kvp.Key), kvp => kvp.Value))
+                items = new SerializableDictionary<DatabaseEntryReference<StringDatabaseEntryReference>, int>(
+                    m_backpackItems.ToDictionary(
+                        kvp =>
+                        {
+                            // 通过 guid 获取 StringDatabaseEntryReference 实例
+                            var entry = GameManager.Database.LoadFromReference<StringDatabaseEntryReference>(kvp.Key);
+                            return GameManager.Database.CreateReference(entry);  // 使用 CreateReference 来创建 DatabaseEntryReference
+                        },
+                        kvp => kvp.Value
+                    )
+                )
             };
         }
     }

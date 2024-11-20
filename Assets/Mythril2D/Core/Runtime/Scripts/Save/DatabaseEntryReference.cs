@@ -27,12 +27,24 @@ namespace Gyvr.Mythril2D
     {
         public string guid => m_guid;
 
-        [SerializeField] private T m_instance; // This field is only used in the Unity Editor
+        [SerializeField] private T m_instance; // 仅编辑器使用
         [SerializeField] private string m_guid = string.Empty;
 
         public DatabaseEntryReference(string guid)
         {
             m_guid = guid;
+        }
+
+        // 隐式转换：从 string 转换为 DatabaseEntryReference<T>
+        public static implicit operator DatabaseEntryReference<T>(string guid)
+        {
+            return new DatabaseEntryReference<T>(guid);
+        }
+
+        // 隐式转换：从 DatabaseEntryReference<T> 转换为 string
+        public static implicit operator string(DatabaseEntryReference<T> reference)
+        {
+            return reference?.m_guid ?? string.Empty;
         }
     }
 }

@@ -21,8 +21,12 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.itemDetailsClosed.AddListener(OnDetailsClosed);
         }
 
-        private void OnDetailsOpened(Item item)
+        // 修改 OnDetailsOpened 方法，接收 string 类型的 itemGUID
+        private void OnDetailsOpened(string itemGUID)
         {
+            // 使用 LoadItemByGUID 获取物品实例
+            Item item = GameManager.Database.LoadItemByGUID(itemGUID);
+
             if (item)
             {
                 m_itemDetailsBox.SetActive(true);

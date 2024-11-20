@@ -54,14 +54,16 @@ namespace Gyvr.Mythril2D
         {
             int usedSlots = 0;
 
-            Dictionary<Item, int> items = GameManager.InventorySystem.backpackItems;
+            Dictionary<string, int> items = GameManager.InventorySystem.backpackItems;
 
-            foreach (KeyValuePair<Item, int> entry in items)
+            foreach (KeyValuePair<string, int> entry in items)
             {
-                if (entry.Key.category == m_category)
+                Item item = GameManager.Database.LoadItemByGUID(entry.Key);
+
+                if (item != null && item.category == m_category)
                 {
                     UIInventoryBagSlot slot = m_slots[usedSlots++];
-                    slot.SetItem(entry.Key, entry.Value);
+                    slot.SetItem(item, entry.Value);
                 }
             }
         }

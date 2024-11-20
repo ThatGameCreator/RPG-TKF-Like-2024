@@ -59,7 +59,7 @@ namespace Gyvr.Mythril2D
         public UnityEvent deathScreenRequested = new UnityEvent();
         public UnityEvent<IUIMenu> menuShowed = new UnityEvent<IUIMenu>();
         public UnityEvent<IUIMenu> menuHid = new UnityEvent<IUIMenu>();
-        public UnityEvent<Item> itemDetailsOpened = new UnityEvent<Item>();
+        public UnityEvent<string> itemDetailsOpened = new UnityEvent<string>();
         public UnityEvent itemDetailsClosed = new UnityEvent();
 
         [Header("Audio")]

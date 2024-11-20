@@ -13,7 +13,8 @@ namespace Gyvr.Mythril2D
 
         public EEquipmentType equipmentType => m_equipmentType;
 
-        private Equipment m_equipment = null;
+        private string m_equipmentGUID = null; // 使用 GUID 代替 Equipment 实例
+        //private Equipment m_equipment = null;
         private bool m_selected = false;
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -24,7 +25,19 @@ namespace Gyvr.Mythril2D
         public void OnSelect(BaseEventData eventData)
         {
             m_selected = true;
-            GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_equipment);
+            // 如果 m_equipmentGUID 不为空，通过 GUID 获取 Equipment 实例
+            if (!string.IsNullOrEmpty(m_equipmentGUID))
+            {
+                Equipment equipment = GameManager.Database.LoadItemByGUID(m_equipmentGUID) as Equipment;
+
+                // 确保装备存在且是正确的类型
+                if (equipment != null && equipment.type == m_equipmentType)
+                {
+                    string itemGUID = GameManager.Database.DatabaseEntryToGUID(equipment); // 获取对应的 GUID
+                                                                                           // 触发 itemDetailsOpened 事件，传递 GUID
+                    GameManager.NotificationSystem.itemDetailsOpened.Invoke(itemGUID);
+                }
+            }
         }
 
         public void OnDeselect(BaseEventData eventData)
@@ -35,10 +48,10 @@ namespace Gyvr.Mythril2D
 
         public void SetEquipment(Equipment equipment)
         {
-            m_equipment = equipment;
-
-            if (equipment)
+            if (equipment != null)
             {
+                m_equipmentGUID = GameManager.Database.DatabaseEntryToGUID(equipment); // 存储物品的 GUID
+
                 Debug.Assert(equipment.type == m_equipmentType, "Equipment type mismatch");
 
                 m_placeholder.enabled = false;
@@ -47,14 +60,20 @@ namespace Gyvr.Mythril2D
             }
             else
             {
+                m_equipmentGUID = null; // 清除 GUID
+
                 m_placeholder.enabled = true;
                 m_content.enabled = false;
                 m_content.sprite = null;
             }
 
-            if (m_selected)
+            if (m_selected && !string.IsNullOrEmpty(m_equipmentGUID))
             {
-                GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_equipment);
+                Equipment newEquipment = GameManager.Database.LoadItemByGUID(m_equipmentGUID) as Equipment;
+                if (newEquipment != null)
+                {
+                    GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_equipmentGUID); // 传递 GUID
+                }
             }
         }
 
@@ -65,9 +84,14 @@ namespace Gyvr.Mythril2D
 
         private void OnSlotClicked()
         {
-            if (m_equipment != null)
+            if (!string.IsNullOrEmpty(m_equipmentGUID))
             {
-                SendMessageUpwards("OnEquipmentItemClicked", m_equipment, SendMessageOptions.RequireReceiver);
+                // 通过 GUID 获取 Equipment 实例
+                Equipment equipment = GameManager.Database.LoadItemByGUID(m_equipmentGUID) as Equipment;
+                if (equipment != null)
+                {
+                    SendMessageUpwards("OnEquipmentItemClicked", equipment, SendMessageOptions.RequireReceiver);
+                }
             }
         }
     }

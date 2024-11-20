@@ -34,7 +34,15 @@ namespace Gyvr.Mythril2D
 
         public void OnSelect(BaseEventData eventData)
         {
-            GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_recipe.item);
+            if (m_recipe != null && m_recipe.item != null)
+            {
+                // 获取物品的 GUID
+                string itemGUID = GameManager.Database.DatabaseEntryToGUID(m_recipe.item);
+                // 触发事件，传递 GUID 而不是 Item
+                GameManager.NotificationSystem.itemDetailsOpened.Invoke(itemGUID);
+            }
+
+            // 继续处理其他逻辑（如果需要）
             SendMessageUpwards("OnRecipeEntrySelected", m_recipe, SendMessageOptions.RequireReceiver);
         }
 

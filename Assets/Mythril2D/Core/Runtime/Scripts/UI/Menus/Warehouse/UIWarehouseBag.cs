@@ -49,14 +49,17 @@ namespace Gyvr.Mythril2D
         {
             int usedSlots = 0;
 
-            Dictionary<Item, int> items = GameManager.WarehouseSystem.warehouseItems;
+            Dictionary<string, int> items = GameManager.WarehouseSystem.warehouseItems;
 
-            foreach (KeyValuePair<Item, int> entry in items)
+            foreach (KeyValuePair<string, int> entry in items)
             {
-                if (entry.Key.category == m_category)
+                // 获取物品实例，假设 GameManager.Database.LoadItemByGUID 是获取物品的函数
+                Item item = GameManager.Database.LoadItemByGUID(entry.Key);
+
+                if (item != null && item.category == m_category)
                 {
                     UIInventoryWarehouseSlot slot = m_slots[usedSlots++];
-                    slot.SetItem(entry.Key, entry.Value);
+                    slot.SetItem(item, entry.Value);
                 }
             }
         }

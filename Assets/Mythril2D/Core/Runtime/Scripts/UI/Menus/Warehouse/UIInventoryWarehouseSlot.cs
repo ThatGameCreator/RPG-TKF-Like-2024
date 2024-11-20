@@ -13,14 +13,15 @@ namespace Gyvr.Mythril2D
 
         public Button button => m_button;
 
-        private Item m_item = null;
+        private string m_itemGUID = null; // 使用 GUID 代替直接的 Item 实例
+        //private Item m_item = null;
         private bool m_selected = false;
 
         public void Clear() => SetItem(null, 0);
 
         public Item GetItem()
         {
-            return m_item;
+            return string.IsNullOrEmpty(m_itemGUID) ? null : GameManager.Database.LoadItemByGUID(m_itemGUID); // 通过 GUID 获取 Item
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -31,7 +32,13 @@ namespace Gyvr.Mythril2D
         public void OnSelect(BaseEventData eventData)
         {
             m_selected = true;
-            GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_item);
+
+            // 通过 GUID 获取 Item，并触发详细信息显示
+            if (!string.IsNullOrEmpty(m_itemGUID))
+            {
+                // 传递 GUID 给 itemDetailsOpened 事件
+                GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_itemGUID); // 传递 GUID 而不是 Item
+            }
         }
 
         public void OnDeselect(BaseEventData eventData)
@@ -44,7 +51,7 @@ namespace Gyvr.Mythril2D
         {
             if (item != null)
             {
-                m_item = item;
+                m_itemGUID = GameManager.Database.DatabaseEntryToGUID(item); // 存储 GUID 而非 Item 实例
                 m_quantity.text = quantity.ToString();
                 m_image.enabled = true;
                 m_image.sprite = item.icon;
@@ -53,12 +60,13 @@ namespace Gyvr.Mythril2D
             {
                 m_image.enabled = false;
                 m_quantity.text = string.Empty;
-                m_item = null;
+                m_itemGUID = null; // 清空 GUID
             }
 
-            if (m_selected)
+            if (m_selected && !string.IsNullOrEmpty(m_itemGUID))
             {
-                GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_item);
+                // 传递 GUID 给 itemDetailsOpened 事件
+                GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_itemGUID); // 传递 GUID 而不是 Item
             }
         }
 
@@ -69,9 +77,15 @@ namespace Gyvr.Mythril2D
 
         private void OnSlotClicked()
         {
-            if (m_item != null)
+            if (!string.IsNullOrEmpty(m_itemGUID))
             {
-                SendMessageUpwards("OnWarehouseItemClicked", m_item, SendMessageOptions.RequireReceiver);
+                // 通过 GUID 获取物品实例
+                Item item = GameManager.Database.LoadItemByGUID(m_itemGUID);
+                if (item != null)
+                {
+                    // 发送物品点击事件，传递物品实例
+                    SendMessageUpwards("OnWarehouseItemClicked", item, SendMessageOptions.RequireReceiver);
+                }
             }
         }
     }
