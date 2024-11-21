@@ -437,8 +437,18 @@ namespace Gyvr.Mythril2D
 
         public Equipment Equip(Equipment equipment)
         {
+            // 卸下当前类型的装备
             Equipment previousEquipment = Unequip(equipment.type);
+
+            // 穿戴新装备
             m_equipments[equipment.type] = equipment;
+
+            // 如果装备有技能属性，将其依次分配到空闲的技能槽
+            if (equipment.ability != null)
+            {
+                AssignAbilitiesToSlots(equipment.ability, 1);
+            }
+
             GameManager.NotificationSystem.itemEquipped.Invoke(equipment);
             UpdateStats();
             return previousEquipment;
@@ -450,6 +460,12 @@ namespace Gyvr.Mythril2D
 
             if (toUnequip)
             {
+                // 如果装备有技能属性，将其从技能槽中移除
+                if (toUnequip.ability != null)
+                {
+                    RemoveAbilitiesFromSlots(toUnequip.ability, 1);
+                }
+
                 m_equipments.Remove(type);
                 GameManager.NotificationSystem.itemUnequipped.Invoke(toUnequip);
                 UpdateStats();
@@ -457,6 +473,35 @@ namespace Gyvr.Mythril2D
 
             return toUnequip;
         }
+
+        // 为技能分配到从 startIndex 开始的槽
+        private void AssignAbilitiesToSlots(AbilitySheet[] abilities, int startIndex)
+        {
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                int slotIndex = startIndex + i;
+                if (slotIndex < m_equippedAbilities.Length)
+                {
+                    m_equippedAbilities[slotIndex] = abilities[i];
+                }
+            }
+            m_equippedAbilitiesChanged.Invoke(m_equippedAbilities);
+        }
+
+        // 从技能槽中移除从 startIndex 开始的技能
+        private void RemoveAbilitiesFromSlots(AbilitySheet[] abilities, int startIndex)
+        {
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                int slotIndex = startIndex + i;
+                if (slotIndex < m_equippedAbilities.Length)
+                {
+                    m_equippedAbilities[slotIndex] = null;
+                }
+            }
+            m_equippedAbilitiesChanged.Invoke(m_equippedAbilities);
+        }
+
 
         public void AddBonusAbility(AbilitySheet abilitySheet)
         {

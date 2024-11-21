@@ -351,17 +351,6 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public void SetBackpackCapacity(int newCapacity)
-        {
-            m_backpackCapacity = newCapacity;
-
-            // 检查是否超出新容量，并移除多余物品（可选逻辑）
-            while (GetCurrentItemCount() > m_backpackCapacity)
-            {
-                RemoveFromBag(backpackItems.Last().GetItem());
-            }
-        }
-
 
         public bool RemoveFromBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {

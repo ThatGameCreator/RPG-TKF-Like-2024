@@ -23,6 +23,7 @@ namespace Gyvr.Mythril2D
             // 避免敌人也有魔法值消耗 导致最终无法释放技能
             if (m_character.tag == "Player")
             {
+                ConsumeItem();
                 ConsumeMana();
                 ConsumeStamina();
             }
@@ -37,7 +38,21 @@ namespace Gyvr.Mythril2D
                 // 想了想感觉应该不足精力的时候也能释放，直接扣到0就好
                 // 如果不加判断，好像即便0也能释放技能了
                 //return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost;
-                return m_character.Can(EActionFlags.UseAbility) && m_character.currentStats[EStat.Mana] >= m_sheet.manaCost && GameManager.Player.GetStamina() >= m_sheet.staminaCost;
+
+                if (m_sheet.costedItem != null)
+                {
+                    return m_character.Can(EActionFlags.UseAbility) &&
+                    m_character.currentStats[EStat.Mana] >= m_sheet.manaCost &&
+                    GameManager.Player.GetStamina() >= m_sheet.staminaCost &&
+                    GameManager.InventorySystem.HasItemInBag(m_sheet.costedItem, m_sheet.itemCost);
+                }
+                else
+                {
+                    return m_character.Can(EActionFlags.UseAbility) &&
+                    m_character.currentStats[EStat.Mana] >= m_sheet.manaCost &&
+                    GameManager.Player.GetStamina() >= m_sheet.staminaCost;
+                }
+                
             }
             else
             {
@@ -46,18 +61,20 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        protected virtual void ConsumeItem()
+        {
+            GameManager.InventorySystem.RemoveFromBag(m_sheet.costedItem, m_sheet.itemCost);
+        }
+
         protected virtual void ConsumeMana()
         {
-            m_character.ConsumeMana(m_sheet.manaCost);
+            GameManager.Player.ConsumeMana(m_sheet.manaCost);
         }
 
         protected virtual void ConsumeStamina()
         {
-            if (m_character.tag == "Player")
-            {
-                GameManager.Player.ConsumeStamina(m_sheet.staminaCost);
-                //GameManager.PlayerSystem.PlayerInstance.ConsumeStamina(m_sheet.staminaCost);
-            }
+            GameManager.Player.ConsumeStamina(m_sheet.staminaCost);
+            //GameManager.PlayerSystem.PlayerInstance.ConsumeStamina(m_sheet.staminaCost);
         }
 
         protected void TerminateCasting()

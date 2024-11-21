@@ -30,6 +30,8 @@ namespace Gyvr.Mythril2D
         [Header("Common Ability Settings")]
         [SerializeField] private int m_staminaCost = 0;
         [SerializeField] private int m_manaCost = 0;
+        [SerializeField] private Item m_costedItem = null;
+        [SerializeField] private int m_itemCost = 0;
         [SerializeField] private EAbilityStateManagementMode m_abilityStateManagementMode = EAbilityStateManagementMode.Automatic;
         [SerializeField] private bool m_canInterupt = false;
         [SerializeField] private EActionFlags m_disabledActionsWhileCasting = EActionFlags.All;
@@ -43,6 +45,8 @@ namespace Gyvr.Mythril2D
         public GameObject prefab => m_prefab;
         public bool canInterupt => m_canInterupt;
         public int manaCost => m_manaCost;
+        public Item costedItem => m_costedItem;
+        public int itemCost => m_itemCost;
         public int staminaCost => m_staminaCost;
         public EAbilityStateManagementMode abilityStateManagementMode => m_abilityStateManagementMode;
         public EActionFlags disabledActionsWhileCasting => m_disabledActionsWhileCasting;
