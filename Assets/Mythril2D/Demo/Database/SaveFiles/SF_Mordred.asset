@@ -31,7 +31,11 @@ MonoBehaviour:
       items: []
     inventory:
       money: 50000
-      items: []
+      items:
+      - itemReference:
+          m_instance: {fileID: 11400000, guid: 1be6f04ea123b37469bcdf5e23488be6, type: 2}
+          m_guid: 1be6f04ea123b37469bcdf5e23488be6
+        quantity: 1
     gameFlags:
       flags: []
     player:

@@ -10,7 +10,7 @@ namespace Gyvr.Mythril2D
         Torso,
         Hands,
         Feet,
-        backpack
+        Backpack
     }
 
     [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(Equipment))]
@@ -24,9 +24,11 @@ namespace Gyvr.Mythril2D
         [SerializeField] private EEquipmentType m_type;
         [SerializeField] private Stats m_bonusStats;
         [SerializeField] private SpriteLibraryAsset m_visualOverride;
+        [SerializeField] private int m_capacity;
 
         public EEquipmentType type => m_type;
         public Stats bonusStats => m_bonusStats;
+        public int capacity => m_capacity;
         public SpriteLibraryAsset visualOverride => m_visualOverride;
 
         public override void Use(CharacterBase user, EItemLocation location)

@@ -14,6 +14,8 @@ namespace Gyvr.Mythril2D
         [SerializeField] private UIInventoryBagSlot m_slotPrefab = null; // 格子的预制体
         private List<UIInventoryBagSlot> m_slots = new List<UIInventoryBagSlot>();
 
+        public List<UIInventoryBagSlot> slots => m_slots;
+
         //private UIInventoryBagSlot[] m_slots = null;
         private EItemCategory m_category = 0;
 
@@ -26,7 +28,7 @@ namespace Gyvr.Mythril2D
         public void Init()
         {
             GenerateSlots(GameManager.InventorySystem.backpackCapacity);
-            FillSlots();
+            UpdateSlots();
         }
 
         public void UpdateSlots()
@@ -47,8 +49,11 @@ namespace Gyvr.Mythril2D
             m_slots.Clear();
         }
 
-        private void GenerateSlots(int capacity)
+        public void GenerateSlots(int capacity)
         {
+            // 清空现有格子
+            ClearSlots();
+
             for (int i = 0; i < capacity; i++)
             {
                 UIInventoryBagSlot slotObject = Instantiate(m_slotPrefab, m_slotParent);

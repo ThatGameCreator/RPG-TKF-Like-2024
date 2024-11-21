@@ -89,9 +89,52 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
+        // 增加背包容量
+        public void IncreaseBackpackCapacity(int additionalCapacity)
+        {
+            m_backpackCapacity = GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.Count;
+            int newCapacity = backpackCapacity + additionalCapacity;
+
+            // 生成新的格子
+            GameManager.UIManagerSystem.UIMenu.inventory.bag.GenerateSlots(newCapacity);
+
+            GameManager.UIManagerSystem.UIMenu.inventory.FindSomethingToSelect();
+
+        }
+
+        // 减少背包容量
+        public void DecreaseBackpackCapacity(int reducedCapacity)
+        {
+            int m_backpackCapacity = GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.Count;
+            int newCapacity = backpackCapacity - reducedCapacity;
+
+            // 如果新容量小于现有格子数量，则移除多余的格子
+            if (newCapacity < backpackCapacity)
+            {
+                for (int i = backpackCapacity - 1; i >= newCapacity; i--)
+                {
+                    Destroy(GameManager.UIManagerSystem.UIMenu.inventory.bag.slots[i].gameObject);
+                    GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.RemoveAt(i);
+                }
+            }
+
+            GameManager.UIManagerSystem.UIMenu.inventory.FindSomethingToSelect();
+        }
+
         public void Equip(Equipment equipment)
         {
             Debug.Assert(equipment, "Cannot equip a null equipment");
+
+            // 检查装备是否是背包
+            if (equipment.type == EEquipmentType.Backpack)
+            {
+                // 增加背包容量
+                int additionalCapacity = equipment.capacity; // 假设 equipment 有 capacity 属性
+                GameManager.InventorySystem.IncreaseBackpackCapacity(additionalCapacity);
+
+                // 更新背包 UI
+                GameManager.UIManagerSystem.UIMenu.inventory.Init(); // 假设 UpdateSlots 方法已经根据容量自动更新格子
+            }
 
             Equipment previousEquipment = GameManager.Player.Equip(equipment);
 
@@ -99,8 +142,19 @@ namespace Gyvr.Mythril2D
 
             if (previousEquipment)
             {
+                // 如果是卸下的背包，则减少背包容量
+                if (previousEquipment.type == EEquipmentType.Backpack)
+                {
+                    int reducedCapacity = previousEquipment.capacity; // 假设 previousEquipment 也有 capacity 属性
+                    GameManager.InventorySystem.DecreaseBackpackCapacity(reducedCapacity);
+
+                    // 更新背包 UI
+                    GameManager.UIManagerSystem.UIMenu.inventory.Init(); // 根据新的容量更新 UI
+                }
+
                 AddToBag(previousEquipment, 1, true);
             }
+
         }
 
         public void UnEquip(EEquipmentType type)
@@ -109,6 +163,16 @@ namespace Gyvr.Mythril2D
 
             if (previousEquipment)
             {
+                // 如果卸下的是背包装备，减少背包容量
+                if (previousEquipment.type == EEquipmentType.Backpack)
+                {
+                    int reducedCapacity = previousEquipment.capacity; // 假设 previousEquipment 有 capacity 属性
+                    GameManager.InventorySystem.DecreaseBackpackCapacity(reducedCapacity);
+
+                    // 更新背包 UI
+                    GameManager.UIManagerSystem.UIMenu.inventory.Init(); // 根据新的容量更新 UI
+                }
+
                 AddToBag(previousEquipment, 1, true);
             }
         }
@@ -117,7 +181,22 @@ namespace Gyvr.Mythril2D
         {
             foreach (EEquipmentType type in Enum.GetValues(typeof(EEquipmentType)))
             {
-                GameManager.Player.Unequip(type);
+                Equipment equipment = GameManager.Player.Unequip(type);
+
+                if (equipment != null && equipment.type == EEquipmentType.Backpack)
+                {
+                    // 卸下背包时，减少背包容量
+                    int reducedCapacity = equipment.capacity; // 假设 equipment 有 capacity 属性
+                    GameManager.InventorySystem.DecreaseBackpackCapacity(reducedCapacity);
+
+                    // 更新背包 UI
+                    GameManager.UIManagerSystem.UIMenu.inventory.Init(); // 根据新的容量更新 UI
+                }
+
+                if (equipment != null)
+                {
+                    AddToBag(equipment, 1, true);
+                }
             }
         }
 

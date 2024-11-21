@@ -10,6 +10,8 @@ namespace Gyvr.Mythril2D
         [SerializeField] private UIInventoryStats m_stats = null;
         [SerializeField] private TextMeshProUGUI m_backpackMoney = null;
 
+        public UIInventoryBag bag => m_bag;
+
         public void Init()
         {
             m_bag.UpdateSlots();
@@ -60,7 +62,6 @@ namespace Gyvr.Mythril2D
         // Message called by children using SendMessageUpward when the bag or equipment changed
         private void UpdateUI()
         {
-            Debug.Log("UpdateUI");
             m_bag.UpdateSlots();
             m_equipment.UpdateSlots();
             m_stats.UpdateUI();
