@@ -22,6 +22,7 @@ namespace Gyvr.Mythril2D
         public UnityEvent<int> moneyRemoved = new UnityEvent<int>();
         public UnityEvent<Item, int> itemAdded = new UnityEvent<Item, int>();
         public UnityEvent<Item, int> itemRemoved = new UnityEvent<Item, int>();
+        public UnityEvent<Item> itemPlacedAtLocation = new UnityEvent<Item>();
         public UnityEvent<Equipment> itemEquipped = new UnityEvent<Equipment>();
         public UnityEvent<Equipment> itemUnequipped = new UnityEvent<Equipment>();
         public UnityEvent<AbilitySheet> abilityAdded = new UnityEvent<AbilitySheet>();
