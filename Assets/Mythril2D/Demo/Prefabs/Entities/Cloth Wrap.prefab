@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4955676541213193783}
   - component: {fileID: 6515981674182898838}
   m_Layer: 6
-  m_Name: Surface_Item
+  m_Name: Cloth Wrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1227757721, guid: b2aa333e2a0687c499a8b4ecb8625997, type: 3}
+  m_Sprite: {fileID: 416732651, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_lootedTime: 0
   m_loot:
     entries:
-    - item: {fileID: 11400000, guid: 7716cee2da79443a88980e270d01588b, type: 2}
+    - item: {fileID: 11400000, guid: 1be6f04ea123b37469bcdf5e23488be6, type: 2}
       quantity: 1
     money: 0
   m_gameFlagID: SurfaceItem_00

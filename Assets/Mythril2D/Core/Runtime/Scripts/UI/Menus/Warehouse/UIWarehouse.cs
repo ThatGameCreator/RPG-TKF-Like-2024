@@ -20,6 +20,8 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Button m_backpackIncreaseAllButton;
         [SerializeField] private Button m_backpackIncreaseTenButton;
         [SerializeField] private Button m_backpackIncreaseOneButton;
+        public UIInventoryBag bag => m_bag;
+
 
         public void Init()
         {

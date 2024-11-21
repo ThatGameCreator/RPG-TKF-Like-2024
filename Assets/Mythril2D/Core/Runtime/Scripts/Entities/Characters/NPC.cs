@@ -70,8 +70,6 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
-            Debug.Log("OnStartInteract");
-
             SetLookAtDirection(sender.transform);
 
             base.OnStartInteract(sender, target);

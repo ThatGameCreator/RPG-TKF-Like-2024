@@ -430,6 +430,11 @@ namespace Gyvr.Mythril2D
             m_currentStats[EStat.Health] = 0;
         }
 
+        public Equipment GetEquipment(EEquipmentType equipmentType)
+        {
+            return m_equipments[equipmentType];
+        }
+
         public Equipment Equip(Equipment equipment)
         {
             Equipment previousEquipment = Unequip(equipment.type);

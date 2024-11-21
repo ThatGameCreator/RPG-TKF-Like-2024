@@ -20,6 +20,8 @@ namespace Gyvr.Mythril2D
         [SerializeField] private GameObject m_itemSlotsRoot = null;
         [SerializeField] private TextMeshProUGUI m_money = null;
 
+        public UIInventoryBag bag => m_inventoryBag;
+
         private UIShopEntry[] m_slots = null;
         private Shop m_shop = null;
 

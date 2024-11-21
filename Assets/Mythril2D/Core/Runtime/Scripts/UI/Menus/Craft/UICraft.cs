@@ -24,6 +24,8 @@ namespace Gyvr.Mythril2D
         [SerializeField] private GameObject m_noRecipeSelectedIndicator = null;
         [SerializeField] private InstancePool m_ingredientListInstancePool = null;
 
+        public UIInventoryBag bag => m_inventoryBag;
+
         private UIRecipeEntry[] m_entries = null;
         private CraftingStation m_craftingStation = null;
 

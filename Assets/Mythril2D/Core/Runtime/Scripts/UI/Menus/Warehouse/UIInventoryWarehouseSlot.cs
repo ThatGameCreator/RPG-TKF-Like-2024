@@ -13,7 +13,8 @@ namespace Gyvr.Mythril2D
 
         public Button button => m_button;
 
-        private Item m_item = null;
+        private Item m_item = null;               // 基础物品信息
+        private ItemInstance m_itemInstance = null; // 具体物品实例信息
         private bool m_selected = false;
 
         public void Clear() => SetItem(null, 0);
@@ -21,6 +22,11 @@ namespace Gyvr.Mythril2D
         public Item GetItem()
         {
             return m_item;
+        }
+
+        public ItemInstance GetItemInstance()
+        {
+            return m_itemInstance;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -40,11 +46,36 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.itemDetailsClosed.Invoke();
         }
 
+        public void SetItem(ItemInstance itemInstance)
+        {
+            if (itemInstance != null)
+            {
+                SetItem(itemInstance.GetItem(), itemInstance.quantity);
+                m_itemInstance = itemInstance;
+            }
+            else
+            {
+                Clear();
+            }
+        }
+
         public void SetItem(Item item, int quantity)
         {
             if (item != null)
             {
                 m_item = item;
+
+                // 如果 m_itemInstance 为空，则新建一个实例
+                if (m_itemInstance == null)
+                {
+                    m_itemInstance = new ItemInstance(item, quantity);
+                }
+                else
+                {
+                    // 给 m_itemInstance 赋值
+                    m_itemInstance.itemReference = GameManager.Database.CreateReference(item);
+                    m_itemInstance.quantity = quantity;
+                }
 
                 // 如果是堆叠物品，显示数量；否则只显示物品图标
                 m_quantity.text = item.isStackable ? quantity.ToString() : string.Empty;
