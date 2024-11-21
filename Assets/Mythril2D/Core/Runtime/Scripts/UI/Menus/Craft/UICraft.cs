@@ -29,7 +29,7 @@ namespace Gyvr.Mythril2D
 
         public void Init()
         {
-            m_inventoryBag.Init();
+            m_inventoryBag.UpdateSlots();
         }
 
         public void Show(params object[] args)

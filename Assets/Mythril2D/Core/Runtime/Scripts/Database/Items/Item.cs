@@ -31,7 +31,23 @@ namespace Gyvr.Mythril2D
 
         public virtual void Use(CharacterBase target, EItemLocation location)
         {
-            GameManager.DialogueSystem.Main.PlayNow("This item has no effect");
+            if (GameManager.WarehouseSystem.isOpenning == true)
+            {
+                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull() == false)
+                {
+                    GameManager.InventorySystem.RemoveFromBag(this);
+                    GameManager.WarehouseSystem.AddToWarehouse(this);
+                }
+                else if (location == EItemLocation.Warehouse && GameManager.InventorySystem.IsBackpackFull() == false)
+                {
+                    GameManager.InventorySystem.AddToBag(this);
+                    GameManager.WarehouseSystem.RemoveFromWarehouse(this);
+                }
+            }
+            else
+            {
+                GameManager.DialogueSystem.Main.PlayNow("This item has no effect");
+            }
         }
 
         public EItemCategory category => m_category;

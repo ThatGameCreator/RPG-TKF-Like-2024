@@ -26,7 +26,7 @@ namespace Gyvr.Mythril2D
         public List<ItemInstance> warehouseItems => m_warehouseItems;
         private List<ItemInstance> m_warehouseItems = new List<ItemInstance>();
         public int warehouseCapacity => m_warehouseCapacity;
-        private int m_warehouseCapacity = 20; // 默认容量为 30
+        private int m_warehouseCapacity = 30; // 默认容量为 30
 
         public bool isOpenning = false;
 
@@ -76,7 +76,7 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public bool IsBackpackFull()
+        public bool IsWarehouseFull()
         {
             return GetCurrentItemCount() >= m_warehouseCapacity;
         }
@@ -104,7 +104,7 @@ namespace Gyvr.Mythril2D
         public void AddToWarehouse(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             // 如果背包已满且物品不可添加，直接返回
-            if (IsBackpackFull())
+            if (IsWarehouseFull())
             {
                 Debug.LogWarning("背包已满，无法添加物品！");
                 return;
@@ -128,7 +128,7 @@ namespace Gyvr.Mythril2D
                 // 如果不可堆叠，每次添加一个新实例
                 for (int i = 0; i < quantity; i++)
                 {
-                    if (IsBackpackFull())
+                    if (IsWarehouseFull())
                     {
                         Debug.LogWarning("背包已满，无法添加更多不可堆叠物品！");
                         break;

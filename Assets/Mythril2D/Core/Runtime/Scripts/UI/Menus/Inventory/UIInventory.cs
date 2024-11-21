@@ -12,7 +12,7 @@ namespace Gyvr.Mythril2D
 
         public void Init()
         {
-            m_bag.Init();
+            m_bag.UpdateSlots();
         }
 
         public void Show(params object[] args)
@@ -60,6 +60,7 @@ namespace Gyvr.Mythril2D
         // Message called by children using SendMessageUpward when the bag or equipment changed
         private void UpdateUI()
         {
+            Debug.Log("UpdateUI");
             m_bag.UpdateSlots();
             m_equipment.UpdateSlots();
             m_stats.UpdateUI();

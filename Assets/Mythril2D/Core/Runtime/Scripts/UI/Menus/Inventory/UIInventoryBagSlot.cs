@@ -45,21 +45,27 @@ namespace Gyvr.Mythril2D
             if (item != null)
             {
                 m_item = item;
-                m_quantity.text = quantity.ToString();
+
+                // 如果是堆叠物品，显示数量；否则只显示物品图标
+                m_quantity.text = item.isStackable ? quantity.ToString() : string.Empty;
+
                 m_image.enabled = true;
                 m_image.sprite = item.icon;
             }
             else
             {
+                // 如果没有物品，清空槽位
                 m_image.enabled = false;
                 m_quantity.text = string.Empty;
                 m_item = null;
             }
 
+            // 如果槽位被选中，显示物品详情
             if (m_selected)
             {
                 GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_item);
             }
+
         }
 
         private void Awake()

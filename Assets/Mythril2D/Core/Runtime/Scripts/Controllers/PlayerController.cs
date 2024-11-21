@@ -127,8 +127,6 @@ namespace Gyvr.Mythril2D
 
         private void ActiveInteracting()
         {
-            Debug.Log("Active Interaction");
-
             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_interactionSound);
 
             GameManager.NotificationSystem.playerTryInteracte.Invoke(GameManager.Player, interactionTarget);
