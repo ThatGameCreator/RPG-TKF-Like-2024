@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,14 +50,21 @@ namespace Gyvr.Mythril2D
         {
             int usedSlots = 0;
 
-            Dictionary<Item, int> items = GameManager.WarehouseSystem.warehouseItems;
+            // 获取背包中的物品实例
+            List<ItemInstance> items = GameManager.WarehouseSystem.warehouseItems;
 
-            foreach (KeyValuePair<Item, int> entry in items)
+            foreach (ItemInstance instance in items)
             {
-                if (entry.Key.category == m_category)
+                if (instance.GetItem().category == m_category)
                 {
                     UIInventoryWarehouseSlot slot = m_slots[usedSlots++];
-                    slot.SetItem(entry.Key, entry.Value);
+                    slot.SetItem(instance.GetItem(), instance.quantity);
+
+                    // 检查槽位是否用完，防止数组越界
+                    if (usedSlots >= m_slots.Count())
+                    {
+                        break;
+                    }
                 }
             }
         }

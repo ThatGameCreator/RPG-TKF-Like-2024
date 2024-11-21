@@ -12,6 +12,7 @@ namespace Gyvr.Mythril2D
         [Header("Dialogues")]
         [SerializeField] private DialogueSequence m_cannotBuy = null;
         [SerializeField] private DialogueSequence m_cannotSell = null;
+        [SerializeField] private DialogueSequence m_backpackIsFull = null;
 
         [Header("References")]
         [SerializeField] private UIInventoryBag m_inventoryBag = null;
@@ -157,17 +158,24 @@ namespace Gyvr.Mythril2D
         {
             int itemPrice = m_shop.GetPrice(item, ETransactionType.Buy);
 
-            if (GameManager.InventorySystem.backpackMoney >= itemPrice)
+            if (GameManager.InventorySystem.IsBackpackFull() == false)
             {
-                GameManager.InventorySystem.RemoveMoney(itemPrice);
-                GameManager.InventorySystem.AddToBag(item);
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_buySellAudio);
-                m_inventoryBag.SetCategory(item.category); // Navigate to the category of the purchased item for better UX
-                UpdateUI(true);
+                if (GameManager.InventorySystem.backpackMoney >= itemPrice)
+                {
+                    GameManager.InventorySystem.RemoveMoney(itemPrice);
+                    GameManager.InventorySystem.AddToBag(item);
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_buySellAudio);
+                    m_inventoryBag.SetCategory(item.category); // Navigate to the category of the purchased item for better UX
+                    UpdateUI(true);
+                }
+                else
+                {
+                    GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotBuy, null, item.displayName));
+                }
             }
             else
             {
-                GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotBuy, null, item.displayName));
+                GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_backpackIsFull, null));
             }
         }
 
