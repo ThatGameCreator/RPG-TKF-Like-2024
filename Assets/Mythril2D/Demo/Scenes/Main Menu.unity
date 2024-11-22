@@ -2863,6 +2863,13 @@ PrefabInstance:
       value: Exit
       objectReference: {fileID: 0}
     - target: {fileID: 8040491482692079704, guid: 1e2038ea1d4b441ba85af7fa8df3a82c, type: 3}
+<<<<<<< Updated upstream
+=======
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1eb30f6c2d127264aa98ea556f42958a, type: 2}
+    - target: {fileID: 8040491482692079704, guid: 1e2038ea1d4b441ba85af7fa8df3a82c, type: 3}
+>>>>>>> Stashed changes
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -2875,9 +2882,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8040491482692079704, guid: 1e2038ea1d4b441ba85af7fa8df3a82c, type: 3}
+<<<<<<< Updated upstream
       propertyPath: m_fontColor32.rgba
       value: 4278190080
       objectReference: {fileID: 0}
+=======
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7273174984645472343, guid: 1eb30f6c2d127264aa98ea556f42958a, type: 2}
+    - target: {fileID: 8040491482692079704, guid: 1e2038ea1d4b441ba85af7fa8df3a82c, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040491482692079704, guid: 1e2038ea1d4b441ba85af7fa8df3a82c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2958,7 +2979,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd3f9cfd640adf45ab3a3b1abdb751a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
 >>>>>>> f60e614... Add Function & Add Art Resources: Add an Exit Button and Slice the Material
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1242435137
 GameObject:
   m_ObjectHideFlags: 0
