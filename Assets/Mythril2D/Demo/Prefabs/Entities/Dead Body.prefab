@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3423380997195486025}
   - component: {fileID: 3423380997195486038}
   - component: {fileID: 5422177300625255150}
-  - component: {fileID: 5577302894477409109}
-  - component: {fileID: 6000311209659790966}
+  - component: {fileID: 7718725407141399875}
+  - component: {fileID: 1938820774806615548}
   m_Layer: 6
-  m_Name: Dead_Body
+  m_Name: Dead Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,9 +78,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1042792275, guid: c0d33508089a3024f8385983ec185b50, type: 3}
+  m_Sprite: {fileID: 1719527656, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -121,18 +121,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15661621, y: 0.17497331}
+  m_Offset: {x: 0.00090026855, y: 0.24710083}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 1.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93963623, y: 0.35005343}
+  m_Size: {x: 1.0009766, y: 0.36845398}
   m_EdgeRadius: 0
 --- !u!114 &5422177300625255150
 MonoBehaviour:
@@ -150,15 +150,29 @@ MonoBehaviour:
     rid: 8303503312880140291
   m_spriteRenderer:
   - {fileID: 3423380997195486025}
-  m_lightEventListener: {fileID: 6000311209659790966}
+  m_lightEventListener: {fileID: 1938820774806615548}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
+  m_lootedTime: 2
   m_loot:
     entries:
     - item: {fileID: 11400000, guid: 7716cee2da79443a88980e270d01588b, type: 2}
       quantity: 1
     money: 0
   m_gameFlagID: DeadBody_00
+  m_deadBodySprites:
+  - {fileID: -494049681, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: 1719527656, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: 157666567, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: 164039563, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: -144360365, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: 407047994, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: 2038406394, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: 1504915836, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: -1211982878, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: 1153989267, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: -1670789742, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  - {fileID: -827240440, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
   m_openedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
   references:
     version: 2
@@ -167,7 +181,7 @@ MonoBehaviour:
       type: {class: DeadBodyInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_deadBody: {fileID: 5422177300625255150}
---- !u!114 &5577302894477409109
+--- !u!114 &7718725407141399875
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,7 +218,7 @@ MonoBehaviour:
     maskType: 0
     maskPivot: 0
     transform: {fileID: 3423380997195486024}
---- !u!114 &6000311209659790966
+--- !u!114 &1938820774806615548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,16 +296,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15661621, y: 0.17497331}
+  m_Offset: {x: 0.00090026855, y: 0.24710083}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 1.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93963623, y: 0.35005343}
+  m_Size: {x: 1.0009766, y: 0.36845398}
   m_EdgeRadius: 0

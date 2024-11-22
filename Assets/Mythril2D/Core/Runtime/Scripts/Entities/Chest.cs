@@ -85,7 +85,10 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_canNotOpenSound);
+                if (m_canNotOpenSound)
+                {
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_canNotOpenSound);
+                }
             }
         }
 
