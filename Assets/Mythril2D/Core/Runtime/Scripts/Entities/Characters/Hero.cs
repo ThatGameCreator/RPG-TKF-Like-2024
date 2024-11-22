@@ -70,9 +70,12 @@ namespace Gyvr.Mythril2D
         [Header("Light")]
         [SerializeField] private Light2D m_heroSightLight = null;
         [SerializeField] private Light2D m_heroAbilityLight = null;
+        [SerializeField] private float m_abilityLightDurationTime = 5f;
 
         public Light2D heroSightLight => m_heroSightLight;
         public Light2D heroAbilityLight => m_heroAbilityLight;
+        private bool isUseAbilityLighting = false;
+        private float m_nowAbilityLightTime = 0f;
 
         public int experience => m_experience;
         public int nextLevelExperience => GetTotalExpRequirement(m_level + 1);
@@ -138,7 +141,6 @@ namespace Gyvr.Mythril2D
             yield return new WaitForSeconds(1f); // 等待一秒
             GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName); // 保存数据
         }
-
 
         private void OnRevivalAnimationEnd()
         {
@@ -220,11 +222,47 @@ namespace Gyvr.Mythril2D
 
         private void Update()
         {
+            if (isUseAbilityLighting == true) HandleAbilityLighting();
+
             if (useStamina == true) HandleStamina();
 
             if (m_isLooting == true) OnTryLooting();
 
             if (m_isEvacuating == true) OnTryEvacuating();
+        }
+
+
+        public void OnEnableAbilityLighting()
+        {
+            Debug.Log("OnEnableAbilityLighting");
+
+            isUseAbilityLighting = true;
+            m_heroSightLight.transform.gameObject.SetActive(false);
+            m_heroAbilityLight.transform.gameObject.SetActive(true);
+        }
+
+
+        private void CancelAbilityLighting()
+        {
+            m_heroSightLight.transform.gameObject.SetActive(true);
+            m_heroAbilityLight.transform.gameObject.SetActive(false);
+            isUseAbilityLighting = false;
+            m_nowAbilityLightTime = 0f;
+        }
+
+        private void HandleAbilityLighting()
+        {
+            if (!dead)
+            {
+                Debug.Log("HandleAbilityLighting");
+
+                m_nowAbilityLightTime += Time.deltaTime;
+
+                if(m_nowAbilityLightTime > m_abilityLightDurationTime)
+                {
+                    CancelAbilityLighting();
+                }
+            }
         }
 
         public bool CheckIsPlayerMoving()
@@ -719,6 +757,8 @@ namespace Gyvr.Mythril2D
             // Prevents the Hero GameObject from being destroyed, so it can be used in the death screen.
             m_destroyOnDeath = false; 
             base.OnDeath();
+
+            CancelAbilityLighting();
 
             GameManager.InventorySystem.EmptyBag();
 

@@ -29,6 +29,7 @@ namespace Gyvr.Mythril2D
         {
             if (!m_character.dead)
             {
+                GameManager.Player.OnEnableAbilityLighting();
                 TerminateCasting();
             }
         }

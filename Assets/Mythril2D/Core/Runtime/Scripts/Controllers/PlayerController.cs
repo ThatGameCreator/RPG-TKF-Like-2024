@@ -243,10 +243,6 @@ namespace Gyvr.Mythril2D
         
         protected AbilitySheet GetAbilityAtIndex(int index)
         {
-            foreach (AbilitySheet abilitySheet in GameManager.Player.equippedAbilities)
-            {
-                Debug.Log(abilitySheet);
-            }
             return GameManager.Player.equippedAbilities[index];
         }
     }

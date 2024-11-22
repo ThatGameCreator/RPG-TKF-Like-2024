@@ -26,11 +26,11 @@ Transform:
   m_GameObject: {fileID: 284571145678110257}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.517397, y: 1.6602628, z: 8.514357}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5697496757469250476}
+  m_Father: {fileID: 6241793363770211169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3135482960733029332
 MonoBehaviour:
@@ -51,7 +51,7 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.554717, g: 0.554717, b: 0.554717, a: 1}
+  color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
   size: 12
   spotAngleInner: 360
   spotAngleOuter: 360
@@ -4985,7 +4985,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8828027125167162452}
   - {fileID: 5416717094334081774}
   - {fileID: 173860390523813784}
   m_Father: {fileID: 6241793363770211169}
@@ -9867,12 +9866,12 @@ MonoBehaviour:
   lightType: 1
   lightPresetId: 0
   eventPresetId: 1
-  lightLayer: 1
+  lightLayer: 0
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
   color: {r: 0.07924521, g: 0.07924521, b: 0.07924521, a: 1}
-  size: 1
+  size: 2
   spotAngleInner: 360
   spotAngleOuter: 360
   coreSize: 0.5
@@ -10061,7 +10060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &173860390523813784
 Transform:
   m_ObjectHideFlags: 0
@@ -10092,7 +10091,7 @@ MonoBehaviour:
   lightType: 1
   lightPresetId: 0
   eventPresetId: 1
-  lightLayer: 1
+  lightLayer: 0
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
@@ -10197,6 +10196,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8828027125167162452}
     - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5697496757469250476}
@@ -10328,6 +10330,7 @@ MonoBehaviour:
   m_evacuatedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
   m_heroSightLight: {fileID: 340086387587714928}
   m_heroAbilityLight: {fileID: 2794800349918259998}
+  m_abilityLightDurationTime: 60
   isDashFinishing: 0
   references:
     version: 2
