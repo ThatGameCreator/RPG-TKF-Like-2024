@@ -6,7 +6,7 @@ namespace Gyvr.Mythril2D
     public class DeadBody : OtherEntity
     {
         [Header("Dead Body Settings")]
-        [SerializeField] private ChestLoot m_loot;
+        [SerializeField] private Loot m_loot;
         [SerializeField] private string m_gameFlagID = "DeadBody_00";
         [SerializeField] private Sprite[] m_deadBodySprites = null;
         [SerializeField] private int m_canLootCount = 3;

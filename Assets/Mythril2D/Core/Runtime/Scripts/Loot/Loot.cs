@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Gyvr.Mythril2D
 {
     [Serializable]
-    public struct Loot
+    public struct MonsterLoot
     {
         [SerializeReference, SubclassSelector] public ICondition condition;
         public Item item;
@@ -19,16 +19,16 @@ namespace Gyvr.Mythril2D
     }
 
     [Serializable]
-    public struct ChestLootEntry
+    public struct LootEntry
     {
         public Item item;
         public int quantity;
     }
 
     [Serializable]
-    public struct ChestLoot
+    public struct Loot
     {
-        public ChestLootEntry[] entries;
+        public LootEntry[] entries;
         [Min(5)] public int money;
 
         public bool HasMoney() => money != 0;

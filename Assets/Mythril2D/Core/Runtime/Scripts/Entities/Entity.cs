@@ -11,6 +11,12 @@ namespace Gyvr.Mythril2D
         [Header("Entity Settings")]
         [SerializeReference, SubclassSelector] private IInteraction m_interaction = null;
 
+        public IInteraction IInteraction
+        {
+            get => m_interaction;
+            set => m_interaction = value;
+        }
+
         public virtual string GetSpeakerName() => string.Empty;
 
         [Header("Lighting")]
@@ -21,6 +27,18 @@ namespace Gyvr.Mythril2D
         [SerializeField] private float m_hideAnimationSpeed = 10f;
 
         private Color m_initialSpriteColor = Color.white;
+
+        public SpriteRenderer[] SpriteRenderers
+        {
+            get => m_spriteRenderer;
+            set => m_spriteRenderer = value;
+        }
+
+        public LightEventListener LightEventListener
+        {
+            get => m_lightEventListener;
+            set => m_lightEventListener = value;
+        }
 
         protected virtual void Start()
         {

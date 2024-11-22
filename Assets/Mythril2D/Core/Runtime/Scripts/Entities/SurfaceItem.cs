@@ -8,19 +8,25 @@ namespace Gyvr.Mythril2D
         [Header("References")]
 
         [Header("SurfaceItem Settings")]
-        [SerializeField] private ChestLoot m_loot;
+        [SerializeField] private Loot m_loot;
         [SerializeField] private string m_gameFlagID = "SurfaceItem_00";
 
         [Header("Audio")]
-        [SerializeField] private AudioClipResolver m_openedSound;
+        [SerializeField] private AudioClipResolver m_lootedSound;
 
-        private bool m_opened = false;
+        private bool m_looted = false;
+
+        public Loot Loot
+        {
+            get => m_loot;
+            set => m_loot = value;
+        }
 
         public bool TryLooted()
         {
-            if (m_opened == false)
+            if (m_looted == false)
             {
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
+                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
 
                 if (m_loot.entries != null)
                 {
@@ -43,7 +49,7 @@ namespace Gyvr.Mythril2D
                 }
                 Destroy(this.gameObject);
 
-                return m_opened = true;
+                return m_looted = true;
             }
 
             return false;

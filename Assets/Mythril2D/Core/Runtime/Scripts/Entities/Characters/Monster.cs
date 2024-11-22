@@ -98,7 +98,7 @@ namespace Gyvr.Mythril2D
         {
             if (m_looted == false)
             {
-                foreach (Loot loot in m_sheet.potentialLoot)
+                foreach (MonsterLoot loot in m_sheet.potentialLoot)
                 {
                     if (GameManager.Player.level >= loot.minimumPlayerLevel && m_level >= loot.minimumMonsterLevel && loot.IsAvailable() && loot.ResolveDrop())
                     {

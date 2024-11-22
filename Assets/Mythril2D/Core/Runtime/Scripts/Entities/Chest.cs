@@ -15,7 +15,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private SpriteLibraryAsset m_emptySpriteLibraryAsset = null;
 
         [Header("Chest Settings")]
-        [SerializeField] private ChestLoot m_loot;
+        [SerializeField] private Loot m_loot;
         [SerializeField] private Item[] m_requiredKeys = null;
         [SerializeField] private bool m_singleUse = false;
         [SerializeField] private string m_gameFlagID = "chest_00";
