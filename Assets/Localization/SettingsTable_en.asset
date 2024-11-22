@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: SettingsTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 0d467a0a092df29419ee86439ba787c9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 65870626816
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 142362148864
+    m_Localized: Return to Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455773126656
+    m_Localized: Return to Desktop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 673214234624
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 739362603008
+    m_Localized: Display Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1014412476416
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1103478521856
+    m_Localized: Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1220499603456
+    m_Localized: Borderless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1355027709952
+    m_Localized: Aspect Ratio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1531062648832
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1611081580544
+    m_Localized: Master Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1879215046656
+    m_Localized: Music Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2002863128576
+    m_Localized: Background Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2141849780224
+    m_Localized: Sound Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2346561175552
+    m_Localized: UI Volume
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

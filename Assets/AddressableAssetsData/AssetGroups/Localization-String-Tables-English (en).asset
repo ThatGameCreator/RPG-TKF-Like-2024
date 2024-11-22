@@ -17,8 +17,50 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 250478b7ea86d5740a025c0c3cd6240a
   m_SerializeEntries:
+  - m_GUID: 02309cd8baf646a4bab7080acaf358b9
+    m_Address: SettingsTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 484665a3640d18d44836305660dce218
+    m_Address: DialogueTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54c94f4f1f758da4aa6cf05767c09e09
+    m_Address: Attack_TypeList_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91c9ae41addb93942869127e741855ef
+    m_Address: InventoryTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3e9319a0bd55f7449b643524734d11f
+    m_Address: MainMenuTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba6cc5d712c66f44da88f1c94fb69936
+    m_Address: GeneralTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e82bb0ab660b08343ac9be00809333d5
     m_Address: New Table_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f07fcf2346861b34f9e0c8aa0bf86243
+    m_Address: CharacterDetail_Related_Table_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
