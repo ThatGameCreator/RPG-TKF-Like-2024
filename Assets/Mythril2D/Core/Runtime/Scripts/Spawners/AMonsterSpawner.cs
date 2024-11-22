@@ -131,7 +131,7 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                Debug.LogError("Couldn't find a monster to spawn, please check your spawn rates and make sure their sum is 100");
+                //Debug.LogError("Couldn't find a monster to spawn, please check your spawn rates and make sure their sum is 100");
             }
         }
 

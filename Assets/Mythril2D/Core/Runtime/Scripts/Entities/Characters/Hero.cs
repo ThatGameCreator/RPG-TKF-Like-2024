@@ -277,6 +277,7 @@ namespace Gyvr.Mythril2D
 
         private void OnTryLooting()
         {
+
             if (CheckIsPlayerMoving())
             {
                 m_lootingTime += Time.deltaTime;
