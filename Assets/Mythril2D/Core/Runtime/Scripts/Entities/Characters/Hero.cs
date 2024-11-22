@@ -71,6 +71,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Light2D m_heroSightLight = null;
         [SerializeField] private Light2D m_heroAbilityLight = null;
         [SerializeField] private float m_abilityLightDurationTime = 5f;
+        [SerializeField] private SpriteRenderer abilityLightSprite = null;
 
         public Light2D heroSightLight => m_heroSightLight;
         public Light2D heroAbilityLight => m_heroAbilityLight;
@@ -235,6 +236,10 @@ namespace Gyvr.Mythril2D
         public void OnEnableAbilityLighting()
         {
             Debug.Log("OnEnableAbilityLighting");
+
+            // »º´æ²ÄÖÊµÄÑÕÉ«
+            //Color materialColor = abilityLightSprite.material.color;
+            //abilityLightSprite.material.color = new Color(materialColor.a, materialColor.b, materialColor.g, 0.3f);
 
             isUseAbilityLighting = true;
             m_heroSightLight.transform.gameObject.SetActive(false);

@@ -17,5 +17,6 @@ MonoBehaviour:
   m_displayName: Health Potion
   m_description: Restores 5 <health> points
   m_price: 100
-  m_healthToRestore: 5
+  m_isStackable: 0
+  m_healthToRestore: 2
   m_drinkAudio: {fileID: 11400000, guid: 6169e1eb2a9a87640a3b43f31e3ab758, type: 2}
