@@ -23,8 +23,6 @@ namespace Gyvr.Mythril2D
             m_animator?.SetTrigger(m_fireAnimationParameter);
         }
 
-        public void OnHealAnimationStart() { }
-
         public void OnHealAnimationEnd()
         {
             if (!m_character.dead)

@@ -9,6 +9,7 @@ namespace Gyvr.Mythril2D
     {
         [Header("References")]
         [SerializeField] private Rigidbody2D m_rigidbody = null;
+        [SerializeField] private Collider2D m_collider = null;
         [SerializeField] private Animator m_animator = null;
 
         [Header("Settings")]
@@ -39,6 +40,7 @@ namespace Gyvr.Mythril2D
             m_direction = direction;
             m_speed = speed;
             m_rigidbody.velocity = m_direction * m_speed;
+            m_collider.enabled = true;
             m_timer = 0.0f;
             transform.rotation = Quaternion.LookRotation(Vector3.forward, direction * (m_reverseRotation ? -1.0f : 1.0f));
             m_operating = true;
@@ -56,6 +58,8 @@ namespace Gyvr.Mythril2D
 
             if (!forceNoAnimation && m_hasDestroyAnimation)
             {
+                m_collider.enabled = false;
+
                 m_animator?.SetTrigger(m_destroyAnimationParameter);
             }
             else

@@ -20,6 +20,11 @@ namespace Gyvr.Mythril2D
         [SerializeField] private UISave m_save = null;
         [SerializeField] private UIDeath m_death = null;
 
+        public UIInventory inventory => m_inventory;
+        public UIWarehouse warehouse => m_warehouse;
+        public UIShop shop => m_shop;
+        public UICraft craft => m_craft;
+
         private Stack<IUIMenu> m_menuStack = new Stack<IUIMenu>();
 
         private void Start()

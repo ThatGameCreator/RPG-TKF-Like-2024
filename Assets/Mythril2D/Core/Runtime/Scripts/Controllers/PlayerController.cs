@@ -52,6 +52,7 @@ namespace Gyvr.Mythril2D
             GameManager.InputSystem.gameplay.fireAbility1.performed += OnFireAbility1;
             GameManager.InputSystem.gameplay.fireAbility2.performed += OnFireAbility2;
             GameManager.InputSystem.gameplay.fireAbility3.performed += OnFireAbility3;
+            GameManager.InputSystem.gameplay.fireAbility4.performed += OnFireAbility4;
             GameManager.InputSystem.gameplay.move.performed += OnMove;
             GameManager.InputSystem.gameplay.move.canceled += OnStoppedMoving;
             GameManager.InputSystem.gameplay.run.performed += OnRun;
@@ -66,6 +67,7 @@ namespace Gyvr.Mythril2D
             GameManager.InputSystem.gameplay.fireAbility1.performed -= OnFireAbility1;
             GameManager.InputSystem.gameplay.fireAbility2.performed -= OnFireAbility2;
             GameManager.InputSystem.gameplay.fireAbility3.performed -= OnFireAbility3;
+            GameManager.InputSystem.gameplay.fireAbility4.performed -= OnFireAbility4;
             GameManager.InputSystem.gameplay.move.performed -= OnMove;
             GameManager.InputSystem.gameplay.move.canceled -= OnStoppedMoving;
             GameManager.InputSystem.gameplay.run.performed -= OnRun;
@@ -127,8 +129,6 @@ namespace Gyvr.Mythril2D
 
         private void ActiveInteracting()
         {
-            Debug.Log("Active Interaction");
-
             GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_interactionSound);
 
             GameManager.NotificationSystem.playerTryInteracte.Invoke(GameManager.Player, interactionTarget);
@@ -162,6 +162,8 @@ namespace Gyvr.Mythril2D
         {
             if (context.performed == true)
             {
+                //Debug.Log("OnRun");
+
                 if (GameManager.Player.currentStamina > 0)
                 {
                     m_character.TryPlayRunAnimation();
@@ -216,6 +218,7 @@ namespace Gyvr.Mythril2D
         private void OnFireAbility1(InputAction.CallbackContext context) => FireAbilityAtIndex(0);
         private void OnFireAbility2(InputAction.CallbackContext context) => FireAbilityAtIndex(1);
         private void OnFireAbility3(InputAction.CallbackContext context) => FireAbilityAtIndex(2);
+        private void OnFireAbility4(InputAction.CallbackContext context) => FireAbilityAtIndex(3);
         private void OnDashAbility(InputAction.CallbackContext context) => GetDashAbility();
 
         private void GetDashAbility()

@@ -23,18 +23,33 @@ MonoBehaviour:
         m_guid: 7706cd09097d17f4eb5881e883a70a11
       - m_instance: {fileID: 11400000, guid: 7d23e504c8e2cd24eb6911b6cb8de28c, type: 2}
         m_guid: 7d23e504c8e2cd24eb6911b6cb8de28c
+      - m_instance: {fileID: 11400000, guid: 2334bfae6d4e1384d9ae69c66275c9cb, type: 2}
+        m_guid: 2334bfae6d4e1384d9ae69c66275c9cb
       activeQuests: []
       fullfilledQuests: []
       completedQuests: []
+    warehouse:
+      money: 0
+      items: []
     inventory:
-      money: 100
+      money: 50000
       items:
-        m_keys:
-        - m_instance: {fileID: 11400000, guid: 7716cee2da79443a88980e270d01588b, type: 2}
-          m_guid: 7716cee2da79443a88980e270d01588b
-        - m_instance: {fileID: 11400000, guid: 3a76970755e80814d9d79a3f02caba3c, type: 2}
-          m_guid: 3a76970755e80814d9d79a3f02caba3c
-        m_values: 0100000001000000
+      - itemReference:
+          m_instance: {fileID: 11400000, guid: 1be6f04ea123b37469bcdf5e23488be6, type: 2}
+          m_guid: 1be6f04ea123b37469bcdf5e23488be6
+        quantity: 1
+      - itemReference:
+          m_instance: {fileID: 11400000, guid: 48cb8c471a4ea2b4cb2fd0336ba4446a, type: 2}
+          m_guid: 48cb8c471a4ea2b4cb2fd0336ba4446a
+        quantity: 1
+      - itemReference:
+          m_instance: {fileID: 11400000, guid: 71715f94ca54818499cdcf411afadf29, type: 2}
+          m_guid: 71715f94ca54818499cdcf411afadf29
+        quantity: 1
+      - itemReference:
+          m_instance: {fileID: 11400000, guid: 8e9002f1c3ebd904e8f1999accd2d0ec, type: 2}
+          m_guid: 8e9002f1c3ebd904e8f1999accd2d0ec
+        quantity: 10
     gameFlags:
       flags: []
     player:
@@ -53,8 +68,8 @@ MonoBehaviour:
       equippedAbilities:
       - m_instance: {fileID: 11400000, guid: ad16c9de90a854d52a520b25daa92915, type: 2}
         m_guid: ad16c9de90a854d52a520b25daa92915
-      - m_instance: {fileID: 11400000, guid: d451884129ab461459ca4a2fad3148b6, type: 2}
-        m_guid: d451884129ab461459ca4a2fad3148b6
+      - m_instance: {fileID: 11400000, guid: bbae892183c10834ea86069c30be4206, type: 2}
+        m_guid: bbae892183c10834ea86069c30be4206
       dashAbility: {fileID: 0}
       position: {x: 1.5, y: 3.5, z: 0}
   references:

@@ -67,8 +67,15 @@ namespace Gyvr.Mythril2D
         public bool isEvacuating => m_isEvacuating;
         public float evacuatingRequiredtTime => m_evacuatingRequiredtTime;
 
-        [Header("Eyesight")]
-        [SerializeField] private Light2D m_heroLight = null;
+        [Header("Light")]
+        [SerializeField] private Light2D m_heroSightLight = null;
+        [SerializeField] private Light2D m_heroAbilityLight = null;
+        [SerializeField] private float m_abilityLightDurationTime = 5f;
+
+        public Light2D heroSightLight => m_heroSightLight;
+        public Light2D heroAbilityLight => m_heroAbilityLight;
+        private bool isUseAbilityLighting = false;
+        private float m_nowAbilityLightTime = 0f;
 
         public int experience => m_experience;
         public int nextLevelExperience => GetTotalExpRequirement(m_level + 1);
@@ -99,10 +106,10 @@ namespace Gyvr.Mythril2D
         //ScriptableObject.ctor is not allowed to be called from a MonoBehaviour constructor (or instance field initializer), call it in Awake or Start instead. 
         //private DashAbilitySheet m_dashAbility = ScriptableObject.CreateInstance<DashAbilitySheet>();
         private DashAbilitySheet m_dashAbility = null;
+        public bool isDashFinishing = false;
 
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
 
-        public bool isDashFinished = false;
 
         private void OnDeadAnimationStart()
         {
@@ -135,7 +142,6 @@ namespace Gyvr.Mythril2D
             GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName); // 保存数据
         }
 
-
         private void OnRevivalAnimationEnd()
         {
             //Debug.Log("OnRevivalAnimationEnd");
@@ -149,7 +155,7 @@ namespace Gyvr.Mythril2D
 
             if (!dead)
             {
-                isDashFinished = true;
+                isDashFinishing = false;
             }
         }
 
@@ -216,11 +222,47 @@ namespace Gyvr.Mythril2D
 
         private void Update()
         {
+            if (isUseAbilityLighting == true) HandleAbilityLighting();
+
             if (useStamina == true) HandleStamina();
 
             if (m_isLooting == true) OnTryLooting();
 
             if (m_isEvacuating == true) OnTryEvacuating();
+        }
+
+
+        public void OnEnableAbilityLighting()
+        {
+            Debug.Log("OnEnableAbilityLighting");
+
+            isUseAbilityLighting = true;
+            m_heroSightLight.transform.gameObject.SetActive(false);
+            m_heroAbilityLight.transform.gameObject.SetActive(true);
+        }
+
+
+        private void CancelAbilityLighting()
+        {
+            m_heroSightLight.transform.gameObject.SetActive(true);
+            m_heroAbilityLight.transform.gameObject.SetActive(false);
+            isUseAbilityLighting = false;
+            m_nowAbilityLightTime = 0f;
+        }
+
+        private void HandleAbilityLighting()
+        {
+            if (!dead)
+            {
+                Debug.Log("HandleAbilityLighting");
+
+                m_nowAbilityLightTime += Time.deltaTime;
+
+                if(m_nowAbilityLightTime > m_abilityLightDurationTime)
+                {
+                    CancelAbilityLighting();
+                }
+            }
         }
 
         public bool CheckIsPlayerMoving()
@@ -365,36 +407,41 @@ namespace Gyvr.Mythril2D
 
         private void HandleStamina()
         {
-            // 冲刺状态，且有移动输入，处理耐力
-            if (isRunning == true && movementDirection != Vector2.zero)
+            // 感觉这到处用布尔值判断，确实不如直接把这个b方法放到技能里面
+            // 但想了想，这个也没有动画，如果要做到技能里面似乎也得拓展一点其他东西
+            if (isDashFinishing == false && isExecutingAction == false)
             {
-                // 如果耐力回复协程开启，中断
-                if (regeneratingStamina != null)
+                // 冲刺状态，且有移动输入，处理耐力
+                if (isRunning == true && movementDirection != Vector2.zero)
                 {
-                    StopCoroutine(regeneratingStamina);
-                    regeneratingStamina = null;
+                    // 如果耐力回复协程开启，中断
+                    if (regeneratingStamina != null)
+                    {
+                        StopCoroutine(regeneratingStamina);
+                        regeneratingStamina = null;
+                    }
+
+                    // 如果其他技能也用同一个bool isExecutingAction来开启 则会导致不是跑步也会扣精力值
+                    m_currentStats.Stamina -= staminaMultiplier * Time.deltaTime;
+
+                    if (m_currentStats.Stamina < 0) m_currentStats.Stamina = 0;
+
+                    // 耐力值归零，禁止使用冲刺
+                    if (m_currentStats.Stamina <= 0)
+                    {
+                        isNowCanRun = false;
+                        EndPlayRunAnimation();
+                    }
                 }
 
-                // 如果其他技能也用同一个bool isExecutingAction来开启 则会导致不是跑步也会扣精力值
-                m_currentStats.Stamina -= staminaMultiplier * Time.deltaTime;
-
-                if (m_currentStats.Stamina < 0) m_currentStats.Stamina = 0;
-
-                // 耐力值归零，禁止使用冲刺
-                if (m_currentStats.Stamina <= 0)
+                // 好像当时忘记修一个bug，现在只能检测 run 的时候的状态 其他比如攻击和冲刺等并不能检测，导致可以一边做动作一边恢复耐力
+                // 耐力值不满，且没有冲刺，且耐力回复未开启
+                if (m_currentStats.Stamina < maxStamina && isRunning == false && regeneratingStamina == null)
                 {
-                    isNowCanRun = false;
-                    EndPlayRunAnimation();
+                    //Debug.Log("RegenerateStamina");
+                    //Debug.Log(isExecutingAction);
+                    regeneratingStamina = StartCoroutine(RegenerateStamina());
                 }
-            }
-
-            // 好像当时忘记修一个bug，现在只能检测 run 的时候的状态 其他比如攻击和冲刺等并不能检测，导致可以一边做动作一边恢复耐力
-            // 耐力值不满，且没有冲刺，且耐力回复未开启
-            if (m_currentStats.Stamina < maxStamina && isRunning == false && isExecutingAction == false && regeneratingStamina == null)
-            {
-                //Debug.Log("RegenerateStamina");
-                //Debug.Log(isExecutingAction);
-                regeneratingStamina = StartCoroutine(RegenerateStamina());
             }
         }
 
@@ -404,7 +451,7 @@ namespace Gyvr.Mythril2D
 
             WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
 
-            while (isExecutingAction == false && m_currentStats.Stamina < maxStamina)
+            while (isDashFinishing == false && isExecutingAction == false && m_currentStats.Stamina < maxStamina)
             {
                 // 大于0，可以使用冲刺
                 if (m_currentStats.Stamina > 0f) isNowCanRun = true;
@@ -425,10 +472,25 @@ namespace Gyvr.Mythril2D
             m_currentStats[EStat.Health] = 0;
         }
 
+        public Equipment GetEquipment(EEquipmentType equipmentType)
+        {
+            return m_equipments[equipmentType];
+        }
+
         public Equipment Equip(Equipment equipment)
         {
+            // 卸下当前类型的装备
             Equipment previousEquipment = Unequip(equipment.type);
+
+            // 穿戴新装备
             m_equipments[equipment.type] = equipment;
+
+            // 如果装备有技能属性，将其依次分配到空闲的技能槽
+            if (equipment.ability != null)
+            {
+                AssignAbilitiesToSlots(equipment.ability, 2);
+            }
+
             GameManager.NotificationSystem.itemEquipped.Invoke(equipment);
             UpdateStats();
             return previousEquipment;
@@ -440,6 +502,12 @@ namespace Gyvr.Mythril2D
 
             if (toUnequip)
             {
+                // 如果装备有技能属性，将其从技能槽中移除
+                if (toUnequip.ability != null)
+                {
+                    RemoveAbilitiesFromSlots(toUnequip.ability, 2);
+                }
+
                 m_equipments.Remove(type);
                 GameManager.NotificationSystem.itemUnequipped.Invoke(toUnequip);
                 UpdateStats();
@@ -447,6 +515,35 @@ namespace Gyvr.Mythril2D
 
             return toUnequip;
         }
+
+        // 为技能分配到从 startIndex 开始的槽
+        private void AssignAbilitiesToSlots(AbilitySheet[] abilities, int startIndex)
+        {
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                int slotIndex = startIndex + i;
+                if (slotIndex < m_equippedAbilities.Length)
+                {
+                    m_equippedAbilities[slotIndex] = abilities[i];
+                }
+            }
+            m_equippedAbilitiesChanged.Invoke(m_equippedAbilities);
+        }
+
+        // 从技能槽中移除从 startIndex 开始的技能
+        private void RemoveAbilitiesFromSlots(AbilitySheet[] abilities, int startIndex)
+        {
+            for (int i = 0; i < abilities.Length; i++)
+            {
+                int slotIndex = startIndex + i;
+                if (slotIndex < m_equippedAbilities.Length)
+                {
+                    m_equippedAbilities[slotIndex] = null;
+                }
+            }
+            m_equippedAbilitiesChanged.Invoke(m_equippedAbilities);
+        }
+
 
         public void AddBonusAbility(AbilitySheet abilitySheet)
         {
@@ -660,6 +757,8 @@ namespace Gyvr.Mythril2D
             // Prevents the Hero GameObject from being destroyed, so it can be used in the death screen.
             m_destroyOnDeath = false; 
             base.OnDeath();
+
+            CancelAbilityLighting();
 
             GameManager.InventorySystem.EmptyBag();
 

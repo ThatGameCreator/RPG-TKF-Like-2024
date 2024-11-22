@@ -10,9 +10,11 @@ namespace Gyvr.Mythril2D
         [SerializeField] private UIInventoryStats m_stats = null;
         [SerializeField] private TextMeshProUGUI m_backpackMoney = null;
 
+        public UIInventoryBag bag => m_bag;
+
         public void Init()
         {
-            m_bag.Init();
+            m_bag.UpdateSlots();
         }
 
         public void Show(params object[] args)

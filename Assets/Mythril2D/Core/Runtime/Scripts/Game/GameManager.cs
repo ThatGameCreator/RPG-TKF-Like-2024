@@ -38,6 +38,7 @@ namespace Gyvr.Mythril2D
         public static TeleportLoadingSystem TeleportLoadingSystem => GetSystem<TeleportLoadingSystem>();
         public static PlayerSystem PlayerSystem => GetSystem<PlayerSystem>();
         public static PhysicsSystem PhysicsSystem => GetSystem<PhysicsSystem>();
+        public static ItemGenerationSystem ItemGenerationSystem => GetSystem<ItemGenerationSystem>();
 
         // Private Static Members
         private static GameManager _instance = null;

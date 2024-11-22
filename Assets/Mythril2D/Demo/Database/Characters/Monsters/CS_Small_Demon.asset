@@ -105,16 +105,9 @@ MonoBehaviour:
   potentialLoot:
   - condition:
       rid: -2
-    item: {fileID: 11400000, guid: 48cb8c471a4ea2b4cb2fd0336ba4446a, type: 2}
+    item: {fileID: 11400000, guid: 32bdea1678b7b4245ba647b1e175644b, type: 2}
     quantity: 1
-    dropRate: 10
-    minimumMonsterLevel: 0
-    minimumPlayerLevel: 0
-  - condition:
-      rid: 4284434359334207490
-    item: {fileID: 11400000, guid: ff421493cb5fab3419e8fde5fd6e6f98, type: 2}
-    quantity: 1
-    dropRate: 10
+    dropRate: 25
     minimumMonsterLevel: 0
     minimumPlayerLevel: 0
   - condition:
@@ -131,24 +124,3 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 4284434359334207490
-      type: {class: AreConditionMet, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
-      data:
-        m_operator: 0
-        m_conditions:
-        - rid: 4284434359334207491
-        - rid: 4284434359334207492
-    - rid: 4284434359334207491
-      type: {class: IsQuestInState, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
-      data:
-        m_quest: {fileID: 11400000, guid: 7d23e504c8e2cd24eb6911b6cb8de28c, type: 2}
-        m_state: 1
-    - rid: 4284434359334207492
-      type: {class: IsNot, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
-      data:
-        m_condition:
-          rid: 4284434359334207493
-    - rid: 4284434359334207493
-      type: {class: IsItemInInventory, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
-      data:
-        m_item: {fileID: 11400000, guid: ff421493cb5fab3419e8fde5fd6e6f98, type: 2}

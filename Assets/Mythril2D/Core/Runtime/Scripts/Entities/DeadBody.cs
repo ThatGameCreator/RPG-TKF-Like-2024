@@ -5,8 +5,6 @@ namespace Gyvr.Mythril2D
 {
     public class DeadBody : OtherEntity
     {
-        [Header("References")]
-
         [Header("Dead Body Settings")]
         [SerializeField] private ChestLoot m_loot;
         [SerializeField] private string m_gameFlagID = "DeadBody_00";
@@ -51,6 +49,5 @@ namespace Gyvr.Mythril2D
 
             return false;
         }
-
     }
 }

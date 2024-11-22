@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Gyvr.Mythril2D
@@ -12,14 +14,28 @@ namespace Gyvr.Mythril2D
         [SerializeField] private UIInventoryBag m_bag = null;
         [SerializeField] private UIWarehouseBag m_warehouse = null;
         [SerializeField] private UIWarehouseCurrency m_uiCurrency = null;
+        [SerializeField] private Button m_warehouseIncreaseAllButton;
+        [SerializeField] private Button m_warehouseIncreaseTenButton;
+        [SerializeField] private Button m_warehouseIncreaseOneButton;
+        [SerializeField] private Button m_backpackIncreaseAllButton;
+        [SerializeField] private Button m_backpackIncreaseTenButton;
+        [SerializeField] private Button m_backpackIncreaseOneButton;
+        public UIInventoryBag bag => m_bag;
+
 
         public void Init()
         {
-            m_bag.Init();
-            m_warehouse.Init();
-            m_uiCurrency.RegisterCallbacks(
-                OnWarehouseAllButtonPressed, OnWarehouseTenButtonPressed, OnWarehouseOneButtonPressed,
-                OnBackpackOneButtonPressed, OnBackpackTenButtonPressed, OnBackpackAllButtonPressed);
+            m_bag.UpdateSlots();
+            m_warehouse.UpdateSlots();
+            m_uiCurrency.RegisterCallbacks(new Dictionary<Button, UnityAction>
+            {
+                { m_warehouseIncreaseAllButton, () => TransferMoney(true, GameManager.InventorySystem.backpackMoney) },
+                { m_warehouseIncreaseTenButton, () => TransferMoney(true, 10) },
+                { m_warehouseIncreaseOneButton, () => TransferMoney(true, 1) },
+                { m_backpackIncreaseAllButton, () => TransferMoney(false, GameManager.WarehouseSystem.warehouseMoney) },
+                { m_backpackIncreaseTenButton, () => TransferMoney(false, 10) },
+                { m_backpackIncreaseOneButton, () => TransferMoney(false, 1) }
+            });
         }
 
         public void Show(params object[] args)
@@ -77,6 +93,7 @@ namespace Gyvr.Mythril2D
             m_bag.UpdateSlots();
             m_warehouse.UpdateSlots();
         }
+
         private void UpdateInfoSection()
         {
             m_backpackMoney.text = StringFormatter.Format("{0}", GameManager.InventorySystem.backpackMoney.ToString());
@@ -92,69 +109,27 @@ namespace Gyvr.Mythril2D
         private void OnBagItemClicked(Item item) => OnItemClicked(item, EItemLocation.Bag);
         private void OnWarehouseItemClicked(Item item) => OnItemClicked(item, EItemLocation.Warehouse);
 
-        public void OnWarehouseAllButtonPressed(Button button)
+        private void TransferMoney(bool toWarehouse, int amount)
         {
-            GameManager.WarehouseSystem.AddMoney(GameManager.InventorySystem.backpackMoney);
-
-            GameManager.InventorySystem.RemoveMoney(GameManager.InventorySystem.backpackMoney);
+            if (toWarehouse)
+            {
+                if (GameManager.InventorySystem.HasSufficientFunds(amount))
+                {
+                    GameManager.InventorySystem.RemoveMoney(amount);
+                    GameManager.WarehouseSystem.AddMoney(amount);
+                }
+            }
+            else
+            {
+                if (GameManager.WarehouseSystem.HasSufficientFunds(amount))
+                {
+                    GameManager.WarehouseSystem.RemoveMoney(amount);
+                    GameManager.InventorySystem.AddMoney(amount);
+                }
+            }
 
             UpdateUI();
         }
 
-        public void OnWarehouseTenButtonPressed(Button button)
-        {
-            if (GameManager.InventorySystem.HasSufficientFunds(10))
-            {
-                GameManager.WarehouseSystem.AddMoney(10);
-
-                GameManager.InventorySystem.RemoveMoney(10);
-
-                UpdateUI();
-            }
-        }
-
-        public void OnWarehouseOneButtonPressed(Button button)
-        {
-            if (GameManager.InventorySystem.HasSufficientFunds(1))
-            {
-                GameManager.WarehouseSystem.AddMoney(1);
-
-                GameManager.InventorySystem.RemoveMoney(1);
-
-                UpdateUI();
-            }
-        }
-
-        public void OnBackpackAllButtonPressed(Button button)
-        {
-            GameManager.InventorySystem.AddMoney(GameManager.WarehouseSystem.warehouseMoney);
-
-            GameManager.WarehouseSystem.RemoveMoney(GameManager.WarehouseSystem.warehouseMoney);
-
-            UpdateUI();
-        }
-
-        public void OnBackpackTenButtonPressed(Button button)
-        {
-            if (GameManager.WarehouseSystem.HasSufficientFunds(10)){
-                GameManager.InventorySystem.AddMoney(10);
-
-                GameManager.WarehouseSystem.RemoveMoney(10);
-
-                UpdateUI();
-            }
-        }
-
-        public void OnBackpackOneButtonPressed(Button button)
-        {
-            if (GameManager.WarehouseSystem.HasSufficientFunds(1))
-            {
-                GameManager.InventorySystem.AddMoney(1);
-
-                GameManager.WarehouseSystem.RemoveMoney(1);
-
-                UpdateUI();
-            }
-        }
     }
 }

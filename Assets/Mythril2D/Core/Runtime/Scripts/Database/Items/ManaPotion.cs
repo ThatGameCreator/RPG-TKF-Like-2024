@@ -16,12 +16,12 @@ namespace Gyvr.Mythril2D
 
             if (GameManager.WarehouseSystem.isOpenning == true)
             {
-                if (location == EItemLocation.Bag)
+                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull() == false)
                 {
                     GameManager.InventorySystem.RemoveFromBag(this);
                     GameManager.WarehouseSystem.AddToWarehouse(this);
                 }
-                else
+                else if (location == EItemLocation.Warehouse && GameManager.InventorySystem.IsBackpackFull() == false)
                 {
                     GameManager.InventorySystem.AddToBag(this);
                     GameManager.WarehouseSystem.RemoveFromWarehouse(this);
@@ -36,7 +36,7 @@ namespace Gyvr.Mythril2D
                     int currentMana = target.currentStats[EStat.Mana];
                     int diff = currentMana - previousMana;
 
-                    GameManager.DialogueSystem.Main.PlayNow("You recover {0} <mana>", diff);
+                    //GameManager.DialogueSystem.Main.PlayNow("You recover {0} <mana>", diff);
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_drinkAudio);
                     GameManager.GetSystem<InventorySystem>().RemoveFromBag(this);
                 }
