@@ -259,8 +259,6 @@ namespace Gyvr.Mythril2D
         {
             if (!dead)
             {
-                Debug.Log("HandleAbilityLighting");
-
                 m_nowAbilityLightTime += Time.deltaTime;
 
                 if(m_nowAbilityLightTime > m_abilityLightDurationTime)

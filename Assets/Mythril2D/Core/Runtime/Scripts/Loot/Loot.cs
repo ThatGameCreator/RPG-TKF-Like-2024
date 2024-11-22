@@ -29,7 +29,7 @@ namespace Gyvr.Mythril2D
     public struct ChestLoot
     {
         public ChestLootEntry[] entries;
-        public int money;
+        [Min(5)] public int money;
 
         public bool HasMoney() => money != 0;
         public bool HasItems() => entries != null && entries.Length > 0;

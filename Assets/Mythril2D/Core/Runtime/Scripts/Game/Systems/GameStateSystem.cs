@@ -87,7 +87,8 @@ namespace Gyvr.Mythril2D
             }));
         }
 
-        private void OnEnterMenuState() => Time.timeScale = 0.0f;
+        //private void OnEnterMenuState() => Time.timeScale = 0.0f;
+        private void OnEnterMenuState() => Time.timeScale = 1.0f;
         private void OnEnterGameplayState() => Time.timeScale = 1.0f;
 
         private void OnEnterDialogueState() { }

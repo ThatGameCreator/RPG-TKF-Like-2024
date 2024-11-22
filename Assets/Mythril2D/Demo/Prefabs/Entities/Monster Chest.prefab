@@ -144,10 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 4.443281e-13
-  m_labelHash: 4.443281e-13
+  m_CategoryHash: 6.9143887e-37
+  m_labelHash: 6.9143887e-37
   m_SpriteKey: 0
-  m_SpriteHash: 329186667
+  m_SpriteHash: 425254030
 --- !u!212 &5733890042131917494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1054908696, guid: 477f8d7173195db4b9530a8a360f15a9, type: 3}
+  m_Sprite: {fileID: -330951195, guid: 477f8d7173195db4b9530a8a360f15a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -280,18 +280,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 2152590473451798558
-  m_spriteRenderer: {fileID: 5733890042131917494}
+  m_spriteRenderer:
+  - {fileID: 5733890042131917494}
   m_lightEventListener: {fileID: 1499653012271325872}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
+  m_lootedTime: 2
   m_chestAnimator: {fileID: 5733890042131917493}
   m_contentAnimator: {fileID: 5733890043223343128}
   m_contentSpriteRenderer: {fileID: 5733890043223343129}
+  m_nowSpriteLibrary: {fileID: 0}
+  m_emptySpriteLibraryAsset: {fileID: 0}
   m_loot:
     entries:
     - item: {fileID: 11400000, guid: 7716cee2da79443a88980e270d01588b, type: 2}
       quantity: 1
     money: 0
+  m_requiredKey: {fileID: 0}
   m_singleUse: 0
   m_gameFlagID: chest_06
   m_openedAnimationParameter: opened
@@ -299,7 +304,12 @@ MonoBehaviour:
   m_contentRevealIconCycleDuration: 1
   m_noItemDialogue: {fileID: 0}
   m_hasItemDialogue: {fileID: 0}
+  is_monsterChest: 1
+  m_damageAmount: 3
+  m_damageType: 1
+  m_distanceType: 2
   m_openingSound: {fileID: 11400000, guid: 9f507ff38646b6547a26362dec8eb8f3, type: 2}
+  m_canNotOpenSound: {fileID: 11400000, guid: ee433512032d27141a35fb0594cc25be, type: 2}
   references:
     version: 2
     RefIds:

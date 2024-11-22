@@ -16,7 +16,7 @@ namespace Gyvr.Mythril2D
 
         [Header("Chest Settings")]
         [SerializeField] private ChestLoot m_loot;
-        [SerializeField] private Item m_requiredKey = null;
+        [SerializeField] private Item[] m_requiredKeys = null;
         [SerializeField] private bool m_singleUse = false;
         [SerializeField] private string m_gameFlagID = "chest_00";
         [SerializeField] private string m_openedAnimationParameter = "opened";
@@ -24,10 +24,17 @@ namespace Gyvr.Mythril2D
         [SerializeField] private float m_contentRevealIconCycleDuration = 1.0f;
         [SerializeField] private DialogueSequence m_noItemDialogue = null;
         [SerializeField] private DialogueSequence m_hasItemDialogue = null;
+        [SerializeField] private bool is_monsterChest = false;
+        [SerializeField] private int m_damageAmount = 3;
+        [SerializeField] private EDamageType m_damageType = EDamageType.Physical;
+        [SerializeField] private EDistanceType m_distanceType = EDistanceType.Ranged;
+        [SerializeField] private bool m_randomGenerateKey = false;
 
         [Header("Audio")]
         [SerializeField] private AudioClipResolver m_openingSound;
         [SerializeField] private AudioClipResolver m_canNotOpenSound;
+
+        private Item m_requiredKey = null;
 
         private bool m_hasOpeningAnimation = false;
         private bool m_hasRevealAnimation = false;
@@ -55,6 +62,17 @@ namespace Gyvr.Mythril2D
         {
             base.Start();
 
+            if (m_randomGenerateKey)
+            {
+                // 随机决定是否需要钥匙
+                bool isNeedKey = Random.Range(0, 2) == 0;
+
+                if (isNeedKey && m_requiredKeys.Length != 0)
+                {
+                   m_requiredKey = m_requiredKeys[Random.Range(0, m_requiredKeys.Length)];
+                }
+            }
+            
             if (m_singleUse && GameManager.GameFlagSystem.Get(m_gameFlagID))
             {
                 m_opened = true;
@@ -69,7 +87,7 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
-            if (m_requiredKey)
+            if (m_requiredKey != null)
             {
                 if (GameManager.InventorySystem.HasItemInBag(m_requiredKey))
                 {
@@ -82,12 +100,21 @@ namespace Gyvr.Mythril2D
                         base.OnEndInteract(sender, target);
                     }
                 }
+                else
+                {
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_canNotOpenSound);
+
+                }
             }
             else
             {
-                if (m_canNotOpenSound)
+                if (this.opened == false)
                 {
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_canNotOpenSound);
+                    GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+                }
+                else
+                {
+                    base.OnEndInteract(sender, target);
                 }
             }
         }
@@ -140,10 +167,28 @@ namespace Gyvr.Mythril2D
             if (!m_opened)
             {
                 TryPlayOpeningAnimation(true);
-                TryPlayContentRevealAnimation();
+                
+                if (is_monsterChest)
+                {
+                    GameManager.Player.Damage(new DamageOutputDescriptor
+                     {
+                         source = EDamageSource.Unknown,
+                         attacker = this,
+                         damage = m_damageAmount,
+                         damageType = m_damageType,
+                         distanceType = m_distanceType,
+                         flags = EDamageFlag.None
+                     });
+
+                    this.gameObject.layer = LayerMask.NameToLayer("Default");
+
+                    return true;
+                }
 
                 if (!m_loot.IsEmpty())
                 {
+                    TryPlayContentRevealAnimation();
+
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openingSound);
 
                     if (m_loot.entries != null)
@@ -188,14 +233,11 @@ namespace Gyvr.Mythril2D
                     }
                 }
 
-                //GameManager.DialogueSystem.Main.PlayQueue();
-
                 this.gameObject.layer =  LayerMask.NameToLayer("Default");
 
                 if (m_emptySpriteLibraryAsset)
                 {
                     m_nowSpriteLibrary.spriteLibraryAsset = m_emptySpriteLibraryAsset;
-
                 }
 
                 if (m_requiredKey)

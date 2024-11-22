@@ -147,7 +147,7 @@ MonoBehaviour:
   m_CategoryHash: 4.443281e-13
   m_labelHash: 4.443281e-13
   m_SpriteKey: 0
-  m_SpriteHash: 329186667
+  m_SpriteHash: 425254030
 --- !u!212 &5733890042131917494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1091148418, guid: 9152f21db15ccee46b0fd00c3c615553, type: 3}
+  m_Sprite: {fileID: -1102979991, guid: 9152f21db15ccee46b0fd00c3c615553, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -304,6 +304,10 @@ MonoBehaviour:
   m_contentRevealIconCycleDuration: 1
   m_noItemDialogue: {fileID: 0}
   m_hasItemDialogue: {fileID: 0}
+  is_monsterChest: 0
+  m_damageAmount: 3
+  m_damageType: 1
+  m_distanceType: 2
   m_openingSound: {fileID: 11400000, guid: 9f507ff38646b6547a26362dec8eb8f3, type: 2}
   m_canNotOpenSound: {fileID: 11400000, guid: ee433512032d27141a35fb0594cc25be, type: 2}
   references:
