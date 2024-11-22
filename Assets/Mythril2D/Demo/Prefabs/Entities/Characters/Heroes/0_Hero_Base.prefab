@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284571145678110257}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.517397, y: 1.6602628, z: 8.514357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6241793363770211169}
+  m_Father: {fileID: 5697496757469250476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3135482960733029332
 MonoBehaviour:
@@ -51,7 +51,7 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0.554717, g: 0.554717, b: 0.554717, a: 1}
   size: 12
   spotAngleInner: 360
   spotAngleOuter: 360
@@ -4956,6 +4956,40 @@ Transform:
   - {fileID: 524362915025807522}
   m_Father: {fileID: 6241793363770211169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1651922000926251142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5697496757469250476}
+  m_Layer: 0
+  m_Name: Light Objects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5697496757469250476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651922000926251142}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.517397, y: -1.6602628, z: -8.514357}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8828027125167162452}
+  - {fileID: 5416717094334081774}
+  - {fileID: 173860390523813784}
+  m_Father: {fileID: 6241793363770211169}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3616092485086687277
 GameObject:
   m_ObjectHideFlags: 0
@@ -9811,12 +9845,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4360899542994913459}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.517397, y: 1.6602628, z: 8.514357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6241793363770211169}
+  m_Father: {fileID: 5697496757469250476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &340086387587714928
 MonoBehaviour:
@@ -9832,12 +9866,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightType: 1
   lightPresetId: 0
-  eventPresetId: 0
-  lightLayer: 0
+  eventPresetId: 1
+  lightLayer: 1
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.07169801, g: 0.07169801, b: 0.07169801, a: 1}
+  color: {r: 0.07924521, g: 0.07924521, b: 0.07924521, a: 1}
   size: 1
   spotAngleInner: 360
   spotAngleOuter: 360
@@ -10022,12 +10056,12 @@ GameObject:
   - component: {fileID: 173860390523813784}
   - component: {fileID: 2794800349918259998}
   m_Layer: 0
-  m_Name: Self Light Sight For Test
+  m_Name: Self Light Sight For Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &173860390523813784
 Transform:
   m_ObjectHideFlags: 0
@@ -10036,12 +10070,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8232223717861777571}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.517397, y: 1.6602628, z: 8.514357}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6241793363770211169}
+  m_Father: {fileID: 5697496757469250476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2794800349918259998
 MonoBehaviour:
@@ -10057,13 +10091,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightType: 1
   lightPresetId: 0
-  eventPresetId: 0
-  lightLayer: 0
+  eventPresetId: 1
+  lightLayer: 1
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.3056603, g: 0.3056603, b: 0.3056603, a: 1}
-  size: 8
+  color: {r: 0.3433962, g: 0.3433962, b: 0.3433962, a: 1}
+  size: 4
   spotAngleInner: 360
   spotAngleOuter: 360
   coreSize: 0.5
@@ -10165,13 +10199,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5416717094334081774}
-    - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8828027125167162452}
-    - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 173860390523813784}
+      addedObject: {fileID: 5697496757469250476}
     - targetCorrespondingSourceObject: {fileID: 4928962302919589961, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
       addedObject: {fileID: 922906447861095075}
@@ -10298,8 +10326,9 @@ MonoBehaviour:
   m_lootedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
   m_evacuatingSound: {fileID: 11400000, guid: 46301b4e2889a2e4d97c463be7d9fcb4, type: 2}
   m_evacuatedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
-  m_heroLight: {fileID: 340086387587714928}
-  isDashFinished: 0
+  m_heroSightLight: {fileID: 340086387587714928}
+  m_heroAbilityLight: {fileID: 2794800349918259998}
+  isDashFinishing: 0
   references:
     version: 2
     RefIds:

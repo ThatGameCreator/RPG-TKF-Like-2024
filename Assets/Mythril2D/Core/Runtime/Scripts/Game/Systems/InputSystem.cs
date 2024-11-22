@@ -11,6 +11,7 @@ namespace Gyvr.Mythril2D
         public InputAction fireAbility1;
         public InputAction fireAbility2;
         public InputAction fireAbility3;
+        public InputAction fireAbility4;
         public InputAction openGameMenu;
         public InputAction dash;
     }
@@ -82,6 +83,7 @@ namespace Gyvr.Mythril2D
                 fireAbility1 = actions.FindAction("FireAbility1"),
                 fireAbility2 = actions.FindAction("FireAbility2"),
                 fireAbility3 = actions.FindAction("FireAbility3"),
+                fireAbility4 = actions.FindAction("FireAbility4"),
                 move = actions.FindAction("Move"),
                 run = actions.FindAction("Run"),
                 openGameMenu = actions.FindAction("OpenGameMenu"),

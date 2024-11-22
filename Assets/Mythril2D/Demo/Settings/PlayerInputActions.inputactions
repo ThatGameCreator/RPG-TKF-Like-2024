@@ -69,6 +69,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "FireAbility4",
+                    "type": "Button",
+                    "id": "5964613e-ebe0-467f-82b6-fb2d66c73c6b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "OpenGameMenu",
                     "type": "Button",
                     "id": "6d8fac13-3812-4af8-b468-dd4806228c26",
@@ -137,7 +146,7 @@
                 {
                     "name": "",
                     "id": "7798080c-834b-407b-9031-670400f040ae",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/h",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -159,7 +168,7 @@
                 {
                     "name": "",
                     "id": "517c3bf2-227f-4b07-a107-5fdcb0c7ac20",
-                    "path": "<Keyboard>/k",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -181,7 +190,7 @@
                 {
                     "name": "",
                     "id": "7922c383-8fdd-4e3b-bd97-b9640c1bfa54",
-                    "path": "<Keyboard>/l",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -296,6 +305,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a750b232-246c-40cc-bcdf-d5e31245f4fe",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "FireAbility4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57d1b2b1-d609-4a09-bc09-47406cb992b4",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "FireAbility4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

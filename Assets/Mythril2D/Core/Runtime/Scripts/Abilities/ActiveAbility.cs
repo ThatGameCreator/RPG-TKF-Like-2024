@@ -23,9 +23,12 @@ namespace Gyvr.Mythril2D
             // 避免敌人也有魔法值消耗 导致最终无法释放技能
             if (m_character.tag == "Player")
             {
-                ConsumeItem();
-                ConsumeMana();
                 ConsumeStamina();
+                ConsumeMana();
+                if (m_sheet.costedItem != null)
+                {
+                    ConsumeItem();
+                }
             }
         }
 

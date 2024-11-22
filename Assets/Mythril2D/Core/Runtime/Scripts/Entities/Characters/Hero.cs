@@ -67,8 +67,12 @@ namespace Gyvr.Mythril2D
         public bool isEvacuating => m_isEvacuating;
         public float evacuatingRequiredtTime => m_evacuatingRequiredtTime;
 
-        [Header("Eyesight")]
-        [SerializeField] private Light2D m_heroLight = null;
+        [Header("Light")]
+        [SerializeField] private Light2D m_heroSightLight = null;
+        [SerializeField] private Light2D m_heroAbilityLight = null;
+
+        public Light2D heroSightLight => m_heroSightLight;
+        public Light2D heroAbilityLight => m_heroAbilityLight;
 
         public int experience => m_experience;
         public int nextLevelExperience => GetTotalExpRequirement(m_level + 1);
@@ -446,7 +450,7 @@ namespace Gyvr.Mythril2D
             // 如果装备有技能属性，将其依次分配到空闲的技能槽
             if (equipment.ability != null)
             {
-                AssignAbilitiesToSlots(equipment.ability, 1);
+                AssignAbilitiesToSlots(equipment.ability, 2);
             }
 
             GameManager.NotificationSystem.itemEquipped.Invoke(equipment);
@@ -463,7 +467,7 @@ namespace Gyvr.Mythril2D
                 // 如果装备有技能属性，将其从技能槽中移除
                 if (toUnequip.ability != null)
                 {
-                    RemoveAbilitiesFromSlots(toUnequip.ability, 1);
+                    RemoveAbilitiesFromSlots(toUnequip.ability, 2);
                 }
 
                 m_equipments.Remove(type);

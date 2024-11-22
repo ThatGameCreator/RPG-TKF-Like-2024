@@ -2,13 +2,15 @@
 
 namespace Gyvr.Mythril2D
 {
-    public class HealAbility : ActiveAbility<HealAbilitySheet>
+    public class LightingAbility : ActiveAbility<LightAbilitySheet>
     {
         [Header("Reference")]
         [SerializeField] private Animator m_animator = null;
 
         [Header("Animation Parameters")]
         [SerializeField] private string m_fireAnimationParameter = "fire";
+        [SerializeField] private string m_lightingAnimationParameter = "lighting";
+        [SerializeField] private string m_exitAnimationParameter = "exit";
 
         public override void Init(CharacterBase character, AbilitySheet settings)
         {
@@ -23,7 +25,7 @@ namespace Gyvr.Mythril2D
             m_animator?.SetTrigger(m_fireAnimationParameter);
         }
 
-        public void OnHealAnimationEnd()
+        public void OnTryLightingAnimationEnd()
         {
             if (!m_character.dead)
             {
@@ -31,11 +33,21 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public void ApplyHeal()
+        public void OnLightingAnimationStart()
+        {
+            if (!m_character.dead) {
+                GameManager.Player.heroSightLight.enabled = false;
+                GameManager.Player.heroAbilityLight.enabled = true;
+            }
+        }
+
+        public void OnLightingAnimationEnd()
         {
             if (!m_character.dead)
             {
-                m_character.Heal(m_sheet.healAmount);
+                GameManager.Player.heroSightLight.enabled = true;
+                GameManager.Player.heroAbilityLight.enabled = false;
+                m_animator?.SetTrigger(m_exitAnimationParameter);
             }
         }
     }
