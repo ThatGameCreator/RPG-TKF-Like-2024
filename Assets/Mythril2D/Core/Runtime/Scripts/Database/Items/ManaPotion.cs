@@ -36,7 +36,7 @@ namespace Gyvr.Mythril2D
                     int currentMana = target.currentStats[EStat.Mana];
                     int diff = currentMana - previousMana;
 
-                    GameManager.DialogueSystem.Main.PlayNow("You recover {0} <mana>", diff);
+                    //GameManager.DialogueSystem.Main.PlayNow("You recover {0} <mana>", diff);
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_drinkAudio);
                     GameManager.GetSystem<InventorySystem>().RemoveFromBag(this);
                 }

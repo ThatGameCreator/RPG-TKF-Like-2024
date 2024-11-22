@@ -2,11 +2,11 @@
 
 namespace Gyvr.Mythril2D
 {
-    [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(HealthPotion))]
-    public class HealthPotion : Item
+    [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(AttackPotion))]
+    public class AttackPotion : Item
     {
         [Header("Effect")]
-        [SerializeField] private int m_healthToRestore = 1;
+        [SerializeField] private int m_AttackPowerToIncrease = 1;
 
         [Header("Audio")]
         [SerializeField] private AudioClipResolver m_drinkAudio;
@@ -31,11 +31,10 @@ namespace Gyvr.Mythril2D
                 if (target.currentStats[EStat.Health] < target.stats[EStat.Health])
                 {
                     int previousHealth = target.currentStats[EStat.Health];
-                    target.Heal(m_healthToRestore);
+                    //target.Heal(m_healthToRestore);
                     int currentHealth = target.currentStats[EStat.Health];
                     int diff = currentHealth - previousHealth;
 
-                    //GameManager.DialogueSystem.Main.PlayNow("You recover {0} <health>", diff);
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_drinkAudio);
                     GameManager.InventorySystem.RemoveFromBag(this);
                 }
