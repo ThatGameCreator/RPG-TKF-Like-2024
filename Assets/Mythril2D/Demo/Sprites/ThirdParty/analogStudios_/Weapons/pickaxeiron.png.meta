@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 96e2afe6799b46644ae6e702309b8280
+guid: d9d527a4aaf2fcd498ec14e1035aca4e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,7 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  swizzle: 50462976
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,58 +90,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPS_Gold_Sword_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65aa8ec3aff9c2d418542fbaff4aec56
-      internalID: 630744494
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Gold_Sword_1
+      name: pickaxe_iron_0
       rect:
         serializedVersion: 2
         x: 0
@@ -152,77 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7888386d90848324390410ccd0934450
-      internalID: 505041896
+      spriteID: 784fdd362a6fced45a5834a4f586ec85
+      internalID: -1821234465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Gold_Sword_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a55c91b016016bb459ef6b100b63cefc
-      internalID: 1229426410
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Gold_Sword_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd6d613943b5c964f89725d4ffef7573
-      internalID: -1144972065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Gold_Sword_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4cf04aa752de50546be0de197d9c983c
-      internalID: -1225308168
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Gold_Sword_5
+      name: pickaxe_iron_1
       rect:
         serializedVersion: 2
         x: 0
@@ -236,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fddcfa163622f674ba192bc28a1e80fa
-      internalID: 133831607
+      spriteID: 9818c3e774d23774b83b2e0c829e5933
+      internalID: 1374468773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Gold_Sword_6
+      name: pickaxe_iron_2
       rect:
         serializedVersion: 2
         x: 32
@@ -257,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e31144c1f6db52a42baa1b9c8c45a3d7
-      internalID: -1168104301
+      spriteID: 813b9d6a060725f4e9989816c784eaba
+      internalID: 362620370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Gold_Sword_7
+      name: pickaxe_iron_3
       rect:
         serializedVersion: 2
         x: 64
@@ -278,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c412307bbfe652f48a23d99402a96c12
-      internalID: 1851028247
+      spriteID: 90f63bf198aef3b4aa86f6ac775059c3
+      internalID: -1890855975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Gold_Sword_8
+      name: pickaxe_iron_4
       rect:
         serializedVersion: 2
         x: 96
@@ -299,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4071229f410b84548b8e72dba6ea82dd
-      internalID: -1247924910
+      spriteID: 96da4f567cdc4db4fac2516474a071a5
+      internalID: 136103494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Gold_Sword_9
+      name: pickaxe_iron_5
       rect:
         serializedVersion: 2
         x: 0
@@ -320,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4f1decb76a1f7a4e80b52bedc5d1dfc
-      internalID: 201634798
+      spriteID: ad3fd04573462ee418acde2e8ebbe176
+      internalID: 933828744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Gold_Sword_10
+      name: pickaxe_iron_6
       rect:
         serializedVersion: 2
         x: 32
@@ -341,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8890127a4e870af448672abd44f268b1
-      internalID: 1630933884
+      spriteID: 877ecd1f6599f6349bdd2eee2a5a3c2b
+      internalID: 1534700065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Gold_Sword_11
+      name: pickaxe_iron_7
       rect:
         serializedVersion: 2
         x: 64
@@ -362,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d78a28f5e05d4c943990e7e04f075fdc
-      internalID: 506626156
+      spriteID: 587f876edd0c455409fe480c6be903a3
+      internalID: -2009310214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Gold_Sword_12
+      name: pickaxe_iron_8
       rect:
         serializedVersion: 2
         x: 96
@@ -383,8 +279,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 466221924c146064a838dbcb66c6b905
-      internalID: 1162547508
+      spriteID: 011ca97a7cca10548bdc2ffc927d8b18
+      internalID: -932873890
       vertices: []
       indices: 
       edges: []
@@ -400,22 +296,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SPS_Gold_Sword_12: 1162547508
-      SPS_Gold_Sword_11: 506626156
-      SPS_Gold_Sword_9: 201634798
-      SPS_Gold_Sword_10: 1630933884
-      SPS_Gold_Sword_7: 1851028247
-      SPS_Gold_Sword_6: -1168104301
-      SPS_Gold_Sword_0: 630744494
-      SPS_Gold_Sword_1: 505041896
-      SPS_Gold_Sword_8: -1247924910
-      SPS_Gold_Sword_2: 1229426410
-      SPS_Gold_Sword_3: -1144972065
-      SPS_Gold_Sword_4: -1225308168
-      SPS_Gold_Sword_5: 133831607
-  spritePackingTag: 
+      pickaxe_iron_0: -1821234465
+      pickaxe_iron_1: 1374468773
+      pickaxe_iron_2: 362620370
+      pickaxe_iron_3: -1890855975
+      pickaxe_iron_4: 136103494
+      pickaxe_iron_5: 933828744
+      pickaxe_iron_6: 1534700065
+      pickaxe_iron_7: -2009310214
+      pickaxe_iron_8: -932873890
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

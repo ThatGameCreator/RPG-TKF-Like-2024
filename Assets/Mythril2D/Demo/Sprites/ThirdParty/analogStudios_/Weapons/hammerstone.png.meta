@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 9217136a4535541638eb2b53e86b8cd9
+guid: b9ee3b1e6be66894783366a4282a4a68
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,58 +90,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPS_Staff_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9df6d0e5f76ea47d99407b6b257f3835
-      internalID: -1327143427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Staff_1
+      name: hammer_stone_0
       rect:
         serializedVersion: 2
         x: 0
@@ -152,77 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf91ddf136a2641ec8e16a82797548df
-      internalID: 1169767220
+      spriteID: 111e7688988da7340a02fa8975940c03
+      internalID: 1540248387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Staff_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f02c47e538054c308098c4953d15176
-      internalID: -1697351944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Staff_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0dab6db16b6e94bb3905c188ecdcc44a
-      internalID: -676157417
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Staff_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87d803aef9a224df6938e7e65af2a2a9
-      internalID: -843165364
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Staff_5
+      name: hammer_stone_1
       rect:
         serializedVersion: 2
         x: 0
@@ -236,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41610914bf7df46c087674a5a7cc23c5
-      internalID: 1113077421
+      spriteID: feb1cbb90c0d2454c87bc98e4ff7b7d4
+      internalID: -520089093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Staff_6
+      name: hammer_stone_2
       rect:
         serializedVersion: 2
         x: 32
@@ -257,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8cb851a9b72e49099c429be083ee5a5
-      internalID: 1548821522
+      spriteID: aaf15f68e5d79a94795a4e30bb185459
+      internalID: 56860836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Staff_7
+      name: hammer_stone_3
       rect:
         serializedVersion: 2
         x: 64
@@ -278,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8c60ace3416c476bb2d92fb6d990952
-      internalID: 610268141
+      spriteID: a5866326630dd144b96dad5aecb8b15d
+      internalID: -487648307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Staff_8
+      name: hammer_stone_4
       rect:
         serializedVersion: 2
         x: 96
@@ -293,14 +189,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.5, y: 0.3}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d15cbad1124c1455d944a4e45a678127
-      internalID: -1310252796
+      spriteID: 8af0f9ea8615f144da72120acac307b7
+      internalID: -1968095419
       vertices: []
       indices: 
       edges: []
@@ -316,18 +212,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SPS_Staff_4: -843165364
-      SPS_Staff_3: -676157417
-      SPS_Staff_1: 1169767220
-      SPS_Staff_8: -1310252796
-      SPS_Staff_7: 610268141
-      SPS_Staff_5: 1113077421
-      SPS_Staff_6: 1548821522
-      SPS_Staff_2: -1697351944
-      SPS_Staff_0: -1327143427
-  spritePackingTag: 
+      hammer_stone_0: 1540248387
+      hammer_stone_1: -520089093
+      hammer_stone_2: 56860836
+      hammer_stone_3: -487648307
+      hammer_stone_4: -1968095419
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

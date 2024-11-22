@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: c714adde734a1704c81af81db1c077c7
+guid: a6320aad01f10e646b59c39316c0dee6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,7 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  swizzle: 50462976
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,58 +90,14 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPS_Diamond_Sword_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b025da081de9714eba4b4b958701054
-      internalID: 1171031466
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Diamond_Sword_1
+      name: dagger_iron_0
       rect:
         serializedVersion: 2
         x: 0
@@ -152,77 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a67e7e1b2e12eb43b2d853156c5aaae
-      internalID: -1319795752
+      spriteID: f8842888935a45044a1ef1a9e5d09741
+      internalID: 648278336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Diamond_Sword_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e624a6d5b10aad41b80e7b0e679ad2a
-      internalID: -1874223653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Diamond_Sword_3
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfcf154ebbb0e194bad36b6301a93de8
-      internalID: 1986591245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Diamond_Sword_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.3}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dccd5f05a56bc16488a8991a5826e1c2
-      internalID: 199641238
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPS_Diamond_Sword_5
+      name: dagger_iron_1
       rect:
         serializedVersion: 2
         x: 0
@@ -236,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6a27138e37443d408121f83658dca93
-      internalID: 489403204
+      spriteID: 4a656747316474044bdbaf6c874adac5
+      internalID: -1717679077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Diamond_Sword_6
+      name: dagger_iron_2
       rect:
         serializedVersion: 2
         x: 32
@@ -257,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9abff61f67fa3c54e8c34dc9a92b8a7c
-      internalID: -325346705
+      spriteID: 4fbe711d5684a4b478631bc8d90f3fb9
+      internalID: -1817823457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Diamond_Sword_7
+      name: dagger_iron_3
       rect:
         serializedVersion: 2
         x: 64
@@ -278,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93caf1d21da490b4eb5830c105c6044b
-      internalID: -839972222
+      spriteID: 73f220206f20b7e4fbeea9e13a566919
+      internalID: 2028880845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Diamond_Sword_8
+      name: dagger_iron_4
       rect:
         serializedVersion: 2
         x: 96
@@ -299,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abbecca06a744864dbb5cd713ddb8081
-      internalID: -628631690
+      spriteID: 6260e3b87d79af343a510403132e27c8
+      internalID: 1717795647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Diamond_Sword_9
+      name: dagger_iron_5
       rect:
         serializedVersion: 2
         x: 0
@@ -320,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d801b8d47d2f38740a99b2ef76cb6e55
-      internalID: 731238761
+      spriteID: 8536572f6fd128248b1d6195b6bc9473
+      internalID: 1798720605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Diamond_Sword_10
+      name: dagger_iron_6
       rect:
         serializedVersion: 2
         x: 32
@@ -341,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 156dd03a2b2357644a9468cdfd0dd6a4
-      internalID: -1517395260
+      spriteID: a004c1f6219b18d40bae1fcaf97953f4
+      internalID: 929804799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Diamond_Sword_11
+      name: dagger_iron_7
       rect:
         serializedVersion: 2
         x: 64
@@ -362,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe6266b25005d4b4e84c5c7c912de5ef
-      internalID: -1868571015
+      spriteID: 0fa814930d2c74a4982a3601ed089af1
+      internalID: 1628283531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_Diamond_Sword_12
+      name: dagger_iron_8
       rect:
         serializedVersion: 2
         x: 96
@@ -383,8 +279,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f33a9ba4fd6e98144b1e5f9f7b37e111
-      internalID: 1753510303
+      spriteID: 2c0cf811c29ecfd4a9a5f098167c7bd8
+      internalID: 231125749
       vertices: []
       indices: 
       edges: []
@@ -400,22 +296,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SPS_Diamond_Sword_0: 1171031466
-      SPS_Diamond_Sword_7: -839972222
-      SPS_Diamond_Sword_10: -1517395260
-      SPS_Diamond_Sword_2: -1874223653
-      SPS_Diamond_Sword_9: 731238761
-      SPS_Diamond_Sword_8: -628631690
-      SPS_Diamond_Sword_6: -325346705
-      SPS_Diamond_Sword_12: 1753510303
-      SPS_Diamond_Sword_3: 1986591245
-      SPS_Diamond_Sword_11: -1868571015
-      SPS_Diamond_Sword_1: -1319795752
-      SPS_Diamond_Sword_5: 489403204
-      SPS_Diamond_Sword_4: 199641238
-  spritePackingTag: 
+      dagger_iron_0: 648278336
+      dagger_iron_1: -1717679077
+      dagger_iron_2: -1817823457
+      dagger_iron_3: 2028880845
+      dagger_iron_4: 1717795647
+      dagger_iron_5: 1798720605
+      dagger_iron_6: 929804799
+      dagger_iron_7: 1628283531
+      dagger_iron_8: 231125749
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

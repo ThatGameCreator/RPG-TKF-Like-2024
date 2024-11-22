@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: ffac44adfec865245971f93407cfa2a7
+guid: 05b4db24549eb7840abc12dbcdd7663c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,7 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  swizzle: 50462976
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,136 +90,113 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: weapons__0
+      name: machete_gold_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 720d91937cdaee64b867d519186cf68c
+      internalID: -527532454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: machete_gold_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 12
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7718f10507dff6d4791ea26c7ec690f2
-      internalID: 2072771695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: weapons__1
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 0
-        width: 12
-        height: 24
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: 0.666, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a33fe8d1c1470b34d98bfb14c86c9e8a
-      internalID: -2055023101
+      spriteID: ddd24d25b1e63464d97033975cc402f1
+      internalID: -2123237058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weapons__2
+      name: machete_gold_2
       rect:
         serializedVersion: 2
-        x: 24
+        x: 32
         y: 0
-        width: 12
-        height: 24
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: 0.666, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e62302a870ee00d47b49b14df5041e20
-      internalID: 1276416573
+      spriteID: 3bd7762577bb61345bbd09318a7d68c6
+      internalID: -1483570439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weapons__3
+      name: machete_gold_3
       rect:
         serializedVersion: 2
-        x: 36
+        x: 64
         y: 0
-        width: 12
-        height: 24
+        width: 32
+        height: 32
       alignment: 9
-      pivot: {x: 0.666, y: 0.5}
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd7276bb7c5a8254b8f2ea896776901c
-      internalID: 1556033791
+      spriteID: c92445722209b12468242fa15d10db6a
+      internalID: -930323995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weapons__4
+      name: machete_gold_4
       rect:
         serializedVersion: 2
-        x: 48
+        x: 96
         y: 0
-        width: 12
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 874531772a616014888c11328640a9cd
-      internalID: -806410278
+      spriteID: 5e3d26cc90f483a42be6a733a5cff29a
+      internalID: 1300492584
       vertices: []
       indices: 
       edges: []
@@ -232,14 +212,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      weapons__4: -806410278
-      weapons__3: 1556033791
-      weapons__2: 1276416573
-      weapons__1: -2055023101
-      weapons__0: 2072771695
-  spritePackingTag: 
+      machete_gold_0: -527532454
+      machete_gold_1: -2123237058
+      machete_gold_2: -1483570439
+      machete_gold_3: -930323995
+      machete_gold_4: 1300492584
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

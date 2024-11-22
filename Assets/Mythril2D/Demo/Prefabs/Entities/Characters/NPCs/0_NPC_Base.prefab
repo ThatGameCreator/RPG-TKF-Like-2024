@@ -192,6 +192,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4928962302919589960, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5320358063589231207}
+    - targetCorrespondingSourceObject: {fileID: 4928962304513780144, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5804773658437750232}
     - targetCorrespondingSourceObject: {fileID: 7316959013917636646, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4888448461899265147}
@@ -199,6 +202,46 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6366349834063817765}
   m_SourcePrefab: {fileID: 100100000, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+--- !u!1 &267762870989917491 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4928962304513780144, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+  m_PrefabInstance: {fileID: 5174770045673350275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &5804773658437750232
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267762870989917491}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.1}
+  m_Size: {x: 0.62, y: 0.2}
+  m_Direction: 1
 --- !u!212 &267762870989917498 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4928962304513780153, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
