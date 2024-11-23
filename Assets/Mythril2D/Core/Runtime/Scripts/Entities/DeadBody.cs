@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Gyvr.Mythril2D
 {
@@ -9,17 +10,22 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Loot m_loot;
         [SerializeField] private string m_gameFlagID = "DeadBody_00";
         [SerializeField] private Sprite[] m_deadBodySprites = null;
-        [SerializeField] private int m_canLootCount = 3;
+        [SerializeField] private int m_canLootCount = 5;
 
         [Header("Audio")]
         [SerializeField] private AudioClipResolver m_openedSound;
+        public LootTable lootTable;   // 引用 ScriptableObject 数据表
 
         private bool m_opened = false;
+        private int m_randomMaxLootedCount = 0;
         private int m_nowLootedCount = 0;
 
         protected override void Start()
         {
             base.Start();
+
+            m_randomMaxLootedCount = Random.Range(0, m_canLootCount);
+
             AssignRandomSprite();
         }
 
@@ -53,9 +59,34 @@ namespace Gyvr.Mythril2D
             GameManager.Player.OnTryStartLoot(target, m_lootedTime);
         }
 
+        private LootTable.LootEntryData GetRandomLootEntry()
+        {
+            float totalWeight = 0f;
+
+            foreach (var entry in lootTable.entries)
+            {
+                totalWeight += entry.weight;
+            }
+
+            float randomValue = Random.Range(0f, totalWeight);
+
+            foreach (var entry in lootTable.entries)
+            {
+                if (randomValue < entry.weight)
+                {
+                    return entry;
+                }
+
+                randomValue -= entry.weight;
+            }
+
+            return null;
+        }
+
+
         public bool TryLooted()
         {
-            if (m_nowLootedCount < m_canLootCount) // 检查是否可以继续掠夺
+            if (m_nowLootedCount < m_randomMaxLootedCount) // 检查是否可以继续掠夺
             {
                 // 播放打开声音
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
@@ -63,29 +94,22 @@ namespace Gyvr.Mythril2D
                 // 随机决定掠夺物品还是金钱
                 bool lootItem = Random.Range(0, 2) == 0;
 
-                if (lootItem && m_loot.entries != null && m_loot.entries.Length > 0)
+                if (lootItem && lootTable.entries != null && lootTable.entries.Length > 0)
                 {
                     // 使用基于权重的随机选择机制
-                    var randomLoot = m_loot.GetRandomLoot();
+                    var randomEntry = GetRandomLootEntry();
 
-                    if (randomLoot.HasValue)
+                    if (randomEntry != null)
                     {
-                        var entry = randomLoot.Value;
-
-                        // 随机生成数量（范围可调整）
-                        int randomQuantity = Random.Range(1, entry.quantity + 1);
-
-                        // 添加到玩家背包
-                        GameManager.InventorySystem.AddToBag(entry.item, randomQuantity);
-                        Debug.Log($"玩家获得了 {randomQuantity} 个 {entry.item.name}");
+                        int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
+                        GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                        Debug.Log($"玩家获得了 {randomQuantity} 个 {randomEntry.item.name}");
                     }
-                }
-                else if (m_loot.money > 0)
-                {
-                    // 随机分配金钱奖励（范围可调整）
-                    int randomMoney = Random.Range(10, m_loot.money + 1);
 
-                    // 添加金钱到玩家
+                }
+                else if (lootTable.money > 0)
+                {
+                    int randomMoney = Random.Range(10, lootTable.money + 1);
                     GameManager.InventorySystem.AddMoney(randomMoney);
                     Debug.Log($"玩家获得了 {randomMoney} 金币");
                 }
@@ -94,7 +118,7 @@ namespace Gyvr.Mythril2D
                 m_nowLootedCount++;
 
                 // 检查是否已达到最大掠夺次数
-                if (m_nowLootedCount >= m_canLootCount)
+                if (m_nowLootedCount >= m_randomMaxLootedCount)
                 {
                     this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
                 }

@@ -120,7 +120,7 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                m_money.text = string.Format("{0}\n({1}{2})",
+                m_money.text = string.Format("{0}  ({1}{2})",
                     GameManager.InventorySystem.backpackMoney,
                     transactionType == ETransactionType.Buy ? "-" : "+",
                     selectedItemPrice);

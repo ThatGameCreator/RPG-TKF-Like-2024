@@ -175,6 +175,7 @@ MonoBehaviour:
   m_lightEventListener: {fileID: 3541559015267394186}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
+  m_lootedTime: 2
   m_warehouAnimator: {fileID: 5733890042131917493}
   m_gameFlagID: warehouse_00
   m_openedAnimationParameter: opened
@@ -202,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadowType: 3
   shadowLayer: 0
-  shadowDistance: 0
+  shadowDistance: 1
   shadowDistanceMin: 0
   shadowDistanceMax: 0
   shadowTranslucency: 1

@@ -632,6 +632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interface Sound
       objectReference: {fileID: 0}
+    - target: {fileID: 1912386624255761228, guid: 7b5f8cb5dfea9ef47a2389585fc4eb82, type: 3}
+      propertyPath: m_audioChannel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3656659879635116866, guid: 7b5f8cb5dfea9ef47a2389585fc4eb82, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -837,6 +841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background Sound
       objectReference: {fileID: 0}
+    - target: {fileID: 1912386624255761228, guid: 7b5f8cb5dfea9ef47a2389585fc4eb82, type: 3}
+      propertyPath: m_audioChannel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3656659879635116866, guid: 7b5f8cb5dfea9ef47a2389585fc4eb82, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1041,6 +1049,10 @@ PrefabInstance:
     - target: {fileID: 1647755298250049297, guid: 7b5f8cb5dfea9ef47a2389585fc4eb82, type: 3}
       propertyPath: m_Name
       value: Background Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912386624255761228, guid: 7b5f8cb5dfea9ef47a2389585fc4eb82, type: 3}
+      propertyPath: m_audioChannel
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3656659879635116866, guid: 7b5f8cb5dfea9ef47a2389585fc4eb82, type: 3}
       propertyPath: m_AnchorMax.x

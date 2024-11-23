@@ -29,6 +29,9 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Button m_cancelButton = null;
         [SerializeField] private UIMainMenu m_UIMainMenu = null;
         [SerializeField] private SaveFile m_saveFile = null;
+        [SerializeField] private Color normalColor = Color.white;
+        [SerializeField] private Color highlightedColor = Color.yellow;
+        [SerializeField] private float fadeDuration = 0.1f;
 
 
         public string saveFileName => m_saveFileName;
@@ -63,23 +66,12 @@ namespace Gyvr.Mythril2D
                 {
                     m_cancelButton.gameObject.SetActive(false);
                 }
-
-                // 如果设为自动存档的话，似乎就不需要手动存档了，直接删掉存档界面了
-                //if (m_action == SaveFileActionType.Load)
-                //{
-                //    m_button.interactable = false;
-                //}
-
-                //if (m_action == SaveFileActionType.Save)
-                //{
-                //    m_button.interactable = false;
-                //}
             }
-            
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            Debug.Log("OnPointerEnter");
             m_button.Select();
         }
 
