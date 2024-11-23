@@ -18,22 +18,22 @@ namespace Gyvr.Mythril2D
 
         private Coroutine imageAlphaCoroutine;
         private Coroutine colorCoroutine;
-        private bool isPressed = false;
 
         public Button button => m_button;
 
         private void Awake()
         {
-            normalColor = new Color(200, 200, 200);
-            highlightedColor = new Color(231, 200, 105);
-            pressedColor = new Color(165, 143, 75);
+            // 在这初始化结果就没作用了不知道为什么
+            // 因为方法用错了 Color 是 0 到 1 超过1全设为白色了
+            normalColor = new Color32(200, 200, 200, 255);
+            highlightedColor = new Color32(231, 200, 105, 255);
+            pressedColor = new Color32(199, 105, 75, 255);
 
             if (m_button != null)
             {
                 m_button.onClick.AddListener(OnClick);
             }
         }
-
         public void OnSelect(BaseEventData eventData)
         {
             // Start the fade to highlighted color
@@ -103,6 +103,7 @@ namespace Gyvr.Mythril2D
 
         public void OnClick()
         {
+            // 没啥用 不晓得为什么
             StartColorTransition(pressedColor);
 
             Application.Quit();

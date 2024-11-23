@@ -1529,14 +1529,28 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 80
-        width: 16
-        height: 16
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -10, y: -15}
+        - {x: -13, y: -11}
+        - {x: -7, y: -5}
+        - {x: -3, y: -4}
+        - {x: 0, y: -1}
+        - {x: 0, y: 1}
+        - {x: 2, y: 7}
+        - {x: 8, y: 7}
+        - {x: 14, y: 2}
+        - {x: 8, y: -4}
+        - {x: 8, y: -6}
+        - {x: 4, y: -9}
+        - {x: 0, y: -9}
+        - {x: -5, y: -15}
       tessellationDetail: 0
       bones: []
       spriteID: a033c875050b53340a7bd30900843b6a
@@ -1549,61 +1563,32 @@ TextureImporter:
       name: Cave_Decorations_69
       rect:
         serializedVersion: 2
-        x: 144
-        y: 80
-        width: 16
-        height: 16
+        x: 160
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 5, y: -15}
+        - {x: 0, y: -9}
+        - {x: -4, y: -9}
+        - {x: -8, y: -6}
+        - {x: -8, y: -3}
+        - {x: -14, y: 2}
+        - {x: -12, y: 8}
+        - {x: -3, y: 8}
+        - {x: 0, y: 1}
+        - {x: 0, y: -1}
+        - {x: 7, y: -5}
+        - {x: 13, y: -13}
+        - {x: 11, y: -15}
       tessellationDetail: 0
       bones: []
       spriteID: dcd8aec3cfad33f47b9c0263822288aa
       internalID: 443709894
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Decorations_70
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 474f64b3f77a24844afe5f8e6133fcb6
-      internalID: -421070039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Decorations_71
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e35ae5ac6755d04daca367d4eacd44c
-      internalID: -1174752231
       vertices: []
       indices: 
       edges: []
@@ -1793,90 +1778,6 @@ TextureImporter:
       bones: []
       spriteID: bd0753ce15f57254ab567a9dea3819de
       internalID: -1189613070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Decorations_81
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 496d976ab10a1894ba4fb91e94759316
-      internalID: 1774754961
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Decorations_82
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a45f6ec250543ff4d84fd6898902079d
-      internalID: 7872646
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Decorations_83
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: baabb67d1e1510d4ea89974b4e5e9e97
-      internalID: -1831299556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cave_Decorations_84
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30e218a1aa62e32429aad9c7eff0233e
-      internalID: 1969187841
       vertices: []
       indices: 
       edges: []
@@ -2814,7 +2715,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
