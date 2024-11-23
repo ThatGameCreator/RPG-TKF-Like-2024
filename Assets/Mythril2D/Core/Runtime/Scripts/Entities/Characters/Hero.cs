@@ -79,13 +79,15 @@ namespace Gyvr.Mythril2D
         private float m_nowAbilityLightTime = 0f;
 
         public int experience => m_experience;
-        public int nextLevelExperience => GetTotalExpRequirement(m_level + 1);
+        public int totalNextLevelExperience => GetTotalExpRequirement(m_level + 1);
+        public int nextLevelExperience => GetTotalExpRequirement(m_level + 1) - experience;
         public int availablePoints => m_sheet.pointsPerLevel * (m_level - Stats.MinLevel) - m_usedPoints;
         public SerializableDictionary<EEquipmentType, Equipment> equipments => m_equipments;
         public AbilitySheet[] equippedAbilities => m_equippedAbilities;
         public DashAbilitySheet dashAbility => m_dashAbility;
         public HashSet<AbilitySheet> bonusAbilities => m_bonusAbilities;
         public UnityEvent<AbilitySheet[]> equippedAbilitiesChanged => m_equippedAbilitiesChanged;
+        public UnityEvent<int> experienceChanged => m_experienceChanged;
         public Stats customStats => m_customStats;
         public Stats missingCurrentStats => m_missingCurrentStats;
         public float missingCurrentStamina => m_missingCurrentStamina;
@@ -110,6 +112,7 @@ namespace Gyvr.Mythril2D
         public bool isDashFinishing = false;
 
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
+        private UnityEvent<int> m_experienceChanged = new UnityEvent<int>();
 
 
         private void OnDeadAnimationStart()
@@ -179,6 +182,8 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.experienceGained.Invoke(experience);
 
             m_experience += experience;
+
+            m_experienceChanged.Invoke(m_experience);
 
             while (m_experience >= GetTotalExpRequirement(m_level + 1))
             {

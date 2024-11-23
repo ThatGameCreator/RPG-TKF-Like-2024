@@ -82,7 +82,7 @@ namespace Gyvr.Mythril2D
         {
             //m_class.text = m_character.characterSheet.displayName;
             m_level.text = m_character.level.ToString();
-            m_experience.text = StringFormatter.Format("{0}", m_character.nextLevelExperience - m_character.experience);
+            m_experience.text = StringFormatter.Format("{0}", m_character.totalNextLevelExperience - m_character.experience);
             m_skillPoints.text = m_availablePoints.ToString();
             //m_currency.text = StringFormatter.Format("{0}", GameManager.InventorySystem.backpackMoney.ToString());
         }
