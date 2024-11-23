@@ -10,7 +10,8 @@ namespace Gyvr.Mythril2D
         Torso,
         Hands,
         Feet,
-        Backpack
+        Backpack,
+        Jewelry
     }
 
     [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(Equipment))]

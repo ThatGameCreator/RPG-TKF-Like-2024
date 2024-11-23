@@ -67,9 +67,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4267049663643994137}
-  - {fileID: 8406583058106135737}
   - {fileID: 7557577565511364655}
+  - {fileID: 8406583058106135737}
+  - {fileID: 4267049663643994137}
   m_Father: {fileID: 5900663707253536619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -1956,7 +1956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4208455593649666624, guid: 5788970e9ca1bb44c8478f2b8b467934, type: 3}
       propertyPath: m_Name
-      value: Warehouse Bag
+      value: Bag
       objectReference: {fileID: 0}
     - target: {fileID: 4208455593649666625, guid: 5788970e9ca1bb44c8478f2b8b467934, type: 3}
       propertyPath: m_Pivot.x

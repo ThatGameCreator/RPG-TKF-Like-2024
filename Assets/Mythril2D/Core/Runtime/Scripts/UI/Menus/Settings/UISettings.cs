@@ -102,12 +102,12 @@ namespace Gyvr.Mythril2D
 
         private void UpdateUI()
         {
-            m_masterVolume.UpdateUI((int)math.round(GameManager.AudioSystem.GetMasterVolume() * m_maxVolume), m_volumeSuffix);
+            m_masterVolume.UpdateUI((int)math.round(GameManager.AudioSystem.GetMasterVolume() * m_maxVolume), (int)m_maxVolume);
 
             foreach (UISettingsChannelVolume channelVolume in m_channelVolumes)
             {
                 float volumeScale = GameManager.AudioSystem.GetChannelVolumeScale(channelVolume.audioChannel) * m_maxVolume;
-                channelVolume.UpdateUI((int)math.round(volumeScale), m_volumeSuffix);
+                channelVolume.UpdateUI((int)math.round(volumeScale), (int)m_maxVolume);
             }
         }
     }
