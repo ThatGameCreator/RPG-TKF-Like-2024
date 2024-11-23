@@ -12528,6 +12528,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2055055096}
     m_Modifications:
+    - target: {fileID: 495666600845328099, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 57340503, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 1714655681913848210, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -12604,6 +12608,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1714655682989926175, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1782613293, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 1714655683220213400, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_Value
       value: 0.5
@@ -12632,6 +12640,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1714655683334198627, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -639449952, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 1714655683670666698, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_Name
       value: Fill Area
@@ -12648,6 +12660,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2337795018634883349, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1070064050, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 2374320093646174042, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -12779,7 +12795,7 @@ PrefabInstance:
     - target: {fileID: 3556397062083438825, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2023459534, guid: 77f3253afde0a6947bf1166472ee43fd, type: 3}
+      objectReference: {fileID: 698272382, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 3556397062083438830, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -12844,6 +12860,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3556397062796647061, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -302496562, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 3556397063154781796, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -12859,7 +12879,7 @@ PrefabInstance:
     - target: {fileID: 5096966035668658442, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1757069593, guid: 77f3253afde0a6947bf1166472ee43fd, type: 3}
+      objectReference: {fileID: 1570288852, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 5096966035668658442, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 4
@@ -13131,7 +13151,7 @@ PrefabInstance:
     - target: {fileID: 6930333465888106236, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -128363870, guid: 77f3253afde0a6947bf1166472ee43fd, type: 3}
+      objectReference: {fileID: -2060511694, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 6930333465888106236, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 4
