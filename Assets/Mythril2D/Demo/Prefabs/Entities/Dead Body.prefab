@@ -158,6 +158,16 @@ MonoBehaviour:
     entries:
     - item: {fileID: 11400000, guid: 7716cee2da79443a88980e270d01588b, type: 2}
       quantity: 1
+      weight: 4
+    - item: {fileID: 11400000, guid: ab57dca98887657438dc1b9fd036ceb2, type: 2}
+      quantity: 1
+      weight: 2
+    - item: {fileID: 11400000, guid: 64b2469e14271d54987124ab28cba097, type: 2}
+      quantity: 1
+      weight: 1
+    - item: {fileID: 11400000, guid: ddd33825d20014040b1894e5b9907838, type: 2}
+      quantity: 1
+      weight: 4
     money: 0
   m_gameFlagID: DeadBody_00
   m_deadBodySprites:
@@ -173,6 +183,7 @@ MonoBehaviour:
   - {fileID: 1153989267, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
   - {fileID: -1670789742, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
   - {fileID: -827240440, guid: 8bda4779307e84a4396d7e12e78154b8, type: 3}
+  m_canLootCount: 3
   m_openedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
   references:
     version: 2

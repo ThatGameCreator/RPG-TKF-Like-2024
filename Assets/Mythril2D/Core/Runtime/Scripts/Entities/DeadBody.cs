@@ -57,6 +57,7 @@ namespace Gyvr.Mythril2D
         {
             if (m_nowLootedCount < m_canLootCount) // 检查是否可以继续掠夺
             {
+                // 播放打开声音
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
 
                 // 随机决定掠夺物品还是金钱
@@ -64,19 +65,29 @@ namespace Gyvr.Mythril2D
 
                 if (lootItem && m_loot.entries != null && m_loot.entries.Length > 0)
                 {
-                    // 随机选择一个物品
-                    var randomEntry = m_loot.entries[Random.Range(0, m_loot.entries.Length)];
+                    // 使用基于权重的随机选择机制
+                    var randomLoot = m_loot.GetRandomLoot();
 
-                    // 随机生成条目的数量（范围可调整）
-                    int randomQuantity = Random.Range(1, randomEntry.quantity + 1);
+                    if (randomLoot.HasValue)
+                    {
+                        var entry = randomLoot.Value;
 
-                    GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                        // 随机生成数量（范围可调整）
+                        int randomQuantity = Random.Range(1, entry.quantity + 1);
+
+                        // 添加到玩家背包
+                        GameManager.InventorySystem.AddToBag(entry.item, randomQuantity);
+                        Debug.Log($"玩家获得了 {randomQuantity} 个 {entry.item.name}");
+                    }
                 }
                 else if (m_loot.money > 0)
                 {
                     // 随机分配金钱奖励（范围可调整）
                     int randomMoney = Random.Range(10, m_loot.money + 1);
+
+                    // 添加金钱到玩家
                     GameManager.InventorySystem.AddMoney(randomMoney);
+                    Debug.Log($"玩家获得了 {randomMoney} 金币");
                 }
 
                 // 增加掠夺次数
