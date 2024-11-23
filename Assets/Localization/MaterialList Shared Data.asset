@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MaterialList Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MaterialList
+  m_TableCollectionNameGuidString: 886f294ec4290fc428b60ca81b44f770
+  m_Entries:
+  - m_Id: 240924098560
+    m_Key: id_ancient_key_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 410843742208
+    m_Key: id_brass_key_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 735927468032
+    m_Key: id_bronze_key_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1109711257600
+    m_Key: id_indigo_key_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1287478444032
+    m_Key: id_iron_key_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1462162817024
+    m_Key: id_silver_key_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1980838838272
+    m_Key: id_copper_coin_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2235407925248
+    m_Key: id_silver_coin_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2238901780480
+    m_Key: id_faded_gold_coin_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3637735718912
+    m_Key: id_corrupted_herb_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3704622284800
+    m_Key: id_dark_green_herb_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3787828887552
+    m_Key: id_faded_herb_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4116238696448
+    m_Key: id_spotted_mushrooms_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4148031520768
+    m_Key: id_withered_mushrooms_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4458326130688
+    m_Key: id_dull_gem_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4637544546304
+    m_Key: id_dull_prayer_original_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4803844505600
+    m_Key: id_eclipse_follower__s_oath_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5045214117888
+    m_Key: id_hardened_bone_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5201451941888
+    m_Key: id_solid_stone_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5307710439424
+    m_Key: id_the_preacher__s_dictionary_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5473737768960
+    m_Key: id_unknown_note_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5616100835328
+    m_Key: id_unopened_letter_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5709487013888
+    m_Key: id_withered_branche_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5795726098432
+    m_Key: id_wandering_knight__s_note_item
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529373714808834
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529373714808834
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732344323988

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: DemonList Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: DemonList
+  m_TableCollectionNameGuidString: e588ecb786c40314e8595540441e3b4b
+  m_Entries:
+  - m_Id: 12259033088
+    m_Key: id_demon_deep_slime_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 147743440896
+    m_Key: id_demon_necromancer_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 255713214464
+    m_Key: id_demon_skeleton_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1067940184064
+    m_Key: id_demon_slime_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1720204787712
+    m_Key: id_huge_demon_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1859896082432
+    m_Key: ' id_ecromancer_item'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2007447502848
+    m_Key: id_small_demon_item
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529373714808832
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529373714808832
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732341183287
