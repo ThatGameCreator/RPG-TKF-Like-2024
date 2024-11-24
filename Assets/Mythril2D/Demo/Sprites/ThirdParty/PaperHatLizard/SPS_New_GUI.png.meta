@@ -100,8 +100,8 @@ TextureImporter:
       name: SPS_New_GUI_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 144
+        x: 0
+        y: 128
         width: 8
         height: 8
       alignment: 0
@@ -799,7 +799,7 @@ TextureImporter:
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 0, z: 0, w: 0}
+      border: {x: 6, y: 6, z: 6, w: 6}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -820,7 +820,7 @@ TextureImporter:
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 6, y: 0, z: 0, w: 0}
+      border: {x: 6, y: 6, z: 6, w: 6}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -882,7 +882,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 10, y: 10, z: 10, w: 10}
       outline: []
       physicsShape: []
@@ -890,6 +890,27 @@ TextureImporter:
       bones: []
       spriteID: 918be8cdc886f6f40878b7572b75b488
       internalID: 26597123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_38
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1bd18508f668264d95c881cd425b319
+      internalID: 458202595
       vertices: []
       indices: 
       edges: []
@@ -937,6 +958,7 @@ TextureImporter:
       SPS_New_GUI_35: 676418408
       SPS_New_GUI_36: 1127309875
       SPS_New_GUI_37: 26597123
+      SPS_New_GUI_38: 458202595
       SPS_New_GUI_4: 1079966408
       SPS_New_GUI_5: 1676060180
       SPS_New_GUI_6: -1418600654

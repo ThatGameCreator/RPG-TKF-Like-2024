@@ -7,7 +7,6 @@ namespace Gyvr.Mythril2D
     {
         [SerializeField] private UIInventoryEquipment m_equipment = null;
         [SerializeField] private UIInventoryBag m_bag = null;
-        [SerializeField] private UIInventoryStats m_stats = null;
         [SerializeField] private TextMeshProUGUI m_backpackMoney = null;
 
         public UIInventoryBag bag => m_bag;
@@ -64,7 +63,6 @@ namespace Gyvr.Mythril2D
         {
             m_bag.UpdateSlots();
             m_equipment.UpdateSlots();
-            m_stats.UpdateUI();
             m_backpackMoney.text = StringFormatter.Format("{0}", GameManager.InventorySystem.backpackMoney.ToString());
         }
 

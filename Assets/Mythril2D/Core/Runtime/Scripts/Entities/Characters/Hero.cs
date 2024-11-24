@@ -340,6 +340,8 @@ namespace Gyvr.Mythril2D
 
                 GameManager.DayNightSystem.OnDisableDayNightSystem();
 
+                CancelAbilityLighting();
+
                 CancelEvacuate();
             }
         }
