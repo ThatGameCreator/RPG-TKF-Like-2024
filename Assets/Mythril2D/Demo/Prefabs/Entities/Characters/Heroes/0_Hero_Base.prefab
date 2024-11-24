@@ -10313,7 +10313,7 @@ PrefabInstance:
     - target: {fileID: 4928962304513780152, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: e2673321296a87d4ba3f08a56595c2ae, type: 2}
+      objectReference: {fileID: 9100000, guid: 2658b97009734d04789656544f2d23ba, type: 2}
     - target: {fileID: 4928962304513780153, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10463,6 +10463,7 @@ MonoBehaviour:
   m_abilityLightDurationTime: 60
   abilityLightSprite: {fileID: 1758950637790177671}
   isDashFinishing: 0
+  isStartGameRevival: 0
   references:
     version: 2
     RefIds:

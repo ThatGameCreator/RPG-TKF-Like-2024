@@ -114,49 +114,54 @@ namespace Gyvr.Mythril2D
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
         private UnityEvent<int> m_experienceChanged = new UnityEvent<int>();
 
+        public bool isStartGameRevival = false;
+
+
+        protected override void OnDeathAnimationEnd()
+        {
+            base.OnDeathAnimationEnd();
+        }
 
         private void OnDeadAnimationStart()
-        {
-            //Debug.Log("OnDeadAnimationStart");
+         {
+        }
 
-            // 设置复活后人物朝向
+        public void RecoverPlayerStats()
+        {
+            // 朝向篝火
             SetLookAtDirection(Vector2.right);
+
+            // 恢复血量 
+            m_currentStats[EStat.Health] = 1;
+            m_currentStats[EStat.Mana] = 1;
+            RecoverStamina((int)GameManager.Player.maxStamina);
+
+            // 恢复碰撞体
+            Collider2D[] colliders = GameManager.Player.GetComponentsInChildren<Collider2D>();
+            Array.ForEach(colliders, (collider) => collider.enabled = true);
         }
 
         private void OnDeadAnimationEnd()
         {
-            GameManager.TeleportLoadingSystem.RequestTransition(null, null, () => {
-                // 恢复血量 
-                m_currentStats[EStat.Health] = 1;
-                m_currentStats[EStat.Mana] = 1;
-                m_currentStats.Stamina = GameManager.Player.maxStamina;
-
-                // 恢复碰撞体
-                Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
-                Array.ForEach(colliders, (collider) => collider.enabled = true);
-            } ,
-            () => {
-                StartCoroutine(SaveWithDelay());
-            }, ETeleportType.Revival);
+            StartCoroutine(SaveWithDelay());
         }
 
         private IEnumerator SaveWithDelay()
         {
-            yield return new WaitForSeconds(1f); // 等待一秒
             GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName); // 保存数据
+
+            yield return new WaitForSeconds(1f); // 等待一秒
         }
 
         private void OnRevivalAnimationEnd()
         {
-            //Debug.Log("OnRevivalAnimationEnd");
+            Debug.Log("OnRevivalAnimationEnd");
 
             EnableActions(EActionFlags.All);
         }
 
         public void OnDashAnimationEnd()
         {
-            //Debug.Log("OnDashAnimationEnd");
-
             if (!dead)
             {
                 isDashFinishing = false;
@@ -218,6 +223,13 @@ namespace Gyvr.Mythril2D
         {
             // 这个感觉应该不需要执行一次监听 tryexcute
 
+            // 传送后虽然执行了播放动画函数，但却并没有执行Update？
+            if (isStartGameRevival == false)
+            {
+                TryPlayRevivalAnimation();
+
+                isStartGameRevival = true;
+            }
 
             // 感觉如果粒子效果设置为 isloop 这个启动游戏时候就会启用 所以试着在 Awake 中关闭
             // 好像 Awake 的时候还没新建好人物报错了， 试试在 Start 中
@@ -240,7 +252,7 @@ namespace Gyvr.Mythril2D
 
         public void OnEnableAbilityLighting()
         {
-            Debug.Log("OnEnableAbilityLighting");
+            //Debug.Log("OnEnableAbilityLighting");
 
             // 缓存材质的颜色
             //Color materialColor = abilityLightSprite.material.color;
@@ -757,6 +769,8 @@ namespace Gyvr.Mythril2D
             m_equippedAbilitiesChanged.Invoke(m_equippedAbilities);
 
             transform.position = block.position;
+
+            Debug.Log("Initialize");
         }
 
         protected override void OnDeath()
