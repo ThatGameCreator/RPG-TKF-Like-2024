@@ -75,7 +75,7 @@ namespace Gyvr.Mythril2D
         {
             UpdateInfoSection();
             UpdateStatsSection();
-            m_applyButtonText.text = $"Apply {m_tempStats.GetTotal()} points";
+            m_applyButtonText.text = $"{m_tempStats.GetTotal()}";
         }
 
         private void UpdateInfoSection()

@@ -80,7 +80,7 @@ namespace Gyvr.Mythril2D
             {
                 ClearSlots();
                 FillSlots();
-                RewireNavigation();
+                //RewireNavigation();
             }
         }
 

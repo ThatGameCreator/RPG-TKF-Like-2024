@@ -211,6 +211,7 @@ namespace Gyvr.Mythril2D
         // private new void Awake(){}
         private new void Awake()
         {
+
             isPlayer = true;
 
             m_maxStats.staminaChanged.AddListener(OnStaminaChanged);
@@ -223,9 +224,14 @@ namespace Gyvr.Mythril2D
         {
             // 这个感觉应该不需要执行一次监听 tryexcute
 
+
             // 传送后虽然执行了播放动画函数，但却并没有执行Update？
+            // 这放Awake执行不了
             if (isStartGameRevival == false)
             {
+                // 也许应该改成只能 互动？
+                DisableActions(EActionFlags.All);
+
                 TryPlayRevivalAnimation();
 
                 isStartGameRevival = true;

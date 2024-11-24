@@ -85,6 +85,12 @@ namespace Gyvr.Mythril2D
                     break;
 
                 case EGameMenuAction.GoToMainMenu:
+                    // 不是战斗场景则保存数据
+                    if(GameManager.TeleportLoadingSystem.currentMap != "That_Abyss")
+                    {
+                        GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+                    }
+
                     SceneManager.LoadScene(GameManager.Config.mainMenuSceneName);
                     break;
             }
