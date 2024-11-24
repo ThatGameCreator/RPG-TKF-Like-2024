@@ -155,7 +155,7 @@ namespace Gyvr.Mythril2D
 
         private void OnRevivalAnimationEnd()
         {
-            Debug.Log("OnRevivalAnimationEnd");
+            //Debug.Log("OnRevivalAnimationEnd");
 
             EnableActions(EActionFlags.All);
         }

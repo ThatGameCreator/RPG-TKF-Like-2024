@@ -86,7 +86,7 @@ namespace Gyvr.Mythril2D
 
                 case EGameMenuAction.GoToMainMenu:
                     // 不是战斗场景则保存数据
-                    if(GameManager.TeleportLoadingSystem.currentMap != "That_Abyss")
+                    if(GameManager.TeleportLoadingSystem.currentMap == "Pilgrimage_Place")
                     {
                         GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
                     }
