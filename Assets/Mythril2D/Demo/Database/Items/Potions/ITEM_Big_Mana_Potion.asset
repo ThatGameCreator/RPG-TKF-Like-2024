@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b03e69d300698284fbb1137dc8d9e460, type: 3}
-  m_Name: ITEM_Health_Potion
+  m_Script: {fileID: 11500000, guid: 22c1ddcdaa504244689e0c6cfcada4df, type: 3}
+  m_Name: ITEM_Big_Mana_Potion
   m_EditorClassIdentifier: 
   m_category: 0
-  m_icon: {fileID: -1227757721, guid: b2aa333e2a0687c499a8b4ecb8625997, type: 3}
-  m_displayName: Health Potion
-  m_description: Restores 5 <health> points
+  m_icon: {fileID: 225067649, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_displayName: Mana Potion
+  m_description: Restores 5 <mana> points
   m_price: 100
   m_isStackable: 0
-  m_healthToRestore: 2
+  m_manaToRestore: 5
   m_drinkAudio: {fileID: 11400000, guid: 6169e1eb2a9a87640a3b43f31e3ab758, type: 2}
