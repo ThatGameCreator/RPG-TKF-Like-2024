@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: PotionsList Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: PotionsList
+  m_TableCollectionNameGuidString: afcb84be32a5b9c42a1334adfd11ac51
+  m_Entries:
+  - m_Id: 18495963136
+    m_Key: id_attack_potion_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18558877696
+    m_Key: id_defend_potion_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18558877697
+    m_Key: id_health_potion_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18558877698
+    m_Key: id_mana_potion_item
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529403776434179
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529403776434179
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732456002411

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: OtherItemList Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: OtherItemList
+  m_TableCollectionNameGuidString: 96f48d7677965ca4493c2f1659551e63
+  m_Entries:
+  - m_Id: 21100625920
+    m_Key: id_bone_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21155151872
+    m_Key: id_bucket_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21155151873
+    m_Key: id_slime_ball_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21155151874
+    m_Key: id_slime_juice_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21155151875
+    m_Key: id_water_bucket_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21155151876
+    m_Key: id_water_slime_ball_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21155151877
+    m_Key: id_arrow_item
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529403776434181
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529403776434181
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732456046586
