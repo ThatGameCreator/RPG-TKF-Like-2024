@@ -23,7 +23,7 @@ namespace Gyvr.Mythril2D
                 if (item == null) continue;
 
                 // 创建 SurfaceItem 游戏对象
-                GameObject surfaceItemObject = new GameObject(item.displayName);
+                GameObject surfaceItemObject = new GameObject(item.DisplayName);
                 SurfaceItem surfaceItem = surfaceItemObject.AddComponent<SurfaceItem>();
                 // 设置 Layer 为 Interaction
                 surfaceItemObject.layer = LayerMask.NameToLayer("Interaction");
@@ -55,7 +55,7 @@ namespace Gyvr.Mythril2D
 
                 // 设置 SpriteRenderer
                 SpriteRenderer spriteRenderer = surfaceItemObject.AddComponent<SpriteRenderer>();
-                spriteRenderer.sprite = item.icon;
+                spriteRenderer.sprite = item.Icon;
 
                 // 使用 SerializedObject 设置 m_spriteRenderer
                 SerializedObject serializedObject = new SerializedObject(surfaceItem);
@@ -76,7 +76,7 @@ namespace Gyvr.Mythril2D
 
 
                 // 创建预制体路径
-                string prefabPath = $"Assets/Mythril2D/Demo/Prefabs/Entities/Generate/{item.displayName}.prefab";
+                string prefabPath = $"Assets/Mythril2D/Demo/Prefabs/Entities/Generate/{item.DisplayName}.prefab";
                 string directoryPath = System.IO.Path.GetDirectoryName(prefabPath);
                 if (!AssetDatabase.IsValidFolder(directoryPath))
                 {
@@ -89,7 +89,7 @@ namespace Gyvr.Mythril2D
                 // 清理临时对象
                 DestroyImmediate(surfaceItemObject);
 
-                Debug.Log($"Created SurfaceItem prefab for {item.displayName} at {prefabPath}");
+                Debug.Log($"Created SurfaceItem prefab for {item.DisplayName} at {prefabPath}");
             }
 
             AssetDatabase.SaveAssets();

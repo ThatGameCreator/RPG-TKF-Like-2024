@@ -167,12 +167,12 @@ namespace Gyvr.Mythril2D
                     GameManager.InventorySystem.RemoveMoney(itemPrice);
                     GameManager.InventorySystem.AddToBag(item);
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_buySellAudio);
-                    m_inventoryBag.SetCategory(item.category); // Navigate to the category of the purchased item for better UX
+                    m_inventoryBag.SetCategory(item.Category); // Navigate to the category of the purchased item for better UX
                     UpdateUI(true);
                 }
                 else
                 {
-                    GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotBuy, null, item.displayName));
+                    GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotBuy, null, item.DisplayName));
                 }
             }
             else
@@ -194,7 +194,7 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotSell, null, item.displayName));
+                GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotSell, null, item.DisplayName));
             }
         }
 

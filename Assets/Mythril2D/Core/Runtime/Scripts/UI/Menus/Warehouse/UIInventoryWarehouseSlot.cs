@@ -78,10 +78,10 @@ namespace Gyvr.Mythril2D
                 }
 
                 // 如果是堆叠物品，显示数量；否则只显示物品图标
-                m_quantity.text = item.isStackable ? quantity.ToString() : string.Empty;
+                m_quantity.text = item.IsStackable ? quantity.ToString() : string.Empty;
 
                 m_image.enabled = true;
-                m_image.sprite = item.icon;
+                m_image.sprite = item.Icon;
             }
             else
             {

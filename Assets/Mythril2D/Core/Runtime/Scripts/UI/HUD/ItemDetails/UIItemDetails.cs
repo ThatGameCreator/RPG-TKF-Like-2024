@@ -26,9 +26,9 @@ namespace Gyvr.Mythril2D
             if (item)
             {
                 m_itemDetailsBox.SetActive(true);
-                m_itemIcon.sprite = item.icon;
-                m_itemName.text = item.displayName;
-                m_itemDescription.text = item.description;
+                m_itemIcon.sprite = item.Icon;
+                m_itemName.text = item.DisplayName;
+                m_itemDescription.text = item.Description;
 
                 if (item is Equipment)
                 {

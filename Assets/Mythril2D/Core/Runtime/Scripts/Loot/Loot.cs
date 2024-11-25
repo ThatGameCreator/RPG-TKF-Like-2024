@@ -73,7 +73,7 @@ namespace Gyvr.Mythril2D
             {
                 for (int i = 0; i < entries.Length; ++i)
                 {
-                    sprites.Add(entries[i].item.icon);
+                    sprites.Add(entries[i].item.Icon);
                 }
             }
 

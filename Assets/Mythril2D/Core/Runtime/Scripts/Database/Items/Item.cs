@@ -18,7 +18,7 @@ namespace Gyvr.Mythril2D
     }
 
     [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(Item))]
-    public class Item : DatabaseEntry, INameable
+    public class Item : DatabaseEntry
     {
         [Header("General")]
         [SerializeField] private EItemCategory m_category = 0;
@@ -50,11 +50,41 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public EItemCategory category => m_category;
-        public Sprite icon => m_icon;
-        public string displayName => DisplayNameUtils.GetNameOrDefault(this, m_displayName);
-        public string description => StringFormatter.Format(m_description);
-        public int price => m_price;
-        public bool isStackable => m_isStackable; // 改为通过公共访问器暴露
+        // 公共访问器
+        public EItemCategory Category
+        {
+            get => m_category;
+            set => m_category = value;
+        }
+
+        public Sprite Icon
+        {
+            get => m_icon;
+            set => m_icon = value;
+        }
+
+        public string DisplayName
+        {
+            get => m_displayName;
+            set => m_displayName = value;
+        }
+
+        public string Description
+        {
+            get => m_description;
+            set => m_description = value;
+        }
+
+        public int Price
+        {
+            get => m_price;
+            set => m_price = value;
+        }
+
+        public bool IsStackable
+        {
+            get => m_isStackable;
+            set => m_isStackable = value;
+        }
     }
 }

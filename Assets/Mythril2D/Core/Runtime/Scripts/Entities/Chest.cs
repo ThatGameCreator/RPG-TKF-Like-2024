@@ -199,7 +199,7 @@ namespace Gyvr.Mythril2D
                                 {
                                     GameManager.DialogueSystem.Main.AddToQueue(
                                     m_hasItemDialogue.ToDialogueTree(
-                                        string.Empty, $"{entry.item.displayName} x{entry.quantity}"
+                                        string.Empty, $"{entry.item.DisplayName} x{entry.quantity}"
                                     )
                                 );
                             }

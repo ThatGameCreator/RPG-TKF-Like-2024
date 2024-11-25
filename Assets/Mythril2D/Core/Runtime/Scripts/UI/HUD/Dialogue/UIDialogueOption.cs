@@ -15,12 +15,8 @@ namespace Gyvr.Mythril2D
 
         private void Awake()
         {
-            Debug.Log("OnClicked");
-
             if (m_button == null)
             {
-                Debug.Log("GetComponent");
-
                 m_button = GetComponent<Button>();
             }
             m_button.onClick.AddListener(OnClicked);
@@ -28,8 +24,6 @@ namespace Gyvr.Mythril2D
 
         public void OnClicked()
         {
-            Debug.Log("OnClicked");
-
             SendMessageUpwards("OnOptionClicked", m_optionID);
         }
 
