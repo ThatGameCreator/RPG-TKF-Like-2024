@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8421550761b2409fadfe5c6658b5395, type: 3}
-  m_Name: Stone Sword
+  m_Name: Gold Hammer
   m_EditorClassIdentifier: 
   m_category: 2
-  m_icon: {fileID: 984255214, guid: 2bce3f279b3e7f240b759d22cae23314, type: 3}
-  m_displayName: Stone Sword
-  m_description: Simple sword made out of iron
+  m_icon: {fileID: -498193100, guid: 2bce3f279b3e7f240b759d22cae23314, type: 3}
+  m_displayName: Gold Hammer
+  m_description: Simple Hammer made out of Gold
   m_price: 50
   m_isStackable: 0
   m_equipAudio: {fileID: 11400000, guid: 9fa8803b447617b48b9981e6b61432a2, type: 2}
@@ -23,8 +23,8 @@ MonoBehaviour:
   m_type: 0
   m_bonusStats:
     m_values: 000000000000000000000000000000000000000000000000000000000000000000000000
-  m_visualOverride: {fileID: 7108339969198208228, guid: c3377c7d1d954994d93386f85166e8a3, type: 3}
+  m_visualOverride: {fileID: 7108339969198208228, guid: 0ed0016c65ff21344982cf1bc2c1f129, type: 3}
   m_capacity: 0
   m_ability:
-  - {fileID: 11400000, guid: d451884129ab461459ca4a2fad3148b6, type: 2}
-  - {fileID: 11400000, guid: aee583002dde78a4e9594256eb9c8b73, type: 2}
+  - {fileID: 11400000, guid: 69ba6eeb036e6944e8687b802bdaa3ef, type: 2}
+  - {fileID: 11400000, guid: 7ce3e1066dd6a31428e36a244d871337, type: 2}

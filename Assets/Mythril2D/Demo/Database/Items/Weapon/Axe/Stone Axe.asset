@@ -15,7 +15,7 @@ MonoBehaviour:
   m_category: 2
   m_icon: {fileID: 984255214, guid: 2bce3f279b3e7f240b759d22cae23314, type: 3}
   m_displayName: Stone Axe
-  m_description: Simple sword made out of iron
+  m_description: Simple Axe made out of Stone
   m_price: 50
   m_isStackable: 0
   m_equipAudio: {fileID: 11400000, guid: 9fa8803b447617b48b9981e6b61432a2, type: 2}
@@ -26,5 +26,5 @@ MonoBehaviour:
   m_visualOverride: {fileID: 7108339969198208228, guid: c3377c7d1d954994d93386f85166e8a3, type: 3}
   m_capacity: 0
   m_ability:
-  - {fileID: 11400000, guid: d451884129ab461459ca4a2fad3148b6, type: 2}
-  - {fileID: 11400000, guid: aee583002dde78a4e9594256eb9c8b73, type: 2}
+  - {fileID: 11400000, guid: 7797da8e9cdfda240b41b12a79557fd4, type: 2}
+  - {fileID: 11400000, guid: 2ce31d18ee46ff7419631d6e7ff66596, type: 2}

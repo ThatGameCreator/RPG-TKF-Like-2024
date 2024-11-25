@@ -28,12 +28,36 @@ namespace Gyvr.Mythril2D
         [SerializeField] private int m_capacity;
         [SerializeField] private AbilitySheet[] m_ability;
 
-        public EEquipmentType type => m_type;
-        public Stats bonusStats => m_bonusStats;
-        public int capacity => m_capacity;
-        public AbilitySheet[] ability => m_ability;
-        public SpriteLibraryAsset visualOverride => m_visualOverride;
 
+        public EEquipmentType type
+        {
+            get => m_type;
+            set => m_type = value;
+        }
+        
+        public AbilitySheet[] ability
+        {
+            get => m_ability;
+            set => m_ability = value;
+        }
+        public Stats bonusStats
+        {
+            get => m_bonusStats;
+            set => m_bonusStats = value;
+        }
+        
+        public int capacity
+        {
+            get => m_capacity;
+            set => m_capacity = value;
+        }
+        
+        public SpriteLibraryAsset visualOverride
+        {
+            get => m_visualOverride;
+            set => m_visualOverride = value;
+        }
+        
         public override void Use(CharacterBase user, EItemLocation location)
         {
             if (GameManager.WarehouseSystem.isOpenning == true)

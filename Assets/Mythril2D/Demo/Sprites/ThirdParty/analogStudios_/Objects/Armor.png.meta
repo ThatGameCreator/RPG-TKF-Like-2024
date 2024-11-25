@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Armor_0
+      name: Leather Helm
       rect:
         serializedVersion: 2
         x: 2
@@ -118,7 +118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_1
+      name: Bronze Helm
       rect:
         serializedVersion: 2
         x: 17
@@ -139,7 +139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_2
+      name: Iron Helm
       rect:
         serializedVersion: 2
         x: 34
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_3
+      name: Silver Helm
       rect:
         serializedVersion: 2
         x: 49
@@ -181,7 +181,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_4
+      name: Golden Helm
       rect:
         serializedVersion: 2
         x: 65
@@ -202,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_5
+      name: Mythril Helm
       rect:
         serializedVersion: 2
         x: 81
@@ -223,7 +223,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_6
+      name: Leather Armor
       rect:
         serializedVersion: 2
         x: 2
@@ -244,11 +244,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_7
+      name: Bronze Armor
       rect:
         serializedVersion: 2
-        x: 18
-        y: 34
+        x: 20
+        y: 33
         width: 12
         height: 12
       alignment: 0
@@ -265,7 +265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_8
+      name: Iron Armor
       rect:
         serializedVersion: 2
         x: 35
@@ -286,7 +286,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_9
+      name: Sliver Armor
       rect:
         serializedVersion: 2
         x: 50
@@ -307,7 +307,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_10
+      name: Golden Armor
       rect:
         serializedVersion: 2
         x: 66
@@ -328,7 +328,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_11
+      name: Mythril Armor
       rect:
         serializedVersion: 2
         x: 82
@@ -349,7 +349,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_12
+      name: Leather Gloves
       rect:
         serializedVersion: 2
         x: 1
@@ -370,7 +370,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_13
+      name: Bronze Gloves
       rect:
         serializedVersion: 2
         x: 17
@@ -391,7 +391,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_14
+      name: Iron Gloves
       rect:
         serializedVersion: 2
         x: 34
@@ -412,7 +412,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_15
+      name: Sliver Gloves
       rect:
         serializedVersion: 2
         x: 49
@@ -433,7 +433,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_16
+      name: Golden Gloves
       rect:
         serializedVersion: 2
         x: 65
@@ -454,7 +454,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_17
+      name: Mythril Gloves
       rect:
         serializedVersion: 2
         x: 81
@@ -475,11 +475,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_18
+      name: Leather Boots
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
+        x: 1
+        y: 1
         width: 12
         height: 12
       alignment: 0
@@ -496,7 +496,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_19
+      name: Bronze Boots
       rect:
         serializedVersion: 2
         x: 18
@@ -517,7 +517,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_20
+      name: Iron Boots
       rect:
         serializedVersion: 2
         x: 35
@@ -538,7 +538,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_21
+      name: Sliver Boots
       rect:
         serializedVersion: 2
         x: 50
@@ -559,7 +559,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_22
+      name: Golden Boots
       rect:
         serializedVersion: 2
         x: 66
@@ -580,7 +580,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armor_23
+      name: Mythril Boots
       rect:
         serializedVersion: 2
         x: 82
@@ -611,30 +611,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Armor_0: -1201123696
-      Armor_1: -391398237
-      Armor_10: 219302829
-      Armor_11: -1885087710
-      Armor_12: 1545916670
-      Armor_13: -5146545
-      Armor_14: -2080800419
-      Armor_15: -477249034
-      Armor_16: -1792126339
-      Armor_17: 1185995447
-      Armor_18: -1920087251
-      Armor_19: -508934354
-      Armor_2: -950966214
-      Armor_20: -13332901
-      Armor_21: -1733059907
-      Armor_22: -1627017277
-      Armor_23: -778531894
-      Armor_3: 775972499
-      Armor_4: 373557050
-      Armor_5: -1284995456
-      Armor_6: -1968282875
-      Armor_7: -1739808332
-      Armor_8: -383863404
-      Armor_9: 714455812
+      Bronze Armor: -1739808332
+      Bronze Boots: -508934354
+      Bronze Gloves: -5146545
+      Bronze Helm: -391398237
+      Golden Armor: 219302829
+      Golden Boots: -1627017277
+      Golden Gloves: -1792126339
+      Golden Helm: 373557050
+      Iron Armor: -383863404
+      Iron Boots: -13332901
+      Iron Gloves: -2080800419
+      Iron Helm: -950966214
+      Leather Armor: -1968282875
+      Leather Boots: -1920087251
+      Leather Gloves: 1545916670
+      Leather Helm: -1201123696
+      Mythril Armor: -1885087710
+      Mythril Boots: -778531894
+      Mythril Gloves: 1185995447
+      Mythril Helm: -1284995456
+      Silver Helm: 775972499
+      Sliver Armor: 714455812
+      Sliver Boots: -1733059907
+      Sliver Gloves: -477249034
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
