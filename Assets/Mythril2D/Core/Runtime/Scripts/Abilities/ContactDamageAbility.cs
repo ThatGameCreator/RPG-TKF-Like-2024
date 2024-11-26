@@ -27,7 +27,7 @@ namespace Gyvr.Mythril2D
 
         private void FixedUpdate()
         {
-            Debug.Log(this);
+            //Debug.Log(this);
 
             if (Time.time >= m_lastDetectionTime + m_detectionInterval)
             {
@@ -46,6 +46,8 @@ namespace Gyvr.Mythril2D
                 // 只对具有 CharacterBase 组件的对象生效
                 // 他这个原来会对全部找到的对象发生伤害广播，而我们又在广播里面写了禁止掠夺
                 // 就导致如果有怪物挂载了接触伤害脚本，就会导致虽然没有接触到玩家，但就是会取消互动
+                // 而关于为什么开启关闭背景音乐后就不一样 是因为我们这个音乐对象挂了一个几乎整个地图的碰撞体
+                // 这就导致怪物拿到了音乐的碰撞体，并且向音乐给发送了伤害广播
                 CharacterBase characterBase = collider.GetComponent<CharacterBase>();
                 if (characterBase != null && collider.gameObject != gameObject)
                 {
@@ -54,6 +56,5 @@ namespace Gyvr.Mythril2D
                 }
             }
         }
-
     }
 }

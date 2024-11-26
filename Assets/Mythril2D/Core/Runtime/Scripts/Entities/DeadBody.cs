@@ -7,14 +7,13 @@ namespace Gyvr.Mythril2D
     public class DeadBody : OtherEntity
     {
         [Header("Dead Body Settings")]
-        [SerializeField] private Loot m_loot;
+        [SerializeField] private LootTable lootTable;   // 引用 ScriptableObject 数据表
         [SerializeField] private string m_gameFlagID = "DeadBody_00";
         [SerializeField] private Sprite[] m_deadBodySprites = null;
         [SerializeField] private int m_canLootCount = 5;
 
         [Header("Audio")]
-        [SerializeField] private AudioClipResolver m_openedSound;
-        public LootTable lootTable;   // 引用 ScriptableObject 数据表
+        [SerializeField] private AudioClipResolver m_lootedSound;
 
         private bool m_opened = false;
         private int m_randomMaxLootedCount = 0;
@@ -88,23 +87,14 @@ namespace Gyvr.Mythril2D
 
         public bool TryLooted()
         {
-            Debug.Log("m_nowLootedCount");
-
-            Debug.Log("m_randomMaxLootedCount");
-
             if (m_nowLootedCount < m_randomMaxLootedCount) // 检查是否可以继续掠夺
             {
-                Debug.Log("TryLooted");
-
-                // 播放打开声音
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
-
                 // 随机决定掠夺物品还是金钱
                 bool lootItem = Random.Range(0, 2) == 0;
 
                 if (lootItem && lootTable.entries != null && lootTable.entries.Length > 0)
                 {
-                    Debug.Log("lootItem");
+                    //Debug.Log("lootItem");
 
                     // 使用基于权重的随机选择机制
                     var randomEntry = GetRandomLootEntry();
@@ -113,15 +103,17 @@ namespace Gyvr.Mythril2D
                     {
                         int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
                         GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
-                        Debug.Log($"玩家获得了 {randomQuantity} 个 {randomEntry.item.name}");
                     }
 
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
                 }
                 else if (lootTable.money > 0)
                 {
                     int randomMoney = Random.Range(10, lootTable.money + 1);
                     GameManager.InventorySystem.AddMoney(randomMoney);
-                    Debug.Log($"玩家获得了 {randomMoney} 金币");
+
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+
                 }
 
                 // 增加掠夺次数

@@ -367,8 +367,7 @@ namespace Gyvr.Mythril2D
         public void CancelLooting()
         {
             //TerminateCasting();
-            Debug.Log("CancelLooting");
-
+            //Debug.Log("CancelLooting");
 
             m_lootingTime = 0f;
             m_isLooting = false;
@@ -393,13 +392,13 @@ namespace Gyvr.Mythril2D
         {
             if (GameManager.Player.isLooting == true)
             {
-                Debug.Log("CancelLooting");
+                //Debug.Log("CancelLooting");
 
                 CancelLooting();
             }
             else
             {
-                Debug.Log("OnStartLooting");
+                //Debug.Log("OnStartLooting");
 
                 OnStartLooting(interactionTargett, targetLootTime);
             }

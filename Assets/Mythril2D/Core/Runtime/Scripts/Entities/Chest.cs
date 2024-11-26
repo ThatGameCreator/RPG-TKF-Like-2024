@@ -9,21 +9,18 @@ namespace Gyvr.Mythril2D
     {
         [Header("References")]
         [SerializeField] private Animator m_chestAnimator = null;
-        [SerializeField] private Animator m_contentAnimator = null;
-        [SerializeField] private SpriteRenderer m_contentSpriteRenderer = null;
         [SerializeField] private SpriteLibrary m_nowSpriteLibrary = null;
         [SerializeField] private SpriteLibraryAsset m_emptySpriteLibraryAsset = null;
 
         [Header("Chest Settings")]
-        [SerializeField] private Loot m_loot;
+        //[SerializeField] private Loot m_loot;
+        [SerializeField] private LootTable lootTable;   // 引用 ScriptableObject 数据表
         [SerializeField] private Item[] m_requiredKeys = null;
         [SerializeField] private bool m_singleUse = false;
         [SerializeField] private string m_gameFlagID = "chest_00";
         [SerializeField] private string m_openedAnimationParameter = "opened";
         [SerializeField] private string m_contentRevealAnimationParameter = "reveal";
         [SerializeField] private float m_contentRevealIconCycleDuration = 1.0f;
-        [SerializeField] private DialogueSequence m_noItemDialogue = null;
-        [SerializeField] private DialogueSequence m_hasItemDialogue = null;
         [SerializeField] private bool is_monsterChest = false;
         [SerializeField] private int m_damageAmount = 3;
         [SerializeField] private EDamageType m_damageType = EDamageType.Physical;
@@ -31,7 +28,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private bool m_randomGenerateKey = false;
 
         [Header("Audio")]
-        [SerializeField] private AudioClipResolver m_openingSound;
+        [SerializeField] private AudioClipResolver m_openedSound;
         [SerializeField] private AudioClipResolver m_canNotOpenSound;
 
         private Item m_requiredKey = null;
@@ -44,17 +41,10 @@ namespace Gyvr.Mythril2D
         protected void Awake()
         {
             Debug.Assert(m_chestAnimator, ErrorMessages.InspectorMissingComponentReference<Animator>());
-            Debug.Assert(m_contentAnimator, ErrorMessages.InspectorMissingComponentReference<Animator>());
-            Debug.Assert(m_contentSpriteRenderer, ErrorMessages.InspectorMissingComponentReference<SpriteRenderer>());
 
             if (m_chestAnimator)
             {
                 m_hasOpeningAnimation = AnimationUtils.HasParameter(m_chestAnimator, m_openedAnimationParameter);
-            }
-
-            if (m_contentAnimator)
-            {
-                m_hasRevealAnimation = AnimationUtils.HasParameter(m_contentAnimator, m_contentRevealAnimationParameter);
             }
         }
 
@@ -130,36 +120,52 @@ namespace Gyvr.Mythril2D
             return false;
         }
 
-        public bool TryPlayContentRevealAnimation()
+        private bool IsActiveMonsterChest()
         {
-            if (m_contentSpriteRenderer && m_contentAnimator && m_hasRevealAnimation)
+            if (is_monsterChest)
             {
-                Sprite[] sprites = m_loot.GetLootSprites();
-
-                if (sprites.Length > 0)
+                GameManager.Player.Damage(new DamageOutputDescriptor
                 {
-                    StartCoroutine(UpdateContentSprite(sprites, m_contentRevealIconCycleDuration));
-                    m_contentAnimator.SetTrigger(m_contentRevealAnimationParameter);
-                    return true;
-                }
+                    source = EDamageSource.Unknown,
+                    attacker = this,
+                    damage = m_damageAmount,
+                    damageType = m_damageType,
+                    distanceType = m_distanceType,
+                    flags = EDamageFlag.None
+                });
 
+                this.gameObject.layer = LayerMask.NameToLayer("Default");
+
+                return true;
+            }
+            else
+            {
                 return false;
             }
-
-            return false;
         }
 
-        private IEnumerator UpdateContentSprite(Sprite[] sprites, float duration)
+        private LootTable.LootEntryData GetRandomLootEntry()
         {
-            if (sprites.Length == 0) yield break;
+            float totalWeight = 0f;
 
-            float interval = duration / sprites.Length;
-
-            for (int index = 0; index < sprites.Length; ++index)
+            foreach (var entry in lootTable.entries)
             {
-                m_contentSpriteRenderer.sprite = sprites[index];
-                yield return new WaitForSeconds(interval);
+                totalWeight += entry.weight;
             }
+
+            float randomValue = Random.Range(0f, totalWeight);
+
+            foreach (var entry in lootTable.entries)
+            {
+                if (randomValue < entry.weight)
+                {
+                    return entry;
+                }
+
+                randomValue -= entry.weight;
+            }
+
+            return null;
         }
 
         public bool TryOpen()
@@ -167,70 +173,34 @@ namespace Gyvr.Mythril2D
             if (!m_opened)
             {
                 TryPlayOpeningAnimation(true);
-                
-                if (is_monsterChest)
+
+                if (IsActiveMonsterChest() == true)
                 {
-                    GameManager.Player.Damage(new DamageOutputDescriptor
-                     {
-                         source = EDamageSource.Unknown,
-                         attacker = this,
-                         damage = m_damageAmount,
-                         damageType = m_damageType,
-                         distanceType = m_distanceType,
-                         flags = EDamageFlag.None
-                     });
-
-                    this.gameObject.layer = LayerMask.NameToLayer("Default");
-
                     return true;
                 }
 
-                if (!m_loot.IsEmpty())
+
+                if (lootTable.entries != null && lootTable.entries.Length > 0)
                 {
-                    TryPlayContentRevealAnimation();
+                    //Debug.Log("lootItem");
 
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openingSound);
+                    // 使用基于权重的随机选择机制
+                    var randomEntry = GetRandomLootEntry();
 
-                    if (m_loot.entries != null)
+                    if (randomEntry != null)
                     {
-                        foreach (var entry in m_loot.entries)
-                        {
-                            if (m_hasItemDialogue)
-                                {
-                                    GameManager.DialogueSystem.Main.AddToQueue(
-                                    m_hasItemDialogue.ToDialogueTree(
-                                        string.Empty, $"{entry.item.DisplayName} x{entry.quantity}"
-                                    )
-                                );
-                            }
-
-                            GameManager.InventorySystem.AddToBag(entry.item, entry.quantity);
-                        }
-
-                        if (m_loot.money != 0)
-                        {
-                            if (m_hasItemDialogue)
-                            {
-                                GameManager.DialogueSystem.Main.AddToQueue(
-                                    m_hasItemDialogue.ToDialogueTree(
-                                        string.Empty, $"{m_loot.money} <currency.fullName>"
-                                    )
-                                );
-                            }
-
-
-                            GameManager.InventorySystem.AddMoney(m_loot.money);
-                        }
+                        int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
+                        GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
                     }
+
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
                 }
-                else
+                if (lootTable.money > 0)
                 {
-                    if (m_hasItemDialogue)
-                    {
-                        GameManager.DialogueSystem.Main.AddToQueue(
-                            m_noItemDialogue.ToDialogueTree(string.Empty)
-                        );
-                    }
+                    int randomMoney = Random.Range(10, lootTable.money + 1);
+                    GameManager.InventorySystem.AddMoney(randomMoney);
+
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
                 }
 
                 this.gameObject.layer =  LayerMask.NameToLayer("Default");
