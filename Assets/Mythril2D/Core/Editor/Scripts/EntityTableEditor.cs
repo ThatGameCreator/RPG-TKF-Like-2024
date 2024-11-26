@@ -1,6 +1,7 @@
 using Gyvr.Mythril2D;
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
 
 namespace Gyvr.Mythril2D
 {
@@ -55,13 +56,33 @@ namespace Gyvr.Mythril2D
             }
 
             // 添加新的条目按钮
-            if (GUILayout.Button("Add New Entity"))
+            if (GUILayout.Button("Add Selected Entities"))
             {
-                if (entityTable.entries == null)
+                Debug.Log($"Selected Objects Count: {Selection.objects.Length}");
+
+                foreach (Object selected in Selection.objects)
                 {
-                    entityTable.entries = new EntityTable.EntityData[0];
+                    Debug.Log($"Selected Object: {selected}, Type: {selected.GetType()}");
+
+                    // 尝试从选中的对象中获取 Entity 组件
+                    Entity entityToAdd = GetEntityComponent(selected);
+
+                    if (entityToAdd != null)
+                    {
+                        Debug.Log($"Adding Entity: {entityToAdd.name}");
+
+                        EntityTable.EntityData newEntry = new EntityTable.EntityData
+                        {
+                            entity = entityToAdd,
+                            weight = 1f
+                        };
+                        ArrayUtility.Add(ref entityTable.entries, newEntry);
+                    }
+                    else
+                    {
+                        Debug.Log($"Could not find Entity component on {selected.name}");
+                    }
                 }
-                ArrayUtility.Add(ref entityTable.entries, new EntityTable.EntityData());
             }
 
             // 保存修改
@@ -70,5 +91,27 @@ namespace Gyvr.Mythril2D
                 EditorUtility.SetDirty(entityTable);
             }
         }
+
+        private Entity GetEntityComponent(Object obj)
+        {
+            // 如果是 GameObject，从中获取组件
+            if (obj is GameObject gameObject)
+            {
+                // 尝试获取所有继承自 Entity 的组件
+                Component[] components = gameObject.GetComponents(typeof(Entity));
+                if (components.Length > 0)
+                {
+                    return components[0] as Entity;
+                }
+            }
+            // 如果是 Component，直接转换
+            else if (obj is Component component)
+            {
+                return component as Entity;
+            }
+
+            return null;
+        }
+
     }
 }
