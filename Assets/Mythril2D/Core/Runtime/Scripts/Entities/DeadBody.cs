@@ -84,7 +84,6 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
-
         public bool TryLooted()
         {
             if (m_nowLootedCount < m_randomMaxLootedCount) // 检查是否可以继续掠夺

@@ -2,65 +2,81 @@ using Gyvr.Mythril2D;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(LootTable))]
-public class LootTableEditor : Editor
+namespace Gyvr.Mythril2D
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(LootTable))]
+    public class LootTableEditor : Editor
     {
-        LootTable lootTable = (LootTable)target;
-
-        EditorGUILayout.LabelField("Loot Table Configuration", EditorStyles.boldLabel);
-
-        // 绘制权重分布条形图
-        if (lootTable.entries != null && lootTable.entries.Length > 0)
+        public override void OnInspectorGUI()
         {
-            float totalWeight = 0f;
-            foreach (var entry in lootTable.entries)
+            LootTable lootTable = (LootTable)target;
+
+            EditorGUILayout.LabelField("Loot Table Configuration", EditorStyles.boldLabel);
+
+            Debug.Log(lootTable.entries.Length);
+
+            // 绘制权重分布条形图
+            if (lootTable.entries != null && lootTable.entries.Length > 0)
             {
-                totalWeight += entry.weight;
+                float totalWeight = 0f;
+                foreach (var entry in lootTable.entries)
+                {
+                    totalWeight += entry.weight;
+                }
+
+                foreach (var entry in lootTable.entries)
+                {
+                    float percentage = (totalWeight > 0) ? entry.weight / totalWeight : 0;
+                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(entry.item ? entry.item.name : "Unnamed Item");
+                    Rect rect = EditorGUILayout.GetControlRect(false, 20);
+                    EditorGUI.ProgressBar(rect, percentage, $"{percentage * 100:F1}%");
+                    EditorGUILayout.EndHorizontal();
+                }
             }
 
-            foreach (var entry in lootTable.entries)
+            // 显示和编辑条目数据
+            if (lootTable.entries != null)
             {
-                float percentage = (totalWeight > 0) ? entry.weight / totalWeight : 0;
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(entry.item ? entry.item.name : "Unnamed Item");
-                Rect rect = EditorGUILayout.GetControlRect(false, 20);
-                EditorGUI.ProgressBar(rect, percentage, $"{percentage * 100:F1}%");
-                EditorGUILayout.EndHorizontal();
-            }
-        }
+                for (int i = 0; i < lootTable.entries.Length; i++)
+                {
+                    var entry = lootTable.entries[i];
+                    EditorGUILayout.BeginVertical("box");
+                    entry.item = (Item)EditorGUILayout.ObjectField("Item", entry.item, typeof(Item), false);
+                    entry.maxQuantity = EditorGUILayout.IntField("Max Quantity", entry.maxQuantity);
+                    entry.weight = EditorGUILayout.FloatField("Weight", entry.weight);
 
-        // 显示和编辑条目数据
-        if (lootTable.entries != null)
-        {
-            foreach (var entry in lootTable.entries)
+                    // 删除按钮
+                    if (GUILayout.Button($"Remove Entity {i + 1}"))
+                    {
+                        // 从数组中移除
+                        ArrayUtility.RemoveAt(ref lootTable.entries, i);
+                        break; // 结束当前循环，避免 IndexOutOfRangeException
+                    }
+
+                    EditorGUILayout.EndVertical();
+                }
+            }
+
+            // 添加新的条目按钮
+            if (GUILayout.Button("Add New Loot Entry"))
             {
-                EditorGUILayout.BeginVertical("box");
-                entry.item = (Item)EditorGUILayout.ObjectField("Item", entry.item, typeof(Item), false);
-                entry.maxQuantity = EditorGUILayout.IntField("Max Quantity", entry.maxQuantity);
-                entry.weight = EditorGUILayout.FloatField("Weight", entry.weight);
-                EditorGUILayout.EndVertical();
+                if (lootTable.entries == null)
+                {
+                    lootTable.entries = new LootTable.LootEntryData[0];
+                }
+                ArrayUtility.Add(ref lootTable.entries, new LootTable.LootEntryData());
             }
-        }
 
-        // 添加新的条目按钮
-        if (GUILayout.Button("Add New Loot Entry"))
-        {
-            if (lootTable.entries == null)
+            // 金钱奖励
+            lootTable.money = EditorGUILayout.IntField("Max Money", lootTable.money);
+
+            // 保存修改
+            if (GUI.changed)
             {
-                lootTable.entries = new LootTable.LootEntryData[0];
+                EditorUtility.SetDirty(lootTable);
             }
-            ArrayUtility.Add(ref lootTable.entries, new LootTable.LootEntryData());
-        }
-
-        // 金钱奖励
-        lootTable.money = EditorGUILayout.IntField("Max Money", lootTable.money);
-
-        // 保存修改
-        if (GUI.changed)
-        {
-            EditorUtility.SetDirty(lootTable);
         }
     }
+
 }

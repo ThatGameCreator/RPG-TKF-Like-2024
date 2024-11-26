@@ -285,22 +285,24 @@ MonoBehaviour:
   m_lightEventListener: {fileID: 1499653012271325872}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
+  m_lootedTime: 2
   m_chestAnimator: {fileID: 5733890042131917493}
-  m_contentAnimator: {fileID: 5733890043223343128}
-  m_contentSpriteRenderer: {fileID: 5733890043223343129}
-  m_loot:
-    entries:
-    - item: {fileID: 11400000, guid: 7716cee2da79443a88980e270d01588b, type: 2}
-      quantity: 1
-    money: 0
+  m_nowSpriteLibrary: {fileID: 0}
+  m_emptySpriteLibraryAsset: {fileID: 0}
+  lootTable: {fileID: 11400000, guid: d5f9b2a889cf9bd49a9c1531442a899f, type: 2}
+  m_requiredKeys: []
   m_singleUse: 0
   m_gameFlagID: chest_06
   m_openedAnimationParameter: opened
   m_contentRevealAnimationParameter: reveal
   m_contentRevealIconCycleDuration: 1
-  m_noItemDialogue: {fileID: 0}
-  m_hasItemDialogue: {fileID: 0}
-  m_openingSound: {fileID: 11400000, guid: 9f507ff38646b6547a26362dec8eb8f3, type: 2}
+  is_monsterChest: 0
+  m_damageAmount: 3
+  m_damageType: 1
+  m_distanceType: 2
+  m_randomGenerateKey: 0
+  m_openedSound: {fileID: 11400000, guid: 9f507ff38646b6547a26362dec8eb8f3, type: 2}
+  m_canNotOpenSound: {fileID: 11400000, guid: ee433512032d27141a35fb0594cc25be, type: 2}
   references:
     version: 2
     RefIds:
