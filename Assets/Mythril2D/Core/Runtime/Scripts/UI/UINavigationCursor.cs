@@ -6,6 +6,7 @@ namespace Gyvr.Mythril2D
     public class UINavigationCursor : MonoBehaviour
     {
         [SerializeField] private Image m_image = null;
+        [SerializeField] private RectTransform m_rectTransform = null;
 
         private UINavigationCursorTarget m_target = null;
 
@@ -48,6 +49,8 @@ namespace Gyvr.Mythril2D
                     transform.position = GetTargetPosition();
 
                     m_image.enabled = true;
+                    // 匹配slot格子 长宽 64 + 边缘 4 的长宽
+                    m_rectTransform.sizeDelta = new Vector2(68, 68);
                     m_image.sprite = m_target.navigationCursorStyle.sprite;
                     m_image.color = m_target.navigationCursorStyle.color;
                 }

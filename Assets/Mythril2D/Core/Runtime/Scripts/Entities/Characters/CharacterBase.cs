@@ -164,8 +164,10 @@ namespace Gyvr.Mythril2D
 
         // 好像不能写 start 后面的子类还有其他方法要执行
         //protected void Start(){ }
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+
             m_destroyed.Invoke();
         }
 
@@ -676,6 +678,23 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        private void OnDeathAnimationStart()
+        {
+            Debug.Log("OnDeathAnimationStart");
+
+            DisableActions(EActionFlags.All);
+
+            TryPlayDeadAnimation();
+        }
+
+        protected virtual void OnDeathAnimationEnd()
+        {
+            //Debug.Log("OnDeathAnimationEnd");
+
+            OnDeath();
+        }
+
+
         [Obsolete("Deprecated, shouldn't be used anymore")]
         private void OnDamageReceived(DamageOutputDescriptor damageOutput)
         {
@@ -695,22 +714,6 @@ namespace Gyvr.Mythril2D
         private void OnInvincibleAnimationEnd()
         {
             m_invincibleAnimationPlaying = false;
-        }
-
-        private void OnDeathAnimationStart()
-        {
-            //Debug.Log("OnDeathAnimationStart");
-
-            DisableActions(EActionFlags.All);
-
-            TryPlayDeadAnimation();
-        }
-
-        private void OnDeathAnimationEnd()
-        {
-            //Debug.Log("OnDeathAnimationEnd");
-
-            OnDeath();
         }
 
         #region Movement

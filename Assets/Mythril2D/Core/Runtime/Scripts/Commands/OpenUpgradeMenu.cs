@@ -8,8 +8,6 @@ namespace Gyvr.Mythril2D
     {
         public void Execute()
         {
-            Debug.Log("OpenUpgradeMenu");
-
             GameManager.NotificationSystem.statsRequested.Invoke();
         }
     }

@@ -17,7 +17,8 @@ namespace Gyvr.Mythril2D
         [Header("General Settings")]
         //[SerializeField] private MonsterSpawn[] m_monsters = null;
         [SerializeField] private bool isUseGroup = false;
-        [SerializeField] private GameObject monsterPrefabs = null;
+        [SerializeField] private  GameObject[] monsterPrefabs = null;
+        //[SerializeField] private  Dictionary<GameObject, int> monsterPrefabs = null;
         [SerializeField] private int rate = 100;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_minLevel = Stats.MinLevel;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_maxLevel = Stats.MaxLevel;
@@ -76,9 +77,11 @@ namespace Gyvr.Mythril2D
         {
             int randomNumber = UnityEngine.Random.Range(0, 100);
 
-            if (randomNumber <= rate)
+            if (randomNumber <= rate && monsterPrefabs.Length > 0)
             {
-                return monsterPrefabs;
+                // 随机选择一个怪物预制体
+                int index = UnityEngine.Random.Range(0, monsterPrefabs.Length);
+                return monsterPrefabs[index];
             }
             else
             {
@@ -128,7 +131,7 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                Debug.LogError("Couldn't find a monster to spawn, please check your spawn rates and make sure their sum is 100");
+                //Debug.LogError("Couldn't find a monster to spawn, please check your spawn rates and make sure their sum is 100");
             }
         }
 

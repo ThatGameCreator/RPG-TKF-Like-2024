@@ -22,9 +22,9 @@ namespace Gyvr.Mythril2D
 
             Color textColor = itemCountInBag >= quantity ? m_requirementMetColor : m_requirementNotMetColor;
 
-            m_image.sprite = item.icon;
+            m_image.sprite = item.Icon;
 
-            m_name.text = item.displayName;
+            m_name.text = item.DisplayName;
             m_quantity.text = $"{itemCountInBag}/{quantity}";
 
             m_name.color = textColor;

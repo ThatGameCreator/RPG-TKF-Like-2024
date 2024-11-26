@@ -1,6 +1,4 @@
-﻿using Codice.Client.BaseCommands;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {

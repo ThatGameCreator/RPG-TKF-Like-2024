@@ -7,6 +7,8 @@ namespace Gyvr.Mythril2D
     {
         [Header("Settings")]
         [SerializeField] private ContactFilter2D m_contactFilter2D;
+        private float m_detectionInterval = 0.1f; // 每隔 0.1 秒检测一次
+        private float m_lastDetectionTime = 0f;
 
         private Collider2D m_hitbox = null;
 
@@ -25,20 +27,32 @@ namespace Gyvr.Mythril2D
 
         private void FixedUpdate()
         {
-            DamageOutputDescriptor damageOutput = DamageSolver.SolveDamageOutput(m_character, m_sheet.damageDescriptor);
+            //Debug.Log(this);
 
+            if (Time.time >= m_lastDetectionTime + m_detectionInterval)
+            {
+                m_lastDetectionTime = Time.time;
+                DetectAndApplyDamage();
+            }
+        }
+
+        private void DetectAndApplyDamage()
+        {
             List<Collider2D> colliders = new List<Collider2D>();
-
             Physics2D.OverlapCollider(m_hitbox, m_contactFilter2D, colliders);
 
-            // If it hits something...
             foreach (Collider2D collider in colliders)
             {
-                GameObject target = collider.gameObject;
-
-                if (target != gameObject)
+                // 只对具有 CharacterBase 组件的对象生效
+                // 他这个原来会对全部找到的对象发生伤害广播，而我们又在广播里面写了禁止掠夺
+                // 就导致如果有怪物挂载了接触伤害脚本，就会导致虽然没有接触到玩家，但就是会取消互动
+                // 而关于为什么开启关闭背景音乐后就不一样 是因为我们这个音乐对象挂了一个几乎整个地图的碰撞体
+                // 这就导致怪物拿到了音乐的碰撞体，并且向音乐给发送了伤害广播
+                CharacterBase characterBase = collider.GetComponent<CharacterBase>();
+                if (characterBase != null && collider.gameObject != gameObject)
                 {
-                    DamageDispatcher.Send(target, damageOutput);
+                    DamageOutputDescriptor damageOutput = DamageSolver.SolveDamageOutput(m_character, m_sheet.damageDescriptor);
+                    DamageDispatcher.Send(characterBase.gameObject, damageOutput);
                 }
             }
         }

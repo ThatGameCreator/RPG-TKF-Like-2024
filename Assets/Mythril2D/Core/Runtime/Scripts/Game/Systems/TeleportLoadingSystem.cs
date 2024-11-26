@@ -27,6 +27,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Vector2 m_defaultRevivalPostion = Vector2.zero;
         [SerializeField] private string m_defaultResurrectionMap = null;
 
+        public string currentMap => m_currentMap;
         private string m_currentMap = string.Empty;
         private Vector2 m_currentRevivalPostion = new Vector2();
 

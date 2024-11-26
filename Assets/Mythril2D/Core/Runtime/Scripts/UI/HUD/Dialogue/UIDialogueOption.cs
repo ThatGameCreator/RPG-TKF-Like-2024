@@ -9,17 +9,20 @@ namespace Gyvr.Mythril2D
         // Inspector Settings
         [SerializeField] private TextMeshProUGUI m_text = null;
         [SerializeField] private int m_optionID = 0;
+        [SerializeField] private Button m_button = null;
+        [SerializeField] private Image m_background = null;
 
-        // Component References
-        private Button m_button = null;
 
         private void Awake()
         {
-            m_button = GetComponent<Button>();
+            if (m_button == null)
+            {
+                m_button = GetComponent<Button>();
+            }
             m_button.onClick.AddListener(OnClicked);
         }
 
-        private void OnClicked()
+        public void OnClicked()
         {
             SendMessageUpwards("OnOptionClicked", m_optionID);
         }
@@ -27,6 +30,7 @@ namespace Gyvr.Mythril2D
         public void SetVisible(bool visible)
         {
             gameObject.SetActive(visible);
+            m_background.gameObject.SetActive(visible);
         }
 
         public void SetText(string text)

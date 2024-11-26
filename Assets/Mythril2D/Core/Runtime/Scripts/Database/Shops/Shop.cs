@@ -23,11 +23,11 @@ namespace Gyvr.Mythril2D
             switch (transaction)
             {
                 case ETransactionType.Buy:
-                    floatPrice = item.price * buyingPriceMultiplier;
+                    floatPrice = item.Price * buyingPriceMultiplier;
                     break;
 
                 case ETransactionType.Sell:
-                    floatPrice = item.price * sellingPriceMultiplier;
+                    floatPrice = item.Price * sellingPriceMultiplier;
                     break;
             }
 

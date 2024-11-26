@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -56,7 +57,15 @@ namespace Gyvr.Mythril2D
             // 而导致没办法控制人物各种行为？
             GameManager.GameStateSystem.AddLayer(EGameState.Gameplay);
 
-            GameManager.Player.TryPlayRevivalAnimation();
+            GameManager.TeleportLoadingSystem.RequestTransition(null, null, () => {
+                // 这里恢复不了血量
+                // 不是位置的问题 是tm currentStats 是只读的 虽然能够 = 但没修改任何角色身上的数据
+                GameManager.Player.RecoverPlayerStats();
+            },
+            () => {
+                // 这也恢复不了
+               GameManager.Player.TryPlayRevivalAnimation();
+            }, ETeleportType.Revival);
         }
 
         public void GoToMainMenu()

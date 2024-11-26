@@ -1,9 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
+    [System.Serializable]
+    public struct AbilityEntry
+    {
+        public AbilitySheet ability;
+        public int level;
+    }
+
     public abstract class CharacterSheet : DatabaseEntry, INameable
     {
         [Header("General")]
@@ -20,6 +28,12 @@ namespace Gyvr.Mythril2D
         public AudioClipResolver hitAudio => m_hitAudio;
         public AudioClipResolver deathAudio => m_deathAudio;
 
+        public SerializableDictionary<AbilitySheet, int> abilitiesPerLevel
+        {
+            get => m_abilitiesPerLevel;
+            set =>  m_abilitiesPerLevel = value;
+        }
+
         public CharacterSheet(EAlignment alignment)
         {
             m_alignment = alignment;
@@ -34,5 +48,6 @@ namespace Gyvr.Mythril2D
         {
             return m_abilitiesPerLevel.Where((keyValuePair) => keyValuePair.Value == level).Select((keyValuePair) => keyValuePair.Key);
         }
+
     }
 }

@@ -75,12 +75,12 @@ namespace Gyvr.Mythril2D
 
         public override string GetCompletedTitle()
         {
-            return StringFormatter.Format(m_title, itemPlaced.displayName);
+            return StringFormatter.Format(m_title, itemPlaced.DisplayName);
         }
 
         public override string GetInProgressTitle(IQuestTaskProgress progress)
         {
-            return StringFormatter.Format(m_title, itemPlaced.displayName);
+            return StringFormatter.Format(m_title, itemPlaced.DisplayName);
         }
     }
 }

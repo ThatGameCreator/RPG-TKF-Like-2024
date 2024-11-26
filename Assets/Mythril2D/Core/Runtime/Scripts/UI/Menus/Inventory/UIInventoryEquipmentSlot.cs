@@ -43,7 +43,7 @@ namespace Gyvr.Mythril2D
 
                 m_placeholder.enabled = false;
                 m_content.enabled = true;
-                m_content.sprite = equipment.icon;
+                m_content.sprite = equipment.Icon;
             }
             else
             {

@@ -71,6 +71,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Light2D m_heroSightLight = null;
         [SerializeField] private Light2D m_heroAbilityLight = null;
         [SerializeField] private float m_abilityLightDurationTime = 5f;
+        [SerializeField] private SpriteRenderer abilityLightSprite = null;
 
         public Light2D heroSightLight => m_heroSightLight;
         public Light2D heroAbilityLight => m_heroAbilityLight;
@@ -78,13 +79,15 @@ namespace Gyvr.Mythril2D
         private float m_nowAbilityLightTime = 0f;
 
         public int experience => m_experience;
-        public int nextLevelExperience => GetTotalExpRequirement(m_level + 1);
+        public int totalNextLevelExperience => GetTotalExpRequirement(m_level + 1);
+        public int nextLevelExperience => GetTotalExpRequirement(m_level + 1) - experience;
         public int availablePoints => m_sheet.pointsPerLevel * (m_level - Stats.MinLevel) - m_usedPoints;
         public SerializableDictionary<EEquipmentType, Equipment> equipments => m_equipments;
         public AbilitySheet[] equippedAbilities => m_equippedAbilities;
         public DashAbilitySheet dashAbility => m_dashAbility;
         public HashSet<AbilitySheet> bonusAbilities => m_bonusAbilities;
         public UnityEvent<AbilitySheet[]> equippedAbilitiesChanged => m_equippedAbilitiesChanged;
+        public UnityEvent<int> experienceChanged => m_experienceChanged;
         public Stats customStats => m_customStats;
         public Stats missingCurrentStats => m_missingCurrentStats;
         public float missingCurrentStamina => m_missingCurrentStamina;
@@ -109,37 +112,45 @@ namespace Gyvr.Mythril2D
         public bool isDashFinishing = false;
 
         private UnityEvent<AbilitySheet[]> m_equippedAbilitiesChanged = new UnityEvent<AbilitySheet[]>();
+        private UnityEvent<int> m_experienceChanged = new UnityEvent<int>();
 
+        public bool isStartGameRevival = false;
+
+
+        protected override void OnDeathAnimationEnd()
+        {
+            base.OnDeathAnimationEnd();
+        }
 
         private void OnDeadAnimationStart()
-        {
-            //Debug.Log("OnDeadAnimationStart");
+         {
+        }
 
-            // 设置复活后人物朝向
+        public void RecoverPlayerStats()
+        {
+            // 朝向篝火
             SetLookAtDirection(Vector2.right);
+
+            // 恢复血量 
+            m_currentStats[EStat.Health] = 1;
+            m_currentStats[EStat.Mana] = 1;
+            RecoverStamina((int)GameManager.Player.maxStamina);
+
+            // 恢复碰撞体
+            Collider2D[] colliders = GameManager.Player.GetComponentsInChildren<Collider2D>();
+            Array.ForEach(colliders, (collider) => collider.enabled = true);
         }
 
         private void OnDeadAnimationEnd()
         {
-            GameManager.TeleportLoadingSystem.RequestTransition(null, null, () => {
-                // 恢复血量 
-                m_currentStats[EStat.Health] = 1;
-                m_currentStats[EStat.Mana] = 1;
-                m_currentStats.Stamina = GameManager.Player.maxStamina;
-
-                // 恢复碰撞体
-                Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
-                Array.ForEach(colliders, (collider) => collider.enabled = true);
-            } ,
-            () => {
-                StartCoroutine(SaveWithDelay());
-            }, ETeleportType.Revival);
+            StartCoroutine(SaveWithDelay());
         }
 
         private IEnumerator SaveWithDelay()
         {
-            yield return new WaitForSeconds(1f); // 等待一秒
             GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName); // 保存数据
+
+            yield return new WaitForSeconds(1f); // 等待一秒
         }
 
         private void OnRevivalAnimationEnd()
@@ -151,8 +162,6 @@ namespace Gyvr.Mythril2D
 
         public void OnDashAnimationEnd()
         {
-            //Debug.Log("OnDashAnimationEnd");
-
             if (!dead)
             {
                 isDashFinishing = false;
@@ -179,6 +188,8 @@ namespace Gyvr.Mythril2D
 
             m_experience += experience;
 
+            m_experienceChanged.Invoke(m_experience);
+
             while (m_experience >= GetTotalExpRequirement(m_level + 1))
             {
                 OnLevelUp(silentMode);
@@ -200,6 +211,7 @@ namespace Gyvr.Mythril2D
         // private new void Awake(){}
         private new void Awake()
         {
+
             isPlayer = true;
 
             m_maxStats.staminaChanged.AddListener(OnStaminaChanged);
@@ -212,6 +224,18 @@ namespace Gyvr.Mythril2D
         {
             // 这个感觉应该不需要执行一次监听 tryexcute
 
+
+            // 传送后虽然执行了播放动画函数，但却并没有执行Update？
+            // 这放Awake执行不了
+            if (isStartGameRevival == false)
+            {
+                // 也许应该改成只能 互动？
+                DisableActions(EActionFlags.All);
+
+                TryPlayRevivalAnimation();
+
+                isStartGameRevival = true;
+            }
 
             // 感觉如果粒子效果设置为 isloop 这个启动游戏时候就会启用 所以试着在 Awake 中关闭
             // 好像 Awake 的时候还没新建好人物报错了， 试试在 Start 中
@@ -234,7 +258,11 @@ namespace Gyvr.Mythril2D
 
         public void OnEnableAbilityLighting()
         {
-            Debug.Log("OnEnableAbilityLighting");
+            //Debug.Log("OnEnableAbilityLighting");
+
+            // 缓存材质的颜色
+            //Color materialColor = abilityLightSprite.material.color;
+            //abilityLightSprite.material.color = new Color(materialColor.a, materialColor.b, materialColor.g, 0.3f);
 
             isUseAbilityLighting = true;
             m_heroSightLight.transform.gameObject.SetActive(false);
@@ -254,8 +282,6 @@ namespace Gyvr.Mythril2D
         {
             if (!dead)
             {
-                Debug.Log("HandleAbilityLighting");
-
                 m_nowAbilityLightTime += Time.deltaTime;
 
                 if(m_nowAbilityLightTime > m_abilityLightDurationTime)
@@ -272,6 +298,7 @@ namespace Gyvr.Mythril2D
 
         private void OnTryLooting()
         {
+
             if (CheckIsPlayerMoving())
             {
                 m_lootingTime += Time.deltaTime;
@@ -313,6 +340,8 @@ namespace Gyvr.Mythril2D
 
                 GameManager.DayNightSystem.OnDisableDayNightSystem();
 
+                CancelAbilityLighting();
+
                 CancelEvacuate();
             }
         }
@@ -338,6 +367,7 @@ namespace Gyvr.Mythril2D
         public void CancelLooting()
         {
             //TerminateCasting();
+            //Debug.Log("CancelLooting");
 
             m_lootingTime = 0f;
             m_isLooting = false;
@@ -362,10 +392,14 @@ namespace Gyvr.Mythril2D
         {
             if (GameManager.Player.isLooting == true)
             {
+                //Debug.Log("CancelLooting");
+
                 CancelLooting();
             }
             else
             {
+                //Debug.Log("OnStartLooting");
+
                 OnStartLooting(interactionTargett, targetLootTime);
             }
         }
@@ -748,6 +782,8 @@ namespace Gyvr.Mythril2D
             m_equippedAbilitiesChanged.Invoke(m_equippedAbilities);
 
             transform.position = block.position;
+
+            Debug.Log("Initialize");
         }
 
         protected override void OnDeath()

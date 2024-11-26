@@ -8,6 +8,12 @@ namespace Gyvr.Mythril2D
     {
         [SerializeField] private SurfaceItem m_surfaceItem = null;
 
+        public SurfaceItem SurfaceItem
+        {
+            get => m_surfaceItem;
+            set => m_surfaceItem = value;
+        }
+
         public bool TryExecute(CharacterBase source, IInteractionTarget target)
         {
             return m_surfaceItem.TryLooted();

@@ -130,8 +130,13 @@ namespace Gyvr.Mythril2D
                     if (item != null && quantity > 0)
                     {
                         GameManager.ItemGenerationSystem.DropItemToPlayer(item, quantity);
+
+                        // 一个存的是list的item 下面是删除UI格子
+                        m_backpackItems.RemoveAt(i);
                     }
-                    m_backpackItems.RemoveAt(i);
+                    Debug.Log(backpackCapacity + reducedCapacity);
+                    Debug.Log(newCapacity);
+                    Debug.Log(i);
 
                     // 删除格子的 GameObject
                     Destroy(GameManager.UIManagerSystem.UIMenu.inventory.bag.slots[i].gameObject);
@@ -257,7 +262,7 @@ namespace Gyvr.Mythril2D
 
         public int GetItemCount(Item item)
         {
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 var instance = backpackItems.FirstOrDefault(i => i.GetItem() == item);
                 return instance?.quantity ?? 0;
@@ -270,7 +275,7 @@ namespace Gyvr.Mythril2D
 
         public bool HasItemInBag(Item item, int quantity = 1)
         {
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 var instance = backpackItems.FirstOrDefault(i => i.GetItem() == item);
                 return instance != null && instance.quantity >= quantity;
@@ -290,7 +295,7 @@ namespace Gyvr.Mythril2D
         public int GetCurrentItemCount()
         {
             // 背包的当前物品数量：非堆叠物品按实例数计算，堆叠物品按总堆叠数计算
-            return backpackItems.Sum(instance => instance.GetItem().isStackable ? 1 : instance.quantity);
+            return backpackItems.Sum(instance => instance.GetItem().IsStackable ? 1 : instance.quantity);
         }
 
         public void TryAddItemToBag(Item item, int quantity = 1)
@@ -314,7 +319,7 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 // 如果可堆叠，检查是否已有相同物品
                 var instance = backpackItems.FirstOrDefault(i => i.GetItem() == item);
@@ -356,7 +361,7 @@ namespace Gyvr.Mythril2D
         {
             bool success = false;
 
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 // 如果可堆叠，减少数量或移除
                 var instance = backpackItems.FirstOrDefault(i => i.GetItem() == item);
