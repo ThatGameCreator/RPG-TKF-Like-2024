@@ -57,7 +57,19 @@ namespace Gyvr.Mythril2D
             get => m_visualOverride;
             set => m_visualOverride = value;
         }
-        
+
+        public AudioClipResolver EquipAudio
+        {
+            get => m_equipAudio;
+            set => m_equipAudio = value;
+        }
+
+        public AudioClipResolver UnequipAudio
+        {
+            get => m_unequipAudio;
+            set => m_unequipAudio = value;
+        }
+
         public override void Use(CharacterBase user, EItemLocation location)
         {
             if (GameManager.WarehouseSystem.isOpenning == true)

@@ -12,7 +12,7 @@ namespace Gyvr.Mythril2D
         public static void CreateSurfaceItemPrefabs()
         {
             // 指定Item数据的路径
-            string itemFolderPath = "Assets/Mythril2D/Demo/Database/Items/Equipments"; // 修改为你存放Item数据的文件夹路径
+            string itemFolderPath = "Assets/Mythril2D/Demo/Database/Items/Monster Drops"; // 修改为你存放Item数据的文件夹路径
             string[] itemGuids = AssetDatabase.FindAssets("t:Item", new[] { itemFolderPath });
 
             foreach (string guid in itemGuids)
@@ -31,7 +31,7 @@ namespace Gyvr.Mythril2D
                 // 添加并配置 Box Collider 2D
                 BoxCollider2D boxCollider = surfaceItemObject.AddComponent<BoxCollider2D>();
                 boxCollider.offset = new Vector2(0f, 0f);
-                boxCollider.size = new Vector2(1f, 1f);
+                boxCollider.size = new Vector2(0.6f, 0.6f);
                 boxCollider.usedByComposite = false;
 
                 // 添加并配置 Light Collider 2D（自定义脚本）
@@ -76,7 +76,7 @@ namespace Gyvr.Mythril2D
 
 
                 // 创建预制体路径
-                string prefabPath = $"Assets/Mythril2D/Demo/Prefabs/Entities/Generate/{item.DisplayName}.prefab";
+                string prefabPath = $"Assets/Mythril2D/Demo/Prefabs/Entities/Generate/Monster Drops/{item.DisplayName}.prefab";
                 string directoryPath = System.IO.Path.GetDirectoryName(prefabPath);
                 if (!AssetDatabase.IsValidFolder(directoryPath))
                 {
