@@ -581,6 +581,11 @@ namespace Gyvr.Mythril2D
                         if (m_invincibleOnHit)
                         {
                             TryPlayInvincibleAnimation();
+
+                            if (isPlayer)
+                            {
+                                GameManager.Player.CancelLooting();
+                            }
                         }
                     }
                 }

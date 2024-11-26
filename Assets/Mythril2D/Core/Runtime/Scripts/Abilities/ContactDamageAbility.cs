@@ -53,6 +53,8 @@ namespace Gyvr.Mythril2D
 
             if (m_elapsedTime >= m_detectionInterval)
             {
+                // 搞不懂为什么没玩家也要执行
+                // 难道身边有怪物也要判断下？
                 m_elapsedTime -= m_detectionInterval;
                 DetectAndApplyDamage();
             }
