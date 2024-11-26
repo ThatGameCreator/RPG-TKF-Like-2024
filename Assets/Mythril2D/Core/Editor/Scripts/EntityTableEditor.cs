@@ -8,12 +8,58 @@ namespace Gyvr.Mythril2D
     [CustomEditor(typeof(EntityTable))]
     public class EntityTableEditor : Editor
     {
+        private float newEntryWeight = 1f; // 新条目的默认权重
+
         public override void OnInspectorGUI()
         {
             EntityTable entityTable = (EntityTable)target;
 
             EditorGUILayout.LabelField("Entity Table Configuration", EditorStyles.boldLabel);
 
+            // 绘制权重分布条形图
+            DrawWeightDistributionGraph(entityTable);
+
+            // 显示和编辑条目数据
+            DrawEntityTableEntries(entityTable);
+
+            // 添加新的条目按钮
+            if (GUILayout.Button("Add New Entry"))
+            {
+                if (entityTable.entries == null)
+                {
+                    entityTable.entries = new EntityTable.EntityData[0];
+                }
+                ArrayUtility.Add(ref entityTable.entries, new EntityTable.EntityData());
+            }
+
+            // 添加新的条目
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Add New Entity", EditorStyles.boldLabel);
+            newEntryWeight = EditorGUILayout.FloatField("Default Weight", newEntryWeight);
+
+            if (GUILayout.Button("Add Selected Entities"))
+            {
+                AddSelectedEntities(entityTable);
+            }
+
+            // 删除全部条目
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Delete All Entities", EditorStyles.boldLabel);
+            if (GUILayout.Button("Delete All"))
+            {
+                DeleteAllEntities(entityTable);
+            }
+
+            // 保存修改
+            if (GUI.changed)
+            {
+                EditorUtility.SetDirty(entityTable);
+            }
+        }
+
+
+        private void DrawWeightDistributionGraph(EntityTable entityTable)
+        {
             // 绘制权重分布条形图
             if (entityTable.entries != null && entityTable.entries.Length > 0)
             {
@@ -33,6 +79,10 @@ namespace Gyvr.Mythril2D
                     EditorGUILayout.EndHorizontal();
                 }
             }
+        }
+
+        private void DrawEntityTableEntries(EntityTable entityTable)
+        {
 
             // 显示和编辑条目数据
             if (entityTable.entries != null)
@@ -54,42 +104,42 @@ namespace Gyvr.Mythril2D
                     EditorGUILayout.EndVertical();
                 }
             }
+        }
 
+        private void AddSelectedEntities(EntityTable entityTable)
+        {
+            // 从选中的对象中获取 Entity 组件并添加到 EntityTable
             // 添加新的条目按钮
-            if (GUILayout.Button("Add Selected Entities"))
+            Debug.Log($"Selected Objects Count: {Selection.objects.Length}");
+
+            foreach (Object selected in Selection.objects)
             {
-                Debug.Log($"Selected Objects Count: {Selection.objects.Length}");
+                Debug.Log($"Selected Object: {selected}, Type: {selected.GetType()}");
 
-                foreach (Object selected in Selection.objects)
+                // 尝试从选中的对象中获取 Entity 组件
+                Entity entityToAdd = GetEntityComponent(selected);
+
+                if (entityToAdd != null)
                 {
-                    Debug.Log($"Selected Object: {selected}, Type: {selected.GetType()}");
+                    Debug.Log($"Adding Entity: {entityToAdd.name}");
 
-                    // 尝试从选中的对象中获取 Entity 组件
-                    Entity entityToAdd = GetEntityComponent(selected);
-
-                    if (entityToAdd != null)
+                    EntityTable.EntityData newEntry = new EntityTable.EntityData
                     {
-                        Debug.Log($"Adding Entity: {entityToAdd.name}");
-
-                        EntityTable.EntityData newEntry = new EntityTable.EntityData
-                        {
-                            entity = entityToAdd,
-                            weight = 1f
-                        };
-                        ArrayUtility.Add(ref entityTable.entries, newEntry);
-                    }
-                    else
-                    {
-                        Debug.Log($"Could not find Entity component on {selected.name}");
-                    }
+                        entity = entityToAdd,
+                        weight = newEntryWeight
+                    };
+                    ArrayUtility.Add(ref entityTable.entries, newEntry);
+                }
+                else
+                {
+                    Debug.Log($"Could not find Entity component on {selected.name}");
                 }
             }
-
-            // 保存修改
-            if (GUI.changed)
-            {
-                EditorUtility.SetDirty(entityTable);
-            }
+        }
+        private void DeleteAllEntities(EntityTable entityTable)
+        {
+            // 删除 EntityTable 中的所有条目
+            entityTable.entries = new EntityTable.EntityData[0];
         }
 
         private Entity GetEntityComponent(Object obj)
