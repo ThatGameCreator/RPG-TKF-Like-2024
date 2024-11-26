@@ -56,6 +56,8 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
+            Debug.Log("OnStartInteract");
+
             GameManager.Player.OnTryStartLoot(target, m_lootedTime);
         }
 
@@ -86,8 +88,14 @@ namespace Gyvr.Mythril2D
 
         public bool TryLooted()
         {
+            Debug.Log("m_nowLootedCount");
+
+            Debug.Log("m_randomMaxLootedCount");
+
             if (m_nowLootedCount < m_randomMaxLootedCount) // 检查是否可以继续掠夺
             {
+                Debug.Log("TryLooted");
+
                 // 播放打开声音
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
 
@@ -96,6 +104,8 @@ namespace Gyvr.Mythril2D
 
                 if (lootItem && lootTable.entries != null && lootTable.entries.Length > 0)
                 {
+                    Debug.Log("lootItem");
+
                     // 使用基于权重的随机选择机制
                     var randomEntry = GetRandomLootEntry();
 

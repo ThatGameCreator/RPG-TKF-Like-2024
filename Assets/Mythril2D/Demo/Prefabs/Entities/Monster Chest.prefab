@@ -289,14 +289,15 @@ MonoBehaviour:
   m_chestAnimator: {fileID: 5733890042131917493}
   m_contentAnimator: {fileID: 5733890043223343128}
   m_contentSpriteRenderer: {fileID: 5733890043223343129}
-  m_nowSpriteLibrary: {fileID: 0}
+  m_nowSpriteLibrary: {fileID: 7309178975524964772}
   m_emptySpriteLibraryAsset: {fileID: 0}
   m_loot:
     entries:
     - item: {fileID: 11400000, guid: 7716cee2da79443a88980e270d01588b, type: 2}
       quantity: 1
+      weight: 0
     money: 0
-  m_requiredKey: {fileID: 0}
+  m_requiredKeys: []
   m_singleUse: 0
   m_gameFlagID: chest_06
   m_openedAnimationParameter: opened
@@ -308,6 +309,7 @@ MonoBehaviour:
   m_damageAmount: 3
   m_damageType: 1
   m_distanceType: 2
+  m_randomGenerateKey: 0
   m_openingSound: {fileID: 11400000, guid: 9f507ff38646b6547a26362dec8eb8f3, type: 2}
   m_canNotOpenSound: {fileID: 11400000, guid: ee433512032d27141a35fb0594cc25be, type: 2}
   references:
