@@ -12,6 +12,8 @@ namespace Gyvr.Mythril2D
 
         private Collider2D m_hitbox = null;
         private HashSet<Collider2D> m_processedColliders = new HashSet<Collider2D>(); // 避免重复广播
+        [SerializeField] private float m_cooldownTime = 1.0f; // 冷却时间
+        private Dictionary<Collider2D, float> m_cooldownTimers = new Dictionary<Collider2D, float>();
 
         public override void Init(CharacterBase character, AbilitySheet settings)
         {
@@ -30,9 +32,28 @@ namespace Gyvr.Mythril2D
         {
             m_elapsedTime += Time.fixedDeltaTime;
 
+            // 创建一个待处理的键值对列表
+            var copyOfTimers = new Dictionary<Collider2D, float>(m_cooldownTimers);
+
+            foreach (var kvp in copyOfTimers)
+            {
+                // 在原字典中更新时间
+                if (m_cooldownTimers.ContainsKey(kvp.Key))
+                {
+                    m_cooldownTimers[kvp.Key] -= Time.fixedDeltaTime;
+
+                    // 检查是否需要移除
+                    if (m_cooldownTimers[kvp.Key] <= 0f)
+                    {
+                        m_cooldownTimers.Remove(kvp.Key);
+                        m_processedColliders.Remove(kvp.Key);
+                    }
+                }
+            }
+
             if (m_elapsedTime >= m_detectionInterval)
             {
-                m_elapsedTime -= m_detectionInterval; // 减去间隔时间，避免累积误差
+                m_elapsedTime -= m_detectionInterval;
                 DetectAndApplyDamage();
             }
         }
@@ -61,6 +82,7 @@ namespace Gyvr.Mythril2D
 
                     // 记录已处理的碰撞体
                     m_processedColliders.Add(collider);
+                    m_cooldownTimers[collider] = m_cooldownTime;
                 }
             }
 

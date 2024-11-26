@@ -369,7 +369,7 @@ namespace Gyvr.Mythril2D
         public void CancelLooting()
         {
             //TerminateCasting();
-            Debug.Log("CancelLooting");
+            //Debug.Log("CancelLooting");
 
             m_lootingTime = 0f;
             m_isLooting = false;
