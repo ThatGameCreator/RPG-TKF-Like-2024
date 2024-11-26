@@ -680,7 +680,7 @@ namespace Gyvr.Mythril2D
 
         private void OnDeathAnimationStart()
         {
-            Debug.Log("OnDeathAnimationStart");
+            //Debug.Log("OnDeathAnimationStart");
 
             DisableActions(EActionFlags.All);
 

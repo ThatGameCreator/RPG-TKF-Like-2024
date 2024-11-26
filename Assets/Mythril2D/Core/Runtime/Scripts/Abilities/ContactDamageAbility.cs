@@ -7,16 +7,17 @@ namespace Gyvr.Mythril2D
     {
         [Header("Settings")]
         [SerializeField] private ContactFilter2D m_contactFilter2D;
-        private float m_detectionInterval = 0.1f; // 每隔 0.1 秒检测一次
-        private float m_lastDetectionTime = 0f;
+        [SerializeField] private float m_detectionInterval = 0.1f; // 每隔 0.1 秒检测一次
+        private float m_elapsedTime = 0f; // 用于累计时间
 
         private Collider2D m_hitbox = null;
+        private HashSet<Collider2D> m_processedColliders = new HashSet<Collider2D>(); // 避免重复广播
 
         public override void Init(CharacterBase character, AbilitySheet settings)
         {
             base.Init(character, settings);
 
-            // Use the character collider as the contact damage hitbox
+            // 使用角色的碰撞体作为接触伤害的碰撞区域
             m_hitbox = character.GetComponent<Collider2D>();
         }
 
@@ -27,11 +28,11 @@ namespace Gyvr.Mythril2D
 
         private void FixedUpdate()
         {
-            //Debug.Log(this);
+            m_elapsedTime += Time.fixedDeltaTime;
 
-            if (Time.time >= m_lastDetectionTime + m_detectionInterval)
+            if (m_elapsedTime >= m_detectionInterval)
             {
-                m_lastDetectionTime = Time.time;
+                m_elapsedTime -= m_detectionInterval; // 减去间隔时间，避免累积误差
                 DetectAndApplyDamage();
             }
         }
@@ -43,6 +44,10 @@ namespace Gyvr.Mythril2D
 
             foreach (Collider2D collider in colliders)
             {
+                // 检测是否符合伤害条件
+                if (collider == null || m_processedColliders.Contains(collider) || collider.gameObject == gameObject)
+                    continue;
+
                 // 只对具有 CharacterBase 组件的对象生效
                 // 他这个原来会对全部找到的对象发生伤害广播，而我们又在广播里面写了禁止掠夺
                 // 就导致如果有怪物挂载了接触伤害脚本，就会导致虽然没有接触到玩家，但就是会取消互动
@@ -53,8 +58,14 @@ namespace Gyvr.Mythril2D
                 {
                     DamageOutputDescriptor damageOutput = DamageSolver.SolveDamageOutput(m_character, m_sheet.damageDescriptor);
                     DamageDispatcher.Send(characterBase.gameObject, damageOutput);
+
+                    // 记录已处理的碰撞体
+                    m_processedColliders.Add(collider);
                 }
             }
+
+            // 清理无效的碰撞体记录
+            m_processedColliders.RemoveWhere(collider => !collider || !collider.enabled);
         }
     }
 }

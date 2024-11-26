@@ -55,7 +55,11 @@ namespace Gyvr.Mythril2D
                 StopCoroutine(colorCoroutine);
             }
 
-            colorCoroutine = StartCoroutine(FadeTextColor(targetColor));
+            if(this.gameObject.activeInHierarchy == true)
+            {
+                colorCoroutine = StartCoroutine(FadeTextColor(targetColor));
+
+            }
         }
 
         private IEnumerator FadeTextColor(Color targetColor)

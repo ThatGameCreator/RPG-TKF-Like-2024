@@ -76,11 +76,17 @@ namespace Gyvr.Mythril2D
         {
             int randomNumber = UnityEngine.Random.Range(0, 100);
 
-            //if (randomNumber <= rate && entityPrefabs.Length > 0)
-            if (randomNumber <= rate && entityTable.entries != null && entityTable.entries.Length > 0)
+            if (entityTable.entries != null)
             {
-                // 随机选择一个 entitiy 预制体
-                return GetRandomEntry().entity; 
+                if (randomNumber <= rate && entityTable.entries.Length > 0)
+                {
+                    // 随机选择一个 entitiy 预制体
+                    return GetRandomEntry().entity;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {

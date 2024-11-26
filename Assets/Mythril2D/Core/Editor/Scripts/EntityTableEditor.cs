@@ -9,6 +9,8 @@ namespace Gyvr.Mythril2D
     public class EntityTableEditor : Editor
     {
         private float newEntryWeight = 1f; // 新条目的默认权重
+        private bool showWeightDistributionGraph = true;
+        private bool showEntityTableEntries = true;
 
         public override void OnInspectorGUI()
         {
@@ -60,48 +62,69 @@ namespace Gyvr.Mythril2D
 
         private void DrawWeightDistributionGraph(EntityTable entityTable)
         {
-            // 绘制权重分布条形图
-            if (entityTable.entries != null && entityTable.entries.Length > 0)
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Weight Distribution Graph", EditorStyles.boldLabel);
+            if (GUILayout.Button(showWeightDistributionGraph ? "Hide" : "Show"))
             {
-                float totalWeight = 0f;
-                foreach (var entry in entityTable.entries)
-                {
-                    totalWeight += entry.weight;
-                }
+                showWeightDistributionGraph = !showWeightDistributionGraph;
+            }
+            EditorGUILayout.EndHorizontal();
 
-                foreach (var entry in entityTable.entries)
+            if (showWeightDistributionGraph)
+            {
+                // 绘制权重分布条形图
+                if (entityTable.entries != null && entityTable.entries.Length > 0)
                 {
-                    float percentage = (totalWeight > 0) ? entry.weight / totalWeight : 0;
-                    EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.LabelField(entry.entity ? entry.entity.name : "Unnamed Entity");
-                    Rect rect = EditorGUILayout.GetControlRect(false, 20);
-                    EditorGUI.ProgressBar(rect, percentage, $"{percentage * 100:F1}%");
-                    EditorGUILayout.EndHorizontal();
+                    float totalWeight = 0f;
+                    foreach (var entry in entityTable.entries)
+                    {
+                        totalWeight += entry.weight;
+                    }
+
+                    foreach (var entry in entityTable.entries)
+                    {
+                        float percentage = (totalWeight > 0) ? entry.weight / totalWeight : 0;
+                        EditorGUILayout.BeginHorizontal();
+                        EditorGUILayout.LabelField(entry.entity ? entry.entity.name : "Unnamed Entity");
+                        Rect rect = EditorGUILayout.GetControlRect(false, 20);
+                        EditorGUI.ProgressBar(rect, percentage, $"{percentage * 100:F1}%");
+                        EditorGUILayout.EndHorizontal();
+                    }
                 }
             }
         }
 
         private void DrawEntityTableEntries(EntityTable entityTable)
         {
-
-            // 显示和编辑条目数据
-            if (entityTable.entries != null)
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Entity Table Entries", EditorStyles.boldLabel);
+            if (GUILayout.Button(showEntityTableEntries ? "Hide" : "Show"))
             {
-                for (int i = 0; i < entityTable.entries.Length; i++)
-                {
-                    var entry = entityTable.entries[i];
-                    EditorGUILayout.BeginVertical("box");
-                    entry.entity = (Entity)EditorGUILayout.ObjectField("Entity", entry.entity, typeof(Entity), false);
-                    entry.weight = EditorGUILayout.FloatField("Weight", entry.weight);
+                showEntityTableEntries = !showEntityTableEntries;
+            }
+            EditorGUILayout.EndHorizontal();
 
-                    // 删除按钮
-                    if (GUILayout.Button($"Remove Entity {i + 1}"))
+            if (showEntityTableEntries)
+            {
+                // 显示和编辑条目数据
+                if (entityTable.entries != null)
+                {
+                    for (int i = 0; i < entityTable.entries.Length; i++)
                     {
-                        // 从数组中移除
-                        ArrayUtility.RemoveAt(ref entityTable.entries, i);
-                        break; // 结束当前循环，避免 IndexOutOfRangeException
+                        var entry = entityTable.entries[i];
+                        EditorGUILayout.BeginVertical("box");
+                        entry.entity = (Entity)EditorGUILayout.ObjectField("Entity", entry.entity, typeof(Entity), false);
+                        entry.weight = EditorGUILayout.FloatField("Weight", entry.weight);
+
+                        // 删除按钮
+                        if (GUILayout.Button($"Remove Entity {i + 1}"))
+                        {
+                            // 从数组中移除
+                            ArrayUtility.RemoveAt(ref entityTable.entries, i);
+                            break; // 结束当前循环，避免 IndexOutOfRangeException
+                        }
+                        EditorGUILayout.EndVertical();
                     }
-                    EditorGUILayout.EndVertical();
                 }
             }
         }

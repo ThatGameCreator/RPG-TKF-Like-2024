@@ -134,9 +134,6 @@ namespace Gyvr.Mythril2D
                         // 一个存的是list的item 下面是删除UI格子
                         m_backpackItems.RemoveAt(i);
                     }
-                    Debug.Log(backpackCapacity + reducedCapacity);
-                    Debug.Log(newCapacity);
-                    Debug.Log(i);
 
                     // 删除格子的 GameObject
                     Destroy(GameManager.UIManagerSystem.UIMenu.inventory.bag.slots[i].gameObject);

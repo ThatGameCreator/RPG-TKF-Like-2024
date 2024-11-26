@@ -18,6 +18,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private string m_fireAnimationParameter = "fire";
         [SerializeField] private string m_cancelAnimationParameter = "cancel";
 
+        private HashSet<Collider2D> m_processedColliders = new HashSet<Collider2D>(); // 避免重复广播
         public override void Init(CharacterBase character, AbilitySheet settings)
         {
             base.Init(character, settings);
@@ -70,12 +71,18 @@ namespace Gyvr.Mythril2D
                     GameObject target = collider.gameObject;
 
                     // We don't want to hit ourselves
-                    if (target != gameObject)
+                    CharacterBase characterBase = collider.GetComponent<CharacterBase>();
+                    if (characterBase != null && collider.gameObject != gameObject)
                     {
-                        DamageDispatcher.Send(target, damageOutput);
+                        DamageDispatcher.Send(characterBase.gameObject, damageOutput);
+
+                        // 记录已处理的碰撞体
+                        m_processedColliders.Add(collider);
                     }
                 }
             }
+            // 清理无效的碰撞体记录
+            m_processedColliders.RemoveWhere(collider => !collider || !collider.enabled);
         }
     }
 }
