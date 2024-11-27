@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8242268705253624596
 Transform:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useDistance: 0
-  visability: 0
+  visability: 0.25
 --- !u!212 &4390667313610080727 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8880730510160356692, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}

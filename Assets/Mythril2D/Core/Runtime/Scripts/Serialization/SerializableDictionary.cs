@@ -68,11 +68,18 @@ namespace Gyvr.Mythril2D
 
             for (int i = 0; i < m_keys.Count; i++)
             {
+                if (m_keys[i] == null)
+                {
+                    Debug.LogError($"Key at index {i} is null. Cannot add to dictionary.");
+                    continue;  // 跳过当前键为 null 的项
+                }
+
                 if (!m_dict.ContainsKey(m_keys[i]))
                 {
                     m_dict[m_keys[i]] = m_values[i];
                 }
             }
+
         }
 
 
