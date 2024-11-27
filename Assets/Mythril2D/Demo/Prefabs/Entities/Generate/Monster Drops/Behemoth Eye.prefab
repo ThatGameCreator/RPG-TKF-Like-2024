@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interaction:
-    rid: 8303503587277799782
+    rid: 8303503637606563848
   m_spriteRenderer:
   - {fileID: 6577497198250910366}
   m_lightEventListener: {fileID: 5063627552434139791}
@@ -63,11 +63,11 @@ MonoBehaviour:
       weight: 0
     money: 0
   m_gameFlagID: SurfaceItem_00
-  m_lootedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
+  m_lootedSound: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 8303503587277799782
+    - rid: 8303503637606563848
       type: {class: SurfaceItemInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_surfaceItem: {fileID: 8952780750686934343}
