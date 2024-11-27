@@ -48,6 +48,7 @@ namespace Gyvr.Mythril2D
                 TrySpawn();
             }
         }
+
         private EntityTable.EntityData GetRandomEntry()
         {
             float totalWeight = 0f;

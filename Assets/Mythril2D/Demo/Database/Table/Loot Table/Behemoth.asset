@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60624676900c968428e114136b6df627, type: 3}
+  m_Name: Behemoth
+  m_EditorClassIdentifier: 
+  entries:
+  - item: {fileID: 11400000, guid: 0bad3fcc95cc0ee428c2c8acf93b76cd, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 17fb593938c4e9745866bf4b31f5d3ad, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: f243b29ca16da0f45995f41659e76f10, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: e3333531dee63e6478045c3e59c11409, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: a9d87919a954613488b68fc9e2423094, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 3c8b6ef6d75700d41bec7a8cd8e0fbae, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 069b3c7a97016a042bdecd62b1ac7a10, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: a8508b485f459e843a2a34f3cb2943c2, type: 2}
+    maxQuantity: 1
+    weight: 1
+  money: 50
+  maxLootedCount: 5

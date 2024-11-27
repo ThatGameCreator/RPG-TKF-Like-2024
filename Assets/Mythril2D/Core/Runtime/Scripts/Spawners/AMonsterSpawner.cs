@@ -9,7 +9,7 @@ namespace Gyvr.Mythril2D
     {
         [Header("General Settings")]
         [SerializeField] private bool isUseGroup = false;
-        [SerializeField] private  Entity[] monsterPrefabs = null;
+        [SerializeField] private EntityTable monsterTable = null;
         [SerializeField] private int rate = 100;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_minLevel = Stats.MinLevel;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_maxLevel = Stats.MaxLevel;
@@ -64,15 +64,45 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        private EntityTable.EntityData GetRandomEntry()
+        {
+            float totalWeight = 0f;
+
+            foreach (var entry in monsterTable.entries)
+            {
+                totalWeight += entry.weight;
+            }
+
+            float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+
+            foreach (var entry in monsterTable.entries)
+            {
+                if (randomValue < entry.weight)
+                {
+                    return entry;
+                }
+
+                randomValue -= entry.weight;
+            }
+
+            return null;
+        }
+
         private Entity FindMonsterToSpawn()
         {
             int randomNumber = UnityEngine.Random.Range(0, 100);
 
-            if (randomNumber <= rate && monsterPrefabs.Length > 0)
+            if (monsterTable.entries != null)
             {
-                // 随机选择一个怪物预制体
-                int index = UnityEngine.Random.Range(0, monsterPrefabs.Length);
-                return monsterPrefabs[index];
+                if (randomNumber <= rate && monsterTable.entries.Length > 0)
+                {
+                    // 随机选择一个 entitiy 预制体
+                    return GetRandomEntry().entity;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {
