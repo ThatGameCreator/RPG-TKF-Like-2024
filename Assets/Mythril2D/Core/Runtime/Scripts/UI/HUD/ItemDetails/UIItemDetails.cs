@@ -23,7 +23,7 @@ namespace Gyvr.Mythril2D
 
         private void OnDetailsOpened(Item item)
         {
-            Debug.Log("OnDetailsOpened");
+            //Debug.Log("OnDetailsOpened");
 
             if (item)
             {

@@ -10,12 +10,11 @@ namespace Gyvr.Mythril2D
         [SerializeField] private LootTable lootTable;   // 引用 ScriptableObject 数据表
         [SerializeField] private string m_gameFlagID = "DeadBody_00";
         [SerializeField] private Sprite[] m_deadBodySprites = null;
-        [SerializeField] private int m_canLootCount = 5;
 
         [Header("Audio")]
         [SerializeField] private AudioClipResolver m_lootedSound;
 
-        private bool m_opened = false;
+        private bool m_looted = false;
         private int m_randomMaxLootedCount = 0;
         private int m_nowLootedCount = 0;
 
@@ -23,12 +22,14 @@ namespace Gyvr.Mythril2D
         {
             base.Start();
 
-            m_randomMaxLootedCount = Random.Range(0, m_canLootCount);
+            m_randomMaxLootedCount = Random.Range(0, lootTable.maxLootedCount);
+
             // 检查是否已达到最大掠夺次数
             if (m_nowLootedCount >= m_randomMaxLootedCount)
             {
                 this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
             }
+
             AssignRandomSprite();
         }
 
@@ -59,12 +60,12 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
-            Debug.Log("OnStartInteract");
+            //Debug.Log("OnStartInteract");
+
             if (m_nowLootedCount < m_randomMaxLootedCount) // 检查是否可以继续掠夺
             {
                 GameManager.Player.OnTryStartLoot(target, m_lootedTime);
             }
-
         }
 
         private LootTable.LootEntryData GetRandomLootEntry()

@@ -11,7 +11,7 @@ namespace Gyvr.Mythril2D
         [Header("Rewards")]
         public LevelScaledInteger experience = new LevelScaledInteger();
         public LevelScaledInteger money = new LevelScaledInteger();
-        public MonsterLoot[] potentialLoot;
+        public LootTable lootTable;
 
         [Header("Commands")]
         [SerializeReference, SubclassSelector]

@@ -312,7 +312,7 @@ namespace Gyvr.Mythril2D
             {
                 GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
 
-                Debug.Log("playerEndInteracte.Invoke");
+                //Debug.Log("playerEndInteracte.Invoke");
 
                 //m_lootingObject.SendMessageUpwards("OnInteract", GameManager.Player);
                 GameManager.NotificationSystem.playerEndInteracte.Invoke(GameManager.Player, m_lootingObject);
@@ -369,7 +369,7 @@ namespace Gyvr.Mythril2D
         public void CancelLooting()
         {
             //TerminateCasting();
-            Debug.Log("CancelLooting");
+            //Debug.Log("CancelLooting");
 
             m_lootingTime = 0f;
             m_isLooting = false;
@@ -394,13 +394,13 @@ namespace Gyvr.Mythril2D
         {
             if (GameManager.Player.isLooting == true)
             {
-                Debug.Log("CancelLooting");
+                //Debug.Log("CancelLooting");
 
                 CancelLooting();
             }
             else
             {
-                Debug.Log("OnStartLooting");
+                //Debug.Log("OnStartLooting");
 
                 OnStartLooting(interactionTargett, targetLootTime);
             }
