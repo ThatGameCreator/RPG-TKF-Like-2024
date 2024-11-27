@@ -21,7 +21,7 @@ namespace Gyvr.Mythril2D
     public class Stats
     {
         public const int MinLevel = 1;
-        public const int MaxLevel = 20;
+        public const int MaxLevel = 30;
         public const int LevelCount = MaxLevel - MinLevel + 1;
         public const int StatCount = 9;
 

@@ -5,20 +5,11 @@ using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
-    [Serializable]
-    public struct MonsterSpawn
-    {
-        public GameObject prefab;
-        public int rate;
-    }
-
     public abstract class AMonsterSpawner : MonoBehaviour
     {
         [Header("General Settings")]
-        //[SerializeField] private MonsterSpawn[] m_monsters = null;
         [SerializeField] private bool isUseGroup = false;
-        [SerializeField] private  GameObject[] monsterPrefabs = null;
-        //[SerializeField] private  Dictionary<GameObject, int> monsterPrefabs = null;
+        [SerializeField] private  Entity[] monsterPrefabs = null;
         [SerializeField] private int rate = 100;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_minLevel = Stats.MinLevel;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_maxLevel = Stats.MaxLevel;
@@ -73,7 +64,7 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        private GameObject FindMonsterToSpawn()
+        private Entity FindMonsterToSpawn()
         {
             int randomNumber = UnityEngine.Random.Range(0, 100);
 
@@ -105,11 +96,11 @@ namespace Gyvr.Mythril2D
         private void Spawn()
         {
             Vector2 position = FindSpawnLocation();
-            GameObject monster = FindMonsterToSpawn();
+            Entity monster = FindMonsterToSpawn();
 
             if (monster != null)
             {
-                GameObject instance = Instantiate(monster, position, Quaternion.identity, transform);
+                Entity instance = Instantiate(monster, position, Quaternion.identity, transform);
                 instance.transform.parent = null;
 
                 if (isUseGroup == true)
