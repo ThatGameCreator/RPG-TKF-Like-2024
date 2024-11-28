@@ -44,7 +44,7 @@ namespace Gyvr.Mythril2D
                     }
 
                     // 设置 Sprite 的 Pivot
-                    SetPivot(dataProvider, new Vector2(0.5f, 0.3f)); // 设置中心点
+                    SetPivot(dataProvider, new Vector2(0.5f, 0.25f)); // 设置中心点
                     dataProvider.Apply();
 
                     // 保存并重新导入
