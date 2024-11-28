@@ -94,43 +94,52 @@ namespace Gyvr.Mythril2D
 
         public bool TryLooted()
         {
-            // 随机决定掠夺物品还是金钱
-            bool lootItem = Random.Range(0, 2) == 0;
-
-            if (lootItem && lootTable.entries != null && lootTable.entries.Length > 0)
+            // 检查是否触发不生成物品的概率
+            if (UnityEngine.Random.value < lootTable.lootRate)
             {
-                //Debug.Log("lootItem");
+                Debug.Log("没有获得任何物品或金钱。");
+                return false;
+            }
+            else
+            {
+                // 随机决定掠夺物品还是金钱
+                bool lootItem = Random.Range(0, 2) == 0;
 
-                // 使用基于权重的随机选择机制
-                var randomEntry = GetRandomLootEntry();
-
-                if (randomEntry != null)
+                if (lootItem && lootTable.entries != null && lootTable.entries.Length > 0)
                 {
-                    int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
-                    GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                    //Debug.Log("lootItem");
+
+                    // 使用基于权重的随机选择机制
+                    var randomEntry = GetRandomLootEntry();
+
+                    if (randomEntry != null)
+                    {
+                        int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
+                        GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                    }
+
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+                }
+                else if (lootTable.money > 0)
+                {
+                    int randomMoney = Random.Range(1, lootTable.money + 1);
+                    GameManager.InventorySystem.AddMoney(randomMoney);
+
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+
                 }
 
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+                // 增加掠夺次数
+                m_nowLootedCount++;
+
+                // 检查是否已达到最大掠夺次数
+                if (m_nowLootedCount >= m_randomMaxLootedCount)
+                {
+                    this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                }
+
+                return true; // 表示本次掠夺成功
             }
-            else if (lootTable.money > 0)
-            {
-                int randomMoney = Random.Range(10, lootTable.money + 1);
-                GameManager.InventorySystem.AddMoney(randomMoney);
-
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
-
-            }
-
-            // 增加掠夺次数
-            m_nowLootedCount++;
-
-            // 检查是否已达到最大掠夺次数
-            if (m_nowLootedCount >= m_randomMaxLootedCount)
-            {
-                this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
-            }
-
-            return true; // 表示本次掠夺成功
         }
     }
 }

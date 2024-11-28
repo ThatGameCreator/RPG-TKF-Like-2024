@@ -13,6 +13,7 @@ namespace Gyvr.Mythril2D
             public float weight;         // 生成权重
         }
 
-        public EntityData[] entries;        
+        public EntityData[] entries;
+        public int generateRate = 50;  // 不生成任何的概率 (0.0 ~ 1.0)
     }
 }

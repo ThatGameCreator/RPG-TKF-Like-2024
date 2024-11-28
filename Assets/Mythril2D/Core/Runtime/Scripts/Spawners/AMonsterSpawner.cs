@@ -97,7 +97,15 @@ namespace Gyvr.Mythril2D
                 if (randomNumber <= rate && monsterTable.entries.Length > 0)
                 {
                     // 随机选择一个 entitiy 预制体
-                    return GetRandomEntry().entity;
+                    Entity returnEntity = GetRandomEntry().entity;
+                    if (returnEntity == null)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return returnEntity;
+                    }
                 }
                 else
                 {

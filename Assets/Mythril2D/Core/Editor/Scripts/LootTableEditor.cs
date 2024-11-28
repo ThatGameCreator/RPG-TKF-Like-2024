@@ -58,6 +58,8 @@ namespace Gyvr.Mythril2D
             lootTable.money = EditorGUILayout.IntField("Max Money", lootTable.money);
             // 掠夺次数
             lootTable.maxLootedCount = EditorGUILayout.IntField("Max Looted Count", lootTable.maxLootedCount);
+            // 掠夺概率
+            lootTable.lootRate = EditorGUILayout.IntField("Looted Rate", lootTable.lootRate);
 
             // 保存修改
             if (GUI.changed)

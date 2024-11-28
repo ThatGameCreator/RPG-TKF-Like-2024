@@ -197,7 +197,7 @@ namespace Gyvr.Mythril2D
                 }
                 if (lootTable.money > 0)
                 {
-                    int randomMoney = Random.Range(10, lootTable.money + 1);
+                    int randomMoney = Random.Range(1, lootTable.money + 1);
                     GameManager.InventorySystem.AddMoney(randomMoney);
 
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);

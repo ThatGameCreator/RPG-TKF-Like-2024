@@ -10,7 +10,6 @@ namespace Gyvr.Mythril2D
 
         [Header("Rewards")]
         public LevelScaledInteger experience = new LevelScaledInteger();
-        public LevelScaledInteger money = new LevelScaledInteger();
         public LootTable lootTable;
 
         [Header("Commands")]

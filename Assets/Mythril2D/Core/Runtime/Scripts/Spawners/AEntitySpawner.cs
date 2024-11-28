@@ -79,7 +79,7 @@ namespace Gyvr.Mythril2D
 
             if (entityTable.entries != null)
             {
-                if (randomNumber <= rate && entityTable.entries.Length > 0)
+                if (randomNumber <= entityTable.generateRate && entityTable.entries.Length > 0)
                 {
                     // 随机选择一个 entitiy 预制体
                     return GetRandomEntry().entity;

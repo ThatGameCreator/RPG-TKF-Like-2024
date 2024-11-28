@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3522f9f384f21fa4fa7417c4c488399d, type: 3}
+  m_Name: Books In Chaos Wizard Altar
+  m_EditorClassIdentifier: 
+  entries:
+  - entity: {fileID: 7078841323091562237, guid: e036eb134f52ad048813f593cac0d678, type: 3}
+    weight: 1
+  - entity: {fileID: 1677948173464641556, guid: 0a5cbd7814d7ea040ab15ca5ba50bc50, type: 3}
+    weight: 1
+  - entity: {fileID: 5533917824146148629, guid: 057fc4f15b33d384584024abef2f5c1a, type: 3}
+    weight: 1
+  - entity: {fileID: 6382363335908257071, guid: 851ef0bb68bea3140aea33ed2cdccf90, type: 3}
+    weight: 1
+  - entity: {fileID: 215157625702088993, guid: b90eda195bab73e4899e16624c0f27a1, type: 3}
+    weight: 2
+  - entity: {fileID: 579379537232824725, guid: b67bc79bd221230489ea28c488225168, type: 3}
+    weight: 2
