@@ -1,0 +1,566 @@
+fileFormatVersion: 2
+guid: bf7b11bdeb9c8954fa808ab690622501
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 2}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: 2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0f43b4eb596d5943843429d5781dc2a
+      internalID: -60960435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 2}
+        - {x: -8, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: 2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ed43832b395dbc48818353b0d8c80ce
+      internalID: -866098494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 4, y: 2}
+        - {x: -8, y: 2}
+        - {x: -8, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79ac02a15cffa7e449425f98f9cb4e69
+      internalID: 1756780805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 2}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: 2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88486bf806de40e4290fd4cf82f34bc3
+      internalID: 1628734746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 8, y: 2}
+        - {x: 4, y: 2}
+        - {x: 4, y: 8}
+        - {x: -4, y: 8}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 8, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bf057cd37e758a46bc48f3b4d4696ff
+      internalID: 2123820451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 2}
+        - {x: -8, y: 2}
+        - {x: -8, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: 2}
+        - {x: 4, y: 2}
+        - {x: 4, y: 8}
+        - {x: -4, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96cb29cfde4d838489c7bdc2e2ef4873
+      internalID: 1862121838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 2}
+        - {x: -8, y: 2}
+        - {x: -8, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: 8}
+        - {x: -4, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f52e9c19b51a85438fc45d1618f063b
+      internalID: 481340893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 8}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d68f65a4647113240a9f97344a79e93d
+      internalID: -1657539357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 4, y: 8}
+        - {x: -4, y: 8}
+        - {x: -4, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: 2}
+        - {x: 4, y: 2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf6aa3d5954d802488df8b82e19bbbe4
+      internalID: -1292392869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 2}
+        - {x: -8, y: 2}
+        - {x: -8, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: 2}
+        - {x: 4, y: 2}
+        - {x: 4, y: 8}
+        - {x: -4, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc0430d34baad2b4db71fad558ee462a
+      internalID: -731434508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 2}
+        - {x: -8, y: 2}
+        - {x: -8, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: 8}
+        - {x: -4, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24af92bffc1c75b4da1c76b76211bda6
+      internalID: -696877654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 8}
+        - {x: -4, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ba556ee154f6c419e3d4fce65e3ab0
+      internalID: -2125067030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 2}
+        - {x: -4, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: 2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3324c6adde43114ba0efdcea4f62fc0
+      internalID: -707217202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 2}
+        - {x: -8, y: -7}
+        - {x: 8, y: -7}
+        - {x: 8, y: 2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9fa125d924b5b74192094c83f6927e7
+      internalID: -1424680460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 2}
+        - {x: -8, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: 2}
+      tessellationDetail: 0
+      bones: []
+      spriteID: dafac7074eaf88441b5362da08143d39
+      internalID: -762132200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS Rotten Demon Grave _15
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 4, y: 2}
+        - {x: -4, y: 2}
+        - {x: -4, y: -7}
+        - {x: 4, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72fc90c85ddc70c46983a40fe73eda12
+      internalID: -604871362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SPS Rotten Demon Grave _0: -60960435
+      SPS Rotten Demon Grave _1: -866098494
+      SPS Rotten Demon Grave _10: -696877654
+      SPS Rotten Demon Grave _11: -2125067030
+      SPS Rotten Demon Grave _12: -707217202
+      SPS Rotten Demon Grave _13: -1424680460
+      SPS Rotten Demon Grave _14: -762132200
+      SPS Rotten Demon Grave _15: -604871362
+      SPS Rotten Demon Grave _16: 1785541206
+      SPS Rotten Demon Grave _17: 301462195
+      SPS Rotten Demon Grave _18: -1305576225
+      SPS Rotten Demon Grave _19: -1864914899
+      SPS Rotten Demon Grave _2: 1756780805
+      SPS Rotten Demon Grave _3: 1628734746
+      SPS Rotten Demon Grave _4: 2123820451
+      SPS Rotten Demon Grave _5: 1862121838
+      SPS Rotten Demon Grave _6: 481340893
+      SPS Rotten Demon Grave _7: -1657539357
+      SPS Rotten Demon Grave _8: -1292392869
+      SPS Rotten Demon Grave _9: -731434508
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
