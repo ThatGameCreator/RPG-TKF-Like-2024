@@ -109,7 +109,7 @@ namespace Gyvr.Mythril2D
                         }
                         else
                         {
-                            m_attackTriggerRadius = 6.0f;
+                            m_attackTriggerRadius = 8.0f;
                             m_attackCooldown = 3.0f;
                         }
                     }

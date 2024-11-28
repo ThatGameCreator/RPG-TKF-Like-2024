@@ -58,6 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201085080e6fb7748acb875e3d5eceec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_interaction:
+    rid: -2
+  m_spriteRenderer: []
+  m_lightEventListener: {fileID: 0}
+  m_showAnimationSpeed: 10
+  m_hideAnimationSpeed: 10
   monsters:
   - {fileID: 7170503645160204629}
   - {fileID: 4128684288244288452}
@@ -72,6 +78,11 @@ MonoBehaviour:
   - {fileID: 6850026665389269203}
   - {fileID: 925433097494593293}
   - {fileID: 7441629662926119528}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1001 &59565209030368795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -484,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4606627285998651276, guid: 2cd81ae0a699dc2459c77c6d0c087999, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.220001
+      value: 9.6
       objectReference: {fileID: 0}
     - target: {fileID: 4606627285998651276, guid: 2cd81ae0a699dc2459c77c6d0c087999, type: 3}
       propertyPath: m_LocalPosition.y

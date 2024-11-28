@@ -768,9 +768,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_character: {fileID: -592417340943693092}
   m_rigidbody: {fileID: 8526076313025978402}
-  m_detectionRadius: 5
-  m_resetFromInitialPositionRadius: 10
-  m_resetFromTargetDistanceRadius: 10
+  m_detectionRadius: 9
+  m_resetFromInitialPositionRadius: 12
+  m_resetFromTargetDistanceRadius: 12
   m_targetOutOfRangeRetargetCooldown: 3
   m_soughtDistanceFromTarget: 1
   m_steeringDriftResponsiveness: 3
