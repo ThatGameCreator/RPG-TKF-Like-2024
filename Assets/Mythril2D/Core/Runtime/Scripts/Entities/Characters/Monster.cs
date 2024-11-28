@@ -138,10 +138,20 @@ namespace Gyvr.Mythril2D
 
         public bool LootFinished()
         {
+            // 增加掠夺次数
+            m_nowLootedCount++;
+
             // 检查是否触发不生成物品的概率
             if (UnityEngine.Random.value < m_sheet.lootTable.lootRate)
             {
                 Debug.Log("没有获得任何物品或金钱。");
+
+                // 检查是否已达到最大掠夺次数
+                if (m_nowLootedCount >= m_randomMaxLootedCount)
+                {
+                    this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                }
+
                 return false;
             }
             else
@@ -172,9 +182,6 @@ namespace Gyvr.Mythril2D
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
 
                 }
-
-                // 增加掠夺次数
-                m_nowLootedCount++;
 
                 // 检查是否已达到最大掠夺次数
                 if (m_nowLootedCount >= m_randomMaxLootedCount)

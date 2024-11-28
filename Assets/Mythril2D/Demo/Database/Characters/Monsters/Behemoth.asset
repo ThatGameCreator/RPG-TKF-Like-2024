@@ -16,13 +16,17 @@ MonoBehaviour:
   m_displayName: Behemoth
   m_abilitiesPerLevel:
     m_keys:
-    - {fileID: 11400000, guid: aee583002dde78a4e9594256eb9c8b73, type: 2}
-    m_values: 01000000
+    - {fileID: 11400000, guid: 5dee3c71f91802c48aa247a385781d08, type: 2}
+    - {fileID: 11400000, guid: ab7428c1fc0eda844b51174e390fe572, type: 2}
+    - {fileID: 11400000, guid: ff17d9960fa836042a7e58cf85ec4531, type: 2}
+    - {fileID: 11400000, guid: 8581e61412dab0c44a57db2e02d17b76, type: 2}
+    - {fileID: 11400000, guid: 99a1ae71ae3546d409ad9ca3d6bce26c, type: 2}
+    m_values: 0100000001000000010000000100000001000000
   m_hitAudio: {fileID: 11400000, guid: a4e5377a4fc466b41889cf9f0874ca00, type: 2}
   m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
   stats:
     m_initialValue:
-      m_values: 060000000100000000000000030000000000000008000000040000000200000001000000
+      m_values: 0f000000010000000000000008000000000000000c000000080000000200000001000000
     m_evolutionProfile:
       serializedVersion: 2
       m_Curve:
@@ -50,33 +54,6 @@ MonoBehaviour:
     m_evolutionScale: 3
   experience:
     m_initialValue: 10
-    m_evolutionProfile:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 1
-        outSlope: 1
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 1
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_evolutionScale: 3
-  money:
-    m_initialValue: 5
     m_evolutionProfile:
       serializedVersion: 2
       m_Curve:

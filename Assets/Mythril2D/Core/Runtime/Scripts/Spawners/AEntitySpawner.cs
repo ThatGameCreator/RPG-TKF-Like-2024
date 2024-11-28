@@ -9,7 +9,6 @@ namespace Gyvr.Mythril2D
     {
         [Header("General Settings")]
         [SerializeField] private EntityTable entityTable = null;
-        [SerializeField] private int rate = 100;
 
         [Header("Spawn Settings")]
         [SerializeField] private int m_entitiesToPrespawn = 1;
