@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Chest In Demon Slime Lair
   m_EditorClassIdentifier: 
   entries:
-  - entity: {fileID: 5733890042131917482, guid: 945c1be7eeafcc448b54362bc15a9a99, type: 3}
-    weight: 2
+  - entity: {fileID: 5733890042131917482, guid: 0ec577906897b7048ba533dd4fe66d64, type: 3}
+    weight: 4
   - entity: {fileID: 5733890042131917482, guid: e6284ab98b4750340adc7ba858fbe74f, type: 3}
     weight: 1
   - entity: {fileID: 5733890042131917482, guid: 20ab91c5334c316429fdc3740659becf, type: 3}
     weight: 2
   - entity: {fileID: 5733890042131917482, guid: 356d906a35aa0cd43bcb3906622afa2d, type: 3}
-    weight: 3
-  generateRate: 15
+    weight: 6
+  generateRate: 10

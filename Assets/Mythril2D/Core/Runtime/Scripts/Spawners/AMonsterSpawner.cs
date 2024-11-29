@@ -10,7 +10,6 @@ namespace Gyvr.Mythril2D
         [Header("General Settings")]
         [SerializeField] private bool isUseGroup = false;
         [SerializeField] private EntityTable monsterTable = null;
-        [SerializeField] private int rate = 100;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_minLevel = Stats.MinLevel;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_maxLevel = Stats.MaxLevel;
 

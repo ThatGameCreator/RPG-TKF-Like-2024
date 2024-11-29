@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3522f9f384f21fa4fa7417c4c488399d, type: 3}
+  m_Name: Key & Potion & Material In Chaos Hotbed
+  m_EditorClassIdentifier: 
+  entries:
+  - entity: {fileID: 6687726841696616590, guid: f65b9e79bcca7ba4bb702e2b573215c2, type: 3}
+    weight: 1
+  - entity: {fileID: 1438844029204096716, guid: d16c71082da526d45af51845e62b0801, type: 3}
+    weight: 1
+  - entity: {fileID: 4678716928686322844, guid: dd0716f6802304943b93781a004cc342, type: 3}
+    weight: 3
+  - entity: {fileID: 623634841066639611, guid: 6f46585dc695a1343baaa130d380f53b, type: 3}
+    weight: 3
+  - entity: {fileID: 2516676782893412783, guid: 3e915dc73e6accc4cbb4105d563fd1bc, type: 3}
+    weight: 3
+  - entity: {fileID: 134250551276742737, guid: 8d53b64a1c6df234a97822a19a3821d4, type: 3}
+    weight: 3
+  - entity: {fileID: 4865467791911331267, guid: 1731854708d5ab34d8acaff19a03a37d, type: 3}
+    weight: 1
+  - entity: {fileID: 6851827017754402411, guid: 47eaf8c1338c60b4ea9e520884dde4e3, type: 3}
+    weight: 3
+  - entity: {fileID: 8791286432121892644, guid: 98d5b98befc23b448b4cac879595c967, type: 3}
+    weight: 3
+  - entity: {fileID: 6649232568719037124, guid: ec5f975402106204e95ff0d53fc6ed05, type: 3}
+    weight: 3
+  - entity: {fileID: 3669227996315352189, guid: 1ea19e5f8b427c441a723f43df33b077, type: 3}
+    weight: 2
+  - entity: {fileID: 4084375905218741697, guid: 4f3bdb2b98b04c544851c0f50f3eb942, type: 3}
+    weight: 3
+  generateRate: 35
