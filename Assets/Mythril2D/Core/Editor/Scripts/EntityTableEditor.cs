@@ -34,6 +34,9 @@ namespace Gyvr.Mythril2D
                 ArrayUtility.Add(ref entityTable.entries, new EntityTable.EntityData());
             }
 
+            // 生成概率
+            entityTable.generateRate = EditorGUILayout.IntField("Generate Rate", entityTable.generateRate);
+
             // 添加新的条目
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Add New Entity", EditorStyles.boldLabel);
@@ -51,9 +54,6 @@ namespace Gyvr.Mythril2D
             {
                 DeleteAllEntities(entityTable);
             }
-
-            // 生成概率
-            entityTable.generateRate = EditorGUILayout.IntField("Generate Rate", entityTable.generateRate);
 
             // 保存修改
             if (GUI.changed)

@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8073955503684347179}
   - component: {fileID: 1499653012271325872}
   m_Layer: 6
-  m_Name: Contents Chest
+  m_Name: High Value Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_chestAnimator: {fileID: 5733890042131917493}
   m_nowSpriteLibrary: {fileID: 7309178975524964772}
   m_emptySpriteLibraryAsset: {fileID: 7108339969198208228, guid: 329ce869e149a5a46a4524c526172946, type: 3}
-  lootTable: {fileID: 11400000, guid: d5f9b2a889cf9bd49a9c1531442a899f, type: 2}
+  lootTable: {fileID: 11400000, guid: 9dcbee312ae67f841ae7d0912322ff44, type: 2}
   m_requiredKeys:
   - {fileID: 11400000, guid: bf496f7d69501f84a97585ee4541db24, type: 2}
   - {fileID: 11400000, guid: cbca3fc53a96ca04889878821d868312, type: 2}

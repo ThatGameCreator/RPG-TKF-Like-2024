@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 416732651, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -157,9 +157,10 @@ MonoBehaviour:
     entries:
     - item: {fileID: 11400000, guid: 1be6f04ea123b37469bcdf5e23488be6, type: 2}
       quantity: 1
+      weight: 0
     money: 0
   m_gameFlagID: SurfaceItem_00
-  m_openedSound: {fileID: 0}
+  m_lootedSound: {fileID: 0}
   references:
     version: 2
     RefIds:

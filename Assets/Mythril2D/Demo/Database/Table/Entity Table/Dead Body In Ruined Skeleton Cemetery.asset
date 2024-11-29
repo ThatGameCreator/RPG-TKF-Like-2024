@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3522f9f384f21fa4fa7417c4c488399d, type: 3}
-  m_Name: Chest OutSide
+  m_Name: Dead Body In Ruined Skeleton Cemetery
   m_EditorClassIdentifier: 
   entries:
-  - entity: {fileID: 5733890042131917482, guid: 945c1be7eeafcc448b54362bc15a9a99, type: 3}
-    weight: 3
-  - entity: {fileID: 5733890042131917482, guid: e6284ab98b4750340adc7ba858fbe74f, type: 3}
-    weight: 2
-  - entity: {fileID: 5733890042131917482, guid: 20ab91c5334c316429fdc3740659becf, type: 3}
+  - entity: {fileID: 5422177300625255150, guid: 120fdef6f662ea642acfb223c0e7faeb, type: 3}
     weight: 1
+  generateRate: 50

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60624676900c968428e114136b6df627, type: 3}
+  m_Name: Equipmen Chest In Chaos Hotbed
+  m_EditorClassIdentifier: 
+  entries:
+  - item: {fileID: 11400000, guid: 8e9002f1c3ebd904e8f1999accd2d0ec, type: 2}
+    maxQuantity: 8
+    weight: 1
+  - item: {fileID: 11400000, guid: 47379efadf7aa9a47bc60c5fb947e0f4, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 97ec949013560a0419758fcc80ce30d6, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 1096995564a591641b9472821265256d, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 25e0b74ad06543044807e2045d0334a0, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 5e0425d6ea516434e8dcf832ea48c1b6, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: c44316eef694d7e429c8867f9d01f296, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 0b7f8e6ac7b292e49a630c45c88eddbd, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 45895c67fc12a204390291b62b648f0e, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: ab17360bba489774286121b05e96769d, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 6cc163e4fd10edf4e84a0f2dad45d80e, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 11405813356c0ab45b18ff3bd8c27704, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: f75da2635faaa6546837c82a9993cc52, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 8998ab6ca75c6e94e95352d7cc0f9105, type: 2}
+    maxQuantity: 1
+    weight: 1
+  money: 20
+  maxLootedCount: 3
+  lootRate: 100

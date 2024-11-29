@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60624676900c968428e114136b6df627, type: 3}
+  m_Name: Equipmen Chest In Demon Slime Lair
+  m_EditorClassIdentifier: 
+  entries:
+  - item: {fileID: 11400000, guid: e2766420913f6634b92dc4f15cfa2dbe, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 3d0af755f25cc1849b6731137bad6337, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 35800672cda621441a12047eec7c0845, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: a76d391edd3ba0f49a05356890410d0e, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 8e9002f1c3ebd904e8f1999accd2d0ec, type: 2}
+    maxQuantity: 3
+    weight: 1
+  - item: {fileID: 11400000, guid: 71715f94ca54818499cdcf411afadf29, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: ebc1055d829cc0a48aa1d6ec33102427, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: ad34e0cf3ed34824c91fbbe581616780, type: 2}
+    maxQuantity: 1
+    weight: 1
+  money: 5
+  maxLootedCount: 3
+  lootRate: 100

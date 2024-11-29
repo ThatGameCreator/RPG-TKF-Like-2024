@@ -12,6 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60624676900c968428e114136b6df627, type: 3}
   m_Name: Dead Body In Demon Slime Lair
   m_EditorClassIdentifier: 
-  entries: []
-  money: 2
+  entries:
+  - item: {fileID: 11400000, guid: 6447772751c0ca141b3b32610cd259de, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: bf496f7d69501f84a97585ee4541db24, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: cbca3fc53a96ca04889878821d868312, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 57103396a3d9aa84e8a8ea3d12036e46, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: b263d388938fdf64690533bdbdab81c6, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: f76e27a657489a343a377e7096a10c23, type: 2}
+    maxQuantity: 1
+    weight: 2
+  - item: {fileID: 11400000, guid: ddd33825d20014040b1894e5b9907838, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: a32c53157828c5340bcc11506b80d3cd, type: 2}
+    maxQuantity: 3
+    weight: 3
+  - item: {fileID: 11400000, guid: 5569bf32d98d3c540a10b4e97e2ba480, type: 2}
+    maxQuantity: 2
+    weight: 3
+  - item: {fileID: 11400000, guid: 6b422abe7af80224c82d0a7fa42dac2a, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: fe5da9c8b9160b44b95edbc9d576577a, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 8e9002f1c3ebd904e8f1999accd2d0ec, type: 2}
+    maxQuantity: 1
+    weight: 3
+  - item: {fileID: 11400000, guid: ebc1055d829cc0a48aa1d6ec33102427, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: ad34e0cf3ed34824c91fbbe581616780, type: 2}
+    maxQuantity: 1
+    weight: 1
+  money: 3
   maxLootedCount: 3
+  lootRate: 30

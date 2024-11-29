@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60624676900c968428e114136b6df627, type: 3}
+  m_Name: Equipmen Chest In Chaos Wizard Altar
+  m_EditorClassIdentifier: 
+  entries:
+  - item: {fileID: 11400000, guid: 8e9002f1c3ebd904e8f1999accd2d0ec, type: 2}
+    maxQuantity: 6
+    weight: 1
+  - item: {fileID: 11400000, guid: 7b7023c0cdc51bd49a160db119a8b3a9, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 8fabd827eb97dbd4c8d74c4b5c2e5bae, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 0d5804c96cf9c52458cab3df6513e6ae, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 90f4cf5fb34387f4aa83ef6eff53a05f, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 48cb8c471a4ea2b4cb2fd0336ba4446a, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 0dbad0a43f8ba8944af00005b650a8c9, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 47379efadf7aa9a47bc60c5fb947e0f4, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 97ec949013560a0419758fcc80ce30d6, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 1096995564a591641b9472821265256d, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 25e0b74ad06543044807e2045d0334a0, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 5e0425d6ea516434e8dcf832ea48c1b6, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: c44316eef694d7e429c8867f9d01f296, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 0b7f8e6ac7b292e49a630c45c88eddbd, type: 2}
+    maxQuantity: 1
+    weight: 1
+  money: 16
+  maxLootedCount: 3
+  lootRate: 100

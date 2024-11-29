@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8073955503684347179}
   - component: {fileID: 1499653012271325872}
   m_Layer: 6
-  m_Name: Empty Chest
+  m_Name: Material Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 329ce869e149a5a46a4524c526172946, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 264838e33a7b234428d6078b070e43d4, type: 3}
 --- !u!114 &8868912839382203986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 31424977, guid: afe03a8499ec8374796866f49a638758, type: 3}
+  m_Sprite: {fileID: -1102979991, guid: 9152f21db15ccee46b0fd00c3c615553, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interaction:
-    rid: 8303503610807058435
+    rid: 8303503610807058434
   m_spriteRenderer:
   - {fileID: 5733890042131917494}
   m_lightEventListener: {fileID: 1499653012271325872}
@@ -289,8 +289,13 @@ MonoBehaviour:
   m_chestAnimator: {fileID: 5733890042131917493}
   m_nowSpriteLibrary: {fileID: 7309178975524964772}
   m_emptySpriteLibraryAsset: {fileID: 7108339969198208228, guid: 329ce869e149a5a46a4524c526172946, type: 3}
-  lootTable: {fileID: 11400000, guid: d5f9b2a889cf9bd49a9c1531442a899f, type: 2}
-  m_requiredKeys: []
+  lootTable: {fileID: 11400000, guid: cf5e3b6de82e34e4eb1b2089802c78d3, type: 2}
+  m_requiredKeys:
+  - {fileID: 11400000, guid: bf496f7d69501f84a97585ee4541db24, type: 2}
+  - {fileID: 11400000, guid: cbca3fc53a96ca04889878821d868312, type: 2}
+  - {fileID: 11400000, guid: 6447772751c0ca141b3b32610cd259de, type: 2}
+  - {fileID: 11400000, guid: 57103396a3d9aa84e8a8ea3d12036e46, type: 2}
+  - {fileID: 11400000, guid: b263d388938fdf64690533bdbdab81c6, type: 2}
   m_singleUse: 0
   m_gameFlagID: chest_06
   m_openedAnimationParameter: opened
@@ -300,13 +305,13 @@ MonoBehaviour:
   m_damageAmount: 3
   m_damageType: 1
   m_distanceType: 2
-  m_randomGenerateKey: 0
+  m_randomGenerateKey: 1
   m_openedSound: {fileID: 11400000, guid: 9f507ff38646b6547a26362dec8eb8f3, type: 2}
   m_canNotOpenSound: {fileID: 11400000, guid: ee433512032d27141a35fb0594cc25be, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 8303503610807058435
+    - rid: 8303503610807058434
       type: {class: ChestInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_chest: {fileID: 5733890042131917482}

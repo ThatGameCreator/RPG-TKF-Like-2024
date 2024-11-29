@@ -99,19 +99,8 @@ namespace Gyvr.Mythril2D
             m_nowLootedCount++;
 
             // 检查是否触发不生成物品的概率
-            if (UnityEngine.Random.value < lootTable.lootRate)
-            {
-                Debug.Log("没有获得任何物品或金钱。");
-
-                // 检查是否已达到最大掠夺次数
-                if (m_nowLootedCount >= m_randomMaxLootedCount)
-                {
-                    this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
-                }
-
-                return false;
-            }
-            else
+            // 在概率范围内则生成 概率越大几率越大
+            if (UnityEngine.Random.value <= lootTable.lootRate)
             {
                 // 随机决定掠夺物品还是金钱
                 bool lootItem = Random.Range(0, 2) == 0;
@@ -147,6 +136,18 @@ namespace Gyvr.Mythril2D
                 }
 
                 return true; // 表示本次掠夺成功
+            }
+            else
+            {
+                Debug.Log("没有获得任何物品或金钱。");
+
+                // 检查是否已达到最大掠夺次数
+                if (m_nowLootedCount >= m_randomMaxLootedCount)
+                {
+                    this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                }
+
+                return false;
             }
         }
     }

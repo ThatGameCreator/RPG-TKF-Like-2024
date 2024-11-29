@@ -34,5 +34,9 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: c4f337cc698e1ae41a45232d31ff1a85, type: 2}
     maxQuantity: 1
     weight: 1
-  money: 10
+  - item: {fileID: 11400000, guid: 8e9002f1c3ebd904e8f1999accd2d0ec, type: 2}
+    maxQuantity: 3
+    weight: 1
+  money: 6
   maxLootedCount: 3
+  lootRate: 50
