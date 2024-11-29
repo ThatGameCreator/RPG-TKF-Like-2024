@@ -10,32 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: MainMenuTable_en
+  m_Name: WarehouseTable_zh-Hans
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: en
-  m_SharedData: {fileID: 11400000, guid: 84c0e9b4cc0d21949a99559df39dc761, type: 2}
+    m_Code: zh-Hans
+  m_SharedData: {fileID: 11400000, guid: 879a7f6db9abbeb4e91a96ea29a61bb8, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 125333274624
-    m_Localized: Start Game
+  - m_Id: 39777861632
+    m_Localized: "\u4ED3\u5E93"
     m_Metadata:
       m_Items: []
-  - m_Id: 2408548565909504
-    m_Localized: Quit
-    m_Metadata:
-      m_Items: []
-  - m_Id: 384310575104
-    m_Localized: Quit Game
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2406516303986688
-    m_Localized: Items
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2408863944015872
-    m_Localized: Pause
+  - m_Id: 391977762816
+    m_Localized: "\u80CC\u5305"
     m_Metadata:
       m_Items: []
   references:
