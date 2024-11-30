@@ -134,7 +134,7 @@ namespace Gyvr.Mythril2D
                     flags = EDamageFlag.None
                 });
 
-                this.gameObject.layer = LayerMask.NameToLayer("Default");
+                this.gameObject.layer = LayerMask.NameToLayer("Collision D");
 
                 return true;
             }
@@ -203,7 +203,7 @@ namespace Gyvr.Mythril2D
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
                 }
 
-                this.gameObject.layer =  LayerMask.NameToLayer("Default");
+                this.gameObject.layer =  LayerMask.NameToLayer("Collision D");
 
                 if (m_emptySpriteLibraryAsset)
                 {

@@ -27,7 +27,7 @@ namespace Gyvr.Mythril2D
             // 检查是否已达到最大掠夺次数
             if (m_nowLootedCount >= m_randomMaxLootedCount)
             {
-                this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                this.gameObject.layer = LayerMask.NameToLayer("Collision D"); // 设置为不可被掠夺
             }
 
             AssignRandomSprite();
@@ -132,7 +132,7 @@ namespace Gyvr.Mythril2D
                 // 检查是否已达到最大掠夺次数
                 if (m_nowLootedCount >= m_randomMaxLootedCount)
                 {
-                    this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                    this.gameObject.layer = LayerMask.NameToLayer("Collision D"); // 设置为不可被掠夺
                 }
 
                 return true; // 表示本次掠夺成功
@@ -144,7 +144,7 @@ namespace Gyvr.Mythril2D
                 // 检查是否已达到最大掠夺次数
                 if (m_nowLootedCount >= m_randomMaxLootedCount)
                 {
-                    this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                    this.gameObject.layer = LayerMask.NameToLayer("Collision D"); // 设置为不可被掠夺
                 }
 
                 return false;
