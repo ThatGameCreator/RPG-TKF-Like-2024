@@ -170,69 +170,78 @@ namespace Gyvr.Mythril2D
 
         public bool TryOpen()
         {
-            if (!m_opened)
+            if (GameManager.InventorySystem.IsBackpackFull())
             {
-                TryPlayOpeningAnimation(true);
+                GameManager.DialogueSystem.Main.PlayNow("Backpack is full...");
 
-                if (IsActiveMonsterChest() == true)
+                return false;
+            }
+            else
+            {
+                if (!m_opened)
                 {
+                    TryPlayOpeningAnimation(true);
+
+                    if (IsActiveMonsterChest() == true)
+                    {
+                        return true;
+                    }
+
+
+                    if (lootTable.entries != null && lootTable.entries.Length > 0)
+                    {
+                        //Debug.Log("lootItem");
+
+                        // 使用基于权重的随机选择机制
+                        var randomEntry = GetRandomLootEntry();
+
+                        if (randomEntry != null)
+                        {
+                            int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
+                            GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                        }
+
+                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
+                    }
+                    if (lootTable.money > 0)
+                    {
+                        int randomMoney = Random.Range(1, lootTable.money + 1);
+                        GameManager.InventorySystem.AddMoney(randomMoney);
+
+                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
+                    }
+
+                    this.gameObject.layer = LayerMask.NameToLayer("Collision D");
+
+                    if (m_emptySpriteLibraryAsset)
+                    {
+                        m_nowSpriteLibrary.spriteLibraryAsset = m_emptySpriteLibraryAsset;
+                    }
+
+                    if (m_requiredKey)
+                    {
+                        GameManager.InventorySystem.RemoveFromBag(m_requiredKey);
+                    }
+
+                    m_opened = true;
+
+                    if (m_singleUse)
+                    {
+                        if (string.IsNullOrWhiteSpace(m_gameFlagID))
+                        {
+                            Debug.LogError("No ChestID provided while SingleUse is checked. Make sure to provide this chest with an ID");
+                        }
+                        else
+                        {
+                            GameManager.GameFlagSystem.Set(m_gameFlagID, true);
+                        }
+                    }
+
                     return true;
                 }
 
-
-                if (lootTable.entries != null && lootTable.entries.Length > 0)
-                {
-                    //Debug.Log("lootItem");
-
-                    // 使用基于权重的随机选择机制
-                    var randomEntry = GetRandomLootEntry();
-
-                    if (randomEntry != null)
-                    {
-                        int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
-                        GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
-                    }
-
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
-                }
-                if (lootTable.money > 0)
-                {
-                    int randomMoney = Random.Range(1, lootTable.money + 1);
-                    GameManager.InventorySystem.AddMoney(randomMoney);
-
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
-                }
-
-                this.gameObject.layer =  LayerMask.NameToLayer("Collision D");
-
-                if (m_emptySpriteLibraryAsset)
-                {
-                    m_nowSpriteLibrary.spriteLibraryAsset = m_emptySpriteLibraryAsset;
-                }
-
-                if (m_requiredKey)
-                {
-                    GameManager.InventorySystem.RemoveFromBag(m_requiredKey);
-                }
-
-                m_opened = true;
-
-                if (m_singleUse)
-                {
-                    if (string.IsNullOrWhiteSpace(m_gameFlagID))
-                    {
-                        Debug.LogError("No ChestID provided while SingleUse is checked. Make sure to provide this chest with an ID");
-                    }
-                    else
-                    {
-                        GameManager.GameFlagSystem.Set(m_gameFlagID, true);
-                    }
-                }
-
-                return true;
+                return false;
             }
-
-            return false;
         }
     }
 }

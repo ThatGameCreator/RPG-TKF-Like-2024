@@ -43,7 +43,7 @@ namespace Gyvr.Mythril2D
         {
             foreach (var evacuation in Get(teleportName))
             {
-                evacuation.SetActive(false);
+                evacuation.SetActive(true);
             }
         }
     }

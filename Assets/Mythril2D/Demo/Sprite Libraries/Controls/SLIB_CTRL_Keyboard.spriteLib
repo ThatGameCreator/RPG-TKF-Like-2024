@@ -141,6 +141,22 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -1878166944, guid: da96492e8269a6e43b430f5cb76f1791, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 2
+  - m_Name: Run
+    m_Hash: 675013152
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Idle
+      m_Hash: 1008081451
+      m_Sprite: {fileID: 335569200, guid: da96492e8269a6e43b430f5cb76f1791, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 335569200, guid: da96492e8269a6e43b430f5cb76f1791, type: 3}
+    - m_Name: Pressed
+      m_Hash: 350847462
+      m_Sprite: {fileID: 1865582777, guid: da96492e8269a6e43b430f5cb76f1791, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1865582777, guid: da96492e8269a6e43b430f5cb76f1791, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 0
   m_PrimaryLibraryGUID: d94e4c183d468470e97ffccae2b0884d
-  m_ModificationHash: 638684294900951058
+  m_ModificationHash: 638686179545176246
   m_Version: 1

@@ -102,12 +102,7 @@ namespace Gyvr.Mythril2D
                         // 获取 distanceType 属性
                         EDistanceType distanceType = damageDescriptor.distanceType;
 
-                        if (distanceType == EDistanceType.Melee)
-                        {
-                            // 0.25时候 好像太短会让玩家进入到碰撞体中，导致检测不到对象
-                            m_attackTriggerRadius = 1.0f;
-                        }
-                        else
+                        if (distanceType == EDistanceType.Ranged)
                         {
                             m_attackTriggerRadius = 8.0f;
                             m_attackCooldown = 3.0f;

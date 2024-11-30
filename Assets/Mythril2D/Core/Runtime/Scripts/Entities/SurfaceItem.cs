@@ -24,35 +24,44 @@ namespace Gyvr.Mythril2D
 
         public bool TryLooted()
         {
-            if (m_looted == false)
+            if (GameManager.InventorySystem.IsBackpackFull())
             {
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+                GameManager.DialogueSystem.Main.PlayNow("Backpack is full...");
 
-                if (m_loot.entries != null)
+                return false;
+            }
+            else
+            {
+                if (m_looted == false)
                 {
-                    if (GameManager.InventorySystem.IsBackpackFull() == false)
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+
+                    if (m_loot.entries != null)
                     {
-                        foreach (var entry in m_loot.entries)
+                        if (GameManager.InventorySystem.IsBackpackFull() == false)
                         {
-                            GameManager.InventorySystem.AddToBag(entry.item, entry.quantity);
+                            foreach (var entry in m_loot.entries)
+                            {
+                                GameManager.InventorySystem.AddToBag(entry.item, entry.quantity);
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+
+                        if (m_loot.money != 0)
+                        {
+                            GameManager.InventorySystem.AddMoney(m_loot.money);
                         }
                     }
-                    else
-                    {
-                        return false;
-                    }
-                    
-                    if (m_loot.money != 0)
-                    {
-                        GameManager.InventorySystem.AddMoney(m_loot.money);
-                    }
+                    Destroy(this.gameObject);
+
+                    return m_looted = true;
                 }
-                Destroy(this.gameObject);
 
-                return m_looted = true;
+                return false;
             }
-
-            return false;
         }
 
     }

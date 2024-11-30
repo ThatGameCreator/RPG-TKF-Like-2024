@@ -32,28 +32,8 @@ MonoBehaviour:
       money: 0
       items: []
     inventory:
-      money: 50000
-      items:
-      - itemReference:
-          m_instance: {fileID: 11400000, guid: 1be6f04ea123b37469bcdf5e23488be6, type: 2}
-          m_guid: 1be6f04ea123b37469bcdf5e23488be6
-        quantity: 1
-      - itemReference:
-          m_instance: {fileID: 11400000, guid: 48cb8c471a4ea2b4cb2fd0336ba4446a, type: 2}
-          m_guid: 48cb8c471a4ea2b4cb2fd0336ba4446a
-        quantity: 1
-      - itemReference:
-          m_instance: {fileID: 11400000, guid: 71715f94ca54818499cdcf411afadf29, type: 2}
-          m_guid: 71715f94ca54818499cdcf411afadf29
-        quantity: 1
-      - itemReference:
-          m_instance: {fileID: 11400000, guid: 8e9002f1c3ebd904e8f1999accd2d0ec, type: 2}
-          m_guid: 8e9002f1c3ebd904e8f1999accd2d0ec
-        quantity: 10
-      - itemReference:
-          m_instance: {fileID: 11400000, guid: ff033e2c8e840d24082f8b3db6821391, type: 2}
-          m_guid: ff033e2c8e840d24082f8b3db6821391
-        quantity: 1
+      money: 100
+      items: []
     gameFlags:
       flags: []
     player:
@@ -70,11 +50,11 @@ MonoBehaviour:
       equipments: []
       bonusAbilities: []
       equippedAbilities:
-      - m_instance: {fileID: 11400000, guid: ad16c9de90a854d52a520b25daa92915, type: 2}
-        m_guid: ad16c9de90a854d52a520b25daa92915
       - m_instance: {fileID: 11400000, guid: bbae892183c10834ea86069c30be4206, type: 2}
         m_guid: bbae892183c10834ea86069c30be4206
-      dashAbility: {fileID: 0}
+      - m_instance: {fileID: 11400000, guid: ad16c9de90a854d52a520b25daa92915, type: 2}
+        m_guid: ad16c9de90a854d52a520b25daa92915
+      dashAbility: {fileID: 11400000, guid: b742ac521f6a560498daa197a5483671, type: 2}
       position: {x: 1.5, y: 3.5, z: 0}
   references:
     version: 2
