@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3522f9f384f21fa4fa7417c4c488399d, type: 3}
   m_Name: Demon Slime Lair
   m_EditorClassIdentifier: 
-  entries: []
+  entries:
+  - entity: {fileID: 7464264473247923315, guid: 9b3901b8976d5e14bb4e46d6cc84191d, type: 3}
+    weight: 2
+  - entity: {fileID: 7464264473247923315, guid: e94c8d9cf7a6c4542b0e7f5ea1b9db18, type: 3}
+    weight: 2
+  - entity: {fileID: 7464264473247923315, guid: bee079f100098684b864f6dda8d9b72f, type: 3}
+    weight: 1
+  - entity: {fileID: 7464264473247923315, guid: 1d91abd8b37e8864cae46a4a6839388c, type: 3}
+    weight: 1
+  generateRate: 20

@@ -22,7 +22,7 @@ MonoBehaviour:
   m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
   stats:
     m_initialValue:
-      m_values: 140000000400000000000000010000000400000004000000060000000500000002000000
+      m_values: 100000000400000000000000000000000400000004000000060000000500000002000000
     m_evolutionProfile:
       serializedVersion: 2
       m_Curve:
@@ -47,9 +47,9 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_evolutionScale: 3
+    m_evolutionScale: 0.5
   experience:
-    m_initialValue: 10
+    m_initialValue: 5
     m_evolutionProfile:
       serializedVersion: 2
       m_Curve:
@@ -74,7 +74,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_evolutionScale: 3
+    m_evolutionScale: 1.2
   lootTable: {fileID: 11400000, guid: 74bc4165044a269498df2039428e7813, type: 2}
   executeOnDeath:
     rid: -2

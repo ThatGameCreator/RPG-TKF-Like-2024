@@ -58,7 +58,7 @@ MonoBehaviour:
     m_values: 640000000500000005000000050000000500000005000000050000000500000005000000
   pointsPerLevel: 3
   experience:
-    m_initialValue: 100
+    m_initialValue: 50
     m_evolutionProfile:
       serializedVersion: 2
       m_Curve:
@@ -83,4 +83,4 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_evolutionScale: 50
+    m_evolutionScale: 10

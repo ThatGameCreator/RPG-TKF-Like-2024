@@ -48,7 +48,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_evolutionScale: 1
+    m_evolutionScale: 0.5
   experience:
     m_initialValue: 10
     m_evolutionProfile:
@@ -75,7 +75,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_evolutionScale: 3
+    m_evolutionScale: 1.2
   lootTable: {fileID: 11400000, guid: 5096b68ed34c7304ebd5c7ce4e74a03a, type: 2}
   executeOnDeath:
     rid: -2
