@@ -33,27 +33,13 @@ namespace Gyvr.Mythril2D
         //Dictionary<TKey, TValue> m_dict;
 
         [SerializeField]
-        private List<KeyValuePair<TKey, TValue>> m_keyValuePairs = new List<KeyValuePair<TKey, TValue>>();
+        //private List<KeyValuePair<TKey, TValue>> m_keyValuePairs = new List<KeyValuePair<TKey, TValue>>();
         private Dictionary<TKey, TValue> m_dict = new Dictionary<TKey, TValue>(); // 核心字典数据
 
         [SerializeField]
         private List<TKey> m_keys = new List<TKey>(); // 用于序列化的键列表
         [SerializeField]
         private List<TValue> m_values = new List<TValue>(); // 用于序列化的值列表
-
-
-        // 同步字典到键值列表
-        private void SyncDictionaryToLists()
-        {
-            m_keys.Clear();
-            m_values.Clear();
-
-            foreach (var kvp in m_dict)
-            {
-                m_keys.Add(kvp.Key);
-                m_values.Add(kvp.Value);
-            }
-        }
 
         // 同步键值列表回字典
         private void SyncListsToDictionary()
@@ -70,30 +56,52 @@ namespace Gyvr.Mythril2D
             {
                 if (m_keys[i] == null)
                 {
-                    Debug.LogError($"Key at index {i} is null. Cannot add to dictionary.");
-                    continue;  // 跳过当前键为 null 的项
+                    Debug.LogWarning($"Skipping null key at index {i}."); // 改为警告
+                    continue;
                 }
 
                 if (!m_dict.ContainsKey(m_keys[i]))
                 {
                     m_dict[m_keys[i]] = m_values[i];
                 }
+                else
+                {
+                    Debug.LogWarning($"Duplicate key detected: {m_keys[i]}");
+                }
             }
-
         }
-
 
         // 在序列化前同步数据
         public void OnBeforeSerialize()
         {
-            SyncDictionaryToLists();
+            m_keys.Clear();
+            m_values.Clear();
+
+            foreach (var kvp in m_dict)
+            {
+                if (kvp.Key != null)  // 确认键不为 null
+                {
+                    m_keys.Add(kvp.Key);
+                    m_values.Add(kvp.Value);
+                }
+                else
+                {
+                    Debug.LogWarning("Skipping null key during serialization.");
+                }
+            }
         }
 
         // 在反序列化后同步数据
         public void OnAfterDeserialize()
         {
+            if (m_keys == null) m_keys = new List<TKey>();
+            if (m_values == null) m_values = new List<TValue>();
+
+            //Debug.Log($"Deserializing: m_keys count = {m_keys.Count}, m_values count = {m_values.Count}");
+
             SyncListsToDictionary();
         }
+
 
         //public void OnAfterDeserialize()
         //{
@@ -297,14 +305,35 @@ namespace Gyvr.Mythril2D
 
         #region ISerializable
 
-        protected SerializableDictionaryBase(SerializationInfo info, StreamingContext context)
-        {
-            m_dict = new Dictionary<TKey, TValue>(info, context);
-        }
+        //protected SerializableDictionaryBase(SerializationInfo info, StreamingContext context)
+        //{
+        //    m_dict = new Dictionary<TKey, TValue>(info, context);
+        //}
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            ((ISerializable)m_dict).GetObjectData(info, context);
+            foreach (var kvp in m_dict)
+            {
+                string keyString = kvp.Key.ToString(); // 假设 TKey 实现了 ToString()
+                info.AddValue(keyString, kvp.Value);
+            }
+        }
+        protected SerializableDictionaryBase(SerializationInfo info, StreamingContext context)
+        {
+            m_dict = new Dictionary<TKey, TValue>();
+            foreach (SerializationEntry entry in info)
+            {
+                try
+                {
+                    TKey key = (TKey)Convert.ChangeType(entry.Name, typeof(TKey)); // 使用 Convert.ChangeType 转换
+                    TValue value = (TValue)entry.Value;
+                    m_dict.Add(key, value);
+                }
+                catch (InvalidCastException e)
+                {
+                    Debug.LogError($"Failed to deserialize key '{entry.Name}': {e.Message}");
+                }
+            }
         }
 
         #endregion

@@ -27,11 +27,11 @@ namespace Gyvr.Mythril2D
         // 每秒消耗多少耐力
         [SerializeField] private float staminaMultiplier = 7;
         // 耐力回复前，等待时间
-        [SerializeField] private float timeBeforeStaminaRengeStarts = 1.5f;
+        [SerializeField] private float timeBeforeStaminaRengeStarts = 1.25f;
         // 每次单位耐力回复量
         [SerializeField] private float staminaValueIncrement = 2;
         // 单位耐力回复间隔时间
-        [SerializeField] private float staminaTimeIncrement = 0.1f;
+        [SerializeField] private float staminaTimeIncrement = 0.05f;
         // 当前耐力
         public float currentStamina => m_currentStats.Stamina;
         public float maxStamina => m_sheet.GetMaxStamina();
