@@ -191,12 +191,25 @@ namespace Gyvr.Mythril2D
 
             using (new EditorGUILayout.HorizontalScope())
             {
-                int newPrice = EditorGUILayout.IntField("New Price for All", 0);
+                int newBuyPrice = EditorGUILayout.IntField("New Buy Price for All", 0);
                 if (GUILayout.Button("Apply Price", GUILayout.Width(100)))
                 {
                     ApplyBatchOperation(item =>
                     {
-                        item.Price = newPrice;
+                        item.buyPrice = newBuyPrice;
+                        return true;
+                    });
+                }
+            }
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                int newSellPrice = EditorGUILayout.IntField("New Sell Price for All", 0);
+                if (GUILayout.Button("Apply Price", GUILayout.Width(100)))
+                {
+                    ApplyBatchOperation(item =>
+                    {
+                        item.sellPrice = newSellPrice;
                         return true;
                     });
                 }
@@ -306,7 +319,8 @@ namespace Gyvr.Mythril2D
                     DrawSerializedProperty(serializedItem, "m_displayName", "DisplayName");
                     DrawSerializedProperty(serializedItem, "m_description", "Description");
                     DrawSerializedProperty(serializedItem, "m_category", "Category");
-                    DrawSerializedProperty(serializedItem, "m_price", "Price");
+                    DrawSerializedProperty(serializedItem, "m_buyPrice", "Buy Price");
+                    DrawSerializedProperty(serializedItem, "m_sellPrice", "Sell Price");
                     DrawSerializedProperty(serializedItem, "m_isStackable", "Is Stackable");
 
                     // Equipment-specific properties

@@ -25,7 +25,8 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Sprite m_icon = null;
         [SerializeField] private string m_displayName = string.Empty;
         [SerializeField] private string m_description = string.Empty;
-        [SerializeField] private int m_price = 50;
+        [SerializeField] private int m_buyPrice = 50;
+        [SerializeField] private int m_sellPrice = 50;
         [SerializeField] private bool m_isStackable = false; // 默认设置为不可堆叠
 
 
@@ -75,10 +76,16 @@ namespace Gyvr.Mythril2D
             set => m_description = value;
         }
 
-        public int Price
+        public int buyPrice
         {
-            get => m_price;
-            set => m_price = value;
+            get => m_buyPrice;
+            set => m_buyPrice = value;
+        }
+
+        public int sellPrice
+        {
+            get => m_sellPrice;
+            set => m_sellPrice = value;
         }
 
         public bool IsStackable

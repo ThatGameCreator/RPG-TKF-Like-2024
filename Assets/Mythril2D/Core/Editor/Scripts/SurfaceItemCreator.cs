@@ -12,7 +12,7 @@ namespace Gyvr.Mythril2D
         public static void CreateSurfaceItemPrefabs()
         {
             // 指定Item数据的路径
-            string itemFolderPath = "Assets/Mythril2D/Demo/Database/Items/Equipments"; // 修改为你存放Item数据的文件夹路径
+            string itemFolderPath = "Assets/Mythril2D/Demo/Database/Items/Monster Drops/"; // 修改为你存放Item数据的文件夹路径
             string[] itemGuids = AssetDatabase.FindAssets("t:Item", new[] { itemFolderPath });
 
             foreach (string guid in itemGuids)
@@ -76,7 +76,7 @@ namespace Gyvr.Mythril2D
 
 
                 // 创建预制体路径
-                string prefabPath = $"Assets/Mythril2D/Demo/Prefabs/Entities/Generate/Equipments/{item.DisplayName}.prefab";
+                string prefabPath = $"Assets/Mythril2D/Demo/Prefabs/Entities/Generate/Monster Drops/{item.DisplayName}.prefab";
                 string directoryPath = System.IO.Path.GetDirectoryName(prefabPath);
                 if (!AssetDatabase.IsValidFolder(directoryPath))
                 {

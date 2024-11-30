@@ -16,7 +16,8 @@ MonoBehaviour:
   m_icon: {fileID: 225067649, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
   m_displayName: Big Mana Potion
   m_description: Restores 5 <mana> points
-  m_price: 100
+  m_buyPrice: 0
+  m_sellPrice: 0
   m_isStackable: 0
   m_manaToRestore: 5
   m_drinkAudio: {fileID: 11400000, guid: 6169e1eb2a9a87640a3b43f31e3ab758, type: 2}

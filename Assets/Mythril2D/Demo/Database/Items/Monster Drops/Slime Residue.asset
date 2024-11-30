@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0289099dc5b3f49b3b9ca3cf8f6b7baa, type: 3}
-  m_Name: ITEM_Bone
+  m_Name: Slime Residue
   m_EditorClassIdentifier: 
   m_category: 1
-  m_icon: {fileID: -683347236, guid: c94cf32db75ba2e429c4186822410ca0, type: 3}
-  m_displayName: Bone
-  m_description: A weathered bone etched with ancient runes, said to hold mystical
-    powers
-  m_price: 20
+  m_icon: {fileID: 638745843, guid: b66f814323f71054e9b1ee379c9b94dd, type: 3}
+  m_displayName: Slime Residue
+  m_description: Viscous and viridescent, this juice is distilled from the remains
+    of slimes and fetches a hefty price
+  m_buyPrice: 0
+  m_sellPrice: 0
   m_isStackable: 0
