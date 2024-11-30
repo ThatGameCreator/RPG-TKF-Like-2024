@@ -16,8 +16,9 @@ MonoBehaviour:
   m_displayName: Chaos Wizard
   m_abilitiesPerLevel:
     m_keys:
-    - {fileID: 11400000, guid: ff56951987085044c8054f9957fd01c4, type: 2}
-    m_values: 01000000
+    - {fileID: 11400000, guid: 6750421e405cf8f4594eff202ce43359, type: 2}
+    - {fileID: 11400000, guid: e965ddeda9395b54bbb9755cdc70f683, type: 2}
+    m_values: 0100000001000000
   m_hitAudio: {fileID: 11400000, guid: a4e5377a4fc466b41889cf9f0874ca00, type: 2}
   m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
   stats:
@@ -74,7 +75,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_evolutionScale: 1.2
+    m_evolutionScale: 1.5
   lootTable: {fileID: 11400000, guid: 5096b68ed34c7304ebd5c7ce4e74a03a, type: 2}
   executeOnDeath:
     rid: -2

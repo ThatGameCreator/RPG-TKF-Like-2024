@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf9e15887b6047e1a68d8e1fece64b1, type: 3}
+  m_Name: Choas Rotten Demon In Hotbed Melee
+  m_EditorClassIdentifier: 
+  m_alignment: 1
+  m_displayName: Rotten Demon
+  m_abilitiesPerLevel:
+    m_keys:
+    - {fileID: 11400000, guid: e88c025ffe08fbf4d8816ab7e8e8f8ac, type: 2}
+    - {fileID: 11400000, guid: 37f7a3e3a82f2a943a3c090769f79d50, type: 2}
+    - {fileID: 11400000, guid: 99a1ae71ae3546d409ad9ca3d6bce26c, type: 2}
+    - {fileID: 11400000, guid: 8581e61412dab0c44a57db2e02d17b76, type: 2}
+    m_values: 01000000010000000100000001000000
+  m_hitAudio: {fileID: 11400000, guid: a4e5377a4fc466b41889cf9f0874ca00, type: 2}
+  m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
+  stats:
+    m_initialValue:
+      m_values: 080000000100000000000000040000000000000004000000040000000400000001000000
+    m_evolutionProfile:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_evolutionScale: 0.5
+  experience:
+    m_initialValue: 9
+    m_evolutionProfile:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_evolutionScale: 1.5
+  lootTable: {fileID: 11400000, guid: c47578210a26b5d419da7213133f7221, type: 2}
+  executeOnDeath:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

@@ -291,11 +291,7 @@ MonoBehaviour:
   m_emptySpriteLibraryAsset: {fileID: 7108339969198208228, guid: 329ce869e149a5a46a4524c526172946, type: 3}
   lootTable: {fileID: 11400000, guid: 244db1407a4a43f4dafa3fdbaca42991, type: 2}
   m_requiredKeys:
-  - {fileID: 11400000, guid: bf496f7d69501f84a97585ee4541db24, type: 2}
-  - {fileID: 11400000, guid: cbca3fc53a96ca04889878821d868312, type: 2}
-  - {fileID: 11400000, guid: 6447772751c0ca141b3b32610cd259de, type: 2}
-  - {fileID: 11400000, guid: 57103396a3d9aa84e8a8ea3d12036e46, type: 2}
-  - {fileID: 11400000, guid: b263d388938fdf64690533bdbdab81c6, type: 2}
+  - {fileID: 11400000, guid: ff033e2c8e840d24082f8b3db6821391, type: 2}
   m_singleUse: 0
   m_gameFlagID: chest_06
   m_openedAnimationParameter: opened
@@ -305,7 +301,7 @@ MonoBehaviour:
   m_damageAmount: 3
   m_damageType: 1
   m_distanceType: 2
-  m_randomGenerateKey: 1
+  m_randomGenerateKey: 0
   m_openedSound: {fileID: 11400000, guid: 9f507ff38646b6547a26362dec8eb8f3, type: 2}
   m_canNotOpenSound: {fileID: 11400000, guid: ee433512032d27141a35fb0594cc25be, type: 2}
   references:
