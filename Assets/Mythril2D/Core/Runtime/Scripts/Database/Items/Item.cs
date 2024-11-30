@@ -14,7 +14,8 @@ namespace Gyvr.Mythril2D
         Consumable,
         Resource,
         Gear,
-        Key
+        Key,
+        MonsterDrop,
     }
 
     [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(Item))]

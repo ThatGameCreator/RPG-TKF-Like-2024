@@ -74,6 +74,7 @@ MonoBehaviour:
     - gear
     - key
     - souls
+    - none
     m_values:
     - fullName: Gold
       shortName: G.
@@ -103,12 +104,12 @@ MonoBehaviour:
       shortName: Intel.
       description: 
       icon: {fileID: -827782456, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
-    - fullName: Armor
-      shortName: Armor
+    - fullName: Physical
+      shortName: Physical
       description: 
       icon: {fileID: -117338440, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
-    - fullName: Magic Resistance
-      shortName: Mag. Res.
+    - fullName: 'Magic '
+      shortName: 'Magic '
       description: 
       icon: {fileID: 567610833, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
     - fullName: Agility
@@ -147,8 +148,12 @@ MonoBehaviour:
       shortName: S.
       description: The power that stirs in the darkness.
       icon: {fileID: 567610833, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
+    - fullName: Unknow
+      shortName: N,
+      description: The power that stirs in the darkness.
+      icon: {fileID: 567610833, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
   m_statTermsBinding:
-    m_keys: 0000000001000000030000000400000005000000060000000700000008000000
+    m_keys: 000000000100000003000000040000000500000006000000070000000800000002000000
     m_values:
     - health
     - mana
@@ -158,6 +163,7 @@ MonoBehaviour:
     - magical_defense
     - agility
     - luck
+    - Unknow
   m_itemCategoryTermsBinding:
     m_keys: 00000000010000000200000003000000
     m_values:

@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8421550761b2409fadfe5c6658b5395, type: 3}
-  m_Name: Sliver Boots
+  m_Name: Silver Armor
   m_EditorClassIdentifier: 
   m_category: 2
-  m_icon: {fileID: -1733059907, guid: e547f8dda4bd87d4da42dd00e4adfb3f, type: 3}
-  m_displayName: Sliver Boots
+  m_icon: {fileID: 714455812, guid: e547f8dda4bd87d4da42dd00e4adfb3f, type: 3}
+  m_displayName: Silver Armor
   m_description: 
-  m_buyPrice: 0
-  m_sellPrice: 0
+  m_buyPrice: 50
+  m_sellPrice: 25
   m_isStackable: 0
   m_equipAudio: {fileID: 11400000, guid: 9fa8803b447617b48b9981e6b61432a2, type: 2}
   m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
-  m_type: 4
+  m_type: 2
   m_bonusStats:
-    m_values: 000000000000000000000000000000000000000000000000000000000000000000000000
+    m_values: 000000000000000000000000000000000000000004000000040000000000000000000000
   m_visualOverride: {fileID: 0}
   m_capacity: 0
   m_ability: []

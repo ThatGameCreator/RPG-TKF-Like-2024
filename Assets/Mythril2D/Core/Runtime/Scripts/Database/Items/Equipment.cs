@@ -40,6 +40,7 @@ namespace Gyvr.Mythril2D
             get => m_ability;
             set => m_ability = value;
         }
+
         public Stats bonusStats
         {
             get => m_bonusStats;
@@ -98,7 +99,6 @@ namespace Gyvr.Mythril2D
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_unequipAudio);
                 }
             }
-            
         }
     }
 }

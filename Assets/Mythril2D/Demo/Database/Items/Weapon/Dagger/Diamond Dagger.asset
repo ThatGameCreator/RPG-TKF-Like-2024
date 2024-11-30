@@ -16,14 +16,14 @@ MonoBehaviour:
   m_icon: {fileID: 1116455578, guid: f03b68ec21bc47e4787ad6057bf26849, type: 3}
   m_displayName: Diamond Dagger
   m_description: Simple Dagger made out of diamond .
-  m_buyPrice: 0
-  m_sellPrice: 0
+  m_buyPrice: 80
+  m_sellPrice: 40
   m_isStackable: 0
   m_equipAudio: {fileID: 11400000, guid: 9fa8803b447617b48b9981e6b61432a2, type: 2}
   m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
   m_type: 0
   m_bonusStats:
-    m_values: 000000000000000000000000000000000000000000000000000000000000000000000000
+    m_values: 000000000000000000000000050000000000000000000000000000000000000000000000
   m_visualOverride: {fileID: 7108339969198208228, guid: 0b177f858c1022d47a72ca70d7a61d08, type: 3}
   m_capacity: 0
   m_ability:
