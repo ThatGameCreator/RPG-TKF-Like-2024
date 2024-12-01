@@ -72,7 +72,14 @@ namespace Gyvr.Mythril2D
             UpdateUI();
         }
 
+        private void OnItemDiscarded(Item item, EItemLocation location)
+        {
+            item.Use(GameManager.Player, location);
+            UpdateUI();
+        }
+
         private void OnBagItemClicked(Item item) => OnItemClicked(item, EItemLocation.Bag);
+        private void OnBagItemDiscarded(Item item) => OnItemDiscarded(item, EItemLocation.Bag);
         private void OnEquipmentItemClicked(Item item) => OnItemClicked(item, EItemLocation.Equipment);
     }
 }

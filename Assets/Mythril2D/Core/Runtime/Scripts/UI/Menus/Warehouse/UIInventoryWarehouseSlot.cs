@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Gyvr.Mythril2D
@@ -16,6 +17,61 @@ namespace Gyvr.Mythril2D
         private Item m_item = null;               // 基础物品信息
         private ItemInstance m_itemInstance = null; // 具体物品实例信息
         private bool m_selected = false;
+        private bool isPointerDown = false;
+        private float pointerDownTimer = 0f;
+        private const float longPressThreshold = 2f; // 长按时间阈值
+
+        private void Update()
+        {
+            if (isPointerDown)
+            {
+                pointerDownTimer += Time.deltaTime;
+                if (pointerDownTimer >= longPressThreshold)
+                {
+                    OnLongPress();
+                    ResetLongPress();
+                }
+            }
+        }
+
+        private void Start()
+        {
+            GameManager.InputSystem.ui.submit.started += OnSubmitDown;
+            GameManager.InputSystem.ui.submit.canceled += OnSubmitUp;
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.InputSystem.ui.submit.started -= OnSubmitDown;
+            GameManager.InputSystem.ui.submit.canceled -= OnSubmitUp;
+        }
+
+        public void OnSubmitDown(InputAction.CallbackContext context)
+        {
+            isPointerDown = true;
+            pointerDownTimer = 0f;
+        }
+
+        public void OnSubmitUp(InputAction.CallbackContext context)
+        {
+            ResetLongPress();
+        }
+
+        private void OnLongPress()
+        {
+            if (m_item != null)
+            {
+                Debug.Log("Long press detected, item discarded.");
+                SendMessageUpwards("OnItemDiscarded", m_itemInstance, SendMessageOptions.RequireReceiver);
+                Clear(); // 清除物品槽
+            }
+        }
+
+        private void ResetLongPress()
+        {
+            isPointerDown = false;
+            pointerDownTimer = 0f;
+        }
 
         public void Clear() => SetItem(null, 0);
 

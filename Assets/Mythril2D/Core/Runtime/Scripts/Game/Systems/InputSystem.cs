@@ -21,6 +21,7 @@ namespace Gyvr.Mythril2D
         public InputAction cancel;
         public InputAction skip;
         public InputAction navigate;
+        public InputAction submit;
     }
 
     public enum EActionMap
@@ -97,7 +98,8 @@ namespace Gyvr.Mythril2D
             {
                 cancel = actions.FindAction("Cancel"),
                 skip = actions.FindAction("Skip"),
-                navigate = actions.FindAction("Navigate")
+                navigate = actions.FindAction("Navigate"),
+                submit = actions.FindAction("Submit"),
             };
         }
     }
