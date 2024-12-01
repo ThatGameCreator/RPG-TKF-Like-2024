@@ -35,7 +35,7 @@ namespace Gyvr.Mythril2D
 
                         string teleportName = teleportNames[UnityEngine.Random.Range(0, teleportNames.Length)];
 
-                        GameManager.TeleportLoadingSystem.RequestTransition("That_Abyss", null, null,
+                        GameManager.TeleportLoadingSystem.RequestTransition("That_Abyss", null,
                             () =>
                             {
                                 //var teleports = GameObject.Find("Player Spawner");
@@ -49,7 +49,7 @@ namespace Gyvr.Mythril2D
                                 GameManager.DayNightSystem.OnEnableDayNightSystem();
 
                                 GameManager.NotificationSystem.SetActiveEvacuation.Invoke(teleportName);
-                            }, 
+                            }, null, 
                             ETeleportType.Normal, teleportName);
 
                         // 在 lambda 里面居然没有赋值？
