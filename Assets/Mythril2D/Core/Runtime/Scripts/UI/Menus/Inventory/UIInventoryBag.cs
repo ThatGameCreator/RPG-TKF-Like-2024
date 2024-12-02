@@ -67,17 +67,22 @@ namespace Gyvr.Mythril2D
             // 清空所有格子
             foreach (var slot in m_slots)
             {
+                //Debug.Log(slot);
                 slot.Clear();
+                // 重置被选中标签 否则直接退出菜单会有一个格子仍被标记为选中
+                slot.setSlectedFalse();
             }
 
             int usedSlots = 0;
-
             List<ItemInstance> items = GameManager.InventorySystem.backpackItems;
 
-            foreach (ItemInstance instance in items)
-            {
-                if (usedSlots >= m_slots.Count) break; // 防止槽位越界
+            // 确保背包中的物品数不超过槽位数量
+            int maxSlots = Mathf.Min(m_slots.Count, items.Count);
 
+            // 填充槽位
+            for (int i = 0; i < maxSlots; i++)
+            {
+                ItemInstance instance = items[i];
                 UIInventoryBagSlot slot = m_slots[usedSlots++];
                 slot.SetItem(instance.GetItem(), instance.quantity);
             }

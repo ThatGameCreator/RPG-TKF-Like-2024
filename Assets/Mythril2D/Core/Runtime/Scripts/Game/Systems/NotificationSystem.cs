@@ -45,7 +45,10 @@ namespace Gyvr.Mythril2D
         public UnityEvent<Hero, Entity> playerEndInteracte = new UnityEvent<Hero, Entity>();
         public UnityEvent<string> SetActiveEvacuation = new UnityEvent<string>();
 
-        public UnityEvent<Item> OnItemDiscarded = new UnityEvent<Item>();
+        public UnityEvent<ItemInstance, EItemLocation> OnBagItemDiscarded = new UnityEvent<ItemInstance, EItemLocation>();
+        public UnityEvent<ItemInstance, EItemLocation> OnWarehouseItemDiscarded = new UnityEvent<ItemInstance, EItemLocation>();
+        public UnityEvent<ItemInstance, EItemLocation> OnShopItemDiscarded = new UnityEvent<ItemInstance, EItemLocation>();
+        public UnityEvent<Equipment, EItemLocation> OnEquipmentDiscarded = new UnityEvent<Equipment, EItemLocation>();
 
         public UnityEvent<TeleportLoadingDelegationParams> mapTransitionDelegationRequested = new UnityEvent<TeleportLoadingDelegationParams>();
 

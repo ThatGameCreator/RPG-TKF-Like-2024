@@ -356,6 +356,7 @@ namespace Gyvr.Mythril2D
 
         public bool RemoveFromBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
+            Debug.Log("RemoveFromBag");
             bool success = false;
 
             if (item.IsStackable)

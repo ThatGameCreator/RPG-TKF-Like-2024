@@ -17,60 +17,43 @@ namespace Gyvr.Mythril2D
         private Item m_item = null;               // 基础物品信息
         private ItemInstance m_itemInstance = null; // 具体物品实例信息
         private bool m_selected = false;
-        private bool isPointerDown = false;
-        private float pointerDownTimer = 0f;
-        private const float longPressThreshold = 2f; // 长按时间阈值
-
-        private void Update()
-        {
-            if (isPointerDown)
-            {
-                pointerDownTimer += Time.deltaTime;
-                if (pointerDownTimer >= longPressThreshold)
-                {
-                    OnLongPress();
-                    ResetLongPress();
-                }
-            }
-        }
 
         private void Start()
         {
-            GameManager.InputSystem.ui.submit.started += OnSubmitDown;
-            GameManager.InputSystem.ui.submit.canceled += OnSubmitUp;
+            GameManager.InputSystem.ui.drop.performed += OnDropItem;
         }
 
         private void OnDestroy()
         {
-            GameManager.InputSystem.ui.submit.started -= OnSubmitDown;
-            GameManager.InputSystem.ui.submit.canceled -= OnSubmitUp;
+            GameManager.InputSystem.ui.drop.performed -= OnDropItem;
         }
 
-        public void OnSubmitDown(InputAction.CallbackContext context)
+        private void Awake()
         {
-            isPointerDown = true;
-            pointerDownTimer = 0f;
+            m_button.onClick.AddListener(OnSlotClicked);
         }
 
-        public void OnSubmitUp(InputAction.CallbackContext context)
+        public void setSlectedFalse()
         {
-            ResetLongPress();
+            m_selected = false;
         }
 
-        private void OnLongPress()
+        private void OnDropItem(InputAction.CallbackContext context)
         {
-            if (m_item != null)
+            if (m_item != null && m_selected)
             {
-                Debug.Log("Long press detected, item discarded.");
-                SendMessageUpwards("OnItemDiscarded", m_itemInstance, SendMessageOptions.RequireReceiver);
-                Clear(); // 清除物品槽
+                // 调用丢弃物品的逻辑
+                GameManager.NotificationSystem.OnWarehouseItemDiscarded?.Invoke(m_itemInstance, EItemLocation.Warehouse);
+                //Clear(); // 清空物品槽
             }
         }
 
-        private void ResetLongPress()
+        private void OnSlotClicked()
         {
-            isPointerDown = false;
-            pointerDownTimer = 0f;
+            if (m_item != null)
+            {
+                SendMessageUpwards("OnWarehouseItemClicked", m_item, SendMessageOptions.RequireReceiver);
+            }
         }
 
         public void Clear() => SetItem(null, 0);
@@ -151,20 +134,6 @@ namespace Gyvr.Mythril2D
             if (m_selected)
             {
                 GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_item);
-            }
-
-        }
-
-        private void Awake()
-        {
-            m_button.onClick.AddListener(OnSlotClicked);
-        }
-
-        private void OnSlotClicked()
-        {
-            if (m_item != null)
-            {
-                SendMessageUpwards("OnWarehouseItemClicked", m_item, SendMessageOptions.RequireReceiver);
             }
         }
     }

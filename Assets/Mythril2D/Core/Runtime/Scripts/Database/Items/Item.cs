@@ -33,6 +33,7 @@ namespace Gyvr.Mythril2D
 
         public virtual void Use(CharacterBase target, EItemLocation location)
         {
+
             if (GameManager.WarehouseSystem.isOpenning == true)
             {
                 if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull() == false)
@@ -49,6 +50,33 @@ namespace Gyvr.Mythril2D
             else
             {
                 GameManager.DialogueSystem.Main.PlayNow("This item has no effect");
+            }
+        }
+
+        public virtual void Drop(ItemInstance itemInstance, CharacterBase target, EItemLocation location)
+        {
+            //Debug.Log(location);
+
+            if (location == EItemLocation.Bag)
+            {
+                GameManager.InventorySystem.RemoveFromBag(this, itemInstance.quantity);
+                GameManager.ItemGenerationSystem.DropItemToPlayer(this, itemInstance.quantity);
+            }
+            else if (location == EItemLocation.Warehouse)
+            {
+                GameManager.WarehouseSystem.RemoveFromWarehouse(this, itemInstance.quantity);
+                GameManager.ItemGenerationSystem.DropItemToPlayer(this, itemInstance.quantity);
+            }
+        }
+
+        public virtual void Drop(Equipment equipment, CharacterBase target, EItemLocation location)
+        {
+            //Debug.Log(location);
+
+            if (location == EItemLocation.Equipment)
+            {
+                GameManager.Player.Unequip(equipment.type);
+                GameManager.ItemGenerationSystem.DropItemToPlayer(this, 1);
             }
         }
 

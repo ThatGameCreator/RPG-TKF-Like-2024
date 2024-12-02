@@ -11,6 +11,19 @@ namespace Gyvr.Mythril2D
 
         public UIInventoryBag bag => m_bag;
 
+        private void Awake()
+        {
+            GameManager.NotificationSystem.OnBagItemDiscarded?.AddListener(OnItemDiscarded);
+            GameManager.NotificationSystem.OnEquipmentDiscarded?.AddListener(OnEquipmentDiscarded);
+
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.NotificationSystem.OnBagItemDiscarded?.RemoveListener(OnItemDiscarded);
+            GameManager.NotificationSystem.OnEquipmentDiscarded?.RemoveListener(OnEquipmentDiscarded);
+        }
+
         public void Init()
         {
             m_bag.UpdateSlots();
@@ -64,6 +77,17 @@ namespace Gyvr.Mythril2D
             m_bag.UpdateSlots();
             m_equipment.UpdateSlots();
             m_backpackMoney.text = StringFormatter.Format("{0}", GameManager.InventorySystem.backpackMoney.ToString());
+
+            // 如果在仓库中扔背包东西，slot不更新能够继续扔
+            if (GameManager.WarehouseSystem.isOpenning == true) 
+            {
+                GameManager.UIManagerSystem.UIMenu.warehouse.bag.UpdateSlots();
+            }
+
+            if(GameManager.UIManagerSystem.UIMenu.shop.isActiveAndEnabled == true)
+            {
+                GameManager.UIManagerSystem.UIMenu.shop.bag.UpdateSlots();
+            }
         }
 
         private void OnItemClicked(Item item, EItemLocation location)
@@ -72,14 +96,28 @@ namespace Gyvr.Mythril2D
             UpdateUI();
         }
 
-        private void OnItemDiscarded(Item item, EItemLocation location)
+        private void OnEquipmentDiscarded(Equipment equipment, EItemLocation location)
         {
-            item.Use(GameManager.Player, location);
-            UpdateUI();
+            if(location == EItemLocation.Equipment)
+            {
+                equipment.Drop(equipment, GameManager.Player, location);
+                UpdateUI();
+            }
+        }
+
+        private void OnItemDiscarded(ItemInstance itemInstance, EItemLocation location)
+        {
+            // 感觉这分开写是不是有点傻逼
+            // 要么就弄两个委托，要么就合成一个？
+            if(location == EItemLocation.Bag)
+            {
+                itemInstance.GetItem().Drop(itemInstance, GameManager.Player, location);
+                UpdateUI();
+            }
         }
 
         private void OnBagItemClicked(Item item) => OnItemClicked(item, EItemLocation.Bag);
-        private void OnBagItemDiscarded(Item item) => OnItemDiscarded(item, EItemLocation.Bag);
+        private void OnBagItemDiscarded(ItemInstance itemInstance) => OnItemDiscarded(itemInstance, EItemLocation.Bag);
         private void OnEquipmentItemClicked(Item item) => OnItemClicked(item, EItemLocation.Equipment);
     }
 }

@@ -119,8 +119,6 @@ namespace FunkyCode
 
 			UpdateLayerList();
 
-			//LightingManager2D.Get();
-
 			Initialize();
 
 			UpdateNearbyLights();
