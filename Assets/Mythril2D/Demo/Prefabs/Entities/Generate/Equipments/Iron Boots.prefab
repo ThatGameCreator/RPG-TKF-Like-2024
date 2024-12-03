@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interaction:
-    rid: 8303503587277799764
+    rid: 8303503637606563888
   m_spriteRenderer:
   - {fileID: 5100953014798546437}
   m_lightEventListener: {fileID: 488314632912172645}
@@ -67,7 +67,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8303503587277799764
+    - rid: 8303503637606563888
       type: {class: SurfaceItemInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_surfaceItem: {fileID: 643602119540920905}
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1114154291, guid: 8ace1fb331206454aa908061100d1519, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

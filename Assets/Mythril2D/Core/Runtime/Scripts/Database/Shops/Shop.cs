@@ -13,8 +13,6 @@ namespace Gyvr.Mythril2D
     public class Shop : DatabaseEntry
     {
         public Item[] items = null;
-        public float sellingPriceMultiplier = 0.5f;
-        public float buyingPriceMultiplier = 1.0f;
 
         public int GetPrice(Item item, ETransactionType transaction)
         {
@@ -23,11 +21,11 @@ namespace Gyvr.Mythril2D
             switch (transaction)
             {
                 case ETransactionType.Buy:
-                    floatPrice = item.Price * buyingPriceMultiplier;
+                    floatPrice = item.buyPrice;
                     break;
 
                 case ETransactionType.Sell:
-                    floatPrice = item.Price * sellingPriceMultiplier;
+                    floatPrice = item.sellPrice;
                     break;
             }
 

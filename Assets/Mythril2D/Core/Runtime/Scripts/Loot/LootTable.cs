@@ -15,5 +15,7 @@ namespace Gyvr.Mythril2D
 
         public LootEntryData[] entries;  // 掠夺条目列表
         public int money;                // 金钱奖励最大值
+        public int maxLootedCount;       // 掠夺次数最大值
+        public int lootRate = 75;             // 掠夺概率
     }
 }

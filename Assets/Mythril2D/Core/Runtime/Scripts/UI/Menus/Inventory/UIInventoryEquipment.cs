@@ -13,6 +13,7 @@ namespace Gyvr.Mythril2D
             foreach (UIInventoryEquipmentSlot slot in m_slots)
             {
                 slot.SetEquipment(inventorySystem.GetEquipment(slot.equipmentType));
+                slot.setSlectedFalse();
             }
         }
 

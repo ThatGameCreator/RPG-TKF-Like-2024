@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace FunkyCode
 {
@@ -16,24 +17,48 @@ namespace FunkyCode
 			}
 		}
 
-		public int Update(int targetLayer, int newLayer, T obj)
-		{
-			if (targetLayer != newLayer)
-			{
-				if (targetLayer > -1)
-				{
-					layerList[targetLayer].Remove(obj);
-				}
+        public int Update(int targetLayer, int newLayer, T obj)
+        {
+            if (newLayer >= layerList.Length)
+            {
+                // 动态扩展layerList
+                var newSize = newLayer + 1;  // 确保有足够的空间
+                var newLayerList = new List<T>[newSize];
 
-				targetLayer = newLayer;
+                for (int i = 0; i < layerList.Length; i++)
+                {
+                    newLayerList[i] = layerList[i];
+                }
 
-				layerList[targetLayer].Add(obj);
-			}
+                // 新的层未初始化，初始化新的层
+                for (int i = layerList.Length; i < newSize; i++)
+                {
+                    newLayerList[i] = new List<T>();
+                }
 
-			return(targetLayer);
-		}
+                layerList = newLayerList;
+            }
 
-		public void Remove(int targetLayer, T obj)
+            if (targetLayer != newLayer)
+            {
+                if (targetLayer > -1 && targetLayer < layerList.Length)
+                {
+                    layerList[targetLayer].Remove(obj);
+                }
+
+                targetLayer = newLayer;
+
+                if (targetLayer >= 0 && targetLayer < layerList.Length)
+                {
+                    layerList[targetLayer].Add(obj);
+                }
+            }
+
+            return targetLayer;
+        }
+
+
+        public void Remove(int targetLayer, T obj)
 		{
 			if (targetLayer > -1)
 			{

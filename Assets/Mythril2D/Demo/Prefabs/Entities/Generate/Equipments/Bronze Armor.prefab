@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interaction:
-    rid: 8303503587277799751
+    rid: 8303503637606563875
   m_spriteRenderer:
   - {fileID: 2598312428752448257}
   m_lightEventListener: {fileID: 615294428310532303}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_lootedTime: 2
   m_loot:
     entries:
-    - item: {fileID: 11400000, guid: 64b8b1dcc1e9f724b963f7d7ef1aab73, type: 2}
+    - item: {fileID: 11400000, guid: 1d4d336cf8ba5474d8af9e3658758327, type: 2}
       quantity: 1
       weight: 0
     money: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8303503587277799751
+    - rid: 8303503637606563875
       type: {class: SurfaceItemInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_surfaceItem: {fileID: 9149850279663338994}
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1739808332, guid: e547f8dda4bd87d4da42dd00e4adfb3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -23,6 +23,8 @@ namespace Gyvr.Mythril2D
 
         private void OnDetailsOpened(Item item)
         {
+            //Debug.Log("OnDetailsOpened");
+
             if (item)
             {
                 m_itemDetailsBox.SetActive(true);
@@ -36,12 +38,13 @@ namespace Gyvr.Mythril2D
 
                     for (int i = 0; i < Stats.StatCount; i++)
                     {
+                        // 精力值和容量还没做进来
                         EStat stat = (EStat)i;
                         int value = equipment.bonusStats[stat];
 
                         if (value != 0)
                         {
-                            m_itemDescription.text += $" <u>{(value > 0 ? '+' : '-')}{value}\u00A0{GameManager.Config.GetTermDefinition(stat).shortName}</u>";
+                            m_itemDescription.text += $" <u>{(value > 0 ? '+' : '-')}{value}\u00A0{GameManager.Config.GetTermDefinition(stat).fullName}</u>";
                         }
                     }
                 }

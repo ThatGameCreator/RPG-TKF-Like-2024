@@ -14,7 +14,8 @@ namespace Gyvr.Mythril2D
         Consumable,
         Resource,
         Gear,
-        Key
+        Key,
+        MonsterDrop,
     }
 
     [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(Item))]
@@ -25,12 +26,14 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Sprite m_icon = null;
         [SerializeField] private string m_displayName = string.Empty;
         [SerializeField] private string m_description = string.Empty;
-        [SerializeField] private int m_price = 50;
+        [SerializeField] private int m_buyPrice = 50;
+        [SerializeField] private int m_sellPrice = 50;
         [SerializeField] private bool m_isStackable = false; // 默认设置为不可堆叠
 
 
         public virtual void Use(CharacterBase target, EItemLocation location)
         {
+
             if (GameManager.WarehouseSystem.isOpenning == true)
             {
                 if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull() == false)
@@ -47,6 +50,33 @@ namespace Gyvr.Mythril2D
             else
             {
                 GameManager.DialogueSystem.Main.PlayNow("This item has no effect");
+            }
+        }
+
+        public virtual void Drop(ItemInstance itemInstance, CharacterBase target, EItemLocation location)
+        {
+            //Debug.Log(location);
+
+            if (location == EItemLocation.Bag)
+            {
+                GameManager.InventorySystem.RemoveFromBag(this, itemInstance.quantity);
+                GameManager.ItemGenerationSystem.DropItemToPlayer(this, itemInstance.quantity);
+            }
+            else if (location == EItemLocation.Warehouse)
+            {
+                GameManager.WarehouseSystem.RemoveFromWarehouse(this, itemInstance.quantity);
+                GameManager.ItemGenerationSystem.DropItemToPlayer(this, itemInstance.quantity);
+            }
+        }
+
+        public virtual void Drop(Equipment equipment, CharacterBase target, EItemLocation location)
+        {
+            //Debug.Log(location);
+
+            if (location == EItemLocation.Equipment)
+            {
+                GameManager.Player.Unequip(equipment.type);
+                GameManager.ItemGenerationSystem.DropItemToPlayer(this, 1);
             }
         }
 
@@ -75,10 +105,16 @@ namespace Gyvr.Mythril2D
             set => m_description = value;
         }
 
-        public int Price
+        public int buyPrice
         {
-            get => m_price;
-            set => m_price = value;
+            get => m_buyPrice;
+            set => m_buyPrice = value;
+        }
+
+        public int sellPrice
+        {
+            get => m_sellPrice;
+            set => m_sellPrice = value;
         }
 
         public bool IsStackable

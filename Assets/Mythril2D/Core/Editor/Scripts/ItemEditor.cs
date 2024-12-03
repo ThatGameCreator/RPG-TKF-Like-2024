@@ -8,7 +8,8 @@ public class ItemEditor : Editor
     private bool batchEditMode = false; // 批量编辑模式开关
     private string newDisplayName = "";
     private string newDescription = "";
-    private int newPrice = 0;
+    private int newBuyPrice = 0;
+    private int newSellPrice = 0;
     private bool newIsStackable = false;
     private EItemCategory newCategory = EItemCategory.Consumable;
 
@@ -23,7 +24,8 @@ public class ItemEditor : Editor
         item.DisplayName = EditorGUILayout.TextField("Display Name", item.DisplayName);
         item.Description = EditorGUILayout.TextField("Description", item.Description);
         item.Category = (EItemCategory)EditorGUILayout.EnumPopup("Category", item.Category);
-        item.Price = EditorGUILayout.IntField("Price", item.Price);
+        item.buyPrice = EditorGUILayout.IntField("Price", item.buyPrice);
+        item.sellPrice = EditorGUILayout.IntField("Price", item.sellPrice);
         item.IsStackable = EditorGUILayout.Toggle("Is Stackable", item.IsStackable);
 
         // 保存单个条目修改
@@ -45,7 +47,8 @@ public class ItemEditor : Editor
             // 批量编辑字段
             newDisplayName = EditorGUILayout.TextField("New Display Name", newDisplayName);
             newDescription = EditorGUILayout.TextField("New Description", newDescription);
-            newPrice = EditorGUILayout.IntField("New Price", newPrice);
+            newBuyPrice = EditorGUILayout.IntField("New Buy Price", newBuyPrice);
+            newSellPrice = EditorGUILayout.IntField("New Sell Price", newSellPrice);
             newIsStackable = EditorGUILayout.Toggle("New Stackable Value", newIsStackable);
             newCategory = (EItemCategory)EditorGUILayout.EnumPopup("New Category", newCategory);
 
@@ -74,7 +77,8 @@ public class ItemEditor : Editor
                     selectedItem.Description = newDescription;
                 }
 
-                selectedItem.Price = newPrice;
+                selectedItem.buyPrice = newBuyPrice;
+                selectedItem.sellPrice = newSellPrice;
                 selectedItem.IsStackable = newIsStackable;
                 selectedItem.Category = newCategory;
 

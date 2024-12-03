@@ -147,8 +147,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1767517263
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 833293079, guid: 3cca4613fcd369544aaf4163098344ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,10 +175,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_interaction:
     rid: 3619733683065585668
-  m_spriteRenderer: {fileID: 2727569325517639539}
+  m_spriteRenderer:
+  - {fileID: 0}
   m_lightEventListener: {fileID: 2694157109529852542}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
+  m_lootedTime: 2
   m_boxCollider2D: {fileID: 1556421927812608288}
   references:
     version: 2
@@ -189,7 +191,6 @@ MonoBehaviour:
         m_dialogueIfWantGetOut: {fileID: 11400000, guid: cd360fbdad694854fa309301f90dab3f, type: 2}
         m_dialogueIfDontWantGetOut: {fileID: 0}
         m_evacuationPointDatabase: {fileID: 11400000, guid: b3a22b4922e086a408ff5e3e79207b69, type: 2}
-        m_evacuationPoint: {fileID: 1296178238096688444}
 --- !u!114 &2694157109529852542
 MonoBehaviour:
   m_ObjectHideFlags: 0

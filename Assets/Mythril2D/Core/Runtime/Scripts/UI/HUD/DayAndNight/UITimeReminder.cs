@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using System;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,28 +9,72 @@ namespace Gyvr.Mythril2D
 {
     public class UITimeReminder : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI m_Text = null;
+        [Serializable]
+        public class KeyValueMapping
+        {
+            public string Key;
+            public List<string> Value;
+
+            public KeyValueMapping(string key, List<string> value)
+            {
+                Key = key;
+                Value = value;
+            }
+        }
+
+        public List<string> Get(string key)
+        {
+            var mapping = evacuationTextRules.Find(m => m.Key == key);
+            return mapping?.Value;
+        }
+        [SerializeField] private TextMeshProUGUI m_timeText = null;
+
+
+        [SerializeField]
+        private List<KeyValueMapping> evacuationTextRules = new List<KeyValueMapping>();
+        [SerializeField] private TextMeshProUGUI[] m_evacuationTexts = null;
         private bool m_isTextBeRed = false;
+        private bool m_setEvacuationTextActive = false;
+
+        private void OnEnable()
+        {
+            GameManager.NotificationSystem.SetActiveEvacuation.AddListener(SetEvacuationText);
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.NotificationSystem.SetActiveEvacuation.RemoveListener(SetEvacuationText);
+        }
+
+        private void SetEvacuationText(string teleportName)
+        {
+            List<string> tmpEvacuationText = Get(teleportName);
+
+            for (int i = 0; i < m_evacuationTexts.Length; i++) {
+                m_evacuationTexts[i].text = tmpEvacuationText[i];
+            }
+        }
 
         private void Update()
         {
             UpdateUI();
         }
 
-        private void UpdateUI()
+        private void UpdateTime()
         {
-            if(GameManager.Player.isEvacuating == true)
+            if (GameManager.Player.isEvacuating == true)
             {
                 int currentMinute = 0;
                 int currentSecond = (int)(GameManager.Player.evacuatingRequiredtTime - GameManager.Player.evacuatingTime);
 
-                m_Text.color = Color.green;
+                m_timeText.color = Color.green;
 
-                m_Text.text = StringFormatter.Format("{0:D2} : {1:D2}", currentMinute, currentSecond);
+                m_timeText.text = StringFormatter.Format("{0:D2} : {1:D2}", currentMinute, currentSecond);
             }
 
-            else{
-                m_Text.color = Color.white;
+            else
+            {
+                m_timeText.color = Color.white;
 
                 // 这里感觉应该传送的时候获取一次就可以了，没必要一直更新计算
                 int totalCurrentSecond = (int)GameManager.DayNightSystem.currentTime;
@@ -39,11 +85,16 @@ namespace Gyvr.Mythril2D
                 // 或者整个一秒执行一次之类的
                 if (m_isTextBeRed == false && totalCurrentSecond <= GameManager.DayNightSystem.maxEmergencyTime)
                 {
-                    m_Text.color = Color.red;
+                    m_timeText.color = Color.red;
                 }
 
-                m_Text.text = StringFormatter.Format("{0:D2} : {1:D2}", currentMinute, currentSecond);
+                m_timeText.text = StringFormatter.Format("{0:D2} : {1:D2}", currentMinute, currentSecond);
             }
+        }
+
+        private void UpdateUI()
+        {
+            UpdateTime();
         }
     }
 }

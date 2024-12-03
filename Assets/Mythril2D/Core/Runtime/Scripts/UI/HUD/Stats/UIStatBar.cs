@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -49,6 +49,11 @@ namespace Gyvr.Mythril2D
         private int m_elapsedFrames = 0;
         private bool CanShake() => m_elapsedFrames >= kFramesToWaitBeforeAllowingShake;
 
+
+        private Coroutine updateUICoroutine;
+        private bool isUIUpdateQueued = false;
+        private const float updateDelay = 0.1f; // 每次状态变化延迟更新（单位：秒）
+
         private void Start()
         {
             m_target = GameManager.Player;
@@ -75,18 +80,41 @@ namespace Gyvr.Mythril2D
         }
 
         // 原来没有接受 float 参数的方法 所以 invoke 调用的时候并没有对应的方法来接受参数来监听对象
+        // 精力变化监听
         private void OnStaminaChanged(float previousStamina)
         {
             UpdateUI();
         }
 
+        // 状态变化监听
         private void OnStatsChanged(Stats previous)
         {
-            // 感觉这个监听似乎也有问题，把精力值和其他状态都堆到一起写的结果就是
-            // 每次精力值被调用的时候，就会把其他状态也都记录和判断一遍
-            // 既精力变化和状态变化都会执行同样的方法
-            // 要么得把 Stats 放在一个基类里面，要么就得分开写，不然也太别扭了
             UpdateUI();
+        }
+
+        // 队列化更新：避免频繁更新UI，控制更新节奏
+        private void QueueUIUpdate()
+        {
+            if (isUIUpdateQueued) return; // 已经有更新在排队，跳过
+
+            isUIUpdateQueued = true;
+
+            // 如果有未完成的协程，先停止
+            if (updateUICoroutine != null)
+            {
+                StopCoroutine(updateUICoroutine);
+            }
+
+            // 启动协程延迟更新UI
+            updateUICoroutine = StartCoroutine(DelayedUIUpdate());
+        }
+
+        private IEnumerator DelayedUIUpdate()
+        {
+            yield return new WaitForSeconds(updateDelay); // 延迟固定时间
+
+            UpdateUI(); // 执行UI更新
+            isUIUpdateQueued = false; // 重置队列状态
         }
 
         private void Update()
@@ -152,7 +180,10 @@ namespace Gyvr.Mythril2D
 
             // 这个 value 并不是 0 到 1 而是 角色状态的值 0 和 max 在上面有设置
             // 取个整数 避免精力值有小数点
-            current = math.floor(current);
+            //current = math.floor(current);
+
+            // 启动协程进行平滑过渡
+            //StartCoroutine(SmoothSliderTransition(previousSliderValue, current));
 
             m_slider.value = current;
 
@@ -175,7 +206,28 @@ namespace Gyvr.Mythril2D
                 Shake();
             }
 
-            m_sliderText.text = StringFormatter.Format("{0} / {1}", current, max);
+            //m_sliderText.text = StringFormatter.Format("{0} / {1}", current, max);
+        }
+
+        private IEnumerator SmoothSliderTransition(float fromValue, float toValue)
+        {
+            float duration = 0.5f; // 动画持续时间
+            float elapsedTime = 0f;
+
+            // 计算每秒需要变化的速度（匀速）
+            float changePerSecond = Mathf.Abs(toValue - fromValue) / duration;
+
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                float newValue = Mathf.MoveTowards(m_slider.value, toValue, changePerSecond * Time.deltaTime);
+                m_slider.value = newValue;
+
+                yield return null; // 等待下一帧
+            }
+
+            // 确保最终值精确到目标值
+            m_slider.value = toValue;
         }
 
         private float StatsValueToAnchor(float convertValue)

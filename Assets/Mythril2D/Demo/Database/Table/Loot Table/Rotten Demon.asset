@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60624676900c968428e114136b6df627, type: 3}
+  m_Name: Rotten Demon
+  m_EditorClassIdentifier: 
+  entries:
+  - item: {fileID: 11400000, guid: ad9e3d200865f6a4da9f356eb86ac6ec, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 48dc4eae1220b6e45889f6b7cba66f61, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 7039b838854f7a54f9345fa99f760568, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 64b2469e14271d54987124ab28cba097, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: e3893551ac16d84448c914ff58ab8a95, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 55f482c3dab7eb546970d6b379bac003, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 8e9002f1c3ebd904e8f1999accd2d0ec, type: 2}
+    maxQuantity: 5
+    weight: 1
+  money: 10
+  maxLootedCount: 3
+  lootRate: 75

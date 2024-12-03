@@ -12,9 +12,14 @@ namespace Gyvr.Mythril2D
         [SerializeField] private GameObject m_weaponObject = null;
         [SerializeField] protected float m_lootedTime = 2.0f;
 
+        [Header("Audio")]
+        [SerializeField] private AudioClipResolver m_lootedSound;
+
         public AIController aiController => m_aiController;
 
         private bool m_looted = false;
+        private int m_randomMaxLootedCount = 0;
+        private int m_nowLootedCount = 0;
 
         protected override void Awake()
         {
@@ -31,6 +36,11 @@ namespace Gyvr.Mythril2D
         {
             base.Start();
 
+            if (m_sheet.lootTable)
+            {
+                m_randomMaxLootedCount = UnityEngine.Random.Range(0, m_sheet.lootTable.maxLootedCount);
+            }
+
             if (m_permanentDeath && GameManager.GameFlagSystem.Get(m_gameFlagID))
             {
                 Destroy(gameObject);
@@ -44,7 +54,10 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
-            GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+            if (m_nowLootedCount < m_randomMaxLootedCount) // 检查是否可以继续掠夺
+            {
+                GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+            }
         }
 
         public void SetLevel(int level)
@@ -84,56 +97,110 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                //Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
-                //Array.ForEach(colliders, (collider) => collider.enabled = false);
-
                 // cancel the playing animation
                 m_weaponObject.transform.gameObject.SetActive(false);
 
-                SetLayerRecursively(this.gameObject, LayerMask.NameToLayer("Interaction"));
+                // 检查是否已达到最大掠夺次数
+                if (m_nowLootedCount >= m_randomMaxLootedCount)
+                {
+                    this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                }
+                else
+                {
+                    SetLayerRecursively(this.gameObject, LayerMask.NameToLayer("Interaction"));
+                }
             }
+        }
+
+        private LootTable.LootEntryData GetRandomLootEntry()
+        {
+            float totalWeight = 0f;
+
+            foreach (var entry in m_sheet.lootTable.entries)
+            {
+                totalWeight += entry.weight;
+            }
+
+            float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+
+            foreach (var entry in m_sheet.lootTable.entries)
+            {
+                if (randomValue < entry.weight)
+                {
+                    return entry;
+                }
+
+                randomValue -= entry.weight;
+            }
+
+            return null;
         }
 
         public bool LootFinished()
         {
-            if (m_looted == false)
+            if (GameManager.InventorySystem.IsBackpackFull())
             {
-                foreach (MonsterLoot loot in m_sheet.potentialLoot)
+                GameManager.DialogueSystem.Main.PlayNow("Backpack is full...");
+
+                return false;
+            }
+            else
+            {
+                // 增加掠夺次数
+                m_nowLootedCount++;
+
+                // 检查是否触发不生成物品的概率
+                if (UnityEngine.Random.value <= m_sheet.lootTable.lootRate)
                 {
-                    if (GameManager.Player.level >= loot.minimumPlayerLevel && m_level >= loot.minimumMonsterLevel && loot.IsAvailable() && loot.ResolveDrop())
+                    // 随机决定掠夺物品还是金钱
+                    bool lootItem = UnityEngine.Random.Range(0, 2) == 0;
+
+                    if (lootItem && m_sheet.lootTable.entries != null && m_sheet.lootTable.entries.Length > 0)
                     {
-                        GameManager.InventorySystem.AddToBag(loot.item, loot.quantity);
+                        //Debug.Log("lootItem");
+
+                        // 使用基于权重的随机选择机制
+                        var randomEntry = GetRandomLootEntry();
+
+                        if (randomEntry != null)
+                        {
+                            int randomQuantity = UnityEngine.Random.Range(1, randomEntry.maxQuantity + 1);
+                            GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                        }
+
+                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
                     }
+                    else if (m_sheet.lootTable.money > 0)
+                    {
+                        int randomMoney = UnityEngine.Random.Range(1, m_sheet.lootTable.money + 1);
+                        GameManager.InventorySystem.AddMoney(randomMoney);
+
+                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+
+                    }
+
+                    // 检查是否已达到最大掠夺次数
+                    if (m_nowLootedCount >= m_randomMaxLootedCount)
+                    {
+                        this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                    }
+
+                    return true; // 表示本次掠夺成功
                 }
-                GameManager.InventorySystem.AddMoney(m_sheet.money[m_level]);
+                else
+                {
+                    Debug.Log("没有获得任何物品或金钱。");
+                    Debug.Log(UnityEngine.Random.value);
+                    Debug.Log(m_sheet.lootTable.lootRate);
 
-                OnDeath();
+                    // 检查是否已达到最大掠夺次数
+                    if (m_nowLootedCount >= m_randomMaxLootedCount)
+                    {
+                        this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                    }
 
-                m_looted = true;
-
-                return true;
-            }
-            return false;
-        }
-
-        //void OnTriggerStay(Collider collisionInfo)
-        void OnTriggerEnter2D(Collider2D other)
-        {
-            if (String.Equals(other.gameObject.tag, "Player") == true)
-            {
-                Debug.Log("Monster Interaction");
-                Debug.Log("GameManager.Config.collisionContactFilter = " + GameManager.Config.collisionContactFilter);
-                //GameManager.Player.GetComponent<PlayerController>().m_interactionTarget = this.gameObject;
-                //GameManager.PlayerSystem.PlayerInstance.GetComponent<PlayerController>().GetInteractibleObject();
-            }
-        }
-
-        //void OnTriggerStay(Collider collisionInfo)
-        void OnTriggerExit2D(Collider2D other)
-        {
-            if (String.Equals(other.gameObject.tag, "Player") == true)
-            {
-                //GameManager.Player.GetComponent<PlayerController>().m_interactionTarget = null;
+                    return false;
+                }
             }
         }
 

@@ -12,7 +12,7 @@ namespace Gyvr.Mythril2D
         public static void CreateSurfaceItemPrefabs()
         {
             // 指定Item数据的路径
-            string itemFolderPath = "Assets/Mythril2D/Demo/Database/Items/Monster Drops"; // 修改为你存放Item数据的文件夹路径
+            string itemFolderPath = "Assets/Mythril2D/Demo/Database/Items/Monster Drops/"; // 修改为你存放Item数据的文件夹路径
             string[] itemGuids = AssetDatabase.FindAssets("t:Item", new[] { itemFolderPath });
 
             foreach (string guid in itemGuids)
@@ -37,7 +37,7 @@ namespace Gyvr.Mythril2D
                 // 添加并配置 Light Collider 2D（自定义脚本）
                 LightCollider2D lightCollider = surfaceItemObject.AddComponent<LightCollider2D>();
                 lightCollider.shadowType = LightCollider2D.ShadowType.Collider2D;
-                lightCollider.shadowLayer = LayerMask.NameToLayer("Default");
+                lightCollider.shadowLayer = LayerMask.NameToLayer("Collision D");
                 lightCollider.shadowDistance = LightCollider2D.ShadowDistance.Finite;
                 lightCollider.shadowTranslucency = 1.0f;
 

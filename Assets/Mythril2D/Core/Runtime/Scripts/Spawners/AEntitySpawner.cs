@@ -8,8 +8,7 @@ namespace Gyvr.Mythril2D
     public class AEntitySpawner : MonoBehaviour
     {
         [Header("General Settings")]
-        [SerializeField] private  Entity[] entityPrefabs = null;
-        [SerializeField] private int rate = 100;
+        [SerializeField] private EntityTable entityTable = null;
 
         [Header("Spawn Settings")]
         [SerializeField] private int m_entitiesToPrespawn = 1;
@@ -49,15 +48,45 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        private EntityTable.EntityData GetRandomEntry()
+        {
+            float totalWeight = 0f;
+
+            foreach (var entry in entityTable.entries)
+            {
+                totalWeight += entry.weight;
+            }
+
+            float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+
+            foreach (var entry in entityTable.entries)
+            {
+                if (randomValue < entry.weight)
+                {
+                    return entry;
+                }
+
+                randomValue -= entry.weight;
+            }
+
+            return null;
+        }
+
         private Entity FindEntityToSpawn()
         {
             int randomNumber = UnityEngine.Random.Range(0, 100);
 
-            if (randomNumber <= rate && entityPrefabs.Length > 0)
+            if (entityTable.entries != null)
             {
-                // 随机选择一个 entitiy 预制体
-                int index = UnityEngine.Random.Range(0, entityPrefabs.Length);
-                return entityPrefabs[index];
+                if (randomNumber <= entityTable.generateRate && entityTable.entries.Length > 0)
+                {
+                    // 随机选择一个 entitiy 预制体
+                    return GetRandomEntry().entity;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60624676900c968428e114136b6df627, type: 3}
+  m_Name: Ancient Chest
+  m_EditorClassIdentifier: 
+  entries:
+  - item: {fileID: 11400000, guid: 0d6c82e49d62fc24882a69525144d37c, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 0f824c0f2b28d664288a9a5ee8c6a7d3, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 36aeed70bc3451d468006c1c98de77b7, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 7fc35eef16e1fb942a1e9c6784200831, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 6cc163e4fd10edf4e84a0f2dad45d80e, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 11405813356c0ab45b18ff3bd8c27704, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: f75da2635faaa6546837c82a9993cc52, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 8998ab6ca75c6e94e95352d7cc0f9105, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: e6254e4f5db79724aba2c84d372680e5, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: ab17360bba489774286121b05e96769d, type: 2}
+    maxQuantity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: 45895c67fc12a204390291b62b648f0e, type: 2}
+    maxQuantity: 1
+    weight: 1
+  money: 75
+  maxLootedCount: 1
+  lootRate: 100

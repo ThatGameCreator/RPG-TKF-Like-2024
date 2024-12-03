@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1569802005, guid: 410db98969418554797cde2e6f9acb6f, type: 3}
+  m_Sprite: {fileID: -1195749374, guid: 410db98969418554797cde2e6f9acb6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 1.2598357e-27
-  m_labelHash: 1.0303437e-37
+  m_CategoryHash: 4.7221487e-14
+  m_labelHash: 1.1037539e-22
   m_SpriteKey: 2.8177215e-33
   m_SpriteHash: 157947471
 --- !u!114 &2800153283620963235
@@ -287,7 +287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7413574122283879897, guid: d0ae7393307386b41a3d89a901938e90, type: 3}
       propertyPath: m_poolSize
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7413574122283879897, guid: d0ae7393307386b41a3d89a901938e90, type: 3}
       propertyPath: m_instancePrefab

@@ -581,6 +581,11 @@ namespace Gyvr.Mythril2D
                         if (m_invincibleOnHit)
                         {
                             TryPlayInvincibleAnimation();
+
+                            if (isPlayer)
+                            {
+                                GameManager.Player.CancelLooting();
+                            }
                         }
                     }
                 }
@@ -680,7 +685,7 @@ namespace Gyvr.Mythril2D
 
         private void OnDeathAnimationStart()
         {
-            Debug.Log("OnDeathAnimationStart");
+            //Debug.Log("OnDeathAnimationStart");
 
             DisableActions(EActionFlags.All);
 

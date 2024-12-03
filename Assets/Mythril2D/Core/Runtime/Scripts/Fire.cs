@@ -66,7 +66,7 @@ public class Fire : MonoBehaviour
             {
                 var character = collider.gameObject.GetComponent<CharacterBase>();
 
-                if (character != null)
+                if (character != null && character.isPlayer == true)
                 {
                     character.Damage(new DamageOutputDescriptor
                     {

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0289099dc5b3f49b3b9ca3cf8f6b7baa, type: 3}
   m_Name: ITEM_Rotten_Demon_Darken_Tooth
   m_EditorClassIdentifier: 
-  m_category: 1
+  m_category: 4
   m_icon: {fileID: 767495708, guid: 2db92c6d95ebb83458ba1678a151a13b, type: 3}
   m_displayName: Rotten Demon Darken Tooth
-  m_description: A squishy slime ball, vibrant and gelatinous, perfect for concocting
-    potions
-  m_price: 5
+  m_description: 
+  m_buyPrice: 16
+  m_sellPrice: 8
   m_isStackable: 0

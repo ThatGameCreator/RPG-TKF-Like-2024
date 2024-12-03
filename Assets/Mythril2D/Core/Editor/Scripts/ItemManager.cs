@@ -23,13 +23,18 @@ namespace Gyvr.Mythril2D
         // Add refresh button state
         private bool needsRefresh = false;
         private float lastRefreshTime;
-        private const float AUTO_REFRESH_INTERVAL = 60f;
+        private const float AUTO_REFRESH_INTERVAL = 180f;
 
         // Icon display settings
         private const float ICON_PREVIEW_SIZE = 64f;
         private const float ICON_BUTTON_SIZE = 80f;
         private GUIStyle iconPreviewStyle;
         private bool stylesInitialized = false;
+        // 在类中添加字段，避免重置变量
+        private string newName = "";
+        private int newBuyPrice = 0;
+        private int newSellPrice = 0;
+        private Sprite newIcon = null;
 
 
         [MenuItem("Tools/Item Manager")]
@@ -137,28 +142,42 @@ namespace Gyvr.Mythril2D
                 filtersChanged = true;
             }
 
-            EItemCategory? newFilterCategory = (EItemCategory?)EditorGUILayout.EnumPopup("Category", filterCategory ?? (EItemCategory)(-1));
-            if (newFilterCategory != filterCategory)
+            // Category 的下拉菜单
+            string[] categoryOptions = Enum.GetNames(typeof(EItemCategory));
+            string[] extendedCategoryOptions = new string[categoryOptions.Length + 1];
+            extendedCategoryOptions[0] = "None";
+            Array.Copy(categoryOptions, 0, extendedCategoryOptions, 1, categoryOptions.Length);
+
+            int selectedCategoryIndex = filterCategory.HasValue ? Array.IndexOf(categoryOptions, filterCategory.Value.ToString()) + 1 : 0;
+            int newSelectedCategoryIndex = EditorGUILayout.Popup("Category", selectedCategoryIndex, extendedCategoryOptions);
+            if (newSelectedCategoryIndex != selectedCategoryIndex)
             {
-                filterCategory = newFilterCategory;
+                filterCategory = newSelectedCategoryIndex == 0 ? null : (EItemCategory)Enum.Parse(typeof(EItemCategory), extendedCategoryOptions[newSelectedCategoryIndex]);
                 filtersChanged = true;
             }
 
-            EEquipmentType? newFilterEquipmentType = (EEquipmentType?)EditorGUILayout.EnumPopup("Equipment Type", filterEquipmentType ?? (EEquipmentType)(-1));
-            if (newFilterEquipmentType != filterEquipmentType)
+            // EquipmentType 的下拉菜单
+            string[] equipmentTypeOptions = Enum.GetNames(typeof(EEquipmentType));
+            string[] extendedEquipmentOptions = new string[equipmentTypeOptions.Length + 1];
+            extendedEquipmentOptions[0] = "None";
+            Array.Copy(equipmentTypeOptions, 0, extendedEquipmentOptions, 1, equipmentTypeOptions.Length);
+
+            int selectedEquipmentIndex = filterEquipmentType.HasValue ? Array.IndexOf(equipmentTypeOptions, filterEquipmentType.Value.ToString()) + 1 : 0;
+            int newSelectedEquipmentIndex = EditorGUILayout.Popup("Equipment Type", selectedEquipmentIndex, extendedEquipmentOptions);
+            if (newSelectedEquipmentIndex != selectedEquipmentIndex)
             {
-                filterEquipmentType = newFilterEquipmentType;
+                filterEquipmentType = newSelectedEquipmentIndex == 0 ? null : (EEquipmentType)Enum.Parse(typeof(EEquipmentType), extendedEquipmentOptions[newSelectedEquipmentIndex]);
                 filtersChanged = true;
             }
 
+            // Type Filter 的下拉菜单
             string[] availableTypes = new string[] { "None", "Item", "Equipment" };
             int selectedTypeIndex = Array.IndexOf(availableTypes, filterType?.Name ?? "None");
             int newSelectedTypeIndex = EditorGUILayout.Popup("Type Filter", selectedTypeIndex, availableTypes);
-
             if (newSelectedTypeIndex != selectedTypeIndex)
             {
                 filterType = availableTypes[newSelectedTypeIndex] == "None" ? null :
-                            availableTypes[newSelectedTypeIndex] == "Item" ? typeof(Item) : typeof(Equipment);
+                             availableTypes[newSelectedTypeIndex] == "Item" ? typeof(Item) : typeof(Equipment);
                 filtersChanged = true;
             }
 
@@ -170,13 +189,15 @@ namespace Gyvr.Mythril2D
             EditorGUILayout.LabelField($"Showing {GetFilteredItems().Count} of {allItems.Count} items");
         }
 
+
+
         private void DrawBatchEditSection()
         {
             EditorGUILayout.LabelField("Batch Edit", EditorStyles.boldLabel);
 
             using (new EditorGUILayout.HorizontalScope())
             {
-                string newName = EditorGUILayout.TextField("New Name for All", "");
+                newName = EditorGUILayout.TextField("New Name for All", newName);
                 GUI.enabled = !string.IsNullOrEmpty(newName);
                 if (GUILayout.Button("Apply Name", GUILayout.Width(100)))
                 {
@@ -191,12 +212,25 @@ namespace Gyvr.Mythril2D
 
             using (new EditorGUILayout.HorizontalScope())
             {
-                int newPrice = EditorGUILayout.IntField("New Price for All", 0);
+                newBuyPrice = EditorGUILayout.IntField("New Buy Price for All", newBuyPrice);
                 if (GUILayout.Button("Apply Price", GUILayout.Width(100)))
                 {
                     ApplyBatchOperation(item =>
                     {
-                        item.Price = newPrice;
+                        item.buyPrice = newBuyPrice;
+                        return true;
+                    });
+                }
+            }
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                newSellPrice = EditorGUILayout.IntField("New Sell Price for All", newSellPrice);
+                if (GUILayout.Button("Apply Price", GUILayout.Width(100)))
+                {
+                    ApplyBatchOperation(item =>
+                    {
+                        item.sellPrice = newSellPrice;
                         return true;
                     });
                 }
@@ -206,7 +240,7 @@ namespace Gyvr.Mythril2D
             using (new EditorGUILayout.HorizontalScope())
             {
                 EditorGUILayout.PrefixLabel("Batch Icon");
-                Sprite newIcon = (Sprite)EditorGUILayout.ObjectField(null, typeof(Sprite), false);
+                newIcon = (Sprite)EditorGUILayout.ObjectField(null, typeof(Sprite), false);
                 if (newIcon != null && GUILayout.Button("Apply Icon", GUILayout.Width(100)))
                 {
                     ApplyBatchOperation(item =>
@@ -306,7 +340,8 @@ namespace Gyvr.Mythril2D
                     DrawSerializedProperty(serializedItem, "m_displayName", "DisplayName");
                     DrawSerializedProperty(serializedItem, "m_description", "Description");
                     DrawSerializedProperty(serializedItem, "m_category", "Category");
-                    DrawSerializedProperty(serializedItem, "m_price", "Price");
+                    DrawSerializedProperty(serializedItem, "m_buyPrice", "Buy Price");
+                    DrawSerializedProperty(serializedItem, "m_sellPrice", "Sell Price");
                     DrawSerializedProperty(serializedItem, "m_isStackable", "Is Stackable");
 
                     // Equipment-specific properties
@@ -503,10 +538,9 @@ namespace Gyvr.Mythril2D
             var items = GetFilteredItems();
             int modifiedCount = 0;
 
-            Undo.RecordObjects(items.ToArray(), "Batch Modify Items");
-
             foreach (var item in items)
             {
+                Undo.RegisterCompleteObjectUndo(item, "Batch Modify Item");
                 if (operation(item))
                 {
                     EditorUtility.SetDirty(item);
@@ -514,9 +548,12 @@ namespace Gyvr.Mythril2D
                 }
             }
 
-            AssetDatabase.SaveAssets();
+            AssetDatabase.SaveAssets();  // 统一保存
+            AssetDatabase.Refresh();     // 刷新项目视图
             Debug.Log($"Modified {modifiedCount} items");
+            Repaint();  // 确保编辑器窗口更新
         }
+
 
         private void ClearFilters()
         {

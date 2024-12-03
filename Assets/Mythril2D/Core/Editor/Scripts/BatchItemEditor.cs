@@ -87,7 +87,8 @@ public class BatchItemEditor : EditorWindow
 
                 if (!string.IsNullOrEmpty(newDisplayName)) item.DisplayName = newDisplayName;
                 if (!string.IsNullOrEmpty(newDescription)) item.Description = newDescription;
-                if (newPrice.HasValue) item.Price = newPrice.Value;
+                if (newPrice.HasValue) item.buyPrice = newPrice.Value;
+                if (newPrice.HasValue) item.sellPrice = newPrice.Value;
                 if (newIsStackable.HasValue) item.IsStackable = newIsStackable.Value;
                 if (newCategory.HasValue) item.Category = newCategory.Value;
 

@@ -12,7 +12,7 @@ namespace Gyvr.Mythril2D
 
         [SerializeField] private HoleDatabase m_holeDatabase = null;
 
-        private string[] teleportName = {
+        private string[] teleportNames = {
             "PS_Small_Corner",
             "PS_Narrow_Tunnel",
             "PS_Centre_Corner",
@@ -20,6 +20,7 @@ namespace Gyvr.Mythril2D
             "PS_Lower_Corner",
             "PS_Crossroads",
             "PS_Right_Corner",
+            "PS_Vertical_Tunnel",
         };
 
         public bool TryExecute(CharacterBase source, IInteractionTarget target)
@@ -32,7 +33,9 @@ namespace Gyvr.Mythril2D
                     {
                         GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_holeDatabase.getInSound);
 
-                        GameManager.TeleportLoadingSystem.RequestTransition("That_Abyss", null, null,
+                        string teleportName = teleportNames[UnityEngine.Random.Range(0, teleportNames.Length)];
+
+                        GameManager.TeleportLoadingSystem.RequestTransition("That_Abyss", null,
                             () =>
                             {
                                 //var teleports = GameObject.Find("Player Spawner");
@@ -44,8 +47,10 @@ namespace Gyvr.Mythril2D
                                 //OnTransitionComplete(teleports.GetComponentsInChildren<Transform>()[randomNumber].name);
 
                                 GameManager.DayNightSystem.OnEnableDayNightSystem();
-                            }, 
-                            ETeleportType.Normal, teleportName[UnityEngine.Random.Range(0, teleportName.Length)]);
+
+                                GameManager.NotificationSystem.SetActiveEvacuation.Invoke(teleportName);
+                            }, null, 
+                            ETeleportType.Normal, teleportName);
 
                         // 在 lambda 里面居然没有赋值？
                         //Debug.Log("after" + teleportName);

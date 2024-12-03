@@ -10,12 +10,11 @@ namespace Gyvr.Mythril2D
         [SerializeField] private LootTable lootTable;   // 引用 ScriptableObject 数据表
         [SerializeField] private string m_gameFlagID = "DeadBody_00";
         [SerializeField] private Sprite[] m_deadBodySprites = null;
-        [SerializeField] private int m_canLootCount = 5;
 
         [Header("Audio")]
         [SerializeField] private AudioClipResolver m_lootedSound;
 
-        private bool m_opened = false;
+        private bool m_looted = false;
         private int m_randomMaxLootedCount = 0;
         private int m_nowLootedCount = 0;
 
@@ -23,7 +22,13 @@ namespace Gyvr.Mythril2D
         {
             base.Start();
 
-            m_randomMaxLootedCount = Random.Range(0, m_canLootCount);
+            m_randomMaxLootedCount = Random.Range(0, lootTable.maxLootedCount);
+
+            // 检查是否已达到最大掠夺次数
+            if (m_nowLootedCount >= m_randomMaxLootedCount)
+            {
+                this.gameObject.layer = LayerMask.NameToLayer("Collision D"); // 设置为不可被掠夺
+            }
 
             AssignRandomSprite();
         }
@@ -55,9 +60,12 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
-            Debug.Log("OnStartInteract");
+            //Debug.Log("OnStartInteract");
 
-            GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+            if (m_nowLootedCount < m_randomMaxLootedCount) // 检查是否可以继续掠夺
+            {
+                GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+            }
         }
 
         private LootTable.LootEntryData GetRandomLootEntry()
@@ -84,51 +92,71 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
-
         public bool TryLooted()
         {
-            if (m_nowLootedCount < m_randomMaxLootedCount) // 检查是否可以继续掠夺
+            if (GameManager.InventorySystem.IsBackpackFull())
             {
-                // 随机决定掠夺物品还是金钱
-                bool lootItem = Random.Range(0, 2) == 0;
+                GameManager.DialogueSystem.Main.PlayNow("Backpack is full...");
 
-                if (lootItem && lootTable.entries != null && lootTable.entries.Length > 0)
-                {
-                    //Debug.Log("lootItem");
-
-                    // 使用基于权重的随机选择机制
-                    var randomEntry = GetRandomLootEntry();
-
-                    if (randomEntry != null)
-                    {
-                        int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
-                        GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
-                    }
-
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
-                }
-                else if (lootTable.money > 0)
-                {
-                    int randomMoney = Random.Range(10, lootTable.money + 1);
-                    GameManager.InventorySystem.AddMoney(randomMoney);
-
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
-
-                }
-
+                return false;
+            }
+            else
+            {
                 // 增加掠夺次数
                 m_nowLootedCount++;
 
-                // 检查是否已达到最大掠夺次数
-                if (m_nowLootedCount >= m_randomMaxLootedCount)
+                // 检查是否触发不生成物品的概率
+                // 在概率范围内则生成 概率越大几率越大
+                if (UnityEngine.Random.value <= lootTable.lootRate)
                 {
-                    this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                    // 随机决定掠夺物品还是金钱
+                    bool lootItem = Random.Range(0, 2) == 0;
+
+                    if (lootItem && lootTable.entries != null && lootTable.entries.Length > 0)
+                    {
+                        //Debug.Log("lootItem");
+
+                        // 使用基于权重的随机选择机制
+                        var randomEntry = GetRandomLootEntry();
+
+                        if (randomEntry != null)
+                        {
+                            int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
+                            GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                        }
+
+                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+                    }
+                    else if (lootTable.money > 0)
+                    {
+                        int randomMoney = Random.Range(1, lootTable.money + 1);
+                        GameManager.InventorySystem.AddMoney(randomMoney);
+
+                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+
+                    }
+
+                    // 检查是否已达到最大掠夺次数
+                    if (m_nowLootedCount >= m_randomMaxLootedCount)
+                    {
+                        this.gameObject.layer = LayerMask.NameToLayer("Collision D"); // 设置为不可被掠夺
+                    }
+
+                    return true; // 表示本次掠夺成功
                 }
+                else
+                {
+                    Debug.Log("没有获得任何物品或金钱。");
 
-                return true; // 表示本次掠夺成功
+                    // 检查是否已达到最大掠夺次数
+                    if (m_nowLootedCount >= m_randomMaxLootedCount)
+                    {
+                        this.gameObject.layer = LayerMask.NameToLayer("Collision D"); // 设置为不可被掠夺
+                    }
+
+                    return false;
+                }
             }
-
-            return false; // 表示已达到最大掠夺次数，无法再掠夺
         }
     }
 }

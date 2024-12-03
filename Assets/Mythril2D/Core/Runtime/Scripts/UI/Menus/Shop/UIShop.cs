@@ -25,6 +25,17 @@ namespace Gyvr.Mythril2D
         private UIShopEntry[] m_slots = null;
         private Shop m_shop = null;
 
+        private void Awake()
+        {
+            GameManager.NotificationSystem.OnShopItemDiscarded?.AddListener(OnBagItemDiscarded);
+
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.NotificationSystem.OnShopItemDiscarded?.RemoveListener(OnBagItemDiscarded);
+        }
+
         public void Init()
         {
             m_inventoryBag.UpdateSlots();
@@ -153,6 +164,17 @@ namespace Gyvr.Mythril2D
             {
                 Transform child = m_itemSlotsRoot.transform.GetChild(i);
                 Destroy(child.gameObject);
+            }
+        }
+        
+        private void OnBagItemDiscarded(ItemInstance itemInstance, EItemLocation location)
+        {
+            // 感觉这分开写是不是有点傻逼
+            // 要么就弄两个委托，要么就合成一个？
+            if (location == EItemLocation.Bag)
+            {
+                itemInstance.GetItem().Drop(itemInstance, GameManager.Player, location);
+                UpdateUI();
             }
         }
 

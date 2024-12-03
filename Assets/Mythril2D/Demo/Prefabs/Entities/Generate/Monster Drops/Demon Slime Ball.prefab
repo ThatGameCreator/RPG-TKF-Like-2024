@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interaction:
-    rid: 8303503587277799802
+    rid: 8303503698630017195
   m_spriteRenderer:
   - {fileID: 4629016025909198870}
   m_lightEventListener: {fileID: 4780666795192538055}
@@ -67,7 +67,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8303503587277799802
+    - rid: 8303503698630017195
       type: {class: SurfaceItemInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_surfaceItem: {fileID: 3155168136776321965}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadowType: 3
-  shadowLayer: 0
+  shadowLayer: 12
   shadowDistance: 1
   shadowDistanceMin: 0.5
   shadowDistanceMax: 1

@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 2e8c99be0177f84488ba63d1f2a91427, type: 2}
     - target: {fileID: -592417340943693092, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_moveSpeed
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -592417340943693092, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_abilities.Array.size
@@ -71,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 4395925964684122280, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709888431689883737, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
+      propertyPath: m_detectionRadius
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5709888431689883737, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_soughtDistanceFromTarget

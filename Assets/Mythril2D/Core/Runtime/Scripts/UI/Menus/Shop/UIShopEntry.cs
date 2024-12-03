@@ -49,7 +49,7 @@ namespace Gyvr.Mythril2D
         {
             m_target = item;
             m_name.text = item.DisplayName;
-            m_price.text = item.Price.ToString();
+            m_price.text = item.sellPrice.ToString();
             m_image.sprite = item.Icon;
         }
 
