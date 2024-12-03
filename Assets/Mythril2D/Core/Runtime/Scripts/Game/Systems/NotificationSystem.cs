@@ -40,6 +40,7 @@ namespace Gyvr.Mythril2D
         public UnityEvent mapUnloaded = new UnityEvent();
         public UnityEvent saveStart = new UnityEvent();
         public UnityEvent saveEnd = new UnityEvent();
+
         public UnityEvent<Hero> playerSpawned = new UnityEvent<Hero>();
         public UnityEvent<Hero, Entity> playerTryInteracte = new UnityEvent<Hero, Entity>();
         public UnityEvent<Hero, Entity> playerEndInteracte = new UnityEvent<Hero, Entity>();

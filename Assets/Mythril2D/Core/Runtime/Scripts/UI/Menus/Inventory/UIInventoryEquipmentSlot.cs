@@ -38,7 +38,7 @@ namespace Gyvr.Mythril2D
 
         private void OnDropEquipment(InputAction.CallbackContext context)
         {
-            Debug.Log("OnDropEquipment");
+            //Debug.Log("OnDropEquipment");
 
             // 不晓得为什么GameManager.InventorySystem.HasItemInBag(m_item)放前面会空指针
             if (m_equipment  && m_selected)
