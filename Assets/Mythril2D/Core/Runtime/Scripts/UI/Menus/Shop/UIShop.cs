@@ -189,7 +189,6 @@ namespace Gyvr.Mythril2D
                     GameManager.InventorySystem.RemoveMoney(itemPrice);
                     GameManager.InventorySystem.AddToBag(item);
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_buySellAudio);
-                    m_inventoryBag.SetCategory(item.Category); // Navigate to the category of the purchased item for better UX
                     UpdateUI(true);
                 }
                 else

@@ -9,7 +9,6 @@ namespace Gyvr.Mythril2D
     public class UIWarehouseBag : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private SerializableDictionary<EItemCategory, UIInventoryBagCategory> m_categories = null;
         [SerializeField] private Transform m_slotParent = null; // 背包格子的父对象
         [SerializeField] private UIInventoryWarehouseSlot m_slotPrefab = null; // 格子的预制体
         private List<UIInventoryWarehouseSlot> m_slots = new List<UIInventoryWarehouseSlot>();
@@ -29,10 +28,6 @@ namespace Gyvr.Mythril2D
             GenerateSlots(GameManager.WarehouseSystem.warehouseCapacity);
             FillSlots();
         }
-
-        // Always reset to the first category when shown
-        private void OnEnable() => SetCategory(0);
-
         public void UpdateSlots()
         {
             FillSlots(); // 只更新物品显示，不重新创建格子
@@ -96,27 +91,5 @@ namespace Gyvr.Mythril2D
 
             return null;
         }
-
-        public void SetCategory(EItemCategory category)
-        {
-            // Make sure this category is available in the bag
-            if (!m_categories.ContainsKey(category))
-            {
-                Debug.LogWarning($"Category {category} not found in the bag");
-                return;
-            }
-            
-            foreach (var entry in m_categories)
-            {
-                entry.Value.SetHighlight(false);
-            }
-
-            m_category = category;
-            m_categories[m_category].SetHighlight(true);
-
-            UpdateSlots();
-        }
-
-        private void OnBagCategorySelected(EItemCategory category) => SetCategory(category);
     }
 }

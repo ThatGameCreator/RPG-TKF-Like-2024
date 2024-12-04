@@ -9,7 +9,6 @@ namespace Gyvr.Mythril2D
     public class UIInventoryBag : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private SerializableDictionary<EItemCategory, UIInventoryBagCategory> m_categories = null;
         [SerializeField] private Transform m_slotParent = null; // 背包格子的父对象
         [SerializeField] private UIInventoryBagSlot m_slotPrefab = null; // 格子的预制体
         private List<UIInventoryBagSlot> m_slots = new List<UIInventoryBagSlot>();
@@ -103,26 +102,5 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
-        public void SetCategory(EItemCategory category)
-        {
-            // Make sure this category is available in the bag
-            if (!m_categories.ContainsKey(category))
-            {
-                Debug.LogWarning($"Category {category} not found in the bag");
-                return;
-            }
-            
-            foreach (var entry in m_categories)
-            {
-                entry.Value.SetHighlight(false);
-            }
-
-            m_category = category;
-            m_categories[m_category].SetHighlight(true);
-
-            UpdateSlots();
-        }
-
-        private void OnBagCategorySelected(EItemCategory category) => SetCategory(category);
     }
 }
