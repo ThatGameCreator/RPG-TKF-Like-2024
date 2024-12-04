@@ -42,7 +42,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 144, y: 312}
+  m_AnchoredPosition: {x: 144, y: 340}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1465521454522814174
@@ -130,10 +130,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1749447930455002201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 32}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -80}
+  m_SizeDelta: {x: 250, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2257249917093452908
 CanvasRenderer:
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: NORTHEAST
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6110912d936a1841a5ca533caadca87, type: 2}
   m_sharedMaterial: {fileID: -2039489033487393319, guid: f6110912d936a1841a5ca533caadca87, type: 2}
@@ -190,8 +190,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -296,7 +296,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 148, y: 64}
+  m_SizeDelta: {x: 200, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5989784635433131266
 CanvasRenderer:
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Saving
+  m_text: Recording...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6110912d936a1841a5ca533caadca87, type: 2}
   m_sharedMaterial: {fileID: -2039489033487393319, guid: f6110912d936a1841a5ca533caadca87, type: 2}
@@ -460,7 +460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -238, y: 20}
+  m_AnchoredPosition: {x: -290, y: 20}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &7130389436944518366
@@ -553,10 +553,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1749447930455002201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 48}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -24}
+  m_SizeDelta: {x: 250, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2462216695551207381
 CanvasRenderer:
@@ -988,7 +988,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 16
+  m_Spacing: 28
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1058,7 +1058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1749447930455002201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1078,8 +1078,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -337, y: -163}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -292, y: -186}
+  m_SizeDelta: {x: 250, y: 152}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &3370637449991265186
 MonoBehaviour:
@@ -1111,36 +1111,36 @@ MonoBehaviour:
   evacuationTextRules:
   - Key: PS_Small_Corner
     Value:
-    - Northeast Corner
-    - Southeast Corner
+    - NORTHEAST
+    - SOUTHEAST
   - Key: PS_Narrow_Tunnel
     Value:
-    - Northeast Corner
-    - Southeast Corner
+    - NORTHEAST
+    - SOUTHEAST
   - Key: PS_Centre_Corner
     Value:
-    - Northwest Corner
-    - Southwest Corner
+    - NORTHWEST
+    - SOUTHWEST
   - Key: PS_Rightside_Basin
     Value:
-    - Northeast Corner
-    - Northwest Corner
+    - NORTHEAST
+    - NORTHWEST
   - Key: PS_Lower_Corner
     Value:
-    - Northeast Corner
-    - Northwest Corner
+    - NORTHEAST
+    - NORTHWEST
   - Key: PS_Crossroads
     Value:
-    - Northeast Corner
-    - Northwest Corner
+    - NORTHEAST
+    - NORTHWEST
   - Key: PS_Right_Corner
     Value:
-    - Northwest Corner
-    - Southwest Corner
+    - NORTHWEST
+    - SOUTHWEST
   - Key: PS_Vertical_Tunnel
     Value:
-    - Southeast Corner
-    - Southwest Corner
+    - SOUTHEAST
+    - SOUTHWEST
   m_evacuationTexts:
   - {fileID: 4840199759355554329}
   - {fileID: 4379738722914697485}
@@ -1203,10 +1203,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1749447930455002201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 32}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -132}
+  m_SizeDelta: {x: 250, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7677916701816761258
 CanvasRenderer:
@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: SOUTHWEST
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6110912d936a1841a5ca533caadca87, type: 2}
   m_sharedMaterial: {fileID: -2039489033487393319, guid: f6110912d936a1841a5ca533caadca87, type: 2}
@@ -1263,8 +1263,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1345,6 +1345,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Slow
       objectReference: {fileID: 0}
+    - target: {fileID: 541027358235798399, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f6110912d936a1841a5ca533caadca87, type: 2}
+    - target: {fileID: 541027358235798399, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2039489033487393319, guid: f6110912d936a1841a5ca533caadca87, type: 2}
+    - target: {fileID: 541027358235798399, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2883962880348426850, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1383,7 +1395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903621871109703555, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Name
-      value: Game Menu Indicator
+      value: KeyBoard Indicator
       objectReference: {fileID: 0}
     - target: {fileID: 8640733716985594574, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Pivot.x
@@ -1561,7 +1573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903621871109703555, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Name
-      value: Game Menu Indicator (3)
+      value: KeyBoard Indicator (3)
       objectReference: {fileID: 0}
     - target: {fileID: 8640733716985594574, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Pivot.x
@@ -1739,7 +1751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903621871109703555, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Name
-      value: Game Menu Indicator (6)
+      value: KeyBoard Indicator (6)
       objectReference: {fileID: 0}
     - target: {fileID: 8640733716985594574, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Pivot.x
@@ -1917,7 +1929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903621871109703555, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Name
-      value: Game Menu Indicator (1)
+      value: KeyBoard Indicator (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8640733716985594574, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Pivot.x
@@ -2055,7 +2067,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 541027358235798399, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_text
-      value: Cancel
+      value: Menu
       objectReference: {fileID: 0}
     - target: {fileID: 2883962880348426850, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2075,7 +2087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3762314643565970567, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_action
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5759121295920750011, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2095,7 +2107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903621871109703555, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Name
-      value: Game Menu Indicator (4)
+      value: KeyBoard Indicator (4)
       objectReference: {fileID: 0}
     - target: {fileID: 8640733716985594574, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Pivot.x
@@ -2234,7 +2246,7 @@ PrefabInstance:
     - target: {fileID: 2251908898167593051, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -734112688, guid: 77f3253afde0a6947bf1166472ee43fd, type: 3}
+      objectReference: {fileID: -1290227803, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 7540909126826966837, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -2245,7 +2257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7540909127647356692, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_aniamtionSpeed
-      value: 0.0035
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 7540909127647356698, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_Name
@@ -2369,7 +2381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7540909127903025599, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.684021
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8758912495801335876, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
@@ -2431,7 +2443,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 541027358235798399, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_text
-      value: Submit
+      value: Action
       objectReference: {fileID: 0}
     - target: {fileID: 2883962880348426850, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2451,7 +2463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3762314643565970567, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_action
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5759121295920750011, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2471,7 +2483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903621871109703555, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Name
-      value: Game Menu Indicator (5)
+      value: KeyBoard Indicator (5)
       objectReference: {fileID: 0}
     - target: {fileID: 8640733716985594574, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Pivot.x
@@ -2649,7 +2661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5903621871109703555, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Name
-      value: Game Menu Indicator (2)
+      value: KeyBoard Indicator (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8640733716985594574, guid: bb4c7f18d7b57364da01e3d1675c67b8, type: 3}
       propertyPath: m_Pivot.x
@@ -2807,7 +2819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7540909127647356692, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_aniamtionSpeed
-      value: 0.0035
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 7540909127647356698, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_Name
@@ -2993,7 +3005,7 @@ PrefabInstance:
       objectReference: {fileID: -2060511694, guid: d8a3b1ddeca375b4e8b2855d4e000e8c, type: 3}
     - target: {fileID: 7212323202024798421, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7212323202024798421, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3029,7 +3041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7540909127647356692, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_aniamtionSpeed
-      value: 0.0035
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 7540909127647356698, guid: 0f662d5409db874499db871de7ae12c5, type: 3}
       propertyPath: m_Name
