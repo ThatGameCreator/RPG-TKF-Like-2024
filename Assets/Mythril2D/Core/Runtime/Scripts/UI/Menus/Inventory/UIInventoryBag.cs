@@ -37,7 +37,7 @@ namespace Gyvr.Mythril2D
         }
 
         // Always reset to the first category when shown
-        private void OnEnable() => SetCategory(0);
+        //private void OnEnable() => SetCategory(0);
 
         private void ClearSlots()
         {
