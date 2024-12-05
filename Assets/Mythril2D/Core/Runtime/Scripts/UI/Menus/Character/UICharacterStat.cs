@@ -22,7 +22,7 @@ namespace Gyvr.Mythril2D
 
             if (tempStats[m_stat] > 0)
             {
-                m_value.text = string.Format("{0} (+{1})", stats[m_stat], tempStats[m_stat]);
+                m_value.text = string.Format("{0}", stats[m_stat]+tempStats[m_stat]);
             }
             else
             {
