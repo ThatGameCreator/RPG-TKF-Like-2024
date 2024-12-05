@@ -47,33 +47,47 @@ namespace Gyvr.Mythril2D
         private void Update()
         {
             GameObject selection = GetSelectedChild();
-
             // If the selection changed.
             if (selection != m_selection)
             {
                 m_selection = selection;
-
                 // If the new selected child is valid.
                 if (m_selection)
                 {
                     RectTransform selectionRectTransform = (RectTransform)m_selection.transform;
                     RectTransform contentRectTransform = m_scrollRect.content;
+                    RectTransform viewportRectTransform = m_scrollRect.viewport;
 
-                    float itemPositonInViewport = selectionRectTransform.anchoredPosition.y;
-                    float viewportHalfHeight = m_scrollRect.viewport.rect.height / 2.0f;
+                    // 计算选中项目在内容中的位置
+                    float itemPositionInContent = -selectionRectTransform.anchoredPosition.y;
 
-                    // If the ScrollRect is hovered, do not update the destination.
+                    // 计算视口的高度和内容的高度
+                    float viewportHeight = viewportRectTransform.rect.height;
+                    float contentHeight = contentRectTransform.rect.height;
+
+                    // 计算滑动目标位置
+                    float destinationY = 0;
+
+                    // 如果选中项目完全在视口外
+                    if (itemPositionInContent < 0 || itemPositionInContent > viewportHeight)
+                    {
+                        // 将选中项目居中
+                        destinationY = itemPositionInContent - (viewportHeight / 2) + (selectionRectTransform.rect.height / 2);
+                    }
+
+                    // 确保滑动目标在内容范围内
+                    destinationY = Mathf.Clamp(destinationY, 0, Mathf.Max(0, contentHeight - viewportHeight));
+
+                    // If the ScrollRect is not hovered, update destination
                     if (!m_hovered)
                     {
                         m_destination.x = contentRectTransform.anchoredPosition.x;
-                        m_destination.y = math.abs(itemPositonInViewport) - viewportHalfHeight;
-                        m_destination.y = math.clamp(m_destination.y, 0, contentRectTransform.sizeDelta.y / 2.0f);
+                        m_destination.y = destinationY;
                     }
                 }
             }
 
             // If the ScrollRect is hovered, lock the destination to the current position
-            // This way, the position is kept even after hovering, until the selection changes.
             if (m_hovered)
             {
                 m_destination = m_scrollRect.content.anchoredPosition;
@@ -81,7 +95,11 @@ namespace Gyvr.Mythril2D
             // If something is selected, move towards the destination.
             else if (m_selection)
             {
-                m_scrollRect.content.anchoredPosition = math.lerp(m_scrollRect.content.anchoredPosition, m_destination, Time.unscaledDeltaTime * m_snappingSpeed);
+                m_scrollRect.content.anchoredPosition = Vector2.Lerp(
+                    m_scrollRect.content.anchoredPosition,
+                    m_destination,
+                    Time.unscaledDeltaTime * m_snappingSpeed
+                );
             }
         }
     }
