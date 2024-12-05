@@ -49,6 +49,7 @@ public class FontLocalization : MonoBehaviour
         // 根据当前语言设置字号
         SetFontSizeBasedOnLocale(LocalizationSettings.SelectedLocale.Identifier.Code);
     }
+
     private void SetFontSizeBasedOnLocale(string localeCode)
     {
         // 设置不同语言的字号
