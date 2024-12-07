@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: ShopTable
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: de4d2a437db9a1d47bd80e7fa1fa7b5a, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: eaa05f3e1a869d04b81a25f0e911bd63, type: 2}
+  - {fileID: 11400000, guid: 16cf70cdcb29bc24f9a71f298a914485, type: 2}
+  - {fileID: 11400000, guid: 0b2e1f0cc22a8dc41bd2eab14e5f44f2, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

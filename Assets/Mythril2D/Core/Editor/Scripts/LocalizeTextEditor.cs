@@ -65,8 +65,6 @@ namespace Gyvr.Mythril2D
                     {
                         LocalizeStringEvent localizeEvent = textComponent.gameObject.GetComponent<LocalizeStringEvent>();
 
-                        Debug.Log(localizeEvent.OnUpdateString != null);
-
                         // 需要本地化的Text
                         if (localizeEvent == null)
                         {
@@ -74,11 +72,38 @@ namespace Gyvr.Mythril2D
                             // 标记对象为“已修改”
                             EditorUtility.SetDirty(selectedObject);
                         }
-                        if (localizeEvent.OnUpdateString != null)
+                        if (localizeEvent.OnUpdateString == null)
                         {
                             SetupForLocalization(textComponent, localizeEvent);
 
                             // 标记该对象为已修改，以便保存时能够识别更改
+                            EditorUtility.SetDirty(selectedObject);
+                        }
+
+                        FontLocalization fontLocalization = textComponent.gameObject.GetComponent<FontLocalization>();
+
+                        // 需要本地化的Text
+                        if (fontLocalization == null)
+                        {
+                            fontLocalization = textComponent.gameObject.AddComponent<FontLocalization>();
+
+                            fontLocalization.TextMeshPro = textComponent;
+
+                            // 标记对象为“已修改”
+                            EditorUtility.SetDirty(selectedObject);
+                        }
+                        else if (fontLocalization.TextMeshPro == null || fontLocalization.DefaultFontSize == 0)
+                        {
+                            Debug.Log("fontLocalization.TextMeshPro == null");
+
+                            fontLocalization.TextMeshPro = textComponent;
+                            fontLocalization.TableName = "FontAssets";
+                            fontLocalization.FontKey = "mainFont";
+                            fontLocalization.DefaultFontSize = 28f;
+                            fontLocalization.EnglishFontSize = 28f;
+                            fontLocalization.ChineseFontSize = 19f;
+
+                            // 标记对象为“已修改”
                             EditorUtility.SetDirty(selectedObject);
                         }
 

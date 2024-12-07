@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Attack_TypeList_ja
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: 4cb465adf35c295479717dcb4db16bb4, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 362730881024
+    m_Localized: "\u4F7F\u7528\u5F13\u7BAD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 210410536960
+    m_Localized: "\u6325\u821E\u6B66\u5668"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77514014720
+    m_Localized: "\u4F7F\u7528\u62F3\u5934"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
