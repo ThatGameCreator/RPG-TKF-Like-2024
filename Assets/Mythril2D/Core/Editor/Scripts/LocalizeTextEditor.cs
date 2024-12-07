@@ -7,6 +7,8 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.PackageManager;
+using System.Reflection;
 
 namespace Gyvr.Mythril2D
 {
@@ -43,30 +45,66 @@ namespace Gyvr.Mythril2D
 
         private void LocalizeSelectedGameObjects()
         {
+            // 清空存储本地化文本条目的列表
             localizedTextEntries.Clear();
 
+            // 获取当前选中的所有游戏对象
             GameObject[] selectedObjects = Selection.gameObjects;
+
+            // 遍历每一个选中的游戏对象
             foreach (GameObject selectedObject in selectedObjects)
             {
+                // 获取当前游戏对象及其所有子物体中包含的所有 TextMeshProUGUI 组件（包括禁用的对象）
                 TextMeshProUGUI[] textComponents = selectedObject.GetComponentsInChildren<TextMeshProUGUI>(true);
+
+                // 遍历所有 TextMeshProUGUI 组件
                 foreach (TextMeshProUGUI textComponent in textComponents)
                 {
+                    // 忽略以 "$" 开头的 Text 组件（这些组件可能是一些特殊用途的组件）
                     if (!textComponent.name.StartsWith("$"))
                     {
+                        LocalizeStringEvent localizeEvent = textComponent.gameObject.GetComponent<LocalizeStringEvent>();
+
+                        Debug.Log(localizeEvent.OnUpdateString != null);
+
                         // 需要本地化的Text
-                        if (textComponent.gameObject.GetComponent<LocalizeStringEvent>() == null)
+                        if (localizeEvent == null)
                         {
-                            LocalizeStringEvent localizeEvent = textComponent.gameObject.AddComponent<LocalizeStringEvent>();
+                            textComponent.gameObject.AddComponent<LocalizeStringEvent>();
                             // 标记对象为“已修改”
                             EditorUtility.SetDirty(selectedObject);
                         }
-                        // 添加到列表
+                        if (localizeEvent.OnUpdateString != null)
+                        {
+                            SetupForLocalization(textComponent, localizeEvent);
+
+                            // 标记该对象为已修改，以便保存时能够识别更改
+                            EditorUtility.SetDirty(selectedObject);
+                        }
+
+                        // 将游戏对象和对应的 Text 组件的名称、文本内容保存到列表中，格式为 “游戏对象名称\tText组件名称\tText内容”
                         string entry = $"{selectedObject.name}\t{textComponent.name}\t{textComponent.text}";
                         localizedTextEntries.Add(entry);
                     }
                 }
             }
         }
+
+        private void SetupForLocalization(TextMeshProUGUI target, LocalizeStringEvent localizeEvent)
+        {
+            // 获取 TextMeshProUGUI 组件的 "text" 属性的 set 方法，用于更新文本内容
+            var setStringMethod = target.GetType().GetProperty("text").GetSetMethod();
+
+            // 创建一个委托，将 "text" 属性的 set 方法绑定到目标对象
+            var methodDelegate = System.Delegate.CreateDelegate(typeof(UnityAction<string>), target, setStringMethod) as UnityAction<string>;
+
+            // 将该委托添加为 LocalizeStringEvent 组件的 OnUpdateString 事件的监听器
+            UnityEditor.Events.UnityEventTools.AddPersistentListener(localizeEvent.OnUpdateString, methodDelegate);
+
+            // 设置事件监听器的状态，使其在编辑器和运行时都可以触发
+            localizeEvent.OnUpdateString.SetPersistentListenerState(0, UnityEventCallState.EditorAndRuntime);
+        }
+
 
         private void SaveLocalizedTextToFile()
         {

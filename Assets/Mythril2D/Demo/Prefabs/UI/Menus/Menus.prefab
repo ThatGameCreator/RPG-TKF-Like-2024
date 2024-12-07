@@ -91,6 +91,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5672616120586658270}
     m_Modifications:
+    - target: {fileID: 72285746912591763, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 72285746912591763, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 475395384378489502}
+    - target: {fileID: 72285746912591763, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 72285746912591763, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 72285746912591763, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 914409797293526294, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 914409797293526294, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8809029627745833967}
+    - target: {fileID: 914409797293526294, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 914409797293526294, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 914409797293526294, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 1498021032583524812, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -175,11 +215,202 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warehouse Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 1774522736945939712, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774522736945939712, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7249089065038066885}
+    - target: {fileID: 1774522736945939712, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774522736945939712, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774522736945939712, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819953105207613776, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819953105207613776, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2563826412823988605}
+    - target: {fileID: 4819953105207613776, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819953105207613776, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819953105207613776, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763717814311935271, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763717814311935271, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5176934410302689235}
+    - target: {fileID: 6763717814311935271, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763717814311935271, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6763717814311935271, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586707126537639724, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586707126537639724, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5863972680971853675}
+    - target: {fileID: 7586707126537639724, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586707126537639724, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586707126537639724, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923749060976604063, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923749060976604063, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6817932028434175052}
+    - target: {fileID: 7923749060976604063, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923749060976604063, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923749060976604063, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194260893365604298, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194260893365604298, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8014016322561172666}
+    - target: {fileID: 8194260893365604298, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194260893365604298, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194260893365604298, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438817979453795957, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438817979453795957, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9139677855031758639}
+    - target: {fileID: 8438817979453795957, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438817979453795957, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438817979453795957, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629335827701116116, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629335827701116116, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5114504016160447945}
+    - target: {fileID: 8629335827701116116, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629335827701116116, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629335827701116116, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803392241640231837, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803392241640231837, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7254088597496346861}
+    - target: {fileID: 8803392241640231837, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803392241640231837, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8803392241640231837, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+--- !u!114 &475395384378489502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 981079223721805538, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2292198066943249840 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1498021032583524812, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
@@ -194,6 +425,116 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36064a177e003874c843b180cef2492e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2563826412823988605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2923123438290367745, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5114504016160447945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5620441209718989237, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5176934410302689235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5538765242950988719, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5863972680971853675 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6513484737458545431, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6817932028434175052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6168707462042675248, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7249089065038066885 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8042443594311272633, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7254088597496346861 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8047436564997997713, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8014016322561172666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7219849288111216838, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8809029627745833967 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8158967850894602131, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9139677855031758639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8490172997295223635, guid: 5c1b543c26488f84595739690607c8d2, type: 3}
+  m_PrefabInstance: {fileID: 794199026236472444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1067443570989988147
@@ -536,10 +877,33 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2617989130205366734}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &1067443571336396692 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1978025639, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
+  m_PrefabInstance: {fileID: 1067443570989988147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067443571336396694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1067443571336396694 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1978025637, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
@@ -569,7 +933,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1067443571336396692}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -589,6 +965,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1171066552982628438, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
   m_PrefabInstance: {fileID: 1067443570989988147}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2507145860188542376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3178267715609619611, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
+  m_PrefabInstance: {fileID: 1067443570989988147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6012397353393351465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2617989130205366734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3063755598263251197, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
+  m_PrefabInstance: {fileID: 1067443570989988147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340771613605013597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3951896299233359821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4037379186625466110, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
@@ -618,7 +1016,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7333638590540376080}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -651,7 +1061,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2507145860188542376}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -684,10 +1106,44 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7951892552376488529}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &7333638590540376080 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7716358537426800931, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
+  m_PrefabInstance: {fileID: 1067443570989988147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3951896299233359821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7951892552376488529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6956546711977749346, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
+  m_PrefabInstance: {fileID: 1067443570989988147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6066937973499514524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8857782939087880998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8375983797249292821, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
@@ -717,10 +1173,33 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8890198777293229882}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &8890198777293229882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8480285701329204745, guid: a5c8afad5295b4a598214c0da2037bc8, type: 3}
+  m_PrefabInstance: {fileID: 1067443570989988147}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857782939087880998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1288109506530551428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -729,6 +1208,66 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5672616120586658270}
     m_Modifications:
+    - target: {fileID: 224071565107589195, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224071565107589195, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7412604946060797450}
+    - target: {fileID: 224071565107589195, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224071565107589195, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 224071565107589195, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696988693024778415, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696988693024778415, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2437474882336955314}
+    - target: {fileID: 1696988693024778415, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696988693024778415, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1696988693024778415, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250889827252338009, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250889827252338009, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4511387957058047185}
+    - target: {fileID: 4250889827252338009, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250889827252338009, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250889827252338009, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 5252293318097205733, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
       propertyPath: m_Name
       value: Shop
@@ -853,7 +1392,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5096921997109162585}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -866,6 +1417,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9d11cf7cd33198468eb9902226b12cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2437474882336955314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3473382212717460790, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+  m_PrefabInstance: {fileID: 1288109506530551428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4511387957058047185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3421578705508837973, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+  m_PrefabInstance: {fileID: 1288109506530551428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4542029434410406697 stripped
@@ -897,15 +1470,60 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9207147577656172086}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &5096921997109162585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6294817631125787869, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+  m_PrefabInstance: {fileID: 1288109506530551428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465343871786499910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6522852294141141703 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5432919360401392707, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
   m_PrefabInstance: {fileID: 1288109506530551428}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7412604946060797450 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8592468043937824910, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+  m_PrefabInstance: {fileID: 1288109506530551428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9207147577656172086 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7937052512585382066, guid: ccdf57513a29347929db184c4fb58d12, type: 3}
+  m_PrefabInstance: {fileID: 1288109506530551428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4542029434410406697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1586104178953799578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1304,6 +1922,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5920617713822690342}
   m_SourcePrefab: {fileID: 100100000, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+--- !u!114 &468364428771818017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1188123123289079227, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477669236133064812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &631641511541629752 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2217727886773298338, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
@@ -1333,7 +1962,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3501579627802716533}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -1366,7 +2007,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5389651772226346928}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -1399,7 +2052,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2155602545413767969}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -1432,10 +2097,33 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7006595456096700180}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &1586104177306269101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1649914423, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586104177306269103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1586104177306269103 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1649914421, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
@@ -1465,10 +2153,77 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1586104177306269101}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &2155602545413767969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 858151512451122363, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170688478278080004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2540085696217074145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3837853185626345083, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822288153058695990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2752007101854448300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3473382212717460790, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439941614509466993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3501579627802716533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2781787810420567791, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631641511541629752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4077748045206216070 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3356847924440111644, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114720191105651098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4114720191105651098 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3393626620776879616, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
@@ -1498,7 +2253,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4077748045206216070}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -1531,7 +2298,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 468364428771818017}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -1544,6 +2323,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21174cdc644ce304e9e996e94f987da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4941672679167836020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5951120182226254062, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8991524185955480889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5389651772226346928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6685904687588628522, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087209647128748829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5822288153058695990 stripped
@@ -1575,15 +2376,49 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2540085696217074145}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &6621928715953606081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5613499775091624539, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185994102027519884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6730455952368894937 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5432919360401392707, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
   m_PrefabInstance: {fileID: 1586104178953799578}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7006595456096700180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8592468043937824910, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
+  m_PrefabInstance: {fileID: 1586104178953799578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190943820102105493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7185994102027519884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8483443355859730454, guid: 5ee5f729d6a68fa48b360e7b44c295f7, type: 3}
@@ -1613,7 +2448,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6621928715953606081}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -1646,7 +2493,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2752007101854448300}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -1679,7 +2538,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4941672679167836020}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -2040,7 +2911,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8301756072575254189}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -2053,6 +2936,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8c6c4874756dfb4cbf808552f625451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3762961692169487125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 496214765973347607, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
+  m_PrefabInstance: {fileID: 3664330356905958914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009060314898578836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5009060314898578836 stripped
@@ -2084,10 +2978,33 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3762961692169487125}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &5563598831210965955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9218743794727712193, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
+  m_PrefabInstance: {fileID: 3664330356905958914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460514573796188558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5772110512948315942 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7115958880954898724, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
@@ -2117,10 +3034,33 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7513888091831897451}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &6889020591094267832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7872545800042652090, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
+  m_PrefabInstance: {fileID: 3664330356905958914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477841524957312501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7477841524957312501 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6133040902638250999, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
@@ -2150,10 +3090,33 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6889020591094267832}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &7513888091831897451 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6529340276872500073, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
+  m_PrefabInstance: {fileID: 3664330356905958914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772110512948315942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7790867812973680027 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6828840169372470169, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
@@ -2183,10 +3146,44 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7895873336115698055}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &7895873336115698055 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6866186217665906565, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
+  m_PrefabInstance: {fileID: 3664330356905958914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7790867812973680027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8301756072575254189 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4751176808148590767, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
+  m_PrefabInstance: {fileID: 3664330356905958914}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2316089253005058416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8460514573796188558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5166640487895695244, guid: edaf4ee03542d475596d0854ce85d182, type: 3}
@@ -2216,7 +3213,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5563598831210965955}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -2428,6 +3437,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -14
       objectReference: {fileID: 0}
+    - target: {fileID: 1383642425749980705, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383642425749980705, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1352655323681774997}
+    - target: {fileID: 1383642425749980705, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383642425749980705, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383642425749980705, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 1966935356758561389, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2476,6 +3505,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -14
       objectReference: {fileID: 0}
+    - target: {fileID: 2219265432958976862, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219265432958976862, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4611760147268831410}
+    - target: {fileID: 2219265432958976862, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219265432958976862, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219265432958976862, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 2315360622758010552, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2499,6 +3548,26 @@ PrefabInstance:
     - target: {fileID: 2460933575522456872, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752799160337170118, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752799160337170118, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1085571758643755824}
+    - target: {fileID: 2752799160337170118, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752799160337170118, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752799160337170118, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
       objectReference: {fileID: 0}
     - target: {fileID: 2869461041794513741, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2684,6 +3753,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2971686201867485951}
+    - target: {fileID: 5072086623814795407, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072086623814795407, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 908976621624030523}
+    - target: {fileID: 5072086623814795407, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072086623814795407, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072086623814795407, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 5151714394044050204, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2783,6 +3872,26 @@ PrefabInstance:
     - target: {fileID: 6131036221435617019, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6217879920860942846, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6217879920860942846, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 648343031442528827}
+    - target: {fileID: 6217879920860942846, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6217879920860942846, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6217879920860942846, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
       objectReference: {fileID: 0}
     - target: {fileID: 6297852991715253015, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2908,6 +4017,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -14
       objectReference: {fileID: 0}
+    - target: {fileID: 7962747459679846471, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7962747459679846471, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6171881739793805353}
+    - target: {fileID: 7962747459679846471, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7962747459679846471, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7962747459679846471, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 8177846091660764787, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2924,6 +4053,46 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -14
       objectReference: {fileID: 0}
+    - target: {fileID: 8337658695804949782, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337658695804949782, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8200693158541625505}
+    - target: {fileID: 8337658695804949782, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337658695804949782, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337658695804949782, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537959040310576306, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537959040310576306, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5760695582286620547}
+    - target: {fileID: 8537959040310576306, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537959040310576306, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537959040310576306, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 8687631084123332145, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -2939,12 +4108,76 @@ PrefabInstance:
     - target: {fileID: 8871324741125853242, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144509658002137928, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144509658002137928, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4329387894918555364}
+    - target: {fileID: 9144509658002137928, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144509658002137928, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144509658002137928, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+--- !u!114 &648343031442528827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4294039907051975901, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+  m_PrefabInstance: {fileID: 3704243705680785126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &908976621624030523 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4608672728958671837, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+  m_PrefabInstance: {fileID: 3704243705680785126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1085571758643755824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4357417105956296150, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+  m_PrefabInstance: {fileID: 3704243705680785126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1352655323681774997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2426744069125550963, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+  m_PrefabInstance: {fileID: 3704243705680785126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3245350885535103383 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2189263344777942897, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
@@ -2961,6 +4194,61 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 561949388376715280, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
   m_PrefabInstance: {fileID: 3704243705680785126}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4329387894918555364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1116062971679426562, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+  m_PrefabInstance: {fileID: 3704243705680785126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4611760147268831410 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8315999435911292500, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+  m_PrefabInstance: {fileID: 3704243705680785126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5760695582286620547 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8978493318708021605, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+  m_PrefabInstance: {fileID: 3704243705680785126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6171881739793805353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7408126409588432591, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+  m_PrefabInstance: {fileID: 3704243705680785126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8200693158541625505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4802711856081659463, guid: cd91a2eeb11e0ef4ba28acb9f47cb963, type: 3}
+  m_PrefabInstance: {fileID: 3704243705680785126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4652599032495678712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2969,6 +4257,66 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5672616120586658270}
     m_Modifications:
+    - target: {fileID: 223385133796490546, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223385133796490546, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 609549379484848576}
+    - target: {fileID: 223385133796490546, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223385133796490546, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 223385133796490546, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 234953764686409334, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 234953764686409334, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4596062917706719924}
+    - target: {fileID: 234953764686409334, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 234953764686409334, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 234953764686409334, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912003721701638223, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912003721701638223, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 609549379792285639}
+    - target: {fileID: 1912003721701638223, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912003721701638223, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912003721701638223, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 2443491108180093578, guid: 946096cc75cb342e59b06155a021506c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3053,15 +4401,296 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 2606781613062909234, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606781613062909234, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1529405906917648010}
+    - target: {fileID: 2606781613062909234, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606781613062909234, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606781613062909234, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339282676790725396, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339282676790725396, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4848449268327443290}
+    - target: {fileID: 3339282676790725396, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339282676790725396, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339282676790725396, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873857456917614854, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873857456917614854, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 609549378465434696}
+    - target: {fileID: 4873857456917614854, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873857456917614854, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873857456917614854, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 5252560308121454243, guid: 946096cc75cb342e59b06155a021506c, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790151472188230959, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790151472188230959, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7022758389134965443}
+    - target: {fileID: 6790151472188230959, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790151472188230959, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790151472188230959, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359994889164194536, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359994889164194536, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 609549378209908140}
+    - target: {fileID: 7359994889164194536, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359994889164194536, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359994889164194536, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536148971402180295, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536148971402180295, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7023464894674119068}
+    - target: {fileID: 7536148971402180295, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536148971402180295, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536148971402180295, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975953132422812812, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975953132422812812, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2920945023525949349}
+    - target: {fileID: 8975953132422812812, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975953132422812812, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975953132422812812, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075347848410524107, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075347848410524107, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 609549378393378665}
+    - target: {fileID: 9075347848410524107, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075347848410524107, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075347848410524107, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+--- !u!114 &609549378209908140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5252560308533731668, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &609549378393378665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5252560308576824209, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &609549378465434696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5252560307708307632, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &609549379484848576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5252560307527234872, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &609549379792285639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5252560306691836735, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1529405906917648010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6172412790101164658, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2920945023525949349 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7500765170336967517, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4596062917706719924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9176406346159490636, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4848449268327443290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 277108544247156642, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7022758389134965443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2442221623608319547, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7023464894674119068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2443491108219587940, guid: 946096cc75cb342e59b06155a021506c, type: 3}
+  m_PrefabInstance: {fileID: 4652599032495678712}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7023464894697393679 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2443491108180093687, guid: 946096cc75cb342e59b06155a021506c, type: 3}
@@ -3422,7 +5051,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6664501892416255542}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -3455,10 +5096,44 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6764722877469028521}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &1642335845617013200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5004454939201848599, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7346744139698064789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1940036644717432081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5284340346173020630, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7734683206250460048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2789815566788037084 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8434873742872960283, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
@@ -3493,7 +5168,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7261829821046872510}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -3526,7 +5213,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7142735741713529852}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -3559,10 +5258,44 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4847872400698791811}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &4847872400698791811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1224628095905268548, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812769428890966943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6033093422085776829 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 375189882, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6033093422085776831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6033093422085776831 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 375189880, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
@@ -3592,10 +5325,33 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6033093422085776829}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &6033093422536069449 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1836434830, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6033093422536069451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6033093422536069451 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1836434828, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
@@ -3625,10 +5381,33 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6033093422536069449}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
+--- !u!114 &6033093423000391273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1087953582, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6033093423000391275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6033093423000391275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1087953580, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
@@ -3658,7 +5437,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6033093423000391273}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -3671,6 +5462,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ad447eb6ca144860bba7fdbd17c7230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6664501892416255542 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1136256935265592049, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237428628694605246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6764722877469028521 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1033792843179107438, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076565180609113972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7142735741713529852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3502044386402103099, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3554783959875994013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7261829821046872510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3998889979980909945, guid: 88add295fa00d4e28b829af6d287bdb1, type: 3}
+  m_PrefabInstance: {fileID: 6033093421923030215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3210223587188266824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7346744139698064789 stripped
@@ -3702,7 +5537,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1642335845617013200}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -3735,7 +5582,19 @@ MonoBehaviour:
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1940036644717432081}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -3747,6 +5606,666 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5672616120586658270}
     m_Modifications:
+    - target: {fileID: 234716146770460058, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 234716146770460058, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203945942119660}
+    - target: {fileID: 234716146770460058, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 234716146770460058, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 234716146770460058, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 593817015448195519, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 593817015448195519, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7427837116725164482}
+    - target: {fileID: 593817015448195519, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 593817015448195519, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 593817015448195519, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 627782658244055450, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 627782658244055450, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9068215252964781219}
+    - target: {fileID: 627782658244055450, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 627782658244055450, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 627782658244055450, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 775338426015080063, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 775338426015080063, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7427837115483311263}
+    - target: {fileID: 775338426015080063, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 775338426015080063, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 775338426015080063, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 989748294185064212, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 989748294185064212, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7427837116599683917}
+    - target: {fileID: 989748294185064212, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 989748294185064212, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 989748294185064212, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 993746514702985810, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 993746514702985810, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1836139776118923300}
+    - target: {fileID: 993746514702985810, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 993746514702985810, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 993746514702985810, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120321612720247064, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120321612720247064, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9068215254415660926}
+    - target: {fileID: 1120321612720247064, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120321612720247064, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120321612720247064, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653382842819699029, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653382842819699029, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4032629940532831211}
+    - target: {fileID: 1653382842819699029, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653382842819699029, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653382842819699029, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662204284301565414, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662204284301565414, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7427837117053709658}
+    - target: {fileID: 1662204284301565414, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662204284301565414, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662204284301565414, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725588308978770514, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725588308978770514, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9068215254045232297}
+    - target: {fileID: 1725588308978770514, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725588308978770514, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725588308978770514, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033911439722505750, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033911439722505750, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033911439722505750, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3842875300684814504}
+    - target: {fileID: 2033911439722505750, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8474225276910114231}
+    - target: {fileID: 2033911439722505750, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033911439722505750, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033911439722505750, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2033911439722505750, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218588009843740564, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218588009843740564, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203944700004242}
+    - target: {fileID: 2218588009843740564, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218588009843740564, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218588009843740564, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305737337425774155, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305737337425774155, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8137251322962376775}
+    - target: {fileID: 2305737337425774155, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305737337425774155, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305737337425774155, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375345034033545787, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375345034033545787, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203945042367678}
+    - target: {fileID: 2375345034033545787, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375345034033545787, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375345034033545787, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515248950130100749, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515248950130100749, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7826107725598639275}
+    - target: {fileID: 2515248950130100749, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515248950130100749, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515248950130100749, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666878471123266032, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666878471123266032, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203945350875097}
+    - target: {fileID: 2666878471123266032, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666878471123266032, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666878471123266032, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797789670223215853, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797789670223215853, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1705927834958589748}
+    - target: {fileID: 2797789670223215853, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797789670223215853, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797789670223215853, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776608848416692917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776608848416692917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203944053551785}
+    - target: {fileID: 3776608848416692917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776608848416692917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776608848416692917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834627032834784725, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834627032834784725, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203945295758767}
+    - target: {fileID: 3834627032834784725, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834627032834784725, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834627032834784725, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190675455962562297, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190675455962562297, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9068215252475218420}
+    - target: {fileID: 4190675455962562297, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190675455962562297, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4190675455962562297, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884210099412395235, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884210099412395235, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4026262485855077887}
+    - target: {fileID: 4884210099412395235, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884210099412395235, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4884210099412395235, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885669022377589550, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885669022377589550, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203945605607572}
+    - target: {fileID: 4885669022377589550, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885669022377589550, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885669022377589550, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069210958565634017, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069210958565634017, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7427837115694398539}
+    - target: {fileID: 5069210958565634017, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069210958565634017, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069210958565634017, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157708918834121653, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157708918834121653, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1705927835520080399}
+    - target: {fileID: 5157708918834121653, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157708918834121653, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5157708918834121653, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195652820068579898, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195652820068579898, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6557121857032230396}
+    - target: {fileID: 5195652820068579898, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195652820068579898, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195652820068579898, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205372543521068746, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205372543521068746, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9068215252776964643}
+    - target: {fileID: 5205372543521068746, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205372543521068746, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5205372543521068746, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217865712697081917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217865712697081917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203945967042624}
+    - target: {fileID: 5217865712697081917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217865712697081917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217865712697081917, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910254828681370454, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910254828681370454, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7427837115361541693}
+    - target: {fileID: 5910254828681370454, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910254828681370454, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910254828681370454, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105294461703736836, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105294461703736836, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105294461703736836, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2365516986670062385}
+    - target: {fileID: 6105294461703736836, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105294461703736836, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105294461703736836, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105294461703736836, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569224971975159510, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569224971975159510, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203945472636283}
+    - target: {fileID: 6569224971975159510, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569224971975159510, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569224971975159510, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600920143144804495, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600920143144804495, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203946081202914}
+    - target: {fileID: 6600920143144804495, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600920143144804495, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600920143144804495, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605298796394564641, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605298796394564641, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203945498018263}
+    - target: {fileID: 6605298796394564641, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605298796394564641, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605298796394564641, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 6698807988500953720, guid: abacf31369d924960a6946babcfeb863, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -3827,9 +6346,129 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6864067048989659919, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864067048989659919, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9068215253960454697}
+    - target: {fileID: 6864067048989659919, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864067048989659919, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6864067048989659919, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 6877152700952463326, guid: abacf31369d924960a6946babcfeb863, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463486624646439576, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463486624646439576, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5038938386548427045}
+    - target: {fileID: 7463486624646439576, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463486624646439576, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463486624646439576, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237604617070072490, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237604617070072490, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203944245961093}
+    - target: {fileID: 8237604617070072490, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237604617070072490, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8237604617070072490, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874633068586407001, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874633068586407001, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7427837115491940403}
+    - target: {fileID: 8874633068586407001, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874633068586407001, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874633068586407001, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892712736400149561, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892712736400149561, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203944725869853}
+    - target: {fileID: 8892712736400149561, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892712736400149561, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892712736400149561, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020060669817990559, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020060669817990559, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5138203944030109734}
+    - target: {fileID: 9020060669817990559, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020060669817990559, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 9020060669817990559, guid: abacf31369d924960a6946babcfeb863, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3841,6 +6480,242 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6698807988500953720, guid: abacf31369d924960a6946babcfeb863, type: 3}
   m_PrefabInstance: {fileID: 6290918790056409930}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1705927834958589748 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4675151052692788350, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1705927835520080399 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4675151053254320453, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1836139776118923300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5635852696975891310, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2365516986670062385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8618152894433812603, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3842875300684814504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7068812991488369634, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4026262485855077887 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6966502551315021493, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4032629940532831211 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6970185600430512289, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5038938386548427045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1342128269312979567, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203944030109734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840750338341740, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203944053551785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840750366476771, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203944245961093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840750022023887, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203944700004242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751012920536, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203944725869853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751034043991, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203945042367678 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840750818406388, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203945295758767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751608151781, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203945350875097 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751122201747, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203945472636283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751244496433, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203945498018263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751269903005, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203945605607572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751918009310, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203945942119660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751713947558, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203945967042624 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751738895114, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138203946081202914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1153840751852538280, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6290918791484750254 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1969439460, guid: abacf31369d924960a6946babcfeb863, type: 3}
@@ -3850,6 +6725,193 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 044efbf38c7ea43d8816abd7fb634600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6557121857032230396 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 986929168006475446, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7427837115361541693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3483868355380790647, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7427837115483311263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3483868355503077333, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7427837115491940403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3483868355511681913, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7427837115694398539 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3483868355172583169, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7427837116599683917 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3483868356078383111, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7427837116725164482 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3483868356207510152, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7427837117053709658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3483868357069297168, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7826107725598639275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4311702739653181409, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8137251322962376775 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2855431388249424653, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8474225276910114231 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2510664100975570685, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3842875300684814504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9068215252475218420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3068377365956850366, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9068215252776964643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3068377365721164137, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9068215252964781219 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3068377366441678825, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9068215253960454697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3068377366904637795, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9068215254045232297 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3068377367522146275, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9068215254415660926 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3068377367356189748, guid: abacf31369d924960a6946babcfeb863, type: 3}
+  m_PrefabInstance: {fileID: 6290918790056409930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6498196629761148990
@@ -3944,11 +7006,156 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 2634248084791715357, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634248084791715357, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3869230558886740103}
+    - target: {fileID: 2634248084791715357, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634248084791715357, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634248084791715357, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342098578103864958, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342098578103864958, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8352438652831699276}
+    - target: {fileID: 4342098578103864958, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342098578103864958, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342098578103864958, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577103144786050600, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577103144786050600, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577103144786050600, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7573280397195496816}
+    - target: {fileID: 4577103144786050600, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3014999565690044527}
+    - target: {fileID: 4577103144786050600, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577103144786050600, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577103144786050600, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577103144786050600, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599227060407038568, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599227060407038568, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8268395750055460159}
+    - target: {fileID: 4599227060407038568, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599227060407038568, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599227060407038568, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419634498009064226, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419634498009064226, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1623321223566146446}
+    - target: {fileID: 8419634498009064226, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419634498009064226, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419634498009064226, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+--- !u!114 &1623321223566146446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5523956771813520304, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+  m_PrefabInstance: {fileID: 6498196629761148990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3014999565690044527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8356804345305778257, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+  m_PrefabInstance: {fileID: 6498196629761148990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573280397195496816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3869230558886740103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8042443594311272633, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+  m_PrefabInstance: {fileID: 6498196629761148990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5684722878788516338 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1498021032583524812, guid: e97bc291a80d643589d93ac353209f61, type: 3}
@@ -3965,6 +7172,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae8faca97fd6449291f203a37196000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7573280397195496816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3690569063866139982, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+  m_PrefabInstance: {fileID: 6498196629761148990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8268395750055460159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2923123438290367745, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+  m_PrefabInstance: {fileID: 6498196629761148990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8352438652831699276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3010631974739728754, guid: e97bc291a80d643589d93ac353209f61, type: 3}
+  m_PrefabInstance: {fileID: 6498196629761148990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8963563812424403967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3976,6 +7210,26 @@ PrefabInstance:
     - target: {fileID: 309075277172379062, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
       propertyPath: m_Name
       value: Death Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 535683781610179419, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 535683781610179419, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1997883823963029734}
+    - target: {fileID: 535683781610179419, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 535683781610179419, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 535683781610179419, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
       objectReference: {fileID: 0}
     - target: {fileID: 561949388376715280, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
       propertyPath: m_Pivot.x
@@ -4057,11 +7311,144 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1481419785772160107, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481419785772160107, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5184636307367100194}
+    - target: {fileID: 1481419785772160107, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481419785772160107, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1481419785772160107, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522235258871192849, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522235258871192849, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7459493501636874413}
+    - target: {fileID: 2522235258871192849, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522235258871192849, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522235258871192849, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747656751354618001, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747656751354618001, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2186770363834738096}
+    - target: {fileID: 3747656751354618001, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747656751354618001, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747656751354618001, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147560782705723835, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147560782705723835, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8017447669392956663}
+    - target: {fileID: 4147560782705723835, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147560782705723835, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147560782705723835, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735563376236046566, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735563376236046566, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 71773720570823322}
+    - target: {fileID: 7735563376236046566, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735563376236046566, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735563376236046566, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+--- !u!114 &71773720570823322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8978493318708021605, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+  m_PrefabInstance: {fileID: 8963563812424403967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1997883823963029734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7484156895990287129, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+  m_PrefabInstance: {fileID: 8963563812424403967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2186770363834738096 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7078534658675371599, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+  m_PrefabInstance: {fileID: 8963563812424403967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2971686201867485951 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6150075482011830528, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
@@ -4071,6 +7458,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88d1a5ce24da8204aaccfb202a25a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5184636307367100194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4294039907051975901, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+  m_PrefabInstance: {fileID: 8963563812424403967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7459493501636874413 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2009036556995451730, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+  m_PrefabInstance: {fileID: 8963563812424403967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8017447669392956663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1380155265020139272, guid: e4a333f9fe5eb0341a6d809cf56167b0, type: 3}
+  m_PrefabInstance: {fileID: 8963563812424403967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8910521628982213615 stripped
