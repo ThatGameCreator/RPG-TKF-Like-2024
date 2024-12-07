@@ -14,7 +14,6 @@ public class FontLocalization : MonoBehaviour
     [SerializeField] private float m_defaultFontSize = 28f;     // 默认字号
     [SerializeField] private float m_englishFontSize = 28f;     // 英文字号
     [SerializeField] private float m_chineseFontSize = 19f;     // 中文字号
-    [SerializeField] private AssetTable m_fontTable; // 在编辑器中挂载字体表
 
 
     // 公有属性 (Getter and Setter)
@@ -145,6 +144,10 @@ public class FontLocalization : MonoBehaviour
             m_textMeshPro.fontSize = m_englishFontSize;
         }
         else if (localeCode == "zh-Hans")
+        {
+            m_textMeshPro.fontSize = m_chineseFontSize;
+        }
+        else if (localeCode == "ja")
         {
             m_textMeshPro.fontSize = m_chineseFontSize;
         }

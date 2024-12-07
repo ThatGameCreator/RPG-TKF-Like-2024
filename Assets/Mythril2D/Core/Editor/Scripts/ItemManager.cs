@@ -31,6 +31,7 @@ namespace Gyvr.Mythril2D
         private GUIStyle iconPreviewStyle;
         private bool stylesInitialized = false;
         // 在类中添加字段，避免重置变量
+        private EItemCategory selectedCategory = EItemCategory.Consumable;
         private string newName = "";
         private int newBuyPrice = 0;
         private int newSellPrice = 0;
@@ -197,6 +198,21 @@ namespace Gyvr.Mythril2D
 
             using (new EditorGUILayout.HorizontalScope())
             {
+                // 下拉框选择 Item 类型
+                selectedCategory = (EItemCategory)EditorGUILayout.EnumPopup("Select Item Category", selectedCategory);
+                if (GUILayout.Button("Apply Category", GUILayout.Width(100)))
+                {
+                    ApplyBatchOperation(item =>
+                    {
+                        item.Category = selectedCategory;
+                        return true;
+                    });
+                }
+                GUI.enabled = true;
+            }
+
+            using (new EditorGUILayout.HorizontalScope())
+            {
                 newName = EditorGUILayout.TextField("New Name for All", newName);
                 GUI.enabled = !string.IsNullOrEmpty(newName);
                 if (GUILayout.Button("Apply Name", GUILayout.Width(100)))
@@ -337,6 +353,7 @@ namespace Gyvr.Mythril2D
                     EditorGUI.BeginChangeCheck();
 
                     // Draw properties with null checks and error handling
+                    DrawSerializedProperty(serializedItem, "m_localizationKey", "LocalizationKey");
                     DrawSerializedProperty(serializedItem, "m_displayName", "DisplayName");
                     DrawSerializedProperty(serializedItem, "m_description", "Description");
                     DrawSerializedProperty(serializedItem, "m_category", "Category");

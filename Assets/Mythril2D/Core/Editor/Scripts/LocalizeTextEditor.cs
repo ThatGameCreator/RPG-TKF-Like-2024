@@ -68,11 +68,12 @@ namespace Gyvr.Mythril2D
                         // 需要本地化的Text
                         if (localizeEvent == null)
                         {
-                            textComponent.gameObject.AddComponent<LocalizeStringEvent>();
+                            localizeEvent = textComponent.gameObject.AddComponent<LocalizeStringEvent>();
+                            SetupForLocalization(textComponent, localizeEvent);
                             // 标记对象为“已修改”
                             EditorUtility.SetDirty(selectedObject);
                         }
-                        if (localizeEvent.OnUpdateString == null)
+                        else if (localizeEvent.OnUpdateString == null)
                         {
                             SetupForLocalization(textComponent, localizeEvent);
 

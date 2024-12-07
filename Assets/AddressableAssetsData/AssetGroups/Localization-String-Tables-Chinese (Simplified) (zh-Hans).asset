@@ -42,19 +42,25 @@ MonoBehaviour:
     - Locale-zh-Hans
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2504770efc4e6364a8df8e51af9775f0
-    m_Address: PotionsList_zh-Hans
+    m_Address: ConsumersList_zh-Hans
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh-Hans
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5e99df61c84e2134587d722a06ed0a84
-    m_Address: EquipmentsList_zh-Hans
+    m_Address: WeaponsList_zh-Hans
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh-Hans
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 63705a3babb79d3408b60c81d6ab2b61
     m_Address: Attack_TypeList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66bb346d7180f334d9d4949cdbf8b54b
+    m_Address: HUDTable_zh-Hans
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh-Hans
@@ -72,10 +78,11 @@ MonoBehaviour:
     - Locale-zh-Hans
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9d41a0d2c10a47d49967816f1552569c
-    m_Address: JewelryList_zh-Hans
+    m_Address: EquipmentsList_zh-Hans
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh-Hans
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ea488d18d0ee8246b1a2cf413d07c1f
     m_Address: DialogueTable_zh-Hans
@@ -84,7 +91,7 @@ MonoBehaviour:
     - Locale-zh-Hans
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b1f2ceb00d38d764f85706139afa5593
-    m_Address: MaterialList_zh-Hans
+    m_Address: MaterialsList_zh-Hans
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh-Hans

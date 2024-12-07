@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lightingManager: {fileID: 2024768596}
   m_maxBrightness: 0.5
-  m_maxRemainTime: 600
+  m_maxRemainTime: 420
   m_maxEmergencyTime: 180
   m_timeReminder: {fileID: 49004380}
 --- !u!1 &922864232
@@ -1762,6 +1762,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_questStartedSound: {fileID: 11400000, guid: 55f829c283b29004f8ec1c250b8eede7, type: 2}
   m_questCompletedSound: {fileID: 11400000, guid: ab4a88b1674feb745b2854848369b955, type: 2}
+--- !u!1 &1312662318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312662319}
+  - component: {fileID: 1312662320}
+  m_Layer: 0
+  m_Name: Localization System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1312662319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312662318}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1468008382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312662320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312662318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6cc5ad7763a4f44b553f5bdb4b639d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1421842950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,6 +1897,7 @@ Transform:
   - {fileID: 896720949}
   - {fileID: 1421842951}
   - {fileID: 1215884011}
+  - {fileID: 1312662319}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1468008383
@@ -3380,6 +3425,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5569678976178334380, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 6244281151625429418, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3528,6 +3577,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6799581720451778214, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 6801858116370643020, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3600,6 +3653,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7350331175233849193, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 7377883746578835257, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3651,6 +3708,10 @@ PrefabInstance:
     - target: {fileID: 7441763181686375719, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -228
+      objectReference: {fileID: 0}
+    - target: {fileID: 7457835949059931085, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TextMeshProUGUI, Unity.TextMeshPro
       objectReference: {fileID: 0}
     - target: {fileID: 7664045439561163586, guid: 86e3b700e3f4b4d039a88b2180ab1b87, type: 3}
       propertyPath: m_AnchorMax.y

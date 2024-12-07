@@ -48,13 +48,14 @@ MonoBehaviour:
     - Locale-ja
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 231c120b8c730ae47a564e6ab5adf628
-    m_Address: JewelryList_ja
+    m_Address: EquipmentsList_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2791cfe67d54cf74bb10d5a8b50e8885
-    m_Address: MaterialList_ja
+    m_Address: MaterialsList_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja
@@ -90,13 +91,19 @@ MonoBehaviour:
     - Locale-ja
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 82bc0a28bdb2f824fa0bf1dfb8deb944
-    m_Address: PotionsList_ja
+    m_Address: ConsumersList_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 84911fa651d004e43a5970d17fbe035a
     m_Address: Monster_DropsList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 864bc43c8ad30844a85e154b6425186c
+    m_Address: HUDTable_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja
@@ -144,7 +151,7 @@ MonoBehaviour:
     - Locale-ja
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e39ee6ad1ac1aa44f83507cfdd78ac98
-    m_Address: EquipmentsList_ja
+    m_Address: WeaponsList_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja

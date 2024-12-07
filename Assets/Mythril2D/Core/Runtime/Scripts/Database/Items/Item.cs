@@ -13,6 +13,7 @@ namespace Gyvr.Mythril2D
     {
         Consumable,
         Resource,
+        Weapon,
         Gear,
         Key,
         MonsterDrop,
@@ -24,6 +25,7 @@ namespace Gyvr.Mythril2D
         [Header("General")]
         [SerializeField] private EItemCategory m_category = 0;
         [SerializeField] private Sprite m_icon = null;
+        [SerializeField] private string m_localizationKey = string.Empty;
         [SerializeField] private string m_displayName = string.Empty;
         [SerializeField] private string m_description = string.Empty;
         [SerializeField] private int m_buyPrice = 50;
@@ -97,6 +99,12 @@ namespace Gyvr.Mythril2D
         {
             get => m_displayName;
             set => m_displayName = value;
+        }
+
+        public string LocalizationKey
+        {
+            get => m_localizationKey;
+            set => m_localizationKey = value;
         }
 
         public string Description

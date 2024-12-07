@@ -29,7 +29,7 @@ namespace Gyvr.Mythril2D
             {
                 m_itemDetailsBox.SetActive(true);
                 m_itemIcon.sprite = item.Icon;
-                m_itemName.text = item.DisplayName;
+                m_itemName.text = GameManager.LocalizationSystem.GetItemNameLocalizedString(item.LocalizationKey, item.Category);
                 m_itemDescription.text = item.Description;
 
                 if (item is Equipment)
@@ -44,7 +44,8 @@ namespace Gyvr.Mythril2D
 
                         if (value != 0)
                         {
-                            m_itemDescription.text += $" <u>{(value > 0 ? '+' : '-')}{value}\u00A0{GameManager.Config.GetTermDefinition(stat).fullName}</u>";
+                            m_itemDescription.text += 
+                                $" <u>{(value > 0 ? '+' : '-')}{value}\u00A0{GameManager.Config.GetTermDefinition(stat).fullName}</u>";
                         }
                     }
                 }

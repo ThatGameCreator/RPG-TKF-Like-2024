@@ -24,7 +24,7 @@ MonoBehaviour:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 131aa42f19bd3a9428fe89556ee02013
-    m_Address: EquipmentsList_en
+    m_Address: WeaponsList_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
@@ -72,7 +72,7 @@ MonoBehaviour:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6078212efe5d9b142a18fa98367cc18c
-    m_Address: PotionsList_en
+    m_Address: ConsumersList_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
@@ -89,6 +89,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90cd8c74edc3c9144bf4b2a21b37b9e4
+    m_Address: HUDTable_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 91c9ae41addb93942869127e741855ef
     m_Address: InventoryTable_en
     m_ReadOnly: 1
@@ -96,10 +102,11 @@ MonoBehaviour:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a25f3c1b1dec52b40bfbd65ecc989869
-    m_Address: JewelryList_en
+    m_Address: EquipmentsList_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a3e9319a0bd55f7449b643524734d11f
     m_Address: MainMenuTable_en
@@ -108,7 +115,7 @@ MonoBehaviour:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae87a75fd0401184c9d60f7810c03843
-    m_Address: MaterialList_en
+    m_Address: MaterialsList_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

@@ -40,6 +40,8 @@ namespace Gyvr.Mythril2D
         public static PhysicsSystem PhysicsSystem => GetSystem<PhysicsSystem>();
         public static ItemGenerationSystem ItemGenerationSystem => GetSystem<ItemGenerationSystem>();
 
+        public static LocalizationSystem LocalizationSystem => GetSystem<LocalizationSystem>();
+
         // Private Static Members
         private static GameManager _instance = null;
         private Dictionary<Type, AGameSystem> m_systems = null;
