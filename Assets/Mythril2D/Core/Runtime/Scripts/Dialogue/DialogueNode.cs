@@ -82,6 +82,7 @@ namespace Gyvr.Mythril2D
     public struct DialogueNodeOption
     {
         public string name;
+        public string nameKey;
         public DialogueNode node;
         public DialogueMessage message;
     }
@@ -89,6 +90,7 @@ namespace Gyvr.Mythril2D
     public class DialogueNode
     {
         public string text;
+        public string textKey;
         public string speaker;
         public DialogueNodeOption[] options;
 
@@ -100,9 +102,10 @@ namespace Gyvr.Mythril2D
 
         public int optionCount => options != null ? options.Length : 0;
 
-        public DialogueNode(string text = "", string speaker = "", DialogueNodeOption[] options = null, ICommand toExecuteOnStart = null, ICommand toExecuteOnCompletion = null)
+        public DialogueNode(string text = "", string textKey = "", string speaker = "", DialogueNodeOption[] options = null, ICommand toExecuteOnStart = null, ICommand toExecuteOnCompletion = null)
         {
             this.text = text;
+            this.textKey = textKey;
             this.speaker = speaker;
             this.options = options;
             this.toExecuteOnStart = toExecuteOnStart;

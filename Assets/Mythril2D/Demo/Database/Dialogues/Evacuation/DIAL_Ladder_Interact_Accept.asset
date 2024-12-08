@@ -10,21 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e17463e893d4fc49015a09b61e97ad, type: 3}
-  m_Name: DIAL_Hole_Interact
+  m_Name: DIAL_Ladder_Interact_Accept
   m_EditorClassIdentifier: 
   lines:
-  - Do you wanna use the ladder?
-  options:
-  - name: Accept
-    sequence: {fileID: 11400000, guid: 9f649654a702f3649b398e5655efa3ba, type: 2}
-    message:
-      type: 2
-      customMessage: 
-  - name: Decline
-    sequence: {fileID: 0}
-    message:
-      type: 3
-      customMessage: 
+  - ...
+  lineKeys:
+  - id_dialogue_ladder_interact_accept
+  options: []
   toExecuteOnStart:
     rid: -2
   toExecuteOnCompletion:

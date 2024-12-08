@@ -6,6 +6,7 @@ namespace Gyvr.Mythril2D
     public struct DialogueSequenceOption
     {
         public string name;
+        public string nameKey;
         public DialogueSequence sequence;
         public DialogueMessage message;
     }
@@ -14,6 +15,7 @@ namespace Gyvr.Mythril2D
     public class DialogueSequence : DatabaseEntry
     {
         public string[] lines = null;
+        public string[] lineKeys = null;
         public DialogueSequenceOption[] options = null;
         [SerializeReference, SubclassSelector]
         public ICommand toExecuteOnStart = null;

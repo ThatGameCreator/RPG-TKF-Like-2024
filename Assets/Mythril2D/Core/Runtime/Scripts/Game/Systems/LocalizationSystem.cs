@@ -27,6 +27,10 @@ namespace Gyvr.Mythril2D
         
         private StringTable m_MainMenuStringTable;  
 
+        private StringTable m_NPCNameStringTable;  
+        private StringTable m_NPCDialogueStringTable;  
+        private StringTable m_NPCDialogueOptionStringTable;  
+
         public override void OnSystemStart()
         {
             if (LocalizationSettings.AvailableLocales.Locales.Count > 0)
@@ -82,6 +86,10 @@ namespace Gyvr.Mythril2D
 
             m_MainMenuStringTable = LocalizationSettings.StringDatabase.GetTable("MainMenuTable");
 
+            m_NPCNameStringTable = LocalizationSettings.StringDatabase.GetTable("NPCNameTable");
+            m_NPCDialogueStringTable = LocalizationSettings.StringDatabase.GetTable("NPCDialogueTable");
+            m_NPCDialogueOptionStringTable = LocalizationSettings.StringDatabase.GetTable("NPCDialogueOptionTable");
+
             //Debug.LogWarning(ScriptStringTable.GetEntry("CommonTip_NoItem").GetLocalizedString());
         }
 
@@ -124,56 +132,19 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
-        [Serializable]
-    public struct DialogueList
-    {
-        public string textKey;
-        public float time;
-    }
-        public class SubtitlesManager : MonoBehaviour
+        public string GetNPCNameLocalizedString(string key)
         {
-            [SerializeField] TextMeshProUGUI subtitleTextUI;
-            [SerializeField] List<DialogueList> dialogueList = new();
-            [SerializeField] GameObject subtitleTextObject;
+            return m_NPCNameStringTable.GetEntry(key).GetLocalizedString();
+        }
 
+        public string GetNPCDialogueLocalizedString(string key)
+        {
+            return m_NPCDialogueStringTable.GetEntry(key).GetLocalizedString();
+        }
 
-            private void UpdateSubtitleLocale(Locale locale)
-            {
-                subtitleTextUI.text = "";
-            }
-
-            private void OnEnable()
-            {
-                LocalizationSettings.SelectedLocaleChanged += UpdateSubtitleLocale;
-            }
-
-            private void OnDisable()
-            {
-                LocalizationSettings.SelectedLocaleChanged -= UpdateSubtitleLocale;
-            }
-
-            public void StartDialogue()
-            {
-                StartCoroutine(StartSubtitleCorroutine());
-            }
-
-            IEnumerator StartSubtitleCorroutine()
-            {
-                yield return LocalizationSettings.InitializationOperation;
-                Debug.Log("Start Corroutine");
-                subtitleTextObject.SetActive(true);
-                foreach (var subtitle in dialogueList)
-                {
-                    subtitleTextUI.text = GetString(subtitle.textKey);
-                    yield return new WaitForSeconds(subtitle.time);
-                }
-                subtitleTextObject.SetActive(false);
-            }
-
-            private string GetString(string subtitleKey)
-            {
-                return LocalizationSettings.StringDatabase.GetLocalizedString("NewTable", subtitleKey);
-            }
+        public string GetNPCDialogueOptionLocalizedString(string key)
+        {
+            return m_NPCDialogueOptionStringTable.GetEntry(key).GetLocalizedString();
         }
     }
 }

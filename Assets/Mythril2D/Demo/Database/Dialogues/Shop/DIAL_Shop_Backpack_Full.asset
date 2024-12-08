@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e17463e893d4fc49015a09b61e97ad, type: 3}
-  m_Name: DIAL_Shop_Cannot_Sell 1
+  m_Name: DIAL_Shop_Backpack_Full
   m_EditorClassIdentifier: 
   lines:
   - You backpack is full now..
+  lineKeys:
+  - id_dialogue_shop_backpack_full
   options: []
   toExecuteOnStart:
     rid: -2

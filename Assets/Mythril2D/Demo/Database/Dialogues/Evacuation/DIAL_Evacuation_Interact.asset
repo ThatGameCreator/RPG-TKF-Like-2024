@@ -10,11 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e17463e893d4fc49015a09b61e97ad, type: 3}
-  m_Name: DIALHole_Interact_Accept
+  m_Name: DIAL_Evacuation_Interact
   m_EditorClassIdentifier: 
   lines:
-  - ...
-  options: []
+  - Do you wanna get in the hole?
+  lineKeys:
+  - id_dialogue_evacuation_interact
+  options:
+  - name: Accept
+    nameKey: id_dialogue_option_name_accept
+    sequence: {fileID: 0}
+    message:
+      type: 2
+      customMessage: 
+  - name: Decline
+    nameKey: id_dialogue_option_name_decline
+    sequence: {fileID: 0}
+    message:
+      type: 3
+      customMessage: 
   toExecuteOnStart:
     rid: -2
   toExecuteOnCompletion:

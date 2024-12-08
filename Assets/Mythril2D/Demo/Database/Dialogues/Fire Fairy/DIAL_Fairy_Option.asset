@@ -15,18 +15,24 @@ MonoBehaviour:
   lines:
   - 'Ah, Knight, you return. '
   - What service can I provide to you?
+  lineKeys:
+  - id_dialogue_doll_option_01
+  - id_dialogue_doll_option_02
   options:
   - name: Upgrade
+    nameKey: id_dialogue_option_name_upgrade
     sequence: {fileID: 0}
     message:
       type: 1
       customMessage: Upgrade
   - name: Heal
+    nameKey: id_dialogue_option_name_heal
     sequence: {fileID: 0}
     message:
       type: 1
       customMessage: Heal
   - name: Nothing
+    nameKey: id_dialogue_option_name_nothing
     sequence: {fileID: 0}
     message:
       type: 1

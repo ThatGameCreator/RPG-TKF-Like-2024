@@ -16,6 +16,7 @@ namespace Gyvr.Mythril2D
         [Header("General")]
         [SerializeField] private EAlignment m_alignment = EAlignment.Default;
         [SerializeField] private string m_displayName = string.Empty;
+        [SerializeField] private string m_displayNameKey = string.Empty;
         [SerializeField] private SerializableDictionary<AbilitySheet, int> m_abilitiesPerLevel;
 
         [Header("Audio")]
@@ -24,6 +25,7 @@ namespace Gyvr.Mythril2D
 
         public EAlignment alignment => m_alignment;
         public string displayName => DisplayNameUtils.GetNameOrDefault(this, m_displayName);
+        public string displayNameKey => m_displayNameKey;
         public AudioClipResolver hitAudio => m_hitAudio;
         public AudioClipResolver deathAudio => m_deathAudio;
 

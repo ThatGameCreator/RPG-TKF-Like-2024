@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: NPCDialogueOptionTable_ja
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: 3f69652d6762c894f9fb65a24eabfcac, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 3678872907776
+    m_Localized: "\u540C\u610F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3788549763072
+    m_Localized: "\u65AD\u308B"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3867910189056
+    m_Localized: "\u30A2\u30C3\u30D7\u30B0\u30EC\u30FC\u30C9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3886860054528
+    m_Localized: "\u7652\u3059"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3896586645504
+    m_Localized: "\u4F55\u3082\u306A\u3044"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3942912733184
+    m_Localized: "\u8CB7\u3044\u7269"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3974873329664
+    m_Localized: "\u30AD\u30E3\u30F3\u30BB\u30EB"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
