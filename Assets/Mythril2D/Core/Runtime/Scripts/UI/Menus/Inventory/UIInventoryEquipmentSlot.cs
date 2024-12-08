@@ -8,7 +8,6 @@ namespace Gyvr.Mythril2D
     public class UIInventoryEquipmentSlot : MonoBehaviour, IPointerEnterHandler, ISelectHandler, IDeselectHandler
     {
         [SerializeField] private EEquipmentType m_equipmentType = EEquipmentType.Head;
-        [SerializeField] private Image m_placeholder = null;
         [SerializeField] private Image m_content = null;
         [SerializeField] private Button m_button = null;
 
@@ -89,13 +88,11 @@ namespace Gyvr.Mythril2D
             {
                 Debug.Assert(equipment.type == m_equipmentType, "Equipment type mismatch");
 
-                m_placeholder.enabled = false;
                 m_content.enabled = true;
                 m_content.sprite = equipment.Icon;
             }
             else
             {
-                m_placeholder.enabled = true;
                 m_content.enabled = false;
                 m_content.sprite = null;
             }

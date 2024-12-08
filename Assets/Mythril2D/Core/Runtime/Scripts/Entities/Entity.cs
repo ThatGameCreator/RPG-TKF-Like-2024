@@ -17,7 +17,7 @@ namespace Gyvr.Mythril2D
             set => m_interaction = value;
         }
 
-        public virtual string GetSpeakerName() => string.Empty;
+        
 
         [Header("Lighting")]
         // 第一个是自己的精灵 其他的是阴影
@@ -39,7 +39,6 @@ namespace Gyvr.Mythril2D
             get => m_lightEventListener;
             set => m_lightEventListener = value;
         }
-
         protected virtual void Start()
         {
             GameManager.NotificationSystem.playerTryInteracte.AddListener(OnStartInteract);
@@ -79,6 +78,8 @@ namespace Gyvr.Mythril2D
                 }
             }
         }
+
+        public virtual string GetSpeakerName() => string.Empty;
 
         public virtual void Say(DialogueSequence sequence, UnityAction<DialogueMessageFeed> onDialogueEnded = null, params string[] args)
         {

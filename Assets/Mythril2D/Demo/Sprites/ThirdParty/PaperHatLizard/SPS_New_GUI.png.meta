@@ -541,8 +541,8 @@ TextureImporter:
       name: SPS_New_GUI_21
       rect:
         serializedVersion: 2
-        x: 26
-        y: 67
+        x: 0
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -559,13 +559,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_New_GUI_22
+      name: SPS_New_GUI_Equipment_01
       rect:
         serializedVersion: 2
-        x: 48
-        y: 80
-        width: 16
-        height: 16
+        x: 50
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -580,13 +580,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_New_GUI_23
+      name: SPS_New_GUI_Equipment_02
       rect:
         serializedVersion: 2
-        x: 64
-        y: 80
-        width: 16
-        height: 16
+        x: 65
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -601,13 +601,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_New_GUI_24
+      name: SPS_New_GUI_Equipment_03
       rect:
         serializedVersion: 2
-        x: 80
-        y: 80
-        width: 16
-        height: 16
+        x: 81
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -622,13 +622,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_New_GUI_25
+      name: SPS_New_GUI_Equipment_04
       rect:
         serializedVersion: 2
-        x: 96
-        y: 80
-        width: 16
-        height: 16
+        x: 98
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -643,13 +643,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SPS_New_GUI_26
+      name: SPS_New_GUI_Equipment_05
       rect:
         serializedVersion: 2
-        x: 112
-        y: 80
-        width: 16
-        height: 16
+        x: 113
+        y: 82
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -915,6 +915,279 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Equipment_06
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 82
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00d4686c93cd57c4085852d52eefbb47
+      internalID: -1490189885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Equipment_07
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 82
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deef20978f5f0a14d87bc9d16953b4bd
+      internalID: -128508570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Equipment_08
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 82
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b6fbb339f547e54cbff534340544326
+      internalID: -124018855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_01
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1adc760288f525044a1bccc0d240c6c4
+      internalID: 2004171948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_02
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 254b23b5def066349b8e68a5c0a109c6
+      internalID: 576026294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_03
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 263e0b97167febe46977f8e6fc279225
+      internalID: -1090899078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_04
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4a4c4bb70f7a6438a212fee048da2b
+      internalID: -232976453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_05
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97033bc5a1b13a0438c3119cb48355b7
+      internalID: 1990286523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_06
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 356e31af17d047b48b8d77fe09cc28dc
+      internalID: -1633249106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_07
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d898a4df82609e4ebd3f4b9ece29103
+      internalID: 197476588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_08
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b816fad43573540bb1f8c075472a8e
+      internalID: -997430443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_09
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1825a070ec5d5f4ea5efd634ad947a7
+      internalID: -1401456092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPS_New_GUI_Warehouse_10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80bb780893f59ec489761c2110726b96
+      internalID: -232107328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -941,11 +1214,6 @@ TextureImporter:
       SPS_New_GUI_2: 1459954423
       SPS_New_GUI_20: 1242018240
       SPS_New_GUI_21: -574681659
-      SPS_New_GUI_22: 567515831
-      SPS_New_GUI_23: -1155838957
-      SPS_New_GUI_24: 1453558111
-      SPS_New_GUI_25: -2081118279
-      SPS_New_GUI_26: -49348283
       SPS_New_GUI_27: 1494723851
       SPS_New_GUI_28: -542405626
       SPS_New_GUI_29: 1915814419
@@ -965,6 +1233,24 @@ TextureImporter:
       SPS_New_GUI_7: -454689152
       SPS_New_GUI_8: 1594016218
       SPS_New_GUI_9: 1521835161
+      SPS_New_GUI_Equipment_01: 567515831
+      SPS_New_GUI_Equipment_02: -1155838957
+      SPS_New_GUI_Equipment_03: 1453558111
+      SPS_New_GUI_Equipment_04: -2081118279
+      SPS_New_GUI_Equipment_05: -49348283
+      SPS_New_GUI_Equipment_06: -1490189885
+      SPS_New_GUI_Equipment_07: -128508570
+      SPS_New_GUI_Equipment_08: -124018855
+      SPS_New_GUI_Warehouse_01: 2004171948
+      SPS_New_GUI_Warehouse_02: 576026294
+      SPS_New_GUI_Warehouse_03: -1090899078
+      SPS_New_GUI_Warehouse_04: -232976453
+      SPS_New_GUI_Warehouse_05: 1990286523
+      SPS_New_GUI_Warehouse_06: -1633249106
+      SPS_New_GUI_Warehouse_07: 197476588
+      SPS_New_GUI_Warehouse_08: -997430443
+      SPS_New_GUI_Warehouse_09: -1401456092
+      SPS_New_GUI_Warehouse_10: -232107328
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
