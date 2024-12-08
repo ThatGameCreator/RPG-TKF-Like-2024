@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Localization.Settings;
 
 namespace Gyvr.Mythril2D
 {
@@ -55,6 +56,28 @@ namespace Gyvr.Mythril2D
             m_button.onClick.AddListener(OnClick);
         }
 
+        private void Start()
+        {
+            // 注册语言切换事件
+            LocalizationSettings.SelectedLocaleChanged += OnLanguageChanged;
+
+            // 初始化UI
+            UpdateUI();
+        }
+
+        private void OnDestroy()
+        {
+            // 在销毁时解除注册，防止内存泄漏
+            LocalizationSettings.SelectedLocaleChanged -= OnLanguageChanged;
+        }
+
+        // 语言切换事件的回调函数
+        private void OnLanguageChanged(UnityEngine.Localization.Locale locale)
+        {
+            // 更新UI文本以适配新语言
+            UpdateUI();
+        }
+
         public void UpdateUI()
         {
             SaveFileData saveFile;
@@ -63,13 +86,12 @@ namespace Gyvr.Mythril2D
             // The button will show the Character name of Save data
             if (SaveSystem.TryExtractingSaveData(m_saveFileName, out saveFile))
             {
-                m_details.text = saveFile.header;
+                m_details.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenuTable", "id_continue_game_btn");
                 m_isEmpty = false;
             }
-            // 
             else
             {
-                m_details.text = "New Game";
+                m_details.text = LocalizationSettings.StringDatabase.GetLocalizedString("MainMenuTable", "id_start_game_btn");
                 m_isEmpty = true;
 
                 if (m_cancelButton != null)
@@ -123,6 +145,7 @@ namespace Gyvr.Mythril2D
 
             m_details.color = targetColor;
         }
+
         private void StartAlphaTransition(float targetAlpha)
         {
             if (imageAlphaCoroutine != null)

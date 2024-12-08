@@ -11,6 +11,10 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Gyvr.Mythril2D
 {
+    public enum EMenuStringTableType
+    {
+        MainMenu,
+    }
 
     public class LocalizationSystem : AGameSystem
     {
@@ -19,7 +23,9 @@ namespace Gyvr.Mythril2D
         private StringTable m_WeaponsStringTable;          
         private StringTable m_MaterialsStringTable;          
         private StringTable m_MonsterDropsStringTable;          
-        private StringTable m_ConsumersStringTable;          
+        private StringTable m_ConsumersStringTable;     
+        
+        private StringTable m_MainMenuStringTable;  
 
         public override void OnSystemStart()
         {
@@ -74,6 +80,8 @@ namespace Gyvr.Mythril2D
             m_MonsterDropsStringTable = LocalizationSettings.StringDatabase.GetTable("Monster_DropsList");
             m_ConsumersStringTable    = LocalizationSettings.StringDatabase.GetTable("ConsumersList");
 
+            m_MainMenuStringTable = LocalizationSettings.StringDatabase.GetTable("MainMenuTable");
+
             //Debug.LogWarning(ScriptStringTable.GetEntry("CommonTip_NoItem").GetLocalizedString());
         }
 
@@ -84,10 +92,9 @@ namespace Gyvr.Mythril2D
         {
             if (eItemCategory == EItemCategory.Gear)
             {
-                Debug.Log(m_EquipmentsStringTable);
                 return m_EquipmentsStringTable.GetEntry(key).GetLocalizedString();
             }
-            if (eItemCategory == EItemCategory.Gear)
+            else if (eItemCategory == EItemCategory.Weapon)
             {
                 return m_WeaponsStringTable.GetEntry(key).GetLocalizedString();
             }
@@ -107,7 +114,17 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
-    [Serializable]
+        public string GetMenuLocalizedString(string key, EMenuStringTableType eMenuStringTableType)
+        {
+            if (eMenuStringTableType == EMenuStringTableType.MainMenu)
+            {
+                return m_MainMenuStringTable.GetEntry(key).GetLocalizedString();
+            }
+
+            return null;
+        }
+
+        [Serializable]
     public struct DialogueList
     {
         public string textKey;

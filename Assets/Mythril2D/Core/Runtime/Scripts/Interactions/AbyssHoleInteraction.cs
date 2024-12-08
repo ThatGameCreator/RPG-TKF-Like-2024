@@ -7,6 +7,7 @@ namespace Gyvr.Mythril2D
     public class AbyssHoleInteraction : IInteraction
     {
         [Header("Dialogues")]
+        [SerializeField] private Hole m_hole = null;
         [SerializeField] private DialogueSequence m_dialogueIfWantGetin = null;
         [SerializeField] private DialogueSequence m_dialogueIfDontWantGetin = null;
 
@@ -31,6 +32,11 @@ namespace Gyvr.Mythril2D
                 {
                     if (messages.Contains(EDialogueMessageType.Accept))
                     {
+                        if (m_hole)
+                        {
+                            m_hole.gameObject.SetActive(false);
+                        }
+
                         GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_holeDatabase.getInSound);
 
                         string teleportName = teleportNames[UnityEngine.Random.Range(0, teleportNames.Length)];
