@@ -38,14 +38,6 @@ namespace Gyvr.Mythril2D
                         GameManager.TeleportLoadingSystem.RequestTransition("That_Abyss", null,
                             () =>
                             {
-                                //var teleports = GameObject.Find("Player Spawner");
-
-                                //int teleportsLength = teleports.GetComponentsInChildren<Transform>().Length;
-
-                                //int randomNumber = UnityEngine.Random.Range(0, teleportsLength);
-
-                                //OnTransitionComplete(teleports.GetComponentsInChildren<Transform>()[randomNumber].name);
-
                                 GameManager.DayNightSystem.OnEnableDayNightSystem();
 
                                 GameManager.NotificationSystem.SetActiveEvacuation.Invoke(teleportName);
@@ -54,9 +46,7 @@ namespace Gyvr.Mythril2D
 
                         // 在 lambda 里面居然没有赋值？
                         //Debug.Log("after" + teleportName);
-
                     }
-                    
                 });
 
                 return true;
