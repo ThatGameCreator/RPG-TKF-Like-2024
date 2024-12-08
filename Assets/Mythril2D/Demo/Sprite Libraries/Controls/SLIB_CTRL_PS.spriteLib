@@ -77,6 +77,22 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 417843559, guid: f8cc6e46648b345b38ba06f967f7302a, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 2
+  - m_Name: FireAbility4
+    m_Hash: 736295138
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Idle
+      m_Hash: 1008081451
+      m_Sprite: {fileID: 1499268031, guid: 4113596ae75d746b4a3729da2aa23630, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1499268031, guid: 4113596ae75d746b4a3729da2aa23630, type: 3}
+    - m_Name: Pressed
+      m_Hash: 350847462
+      m_Sprite: {fileID: -1175135284, guid: 4113596ae75d746b4a3729da2aa23630, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1175135284, guid: 4113596ae75d746b4a3729da2aa23630, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 0
   - m_Name: OpenGameMenu
     m_Hash: 859638706
     m_CategoryList: []
@@ -89,6 +105,22 @@ MonoBehaviour:
     - m_Name: Pressed
       m_Hash: 350847462
       m_Sprite: {fileID: 1499268031, guid: 4113596ae75d746b4a3729da2aa23630, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 566987330, guid: f8cc6e46648b345b38ba06f967f7302a, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 2
+  - m_Name: Drop
+    m_Hash: 271034908
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Idle
+      m_Hash: 1008081451
+      m_Sprite: {fileID: 0}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1208051117, guid: f8cc6e46648b345b38ba06f967f7302a, type: 3}
+    - m_Name: Pressed
+      m_Hash: 350847462
+      m_Sprite: {fileID: 0}
       m_FromMain: 1
       m_SpriteOverride: {fileID: 566987330, guid: f8cc6e46648b345b38ba06f967f7302a, type: 3}
     m_FromMain: 1
@@ -126,3 +158,5 @@ MonoBehaviour:
     m_FromMain: 1
     m_EntryOverrideCount: 2
   m_PrimaryLibraryGUID: d94e4c183d468470e97ffccae2b0884d
+  m_ModificationHash: 638692797414772862
+  m_Version: 1

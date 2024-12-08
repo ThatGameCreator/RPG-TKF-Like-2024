@@ -109,6 +109,22 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -1878166944, guid: da96492e8269a6e43b430f5cb76f1791, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 2
+  - m_Name: Drop
+    m_Hash: 271034908
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Idle
+      m_Hash: 1008081451
+      m_Sprite: {fileID: 0}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1011877097, guid: da96492e8269a6e43b430f5cb76f1791, type: 3}
+    - m_Name: Pressed
+      m_Hash: 350847462
+      m_Sprite: {fileID: 0}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1126474564, guid: da96492e8269a6e43b430f5cb76f1791, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 2
   - m_Name: Submit
     m_Hash: 949859957
     m_CategoryList: []
@@ -158,5 +174,5 @@ MonoBehaviour:
     m_FromMain: 0
     m_EntryOverrideCount: 0
   m_PrimaryLibraryGUID: d94e4c183d468470e97ffccae2b0884d
-  m_ModificationHash: 638686179545176246
+  m_ModificationHash: 638692797681615059
   m_Version: 1

@@ -48,10 +48,11 @@ namespace Gyvr.Mythril2D
 
         private void SetEvacuationText(string teleportName)
         {
-            List<string> tmpEvacuationText = Get(teleportName);
+            List<string> tmpEvacuationTextKey = Get(teleportName);
 
             for (int i = 0; i < m_evacuationTexts.Length; i++) {
-                m_evacuationTexts[i].text = tmpEvacuationText[i];
+                m_evacuationTexts[i].text = GameManager.LocalizationSystem.GetMenuLocalizedString
+                    (tmpEvacuationTextKey[i], EMenuStringTableType.TimeReminder);
             }
         }
 

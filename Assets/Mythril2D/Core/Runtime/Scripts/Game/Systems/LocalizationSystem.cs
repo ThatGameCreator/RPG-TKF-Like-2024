@@ -14,6 +14,7 @@ namespace Gyvr.Mythril2D
     public enum EMenuStringTableType
     {
         MainMenu,
+        TimeReminder,
     }
 
     public class LocalizationSystem : AGameSystem
@@ -28,6 +29,7 @@ namespace Gyvr.Mythril2D
         private StringTable m_ItemDescriptionStringTable;     
         
         private StringTable m_MainMenuStringTable;  
+        private StringTable m_EvacuationPositionStringTable;  
 
         private StringTable m_NPCNameStringTable;  
         private StringTable m_NPCDialogueStringTable;  
@@ -91,6 +93,7 @@ namespace Gyvr.Mythril2D
             m_ItemDescriptionStringTable = LocalizationSettings.StringDatabase.GetTable("ItemDescriptionTable");
 
             m_MainMenuStringTable = LocalizationSettings.StringDatabase.GetTable("MainMenuTable");
+            m_EvacuationPositionStringTable = LocalizationSettings.StringDatabase.GetTable("EvacuationPositionTable");
 
             m_NPCNameStringTable = LocalizationSettings.StringDatabase.GetTable("NPCNameTable");
             m_NPCDialogueStringTable = LocalizationSettings.StringDatabase.GetTable("NPCDialogueTable");
@@ -141,6 +144,10 @@ namespace Gyvr.Mythril2D
             if (eMenuStringTableType == EMenuStringTableType.MainMenu)
             {
                 return m_MainMenuStringTable.GetEntry(key).GetLocalizedString();
+            }
+            else if (eMenuStringTableType == EMenuStringTableType.TimeReminder)
+            {
+                return m_EvacuationPositionStringTable.GetEntry(key).GetLocalizedString();
             }
 
             return null;

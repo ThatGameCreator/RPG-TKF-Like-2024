@@ -102,6 +102,7 @@ public class FontLocalization : MonoBehaviour
     {
         // 初始化：根据当前语言设置字体
         UpdateFontAndSizeForCurrentLocale();
+
         // 监听语言切换事件
         LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
     }
