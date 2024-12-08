@@ -24,12 +24,16 @@ namespace Gyvr.Mythril2D
         private StringTable m_MaterialsStringTable;          
         private StringTable m_MonsterDropsStringTable;          
         private StringTable m_ConsumersStringTable;     
+
+        private StringTable m_ItemDescriptionStringTable;     
         
         private StringTable m_MainMenuStringTable;  
 
         private StringTable m_NPCNameStringTable;  
         private StringTable m_NPCDialogueStringTable;  
         private StringTable m_NPCDialogueOptionStringTable;  
+
+        private StringTable m_StatsTermDefinitionStringTable;  
 
         public override void OnSystemStart()
         {
@@ -84,11 +88,16 @@ namespace Gyvr.Mythril2D
             m_MonsterDropsStringTable = LocalizationSettings.StringDatabase.GetTable("Monster_DropsList");
             m_ConsumersStringTable    = LocalizationSettings.StringDatabase.GetTable("ConsumersList");
 
+            m_ItemDescriptionStringTable = LocalizationSettings.StringDatabase.GetTable("ItemDescriptionTable");
+
             m_MainMenuStringTable = LocalizationSettings.StringDatabase.GetTable("MainMenuTable");
 
             m_NPCNameStringTable = LocalizationSettings.StringDatabase.GetTable("NPCNameTable");
             m_NPCDialogueStringTable = LocalizationSettings.StringDatabase.GetTable("NPCDialogueTable");
             m_NPCDialogueOptionStringTable = LocalizationSettings.StringDatabase.GetTable("NPCDialogueOptionTable");
+
+
+            m_StatsTermDefinitionStringTable = LocalizationSettings.StringDatabase.GetTable("StatsTermDefinitionTable");
 
             //Debug.LogWarning(ScriptStringTable.GetEntry("CommonTip_NoItem").GetLocalizedString());
         }
@@ -122,6 +131,11 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
+        public string GetNPCNameLocalizedString(string key)
+        {
+            return m_NPCNameStringTable.GetEntry(key).GetLocalizedString();
+        }
+
         public string GetMenuLocalizedString(string key, EMenuStringTableType eMenuStringTableType)
         {
             if (eMenuStringTableType == EMenuStringTableType.MainMenu)
@@ -132,9 +146,9 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
-        public string GetNPCNameLocalizedString(string key)
+        public string GetItemDescriptionLocalizedString(string key)
         {
-            return m_NPCNameStringTable.GetEntry(key).GetLocalizedString();
+            return m_ItemDescriptionStringTable.GetEntry(key).GetLocalizedString();
         }
 
         public string GetNPCDialogueLocalizedString(string key)
@@ -145,6 +159,11 @@ namespace Gyvr.Mythril2D
         public string GetNPCDialogueOptionLocalizedString(string key)
         {
             return m_NPCDialogueOptionStringTable.GetEntry(key).GetLocalizedString();
+        }
+
+        public string GetStatsTermDefinitionLocalizedString(string key)
+        {
+            return m_StatsTermDefinitionStringTable.GetEntry(key).GetLocalizedString();
         }
     }
 }

@@ -193,7 +193,8 @@ namespace Gyvr.Mythril2D
                 }
                 else
                 {
-                    GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotBuy, null, item.DisplayName));
+                    GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree
+                    (m_cannotBuy, null, GameManager.LocalizationSystem.GetItemNameLocalizedString(item.LocalizationKey, item.Category)));
                 }
             }
             else

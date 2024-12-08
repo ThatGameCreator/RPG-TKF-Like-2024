@@ -88,15 +88,15 @@ MonoBehaviour:
       shortName: Lvl.
       description: Progression indicator for a character
       icon: {fileID: 0}
-    - fullName: Health
+    - fullName: id_stats_term_definition_health_full
       shortName: Health
       description: 
       icon: {fileID: 1269947344, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
-    - fullName: Mana
+    - fullName: id_stats_term_definition_mana_full
       shortName: Mana
       description: 
       icon: {fileID: 2059989182, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
-    - fullName: Strength
+    - fullName: id_stats_term_definition_physical_defense_full
       shortName: Strength
       description: 
       icon: {fileID: -491117512, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
@@ -104,19 +104,19 @@ MonoBehaviour:
       shortName: Intel.
       description: 
       icon: {fileID: -827782456, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
-    - fullName: Physical
+    - fullName: id_stats_term_definition_physical_defense_full
       shortName: Physical
       description: 
       icon: {fileID: -117338440, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
-    - fullName: 'Magic '
+    - fullName: id_stats_term_definition_magical_defense_full
       shortName: 'Magic '
       description: 
       icon: {fileID: 567610833, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
-    - fullName: Agility
+    - fullName: id_stats_term_definition_agility_full
       shortName: Agility
       description: 
       icon: {fileID: 783625353, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
-    - fullName: Luck
+    - fullName: id_stats_term_definition_luck_full
       shortName: Luck
       description: 
       icon: {fileID: -87856419, guid: fd2aecd1af34986489ae2b6e9c2501b8, type: 3}
@@ -163,7 +163,7 @@ MonoBehaviour:
     - magical_defense
     - agility
     - luck
-    - Unknow
+    - unknow
   m_itemCategoryTermsBinding:
     m_keys: 00000000010000000200000003000000
     m_values:

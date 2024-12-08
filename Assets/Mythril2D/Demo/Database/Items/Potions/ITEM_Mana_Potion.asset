@@ -16,9 +16,10 @@ MonoBehaviour:
   m_icon: {fileID: 1110923219, guid: b2aa333e2a0687c499a8b4ecb8625997, type: 3}
   m_localizationKey: id_mana_potion_item
   m_displayName: Mana Potion
-  m_description: Restores 2 mana points
+  m_description: Restores 1 mana points
+  m_descriptionKey: id_mana_potion_description
   m_buyPrice: 15
   m_sellPrice: 7
   m_isStackable: 0
-  m_manaToRestore: 2
+  m_manaToRestore: 1
   m_drinkAudio: {fileID: 11400000, guid: 6169e1eb2a9a87640a3b43f31e3ab758, type: 2}

@@ -28,6 +28,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private string m_localizationKey = string.Empty;
         [SerializeField] private string m_displayName = string.Empty;
         [SerializeField] private string m_description = string.Empty;
+        [SerializeField] private string m_descriptionKey = string.Empty;
         [SerializeField] private int m_buyPrice = 50;
         [SerializeField] private int m_sellPrice = 50;
         [SerializeField] private bool m_isStackable = false; // 默认设置为不可堆叠
@@ -111,6 +112,12 @@ namespace Gyvr.Mythril2D
         {
             get => m_description;
             set => m_description = value;
+        }
+
+        public string DescriptionKey
+        {
+            get => m_descriptionKey;
+            set => m_descriptionKey = value;
         }
 
         public int buyPrice

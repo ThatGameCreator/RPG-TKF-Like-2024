@@ -355,6 +355,7 @@ namespace Gyvr.Mythril2D
                     // Draw properties with null checks and error handling
                     DrawSerializedProperty(serializedItem, "m_localizationKey", "LocalizationKey");
                     DrawSerializedProperty(serializedItem, "m_displayName", "DisplayName");
+                    DrawSerializedProperty(serializedItem, "m_descriptionKey", "DescriptionKey");
                     DrawSerializedProperty(serializedItem, "m_description", "Description");
                     DrawSerializedProperty(serializedItem, "m_category", "Category");
                     DrawSerializedProperty(serializedItem, "m_buyPrice", "Buy Price");
