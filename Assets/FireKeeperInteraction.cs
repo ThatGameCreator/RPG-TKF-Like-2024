@@ -30,8 +30,6 @@ namespace Gyvr.Mythril2D
                         // 在对话配置表里面如果装入了选项就不需要在再这里执行对话了
                         // 也就说如果用数据表配置了选项就不需要写代码 带如果要执行额外代码和选项的话 还是得配置代码
                         target.Say(m_dialogueIfUpgrade);
-
-                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_inn.healingSound);
                     }
 
                     else if (messages.Contains("Heal"))
@@ -46,11 +44,15 @@ namespace Gyvr.Mythril2D
 
                                 if (messages.Contains(EDialogueMessageType.Accept))
                                 {
-                                    target.Say(m_dialogueIfCanPayHeal);
                                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_inn.healingSound);
+                                    
                                     GameManager.InventorySystem.RemoveMoney(m_inn.price);
+
                                     GameManager.Player.Heal(m_inn.healAmount);
                                     GameManager.Player.RecoverMana(m_inn.manaRecoveredAmount);
+
+                                    target.Say(m_dialogueIfCanPayHeal);
+
                                 }
                                 else
                                 {

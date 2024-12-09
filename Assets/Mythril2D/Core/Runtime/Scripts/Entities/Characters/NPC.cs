@@ -61,7 +61,10 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public override string GetSpeakerName() => LocalizationSystem.Instance.GetNPCNameLocalizedString(characterSheet.displayNameKey);
+        public override string GetSpeakerName()
+        {
+            return LocalizationSystem.Instance.GetNPCNameLocalizedString(characterSheet.displayNameKey);
+        }
 
         public override void OnStartInteract(CharacterBase sender, Entity target)
         {

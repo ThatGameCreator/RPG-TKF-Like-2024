@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 namespace Gyvr.Mythril2D
 {
@@ -65,11 +66,17 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.questCompleted.AddListener(OnQuestCompleted);
         }
 
-        private void OnExperienceGained(int experience) => Log(m_experienceAdded, experience);
-        private void OnLevelUp(int level) => Log(m_levelUp, level);
+        private void OnExperienceGained(int experience) => 
+        Log(m_experienceAdded, LocalizationSettings.StringDatabase.GetLocalizedString("TermDefinitionTable", "id_term_definition_souls"), experience);
+        
+        private void OnLevelUp(int level) => 
+        Log(m_levelUp, LocalizationSettings.StringDatabase.GetLocalizedString("TermDefinitionTable", "id_term_definition_levelup"));
 
-        private void OnMoneyAdded(int money) => Log(m_moneyAdded, money);
-        private void OnMoneyRemoved(int money) => Log(m_moneyRemoved, money);
+        private void OnMoneyAdded(int money) => 
+        Log(m_moneyAdded, LocalizationSettings.StringDatabase.GetLocalizedString("TermDefinitionTable", "id_term_definition_gold"), money);
+        
+        private void OnMoneyRemoved(int money) => 
+        Log(m_moneyRemoved, LocalizationSettings.StringDatabase.GetLocalizedString("TermDefinitionTable", "id_term_definition_gold"), money);
 
         private void OnItemAdded(Item item, int count) 
         {

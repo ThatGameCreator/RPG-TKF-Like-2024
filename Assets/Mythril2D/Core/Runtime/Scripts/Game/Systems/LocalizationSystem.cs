@@ -150,7 +150,7 @@ namespace Gyvr.Mythril2D
             m_NPCDialogueOptionStringTable = LocalizationSettings.StringDatabase.GetTable("NPCDialogueOptionTable");
 
 
-            m_StatsTermDefinitionStringTable = LocalizationSettings.StringDatabase.GetTable("StatsTermDefinitionTable");
+            m_StatsTermDefinitionStringTable = LocalizationSettings.StringDatabase.GetTable("TermDefinitionTable");
 
             //Debug.LogWarning(ScriptStringTable.GetEntry("CommonTip_NoItem").GetLocalizedString());
         }
