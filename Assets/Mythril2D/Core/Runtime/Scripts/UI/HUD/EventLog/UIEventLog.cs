@@ -67,6 +67,7 @@ namespace Gyvr.Mythril2D
 
         private void OnExperienceGained(int experience) => Log(m_experienceAdded, experience);
         private void OnLevelUp(int level) => Log(m_levelUp, level);
+
         private void OnMoneyAdded(int money) => Log(m_moneyAdded, money);
         private void OnMoneyRemoved(int money) => Log(m_moneyRemoved, money);
 

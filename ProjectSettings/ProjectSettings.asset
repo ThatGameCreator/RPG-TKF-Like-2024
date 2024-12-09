@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: That Abyss
-  defaultCursor: {fileID: 2800000, guid: 6dd41f77670d2994eac6a9f929f0d49f, type: 3}
+  defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -142,7 +142,6 @@ PlayerSettings:
   bundleVersion: 12.09
   preloadedAssets:
   - {fileID: 11400000, guid: cfda0857ce71a4849a4a54ac18675b8e, type: 2}
-  - {fileID: 11400000, guid: 58b46bb59f19fa6489d514aa4d7bec82, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1

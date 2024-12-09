@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 namespace Gyvr.Mythril2D
 {
@@ -52,7 +53,8 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                GameManager.DialogueSystem.Main.PlayNow("This item has no effect");
+                GameManager.DialogueSystem.Main.PlayNow
+                (LocalizationSettings.StringDatabase.GetLocalizedString("MaterialsList", "id_use_item_no_effect"));
             }
         }
 

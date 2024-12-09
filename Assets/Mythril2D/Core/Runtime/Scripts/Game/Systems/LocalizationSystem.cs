@@ -170,7 +170,6 @@ namespace Gyvr.Mythril2D
             }
             else if (eItemCategory == EItemCategory.Resource || eItemCategory == EItemCategory.Key)
             {
-                Debug.Log(key);
                 return m_MaterialsStringTable.GetEntry(key).GetLocalizedString();
             }
             else if (eItemCategory == EItemCategory.MonsterDrop)

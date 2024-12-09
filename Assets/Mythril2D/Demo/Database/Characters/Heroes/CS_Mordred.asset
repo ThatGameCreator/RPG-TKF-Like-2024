@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_alignment: 0
   m_displayName: Knight
+  m_displayNameKey: 
   m_abilitiesPerLevel:
     m_keys:
     - {fileID: 11400000, guid: ab7428c1fc0eda844b51174e390fe572, type: 2}
@@ -54,8 +55,8 @@ MonoBehaviour:
   m_dashAbilitySheet: {fileID: 11400000, guid: b742ac521f6a560498daa197a5483671, type: 2}
   maxStamina: 30
   baseStats:
-    m_values: 190000000300000005000000050000000500000005000000050000000500000005000000
-  pointsPerLevel: 3
+    m_values: 140000000300000005000000050000000500000005000000050000000500000005000000
+  pointsPerLevel: 2
   experience:
     m_initialValue: 50
     m_evolutionProfile:

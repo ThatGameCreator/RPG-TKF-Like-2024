@@ -106,6 +106,8 @@ namespace Gyvr.Mythril2D
             // 没啥用 不晓得为什么
             StartColorTransition(pressedColor);
 
+            LocalizationSystem.Instance.SaveToFile(LocalizationSystem.Instance.saveFileName);
+
             Application.Quit();
         }
     }
