@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 8067614830752576373}
   - component: {fileID: 2555197763400937252}
   - component: {fileID: 4030323920121159776}
+  - component: {fileID: 7013047309300799522}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -288,3 +289,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7013047309300799522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583942272842280319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf45c9b868640cd4dae6190788beeb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_textMeshPro: {fileID: 4030323920121159776}
+  m_tableName: FontAssets
+  m_fontKey: mainFont
+  m_defaultFontSize: 32
+  m_englishFontSize: 32
+  m_chineseFontSize: 22
