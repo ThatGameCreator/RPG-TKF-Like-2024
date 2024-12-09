@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -11,14 +12,31 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Gyvr.Mythril2D
 {
+    [Serializable]
+    public struct LocalizationDataBlock
+    {
+        public int LocaleIndex;
+    }
+
     public enum EMenuStringTableType
     {
         MainMenu,
         TimeReminder,
     }
 
-    public class LocalizationSystem : AGameSystem
+    public class LocalizationSystem : AGameSystem, IDataBlockHandler<LocalizationDataBlock>
     {
+        public List<Locale> locales => m_locales;
+        // 当前语言索引
+        private int m_currentLocaleIndex = 0;
+        private List<Locale> m_locales = null;
+
+        public int currentLocaleIndex
+        {
+            get => m_currentLocaleIndex;
+            set => m_currentLocaleIndex = value;
+        }
+
         //代码本地化表
         private StringTable m_EquipmentsStringTable;          
         private StringTable m_WeaponsStringTable;          
@@ -48,6 +66,21 @@ namespace Gyvr.Mythril2D
                 LocalizationSettings.InitializationOperation.Completed += OnLocalizationInitialized;
             }
             LocalizationSettings.SelectedLocaleChanged += OnLocaleChanged;
+
+            InitialLanguage();
+        }
+
+        public void InitialLanguage()
+        {
+            m_locales = LocalizationSettings.AvailableLocales.Locales; // 获取所有可用语言列表
+
+            if (m_locales.Count == 0)
+            {
+                Debug.LogWarning("No available locales found!");
+                return;
+            }
+
+            LocalizationSettings.SelectedLocale = m_locales[currentLocaleIndex]; // 更新语言
         }
 
         public override void OnSystemStop()
@@ -86,7 +119,7 @@ namespace Gyvr.Mythril2D
         {
             m_EquipmentsStringTable   = LocalizationSettings.StringDatabase.GetTable("EquipmentsList");
             m_WeaponsStringTable = LocalizationSettings.StringDatabase.GetTable("WeaponsList");
-            m_MaterialsStringTable    = LocalizationSettings.StringDatabase.GetTable("MaterialList");
+            m_MaterialsStringTable    = LocalizationSettings.StringDatabase.GetTable("MaterialsList");
             m_MonsterDropsStringTable = LocalizationSettings.StringDatabase.GetTable("Monster_DropsList");
             m_ConsumersStringTable    = LocalizationSettings.StringDatabase.GetTable("ConsumersList");
 
@@ -120,6 +153,7 @@ namespace Gyvr.Mythril2D
             }
             else if (eItemCategory == EItemCategory.Resource || eItemCategory == EItemCategory.Key)
             {
+                Debug.Log(key);
                 return m_MaterialsStringTable.GetEntry(key).GetLocalizedString();
             }
             else if (eItemCategory == EItemCategory.MonsterDrop)
@@ -171,6 +205,20 @@ namespace Gyvr.Mythril2D
         public string GetStatsTermDefinitionLocalizedString(string key)
         {
             return m_StatsTermDefinitionStringTable.GetEntry(key).GetLocalizedString();
+        }
+
+        public void LoadDataBlock(LocalizationDataBlock block)
+        {
+            m_currentLocaleIndex = block.LocaleIndex;
+            Debug.Log(block.LocaleIndex);
+        }
+
+        public LocalizationDataBlock CreateDataBlock()
+        {
+            return new LocalizationDataBlock
+            {
+                LocaleIndex = currentLocaleIndex,
+            };
         }
     }
 }

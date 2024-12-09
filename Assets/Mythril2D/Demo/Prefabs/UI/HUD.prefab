@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 2467290087848238655}
   - component: {fileID: 2740654336623040960}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: Evacuation Info (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1476,6 +1476,9 @@ MonoBehaviour:
   m_evacuationTexts:
   - {fileID: 4840199759355554329}
   - {fileID: 4379738722914697485}
+  m_localizeString:
+  - {fileID: 8006732862305637695}
+  - {fileID: -4648644049877649748}
 --- !u!114 &7979249213712307784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,7 +1516,7 @@ GameObject:
   - component: {fileID: 4813135442223381837}
   - component: {fileID: 2437509266489079542}
   m_Layer: 5
-  m_Name: GameObject (1)
+  m_Name: Evacuation Info (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

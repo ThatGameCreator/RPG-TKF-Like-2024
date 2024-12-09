@@ -131,6 +131,7 @@ namespace Gyvr.Mythril2D
             GameManager.InventorySystem.LoadDataBlock(saveFile.inventory);
             GameManager.JournalSystem.LoadDataBlock(saveFile.journal);
             GameManager.PlayerSystem.LoadDataBlock(saveFile.player);
+            GameManager.LocalizationSystem.LoadDataBlock(saveFile.localization);
             GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map, null, null, null, ETeleportType.Revival);
             //GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map);
         }
@@ -146,6 +147,7 @@ namespace Gyvr.Mythril2D
             GameManager.InventorySystem.LoadDataBlock(saveFile.inventory);
             GameManager.JournalSystem.LoadDataBlock(saveFile.journal);
             GameManager.PlayerSystem.LoadDataBlock(saveFile.player);
+            GameManager.LocalizationSystem.LoadDataBlock(saveFile.localization);
             GameManager.TeleportLoadingSystem.RequestTransition(saveFile.map, null, null, () =>
             {
                 GameManager.SaveSystem.SaveToFile(saveFileName);
@@ -176,7 +178,7 @@ namespace Gyvr.Mythril2D
                 map = GameManager.TeleportLoadingSystem.GetCurrentMapName(),
                 gameFlags = GameManager.GameFlagSystem.CreateDataBlock(),
                 warehouse = GameManager.WarehouseSystem.CreateDataBlock(),
-                inventory = GameManager.InventorySystem.CreateDataBlock(),
+                localization = GameManager.LocalizationSystem.CreateDataBlock(),
                 journal = GameManager.JournalSystem.CreateDataBlock(),
                 player = GameManager.PlayerSystem.CreateDataBlock()
             };

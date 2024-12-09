@@ -33,23 +33,17 @@ MonoBehaviour:
       items: []
     inventory:
       money: 100
-      items:
-      - itemReference:
-          m_instance: {fileID: 11400000, guid: 1d4d336cf8ba5474d8af9e3658758327, type: 2}
-          m_guid: 1d4d336cf8ba5474d8af9e3658758327
-        quantity: 1
-      - itemReference:
-          m_instance: {fileID: 11400000, guid: 8e9002f1c3ebd904e8f1999accd2d0ec, type: 2}
-          m_guid: 8e9002f1c3ebd904e8f1999accd2d0ec
-        quantity: 10
+      items: []
+    localization:
+      LocaleIndex: 0
     gameFlags:
       flags: []
     player:
       profile:
         m_instance: {fileID: 11400000, guid: cd33960522dbb8946bc8b4b171d19cfe, type: 2}
         m_guid: cd33960522dbb8946bc8b4b171d19cfe
-      usedPoints: 10
-      experience: 1000
+      usedPoints: 0
+      experience: 0
       missingCurrentStats:
         m_values: 000000000000000000000000000000000000000000000000000000000000000000000000
       missingCurrentStamina: 0

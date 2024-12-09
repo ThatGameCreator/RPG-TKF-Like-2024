@@ -419,7 +419,7 @@ namespace Gyvr.Mythril2D
         {
             return new InventoryDataBlock
             {
-                money = m_backpackMoney,
+                money = backpackMoney,
                 items = backpackItems.Select(instance => new ItemInstance(instance.GetItem(), instance.quantity)).ToList()
             };
         }

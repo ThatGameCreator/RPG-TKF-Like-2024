@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 
 namespace Gyvr.Mythril2D
 {
@@ -43,6 +44,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private List<EvacuationToTextMapping> evacuationTextRules = new List<EvacuationToTextMapping>();
         [SerializeField] private List<EvacuationToPositionMapping> evacuationPositionRules = new List<EvacuationToPositionMapping>();
         [SerializeField] private TextMeshProUGUI[] m_evacuationTexts = null;
+        [SerializeField] private LocalizeStringEvent[] m_localizeString = null;
         private bool m_isTextBeRed = false;
         private bool m_setEvacuationTextActive = false;
         private string m_teleportName = string.Empty;
@@ -63,8 +65,12 @@ namespace Gyvr.Mythril2D
             List<string> tmpEvacuationTextKey = GetEvacuationValueMapping(m_teleportName);
 
             for (int i = 0; i < m_evacuationTexts.Length; i++) {
-                m_evacuationTexts[i].text = GameManager.LocalizationSystem.GetMenuLocalizedString
-                    (tmpEvacuationTextKey[i], EMenuStringTableType.TimeReminder);
+                m_localizeString[i].StringReference = new LocalizedString 
+                { 
+                    TableReference = "EvacuationPositionTable", 
+                    TableEntryReference = tmpEvacuationTextKey[i]
+                };
+                
             }
         }
 

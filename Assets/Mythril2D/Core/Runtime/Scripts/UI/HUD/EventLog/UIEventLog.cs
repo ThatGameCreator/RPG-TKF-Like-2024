@@ -69,10 +69,19 @@ namespace Gyvr.Mythril2D
         private void OnLevelUp(int level) => Log(m_levelUp, level);
         private void OnMoneyAdded(int money) => Log(m_moneyAdded, money);
         private void OnMoneyRemoved(int money) => Log(m_moneyRemoved, money);
-        private void OnItemAdded(Item item, int count) => Log(m_itemAdded, item.DisplayName, count);
-        private void OnItemRemoved(Item item, int count) => Log(m_itemRemoved, item.DisplayName, count);
+
+        private void OnItemAdded(Item item, int count) 
+        {
+            Debug.Log(item.LocalizationKey);
+
+            Log(m_itemAdded, GameManager.LocalizationSystem.GetItemNameLocalizedString(item.LocalizationKey, item.Category), count);
+        }
+        private void OnItemRemoved(Item item, int count) 
+            => Log(m_itemRemoved, GameManager.LocalizationSystem.GetItemNameLocalizedString(item.LocalizationKey, item.Category), count);
+
         private void OnAbilityAdded(AbilitySheet ability) => Log(m_abilityAdded, ability.displayName);
         private void OnAbilityRemoved(AbilitySheet ability) => Log(m_abilityRemoved, ability.displayName);
+
         private void OnQuestStarted(Quest quest) => Log(m_questStarted, quest.title);
         private void OnQuestUpdated(Quest quest) => Log(m_questUpdated, quest.title);
         private void OnQuestCompleted(Quest quest) => Log(m_questCompleted, quest.title);

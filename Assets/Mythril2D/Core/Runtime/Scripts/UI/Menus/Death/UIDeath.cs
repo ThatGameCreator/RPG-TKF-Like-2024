@@ -70,6 +70,8 @@ namespace Gyvr.Mythril2D
 
         public void GoToMainMenu()
         {
+            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+
             SceneManager.LoadScene(GameManager.Config.mainMenuSceneName);
         }
     }

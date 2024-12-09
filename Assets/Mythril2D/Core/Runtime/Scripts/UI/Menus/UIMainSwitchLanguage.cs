@@ -22,7 +22,6 @@ namespace Gyvr.Mythril2D
         private Coroutine colorCoroutine;
 
         public Button button => m_button;
-        private int currentLocaleIndex = 0; // 当前语言索引
 
         private void Awake()
         {
@@ -35,15 +34,6 @@ namespace Gyvr.Mythril2D
             if (m_button != null)
             {
                 m_button.onClick.AddListener(OnClick);
-            }
-        }
-        private void Start()
-        {
-            // 初始化当前语言索引
-            if (LocalizationSettings.SelectedLocale != null)
-            {
-                var locales = LocalizationSettings.AvailableLocales.Locales;
-                currentLocaleIndex = locales.IndexOf(LocalizationSettings.SelectedLocale);
             }
         }
 
@@ -123,19 +113,12 @@ namespace Gyvr.Mythril2D
 
         public void SwitchLanguage()
         {
-            var locales = LocalizationSettings.AvailableLocales.Locales; // 获取所有可用语言列表
-
-            if (locales.Count == 0)
-            {
-                Debug.LogWarning("No available locales found!");
-                return;
-            }
+            Debug.Log(GameManager.LocalizationSystem.locales.Count);
+            Debug.Log(GameManager.LocalizationSystem.currentLocaleIndex);
 
             // 切换到下一个语言
-            currentLocaleIndex = (currentLocaleIndex + 1) % locales.Count; // 循环更新语言索引
-            LocalizationSettings.SelectedLocale = locales[currentLocaleIndex]; // 更新语言
-
-            //Debug.Log($"Language switched to: {locales[currentLocaleIndex].Identifier.CultureInfo?.NativeName ?? locales[currentLocaleIndex].ToString()}");
+            GameManager.LocalizationSystem.currentLocaleIndex = (GameManager.LocalizationSystem.currentLocaleIndex + 1) % GameManager.LocalizationSystem.locales.Count; // 循环更新语言索引
+            LocalizationSettings.SelectedLocale = GameManager.LocalizationSystem.locales[GameManager.LocalizationSystem.currentLocaleIndex]; // 更新语言
         }
     }
 }
