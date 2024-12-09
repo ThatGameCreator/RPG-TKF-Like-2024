@@ -17,7 +17,7 @@ namespace Gyvr.Mythril2D
                 DialogueNode current = new DialogueNode();
 
                 //current.text = StringFormatter.Format(sequence.lines[i], args);
-                current.text = StringFormatter.Format(GameManager.LocalizationSystem.GetNPCDialogueLocalizedString(sequence.lineKeys[i]), args);
+                current.text = StringFormatter.Format(LocalizationSystem.Instance.GetNPCDialogueLocalizedString(sequence.lineKeys[i]), args);
                 current.speaker = speaker;
 
                 if (i == sequence.lines.Length - 1)

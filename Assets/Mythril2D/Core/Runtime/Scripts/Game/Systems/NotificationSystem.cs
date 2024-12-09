@@ -13,8 +13,10 @@ namespace Gyvr.Mythril2D
         public UnityEvent<CharacterBase, int> healthRecovered = new UnityEvent<CharacterBase, int>();
         public UnityEvent<CharacterBase, int> manaConsumed = new UnityEvent<CharacterBase, int>();
         public UnityEvent<CharacterBase, int> manaRecovered = new UnityEvent<CharacterBase, int>();
+
         public UnityEvent<Hero, float> staminaConsumed = new UnityEvent<Hero, float>();
         public UnityEvent<Hero, float> staminaRecovered = new UnityEvent<Hero, float>();
+        
         public UnityEvent<int> experienceGained = new UnityEvent<int>();
         public UnityEvent<int> levelUp = new UnityEvent<int>();
         public UnityEvent<AIController, Transform> targetDetected = new UnityEvent<AIController, Transform>();
@@ -38,6 +40,7 @@ namespace Gyvr.Mythril2D
         public UnityEvent mapTransitionCompleted = new UnityEvent();
         public UnityEvent mapLoaded = new UnityEvent();
         public UnityEvent mapUnloaded = new UnityEvent();
+
         public UnityEvent saveStart = new UnityEvent();
         public UnityEvent saveEnd = new UnityEvent();
 

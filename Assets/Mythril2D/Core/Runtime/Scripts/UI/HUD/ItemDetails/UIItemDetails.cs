@@ -29,12 +29,12 @@ namespace Gyvr.Mythril2D
             {
                 m_itemDetailsBox.SetActive(true);
                 m_itemIcon.sprite = item.Icon;
-                m_itemName.text = GameManager.LocalizationSystem.GetItemNameLocalizedString(item.LocalizationKey, item.Category);
+                m_itemName.text = LocalizationSystem.Instance.GetItemNameLocalizedString(item.LocalizationKey, item.Category);
 
                 // 比较两个字符串，如果两个字符串不相等返回-1，两个相等则返回0。
                 if (string.Compare(item.DescriptionKey, string.Empty) == -1)
                 {
-                    m_itemDescription.text = GameManager.LocalizationSystem.GetItemDescriptionLocalizedString(item.DescriptionKey);
+                    m_itemDescription.text = LocalizationSystem.Instance.GetItemDescriptionLocalizedString(item.DescriptionKey);
                 }
                 else
                 {
@@ -55,7 +55,7 @@ namespace Gyvr.Mythril2D
                         {
                             m_itemDescription.text += 
                             $" <u>{(value > 0 ? '+' : '-')}{value}\u00A0" +
-                            $"{GameManager.LocalizationSystem.GetStatsTermDefinitionLocalizedString(GameManager.Config.GetTermDefinition(stat).fullName)}</u>";
+                            $"{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString(GameManager.Config.GetTermDefinition(stat).fullName)}</u>";
                         }
                     }
                 }

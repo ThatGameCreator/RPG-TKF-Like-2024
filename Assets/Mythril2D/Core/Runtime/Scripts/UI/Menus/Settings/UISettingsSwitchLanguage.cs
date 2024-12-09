@@ -29,8 +29,8 @@ namespace Gyvr.Mythril2D
         public void SwitchLanguage()
         {
             // 切换到下一个语言
-            GameManager.LocalizationSystem.currentLocaleIndex = (GameManager.LocalizationSystem.currentLocaleIndex + 1) % GameManager.LocalizationSystem.locales.Count; // 循环更新语言索引
-            LocalizationSettings.SelectedLocale = GameManager.LocalizationSystem.locales[GameManager.LocalizationSystem.currentLocaleIndex]; // 更新语言
+            LocalizationSystem.Instance.currentLocaleIndex = (LocalizationSystem.Instance.currentLocaleIndex + 1) % LocalizationSystem.Instance.locales.Count; // 循环更新语言索引
+            LocalizationSettings.SelectedLocale = LocalizationSystem.Instance.locales[LocalizationSystem.Instance.currentLocaleIndex]; // 更新语言
         }
     }
 }

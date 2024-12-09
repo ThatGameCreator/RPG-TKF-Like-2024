@@ -72,12 +72,10 @@ namespace Gyvr.Mythril2D
 
         private void OnItemAdded(Item item, int count) 
         {
-            Debug.Log(item.LocalizationKey);
-
-            Log(m_itemAdded, GameManager.LocalizationSystem.GetItemNameLocalizedString(item.LocalizationKey, item.Category), count);
+            Log(m_itemAdded, LocalizationSystem.Instance.GetItemNameLocalizedString(item.LocalizationKey, item.Category), count);
         }
         private void OnItemRemoved(Item item, int count) 
-            => Log(m_itemRemoved, GameManager.LocalizationSystem.GetItemNameLocalizedString(item.LocalizationKey, item.Category), count);
+            => Log(m_itemRemoved, LocalizationSystem.Instance.GetItemNameLocalizedString(item.LocalizationKey, item.Category), count);
 
         private void OnAbilityAdded(AbilitySheet ability) => Log(m_abilityAdded, ability.displayName);
         private void OnAbilityRemoved(AbilitySheet ability) => Log(m_abilityRemoved, ability.displayName);

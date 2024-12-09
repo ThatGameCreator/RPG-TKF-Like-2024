@@ -194,7 +194,7 @@ namespace Gyvr.Mythril2D
                 else
                 {
                     GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree
-                    (m_cannotBuy, null, GameManager.LocalizationSystem.GetItemNameLocalizedString(item.LocalizationKey, item.Category)));
+                    (m_cannotBuy, null, LocalizationSystem.Instance.GetItemNameLocalizedString(item.LocalizationKey, item.Category)));
                 }
             }
             else
