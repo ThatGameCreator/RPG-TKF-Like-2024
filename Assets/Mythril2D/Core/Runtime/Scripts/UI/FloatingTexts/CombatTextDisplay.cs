@@ -23,6 +23,11 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Color m_manaConsumedColor = Color.cyan;
         [SerializeField] private Color m_manaRecoveredColor = Color.cyan;
 
+        [Header("Particles")]
+        [SerializeField] private ParticleSystem m_damageParticle = null;
+        [SerializeField] private ParticleSystem m_healParticle = null;
+        [SerializeField] private ParticleSystem m_manaRecoverParticle = null;
+
         [Header("Text Content")]
         [SerializeField] private string m_missText = "Miss";
 
@@ -57,6 +62,9 @@ namespace Gyvr.Mythril2D
                     m_damageColor;
 
                 m_floatingTextPool.ShowText(text, target.transform.position, color, m_textAnimationParameter);
+                
+                PlayParticle(m_damageParticle, target.transform.position);
+
             }
         }
 
@@ -65,6 +73,9 @@ namespace Gyvr.Mythril2D
             if (m_showHeals && (m_showNullHeals || amount > 0))
             {
                 m_floatingTextPool.ShowText(amount.ToString(), target.transform.position, m_healColor, m_textAnimationParameter);
+
+                PlayParticle(m_healParticle, target.transform.position);
+
             }
         }
 
@@ -81,6 +92,18 @@ namespace Gyvr.Mythril2D
             if (m_showRecoveredMana && (m_showNullManaRecovery || amount > 0))
             {
                 m_floatingTextPool.ShowText(amount.ToString(), target.transform.position, m_manaRecoveredColor, m_textAnimationParameter);
+
+                PlayParticle(m_manaRecoverParticle, target.transform.position);
+            }
+        }
+
+        private void PlayParticle(ParticleSystem particle, Vector3 targetPosition)
+        {
+            if (particle != null)
+            {
+                particle.transform.position = targetPosition;
+
+                particle.Play();
             }
         }
     }
