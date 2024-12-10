@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
@@ -6,6 +7,8 @@ namespace Gyvr.Mythril2D
     {
         [SerializeField]
         public SerializableDictionary<Item, SurfaceItem> InstanceObjects = null;
+
+        public List<Entity> instantiateItems = new List<Entity>();
 
         public void DropItemToPlayer(Item item, int quantity)
         {
@@ -16,12 +19,27 @@ namespace Gyvr.Mythril2D
             for (int i = 0; i < quantity; i++)
             {
                 //Debug.Log("Instantiate");
-
-                Entity droppedItem = Instantiate(InstanceObjects[item]); // 假设物品有 prefab 引用
+                // 假设物品有 prefab 引用
+                Entity droppedItem = Instantiate(InstanceObjects[item], transform); 
                 droppedItem.transform.position = playerPosition;
+
+                instantiateItems.Add(droppedItem);
             }
         }
 
+        public void DestoryAllItemOnTeleport()
+        {
+            foreach (Entity item in instantiateItems)
+            {
+                // 好像这样写只是销毁了引用？并没有真的销毁对象？
+                // Destroy(item);
+                // 不懂得写成gameobject才行
+                Destroy(item.gameObject);
+                
+            }
+
+            instantiateItems.Clear();
+        }
     }
 }
 

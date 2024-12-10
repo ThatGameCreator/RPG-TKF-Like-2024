@@ -58,6 +58,8 @@ namespace Gyvr.Mythril2D
             {
                 map = m_defaultResurrectionMap;
             }
+            // 加载前销毁生成在地图上的物品
+            GameManager.ItemGenerationSystem.DestoryAllItemOnTeleport();
 
             // 传送地图也要设置当前地图
             // 好像在这里设置会出问题
@@ -70,6 +72,7 @@ namespace Gyvr.Mythril2D
                     //Debug.Log(String.Format("TryExcutePositionTelepot"));
                     TryExcutePositionTelepot(eTeleportType, destinationGameObjectName);
                 }
+
             };
 
             GameManager.NotificationSystem.mapTransitionStarted.Invoke();
