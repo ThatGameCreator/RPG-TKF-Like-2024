@@ -21,7 +21,7 @@ namespace Gyvr.Mythril2D
                     GameManager.InventorySystem.RemoveFromBag(this);
                     GameManager.WarehouseSystem.AddToWarehouse(this);
                 }
-                else if (location == EItemLocation.Warehouse && GameManager.InventorySystem.IsBackpackFull() == false)
+                else if (location == EItemLocation.Warehouse && GameManager.InventorySystem.IsBackpackFull(this) == false)
                 {
                     GameManager.InventorySystem.AddToBag(this);
                     GameManager.WarehouseSystem.RemoveFromWarehouse(this);

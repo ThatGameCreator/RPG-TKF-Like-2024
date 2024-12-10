@@ -182,7 +182,7 @@ namespace Gyvr.Mythril2D
         {
             int itemPrice = m_shop.GetPrice(item, ETransactionType.Buy);
 
-            if (GameManager.InventorySystem.IsBackpackFull() == false)
+            if (GameManager.InventorySystem.IsBackpackFull(item) == false)
             {
                 if (GameManager.InventorySystem.backpackMoney >= itemPrice)
                 {

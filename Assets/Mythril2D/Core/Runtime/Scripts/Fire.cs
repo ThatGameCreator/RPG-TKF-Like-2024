@@ -62,7 +62,10 @@ public class Fire : MonoBehaviour
     {
         while (true)
         {
-            foreach (var collider in m_collidersInTrigger)
+            // 创建一个临时集合的快照 防止直接修改集合报错
+            var collidersSnapshot = new List<Collider2D>(m_collidersInTrigger);
+
+            foreach (var collider in collidersSnapshot)
             {
                 var character = collider.gameObject.GetComponent<CharacterBase>();
 

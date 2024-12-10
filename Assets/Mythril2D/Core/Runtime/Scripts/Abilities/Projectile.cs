@@ -145,24 +145,24 @@ namespace Gyvr.Mythril2D
             Collider2D targetCollider = target.GetComponent<Collider2D>();
             if (targetCollider == null)
             {
-                Debug.LogWarning($"Target {target.name} has no Collider2D!");
+                //Debug.LogWarning($"Target {target.name} has no Collider2D!");
                 return false;
             }
 
             if (m_processedColliders.Contains(targetCollider))
             {
-                Debug.Log($"Target {target.name} already processed.");
+                //Debug.Log($"Target {target.name} already processed.");
                 return false;
             }
 
             if (IsProperCollider(target.layer))
             {
-                Debug.Log($"Target {target.name} is a valid collider.");
+                //Debug.Log($"Target {target.name} is a valid collider.");
                 HandleCollision(target);
                 return true;
             }
 
-            Debug.Log($"Target {target.name} is not a proper collider.");
+            //Debug.Log($"Target {target.name} is not a proper collider.");
             return false;
         }
 
@@ -180,7 +180,7 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
-            Debug.Log($"Collision Enter: {collision.gameObject.name}");
+            //Debug.Log($"Collision Enter: {collision.gameObject.name}");
             if (!TryColliding(collision.gameObject) && IsProperCollider(collision.gameObject.layer))
             {
                 OnCollision();

@@ -667,7 +667,7 @@ namespace Gyvr.Mythril2D
 
             else
             {
-                Debug.Log("Die");
+                //Debug.Log("Die");
 
                 Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
                 Array.ForEach(colliders, (collider) => collider.enabled = false);

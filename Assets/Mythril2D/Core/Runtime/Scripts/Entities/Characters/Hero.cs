@@ -532,6 +532,30 @@ namespace Gyvr.Mythril2D
             return previousEquipment;
         }
 
+        public void DeathUnequipAll()
+        {
+            // 好像这个自己写的字典不能这么遍历
+            //foreach(EEquipmentType equipmentType in m_equipments.Keys)
+
+            Array eEquipmentType = Enum.GetValues(typeof(EEquipmentType));
+            foreach (EEquipmentType equipmentType in eEquipmentType)
+            {
+                m_equipments.TryGetValue(equipmentType, out Equipment toUnequip);
+
+                if (toUnequip)
+                {
+                    if (toUnequip.ability != null)
+                    {
+                        RemoveAbilitiesFromSlots(toUnequip.ability, 2);
+                    }
+
+                    m_equipments.Remove(equipmentType);
+                    GameManager.NotificationSystem.itemUnequipped.Invoke(toUnequip);
+                    UpdateStats();
+                }
+            }
+        }
+
         public Equipment Unequip(EEquipmentType type)
         {
             m_equipments.TryGetValue(type, out Equipment toUnequip);
@@ -800,7 +824,7 @@ namespace Gyvr.Mythril2D
 
             GameManager.InventorySystem.EmptyBag();
 
-            GameManager.InventorySystem.UnEquipAll();
+            DeathUnequipAll();
 
             GameManager.DayNightSystem.OnDisableDayNightSystem();
 

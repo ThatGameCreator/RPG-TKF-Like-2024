@@ -192,7 +192,7 @@ namespace Gyvr.Mythril2D
 
             if (previousEquipment != null)
             {
-                if (IsBackpackFull())
+                if (IsBackpackFull(previousEquipment))
                 {
                     // 背包已满，掉落旧装备到地上
                     GameManager.ItemGenerationSystem.DropItemToPlayer(previousEquipment, 1);
@@ -223,7 +223,7 @@ namespace Gyvr.Mythril2D
                     GameManager.UIManagerSystem.UIMenu.inventory.Init(); // 根据新的容量更新 UI
                 }
 
-                if(IsBackpackFull() == true)
+                if(IsBackpackFull(previousEquipment) == true)
                 {
                     GameManager.ItemGenerationSystem.DropItemToPlayer(previousEquipment, 1);
                 }
@@ -233,6 +233,7 @@ namespace Gyvr.Mythril2D
                 }
             }
         }
+
 
         public void UnEquipAll()
         {
@@ -284,9 +285,25 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public bool IsBackpackFull()
+        public bool IsBackpackFull(Item item)
         {
-            return GetCurrentItemCount() >= m_backpackCapacity;
+            if(GetCurrentItemCount() >= m_backpackCapacity)
+            {
+                if (item.IsStackable)
+                {
+                    // 返回是否背包有可堆叠物品 有则不满
+                    // 如果有堆叠应该是不满 得取反！
+                    return !HasItemInBag(item);
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public int GetCurrentItemCount()
@@ -297,7 +314,7 @@ namespace Gyvr.Mythril2D
 
         public void TryAddItemToBag(Item item, int quantity = 1)
         {
-            if (GameManager.InventorySystem.IsBackpackFull())
+            if (GameManager.InventorySystem.IsBackpackFull(item))
             {
                 //GameManager.NotificationSystem.ShowMessage("背包已满，无法添加物品！");
                 return;
@@ -310,7 +327,7 @@ namespace Gyvr.Mythril2D
         public void AddToBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             // 如果背包已满且物品不可添加，直接返回
-            if (IsBackpackFull())
+            if (IsBackpackFull(item))
             {
                 Debug.LogWarning("背包已满，无法添加物品！");
                 return;
@@ -334,7 +351,7 @@ namespace Gyvr.Mythril2D
                 // 如果不可堆叠，每次添加一个新实例
                 for (int i = 0; i < quantity; i++)
                 {
-                    if (IsBackpackFull())
+                    if (IsBackpackFull(item))
                     {
                         Debug.LogWarning("背包已满，无法添加更多不可堆叠物品！");
                         break;
@@ -356,7 +373,7 @@ namespace Gyvr.Mythril2D
 
         public bool RemoveFromBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
-            Debug.Log("RemoveFromBag");
+            //Debug.Log("RemoveFromBag");
             bool success = false;
 
             if (item.IsStackable)

@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.U2D.Animation;
+using static Gyvr.Mythril2D.LootTable;
 using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Gyvr.Mythril2D
@@ -21,7 +23,8 @@ namespace Gyvr.Mythril2D
         [SerializeField] private string m_openedAnimationParameter = "opened";
         [SerializeField] private string m_contentRevealAnimationParameter = "reveal";
         [SerializeField] private float m_contentRevealIconCycleDuration = 1.0f;
-        [SerializeField] private bool is_monsterChest = false;
+        [SerializeField] private bool m_isMonsterChest = false;
+        [SerializeField] private bool m_isEmptyChest = false;
         [SerializeField] private int m_damageAmount = 3;
         [SerializeField] private EDamageType m_damageType = EDamageType.Physical;
         [SerializeField] private EDistanceType m_distanceType = EDistanceType.Ranged;
@@ -120,30 +123,6 @@ namespace Gyvr.Mythril2D
             return false;
         }
 
-        private bool IsActiveMonsterChest()
-        {
-            if (is_monsterChest)
-            {
-                GameManager.Player.Damage(new DamageOutputDescriptor
-                {
-                    source = EDamageSource.Unknown,
-                    attacker = this,
-                    damage = m_damageAmount,
-                    damageType = m_damageType,
-                    distanceType = m_distanceType,
-                    flags = EDamageFlag.None
-                });
-
-                this.gameObject.layer = LayerMask.NameToLayer("Collision D");
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private LootTable.LootEntryData GetRandomLootEntry()
         {
             float totalWeight = 0f;
@@ -170,9 +149,61 @@ namespace Gyvr.Mythril2D
 
         public bool TryOpen()
         {
-            if (GameManager.InventorySystem.IsBackpackFull())
+            if (m_isMonsterChest)
             {
-                GameManager.DialogueSystem.Main.PlayNow("Backpack is full...");
+                return MonsterChestOpen();
+            }
+            else
+            {
+                return ContentsChestOpen();
+            }
+        }
+        
+        private bool MonsterChestOpen()
+        {
+            if (!m_opened)
+            {
+                TryPlayOpeningAnimation(true);
+
+                GameManager.Player.Damage(new DamageOutputDescriptor
+                {
+                    source = EDamageSource.Unknown,
+                    attacker = this,
+                    damage = m_damageAmount,
+                    damageType = m_damageType,
+                    distanceType = m_distanceType,
+                    flags = EDamageFlag.None
+                });
+
+                this.gameObject.layer = LayerMask.NameToLayer("Collision D");
+
+                if (m_requiredKey)
+                {
+                    GameManager.InventorySystem.RemoveFromBag(m_requiredKey);
+                }
+
+                m_opened = true;
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool ContentsChestOpen()
+        {
+            LootEntryData randomEntry = null;
+            if (lootTable.entries != null && lootTable.entries.Length > 0)
+            {
+                // 使用基于权重的随机选择机制
+                randomEntry = GetRandomLootEntry();
+            }
+
+            // 空的是空宝箱 不能读取 会报错
+            if (randomEntry != null && GameManager.InventorySystem.IsBackpackFull(randomEntry.item))
+            {
+                GameManager.DialogueSystem.Main.PlayNow((LocalizationSettings.StringDatabase.GetLocalizedString
+                ("NPCDialogueTable", "id_dialogue_shop_backpack_full")));
 
                 return false;
             }
@@ -182,41 +213,29 @@ namespace Gyvr.Mythril2D
                 {
                     TryPlayOpeningAnimation(true);
 
-                    if (IsActiveMonsterChest() == true)
+                    if (m_isEmptyChest)
                     {
-                        return true;
-                    }
-
-
-                    if (lootTable.entries != null && lootTable.entries.Length > 0)
-                    {
-                        //Debug.Log("lootItem");
-
-                        // 使用基于权重的随机选择机制
-                        var randomEntry = GetRandomLootEntry();
-
                         if (randomEntry != null)
                         {
                             int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
                             GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
                         }
+                        if (lootTable.money > 0)
+                        {
+                            int randomMoney = Random.Range(1, lootTable.money + 1);
+                            GameManager.InventorySystem.AddMoney(randomMoney);
 
-                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
-                    }
-                    if (lootTable.money > 0)
-                    {
-                        int randomMoney = Random.Range(1, lootTable.money + 1);
-                        GameManager.InventorySystem.AddMoney(randomMoney);
-
-                        GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
+                            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
+                        }
                     }
 
                     this.gameObject.layer = LayerMask.NameToLayer("Collision D");
 
-                    if (m_emptySpriteLibraryAsset)
-                    {
-                        m_nowSpriteLibrary.spriteLibraryAsset = m_emptySpriteLibraryAsset;
-                    }
+                    //if (m_emptySpriteLibraryAsset)
+                    //{
+                    //    m_nowSpriteLibrary.spriteLibraryAsset = m_emptySpriteLibraryAsset;
+                    //}
 
                     if (m_requiredKey)
                     {
@@ -224,18 +243,6 @@ namespace Gyvr.Mythril2D
                     }
 
                     m_opened = true;
-
-                    if (m_singleUse)
-                    {
-                        if (string.IsNullOrWhiteSpace(m_gameFlagID))
-                        {
-                            Debug.LogError("No ChestID provided while SingleUse is checked. Make sure to provide this chest with an ID");
-                        }
-                        else
-                        {
-                            GameManager.GameFlagSystem.Set(m_gameFlagID, true);
-                        }
-                    }
 
                     return true;
                 }

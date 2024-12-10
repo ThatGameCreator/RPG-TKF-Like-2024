@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 namespace Gyvr.Mythril2D
 {
@@ -24,9 +25,13 @@ namespace Gyvr.Mythril2D
 
         public bool TryLooted()
         {
-            if (GameManager.InventorySystem.IsBackpackFull())
+            // 表面物资只有第一个所以应该可以用下标0 先获取奖励对象
+            LootEntry lootItem = m_loot.entries[0];
+
+            if (GameManager.InventorySystem.IsBackpackFull(lootItem.item))
             {
-                GameManager.DialogueSystem.Main.PlayNow("Backpack is full...");
+                GameManager.DialogueSystem.Main.PlayNow
+                    (LocalizationSettings.StringDatabase.GetLocalizedString("NPCDialogueTable", "id_dialogue_shop_backpack_full"));
 
                 return false;
             }
@@ -38,12 +43,9 @@ namespace Gyvr.Mythril2D
 
                     if (m_loot.entries != null)
                     {
-                        if (GameManager.InventorySystem.IsBackpackFull() == false)
+                        if (GameManager.InventorySystem.IsBackpackFull(lootItem.item) == false)
                         {
-                            foreach (var entry in m_loot.entries)
-                            {
-                                GameManager.InventorySystem.AddToBag(entry.item, entry.quantity);
-                            }
+                            GameManager.InventorySystem.AddToBag(lootItem.item, lootItem.quantity);
                         }
                         else
                         {

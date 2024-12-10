@@ -285,7 +285,7 @@ MonoBehaviour:
   m_lightEventListener: {fileID: 1499653012271325872}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
-  m_lootedTime: 2
+  m_lootedTime: 3
   m_chestAnimator: {fileID: 5733890042131917493}
   m_nowSpriteLibrary: {fileID: 7309178975524964772}
   m_emptySpriteLibraryAsset: {fileID: 0}
@@ -296,7 +296,8 @@ MonoBehaviour:
   m_openedAnimationParameter: opened
   m_contentRevealAnimationParameter: reveal
   m_contentRevealIconCycleDuration: 1
-  is_monsterChest: 1
+  m_isMonsterChest: 1
+  m_isEmptyChest: 0
   m_damageAmount: 3
   m_damageType: 1
   m_distanceType: 2
