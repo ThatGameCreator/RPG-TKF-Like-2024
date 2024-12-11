@@ -79,15 +79,38 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        public void StopAllAudio()
+        {
+            // 先停止所有的协程，并移除它们
+            foreach (var source in m_audioSourcePool)
+            {
+                // 停止音频的循环播放（如果有的话）
+                if (source.isPlaying)
+                {
+                    // 如果有播放的协程，停止协程并从字典中移除
+                    if (m_fadeCoroutines.ContainsKey(source))
+                    {
+                        StopCoroutine(m_fadeCoroutines[source]);
+                        m_fadeCoroutines.Remove(source);
+                    }
+                    // 停止音频
+                    source.Stop();
+                }
+            }
+        }
+
         private void StopAudioSource(AudioSource source)
         {
+            // 如果有协程，停止它并移除
             if (m_fadeCoroutines.ContainsKey(source))
             {
                 StopCoroutine(m_fadeCoroutines[source]);
                 m_fadeCoroutines.Remove(source);
             }
+            // 停止音频播放
             source.Stop();
         }
+
 
         public void Play(AudioClipResolver audioClipResolver)
         {
@@ -153,14 +176,24 @@ namespace Gyvr.Mythril2D
                 audioSource.clip = newClip;
                 audioSource.Play();
 
-                StartCoroutine(WaitForAudioEnd(audioSource, onComplete)); // 监听音频结束
+                // 如果音频是循环播放的，则设置其循环标志
+                audioSource.loop = true;
+
+                // 启动协程来监听音频结束
+                StartCoroutine(WaitForAudioEnd(audioSource, (source) =>
+                {
+                    // 音频播放结束后进行回调
+                    onComplete?.Invoke(source);
+                    // 在此处清理循环播放的设置
+                    audioSource.loop = false; // 取消循环
+                }));
             }
         }
 
         private IEnumerator WaitForAudioEnd(AudioSource audioSource, System.Action<AudioSource> onComplete)
         {
-            yield return new WaitUntil(() => !audioSource.isPlaying);
-            onComplete?.Invoke(audioSource);
+            yield return new WaitUntil(() => !audioSource.isPlaying); // 等待直到音频播放完毕
+            onComplete?.Invoke(audioSource); // 回调通知音频结束
         }
 
         public void SetVolumeScale(float scale)

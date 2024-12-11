@@ -61,6 +61,9 @@ namespace Gyvr.Mythril2D
             // 加载前销毁生成在地图上的物品
             GameManager.ItemGenerationSystem.DestoryAllItemOnTeleport();
 
+            // 停止播放任何音频
+            GameManager.AudioSystem.StopAllChannels();
+
             // 传送地图也要设置当前地图
             // 好像在这里设置会出问题
             //SetActiveMap(map);

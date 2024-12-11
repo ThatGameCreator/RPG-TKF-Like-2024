@@ -102,13 +102,28 @@ namespace Gyvr.Mythril2D
 
         public void PlayWithLoop(AudioClipResolver audioClipResolver)
         {
+            // 先检查音频通道是否存在
             if (m_audioChannels.TryGetValue(audioClipResolver.targetChannel, out AudioChannel channel))
             {
+                // 如果音频通道存在，播放音频
                 channel.PlayWithCallback(audioClipResolver, (source) =>
                 {
-                    // 在音频结束后重新播放
-                    PlayWithLoop(audioClipResolver);
+                    // 在音频播放结束时，停止任何循环播放（通过StopAudioSource）并重新开始播放
+                    if (source.loop)
+                    {
+                        // 如果音频设置了循环播放，则在播放结束时重新调用 PlayWithLoop
+                        PlayWithLoop(audioClipResolver);
+                    }
                 });
+            }
+        }
+
+
+        public void StopAllChannels()
+        {
+            foreach (var channel in m_audioChannels.Values)
+            {
+                channel.StopAllAudio(); // 调用每个通道的停止方法
             }
         }
 
