@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4aaa29bd8e8b4f438a50d8cbb97befe, type: 3}
+  m_Name: Corrupted Mushrooms
+  m_EditorClassIdentifier: 
+  m_category: 0
+  m_icon: {fileID: 594049477, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_localizationKey: id_corrupted_mushroom_name
+  m_displayName: Corrupted Mushroom
+  m_description: 
+  m_descriptionKey: id_corrupted_mushroom_description
+  m_buyPrice: 2
+  m_sellPrice: 1
+  m_isStackable: 0
+  m_healthToDamage: 1
+  m_damageType: 1
+  m_drinkAudio: {fileID: 0}

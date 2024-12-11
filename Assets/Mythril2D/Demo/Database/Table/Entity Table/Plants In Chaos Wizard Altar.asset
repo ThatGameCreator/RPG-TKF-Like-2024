@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3522f9f384f21fa4fa7417c4c488399d, type: 3}
+  m_Name: Plants In Chaos Wizard Altar
+  m_EditorClassIdentifier: 
+  entries:
+  - entity: {fileID: 176707055596421497, guid: 5eabbc013654f5b40ba5c1fd05a61504, type: 3}
+    weight: 4
+  - entity: {fileID: 4556802985495304705, guid: 9e55629d05beeaa40b90defc91f0b815, type: 3}
+    weight: 6
+  - entity: {fileID: 5627064681333320833, guid: 6ade993224bd74c4082ec15b34922db5, type: 3}
+    weight: 2
+  - entity: {fileID: 6337798079607399837, guid: 62ed6e16b758c2d468ecb1529c53cd03, type: 3}
+    weight: 4
+  - entity: {fileID: 1933155129017014540, guid: ec7da74015e86004483d8328882414d7, type: 3}
+    weight: 3
+  - entity: {fileID: 176850472324577776, guid: 4a683ce14d9516a4cb86878e98516233, type: 3}
+    weight: 1
+  generateRate: 15
