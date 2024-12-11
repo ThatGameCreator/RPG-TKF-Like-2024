@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using Gyvr.Mythril2D;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 namespace Gyvr.Mythril2D
 {
@@ -13,140 +16,168 @@ namespace Gyvr.Mythril2D
     {
         [Header("General Settings")]
         [SerializeField] private EAudioChannelMode m_audioChannelMode;
-        [SerializeField] private AudioSource m_audioSource = null;
         [SerializeField] private float m_volumeScale = 0.5f;
 
         [Header("Exclusive Mode Settings")]
         [SerializeField] private float m_fadeOutDuration = 0.5f;
         [SerializeField] private float m_fadeInDuration = 0.25f;
 
-        private Coroutine m_transitionCoroutine = null;
+        public List<AudioSource> audioSourcePool => m_audioSourcePool;
+        private List<AudioSource> m_audioSourcePool = new List<AudioSource>();
+        private Dictionary<AudioSource, Coroutine> m_fadeCoroutines = new Dictionary<AudioSource, Coroutine>();
         private AudioClipResolver m_lastPlayedClip = null;
 
         public AudioClipResolver lastPlayedAudioClipResolver => m_lastPlayedClip;
 
-        public AudioClip CurrentClip
-        {
-            get
-            {
-                // 如果音频源正在播放且有一个最近播放的音频剪辑，则返回该音频剪辑
-                if (m_audioSource.isPlaying && m_lastPlayedClip != null)
-                {
-                    return m_lastPlayedClip.GetClip();
-                }
-
-                // 如果没有播放任何音频，则返回null
-                return null;
-            }
-        }
-
-
         private void Awake()
         {
-            m_audioSource.volume = m_volumeScale;
+            // 初始化一个默认音频源
+            CreateNewAudioSource();
         }
 
-        public void Stop()
+        private AudioSource CreateNewAudioSource()
         {
-            // 如果当前是独占模式，我们需要处理淡出音频并停止播放
-            if (m_audioChannelMode == EAudioChannelMode.Exclusive)
-            {
-                // 如果有进行中的淡入淡出协程，则停止它
-                if (m_transitionCoroutine != null)
-                {
-                    StopCoroutine(m_transitionCoroutine);
-                }
+            // 创建一个新的 GameObject 作为音频源
+            GameObject newAudioSourceObject = new GameObject("AudioSource_" + m_audioSourcePool.Count);
+            newAudioSourceObject.transform.parent = this.transform; // 将新音频源作为当前对象的子对象
 
-                // 启动淡出协程（可选），然后停止播放音频
-                m_transitionCoroutine = StartCoroutine(FadeOutAndStop());
+            // 添加 AudioSource 组件
+            AudioSource newAudioSource = newAudioSourceObject.AddComponent<AudioSource>();
+            newAudioSource.playOnAwake = false; // 确保音频不会自动播放
+            newAudioSource.volume = m_volumeScale; // 应用当前音量比例
+            m_audioSourcePool.Add(newAudioSource); // 将新音频源加入池中
+
+            return newAudioSource;
+        }
+
+        private AudioSource GetAvailableAudioSource()
+        {
+            foreach (var source in m_audioSourcePool)
+            {
+                if (!source.isPlaying)
+                {
+                    return source; // 返回空闲的音频源
+                }
+            }
+            // 如果没有空闲的音频源，创建一个新的音频源
+            return CreateNewAudioSource();
+        }
+
+        public void Stop(AudioSource specificSource = null)
+        {
+            if (specificSource != null)
+            {
+                StopAudioSource(specificSource);
             }
             else
             {
-                // 如果不是独占模式，直接停止当前播放的音效
-                m_audioSource.Stop();
+                // 停止所有音频源
+                foreach (var source in m_audioSourcePool)
+                {
+                    StopAudioSource(source);
+                }
             }
         }
 
-        private IEnumerator FadeOutAndStop()
+        private void StopAudioSource(AudioSource source)
         {
-            float fadeDuration = 1.0f; // 假设淡出时间为1秒
-            float startVolume = m_audioSource.volume;
-
-            // 渐渐降低音量至0
-            for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+            if (m_fadeCoroutines.ContainsKey(source))
             {
-                m_audioSource.volume = Mathf.Lerp(startVolume, 0, t / fadeDuration);
-                yield return null;
+                StopCoroutine(m_fadeCoroutines[source]);
+                m_fadeCoroutines.Remove(source);
             }
-
-            // 确保音量设为0并停止播放
-            m_audioSource.volume = 0;
-            m_audioSource.Stop();
+            source.Stop();
         }
 
         public void Play(AudioClipResolver audioClipResolver)
         {
             AudioClip newClip = audioClipResolver.GetClip();
+            if (newClip == null) return;
 
-            // 如果当前有正在播放的音效，且不是同一个音效，停止它
-            if (m_lastPlayedClip != null && m_lastPlayedClip.GetClip() != newClip)
-            {
-                Stop(); // 停止之前的音效
-            }
-
-            // 记录当前播放的音效
+            AudioSource availableSource = GetAvailableAudioSource();
             m_lastPlayedClip = audioClipResolver;
 
-            // 开始播放新的音效
-            if (newClip != null)
+            if (m_audioChannelMode == EAudioChannelMode.Exclusive)
             {
-                if (m_audioChannelMode == EAudioChannelMode.Exclusive)
-                {
-                    if (m_transitionCoroutine != null)
-                    {
-                        StopCoroutine(m_transitionCoroutine);
-                    }
+                // 停止所有其他音频源
+                Stop();
 
-                    m_transitionCoroutine = StartCoroutine(FadeOutAndIn(newClip));
-                }
-                else
+                if (m_fadeCoroutines.ContainsKey(availableSource))
                 {
-                    m_audioSource.PlayOneShot(newClip);
+                    StopCoroutine(m_fadeCoroutines[availableSource]);
                 }
+
+                m_fadeCoroutines[availableSource] = StartCoroutine(FadeInAndPlay(availableSource, newClip));
+            }
+            else
+            {
+                availableSource.PlayOneShot(newClip);
             }
         }
 
+        private IEnumerator FadeInAndPlay(AudioSource audioSource, AudioClip newClip)
+        {
+            // Fade out if playing
+            if (audioSource.isPlaying)
+            {
+                float startVolume = audioSource.volume;
+                for (float t = 0; t < m_fadeOutDuration; t += Time.deltaTime)
+                {
+                    audioSource.volume = Mathf.Lerp(startVolume, 0, t / m_fadeOutDuration);
+                    yield return null;
+                }
+                audioSource.Stop();
+            }
+
+            // Play new clip
+            audioSource.clip = newClip;
+            audioSource.volume = 0;
+            audioSource.Play();
+
+            // Fade in
+            for (float t = 0; t < m_fadeInDuration; t += Time.deltaTime)
+            {
+                audioSource.volume = Mathf.Lerp(0, m_volumeScale, t / m_fadeInDuration);
+                yield return null;
+            }
+            audioSource.volume = m_volumeScale;
+        }
+
+        public void PlayWithCallback(AudioClipResolver audioClipResolver, System.Action<AudioSource> onComplete)
+        {
+            AudioClip newClip = audioClipResolver.GetClip();
+
+            if (newClip != null)
+            {
+                AudioSource audioSource = GetAvailableAudioSource(); // 确保获取到空闲的音频源
+                audioSource.clip = newClip;
+                audioSource.Play();
+
+                StartCoroutine(WaitForAudioEnd(audioSource, onComplete)); // 监听音频结束
+            }
+        }
+
+        private IEnumerator WaitForAudioEnd(AudioSource audioSource, System.Action<AudioSource> onComplete)
+        {
+            yield return new WaitUntil(() => !audioSource.isPlaying);
+            onComplete?.Invoke(audioSource);
+        }
 
         public void SetVolumeScale(float scale)
         {
             m_volumeScale = scale;
-            m_audioSource.volume = m_volumeScale;
+            foreach (var source in m_audioSourcePool)
+            {
+                if (!source.isPlaying)
+                {
+                    source.volume = m_volumeScale;
+                }
+            }
         }
 
         public float GetVolumeScale()
         {
             return m_volumeScale;
-        }
-
-        public IEnumerator FadeOutAndIn(AudioClip newClip)
-        {
-            // Fade out
-            while (m_audioSource.volume > 0)
-            {
-                m_audioSource.volume -= m_volumeScale * Time.unscaledDeltaTime / m_fadeOutDuration;
-                yield return null;
-            }
-            m_audioSource.Stop();
-            m_audioSource.clip = newClip;
-            m_audioSource.Play();
-
-            // Fade in
-            while (m_audioSource.volume < m_volumeScale)
-            {
-                m_audioSource.volume += m_volumeScale * Time.unscaledDeltaTime / m_fadeInDuration;
-                yield return null;
-            }
-            m_audioSource.volume = m_volumeScale;
         }
     }
 }

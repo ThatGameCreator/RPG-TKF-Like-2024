@@ -42,6 +42,12 @@ namespace Gyvr.Mythril2D
         {
             m_masterVolume = volume;
             AudioListener.volume = volume;
+
+            // 更新所有通道的音量以适应主音量更改
+            foreach (var channel in m_audioChannels.Values)
+            {
+                channel.SetVolumeScale(channel.GetVolumeScale() * m_masterVolume);
+            }
         }
 
         public float GetMasterVolume() => m_masterVolume;
@@ -52,7 +58,8 @@ namespace Gyvr.Mythril2D
 
             foreach (KeyValuePair<EAudioChannel, AudioChannel> channel in m_audioChannels)
             {
-                channel.Value.SetVolumeScale(PlayerPrefs.GetFloat($"{kChannelVolumePlayerPrefsKey}{channel.Key}", channel.Value.GetVolumeScale()));
+                float savedVolume = PlayerPrefs.GetFloat($"{kChannelVolumePlayerPrefsKey}{channel.Key}", channel.Value.GetVolumeScale());
+                channel.Value.SetVolumeScale(savedVolume / m_masterVolume);
             }
         }
 
@@ -82,11 +89,26 @@ namespace Gyvr.Mythril2D
             if (audioClipResolver && m_audioChannels.TryGetValue(audioClipResolver.targetChannel, out AudioChannel channel))
             {
                 // 检查当前正在播放的音效是否与请求的音效相同
-                if (channel.CurrentClip == audioClipResolver.GetClip())
+                foreach (var source in channel.audioSourcePool)
                 {
-                    // 停止播放
-                    channel.Stop();
+                    if (source.clip == audioClipResolver.GetClip() && source.isPlaying)
+                    {
+                        source.Stop();
+                        break;
+                    }
                 }
+            }
+        }
+
+        public void PlayWithLoop(AudioClipResolver audioClipResolver)
+        {
+            if (m_audioChannels.TryGetValue(audioClipResolver.targetChannel, out AudioChannel channel))
+            {
+                channel.PlayWithCallback(audioClipResolver, (source) =>
+                {
+                    // 在音频结束后重新播放
+                    PlayWithLoop(audioClipResolver);
+                });
             }
         }
 

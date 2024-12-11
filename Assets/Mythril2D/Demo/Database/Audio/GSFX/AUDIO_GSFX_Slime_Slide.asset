@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224282351dec5aa48bd0d1c7f7eb1c8f, type: 3}
+  m_Name: AUDIO_GSFX_Slime_Slide
+  m_EditorClassIdentifier: 
+  m_audioClips:
+  - {fileID: 8300000, guid: 2169fff4aa383f244a1d689871b07c28, type: 3}
+  - {fileID: 8300000, guid: 27f18ae0054b23d45876f2cb69706c0d, type: 3}
+  - {fileID: 8300000, guid: 8fb733e3c6bc7364f9ef06c94b0bde58, type: 3}
+  - {fileID: 8300000, guid: 605a774af5661964cbcfb1c795a0348d, type: 3}
+  - {fileID: 8300000, guid: de73b65de16a57748b44c9d2a1f63fea, type: 3}
+  - {fileID: 8300000, guid: 4ae56195a93deb448b02fea1302e00ce, type: 3}
+  - {fileID: 8300000, guid: 377f30efddb428446a12d479d7bc9fa2, type: 3}
+  - {fileID: 8300000, guid: f43ef7bb9a3f1384182c9db10dbc666e, type: 3}
+  m_targetChannel: 3
+  m_resolvingAlgorithm: 1

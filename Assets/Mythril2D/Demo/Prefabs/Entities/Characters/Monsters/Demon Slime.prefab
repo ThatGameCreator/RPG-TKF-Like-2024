@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.34
       objectReference: {fileID: 0}
+    - target: {fileID: 3431370290224538611, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
+      propertyPath: m_moveSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 9bd94701117a7524cb7550a6324fe0fa, type: 2}
     - target: {fileID: 4395925964684122280, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
