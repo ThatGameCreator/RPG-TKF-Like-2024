@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 namespace Gyvr.Mythril2D
@@ -19,6 +21,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private GameObject m_shopEntryPrefab = null;
         [SerializeField] private GameObject m_itemSlotsRoot = null;
         [SerializeField] private TextMeshProUGUI m_money = null;
+
 
         public UIInventoryBag bag => m_inventoryBag;
 
@@ -205,6 +208,24 @@ namespace Gyvr.Mythril2D
 
         private void OnBagItemClicked(Item item)
         {
+            bool isSellable = false;
+
+            foreach(var sellType in m_shop.availableSellTypes)
+            {
+                if(sellType == item.Category)
+                {
+                    isSellable = true;
+                }
+            }
+
+            // 检查物品类型是否可出售
+            if (isSellable == false)
+            {
+                GameManager.DialogueSystem.Main.PlayNow
+                (LocalizationSettings.StringDatabase.GetLocalizedString("NPCDialogueTable", "id_dialogue_shop_doesnot_match_acquisition_type"));
+                return;
+            }
+
             int itemPrice = m_shop.GetPrice(item, ETransactionType.Sell);
 
             if (itemPrice > 0)

@@ -43,7 +43,7 @@ namespace Gyvr.Mythril2D
         public List<ItemInstance> backpackItems => m_backpackItems;
         private List<ItemInstance> m_backpackItems = new List<ItemInstance>();
         public int backpackCapacity => m_backpackCapacity;
-        private int m_backpackCapacity = 16; // 默认容量
+        private int m_backpackCapacity = 20; // 默认容量
 
         public void AddMoney(int value)
         {

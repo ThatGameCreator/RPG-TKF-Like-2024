@@ -751,7 +751,7 @@ namespace Gyvr.Mythril2D
             Stats equipmentStats = CalculateEquipmentStats();
             Stats newMaxStats = m_sheet.baseStats + m_customStats + equipmentStats;
 
-            Debug.Log(currentStamina);
+            //Debug.Log(currentStamina);
 
             int equipmentStamina = CalculateEquipmentStamina();
             int newMaxStamina = m_sheet.maxStamina + equipmentStamina;
@@ -759,18 +759,18 @@ namespace Gyvr.Mythril2D
             m_maxStats.Set(newMaxStats);
             m_maxStats.Set(newMaxStamina);
 
-            Debug.Log(currentStamina);
+            //Debug.Log(currentStamina);
 
             ApplyMissingCurrentStats();
         }
 
         private void ApplyMissingCurrentStats()
         {
-            Debug.Log(currentStamina);
+            //Debug.Log(currentStamina);
 
             m_currentStats.Set(m_currentStats.stamina - m_missingCurrentStamina);
             m_currentStats.Set(m_currentStats.stats - m_missingCurrentStats);
-            Debug.Log(currentStamina);
+            //Debug.Log(currentStamina);
 
             m_missingCurrentStats.Reset();
             m_missingCurrentStamina = 0f;

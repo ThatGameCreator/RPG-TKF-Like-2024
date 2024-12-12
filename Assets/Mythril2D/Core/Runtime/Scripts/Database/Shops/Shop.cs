@@ -12,6 +12,9 @@ namespace Gyvr.Mythril2D
     [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Shops + nameof(Shop))]
     public class Shop : DatabaseEntry
     {
+
+        public EItemCategory[] availableSellTypes = null;
+
         public Item[] items = null;
 
         public int GetPrice(Item item, ETransactionType transaction)
