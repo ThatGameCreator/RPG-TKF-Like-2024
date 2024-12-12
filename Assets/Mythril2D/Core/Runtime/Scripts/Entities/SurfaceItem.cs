@@ -16,6 +16,16 @@ namespace Gyvr.Mythril2D
         [SerializeField] private AudioClipResolver m_lootedSound;
 
         private bool m_looted = false;
+        private int m_dropIndex = -1;
+
+
+
+        public int dropIndex
+        {
+            get => m_dropIndex;
+            set => m_dropIndex = value;
+        }
+        
 
         public Loot Loot
         {
@@ -59,7 +69,11 @@ namespace Gyvr.Mythril2D
                     }
                     Destroy(this.gameObject);
 
+                    // 判断一下被检的是不是之前扔过的东西 避免传送地图时候清除空引用
+                    GameManager.ItemGenerationSystem.DeleteNullItem(this);
+
                     return m_looted = true;
+
                 }
 
                 return false;

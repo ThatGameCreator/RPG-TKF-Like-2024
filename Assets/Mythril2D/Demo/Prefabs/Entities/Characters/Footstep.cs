@@ -7,15 +7,31 @@ namespace Gyvr.Mythril2D
     {
         [SerializeField] private AudioClipResolver m_moveSound;
         [SerializeField] private AudioClipResolver m_runSound;
+        [SerializeField] private GameObject m_body;
 
         public void PlayMoveFootstepSound()
         {
-            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_moveSound);
+            if (m_body)
+            {
+                GameManager.AudioSystem.PlayAudioOnObject(m_moveSound, m_body);
+            }
+            else 
+            {
+                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_moveSound);
+            }
         }
 
         public void PlayRunFootstepSound()
         {
-            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_runSound);
+            if (m_body)
+            {
+                GameManager.AudioSystem.PlayAudioOnObject(m_runSound, m_body);
+            }
+            else
+            {
+                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_runSound);
+
+            }
         }
     }
 }

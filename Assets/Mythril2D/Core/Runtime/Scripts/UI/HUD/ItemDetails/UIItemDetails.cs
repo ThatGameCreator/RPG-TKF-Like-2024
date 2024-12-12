@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,6 +59,11 @@ namespace Gyvr.Mythril2D
                             $" <u>{(value > 0 ? '+' : '-')}{value}\u00A0" +
                             $"{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString(GameManager.Config.GetTermDefinition(stat).fullName)}</u>";
                         }
+                    }
+
+                    if(equipment.capacity != 0)
+                    {
+                        m_itemDescription.text += $" <u>{(equipment.capacity > 0 ? '+' : '-')}{equipment.capacity}\u00A0{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString("id_term_definition_capacity")}</u>"; ;
                     }
                 }
             }

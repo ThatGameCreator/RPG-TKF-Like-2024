@@ -161,6 +161,9 @@ namespace Gyvr.Mythril2D
                             GameManager.DialogueSystem.Main.PlayNow
                             (LocalizationSettings.StringDatabase.GetLocalizedString("NPCDialogueTable", "id_dialogue_shop_backpack_full"));
 
+                            // 包满了的话减回去
+                            m_nowLootedCount--;
+
                             return false;
                         }
                         else if (randomEntry != null)
@@ -186,7 +189,7 @@ namespace Gyvr.Mythril2D
             // 检查是否已达到最大掠夺次数
             if (m_nowLootedCount >= m_randomMaxLootedCount)
             {
-                this.gameObject.layer = LayerMask.NameToLayer("Collision D"); // 设置为不可被掠夺
+                this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
             }
 
             return true; // 表示本次掠夺成功

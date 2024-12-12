@@ -549,6 +549,13 @@ namespace Gyvr.Mythril2D
                         RemoveAbilitiesFromSlots(toUnequip.ability, 2);
                     }
 
+                    // 检查容量并调整
+                    if (toUnequip.capacity != 0)
+                    {
+                        GameManager.InventorySystem.DecreaseBackpackCapacity(toUnequip.capacity);
+                        GameManager.UIManagerSystem.UIMenu.inventory.Init(); // 更新 UI
+                    }
+
                     m_equipments.Remove(equipmentType);
                     GameManager.NotificationSystem.itemUnequipped.Invoke(toUnequip);
                     UpdateStats();

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Gyvr.Mythril2D
 {
@@ -21,12 +23,23 @@ namespace Gyvr.Mythril2D
         const string kMasterVolumePlayerPrefsKey = kVolumePlayerPrefsKey + "Master";
         const float kDefaultMasterVolume = 0.5f;
 
-        private AudioClipResolver currentAudioClipResolver = null;
         private float m_masterVolume = kDefaultMasterVolume;
 
         public override void OnSystemStart()
         {
             LoadSettings();
+
+            // 主界面场景没有玩家不用寻找
+            if(SceneManager.GetActiveScene().name != "Main Menu")
+            {
+                // 找到玩家对象并将音频频道挂载到玩家对象
+                foreach (var channel in m_audioChannels.Values)
+                {
+                    channel.FindPlayer();
+                }
+            }
+            
+
             GameManager.NotificationSystem.audioPlaybackRequested.AddListener(DispatchAudioPlaybackRequest);
             GameManager.NotificationSystem.audioStopPlaybackRequested.AddListener(StopAudioPlaybackRequest);
         }
@@ -38,19 +51,36 @@ namespace Gyvr.Mythril2D
             SaveSettings();
         }
 
+        public float GetMasterVolume() => m_masterVolume;
+
         public void SetMasterVolume(float volume)
         {
             m_masterVolume = volume;
             AudioListener.volume = volume;
 
-            // 更新所有通道的音量以适应主音量更改
             foreach (var channel in m_audioChannels.Values)
             {
-                channel.SetVolumeScale(channel.GetVolumeScale() * m_masterVolume);
+                channel.UpdateVolumeWithMaster(volume);
             }
         }
 
-        public float GetMasterVolume() => m_masterVolume;
+        public void SetChannelVolumeScale(EAudioChannel channel, float volume)
+        {
+            if (m_audioChannels.TryGetValue(channel, out AudioChannel channelInstance))
+            {
+                channelInstance.SetVolumeScale(volume);
+            }
+        }
+
+        public float GetChannelVolumeScale(EAudioChannel channel)
+        {
+            if (m_audioChannels.TryGetValue(channel, out AudioChannel channelInstance))
+            {
+                return channelInstance.GetVolumeScale();
+            }
+
+            return 0.0f;
+        }
 
         private void LoadSettings()
         {
@@ -79,8 +109,7 @@ namespace Gyvr.Mythril2D
         {
             if (audioClipResolver && m_audioChannels.TryGetValue(audioClipResolver.targetChannel, out AudioChannel channel))
             {
-                currentAudioClipResolver = audioClipResolver;
-                channel.Play(currentAudioClipResolver);
+                channel.Play(audioClipResolver);
             }
         }
 
@@ -88,15 +117,7 @@ namespace Gyvr.Mythril2D
         {
             if (audioClipResolver && m_audioChannels.TryGetValue(audioClipResolver.targetChannel, out AudioChannel channel))
             {
-                // 检查当前正在播放的音效是否与请求的音效相同
-                foreach (var source in channel.audioSourcePool)
-                {
-                    if (source.clip == audioClipResolver.GetClip() && source.isPlaying)
-                    {
-                        source.Stop();
-                        break;
-                    }
-                }
+                channel.StopSpecific(audioClipResolver.GetClip());
             }
         }
 
@@ -118,12 +139,20 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        public void PlayAudioOnObject(AudioClipResolver audioClipResolver, GameObject targetObject, bool isLoop = false)
+        {
+            if (audioClipResolver && m_audioChannels.TryGetValue(audioClipResolver.targetChannel, out AudioChannel channel))
+            {
+                // 调用 AudioChannel 的新方法，将音源挂载到指定对象
+                channel.PlayOnObject(audioClipResolver, targetObject, isLoop);
+            }
+        }
 
         public void StopAllChannels()
         {
             foreach (var channel in m_audioChannels.Values)
             {
-                channel.StopAllAudio(); // 调用每个通道的停止方法
+                channel.StopAllAudio();
             }
         }
 
@@ -137,22 +166,5 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
-        public void SetChannelVolumeScale(EAudioChannel channel, float volume)
-        {
-            if (m_audioChannels.TryGetValue(channel, out AudioChannel channelInstance))
-            {
-                channelInstance.SetVolumeScale(volume);
-            }
-        }
-
-        public float GetChannelVolumeScale(EAudioChannel channel)
-        {
-            if (m_audioChannels.TryGetValue(channel, out AudioChannel channelInstance))
-            {
-                return channelInstance.GetVolumeScale();
-            }
-
-            return 0.0f;
-        }
     }
 }

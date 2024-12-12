@@ -43,7 +43,7 @@ namespace Gyvr.Mythril2D
         public List<ItemInstance> backpackItems => m_backpackItems;
         private List<ItemInstance> m_backpackItems = new List<ItemInstance>();
         public int backpackCapacity => m_backpackCapacity;
-        private int m_backpackCapacity = 20; // 默认容量为 20
+        private int m_backpackCapacity = 16; // 默认容量
 
         public void AddMoney(int value)
         {
@@ -157,35 +157,32 @@ namespace Gyvr.Mythril2D
             // 获取之前的装备
             Equipment previousEquipment = GameManager.Player.Equip(equipment);
 
-            // 检查新装备是否是背包
-            if (equipment.type == EEquipmentType.Backpack)
+            int capacityDifference = 0;
+
+            // 检查新装备的容量影响
+            if (equipment.capacity != 0)
             {
-                int additionalCapacity = equipment.capacity; // 新装备的背包容量
-
-                if (previousEquipment != null && previousEquipment.type == EEquipmentType.Backpack)
-                {
-                    // 对比新旧背包容量，决定增加或减少
-                    int capacityDifference = additionalCapacity - previousEquipment.capacity;
-
-                    if (capacityDifference > 0)
-                    {
-                        // 增加背包容量
-                        GameManager.InventorySystem.IncreaseBackpackCapacity(capacityDifference);
-                    }
-                    else if (capacityDifference < 0)
-                    {
-                         GameManager.InventorySystem.DecreaseBackpackCapacity(-capacityDifference);
-                    }
-                }
-                else
-                {
-                    // 如果之前没有背包，则直接增加容量
-                    GameManager.InventorySystem.IncreaseBackpackCapacity(additionalCapacity);
-                }
-
-                // 更新背包 UI
-                GameManager.UIManagerSystem.UIMenu.inventory.Init();
+                capacityDifference += equipment.capacity;
             }
+
+            // 检查旧装备的容量影响
+            if (previousEquipment != null && previousEquipment.capacity != 0)
+            {
+                capacityDifference -= previousEquipment.capacity;
+            }
+
+            // 调整容量
+            if (capacityDifference > 0)
+            {
+                GameManager.InventorySystem.IncreaseBackpackCapacity(capacityDifference);
+            }
+            else if (capacityDifference < 0)
+            {
+                GameManager.InventorySystem.DecreaseBackpackCapacity(-capacityDifference);
+            }
+
+            // 更新背包 UI
+            GameManager.UIManagerSystem.UIMenu.inventory.Init();
 
             // 移除新装备并处理之前的装备
             RemoveFromBag(equipment, 1, true);
@@ -211,19 +208,16 @@ namespace Gyvr.Mythril2D
 
             if (previousEquipment)
             {
-                // 如果卸下的是背包装备，减少背包容量
-                if (previousEquipment.type == EEquipmentType.Backpack)
+                // 检查卸下的装备容量影响
+                if (previousEquipment.capacity != 0)
                 {
-                    // 假设 previousEquipment 有 capacity 属性
-                    int reducedCapacity = previousEquipment.capacity;
-
-                    GameManager.InventorySystem.DecreaseBackpackCapacity(reducedCapacity);
+                    GameManager.InventorySystem.DecreaseBackpackCapacity(previousEquipment.capacity);
 
                     // 更新背包 UI
-                    GameManager.UIManagerSystem.UIMenu.inventory.Init(); // 根据新的容量更新 UI
+                    GameManager.UIManagerSystem.UIMenu.inventory.Init();
                 }
 
-                if(IsBackpackFull(previousEquipment) == true)
+                if (IsBackpackFull(previousEquipment))
                 {
                     GameManager.ItemGenerationSystem.DropItemToPlayer(previousEquipment, 1);
                 }

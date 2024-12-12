@@ -104,7 +104,7 @@ namespace Gyvr.Mythril2D
 
                         if (distanceType == EDistanceType.Ranged)
                         {
-                            m_attackTriggerRadius = 8.0f;
+                            m_attackTriggerRadius = 7.0f;
                             m_attackCooldown = 3.0f;
                         }
                     }

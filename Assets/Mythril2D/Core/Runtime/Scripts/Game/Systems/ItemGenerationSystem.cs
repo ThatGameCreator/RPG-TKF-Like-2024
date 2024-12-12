@@ -8,7 +8,8 @@ namespace Gyvr.Mythril2D
         [SerializeField]
         public SerializableDictionary<Item, SurfaceItem> InstanceObjects = null;
 
-        public List<Entity> instantiateItems = new List<Entity>();
+        private SerializableDictionary<int, SurfaceItem> m_instantiateItems = new SerializableDictionary<int, SurfaceItem>();
+        private int m_currentyItemCount = 0;
 
         public void DropItemToPlayer(Item item, int quantity)
         {
@@ -20,25 +21,39 @@ namespace Gyvr.Mythril2D
             {
                 //Debug.Log("Instantiate");
                 // 假设物品有 prefab 引用
-                Entity droppedItem = Instantiate(InstanceObjects[item], transform); 
+                SurfaceItem droppedItem = Instantiate(InstanceObjects[item], transform); 
                 droppedItem.transform.position = playerPosition;
 
-                instantiateItems.Add(droppedItem);
+                m_instantiateItems[++m_currentyItemCount] = droppedItem;
+            }
+        }
+
+        public void DeleteNullItem(SurfaceItem lootItem)
+        {
+            if(m_instantiateItems.ContainsKey(lootItem.dropIndex))
+            {
+                m_instantiateItems.Remove(lootItem.dropIndex);
             }
         }
 
         public void DestoryAllItemOnTeleport()
         {
-            foreach (Entity item in instantiateItems)
+            if(m_instantiateItems.Count != 0)
             {
-                // 好像这样写只是销毁了引用？并没有真的销毁对象？
-                // Destroy(item);
-                // 不懂得写成gameobject才行
-                Destroy(item.gameObject);
-                
-            }
+                foreach (var itemKeyToValue in m_instantiateItems)
+                {
+                    // 好像这样写只是销毁了引用？并没有真的销毁对象？
+                    // Destroy(item);
+                    // 不懂得写成gameobject才行
+                    Destroy(itemKeyToValue.Value.gameObject);
 
-            instantiateItems.Clear();
+                    m_instantiateItems.Remove(itemKeyToValue.Key);
+                }
+
+                m_instantiateItems.Clear();
+
+                m_currentyItemCount = 0;
+            }
         }
     }
 }

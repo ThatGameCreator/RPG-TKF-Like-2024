@@ -7,6 +7,8 @@ namespace Gyvr.Mythril2D
 {
     public class Bonfire : OtherEntity
     {
+        [SerializeField] private AudioClipResolver m_bonfireSound;
+
         public Light2D[] Lights; // 绑定到多个灯光对象
         public float positionScrollSpeed = 2f; // 控制灯光位置变化速度
         public float intensityScrollSpeed = 1f; // 控制灯光强度变化速度
@@ -27,6 +29,15 @@ namespace Gyvr.Mythril2D
                     initialPositions[i] = Lights[i].transform.localPosition;
                 }
             }
+
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+
+            // Awake时系统还没有初始化
+            GameManager.AudioSystem.PlayAudioOnObject(m_bonfireSound, this.gameObject, true);
         }
 
         private void Update()

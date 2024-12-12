@@ -17,6 +17,7 @@ MonoBehaviour:
   m_localizationKey: id_bronze_helm_name
   m_displayName: Bronze Helm
   m_description: 
+  m_descriptionKey: 
   m_buyPrice: 30
   m_sellPrice: 15
   m_isStackable: 0
@@ -26,5 +27,5 @@ MonoBehaviour:
   m_bonusStats:
     m_values: 000000000000000000000000000000000000000002000000020000000000000000000000
   m_visualOverride: {fileID: 0}
-  m_capacity: 0
+  m_capacity: 1
   m_ability: []

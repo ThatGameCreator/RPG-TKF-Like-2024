@@ -16,18 +16,21 @@ namespace Gyvr.Mythril2D
     {
         [Header("General Settings")]
         [SerializeField] private EAudioChannelMode m_audioChannelMode;
+        [SerializeField] private EAudioChannel m_audioChannelType;
         [SerializeField] private float m_volumeScale = 0.5f;
 
         [Header("Exclusive Mode Settings")]
         [SerializeField] private float m_fadeOutDuration = 0.5f;
         [SerializeField] private float m_fadeInDuration = 0.25f;
 
-        public List<AudioSource> audioSourcePool => m_audioSourcePool;
         private List<AudioSource> m_audioSourcePool = new List<AudioSource>();
         private Dictionary<AudioSource, Coroutine> m_fadeCoroutines = new Dictionary<AudioSource, Coroutine>();
-        private AudioClipResolver m_lastPlayedClip = null;
 
         public AudioClipResolver lastPlayedAudioClipResolver => m_lastPlayedClip;
+        private AudioClipResolver m_lastPlayedClip = null;
+        private const int kMaxAudioSourcePoolSize = 20;
+        private Dictionary<AudioSource, float> m_idleTimers = new Dictionary<AudioSource, float>();
+        private const float kIdleTimeout = 30.0f; // 30秒闲置后销毁
 
         private void Awake()
         {
@@ -35,135 +38,236 @@ namespace Gyvr.Mythril2D
             CreateNewAudioSource();
         }
 
-        private AudioSource CreateNewAudioSource()
+        private void Start()
         {
-            // 创建一个新的 GameObject 作为音频源
-            GameObject newAudioSourceObject = new GameObject("AudioSource_" + m_audioSourcePool.Count);
-            newAudioSourceObject.transform.parent = this.transform; // 将新音频源作为当前对象的子对象
+            //StartCoroutine(PeriodicRecycle());
+        }
 
-            // 添加 AudioSource 组件
-            AudioSource newAudioSource = newAudioSourceObject.AddComponent<AudioSource>();
-            newAudioSource.playOnAwake = false; // 确保音频不会自动播放
-            newAudioSource.volume = m_volumeScale; // 应用当前音量比例
-            m_audioSourcePool.Add(newAudioSource); // 将新音频源加入池中
+        public void FindPlayer()
+        {
+            // 找到玩家对象
+            if (GameManager.Player != null)
+            {
+                // 将音频频道挂载到玩家对象上
+                this.transform.parent = GameManager.Player.transform;
+                this.transform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                Debug.LogWarning("Player object not found. Please ensure the player has the 'Player' tag.");
+            }
+        }
 
-            return newAudioSource;
+        // 为指定的对象播放音效，并将音源挂载到发出声音的对象上。
+        public void PlayOnObject(AudioClipResolver audioClipResolver, GameObject emitter, bool isLoop = false)
+        {
+            // 从解析器中获取音频片段
+            AudioClip clip = audioClipResolver.GetClip();
+            if (clip == null) return;
+
+            // 获取一个空闲的音频源
+            AudioSource source = GetAvailableAudioSource();
+            if (source == null)
+            {
+                Debug.LogWarning("No available AudioSource in the pool.");
+                return;
+            }
+
+            // 将音频源挂载到发出声音的对象上
+            source.transform.parent = emitter.transform;
+            source.transform.localPosition = Vector3.zero;
+
+            // 保存最后播放的音频片段
+            m_lastPlayedClip = audioClipResolver;
+
+            // 播放音效
+            source.clip = clip;
+            source.loop = isLoop; // 如果需要循环播放可以设置为 true
+            source.Play();
+        }
+
+        // 创建新的音频源，并提供选择是否挂载到特定对象的能力
+        private AudioSource CreateNewAudioSource(GameObject parent = null)
+        {
+            GameObject audioSourceObject = new GameObject("AudioSource");
+            if (parent != null)
+            {
+                audioSourceObject.transform.parent = parent.transform;
+            }
+            else
+            {
+                audioSourceObject.transform.parent = this.transform;
+            }
+
+            audioSourceObject.transform.localPosition = Vector3.zero;
+
+            AudioSource source = audioSourceObject.AddComponent<AudioSource>();
+            source.playOnAwake = false;
+            source.volume = m_volumeScale;
+            // 设置空间
+            if(m_audioChannelType == EAudioChannel.GameplaySoundFX)
+            {
+                source.spatialBlend = 1;
+                source.maxDistance = 18;
+                //线性衰减
+                source.rolloffMode = AudioRolloffMode.Linear;
+            }
+
+            m_audioSourcePool.Add(source);
+            return source;
+        }
+
+        private IEnumerator PeriodicRecycle()
+        {
+            while (true)
+            {
+                UpdateIdleTimers();
+                yield return new WaitForSeconds(10f); // 每隔10秒检查一次
+            }
+        }
+
+        private void UpdateIdleTimers()
+        {
+            List<AudioSource> sourcesToRecycle = new List<AudioSource>();
+
+            foreach (var source in m_audioSourcePool)
+            {
+                if (!source.isPlaying && source.clip == null)
+                {
+                    // 标记需要回收的音频源
+                    sourcesToRecycle.Add(source);
+                }
+            }
+
+            // 回收标记的音频源
+            foreach (var source in sourcesToRecycle)
+            {
+                RecycleUnusedAudioSource(source);
+            }
+        }
+
+        private void RecycleUnusedAudioSource(AudioSource source)
+        {
+            if (source == null) return; // 避免尝试销毁已经为 null 的对象
+
+            // 从音频源池中移除
+            m_audioSourcePool.Remove(source);
+
+            // 销毁音频源的 GameObject
+            if (source.gameObject != null)
+            {
+                Destroy(source.gameObject);
+            }
         }
 
         private AudioSource GetAvailableAudioSource()
         {
+            // 清理音频池中已经被销毁的引用
+            m_audioSourcePool.RemoveAll(source => source == null);
+
             foreach (var source in m_audioSourcePool)
             {
                 if (!source.isPlaying)
                 {
-                    return source; // 返回空闲的音频源
+                    return source;
                 }
             }
-            // 如果没有空闲的音频源，创建一个新的音频源
-            return CreateNewAudioSource();
-        }
 
-        public void Stop(AudioSource specificSource = null)
-        {
-            if (specificSource != null)
+            if (m_audioSourcePool.Count < kMaxAudioSourcePoolSize)
             {
-                StopAudioSource(specificSource);
+                return CreateNewAudioSource();
             }
-            else
-            {
-                // 停止所有音频源
-                foreach (var source in m_audioSourcePool)
-                {
-                    StopAudioSource(source);
-                }
-            }
+
+            Debug.LogWarning("AudioSource pool limit reached!");
+            return null; // 或者返回一个可复用的已使用音频源
         }
 
         public void StopAllAudio()
         {
-            // 先停止所有的协程，并移除它们
             foreach (var source in m_audioSourcePool)
             {
-                // 停止音频的循环播放（如果有的话）
                 if (source.isPlaying)
                 {
-                    // 如果有播放的协程，停止协程并从字典中移除
-                    if (m_fadeCoroutines.ContainsKey(source))
-                    {
-                        StopCoroutine(m_fadeCoroutines[source]);
-                        m_fadeCoroutines.Remove(source);
-                    }
-                    // 停止音频
                     source.Stop();
                 }
             }
         }
 
-        private void StopAudioSource(AudioSource source)
+        public void StopSpecific(AudioClip clip)
         {
-            // 如果有协程，停止它并移除
-            if (m_fadeCoroutines.ContainsKey(source))
+            foreach (var source in m_audioSourcePool)
             {
-                StopCoroutine(m_fadeCoroutines[source]);
-                m_fadeCoroutines.Remove(source);
+                if (source.clip == clip && source.isPlaying)
+                {
+                    source.Stop();
+                    break;
+                }
             }
-            // 停止音频播放
-            source.Stop();
         }
-
 
         public void Play(AudioClipResolver audioClipResolver)
         {
-            AudioClip newClip = audioClipResolver.GetClip();
-            if (newClip == null) return;
+            // 从解析器中获取音频片段
+            AudioClip clip = audioClipResolver.GetClip();
+            if (clip == null) return;
 
-            AudioSource availableSource = GetAvailableAudioSource();
+            // 获取一个空闲的音频源
+            AudioSource source = GetAvailableAudioSource();
+            if (source == null || source.gameObject == null)
+            {
+                Debug.LogWarning("No available or valid AudioSource in the pool.");
+                return;
+            }
+
+            // 保存最后播放的音频片段
             m_lastPlayedClip = audioClipResolver;
 
             if (m_audioChannelMode == EAudioChannelMode.Exclusive)
             {
-                // 停止所有其他音频源
-                Stop();
-
-                if (m_fadeCoroutines.ContainsKey(availableSource))
-                {
-                    StopCoroutine(m_fadeCoroutines[availableSource]);
-                }
-
-                m_fadeCoroutines[availableSource] = StartCoroutine(FadeInAndPlay(availableSource, newClip));
+                // 如果是独占模式，先停止所有正在播放的音频
+                StopAllAudio();
+                // 淡入播放新的音频片段
+                StartFadeIn(source, clip);
             }
             else
             {
-                availableSource.PlayOneShot(newClip);
+                // 如果是多音轨模式，检查音频源是否已经播放过该片段
+                if (source.clip == clip && source.isPlaying)
+                {
+                    Debug.LogWarning("This audio clip is already playing in the current channel.");
+                }
+                else
+                {
+                    // 使用 Play 方法播放音频片段，而不是 PlayOneShot（可以增加对播放控制的灵活性）
+                    source.clip = clip;
+                    source.loop = false; // 如果需要循环播放可以设置为 true
+                    source.Play();
+                }
             }
         }
 
-        private IEnumerator FadeInAndPlay(AudioSource audioSource, AudioClip newClip)
+        private void StartFadeIn(AudioSource source, AudioClip clip)
         {
-            // Fade out if playing
-            if (audioSource.isPlaying)
+            if (m_fadeCoroutines.TryGetValue(source, out Coroutine fadeCoroutine))
             {
-                float startVolume = audioSource.volume;
-                for (float t = 0; t < m_fadeOutDuration; t += Time.deltaTime)
-                {
-                    audioSource.volume = Mathf.Lerp(startVolume, 0, t / m_fadeOutDuration);
-                    yield return null;
-                }
-                audioSource.Stop();
+                StopCoroutine(fadeCoroutine);
             }
 
-            // Play new clip
-            audioSource.clip = newClip;
-            audioSource.volume = 0;
-            audioSource.Play();
+            source.clip = clip;
+            source.volume = 0;
+            source.Play();
 
-            // Fade in
-            for (float t = 0; t < m_fadeInDuration; t += Time.deltaTime)
+            m_fadeCoroutines[source] = StartCoroutine(FadeVolume(source, 0, m_volumeScale, m_fadeInDuration));
+        }
+
+        private IEnumerator FadeVolume(AudioSource source, float from, float to, float duration)
+        {
+            for (float t = 0; t < duration; t += Time.deltaTime)
             {
-                audioSource.volume = Mathf.Lerp(0, m_volumeScale, t / m_fadeInDuration);
+                source.volume = Mathf.Lerp(from, to, t / duration);
                 yield return null;
             }
-            audioSource.volume = m_volumeScale;
+            source.volume = to;
         }
 
         public void PlayWithCallback(AudioClipResolver audioClipResolver, System.Action<AudioSource> onComplete)
@@ -199,18 +303,25 @@ namespace Gyvr.Mythril2D
         public void SetVolumeScale(float scale)
         {
             m_volumeScale = scale;
-            foreach (var source in m_audioSourcePool)
+
+            // 为对象池中每个对象也要变换音量
+            foreach(var audioSource  in m_audioSourcePool)
             {
-                if (!source.isPlaying)
-                {
-                    source.volume = m_volumeScale;
-                }
+                audioSource.volume = scale; 
             }
         }
 
         public float GetVolumeScale()
         {
             return m_volumeScale;
+        }
+
+        public void UpdateVolumeWithMaster(float masterVolume)
+        {
+            foreach (var source in m_audioSourcePool)
+            {
+                source.volume = m_volumeScale * masterVolume;
+            }
         }
     }
 }

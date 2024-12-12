@@ -17,6 +17,7 @@ MonoBehaviour:
   m_localizationKey: id_iron_armor_name
   m_displayName: Iron Armor
   m_description: 
+  m_descriptionKey: 
   m_buyPrice: 40
   m_sellPrice: 20
   m_isStackable: 0
@@ -26,5 +27,5 @@ MonoBehaviour:
   m_bonusStats:
     m_values: 000000000000000000000000000000000000000003000000030000000000000000000000
   m_visualOverride: {fileID: 0}
-  m_capacity: 0
+  m_capacity: 2
   m_ability: []

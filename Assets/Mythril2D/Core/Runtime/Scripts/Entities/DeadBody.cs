@@ -117,6 +117,9 @@ namespace Gyvr.Mythril2D
                             GameManager.DialogueSystem.Main.PlayNow
                             (LocalizationSettings.StringDatabase.GetLocalizedString("NPCDialogueTable", "id_dialogue_shop_backpack_full"));
 
+                            // 包满了的话减回去
+                            m_nowLootedCount--;
+                            
                             return false;
                         }
                         else if (randomEntry != null)

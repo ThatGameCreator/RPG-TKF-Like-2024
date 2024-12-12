@@ -129,7 +129,8 @@ namespace Gyvr.Mythril2D
 
         private void ActiveInteracting()
         {
-            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_interactionSound);
+            // 感觉如果其他动作都有音效的话，没必要这个互动音效
+            //GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_interactionSound);
 
             GameManager.NotificationSystem.playerTryInteracte.Invoke(GameManager.Player, interactionTarget);
         }
