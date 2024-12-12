@@ -49,7 +49,6 @@ namespace Gyvr.Mythril2D
 
                     for (int i = 0; i < Stats.StatCount; i++)
                     {
-                        // 精力值和容量还没做进来
                         EStat stat = (EStat)i;
                         int value = equipment.bonusStats[stat];
 
@@ -59,6 +58,11 @@ namespace Gyvr.Mythril2D
                             $" <u>{(value > 0 ? '+' : '-')}{value}\u00A0" +
                             $"{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString(GameManager.Config.GetTermDefinition(stat).fullName)}</u>";
                         }
+                    }
+
+                    if(equipment.stamina != 0)
+                    {
+                        m_itemDescription.text += $" <u>{(equipment.stamina > 0 ? '+' : '-')}{equipment.stamina}\u00A0{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString("id_term_definition_stamina")}</u>"; ;
                     }
 
                     if(equipment.capacity != 0)

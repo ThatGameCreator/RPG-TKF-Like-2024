@@ -731,21 +731,47 @@ namespace Gyvr.Mythril2D
             return equipmentStats;
         }
 
+        private int CalculateEquipmentStamina()
+        {
+            int equipmentStamina = 0;
+
+            foreach (Equipment piece in m_equipments.Values)
+            {
+                if (piece)
+                {
+                    equipmentStamina += piece.stamina;
+                }
+            }
+
+            return equipmentStamina;
+        }
+
         private void UpdateStats()
         {
             Stats equipmentStats = CalculateEquipmentStats();
-            Stats totalStats = m_sheet.baseStats + m_customStats + equipmentStats;
+            Stats newMaxStats = m_sheet.baseStats + m_customStats + equipmentStats;
 
-            m_maxStats.Set(totalStats);
-            m_maxStats.Set(maxStamina);
+            Debug.Log(currentStamina);
+
+            int equipmentStamina = CalculateEquipmentStamina();
+            int newMaxStamina = m_sheet.maxStamina + equipmentStamina;
+
+            m_maxStats.Set(newMaxStats);
+            m_maxStats.Set(newMaxStamina);
+
+            Debug.Log(currentStamina);
 
             ApplyMissingCurrentStats();
         }
 
         private void ApplyMissingCurrentStats()
         {
+            Debug.Log(currentStamina);
+
             m_currentStats.Set(m_currentStats.stamina - m_missingCurrentStamina);
             m_currentStats.Set(m_currentStats.stats - m_missingCurrentStats);
+            Debug.Log(currentStamina);
+
             m_missingCurrentStats.Reset();
             m_missingCurrentStamina = 0f;
         }

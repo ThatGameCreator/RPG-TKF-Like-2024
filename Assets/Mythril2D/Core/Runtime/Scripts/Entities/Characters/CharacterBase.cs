@@ -174,11 +174,15 @@ namespace Gyvr.Mythril2D
         private void OnStatsChanged(Stats previous)
         {
             // 似乎是在这里初始化属性和生命值
-
+            // maxStats最大属性变换注册了这个函数，而这个函数中包括了对当前状态的修改
+            // 所以穿戴装备的时候，不仅会修改最大值也会修改当前值
             Stats difference = m_maxStats.stats - previous;
+
             Stats newCurrentStats = m_currentStats.stats + difference;
+
             // Make sure we don't kill the character when updating its maximum stats
             newCurrentStats[EStat.Health] = math.max(newCurrentStats[EStat.Health], 1);
+
             m_currentStats.Set(newCurrentStats);
         }
 

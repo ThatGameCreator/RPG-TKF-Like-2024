@@ -539,6 +539,9 @@ namespace Gyvr.Mythril2D
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Equipment Properties", EditorStyles.boldLabel);
 
+            SerializedProperty staminaProp = serializedEquipment.FindProperty("m_stamina");
+            EditorGUILayout.PropertyField(staminaProp, true);
+
             SerializedProperty bonusStatsProp = serializedEquipment.FindProperty("m_bonusStats");
             EditorGUILayout.PropertyField(bonusStatsProp, true);
 

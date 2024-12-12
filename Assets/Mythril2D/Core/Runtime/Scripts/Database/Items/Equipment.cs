@@ -24,6 +24,7 @@ namespace Gyvr.Mythril2D
         [Header("Equipment")]
         [SerializeField] private EEquipmentType m_type;
         [SerializeField] private Stats m_bonusStats;
+        [SerializeField] private int m_stamina;
         [SerializeField] private SpriteLibraryAsset m_visualOverride;
         [SerializeField] private int m_capacity;
         [SerializeField] private AbilitySheet[] m_ability;
@@ -45,6 +46,12 @@ namespace Gyvr.Mythril2D
         {
             get => m_bonusStats;
             set => m_bonusStats = value;
+        }
+
+        public int stamina
+        {
+            get => m_stamina;
+            set => m_stamina = value;
         }
         
         public int capacity
