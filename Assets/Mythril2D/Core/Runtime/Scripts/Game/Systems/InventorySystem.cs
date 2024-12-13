@@ -9,9 +9,9 @@ namespace Gyvr.Mythril2D
     [Serializable]
     public struct InventoryDataBlock
     {
-        public int money;
+       public int money;
         //public SerializableDictionary<DatabaseEntryReference<Item>, int> items;
-        public List<ItemInstance> items; // 改为 List<ItemInstance>
+       public List<ItemInstance> items; // 改为 List<ItemInstance>
     }
 
     [Serializable]
@@ -306,18 +306,6 @@ namespace Gyvr.Mythril2D
             return backpackItems.Sum(instance => instance.GetItem().IsStackable ? 1 : instance.quantity);
         }
 
-        public void TryAddItemToBag(Item item, int quantity = 1)
-        {
-            if (GameManager.InventorySystem.IsBackpackFull(item))
-            {
-                //GameManager.NotificationSystem.ShowMessage("背包已满，无法添加物品！");
-                return;
-            }
-
-            GameManager.InventorySystem.AddToBag(item, quantity);
-        }
-
-
         public void AddToBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             // 如果背包已满且物品不可添加，直接返回
@@ -363,8 +351,6 @@ namespace Gyvr.Mythril2D
                 }
             }
         }
-
-
         public bool RemoveFromBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             //Debug.Log("RemoveFromBag");

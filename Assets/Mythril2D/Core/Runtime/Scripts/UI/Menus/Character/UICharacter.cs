@@ -96,7 +96,7 @@ namespace Gyvr.Mythril2D
         {
             foreach (UICharacterStat stat in m_stats)
             {
-                stat.UpdateUI(m_character.stats, m_tempStats);
+                stat.UpdateUI(m_character.maxStats, m_tempStats);
             }
         }
 

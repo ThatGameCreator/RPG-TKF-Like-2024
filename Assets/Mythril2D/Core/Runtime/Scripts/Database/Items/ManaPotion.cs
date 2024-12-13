@@ -16,7 +16,7 @@ namespace Gyvr.Mythril2D
 
             if (GameManager.WarehouseSystem.isOpenning == true)
             {
-                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull() == false)
+                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull(this) == false)
                 {
                     GameManager.InventorySystem.RemoveFromBag(this);
                     GameManager.WarehouseSystem.AddToWarehouse(this);
@@ -29,7 +29,7 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                if (target.currentStats[EStat.Mana] < target.stats[EStat.Mana])
+                if (target.currentStats[EStat.Mana] < target.maxStats[EStat.Mana])
                 {
                     int previousMana = target.currentStats[EStat.Mana];
                     target.RecoverMana(m_manaToRestore);

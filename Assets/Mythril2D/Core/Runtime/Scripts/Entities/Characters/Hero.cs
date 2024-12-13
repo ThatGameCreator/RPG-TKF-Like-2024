@@ -34,7 +34,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private float staminaTimeIncrement = 0.05f;
         // 当前耐力
         public float currentStamina => m_currentStats.Stamina;
-        public float maxStamina => m_sheet.GetMaxStamina();
+        public float maxStamina => m_maxStats.Stamina;
 
         public bool isNowCanRun = false;
         public bool isExecutingAction = false;
@@ -91,6 +91,7 @@ namespace Gyvr.Mythril2D
         public Stats customStats => m_customStats;
         public Stats missingCurrentStats => m_missingCurrentStats;
         public float missingCurrentStamina => m_missingCurrentStamina;
+        public bool firstAwake => m_firstAwake;
         public int usedPoints => m_usedPoints;
 
         public const int MaxEquipedAbilityCount = 4;
@@ -98,6 +99,7 @@ namespace Gyvr.Mythril2D
         private Stats m_customStats = new Stats();
         private Stats m_missingCurrentStats = new Stats();
         private float m_missingCurrentStamina = 0;
+        private bool m_firstAwake = true;
         private int m_usedPoints = 0;
         private int m_experience = 0;
         private SerializableDictionary<EEquipmentType, Equipment> m_equipments = new SerializableDictionary<EEquipmentType, Equipment>();
@@ -116,6 +118,55 @@ namespace Gyvr.Mythril2D
 
         public bool isStartGameRevival = false;
 
+        // 没继承父类会出事 无法获得对象
+        // private new void Awake(){}
+        protected override void Awake()
+        {
+            isPlayer = true;
+
+            m_maxStats.staminaChanged.AddListener(OnMaxStaminaChanged);
+
+            base.Awake();
+            //m_currentStats.changed.AddListener(HandleStamina);
+        }
+
+        protected override void Start()
+        {
+            // 这个感觉应该不需要执行一次监听 tryexcute
+
+
+            // 传送后虽然执行了播放动画函数，但却并没有执行Update？
+            // 这放Awake执行不了
+            if (isStartGameRevival == false)
+            {
+                // 也许应该改成只能 互动？
+                DisableActions(EActionFlags.All);
+
+                TryPlayRevivalAnimation();
+
+                isStartGameRevival = true;
+            }
+
+            // 感觉如果粒子效果设置为 isloop 这个启动游戏时候就会启用 所以试着在 Awake 中关闭
+            // 好像 Awake 的时候还没新建好人物报错了， 试试在 Start 中
+            GameManager.Player.runParticleSystem.Stop();
+
+            UpdateMaxStats();
+
+            m_currentStats.changed.AddListener(OnCurrentStatsChanged);
+        }
+
+        private void Update()
+        {
+            if (isUseAbilityLighting == true) HandleAbilityLighting();
+
+            if (useStamina == true) HandleStamina();
+
+            if (m_isLooting == true) OnTryLooting();
+
+            if (m_isEvacuating == true) OnTryEvacuating();
+        }
+
 
         protected override void OnDeathAnimationEnd()
         {
@@ -123,34 +174,7 @@ namespace Gyvr.Mythril2D
         }
 
         private void OnDeadAnimationStart()
-         {
-        }
-
-        public void RecoverPlayerStats()
         {
-            // 朝向篝火
-            SetLookAtDirection(Vector2.right);
-
-            // 恢复血量 
-            m_currentStats[EStat.Health] = 1;
-            m_currentStats[EStat.Mana] = 1;
-            RecoverStamina((int)GameManager.Player.maxStamina);
-
-            // 恢复碰撞体
-            Collider2D[] colliders = GameManager.Player.GetComponentsInChildren<Collider2D>();
-            Array.ForEach(colliders, (collider) => collider.enabled = true);
-        }
-
-        private void OnDeadAnimationEnd()
-        {
-            StartCoroutine(SaveWithDelay());
-        }
-
-        private IEnumerator SaveWithDelay()
-        {
-            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName); // 保存数据
-
-            yield return new WaitForSeconds(1f); // 等待一秒
         }
 
         private void OnRevivalAnimationEnd()
@@ -166,6 +190,43 @@ namespace Gyvr.Mythril2D
             {
                 isDashFinishing = false;
             }
+        }
+
+        private void OnDeadAnimationEnd()
+        {
+            StartCoroutine(SaveWithDelay());
+        }
+
+        public void RecoverPlayerStats(bool fullRecover = false)
+        {
+            // 朝向篝火
+            SetLookAtDirection(Vector2.right);
+
+            // 恢复血量 
+            if (fullRecover)
+            {
+                m_currentStats[EStat.Health] = m_maxStats[EStat.Health];
+                m_currentStats[EStat.Mana] = m_maxStats[EStat.Mana];
+            }
+            else
+            {
+                
+                m_currentStats[EStat.Health] = 1;
+                m_currentStats[EStat.Mana] = 1;
+            }
+            
+            RecoverStamina((int)GameManager.Player.maxStamina);
+
+            // 恢复碰撞体
+            Collider2D[] colliders = GameManager.Player.GetComponentsInChildren<Collider2D>();
+            Array.ForEach(colliders, (collider) => collider.enabled = true);
+        }
+
+        private IEnumerator SaveWithDelay()
+        {
+            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName); // 保存数据
+
+            yield return new WaitForSeconds(1f); // 等待一秒
         }
 
         public int GetTotalExpRequirement(int level)
@@ -199,60 +260,12 @@ namespace Gyvr.Mythril2D
         public void AddCustomStats(Stats customStats)
         {
             m_customStats += customStats;
-            UpdateStats();
+            UpdateMaxStats();
         }
 
         public void LogUsedPoints(int points)
         {
             m_usedPoints += points;
-        }
-
-        // 没继承父类会出事 无法获得对象
-        // private new void Awake(){}
-        private new void Awake()
-        {
-
-            isPlayer = true;
-
-            m_maxStats.staminaChanged.AddListener(OnStaminaChanged);
-
-            base.Awake();
-            //m_currentStats.changed.AddListener(HandleStamina);
-        }
-
-        protected override void Start()
-        {
-            // 这个感觉应该不需要执行一次监听 tryexcute
-
-
-            // 传送后虽然执行了播放动画函数，但却并没有执行Update？
-            // 这放Awake执行不了
-            if (isStartGameRevival == false)
-            {
-                // 也许应该改成只能 互动？
-                DisableActions(EActionFlags.All);
-
-                TryPlayRevivalAnimation();
-
-                isStartGameRevival = true;
-            }
-
-            // 感觉如果粒子效果设置为 isloop 这个启动游戏时候就会启用 所以试着在 Awake 中关闭
-            // 好像 Awake 的时候还没新建好人物报错了， 试试在 Start 中
-            GameManager.Player.runParticleSystem.Stop();
-
-            UpdateStats();
-        }
-
-        private void Update()
-        {
-            if (isUseAbilityLighting == true) HandleAbilityLighting();
-
-            if (useStamina == true) HandleStamina();
-
-            if (m_isLooting == true) OnTryLooting();
-
-            if (m_isEvacuating == true) OnTryEvacuating();
         }
 
 
@@ -406,10 +419,11 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        private void OnStaminaChanged(float previous)
+        private void OnMaxStaminaChanged(float previous)
         {
             float difference = m_maxStats.stamina - previous;
             float newCurrentStamina = m_currentStats.stamina + difference;
+
             // Make sure we don't kill the character when updating its maximum stats
             newCurrentStamina = math.max(newCurrentStamina, 1);
             m_currentStats.Set(newCurrentStamina);
@@ -528,7 +542,7 @@ namespace Gyvr.Mythril2D
             }
 
             GameManager.NotificationSystem.itemEquipped.Invoke(equipment);
-            UpdateStats();
+            UpdateMaxStats();
             return previousEquipment;
         }
 
@@ -558,7 +572,7 @@ namespace Gyvr.Mythril2D
 
                     m_equipments.Remove(equipmentType);
                     GameManager.NotificationSystem.itemUnequipped.Invoke(toUnequip);
-                    UpdateStats();
+                    UpdateMaxStats();
                 }
             }
         }
@@ -577,7 +591,7 @@ namespace Gyvr.Mythril2D
 
                 m_equipments.Remove(type);
                 GameManager.NotificationSystem.itemUnequipped.Invoke(toUnequip);
-                UpdateStats();
+                UpdateMaxStats();
             }
 
             return toUnequip;
@@ -746,7 +760,7 @@ namespace Gyvr.Mythril2D
             return equipmentStamina;
         }
 
-        private void UpdateStats()
+        private void UpdateMaxStats()
         {
             Stats equipmentStats = CalculateEquipmentStats();
             Stats newMaxStats = m_sheet.baseStats + m_customStats + equipmentStats;
@@ -759,18 +773,29 @@ namespace Gyvr.Mythril2D
             m_maxStats.Set(newMaxStats);
             m_maxStats.Set(newMaxStamina);
 
-            //Debug.Log(currentStamina);
-
             ApplyMissingCurrentStats();
+        }
+
+
+        protected override void OnCurrentStatsChanged(Stats previous)
+        {
+            if (m_currentStats[EStat.Health] == 0)
+            {
+
+                Die();
+            }
+        }
+
+        private void UpdateCurrentStats()
+        {
+            m_currentStats.Set(m_maxStats.stats);
+            m_currentStats.Set(maxStamina);
         }
 
         private void ApplyMissingCurrentStats()
         {
-            //Debug.Log(currentStamina);
-
             m_currentStats.Set(m_currentStats.stamina - m_missingCurrentStamina);
             m_currentStats.Set(m_currentStats.stats - m_missingCurrentStats);
-            //Debug.Log(currentStamina);
 
             m_missingCurrentStats.Reset();
             m_missingCurrentStamina = 0f;
@@ -804,6 +829,8 @@ namespace Gyvr.Mythril2D
 
         public void Initialize(PlayerDataBlock block)
         {
+            m_firstAwake = block.firstAwake;
+
             m_usedPoints = block.usedPoints;
 
             if (block.experience > 0)

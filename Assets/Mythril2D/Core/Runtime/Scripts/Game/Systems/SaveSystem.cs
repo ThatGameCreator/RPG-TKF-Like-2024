@@ -186,6 +186,7 @@ namespace Gyvr.Mythril2D
                 header = GenerateSavefileHeader(),
                 map = GameManager.TeleportLoadingSystem.GetCurrentMapName(),
                 gameFlags = GameManager.GameFlagSystem.CreateDataBlock(),
+                inventory = GameManager.InventorySystem.CreateDataBlock(),
                 warehouse = GameManager.WarehouseSystem.CreateDataBlock(),
                 journal = GameManager.JournalSystem.CreateDataBlock(),
                 player = GameManager.PlayerSystem.CreateDataBlock()

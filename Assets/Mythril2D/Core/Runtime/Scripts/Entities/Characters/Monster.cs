@@ -26,7 +26,7 @@ namespace Gyvr.Mythril2D
         protected override void Awake()
         {
             base.Awake();
-            UpdateStats();
+            UpdateMaxStats();
         }
 
         private void Update()
@@ -65,12 +65,14 @@ namespace Gyvr.Mythril2D
         public void SetLevel(int level)
         {
             m_level = level;
-            UpdateStats();
+            UpdateMaxStats();
         }
 
-        public void UpdateStats()
+        public void UpdateMaxStats()
         {
             m_maxStats.Set(m_sheet.stats[m_level]);
+            // 怪物的话就顺便更新最大状态值时 补全当前状态值
+            m_currentStats.Set(m_sheet.stats[m_level]);
         }
 
         protected override void Die()

@@ -8,6 +8,7 @@ namespace Gyvr.Mythril2D
     public struct PlayerDataBlock
     {
         public DatabaseEntryReference<PlayerProfile> profile;
+        public bool firstAwake;
         public int usedPoints;
         public int experience;
         public Stats missingCurrentStats;
@@ -78,10 +79,11 @@ namespace Gyvr.Mythril2D
             return new PlayerDataBlock
             {
                 profile = GameManager.Database.CreateReference(m_profile),
+                firstAwake = m_playerInstance.firstAwake,
                 usedPoints = m_playerInstance.usedPoints,
                 experience = m_playerInstance.experience,
                 equipments = m_playerInstance.equipments.Values.Select(equipment => GameManager.Database.CreateReference(equipment)).ToArray(),
-                missingCurrentStats = m_playerInstance.stats - m_playerInstance.currentStats,
+                missingCurrentStats = m_playerInstance.maxStats - m_playerInstance.currentStats,
                 missingCurrentStamina = m_playerInstance.maxStamina - m_playerInstance.currentStamina,
                 customStats = m_playerInstance.customStats,
                 equippedAbilities = m_playerInstance.equippedAbilities.Where(ability => ability != null).Select(ability => GameManager.Database.CreateReference(ability)).ToArray(),

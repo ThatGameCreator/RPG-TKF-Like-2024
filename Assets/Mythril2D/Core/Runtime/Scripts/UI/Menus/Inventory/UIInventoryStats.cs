@@ -25,7 +25,7 @@ namespace Gyvr.Mythril2D
 
             foreach (UIStat stat in m_stats)
             {
-                stat.UpdateUI(m_target.stats);
+                stat.UpdateUI(m_target.maxStats);
             }
         }
     }

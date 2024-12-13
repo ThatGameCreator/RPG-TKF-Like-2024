@@ -17,7 +17,7 @@ namespace Gyvr.Mythril2D
         {
             if (GameManager.WarehouseSystem.isOpenning == true)
             {
-                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull() == false)
+                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull(this) == false)
                 {
                     GameManager.InventorySystem.RemoveFromBag(this);
                     GameManager.WarehouseSystem.AddToWarehouse(this);

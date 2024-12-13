@@ -63,6 +63,7 @@ namespace Gyvr.Mythril2D
         {
             return value <= warehouseMoney;
         }
+
         public int GetItemCount(Item item)
         {
             if (item.IsStackable)
@@ -76,9 +77,25 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public bool IsWarehouseFull()
+        public bool IsWarehouseFull(Item item)
         {
-            return GetCurrentItemCount() >= m_warehouseCapacity;
+            if (GetCurrentItemCount() >= m_warehouseCapacity)
+            {
+                if (item.IsStackable)
+                {
+                    // 返回是否背包有可堆叠物品 有则不满
+                    // 如果有堆叠应该是不满 得取反！
+                    return !HasItemInWarehouse(item);
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public int GetCurrentItemCount()
@@ -104,7 +121,7 @@ namespace Gyvr.Mythril2D
         public void AddToWarehouse(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             // 如果背包已满且物品不可添加，直接返回
-            if (IsWarehouseFull())
+            if (IsWarehouseFull(item))
             {
                 Debug.LogWarning("背包已满，无法添加物品！");
                 return;
@@ -128,7 +145,7 @@ namespace Gyvr.Mythril2D
                 // 如果不可堆叠，每次添加一个新实例
                 for (int i = 0; i < quantity; i++)
                 {
-                    if (IsWarehouseFull())
+                    if (IsWarehouseFull(item))
                     {
                         Debug.LogWarning("背包已满，无法添加更多不可堆叠物品！");
                         break;
