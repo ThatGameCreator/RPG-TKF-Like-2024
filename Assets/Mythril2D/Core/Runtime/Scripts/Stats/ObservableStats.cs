@@ -39,15 +39,6 @@ namespace Gyvr.Mythril2D
             get => m_stamina;
             set
             {
-                // 如果值有变化，则触发事件
-                //if (Mathf.Abs(m_stamina - value) > Mathf.Epsilon)
-                //{
-                //    float previousStamina = m_stamina;
-                //    m_stamina = value;
-                //    m_staminaChanged.Invoke(previousStamina); // 触发事件，传递旧的 stamina 值
-                //    //Debug.Log("m_stamina set" + previousStamina); //active per frame
-                //}
-
                 // value 是传入的新值
                 float previousStamina = m_stamina;
                 m_stamina = value;
@@ -82,6 +73,10 @@ namespace Gyvr.Mythril2D
         {
             Stats previous = new Stats(m_stats);
             m_stats = new Stats(stats);
+
+            // 得保存下传递过来的 isEquip 用于后面是否要更改当前状态值
+            previous.isEquip = m_stats.isEquip;
+
             m_changed.Invoke(previous);
         }
     }

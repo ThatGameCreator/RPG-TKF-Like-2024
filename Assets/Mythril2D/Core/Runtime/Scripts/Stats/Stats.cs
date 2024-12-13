@@ -25,6 +25,8 @@ namespace Gyvr.Mythril2D
         public const int LevelCount = MaxLevel - MinLevel + 1;
         public const int StatCount = 9;
 
+        public bool isEquip = false;
+
         [SerializeField] private int[] m_values = new int[StatCount] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         // 为什么这样写在编辑器看不到
         //[SerializeField] private float Stamina = 0f;
@@ -36,6 +38,7 @@ namespace Gyvr.Mythril2D
         public Stats(Stats copy)
         {
             Array.Copy(copy.m_values, m_values, StatCount);
+            isEquip = copy.isEquip;
         }
 
         public Stats(int[] values)
@@ -66,7 +69,9 @@ namespace Gyvr.Mythril2D
         private int this[int i]
         {
             get => m_values[i];
-            set => m_values[i] = math.max(value, 0);
+            // 取最大值会导致脱装备时状态值无变化
+            //set => m_values[i] = math.max(value, 0);
+            set => m_values[i] = value;
         }
 
         public int this[EStat stat]
@@ -106,8 +111,6 @@ namespace Gyvr.Mythril2D
             for (int i = 0; i < StatCount; ++i)
             {
                 output[i] = (int)math.floor(a[i] * scale);
-                //Debug.Log(i);
-                //Debug.Log(StatCount);
             }
             return output;
         }

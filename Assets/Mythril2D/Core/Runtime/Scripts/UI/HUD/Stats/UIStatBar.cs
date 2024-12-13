@@ -215,7 +215,7 @@ namespace Gyvr.Mythril2D
                 Shake();
             }
 
-            //m_sliderText.text = StringFormatter.Format("{0} / {1}", currentStats, maxStats);
+            m_sliderText.text = StringFormatter.Format("{0} / {1}", currentStats, maxStats);
         }
 
         private float StatsValueToAnchor(float convertValue)

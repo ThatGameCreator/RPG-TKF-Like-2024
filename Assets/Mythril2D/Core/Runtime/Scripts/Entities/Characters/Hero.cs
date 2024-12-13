@@ -542,7 +542,7 @@ namespace Gyvr.Mythril2D
             }
 
             GameManager.NotificationSystem.itemEquipped.Invoke(equipment);
-            UpdateMaxStats();
+            EquipUpdateMaxStats();
             return previousEquipment;
         }
 
@@ -591,7 +591,7 @@ namespace Gyvr.Mythril2D
 
                 m_equipments.Remove(type);
                 GameManager.NotificationSystem.itemUnequipped.Invoke(toUnequip);
-                UpdateMaxStats();
+                EquipUpdateMaxStats();
             }
 
             return toUnequip;
@@ -760,6 +760,22 @@ namespace Gyvr.Mythril2D
             return equipmentStamina;
         }
 
+        private void EquipUpdateMaxStats()
+        {
+            Stats equipmentStats = CalculateEquipmentStats();
+            Stats newMaxStats = m_sheet.baseStats + m_customStats + equipmentStats;
+
+            int equipmentStamina = CalculateEquipmentStamina();
+            int newMaxStamina = m_sheet.maxStamina + equipmentStamina;
+
+            newMaxStats.isEquip = true;
+
+            m_maxStats.Set(newMaxStats);
+            m_maxStats.Set(newMaxStamina);
+
+            ApplyMissingCurrentStats();
+        }
+
         private void UpdateMaxStats()
         {
             Stats equipmentStats = CalculateEquipmentStats();
@@ -774,16 +790,6 @@ namespace Gyvr.Mythril2D
             m_maxStats.Set(newMaxStamina);
 
             ApplyMissingCurrentStats();
-        }
-
-
-        protected override void OnCurrentStatsChanged(Stats previous)
-        {
-            if (m_currentStats[EStat.Health] == 0)
-            {
-
-                Die();
-            }
         }
 
         private void UpdateCurrentStats()
