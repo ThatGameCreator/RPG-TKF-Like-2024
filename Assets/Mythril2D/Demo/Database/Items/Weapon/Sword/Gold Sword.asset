@@ -15,8 +15,8 @@ MonoBehaviour:
   m_category: 2
   m_icon: {fileID: 1616486485, guid: f03b68ec21bc47e4787ad6057bf26849, type: 3}
   m_localizationKey: id_gold_sword_name
-  m_displayName: Gold Sword
-  m_description: Simple sword made out of gold
+  m_displayName: 
+  m_description: 
   m_descriptionKey: id_gold_sword_description
   m_buyPrice: 70
   m_sellPrice: 35
@@ -25,7 +25,9 @@ MonoBehaviour:
   m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
   m_type: 0
   m_bonusStats:
+    isEquip: 0
     m_values: 000000000000000000000000040000000000000000000000000000000000000000000000
+  m_stamina: 0
   m_visualOverride: {fileID: 7108339969198208228, guid: 0ed0016c65ff21344982cf1bc2c1f129, type: 3}
   m_capacity: 0
   m_ability:

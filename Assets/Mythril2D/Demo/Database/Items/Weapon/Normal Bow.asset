@@ -17,7 +17,7 @@ MonoBehaviour:
   m_localizationKey: id_normal_bow_name
   m_displayName: Normal Bow
   m_description: 
-  m_descriptionKey: 
+  m_descriptionKey: id_normal_bow_description
   m_buyPrice: 25
   m_sellPrice: 12
   m_isStackable: 0
@@ -25,7 +25,9 @@ MonoBehaviour:
   m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
   m_type: 0
   m_bonusStats:
+    isEquip: 0
     m_values: 000000000000000000000000020000000000000000000000000000000000000000000000
+  m_stamina: 0
   m_visualOverride: {fileID: 7108339969198208228, guid: 866c3c88dc5978149b389924dd0e2da2, type: 3}
   m_capacity: 0
   m_ability:

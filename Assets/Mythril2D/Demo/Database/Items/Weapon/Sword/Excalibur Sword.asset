@@ -15,8 +15,8 @@ MonoBehaviour:
   m_category: 2
   m_icon: {fileID: -1812001439, guid: f03b68ec21bc47e4787ad6057bf26849, type: 3}
   m_localizationKey: id_excalibur_sword_name
-  m_displayName: Excalibur Sword
-  m_description: Simple sword made out of unknow material.
+  m_displayName: 
+  m_description: 
   m_descriptionKey: id_excalibur_sword_description
   m_buyPrice: 200
   m_sellPrice: 100
@@ -25,7 +25,9 @@ MonoBehaviour:
   m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
   m_type: 0
   m_bonusStats:
+    isEquip: 0
     m_values: 000000000000000000000000060000000000000000000000000000000200000002000000
+  m_stamina: 0
   m_visualOverride: {fileID: 7108339969198208228, guid: 1407b7d7c0525bf449d5a77be3e63fd5, type: 3}
   m_capacity: 0
   m_ability:

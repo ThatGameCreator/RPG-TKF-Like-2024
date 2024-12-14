@@ -15,8 +15,8 @@ MonoBehaviour:
   m_category: 2
   m_icon: {fileID: 1116455578, guid: f03b68ec21bc47e4787ad6057bf26849, type: 3}
   m_localizationKey: id_diamond_dagger_name
-  m_displayName: Diamond Dagger
-  m_description: Simple Dagger made out of diamond .
+  m_displayName: 
+  m_description: 
   m_descriptionKey: id_diamond_dagger_description
   m_buyPrice: 80
   m_sellPrice: 40
@@ -25,7 +25,9 @@ MonoBehaviour:
   m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
   m_type: 0
   m_bonusStats:
+    isEquip: 0
     m_values: 000000000000000000000000050000000000000000000000000000000000000000000000
+  m_stamina: 0
   m_visualOverride: {fileID: 7108339969198208228, guid: 0b177f858c1022d47a72ca70d7a61d08, type: 3}
   m_capacity: 0
   m_ability:

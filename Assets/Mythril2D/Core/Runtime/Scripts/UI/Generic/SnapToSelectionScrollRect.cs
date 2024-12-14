@@ -16,6 +16,9 @@ namespace Gyvr.Mythril2D
         private Vector2 m_destination = Vector2.zero;
 
         private bool m_hovered = false;
+        private float m_scrollFinishDelay = 0.01f; // 延迟时间
+        private bool m_isScrolling = false;
+        private float m_scrollTimer = 0f;
 
         public void OnPointerEnter(PointerEventData e)
         {
@@ -86,6 +89,9 @@ namespace Gyvr.Mythril2D
                     {
                         m_destination.x = contentRectTransform.anchoredPosition.x;
                         m_destination.y = destinationY;
+
+                        m_isScrolling = true; // 开始滚动标记
+                        m_scrollTimer = 0f;  // 重置滚动计时器
                     }
                 }
             }
@@ -103,7 +109,32 @@ namespace Gyvr.Mythril2D
                     m_destination,
                     Time.unscaledDeltaTime * m_snappingSpeed
                 );
+
+                // 检查滚动是否接近目标位置
+                if (Vector2.Distance(m_scrollRect.content.anchoredPosition, m_destination) < 0.1f)
+                {
+                    m_scrollTimer += Time.unscaledDeltaTime; // 增加滚动计时器
+
+                    // 如果滚动完成并达到延迟时间，触发指针更新事件
+                    if (m_scrollTimer >= m_scrollFinishDelay)
+                    {
+                        m_isScrolling = false; // 滚动完成
+                        OnScrollCompleted(); // 触发滚动完成事件
+                    }
+                }
+                else
+                {
+                    m_scrollTimer = 0f; // 如果未接近目标位置，重置计时器
+                }
             }
+        }
+
+        // 滚动完成事件逻辑
+        private void OnScrollCompleted()
+        {
+            UINavigationCursorTarget selectionCursorTarget = m_selection?.GetComponent<UINavigationCursorTarget>();
+
+            GameManager.NotificationSystem.MoveNavigationCursorAfterScrollRectSnap.Invoke(selectionCursorTarget, true);
         }
     }
 }
