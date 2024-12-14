@@ -7,7 +7,7 @@ namespace Gyvr.Mythril2D
     public class DamageItem : Item
     {
         [Header("Effect")]
-        [SerializeField] private int m_healthToDamage = 1;
+        [SerializeField] private float m_healthToDamageProportion = 1;
         [SerializeField] private int m_damageType = 1;
 
         [Header("Audio")]
@@ -30,11 +30,13 @@ namespace Gyvr.Mythril2D
             }
             else
             {
+                int healthToDamage = Mathf.CeilToInt(target.maxStats[EStat.Health] * m_healthToDamageProportion);
+
                 target.Damage(new DamageOutputDescriptor
                 {
                     source = EDamageSource.Unknown,
                     attacker = this,
-                    damage = m_healthToDamage,
+                    damage = healthToDamage,
                     damageType = EDamageType.None,
                     distanceType = EDistanceType.None,
                     flags = EDamageFlag.None

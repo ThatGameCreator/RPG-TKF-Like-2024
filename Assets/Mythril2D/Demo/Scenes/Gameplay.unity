@@ -1090,6 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1203e726b1150ad44b010357a6e0aa24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_bellAudio: {fileID: 11400000, guid: 33d7d249446d4ff45845cb19a2ed510b, type: 2}
   m_lightingManager: {fileID: 2024768596}
   m_maxBrightness: 0.35
   m_maxRemainTime: 600
@@ -3710,6 +3711,10 @@ PrefabInstance:
     - target: {fileID: 3912058424280005732, guid: 622d32ce775eccc40b3d8562c86c6da2, type: 3}
       propertyPath: m_Name
       value: Menus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504123441082662216, guid: 622d32ce775eccc40b3d8562c86c6da2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4679261496566474373, guid: 622d32ce775eccc40b3d8562c86c6da2, type: 3}
       propertyPath: m_AnchorMax.y

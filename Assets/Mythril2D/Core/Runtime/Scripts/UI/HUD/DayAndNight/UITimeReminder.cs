@@ -93,6 +93,7 @@ namespace Gyvr.Mythril2D
 
             else
             {
+
                 m_timeText.color = Color.white;
 
                 // 这里感觉应该传送的时候获取一次就可以了，没必要一直更新计算
@@ -105,6 +106,11 @@ namespace Gyvr.Mythril2D
                 if (m_isTextBeRed == false && totalCurrentSecond <= GameManager.DayNightSystem.maxEmergencyTime)
                 {
                     m_timeText.color = Color.red;
+
+                    if (GameManager.DayNightSystem.isPlayBellSound == false)
+                    {
+                        GameManager.DayNightSystem.PlayBellSound();
+                    }
                 }
 
                 m_timeText.text = StringFormatter.Format("{0:D2} : {1:D2}", currentMinute, currentSecond);

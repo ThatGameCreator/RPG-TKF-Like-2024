@@ -2,11 +2,11 @@
 
 namespace Gyvr.Mythril2D
 {
-    [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(ManaPotion))]
-    public class ManaPotion : Item
+    [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(ManaItem))]
+    public class ManaItem : Item
     {
         [Header("Effect")]
-        [SerializeField] private int m_manaToRestore = 1;
+        [SerializeField] private float m_manaToRestoreProportion = 1;
 
         [Header("Audio")]
         [SerializeField] private AudioClipResolver m_drinkAudio;
@@ -32,7 +32,11 @@ namespace Gyvr.Mythril2D
                 if (target.currentStats[EStat.Mana] < target.maxStats[EStat.Mana])
                 {
                     int previousMana = target.currentStats[EStat.Mana];
-                    target.RecoverMana(m_manaToRestore);
+
+                    int manaToRestore = Mathf.CeilToInt(target.maxStats[EStat.Mana] * m_manaToRestoreProportion);
+
+                    target.RecoverMana(manaToRestore);
+
                     int currentMana = target.currentStats[EStat.Mana];
                     int diff = currentMana - previousMana;
 

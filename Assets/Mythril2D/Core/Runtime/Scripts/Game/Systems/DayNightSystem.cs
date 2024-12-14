@@ -21,6 +21,13 @@ namespace Gyvr.Mythril2D
         public float maxEmergencyTime => m_maxEmergencyTime;
         public float currentTime => m_currentTime;
         private bool isOnEnableSystem = false;
+        private bool m_isPlayBellSound = false;
+
+        public bool isPlayBellSound
+        {
+            get => m_isPlayBellSound;
+            set => m_isPlayBellSound = value;
+        }
 
         // 设不设置在这里更新这个亮度并没有作用，感觉这个光源系统并没有真正启用
         //private void Awake()
@@ -80,6 +87,7 @@ namespace Gyvr.Mythril2D
             m_currentTime = m_maxRemainTime;
 
             isOnEnableSystem = true;
+            m_isPlayBellSound = false;
 
             m_timeReminder.gameObject.SetActive(true);
         }
@@ -94,7 +102,16 @@ namespace Gyvr.Mythril2D
 
             isOnEnableSystem = false;
 
+            m_isPlayBellSound = false;
+
             m_timeReminder.gameObject.SetActive(false);
+        }
+
+        public void PlayBellSound()
+        {
+            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_bellAudio);
+
+            m_isPlayBellSound = true;
         }
     }
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
   m_localizationKey: id_leather_boots_name
   m_displayName: Leather Boots
   m_description: 
-  m_descriptionKey: 
+  m_descriptionKey: id_leather_boots_description
   m_buyPrice: 20
   m_sellPrice: 10
   m_isStackable: 0
@@ -25,7 +25,9 @@ MonoBehaviour:
   m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
   m_type: 4
   m_bonusStats:
+    isEquip: 0
     m_values: 000000000000000000000000000000000000000001000000010000000000000000000000
+  m_stamina: 0
   m_visualOverride: {fileID: 0}
   m_capacity: 2
   m_ability: []

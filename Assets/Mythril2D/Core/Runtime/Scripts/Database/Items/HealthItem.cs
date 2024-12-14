@@ -6,7 +6,7 @@ namespace Gyvr.Mythril2D
     public class HealthItem : Item
     {
         [Header("Effect")]
-        [SerializeField] private int m_healthToRestore = 1;
+        [SerializeField] private float m_healthToRestoreProportion = 1;
 
         [Header("Audio")]
         [SerializeField] private AudioClipResolver m_drinkAudio;
@@ -31,9 +31,16 @@ namespace Gyvr.Mythril2D
                 if (target.currentStats[EStat.Health] < target.maxStats[EStat.Health])
                 {
                     int previousHealth = target.currentStats[EStat.Health];
-                    target.Heal(m_healthToRestore);
+
+                    // 计算恢复量：最大生命值乘以恢复比例，然后向上取整
+                    int healthToRestore = Mathf.CeilToInt(target.maxStats[EStat.Health] * m_healthToRestoreProportion);
+
+                    // 恢复生命值
+                    target.Heal(healthToRestore);
+
                     int currentHealth = target.currentStats[EStat.Health];
                     int diff = currentHealth - previousHealth;
+
 
                     //GameManager.DialogueSystem.Main.PlayNow("You recover {0} <health>", diff);
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_drinkAudio);

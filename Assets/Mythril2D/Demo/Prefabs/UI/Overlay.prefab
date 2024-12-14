@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5267345311785430835}
   - component: {fileID: 7890783980206549039}
   - component: {fileID: 640183634070533639}
+  - component: {fileID: 1599502633039781461}
   m_Layer: 5
   m_Name: Event Log
   m_TagString: Untagged
@@ -31,12 +32,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1866998275999860181}
+  m_Father: {fileID: 3113666823547508093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -582, y: 650}
-  m_SizeDelta: {x: 550, y: 540}
+  m_AnchoredPosition: {x: -205.91891, y: 93.532074}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5267345311785430835
 CanvasRenderer:
@@ -64,7 +65,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 8
-  m_Spacing: 0
+  m_Spacing: 4
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -132,6 +133,20 @@ MonoBehaviour:
     enabled: 1
     text: '"{0}" Completed!'
     color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1599502633039781461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645439846901403807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &1821668633575855645
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +235,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821668633575855645}
   m_CullTransparentMesh: 1
+--- !u!1 &1906426925185214276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3113666823547508093}
+  m_Layer: 5
+  m_Name: Event Log Space
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3113666823547508093
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906426925185214276}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7955926208305362187}
+  m_Father: {fileID: 1866998275999860181}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1600, y: -688}
+  m_SizeDelta: {x: 500, y: 500}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4275348302589817022
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +300,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6450010526611517230}
-  - {fileID: 7955926208305362187}
+  - {fileID: 3113666823547508093}
   - {fileID: 934421139194191428}
   - {fileID: 4069695953050887688}
   - {fileID: 5148057460431876941}
