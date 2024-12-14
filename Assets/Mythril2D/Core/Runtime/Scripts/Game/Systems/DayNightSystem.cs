@@ -6,6 +6,9 @@ namespace Gyvr.Mythril2D
 {
     public class DayNightSystem : AGameSystem
     {
+        [Header("Audio")]
+        [SerializeField] private AudioClipResolver m_bellAudio;
+
         [SerializeField] private LightingManager2D m_lightingManager = null;
         [SerializeField] private float m_maxBrightness = 0.5f;
         [SerializeField] private float m_maxRemainTime = 180f;

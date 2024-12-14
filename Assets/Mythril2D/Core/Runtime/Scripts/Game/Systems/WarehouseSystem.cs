@@ -26,7 +26,7 @@ namespace Gyvr.Mythril2D
         public List<ItemInstance> warehouseItems => m_warehouseItems;
         private List<ItemInstance> m_warehouseItems = new List<ItemInstance>();
         public int warehouseCapacity => m_warehouseCapacity;
-        private int m_warehouseCapacity = 35; // 默认容量
+        private int m_warehouseCapacity = 90; // 默认容量
 
         public bool isOpenning = false;
 

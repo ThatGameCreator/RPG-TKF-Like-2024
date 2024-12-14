@@ -213,7 +213,7 @@ namespace Gyvr.Mythril2D
                 {
                     TryPlayOpeningAnimation(true);
 
-                    if (m_isEmptyChest)
+                    if (m_isEmptyChest == false)
                     {
                         if (randomEntry != null)
                         {

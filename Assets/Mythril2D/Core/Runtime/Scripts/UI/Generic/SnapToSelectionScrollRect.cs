@@ -47,6 +47,7 @@ namespace Gyvr.Mythril2D
         private void Update()
         {
             GameObject selection = GetSelectedChild();
+
             // If the selection changed.
             if (selection != m_selection)
             {
@@ -61,23 +62,27 @@ namespace Gyvr.Mythril2D
                     // 计算选中项目在内容中的位置
                     float itemPositionInContent = -selectionRectTransform.anchoredPosition.y;
 
+                    Debug.Log(itemPositionInContent);
+
                     // 计算视口的高度和内容的高度
                     float viewportHeight = viewportRectTransform.rect.height;
                     float contentHeight = contentRectTransform.rect.height;
-
+                    
                     // 计算滑动目标位置
                     float destinationY = 0;
 
                     // 如果选中项目完全在视口外
                     if (itemPositionInContent < 0 || itemPositionInContent > viewportHeight)
                     {
+                        Debug.Log("if (itemPositionInContent < 0 || itemPositionInContent > viewportHeight)");
+
                         // 将选中项目居中
                         destinationY = itemPositionInContent - (viewportHeight / 2) + (selectionRectTransform.rect.height / 2);
                     }
 
                     // 确保滑动目标在内容范围内
                     destinationY = Mathf.Clamp(destinationY, 0, Mathf.Max(0, contentHeight - viewportHeight));
-
+                    
                     // If the ScrollRect is not hovered, update destination
                     if (!m_hovered)
                     {

@@ -55,19 +55,19 @@ namespace Gyvr.Mythril2D
                         if (value != 0)
                         {
                             m_itemDescription.text += 
-                            $" <u>{(value > 0 ? '+' : '-')}{value}\u00A0" +
+                            $"\n<u>{(value > 0 ? '+' : '-')}{value}\u00A0" +
                             $"{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString(GameManager.Config.GetTermDefinition(stat).fullName)}</u>";
                         }
                     }
 
                     if(equipment.stamina != 0)
                     {
-                        m_itemDescription.text += $" <u>{(equipment.stamina > 0 ? '+' : '-')}{equipment.stamina}\u00A0{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString("id_term_definition_stamina")}</u>"; ;
+                        m_itemDescription.text += $"\n<u>{(equipment.stamina > 0 ? '+' : '-')}{equipment.stamina}\u00A0{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString("id_term_definition_stamina")}</u>"; ;
                     }
 
                     if(equipment.capacity != 0)
                     {
-                        m_itemDescription.text += $" <u>{(equipment.capacity > 0 ? '+' : '-')}{equipment.capacity}\u00A0{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString("id_term_definition_capacity")}</u>"; ;
+                        m_itemDescription.text += $"\n<u>{(equipment.capacity > 0 ? '+' : '-')}{equipment.capacity}\u00A0{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString("id_term_definition_capacity")}</u>"; ;
                     }
                 }
             }
