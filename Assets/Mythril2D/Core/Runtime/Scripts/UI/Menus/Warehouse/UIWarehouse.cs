@@ -40,11 +40,11 @@ namespace Gyvr.Mythril2D
             m_uiCurrency.RegisterCallbacks(new Dictionary<Button, UnityAction>
             {
                 { m_warehouseIncreaseAllButton, () => TransferMoney(true, GameManager.InventorySystem.backpackMoney) },
-                { m_warehouseIncreaseTenButton, () => TransferMoney(true, 10) },
-                { m_warehouseIncreaseOneButton, () => TransferMoney(true, 1) },
+                { m_warehouseIncreaseTenButton, () => TransferMoney(true, 100) },
+                { m_warehouseIncreaseOneButton, () => TransferMoney(true, 10) },
                 { m_backpackIncreaseAllButton, () => TransferMoney(false, GameManager.WarehouseSystem.warehouseMoney) },
-                { m_backpackIncreaseTenButton, () => TransferMoney(false, 10) },
-                { m_backpackIncreaseOneButton, () => TransferMoney(false, 1) }
+                { m_backpackIncreaseTenButton, () => TransferMoney(false, 100) },
+                { m_backpackIncreaseOneButton, () => TransferMoney(false, 10) }
             });
         }
 

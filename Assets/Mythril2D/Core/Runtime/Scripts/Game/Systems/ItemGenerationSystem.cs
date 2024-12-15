@@ -8,7 +8,7 @@ namespace Gyvr.Mythril2D
         [SerializeField]
         public SerializableDictionary<Item, SurfaceItem> InstanceObjects = null;
 
-        private SerializableDictionary<int, SurfaceItem> m_instantiateItems = new SerializableDictionary<int, SurfaceItem>();
+        public SerializableDictionary<int, SurfaceItem> m_instantiateItems = new SerializableDictionary<int, SurfaceItem>();
         private int m_currentyItemCount = 0;
 
         public void DropItemToPlayer(Item item, int quantity)
@@ -36,22 +36,27 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public void DestoryAllItemOnTeleport()
+        public void DestroyAllItemsOnTeleport()
         {
-            if(m_instantiateItems.Count != 0)
+            if (m_instantiateItems.Count != 0)
             {
-                foreach (var itemKeyToValue in m_instantiateItems)
-                {
-                    // 好像这样写只是销毁了引用？并没有真的销毁对象？
-                    // Destroy(item);
-                    // 不懂得写成gameobject才行
-                    Destroy(itemKeyToValue.Value.gameObject);
+                // 保存所有的键
+                List<int> keys = new List<int>(m_instantiateItems.Keys);
 
-                    m_instantiateItems.Remove(itemKeyToValue.Key);
+                foreach (var itemKey in keys)
+                {
+                    // 销毁GameObject
+                    if (m_instantiateItems[itemKey] != null)
+                    {
+                        Destroy(m_instantiateItems[itemKey].gameObject);
+                    }
+
+                    // 从字典中移除
+                    m_instantiateItems.Remove(itemKey);
                 }
 
+                // 确保清空
                 m_instantiateItems.Clear();
-
                 m_currentyItemCount = 0;
             }
         }

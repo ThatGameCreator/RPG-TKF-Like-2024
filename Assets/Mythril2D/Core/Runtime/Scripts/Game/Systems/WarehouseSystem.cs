@@ -10,6 +10,7 @@ namespace Gyvr.Mythril2D
     public struct WarehouseDataBlock
     {
         public int money;
+        public int warehouseCapacity;
         //public SerializableDictionary<DatabaseEntryReference<Item>, int> items;
         public List<ItemInstance> items; // ¸ÄÎª List<ItemInstance>
     }
@@ -213,6 +214,7 @@ namespace Gyvr.Mythril2D
         public void LoadDataBlock(WarehouseDataBlock block)
         {
             m_warehouseMoney = block.money;
+            m_warehouseCapacity = block.warehouseCapacity;
             m_warehouseItems = block.items
                 .Select(instanceData => new ItemInstance(GameManager.Database.LoadFromReference(instanceData.itemReference), instanceData.quantity))
                 .ToList();
@@ -223,6 +225,7 @@ namespace Gyvr.Mythril2D
             return new WarehouseDataBlock
             {
                 money = m_warehouseMoney,
+                warehouseCapacity = warehouseCapacity,
                 items = warehouseItems.Select(instance => new ItemInstance(instance.GetItem(), instance.quantity)).ToList()
             };
         }

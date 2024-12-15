@@ -132,11 +132,27 @@ namespace Gyvr.Mythril2D
             {
                 m_money.text = GameManager.InventorySystem.backpackMoney.ToString();
             }
-            else
+            else if(transactionType == ETransactionType.Sell)
+            {
+                UIInventoryBagSlot bagItem = selection.GetComponent<UIInventoryBagSlot>();
+
+                if (IsSellAbleItem(bagItem.GetItem()) == true)
+                {
+                    m_money.text = string.Format("{0}  ({1}{2})",
+                   GameManager.InventorySystem.backpackMoney,
+                  "+",
+                   selectedItemPrice);
+                }
+                else
+                {
+                    m_money.text = GameManager.InventorySystem.backpackMoney.ToString();
+                }
+            }
+            else if(transactionType == ETransactionType.Buy)
             {
                 m_money.text = string.Format("{0}  ({1}{2})",
                     GameManager.InventorySystem.backpackMoney,
-                    transactionType == ETransactionType.Buy ? "-" : "+",
+                    "-",
                     selectedItemPrice);
             }
         }
@@ -206,17 +222,21 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        private void OnBagItemClicked(Item item)
+        private bool IsSellAbleItem(Item item)
         {
-            bool isSellable = false;
-
-            foreach(var sellType in m_shop.availableSellTypes)
+            foreach (var sellType in m_shop.availableSellTypes)
             {
-                if(sellType == item.Category)
+                if (sellType == item.Category)
                 {
-                    isSellable = true;
+                    return true;
                 }
             }
+            return false;
+        }
+
+        private void OnBagItemClicked(Item item)
+        {
+            bool isSellable = IsSellAbleItem(item);
 
             // 检查物品类型是否可出售
             if (isSellable == false)

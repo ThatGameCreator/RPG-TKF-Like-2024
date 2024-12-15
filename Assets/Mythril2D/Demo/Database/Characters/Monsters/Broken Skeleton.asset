@@ -26,9 +26,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 586bc32c63f39a540b24c67a91cdc7d4, type: 2}
     m_values: 01000000010000000100000001000000010000000100000001000000
   m_hitAudio: {fileID: 11400000, guid: a4e5377a4fc466b41889cf9f0874ca00, type: 2}
-  m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
+  m_deathAudio: {fileID: 11400000, guid: d943c71087502c040bff73e9d223a18f, type: 2}
   stats:
     m_initialValue:
+      isEquip: 0
       m_values: 060000000100000000000000030000000100000004000000040000000200000001000000
     m_evolutionProfile:
       serializedVersion: 2

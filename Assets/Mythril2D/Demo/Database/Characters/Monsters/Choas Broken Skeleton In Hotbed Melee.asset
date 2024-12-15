@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_alignment: 1
   m_displayName: Broken Skeleton
+  m_displayNameKey: 
   m_abilitiesPerLevel:
     m_keys:
     - {fileID: 11400000, guid: 99a1ae71ae3546d409ad9ca3d6bce26c, type: 2}
@@ -22,9 +23,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e88c025ffe08fbf4d8816ab7e8e8f8ac, type: 2}
     m_values: 01000000010000000100000001000000
   m_hitAudio: {fileID: 11400000, guid: a4e5377a4fc466b41889cf9f0874ca00, type: 2}
-  m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
+  m_deathAudio: {fileID: 11400000, guid: d943c71087502c040bff73e9d223a18f, type: 2}
   stats:
     m_initialValue:
+      isEquip: 0
       m_values: 0a0000000100000000000000050000000100000006000000060000000300000001000000
     m_evolutionProfile:
       serializedVersion: 2

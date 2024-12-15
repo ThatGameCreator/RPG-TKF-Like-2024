@@ -30,9 +30,11 @@ MonoBehaviour:
       completedQuests: []
     inventory:
       money: 0
+      backpackCapacity: 20
       items: []
     warehouse:
       money: 300
+      warehouseCapacity: 90
       items:
       - itemReference:
           m_instance: {fileID: 11400000, guid: a76d391edd3ba0f49a05356890410d0e, type: 2}

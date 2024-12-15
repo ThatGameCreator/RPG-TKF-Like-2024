@@ -644,7 +644,8 @@ namespace Gyvr.Mythril2D
 
         protected virtual void Die()
         {
-            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
+            //GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
+            GameManager.AudioSystem.PlayAudioOnObject(characterSheet.deathAudio, this.gameObject);
 
             //Debug.Log("Die");
             // 执行子类 Hero 的 OnDeath 方法中的监听事件才会调用Death界面

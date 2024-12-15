@@ -92,7 +92,8 @@ namespace Gyvr.Mythril2D
 
         void MonsterDie()
         {
-            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
+            //GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
+            GameManager.AudioSystem.PlayAudioOnObject(characterSheet.deathAudio, this.gameObject);
 
             // if play animation fail then destory the object
             if (TryPlayDeathAnimation() == false)

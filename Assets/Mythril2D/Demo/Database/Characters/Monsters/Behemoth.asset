@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_alignment: 1
   m_displayName: Behemoth
+  m_displayNameKey: 
   m_abilitiesPerLevel:
     m_keys:
     - {fileID: 11400000, guid: b06093e24c115934bbe86db3ebc2c95a, type: 2}
     - {fileID: 11400000, guid: 31e5b38027aa6074db4a265b711c576e, type: 2}
     m_values: 0000000000000000
   m_hitAudio: {fileID: 11400000, guid: a4e5377a4fc466b41889cf9f0874ca00, type: 2}
-  m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
+  m_deathAudio: {fileID: 11400000, guid: 0b3dc2a97d6dc114699d6b2a7c3f01e5, type: 2}
   stats:
     m_initialValue:
+      isEquip: 0
       m_values: 0f0000000a0000000000000008000000000000000c000000080000000200000001000000
     m_evolutionProfile:
       serializedVersion: 2

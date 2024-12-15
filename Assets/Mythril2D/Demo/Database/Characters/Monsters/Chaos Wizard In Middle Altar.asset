@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_alignment: 1
   m_displayName: Chaos Wizard
+  m_displayNameKey: 
   m_abilitiesPerLevel:
     m_keys:
     - {fileID: 11400000, guid: 7ad0b82f8ad3099458473c94183fdbde, type: 2}
     - {fileID: 11400000, guid: a09b0a2616e39914a822651da89c282f, type: 2}
     m_values: 0100000001000000
   m_hitAudio: {fileID: 11400000, guid: a4e5377a4fc466b41889cf9f0874ca00, type: 2}
-  m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
+  m_deathAudio: {fileID: 11400000, guid: 56ef88037c3eb5e449808d3a8502ce0d, type: 2}
   stats:
     m_initialValue:
+      isEquip: 0
       m_values: 0c0000000800000000000000020000000400000004000000040000000300000003000000
     m_evolutionProfile:
       serializedVersion: 2

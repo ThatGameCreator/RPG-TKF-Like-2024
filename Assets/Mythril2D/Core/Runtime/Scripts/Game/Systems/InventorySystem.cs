@@ -10,6 +10,7 @@ namespace Gyvr.Mythril2D
     public struct InventoryDataBlock
     {
        public int money;
+       public int backpackCapacity;
         //public SerializableDictionary<DatabaseEntryReference<Item>, int> items;
        public List<ItemInstance> items; // ¸ÄÎª List<ItemInstance>
     }
@@ -407,6 +408,7 @@ namespace Gyvr.Mythril2D
         public void LoadDataBlock(InventoryDataBlock block)
         {
             m_backpackMoney = block.money;
+            m_backpackCapacity = block.backpackCapacity;
             m_backpackItems = block.items
                 .Select(instanceData => new ItemInstance(GameManager.Database.LoadFromReference(instanceData.itemReference), instanceData.quantity))
                 .ToList();
@@ -417,6 +419,7 @@ namespace Gyvr.Mythril2D
             return new InventoryDataBlock
             {
                 money = backpackMoney,
+                backpackCapacity = backpackCapacity,
                 items = backpackItems.Select(instance => new ItemInstance(instance.GetItem(), instance.quantity)).ToList()
             };
         }

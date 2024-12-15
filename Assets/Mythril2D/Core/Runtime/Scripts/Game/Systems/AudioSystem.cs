@@ -82,26 +82,50 @@ namespace Gyvr.Mythril2D
             return 0.0f;
         }
 
+        // 加载音频设置方法
         private void LoadSettings()
         {
-            SetMasterVolume(PlayerPrefs.GetFloat(kMasterVolumePlayerPrefsKey, m_masterVolume));
+            // 先加载主音量，如果未存储，则设置为1（最大值）
+            m_masterVolume = PlayerPrefs.GetFloat(kMasterVolumePlayerPrefsKey, 1.0f);
+            SetMasterVolume(m_masterVolume);
 
+
+            // 遍历所有音频通道
             foreach (KeyValuePair<EAudioChannel, AudioChannel> channel in m_audioChannels)
             {
-                float savedVolume = PlayerPrefs.GetFloat($"{kChannelVolumePlayerPrefsKey}{channel.Key}", channel.Value.GetVolumeScale());
+                // 从 PlayerPrefs 获取当前通道的音量比例，若无保存值则使用默认值
+                float savedVolume = PlayerPrefs.GetFloat(
+                    $"{kChannelVolumePlayerPrefsKey}{channel.Key}",
+                    1.0f // 默认值为1
+                );
+
+                // 根据主音量对音量比例进行调整并应用到音频通道
                 channel.Value.SetVolumeScale(savedVolume / m_masterVolume);
             }
         }
 
+        // 保存音频设置方法
         private void SaveSettings()
         {
+            // 将主音量保存到 PlayerPrefs 中
             PlayerPrefs.SetFloat(kMasterVolumePlayerPrefsKey, m_masterVolume);
 
+            // 遍历所有音频通道
             foreach (KeyValuePair<EAudioChannel, AudioChannel> channel in m_audioChannels)
             {
-                PlayerPrefs.SetFloat($"{kChannelVolumePlayerPrefsKey}{channel.Key}", channel.Value.GetVolumeScale());
+                // 当前音量比例
+                float volumeScale = channel.Value.GetVolumeScale();
+
+                if (volumeScale <= 0) // 确保不为0
+                    volumeScale = 1.0f;
+
+                // 保存当前通道的音量比例到 PlayerPrefs 中
+                // 键名：频道音量的唯一标识
+                PlayerPrefs.SetFloat($"{kChannelVolumePlayerPrefsKey}{channel.Key}", volumeScale);
+
             }
 
+            // 调用 Save() 方法确保设置持久化到存储中
             PlayerPrefs.Save();
         }
 

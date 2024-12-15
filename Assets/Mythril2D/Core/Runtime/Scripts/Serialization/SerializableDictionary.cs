@@ -25,15 +25,7 @@ namespace Gyvr.Mythril2D
     [Serializable]
     public abstract class SerializableDictionaryBase<TKey, TValue, TValueStorage> : SerializableDictionaryBase, IDictionary<TKey, TValue>, IDictionary, ISerializationCallbackReceiver, IDeserializationCallback, ISerializable
     {
-        //[SerializeField]
-        //TKey[] m_keys;
-        //[SerializeField]
-        //TValueStorage[] m_values;
-
-        //Dictionary<TKey, TValue> m_dict;
-
         [SerializeField]
-        //private List<KeyValuePair<TKey, TValue>> m_keyValuePairs = new List<KeyValuePair<TKey, TValue>>();
         private Dictionary<TKey, TValue> m_dict = new Dictionary<TKey, TValue>(); // 核心字典数据
 
         [SerializeField]
@@ -102,38 +94,6 @@ namespace Gyvr.Mythril2D
             SyncListsToDictionary();
         }
 
-
-        //public void OnAfterDeserialize()
-        //{
-        //    if (m_keys != null && m_values != null && m_keys.Length == m_values.Length)
-        //    {
-        //        m_dict.Clear();
-        //        int n = m_keys.Length;
-        //        for (int i = 0; i < n; ++i)
-        //        {
-        //            m_dict[m_keys[i]] = GetValue(m_values, i);
-        //        }
-
-        //        m_keys = null;
-        //        m_values = null;
-        //    }
-        //}
-
-        //public void OnBeforeSerialize()
-        //{
-        //    int n = m_dict.Count;
-        //    m_keys = new TKey[n];
-        //    m_values = new TValueStorage[n];
-
-        //    int i = 0;
-        //    foreach (var kvp in m_dict)
-        //    {
-        //        m_keys[i] = kvp.Key;
-        //        SetValue(m_values, i, kvp.Value);
-        //        ++i;
-        //    }
-        //}
-
         public SerializableDictionaryBase()
         {
             m_dict = new Dictionary<TKey, TValue>();
@@ -158,17 +118,6 @@ namespace Gyvr.Mythril2D
 
         #region IDictionary<TKey, TValue>
 
-        //public ICollection<TKey> Keys { get { return ((IDictionary<TKey, TValue>)m_dict).Keys; } }
-        //public ICollection<TValue> Values { get { return ((IDictionary<TKey, TValue>)m_dict).Values; } }
-        //public int Count { get { return ((IDictionary<TKey, TValue>)m_dict).Count; } }
-        //public bool IsReadOnly { get { return ((IDictionary<TKey, TValue>)m_dict).IsReadOnly; } }
-
-        //public TValue this[TKey key]
-        //{
-        //    get { return ((IDictionary<TKey, TValue>)m_dict)[key]; }
-        //    set { ((IDictionary<TKey, TValue>)m_dict)[key] = value; }
-        //}
-
         public ICollection<TKey> Keys => m_dict.Keys;
         public ICollection<TValue> Values => m_dict.Values;
         public int Count => m_dict.Count;
@@ -181,66 +130,10 @@ namespace Gyvr.Mythril2D
             set => m_dict[key] = value;
         }
 
-        //public void Add(TKey key, TValue value)
-        //{
-        //    ((IDictionary<TKey, TValue>)m_dict).Add(key, value);
-        //}
-
-        //public bool ContainsKey(TKey key)
-        //{
-        //    return ((IDictionary<TKey, TValue>)m_dict).ContainsKey(key);
-        //}
-
-        //public bool Remove(TKey key)
-        //{
-        //    return ((IDictionary<TKey, TValue>)m_dict).Remove(key);
-        //}
-
-        //public bool TryGetValue(TKey key, out TValue value)
-        //{
-        //    return ((IDictionary<TKey, TValue>)m_dict).TryGetValue(key, out value);
-        //}
-
         public void Add(TKey key, TValue value) => m_dict.Add(key, value);
         public bool ContainsKey(TKey key) => m_dict.ContainsKey(key);
         public bool Remove(TKey key) => m_dict.Remove(key);
         public bool TryGetValue(TKey key, out TValue value) => m_dict.TryGetValue(key, out value);
-
-
-        //public void Add(KeyValuePair<TKey, TValue> item)
-        //{
-        //    ((IDictionary<TKey, TValue>)m_dict).Add(item);
-        //}
-
-        //public void Clear()
-        //{
-        //    ((IDictionary<TKey, TValue>)m_dict).Clear();
-        //}
-
-        //public bool Contains(KeyValuePair<TKey, TValue> item)
-        //{
-        //    return ((IDictionary<TKey, TValue>)m_dict).Contains(item);
-        //}
-
-        //public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
-        //{
-        //    ((IDictionary<TKey, TValue>)m_dict).CopyTo(array, arrayIndex);
-        //}
-
-        //public bool Remove(KeyValuePair<TKey, TValue> item)
-        //{
-        //    return ((IDictionary<TKey, TValue>)m_dict).Remove(item);
-        //}
-
-        //public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
-        //{
-        //    return ((IDictionary<TKey, TValue>)m_dict).GetEnumerator();
-        //}
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return ((IDictionary<TKey, TValue>)m_dict).GetEnumerator();
-        //}
 
         public void Add(KeyValuePair<TKey, TValue> item) => m_dict.Add(item.Key, item.Value);
         public void Clear() => m_dict.Clear();
@@ -318,6 +211,7 @@ namespace Gyvr.Mythril2D
                 info.AddValue(keyString, kvp.Value);
             }
         }
+
         protected SerializableDictionaryBase(SerializationInfo info, StreamingContext context)
         {
             m_dict = new Dictionary<TKey, TValue>();
@@ -359,10 +253,6 @@ namespace Gyvr.Mythril2D
                 Add(kvp.Key, kvp.Value);
             }
         }
-
-        //public SerializableDictionary() { }
-        //public SerializableDictionary(IDictionary<TKey, TValue> dict) : base(dict) { }
-
 
         protected SerializableDictionary(SerializationInfo info, StreamingContext context) : base(info, context) { }
 

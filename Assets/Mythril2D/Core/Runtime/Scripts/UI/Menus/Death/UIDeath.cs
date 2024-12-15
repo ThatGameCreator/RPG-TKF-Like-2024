@@ -103,7 +103,11 @@ namespace Gyvr.Mythril2D
 
         public void GoToMainMenu()
         {
-            GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+            // 不是战斗场景则保存数据
+            if (GameManager.TeleportLoadingSystem.currentMap == "Pilgrimage_Place")
+            {
+                GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+            }
 
             SceneManager.LoadScene(GameManager.Config.mainMenuSceneName);
         }

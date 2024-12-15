@@ -940,6 +940,9 @@ MonoBehaviour:
   UIWarehouseClosed:
     m_PersistentCalls:
       m_Calls: []
+  MoveNavigationCursorAfterScrollRectSnap:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &624900829
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,6 +2309,18 @@ PrefabInstance:
     - target: {fileID: 3006876463823201295, guid: 9bdd881885acf614cb837ed0cb3dae9f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113666823547508093, guid: 9bdd881885acf614cb837ed0cb3dae9f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 650
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113666823547508093, guid: 9bdd881885acf614cb837ed0cb3dae9f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1550
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113666823547508093, guid: 9bdd881885acf614cb837ed0cb3dae9f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -716
       objectReference: {fileID: 0}
     - target: {fileID: 3484875085649220483, guid: 9bdd881885acf614cb837ed0cb3dae9f, type: 3}
       propertyPath: m_AnchorMax.y

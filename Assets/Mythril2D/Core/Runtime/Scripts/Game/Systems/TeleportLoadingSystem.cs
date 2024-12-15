@@ -59,7 +59,7 @@ namespace Gyvr.Mythril2D
                 map = m_defaultResurrectionMap;
             }
             // 加载前销毁生成在地图上的物品
-            GameManager.ItemGenerationSystem.DestoryAllItemOnTeleport();
+            GameManager.ItemGenerationSystem.DestroyAllItemsOnTeleport();
 
             // 停止播放任何音频
             GameManager.AudioSystem.StopAllChannels();

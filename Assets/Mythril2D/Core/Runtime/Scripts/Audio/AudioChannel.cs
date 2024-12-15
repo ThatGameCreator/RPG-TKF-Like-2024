@@ -23,14 +23,13 @@ namespace Gyvr.Mythril2D
         [SerializeField] private float m_fadeOutDuration = 0.5f;
         [SerializeField] private float m_fadeInDuration = 0.25f;
 
-        private List<AudioSource> m_audioSourcePool = new List<AudioSource>();
+        [SerializeField] private List<AudioSource> m_audioSourcePool = new List<AudioSource>();
         private Dictionary<AudioSource, Coroutine> m_fadeCoroutines = new Dictionary<AudioSource, Coroutine>();
 
         public AudioClipResolver lastPlayedAudioClipResolver => m_lastPlayedClip;
         private AudioClipResolver m_lastPlayedClip = null;
         private const int kMaxAudioSourcePoolSize = 20;
         private Dictionary<AudioSource, float> m_idleTimers = new Dictionary<AudioSource, float>();
-        private const float kIdleTimeout = 30.0f; // 30秒闲置后销毁
 
         private void Awake()
         {
@@ -40,7 +39,81 @@ namespace Gyvr.Mythril2D
 
         private void Start()
         {
-            //StartCoroutine(PeriodicRecycle());
+            StartCoroutine(PeriodicRecycle());
+        }
+
+        private void OnEnable()
+        {
+            StartCoroutine(PeriodicRecycle());
+        }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines(); // 停止所有协程，避免冲突
+        }
+
+
+        private IEnumerator PeriodicRecycle()
+        {
+            while (m_audioSourcePool != null)
+            {
+                UpdateIdleTimers();
+                // 设置几秒执行一次回收协程
+                yield return new WaitForSeconds(5f); 
+            }
+        }
+
+        private void UpdateIdleTimers()
+        {
+            foreach (var source in m_audioSourcePool)
+            {
+                // 检查是否需要回收
+                if (!source.isPlaying)
+                {
+                    source.clip = null; // 手动清空 clip
+                }
+            }
+
+            Debug.Log($"UpdateIdleTimers called. Pool size: {m_audioSourcePool.Count}");
+
+            List<AudioSource> sourcesToRecycle = new List<AudioSource>();
+
+            foreach (var source in m_audioSourcePool)
+            {
+                // AudioSource.clip 可能在音频播放结束后仍然保留，未被设置为 null
+                if (!source.isPlaying && source.clip == null)
+                {
+                    // 标记需要回收的音频源
+                    sourcesToRecycle.Add(source);
+
+                    Debug.Log($"AudioSource {source.name} marked for recycling.");
+                }
+            }
+
+            // 回收标记的音频源
+            foreach (var source in sourcesToRecycle)
+            {
+                RecycleUnusedAudioSource(source);
+            }
+
+            Debug.Log($"Idle timers updated. {sourcesToRecycle.Count} sources recycled.");
+        }
+
+        private void RecycleUnusedAudioSource(AudioSource source)
+        {
+            lock (m_audioSourcePool)
+            {
+                    if (source == null) return; // 避免尝试销毁已经为 null 的对象
+
+                // 从音频源池中移除
+                m_audioSourcePool.Remove(source);
+
+                // 销毁音频源的 GameObject
+                if (source.gameObject != null)
+                {
+                    Destroy(source.gameObject);
+                }
+            }
         }
 
         public void FindPlayer()
@@ -117,49 +190,6 @@ namespace Gyvr.Mythril2D
             return source;
         }
 
-        private IEnumerator PeriodicRecycle()
-        {
-            while (true)
-            {
-                UpdateIdleTimers();
-                yield return new WaitForSeconds(10f); // 每隔10秒检查一次
-            }
-        }
-
-        private void UpdateIdleTimers()
-        {
-            List<AudioSource> sourcesToRecycle = new List<AudioSource>();
-
-            foreach (var source in m_audioSourcePool)
-            {
-                if (!source.isPlaying && source.clip == null)
-                {
-                    // 标记需要回收的音频源
-                    sourcesToRecycle.Add(source);
-                }
-            }
-
-            // 回收标记的音频源
-            foreach (var source in sourcesToRecycle)
-            {
-                RecycleUnusedAudioSource(source);
-            }
-        }
-
-        private void RecycleUnusedAudioSource(AudioSource source)
-        {
-            if (source == null) return; // 避免尝试销毁已经为 null 的对象
-
-            // 从音频源池中移除
-            m_audioSourcePool.Remove(source);
-
-            // 销毁音频源的 GameObject
-            if (source.gameObject != null)
-            {
-                Destroy(source.gameObject);
-            }
-        }
-
         private AudioSource GetAvailableAudioSource()
         {
             // 清理音频池中已经被销毁的引用
@@ -197,7 +227,8 @@ namespace Gyvr.Mythril2D
         {
             foreach (var source in m_audioSourcePool)
             {
-                if (source.clip == clip && source.isPlaying)
+                // 多个防空引用试试
+                if (source.clip != null && source.clip == clip && source.isPlaying)
                 {
                     source.Stop();
                     break;

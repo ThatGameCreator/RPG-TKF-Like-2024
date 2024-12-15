@@ -100,14 +100,35 @@ namespace Gyvr.Mythril2D
             UpdateUI();
         }
 
+        // UI更新音量的问题诊断和改进
+
         private void UpdateUI()
         {
-            m_masterVolume.UpdateUI((int)math.round(GameManager.AudioSystem.GetMasterVolume() * m_maxVolume), (int)m_maxVolume);
+            // 更新主音量的UI
+            float masterVolume = GameManager.AudioSystem.GetMasterVolume();
 
+            m_masterVolume.UpdateUI(
+                (int)math.round(masterVolume * m_maxVolume),
+                (int)m_maxVolume
+            );
+
+            Debug.Log($"Master Volume: {masterVolume}"); // 进一步进行诊断
+
+            // 遍历每个音频通道
             foreach (UISettingsChannelVolume channelVolume in m_channelVolumes)
             {
-                float volumeScale = GameManager.AudioSystem.GetChannelVolumeScale(channelVolume.audioChannel) * m_maxVolume;
-                channelVolume.UpdateUI((int)math.round(volumeScale), (int)m_maxVolume);
+                // 获取当前音频通道的音量比例
+                float channelVolumeScale = GameManager.AudioSystem.GetChannelVolumeScale(channelVolume.audioChannel);
+                float scaledVolume = channelVolumeScale * m_maxVolume;
+
+                // 进一步进行诊断
+                Debug.Log($"Channel {channelVolume.audioChannel}: Scale = {channelVolumeScale}, Scaled = {scaledVolume}");
+
+                // 更新UI的音量显示
+                channelVolume.UpdateUI(
+                    (int)math.round(scaledVolume),
+                    (int)m_maxVolume
+                );
             }
         }
     }

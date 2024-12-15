@@ -14,14 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_alignment: 1
   m_displayName: Demon Deep Slime
+  m_displayNameKey: 
   m_abilitiesPerLevel:
     m_keys:
     - {fileID: 11400000, guid: 898d9a13af1f9054699b67175964f208, type: 2}
     m_values: 01000000
   m_hitAudio: {fileID: 11400000, guid: a4e5377a4fc466b41889cf9f0874ca00, type: 2}
-  m_deathAudio: {fileID: 11400000, guid: fd5c086ec9cf4fc4d9e15ce421be7aff, type: 2}
+  m_deathAudio: {fileID: 11400000, guid: 9148d0d627eac2544adc5b19c94abcdc, type: 2}
   stats:
     m_initialValue:
+      isEquip: 0
       m_values: 100000000400000000000000000000000400000004000000060000000500000002000000
     m_evolutionProfile:
       serializedVersion: 2
