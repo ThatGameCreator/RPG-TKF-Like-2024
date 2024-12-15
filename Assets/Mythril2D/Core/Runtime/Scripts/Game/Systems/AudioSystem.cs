@@ -32,10 +32,18 @@ namespace Gyvr.Mythril2D
             // 主界面场景没有玩家不用寻找
             if(SceneManager.GetActiveScene().name != "Main Menu")
             {
+                // 好像并没有执行
+
                 // 找到玩家对象并将音频频道挂载到玩家对象
-                foreach (var channel in m_audioChannels.Values)
+                if (GameManager.Player != null)
                 {
-                    channel.FindPlayer();
+                    // 将音频频道挂载到玩家对象上
+                    this.transform.parent = GameManager.Player.transform;
+                    this.transform.localPosition = Vector3.zero;
+                }
+                else
+                {
+                    Debug.LogWarning("Player object not found. Please ensure the player has the 'Player' tag.");
                 }
             }
             

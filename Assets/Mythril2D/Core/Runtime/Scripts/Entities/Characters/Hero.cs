@@ -551,8 +551,9 @@ namespace Gyvr.Mythril2D
             // 好像这个自己写的字典不能这么遍历
             //foreach(EEquipmentType equipmentType in m_equipments.Keys)
 
-            Array eEquipmentType = Enum.GetValues(typeof(EEquipmentType));
-            foreach (EEquipmentType equipmentType in eEquipmentType)
+            List<EEquipmentType> keysToRemove = new List<EEquipmentType>(m_equipments.Keys);
+
+            foreach (EEquipmentType equipmentType in keysToRemove)
             {
                 m_equipments.TryGetValue(equipmentType, out Equipment toUnequip);
 

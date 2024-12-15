@@ -56,8 +56,9 @@ MonoBehaviour:
   m_dashAbilitySheet: {fileID: 11400000, guid: b742ac521f6a560498daa197a5483671, type: 2}
   maxStamina: 30
   baseStats:
+    isEquip: 0
     m_values: 140000000300000005000000050000000500000005000000050000000500000005000000
-  pointsPerLevel: 2
+  pointsPerLevel: 1
   experience:
     m_initialValue: 50
     m_evolutionProfile:
@@ -84,4 +85,4 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_evolutionScale: 6
+    m_evolutionScale: 5

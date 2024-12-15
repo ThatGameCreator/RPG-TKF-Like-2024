@@ -49,9 +49,9 @@ namespace Gyvr.Mythril2D
             //return m_quitButton.gameObject;
         }
 
-        public void RevivePlayer()
+        private void ReviveFunction()
         {
-            GameManager.UIManagerSystem.UIMenu.PopDeathMenu();
+            GameManager.UIManagerSystem.UIMenu.ClearMenuStackOnDeath();
 
             GameManager.DayNightSystem.OnDisableDayNightSystem();
 
@@ -66,8 +66,13 @@ namespace Gyvr.Mythril2D
             },
             () => {
                 // 这也恢复不了
-               GameManager.Player.TryPlayRevivalAnimation();
+                GameManager.Player.TryPlayRevivalAnimation();
             }, ETeleportType.Revival);
+        }
+
+        public void RevivePlayer()
+        {
+            ReviveFunction();
         }
 
         public void PayToRevivePlayer()
@@ -76,23 +81,7 @@ namespace Gyvr.Mythril2D
             {
                 GameManager.WarehouseSystem.RemoveMoney(25);
 
-                GameManager.UIManagerSystem.UIMenu.PopDeathMenu();
-
-                GameManager.DayNightSystem.OnDisableDayNightSystem();
-
-                // 暂时不懂这个 GameStateSystem 是来干嘛的，但是如果不添加这个状态可能会一直卡在 UI 层
-                // 而导致没办法控制人物各种行为？
-                GameManager.GameStateSystem.AddLayer(EGameState.Gameplay);
-
-                GameManager.TeleportLoadingSystem.RequestTransition(null, null, () => {
-                    // 这里恢复不了血量
-                    // 不是位置的问题 是tm currentStats 是只读的 虽然能够 = 但没修改任何角色身上的数据
-                    GameManager.Player.RecoverPlayerStats(true);
-                },
-                () => {
-                    // 这也恢复不了
-                    GameManager.Player.TryPlayRevivalAnimation();
-                }, ETeleportType.Revival);
+                ReviveFunction();
             }
             else
             {

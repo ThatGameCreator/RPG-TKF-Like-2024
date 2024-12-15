@@ -1,6 +1,7 @@
 ﻿using Gyvr.Mythril2D;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -25,6 +26,7 @@ namespace Gyvr.Mythril2D
 
         [SerializeField] private List<AudioSource> m_audioSourcePool = new List<AudioSource>();
         private Dictionary<AudioSource, Coroutine> m_fadeCoroutines = new Dictionary<AudioSource, Coroutine>();
+        private HashSet<AudioSource> activeAudioSources = new HashSet<AudioSource>();
 
         public AudioClipResolver lastPlayedAudioClipResolver => m_lastPlayedClip;
         private AudioClipResolver m_lastPlayedClip = null;
@@ -39,12 +41,12 @@ namespace Gyvr.Mythril2D
 
         private void Start()
         {
-            StartCoroutine(PeriodicRecycle());
+            //StartCoroutine(PeriodicRecycle());
         }
 
         private void OnEnable()
         {
-            StartCoroutine(PeriodicRecycle());
+            //StartCoroutine(PeriodicRecycle());
         }
 
         private void OnDisable()
@@ -59,23 +61,24 @@ namespace Gyvr.Mythril2D
             {
                 UpdateIdleTimers();
                 // 设置几秒执行一次回收协程
-                yield return new WaitForSeconds(5f); 
+                yield return new WaitForSeconds(10f);
             }
         }
 
         private void UpdateIdleTimers()
         {
-            foreach (var source in m_audioSourcePool)
-            {
-                // 检查是否需要回收
-                if (!source.isPlaying)
-                {
-                    source.clip = null; // 手动清空 clip
-                }
-            }
+            //foreach (var source in m_audioSourcePool)
+            //{
+            //    // 检查是否需要回收
+            //    if (!source.isPlaying)
+            //    {
+            //        source.clip = null; // 手动清空 clip
+            //    }
+            //}
 
-            Debug.Log($"UpdateIdleTimers called. Pool size: {m_audioSourcePool.Count}");
+            //Debug.Log($"UpdateIdleTimers called. Pool size: {m_audioSourcePool.Count}");
 
+            // 初始化或特定情况下，清理所有非活跃音频源
             List<AudioSource> sourcesToRecycle = new List<AudioSource>();
 
             foreach (var source in m_audioSourcePool)
@@ -86,7 +89,7 @@ namespace Gyvr.Mythril2D
                     // 标记需要回收的音频源
                     sourcesToRecycle.Add(source);
 
-                    Debug.Log($"AudioSource {source.name} marked for recycling.");
+                    //Debug.Log($"AudioSource {source.name} marked for recycling.");
                 }
             }
 
@@ -96,24 +99,90 @@ namespace Gyvr.Mythril2D
                 RecycleUnusedAudioSource(source);
             }
 
-            Debug.Log($"Idle timers updated. {sourcesToRecycle.Count} sources recycled.");
+            //Debug.Log($"Idle timers updated. {sourcesToRecycle.Count} sources recycled.");
         }
 
         private void RecycleUnusedAudioSource(AudioSource source)
         {
-            lock (m_audioSourcePool)
+            if (source == null) return;
+
+            // 从音频池中移除
+            m_audioSourcePool.Remove(source);
+
+            // 销毁 GameObject
+            if (source.gameObject != null)
             {
-                    if (source == null) return; // 避免尝试销毁已经为 null 的对象
-
-                // 从音频源池中移除
-                m_audioSourcePool.Remove(source);
-
-                // 销毁音频源的 GameObject
-                if (source.gameObject != null)
-                {
-                    Destroy(source.gameObject);
-                }
+                Destroy(source.gameObject);
             }
+
+            // 确保引用被清理
+            source = null;
+        }
+
+        public void PlayAudio(AudioSource source = null, AudioClip clip = null, float volume = 1, bool isLoop = false)
+        {
+            if (source == null || clip == null)
+            {
+                Debug.LogError("AudioSource or AudioClip is null, cannot play audio!");
+                return;
+            }
+
+            // 将音频源标记为活跃
+            activeAudioSources.Add(source);
+
+            source.clip = clip;
+            source.volume = volume;
+            source.loop = isLoop; // 如果需要循环播放可以设置为 true
+            source.Play();
+
+            // 绑定播放结束的回调事件
+            //BindAudioSourceCallback(source);
+            // 延迟绑定回调，确保音频播放稳定
+            StartCoroutine(DelayedBindCallback(source, 1f));
+        }
+
+        private IEnumerator DelayedBindCallback(AudioSource source, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            if (source)
+            {
+                var notifier = source.gameObject.GetComponent<AudioSourceEndNotifier>();
+                if (notifier == null)
+                {
+                    notifier = source.gameObject.AddComponent<AudioSourceEndNotifier>();
+                }
+
+                notifier.OnAudioPlayEnd = () =>
+                {
+                    activeAudioSources.Remove(source);
+                    source.clip = null;
+                    RecycleUnusedAudioSource(source);
+                };
+            }
+        }
+
+        private void BindAudioSourceCallback(AudioSource source)
+        {
+            var notifier = source.gameObject.GetComponent<AudioSourceEndNotifier>();
+            if (notifier == null)
+            {
+                notifier = source.gameObject.AddComponent<AudioSourceEndNotifier>();
+            }
+
+            notifier.OnAudioPlayEnd = () =>
+            {
+                // 确保音频已停止
+                if (source.isPlaying) return;
+
+                // 从活跃列表中移除
+                activeAudioSources.Remove(source);
+
+                // 将 clip 设置为 null 以满足回收条件
+                source.clip = null;
+
+                // 调用回收逻辑
+                RecycleUnusedAudioSource(source);
+            };
         }
 
         public void FindPlayer()
@@ -154,9 +223,7 @@ namespace Gyvr.Mythril2D
             m_lastPlayedClip = audioClipResolver;
 
             // 播放音效
-            source.clip = clip;
-            source.loop = isLoop; // 如果需要循环播放可以设置为 true
-            source.Play();
+            PlayAudio(source, clip, 1, isLoop);
         }
 
         // 创建新的音频源，并提供选择是否挂载到特定对象的能力
@@ -270,9 +337,8 @@ namespace Gyvr.Mythril2D
                 else
                 {
                     // 使用 Play 方法播放音频片段，而不是 PlayOneShot（可以增加对播放控制的灵活性）
-                    source.clip = clip;
-                    source.loop = false; // 如果需要循环播放可以设置为 true
-                    source.Play();
+                    // 如果需要循环播放可以设置为 true
+                    PlayAudio(source, clip, 1, false);
                 }
             }
         }
@@ -284,9 +350,8 @@ namespace Gyvr.Mythril2D
                 StopCoroutine(fadeCoroutine);
             }
 
-            source.clip = clip;
-            source.volume = 0;
-            source.Play();
+            //PlayAudio(source, clip, 0, false);
+            PlayAudio(source, clip, 1, false);
 
             m_fadeCoroutines[source] = StartCoroutine(FadeVolume(source, 0, m_volumeScale, m_fadeInDuration));
         }
@@ -308,11 +373,12 @@ namespace Gyvr.Mythril2D
             if (newClip != null)
             {
                 AudioSource audioSource = GetAvailableAudioSource(); // 确保获取到空闲的音频源
-                audioSource.clip = newClip;
-                audioSource.Play();
+                //audioSource.clip = newClip;
+                //audioSource.Play();
 
-                // 如果音频是循环播放的，则设置其循环标志
-                audioSource.loop = true;
+                //// 如果音频是循环播放的，则设置其循环标志
+                //audioSource.loop = true;
+                PlayAudio(audioSource, newClip, 1, true);
 
                 // 启动协程来监听音频结束
                 StartCoroutine(WaitForAudioEnd(audioSource, (source) =>

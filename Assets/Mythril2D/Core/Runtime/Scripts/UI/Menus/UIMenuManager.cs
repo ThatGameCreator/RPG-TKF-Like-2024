@@ -79,6 +79,21 @@ namespace Gyvr.Mythril2D
             GameManager.EventSystem.SetSelectedGameObject(toSelect);
         }
 
+        public void ClearMenuStackOnDeath()
+        {
+            // 确保游戏状态正确调整，比如移除菜单层级
+            while (m_menuStack.Count > 0)
+            {
+                IUIMenu menu = m_menuStack.Pop();
+                menu.OnMenuPopped(); // 确保调用清理逻辑
+                Hide(menu);
+            }
+
+            // 如果有其他依赖游戏状态的系统，也可以在这里做额外清理
+            GameManager.GameStateSystem.RemoveLayer(EGameState.Menu);
+            //GameManager.NotificationSystem.allMenusClosed.Invoke();
+        }
+
         private void OnCancel(InputAction.CallbackContext context)
         {
             // Prevent exiting a menu if a dialogue is playing

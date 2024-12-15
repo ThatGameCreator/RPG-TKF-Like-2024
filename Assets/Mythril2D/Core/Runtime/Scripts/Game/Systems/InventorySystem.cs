@@ -123,6 +123,12 @@ namespace Gyvr.Mythril2D
                 // 遍历多余的格子
                 for (int i = backpackCapacity + reducedCapacity - 1; i >= newCapacity; i--)
                 {
+                    if (i >= GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.Count || i < 0)
+                    {
+                        Debug.LogWarning($"Index {i} is out of range for slots. Skipping.");
+                        continue;
+                    }
+
                     UIInventoryBagSlot slot = GameManager.UIManagerSystem.UIMenu.inventory.bag.slots[i];
                     Item item = slot.GetItem();
                     int quantity = slot.GetItemNumber();
@@ -137,14 +143,36 @@ namespace Gyvr.Mythril2D
                     }
 
                     // 删除格子的 GameObject
-                    Destroy(GameManager.UIManagerSystem.UIMenu.inventory.bag.slots[i].gameObject);
-                    Destroy(GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots[i].gameObject);
-                    Destroy(GameManager.UIManagerSystem.UIMenu.shop.bag.slots[i].gameObject);
-                    Destroy(GameManager.UIManagerSystem.UIMenu.craft.bag.slots[i].gameObject);
-                    GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.RemoveAt(i);
-                    GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots.RemoveAt(i);
-                    GameManager.UIManagerSystem.UIMenu.shop.bag.slots.RemoveAt(i);
-                    GameManager.UIManagerSystem.UIMenu.craft.bag.slots.RemoveAt(i);
+                    // 检查 inventory 是否初始化以及是否存在索引
+                    if (i < GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.Count && i >= 0)
+                    {
+                        Destroy(GameManager.UIManagerSystem.UIMenu.inventory.bag.slots[i].gameObject);
+                        GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.RemoveAt(i);
+                    }
+
+                    // 检查 warehouse 是否初始化以及是否存在索引
+                    if (GameManager.UIManagerSystem.UIMenu.warehouse?.bag?.slots != null &&
+                        i < GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots.Count && i >= 0)
+                    {
+                        Destroy(GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots[i].gameObject);
+                        GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots.RemoveAt(i);
+                    }
+
+                    // 检查 shop 是否初始化以及是否存在索引
+                    if (GameManager.UIManagerSystem.UIMenu.shop?.bag?.slots != null &&
+                        i < GameManager.UIManagerSystem.UIMenu.shop.bag.slots.Count && i >= 0)
+                    {
+                        Destroy(GameManager.UIManagerSystem.UIMenu.shop.bag.slots[i].gameObject);
+                        GameManager.UIManagerSystem.UIMenu.shop.bag.slots.RemoveAt(i);
+                    }
+
+                    // 检查 craft 是否初始化以及是否存在索引
+                    if (GameManager.UIManagerSystem.UIMenu.craft?.bag?.slots != null &&
+                        i < GameManager.UIManagerSystem.UIMenu.craft.bag.slots.Count && i >= 0)
+                    {
+                        Destroy(GameManager.UIManagerSystem.UIMenu.craft.bag.slots[i].gameObject);
+                        GameManager.UIManagerSystem.UIMenu.craft.bag.slots.RemoveAt(i);
+                    }
                 }
             }
 

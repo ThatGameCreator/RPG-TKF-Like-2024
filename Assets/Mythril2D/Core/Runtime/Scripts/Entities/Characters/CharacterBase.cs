@@ -390,7 +390,8 @@ namespace Gyvr.Mythril2D
                     GameManager.Player.isExecutingAction = true;
                 }
 
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(abilityBase.abilitySheet.fireAudio);
+                //GameManager.NotificationSystem.audioPlaybackRequested.Invoke(abilityBase.abilitySheet.fireAudio);
+                GameManager.AudioSystem.PlayAudioOnObject(abilityBase.abilitySheet.fireAudio, this.gameObject);
 
                 bool isAbilityStateAutomaticallyManaged = abilityBase.abilitySheet.abilityStateManagementMode == AbilitySheet.EAbilityStateManagementMode.Automatic;
 
@@ -580,7 +581,8 @@ namespace Gyvr.Mythril2D
 
                     m_currentStats[EStat.Health] -= math.min(damageInput.damage, m_currentStats[EStat.Health]);
 
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.hitAudio);
+                    //GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.hitAudio);
+                    GameManager.AudioSystem.PlayAudioOnObject(characterSheet.hitAudio, this.gameObject);
 
                     if (!dead)
                     {

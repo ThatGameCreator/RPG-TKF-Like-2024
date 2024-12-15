@@ -35,8 +35,10 @@ namespace Gyvr.Mythril2D
                     else if (messages.Contains("Heal"))
                     {
                         //Debug.Log("Heal");
+                        bool hasSufficientFundsInIventory = GameManager.InventorySystem.HasSufficientFunds(m_inn.price);
+                        bool hasSufficientFundsInWarehouse = GameManager.WarehouseSystem.HasSufficientFunds(m_inn.price);
 
-                        if (GameManager.InventorySystem.HasSufficientFunds(m_inn.price))
+                        if (hasSufficientFundsInIventory || hasSufficientFundsInWarehouse)
                         {
                             target.Say(m_dialogueIfHeal, (messages) =>
                             {
@@ -45,8 +47,15 @@ namespace Gyvr.Mythril2D
                                 if (messages.Contains(EDialogueMessageType.Accept))
                                 {
                                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_inn.healingSound);
-                                    
-                                    GameManager.InventorySystem.RemoveMoney(m_inn.price);
+
+                                    if (hasSufficientFundsInIventory)
+                                    {
+                                        GameManager.InventorySystem.RemoveMoney(m_inn.price);
+                                    }
+                                    else if (hasSufficientFundsInWarehouse)
+                                    {
+                                        GameManager.WarehouseSystem.RemoveMoney(m_inn.price);
+                                    }
 
                                     GameManager.Player.Heal(m_inn.healAmount);
                                     GameManager.Player.RecoverMana(m_inn.manaRecoveredAmount);
