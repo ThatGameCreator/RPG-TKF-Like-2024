@@ -131,7 +131,9 @@ namespace Gyvr.Mythril2D
             activeAudioSources.Add(source);
 
             source.clip = clip;
-            source.volume = volume;
+            // 不知道是不是默认的关系，现在设置音效没卵用
+            //source.volume = volume;
+            source.volume = m_volumeScale;
             source.loop = isLoop; // 如果需要循环播放可以设置为 true
             source.Play();
 

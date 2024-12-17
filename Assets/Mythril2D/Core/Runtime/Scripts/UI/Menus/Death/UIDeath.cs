@@ -49,7 +49,7 @@ namespace Gyvr.Mythril2D
             //return m_quitButton.gameObject;
         }
 
-        private void ReviveFunction()
+        private void ReviveFunction(bool isFullTORecover = false)
         {
             GameManager.UIManagerSystem.UIMenu.ClearMenuStackOnDeath();
 
@@ -62,7 +62,7 @@ namespace Gyvr.Mythril2D
             GameManager.TeleportLoadingSystem.RequestTransition(null, null, () => {
                 // 这里恢复不了血量
                 // 不是位置的问题 是tm currentStats 是只读的 虽然能够 = 但没修改任何角色身上的数据
-                GameManager.Player.RecoverPlayerStats();
+                GameManager.Player.RecoverPlayerStats(isFullTORecover);
             },
             () => {
                 // 这也恢复不了
@@ -81,7 +81,7 @@ namespace Gyvr.Mythril2D
             {
                 GameManager.WarehouseSystem.RemoveMoney(25);
 
-                ReviveFunction();
+                ReviveFunction(true);
             }
             else
             {
