@@ -29,15 +29,8 @@ namespace Gyvr.Mythril2D
             set => m_isPlayBellSound = value;
         }
 
-        // 设不设置在这里更新这个亮度并没有作用，感觉这个光源系统并没有真正启用
-        //private void Awake()
-        //{
-        //    m_currentTime = -1f;
-        //}
-
         private void Update()
         {
-            //UpdateBrightness();
             //Debug.Log(m_lightingManager.profile.DarknessColor);
 
             if (isOnEnableSystem == true) {
@@ -65,8 +58,6 @@ namespace Gyvr.Mythril2D
                     m_currentTime = 0f;
 
                     GameManager.Player.SetPlayerHealthToZero();
-
-                    //GameManager.NotificationSystem.deathScreenRequested.Invoke();
                 }
             }
         }

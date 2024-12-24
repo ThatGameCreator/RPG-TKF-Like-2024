@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Small Demon Slime
   m_EditorClassIdentifier: 
   entries:
-  - item: {fileID: 11400000, guid: 02eee851bb4ea3f4d9cf291529f301b5, type: 2}
+  - item: {fileID: 11400000, guid: d430171b54ab76d4cac236aa47fb106a, type: 2}
     maxQuantity: 1
     weight: 1
   money: 0
   maxLootedCount: 3
+  lootRate: 75

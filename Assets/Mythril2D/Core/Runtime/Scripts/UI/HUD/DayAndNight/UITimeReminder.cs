@@ -103,6 +103,7 @@ namespace Gyvr.Mythril2D
 
                 // 感觉有点浪费资源？每次都要判断 是不是能够用监听什么
                 // 或者整个一秒执行一次之类的
+                //if (m_isTextBeRed == false && totalCurrentSecond <= GameManager.DayNightSystem.maxEmergencyTime)
                 if (m_isTextBeRed == false && totalCurrentSecond <= GameManager.DayNightSystem.maxEmergencyTime)
                 {
                     m_timeText.color = Color.red;
