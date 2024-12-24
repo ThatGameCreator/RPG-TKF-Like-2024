@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: HUDTable
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: be43248ea0886ba479dd9e87e3540eea, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 66bb346d7180f334d9d4949cdbf8b54b, type: 2}
+  - {fileID: 11400000, guid: 90cd8c74edc3c9144bf4b2a21b37b9e4, type: 2}
+  - {fileID: 11400000, guid: 864bc43c8ad30844a85e154b6425186c, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

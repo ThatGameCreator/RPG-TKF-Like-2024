@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
+using static Gyvr.Mythril2D.LootTable;
 
 namespace Gyvr.Mythril2D
 {
@@ -12,14 +14,19 @@ namespace Gyvr.Mythril2D
         [SerializeField] private GameObject m_weaponObject = null;
         [SerializeField] protected float m_lootedTime = 2.0f;
 
+        [Header("Audio")]
+        [SerializeField] private AudioClipResolver m_lootedSound;
+
         public AIController aiController => m_aiController;
 
         private bool m_looted = false;
+        private int m_randomMaxLootedCount = 0;
+        private int m_nowLootedCount = 0;
 
         protected override void Awake()
         {
             base.Awake();
-            UpdateStats();
+            UpdateMaxStats();
         }
 
         private void Update()
@@ -30,6 +37,11 @@ namespace Gyvr.Mythril2D
         protected override void Start()
         {
             base.Start();
+
+            if (m_sheet.lootTable)
+            {
+                m_randomMaxLootedCount = UnityEngine.Random.Range(0, m_sheet.lootTable.maxLootedCount);
+            }
 
             if (m_permanentDeath && GameManager.GameFlagSystem.Get(m_gameFlagID))
             {
@@ -44,18 +56,23 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
-            GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+            if (m_nowLootedCount < m_randomMaxLootedCount) // 检查是否可以继续掠夺
+            {
+                GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+            }
         }
 
         public void SetLevel(int level)
         {
             m_level = level;
-            UpdateStats();
+            UpdateMaxStats();
         }
 
-        public void UpdateStats()
+        public void UpdateMaxStats()
         {
             m_maxStats.Set(m_sheet.stats[m_level]);
+            // 怪物的话就顺便更新最大状态值时 补全当前状态值
+            m_currentStats.Set(m_sheet.stats[m_level]);
         }
 
         protected override void Die()
@@ -75,7 +92,8 @@ namespace Gyvr.Mythril2D
 
         void MonsterDie()
         {
-            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
+            //GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
+            GameManager.AudioSystem.PlayAudioOnObject(characterSheet.deathAudio, this.gameObject);
 
             // if play animation fail then destory the object
             if (TryPlayDeathAnimation() == false)
@@ -84,57 +102,100 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                //Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
-                //Array.ForEach(colliders, (collider) => collider.enabled = false);
-
                 // cancel the playing animation
                 m_weaponObject.transform.gameObject.SetActive(false);
 
-                SetLayerRecursively(this.gameObject, LayerMask.NameToLayer("Interaction"));
+                // 检查是否已达到最大掠夺次数
+                if (m_nowLootedCount >= m_randomMaxLootedCount)
+                {
+                    this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
+                }
+                else
+                {
+                    SetLayerRecursively(this.gameObject, LayerMask.NameToLayer("Interaction"));
+                }
             }
+        }
+
+        private LootTable.LootEntryData GetRandomLootEntry()
+        {
+            float totalWeight = 0f;
+
+            foreach (var entry in m_sheet.lootTable.entries)
+            {
+                totalWeight += entry.weight;
+            }
+
+            float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+
+            foreach (var entry in m_sheet.lootTable.entries)
+            {
+                if (randomValue < entry.weight)
+                {
+                    return entry;
+                }
+
+                randomValue -= entry.weight;
+            }
+
+            return null;
         }
 
         public bool LootFinished()
         {
-            if (m_looted == false)
+            // 增加掠夺次数
+            m_nowLootedCount++;
+
+            // 检查是否触发不生成物品的概率
+            if (UnityEngine.Random.value <= m_sheet.lootTable.lootRate)
             {
-                foreach (Loot loot in m_sheet.potentialLoot)
+                // 随机决定掠夺物品还是金钱
+                bool lootItem = UnityEngine.Random.Range(0, 2) == 0;
+
+                if (lootItem)
                 {
-                    if (GameManager.Player.level >= loot.minimumPlayerLevel && m_level >= loot.minimumMonsterLevel && loot.IsAvailable() && loot.ResolveDrop())
+                    if (m_sheet.lootTable.entries != null && m_sheet.lootTable.entries.Length > 0)
                     {
-                        GameManager.InventorySystem.AddToBag(loot.item, loot.quantity);
+                        // 使用基于权重的随机选择机制
+                        LootEntryData randomEntry = GetRandomLootEntry();
+
+                        if (GameManager.InventorySystem.IsBackpackFull(randomEntry.item))
+                        {
+                            GameManager.DialogueSystem.Main.PlayNow
+                            (LocalizationSettings.StringDatabase.GetLocalizedString("NPCDialogueTable", "id_dialogue_shop_backpack_full"));
+
+                            // 包满了的话减回去
+                            m_nowLootedCount--;
+
+                            return false;
+                        }
+                        else if (randomEntry != null)
+                        {
+                            //Debug.Log("lootItem");
+
+                            int randomQuantity = UnityEngine.Random.Range(1, randomEntry.maxQuantity + 1);
+                            GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+                        }
                     }
                 }
-                GameManager.InventorySystem.AddMoney(m_sheet.money[m_level]);
+                else if (m_sheet.lootTable.money > 0)
+                {
+                    int randomMoney = UnityEngine.Random.Range(1, m_sheet.lootTable.money + 1);
+                    GameManager.InventorySystem.AddMoney(randomMoney);
 
-                OnDeath();
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
 
-                m_looted = true;
-
-                return true;
+                }
             }
-            return false;
-        }
 
-        //void OnTriggerStay(Collider collisionInfo)
-        void OnTriggerEnter2D(Collider2D other)
-        {
-            if (String.Equals(other.gameObject.tag, "Player") == true)
+            // 检查是否已达到最大掠夺次数
+            if (m_nowLootedCount >= m_randomMaxLootedCount)
             {
-                Debug.Log("Monster Interaction");
-                Debug.Log("GameManager.Config.collisionContactFilter = " + GameManager.Config.collisionContactFilter);
-                //GameManager.Player.GetComponent<PlayerController>().m_interactionTarget = this.gameObject;
-                //GameManager.PlayerSystem.PlayerInstance.GetComponent<PlayerController>().GetInteractibleObject();
+                this.gameObject.layer = LayerMask.NameToLayer("Default"); // 设置为不可被掠夺
             }
-        }
 
-        //void OnTriggerStay(Collider collisionInfo)
-        void OnTriggerExit2D(Collider2D other)
-        {
-            if (String.Equals(other.gameObject.tag, "Player") == true)
-            {
-                //GameManager.Player.GetComponent<PlayerController>().m_interactionTarget = null;
-            }
+            return true; // 表示本次掠夺成功
         }
 
         private static void SetLayerRecursively(GameObject go, int layer)

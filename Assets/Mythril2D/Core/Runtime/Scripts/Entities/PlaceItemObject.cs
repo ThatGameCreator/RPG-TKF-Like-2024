@@ -45,7 +45,7 @@ namespace Gyvr.Mythril2D
 
                 if (m_placedItemCount >= m_placeTask.itemPlacedNumber)
                 {
-                    this.gameObject.layer = LayerMask.NameToLayer("Default");
+                    this.gameObject.layer = LayerMask.NameToLayer("Collision D");
                 }
             }
 

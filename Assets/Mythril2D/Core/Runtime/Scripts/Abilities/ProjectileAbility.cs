@@ -39,9 +39,25 @@ namespace Gyvr.Mythril2D
             {
                 for (int i = 0; i < m_sheet.projectileCount; ++i)
                 {
-                    ThrowProjectile(i);
-                }
+                    if (m_character.isPlayer)
+                    {
+                        if (m_sheet.costedItem != null)
+                        {
+                            if (GameManager.Player.equipments[EEquipmentType.Weapon] == m_sheet.costedItem ||
+                            GameManager.InventorySystem.HasItemInBag(m_sheet.costedItem, m_sheet.itemCost))
+                            {
+                                ConsumeItem();
+                                ThrowProjectile(i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ThrowProjectile(i);
+                    }
 
+
+                }
                 TerminateCasting();
             }
         }

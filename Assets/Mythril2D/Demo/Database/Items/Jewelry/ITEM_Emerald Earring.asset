@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8421550761b2409fadfe5c6658b5395, type: 3}
   m_Name: ITEM_Emerald Earring
   m_EditorClassIdentifier: 
-  m_category: 2
+  m_category: 3
   m_icon: {fileID: -2123101336, guid: 1d6f0d3f9e682de44b496aed3dc1fd12, type: 3}
+  m_localizationKey: id_emerald_earring_item_name
   m_displayName: Emerald Earring
   m_description: 
-  m_price: 50
+  m_descriptionKey: id_emerald_earring_description
+  m_buyPrice: 100
+  m_sellPrice: 50
   m_isStackable: 0
   m_equipAudio: {fileID: 11400000, guid: 9fa8803b447617b48b9981e6b61432a2, type: 2}
   m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
-  m_type: 2
+  m_type: 6
   m_bonusStats:
+    isEquip: 0
     m_values: 000000000000000000000000000000000000000000000000000000000000000000000000
+  m_stamina: 10
   m_visualOverride: {fileID: 0}
   m_capacity: 0
   m_ability: []

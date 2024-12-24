@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0289099dc5b3f49b3b9ca3cf8f6b7baa, type: 3}
   m_Name: ITEM_Ancient Key
   m_EditorClassIdentifier: 
-  m_category: 1
+  m_category: 4
   m_icon: {fileID: 404322550, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_localizationKey: id_ancient_key_item_name
   m_displayName: Ancient Key
   m_description: 
-  m_price: 5
+  m_descriptionKey: id_ancient_key_item_description
+  m_buyPrice: 50
+  m_sellPrice: 25
   m_isStackable: 0

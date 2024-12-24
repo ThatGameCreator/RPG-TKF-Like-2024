@@ -7,12 +7,13 @@ namespace Gyvr.Mythril2D
     public class SaveResurrectionPostion : ICommand
     {
         [SerializeField] private GameObject m_gameObject = null;
+        [SerializeField] private AudioClipResolver m_saveSound = null;
 
         public void Execute()
         {
             //Debug.Log("SaveResurrectionPostion");
 
-            //GameManager.TeleportLoadingSystem.SetSaveResurrectionPostion(m_gameObject.transform.position);
+            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_saveSound);
 
             GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
         }

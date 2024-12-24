@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: CraftTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: CraftTable
+  m_TableCollectionNameGuidString: 43ea2d30ca5571b49bffab74efda4f3e
+  m_Entries:
+  - m_Id: 82836586496
+    m_Key: id_craft_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 466044977152
+    m_Key: id_recipes_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4352843579392
+    m_Key: id_ingredients_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19183692808192
+    m_Key: id_select_a_recipe_text
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529487119089666
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529487119089666
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732774407235

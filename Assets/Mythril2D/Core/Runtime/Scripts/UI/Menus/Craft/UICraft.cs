@@ -192,7 +192,7 @@ namespace Gyvr.Mythril2D
 
         private void OnBagItemClicked(Item item)
         {
-            GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotUseItem, null, item.displayName));
+            GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotUseItem, null, item.DisplayName));
         }
 
         private void RewireNavigation()

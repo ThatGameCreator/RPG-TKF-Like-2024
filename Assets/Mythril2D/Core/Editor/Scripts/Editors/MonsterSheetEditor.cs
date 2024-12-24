@@ -23,7 +23,7 @@ namespace Gyvr.Mythril2D
 
             Stats previewStats = sheet.stats[m_previewLevel];
             int experience = sheet.experience[m_previewLevel];
-            int money = sheet.money[m_previewLevel];
+            //int money = sheet.money[m_previewLevel];
 
             int total = previewStats.GetTotal();
             int average = (int)math.round(total / 5.0f);
@@ -42,7 +42,7 @@ namespace Gyvr.Mythril2D
             EditorGUILayout.IntField("Average", average);
             EditorGUILayout.Space();
             EditorGUILayout.IntField("Experience", experience);
-            EditorGUILayout.IntField("Money", money);
+            //EditorGUILayout.IntField("Money", money);
             EditorGUILayout.Space();
              GUI.enabled = true;
         }

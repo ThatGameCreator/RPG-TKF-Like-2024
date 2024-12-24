@@ -10,6 +10,7 @@ namespace Gyvr.Mythril2D
     public struct WarehouseDataBlock
     {
         public int money;
+        public int warehouseCapacity;
         //public SerializableDictionary<DatabaseEntryReference<Item>, int> items;
         public List<ItemInstance> items; // 改为 List<ItemInstance>
     }
@@ -26,7 +27,7 @@ namespace Gyvr.Mythril2D
         public List<ItemInstance> warehouseItems => m_warehouseItems;
         private List<ItemInstance> m_warehouseItems = new List<ItemInstance>();
         public int warehouseCapacity => m_warehouseCapacity;
-        private int m_warehouseCapacity = 30; // 默认容量为 30
+        private int m_warehouseCapacity = 90; // 默认容量
 
         public bool isOpenning = false;
 
@@ -63,9 +64,10 @@ namespace Gyvr.Mythril2D
         {
             return value <= warehouseMoney;
         }
+
         public int GetItemCount(Item item)
         {
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 var instance = warehouseItems.FirstOrDefault(i => i.GetItem() == item);
                 return instance?.quantity ?? 0;
@@ -76,20 +78,36 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public bool IsWarehouseFull()
+        public bool IsWarehouseFull(Item item)
         {
-            return GetCurrentItemCount() >= m_warehouseCapacity;
+            if (GetCurrentItemCount() >= m_warehouseCapacity)
+            {
+                if (item.IsStackable)
+                {
+                    // 返回是否背包有可堆叠物品 有则不满
+                    // 如果有堆叠应该是不满 得取反！
+                    return !HasItemInWarehouse(item);
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public int GetCurrentItemCount()
         {
             // 背包的当前物品数量：非堆叠物品按实例数计算，堆叠物品按总堆叠数计算
-            return warehouseItems.Sum(instance => instance.GetItem().isStackable ? 1 : instance.quantity);
+            return warehouseItems.Sum(instance => instance.GetItem().IsStackable ? 1 : instance.quantity);
         }
 
         public bool HasItemInWarehouse(Item item, int quantity = 1)
         {
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 var instance = warehouseItems.FirstOrDefault(i => i.GetItem() == item);
                 return instance != null && instance.quantity >= quantity;
@@ -104,13 +122,13 @@ namespace Gyvr.Mythril2D
         public void AddToWarehouse(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             // 如果背包已满且物品不可添加，直接返回
-            if (IsWarehouseFull())
+            if (IsWarehouseFull(item))
             {
                 Debug.LogWarning("背包已满，无法添加物品！");
                 return;
             }
 
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 // 如果可堆叠，检查是否已有相同物品
                 var instance = warehouseItems.FirstOrDefault(i => i.GetItem() == item);
@@ -128,7 +146,7 @@ namespace Gyvr.Mythril2D
                 // 如果不可堆叠，每次添加一个新实例
                 for (int i = 0; i < quantity; i++)
                 {
-                    if (IsWarehouseFull())
+                    if (IsWarehouseFull(item))
                     {
                         Debug.LogWarning("背包已满，无法添加更多不可堆叠物品！");
                         break;
@@ -151,7 +169,7 @@ namespace Gyvr.Mythril2D
         {
             bool success = false;
 
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 // 如果可堆叠，减少数量或移除
                 var instance = warehouseItems.FirstOrDefault(i => i.GetItem() == item);
@@ -196,6 +214,7 @@ namespace Gyvr.Mythril2D
         public void LoadDataBlock(WarehouseDataBlock block)
         {
             m_warehouseMoney = block.money;
+            m_warehouseCapacity = block.warehouseCapacity;
             m_warehouseItems = block.items
                 .Select(instanceData => new ItemInstance(GameManager.Database.LoadFromReference(instanceData.itemReference), instanceData.quantity))
                 .ToList();
@@ -206,6 +225,7 @@ namespace Gyvr.Mythril2D
             return new WarehouseDataBlock
             {
                 money = m_warehouseMoney,
+                warehouseCapacity = warehouseCapacity,
                 items = warehouseItems.Select(instance => new ItemInstance(instance.GetItem(), instance.quantity)).ToList()
             };
         }

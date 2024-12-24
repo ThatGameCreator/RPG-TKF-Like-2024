@@ -9,7 +9,6 @@ namespace Gyvr.Mythril2D
     public class UIInventoryBag : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private SerializableDictionary<EItemCategory, UIInventoryBagCategory> m_categories = null;
         [SerializeField] private Transform m_slotParent = null; // 背包格子的父对象
         [SerializeField] private UIInventoryBagSlot m_slotPrefab = null; // 格子的预制体
         private List<UIInventoryBagSlot> m_slots = new List<UIInventoryBagSlot>();
@@ -37,7 +36,7 @@ namespace Gyvr.Mythril2D
         }
 
         // Always reset to the first category when shown
-        private void OnEnable() => SetCategory(0);
+        //private void OnEnable() => SetCategory(0);
 
         private void ClearSlots()
         {
@@ -67,17 +66,22 @@ namespace Gyvr.Mythril2D
             // 清空所有格子
             foreach (var slot in m_slots)
             {
+                //Debug.Log(slot);
                 slot.Clear();
+                // 重置被选中标签 否则直接退出菜单会有一个格子仍被标记为选中
+                slot.setSlectedFalse();
             }
 
             int usedSlots = 0;
-
             List<ItemInstance> items = GameManager.InventorySystem.backpackItems;
 
-            foreach (ItemInstance instance in items)
-            {
-                if (usedSlots >= m_slots.Count) break; // 防止槽位越界
+            // 确保背包中的物品数不超过槽位数量
+            int maxSlots = Mathf.Min(m_slots.Count, items.Count);
 
+            // 填充槽位
+            for (int i = 0; i < maxSlots; i++)
+            {
+                ItemInstance instance = items[i];
                 UIInventoryBagSlot slot = m_slots[usedSlots++];
                 slot.SetItem(instance.GetItem(), instance.quantity);
             }
@@ -98,26 +102,5 @@ namespace Gyvr.Mythril2D
             return null;
         }
 
-        public void SetCategory(EItemCategory category)
-        {
-            // Make sure this category is available in the bag
-            if (!m_categories.ContainsKey(category))
-            {
-                Debug.LogWarning($"Category {category} not found in the bag");
-                return;
-            }
-            
-            foreach (var entry in m_categories)
-            {
-                entry.Value.SetHighlight(false);
-            }
-
-            m_category = category;
-            m_categories[m_category].SetHighlight(true);
-
-            UpdateSlots();
-        }
-
-        private void OnBagCategorySelected(EItemCategory category) => SetCategory(category);
     }
 }

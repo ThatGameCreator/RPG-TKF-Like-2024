@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_category: 1
   m_icon: {fileID: 422764638, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_localizationKey: id_copper_coin_item_name
   m_displayName: Copper Coin
   m_description: 
-  m_price: 5
+  m_descriptionKey: id_copper_coin_description
+  m_buyPrice: 6
+  m_sellPrice: 3
   m_isStackable: 1

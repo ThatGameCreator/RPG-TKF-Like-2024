@@ -15,12 +15,12 @@ namespace Gyvr.Mythril2D
         {
             if (GameManager.WarehouseSystem.isOpenning == true)
             {
-                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull() == false)
+                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull(this) == false)
                 {
                     GameManager.InventorySystem.RemoveFromBag(this);
                     GameManager.WarehouseSystem.AddToWarehouse(this);
                 }
-                else if (location == EItemLocation.Warehouse && GameManager.InventorySystem.IsBackpackFull() == false)
+                else if (location == EItemLocation.Warehouse && GameManager.InventorySystem.IsBackpackFull(this) == false)
                 {
                     GameManager.InventorySystem.AddToBag(this);
                     GameManager.WarehouseSystem.RemoveFromWarehouse(this);
@@ -28,7 +28,7 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                if (target.currentStats[EStat.Health] < target.stats[EStat.Health])
+                if (target.currentStats[EStat.Health] < target.maxStats[EStat.Health])
                 {
                     int previousHealth = target.currentStats[EStat.Health];
                     //target.Heal(m_healthToRestore);

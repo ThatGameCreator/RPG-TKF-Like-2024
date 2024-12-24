@@ -6,6 +6,7 @@ namespace Gyvr.Mythril2D
     {
         [Header("Settings")]
         [SerializeField] protected AudioClipResolver m_audioClipResolver = null;
+        [SerializeField] private bool m_loopPlayback = false; // 新增循环播放选项
 
         private AudioClipResolver m_previousAudio = null;
 
@@ -24,7 +25,15 @@ namespace Gyvr.Mythril2D
             if (IsPlayer(collision))
             {
                 m_previousAudio = GameManager.AudioSystem.GetLastPlayedAudioClipResolver(m_audioClipResolver.targetChannel);
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_audioClipResolver);
+
+                if (m_loopPlayback)
+                {
+                    GameManager.AudioSystem.PlayWithLoop(m_audioClipResolver); // 使用支持循环的播放方法
+                }
+                else
+                {
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_audioClipResolver);
+                }
             }
         }
 

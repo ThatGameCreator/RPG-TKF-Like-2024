@@ -42,12 +42,12 @@ GameObject:
   - component: {fileID: 9062008660019099435}
   - component: {fileID: 1162930297068857448}
   m_Layer: 12
-  m_Name: Light 2D 20
+  m_Name: Light 2D 17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9062008660019099435
 Transform:
   m_ObjectHideFlags: 0
@@ -82,8 +82,8 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
-  size: 20
+  color: {r: 0.18490559, g: 0.18490559, b: 0.18490559, a: 1}
+  size: 10
   spotAngleInner: 360
   spotAngleOuter: 360
   coreSize: 0.5
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 3160474669565549291}
   - component: {fileID: 2891174014201169827}
   m_Layer: 12
-  m_Name: Light 2D 10
+  m_Name: Light 2D 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,8 +175,8 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.2981131, g: 0.28517613, b: 0.28517613, a: 1}
-  size: 10
+  color: {r: 0.18490559, g: 0.18490559, b: 0.18490559, a: 1}
+  size: 8
   spotAngleInner: 360
   spotAngleOuter: 360
   coreSize: 0.5
@@ -301,21 +301,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_interaction:
-    rid: 8303503458993963013
+    rid: 8303503458993963012
   m_spriteRenderer:
   - {fileID: 4306543411354716546}
   m_lightEventListener: {fileID: 1048742508096135004}
   m_showAnimationSpeed: 10
   m_hideAnimationSpeed: 10
+  m_lootedTime: 2
+  Lights:
+  - {fileID: 1162930297068857448}
+  - {fileID: 9221452532771143903}
+  - {fileID: 2891174014201169827}
+  - {fileID: 7504123706308741106}
+  positionScrollSpeed: 1
+  intensityScrollSpeed: 1
+  intensityBase: 1
+  positionJumpScale: 0.2
+  intensityJumpScale: 0.1
   references:
     version: 2
     RefIds:
-    - rid: 8303503458993963013
+    - rid: 8303503458993963012
       type: {class: CommandInteraction, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_command:
-          rid: 8303503458993963014
-    - rid: 8303503458993963014
+          rid: 8303503458993963015
+    - rid: 8303503458993963015
       type: {class: SaveResurrectionPostion, ns: Gyvr.Mythril2D, asm: Gyvr.Mythril2D}
       data:
         m_gameObject: {fileID: 1135642598488375374}
@@ -576,7 +587,7 @@ GameObject:
   - component: {fileID: 3518070895357647728}
   - component: {fileID: 7504123706308741106}
   m_Layer: 12
-  m_Name: Light 2D  5
+  m_Name: Light 2D 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,7 +628,7 @@ MonoBehaviour:
   translucentLayer: 0
   translucentPresetId: 0
   color: {r: 0.18490559, g: 0.18490559, b: 0.18490559, a: 1}
-  size: 10
+  size: 4
   spotAngleInner: 360
   spotAngleOuter: 360
   coreSize: 0.5
@@ -669,7 +680,7 @@ GameObject:
   - component: {fileID: 8479303816205695056}
   - component: {fileID: 9221452532771143903}
   m_Layer: 12
-  m_Name: Light 2D 15
+  m_Name: Light 2D 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -709,8 +720,8 @@ MonoBehaviour:
   occlusionLayer: 0
   translucentLayer: 0
   translucentPresetId: 0
-  color: {r: 0.24528301, g: 0.23278746, b: 0.23278746, a: 1}
-  size: 15
+  color: {r: 0.18490559, g: 0.18490559, b: 0.18490559, a: 1}
+  size: 10
   spotAngleInner: 360
   spotAngleOuter: 360
   coreSize: 0.5

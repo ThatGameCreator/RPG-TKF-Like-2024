@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Attack_TypeList Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Attack_TypeList
+  m_TableCollectionNameGuidString: 4cb465adf35c295479717dcb4db16bb4
+  m_Entries:
+  - m_Id: 77514014720
+    m_Key: id_use_fists_choice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 210410536960
+    m_Key: id_wield_weapon_choice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362730881024
+    m_Key: id_use_bow_choice
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529359098445826
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529359098445826
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732285986433

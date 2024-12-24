@@ -36,7 +36,7 @@ namespace Gyvr.Mythril2D
 
             for (int i = 0; i < options.Length; ++i)
             {
-                output[i] = options[i].name;
+                output[i] = LocalizationSystem.Instance.GetNPCDialogueOptionLocalizedString(options[i].nameKey);
             }
 
             return output;

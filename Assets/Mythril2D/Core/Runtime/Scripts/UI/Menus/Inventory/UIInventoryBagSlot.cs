@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Gyvr.Mythril2D
@@ -16,11 +17,59 @@ namespace Gyvr.Mythril2D
         private Item m_item = null;               // 基础物品信息
         private ItemInstance m_itemInstance = null; // 具体物品实例信息
         private bool m_selected = false;
+        private bool isPointerDown = false;
+        private float pointerDownTimer = 0f;
+        private bool longPressTriggered = false;
+        private const float longPressThreshold = 0.2f; // 0.2s 判断短按和长按的分界点
 
-        public void Clear()
+        private void Awake()
         {
-            SetItem(null, 0); // 清空时同时清理 Item 和 ItemInstance
+            m_button.onClick.AddListener(OnSlotClicked);
         }
+
+        private void Start()
+        {
+            GameManager.InputSystem.ui.drop.performed += OnDropItem;
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.InputSystem.ui.drop.performed -= OnDropItem;
+        }
+
+        public void setSlectedFalse()
+        {
+            m_selected = false;
+        }
+
+        private void OnDropItem(InputAction.CallbackContext context)
+        {
+            // 不晓得为什么GameManager.InventorySystem.HasItemInBag(m_item)放前面会空指针
+            if (m_item != null && GameManager.InventorySystem.HasItemInBag(m_item) && m_selected)
+            {
+                // 调用丢弃物品的逻辑
+                if (GameManager.UIManagerSystem.UIMenu.inventory.isActiveAndEnabled)
+                {
+                    GameManager.NotificationSystem.OnBagItemDiscarded?.Invoke(m_itemInstance, EItemLocation.Bag);
+
+                }
+                else if (GameManager.UIManagerSystem.UIMenu.shop.isActiveAndEnabled)
+                {
+                    GameManager.NotificationSystem.OnShopItemDiscarded?.Invoke(m_itemInstance, EItemLocation.Bag);
+
+                }
+                //Clear(); // 清空物品槽
+            }
+        }
+
+        private void OnSlotClicked()
+        {
+            if (m_item != null) {
+                SendMessageUpwards("OnBagItemClicked", m_item, SendMessageOptions.RequireReceiver);
+            }
+        }
+
+        public void Clear() => SetItem(null, 0);
 
         public Item GetItem()
         {
@@ -39,6 +88,7 @@ namespace Gyvr.Mythril2D
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+
             m_button.Select();
         }
 
@@ -50,6 +100,8 @@ namespace Gyvr.Mythril2D
 
         public void OnDeselect(BaseEventData eventData)
         {
+            // 只有指向按钮的时候执行选中和不选中
+            // 如果直接关闭菜单，不会对之前的被选中按钮进行bool变量的消除
             m_selected = false;
             GameManager.NotificationSystem.itemDetailsClosed.Invoke();
         }
@@ -86,10 +138,10 @@ namespace Gyvr.Mythril2D
                 }
 
                 // 如果是堆叠物品，显示数量；否则只显示物品图标
-                m_quantity.text = item.isStackable ? quantity.ToString() : string.Empty;
+                m_quantity.text = item.IsStackable ? quantity.ToString() : string.Empty;
 
                 m_image.enabled = true;
-                m_image.sprite = item.icon;
+                m_image.sprite = item.Icon;
             }
             else
             {
@@ -104,21 +156,6 @@ namespace Gyvr.Mythril2D
             if (m_selected)
             {
                 GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_item);
-            }
-
-        }
-
-        private void Awake()
-        {
-            m_button.onClick.AddListener(OnSlotClicked);
-
-        }
-
-        private void OnSlotClicked()
-        {
-            if (m_item != null)
-            {
-                SendMessageUpwards("OnBagItemClicked", m_item, SendMessageOptions.RequireReceiver);
             }
         }
     }

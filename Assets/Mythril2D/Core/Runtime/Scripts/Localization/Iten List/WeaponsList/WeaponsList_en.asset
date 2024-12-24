@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: WeaponsList_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 30b566a30ec3f2344b2ea65b7becc01b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 4709859742822400
+    m_Localized: Diamond Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709875718926336
+    m_Localized: Excalibur Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709898980536320
+    m_Localized: Gold Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709902637969408
+    m_Localized: Iron Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709904449908736
+    m_Localized: Stone Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709905137774592
+    m_Localized: Wood Sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709905787891712
+    m_Localized: Diamond Dagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709906375094272
+    m_Localized: Gold Dagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709906979074048
+    m_Localized: Iron Dagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709907901820928
+    m_Localized: Stone Dagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4709908501606400
+    m_Localized: Wood Dagger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4720250577334272
+    m_Localized: Normal Bow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4720264271736832
+    m_Localized: Hunter Bow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5771359521714176
+    m_Localized: Solid Stone
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

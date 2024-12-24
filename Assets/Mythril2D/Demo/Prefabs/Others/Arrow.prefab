@@ -127,6 +127,9 @@ MonoBehaviour:
   m_maxDuration: 2
   m_destroyAnimationParameter: destroy
   m_collisionSound: {fileID: 0}
+  m_validLayers:
+    serializedVersion: 2
+    m_Bits: 2177
 --- !u!212 &895966249480542025
 SpriteRenderer:
   m_ObjectHideFlags: 0

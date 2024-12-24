@@ -15,13 +15,18 @@ MonoBehaviour:
   lines:
   - Oy fellow traveler! I'm Alphonse, and this is my general store.
   - I might have some good stuff for you, want to take a look?
+  lineKeys:
+  - id_dialogue_sister_shop_offer_01
+  - id_dialogue_sister_shop_offer_02
   options:
   - name: Shop
+    nameKey: id_dialogue_option_name_shop
     sequence: {fileID: 0}
     message:
       type: 2
       customMessage: 
   - name: Cancel
+    nameKey: id_dialogue_option_name_cancel
     sequence: {fileID: 0}
     message:
       type: 3

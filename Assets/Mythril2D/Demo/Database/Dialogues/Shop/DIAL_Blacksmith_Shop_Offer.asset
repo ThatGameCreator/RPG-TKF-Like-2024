@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - I might be small, but I can forge big weapons. Look at what I have in store!
+  lineKeys:
+  - id_dialogue_blacksmith_shop_offer_01
   options:
   - name: Shop
+    nameKey: id_dialogue_option_name_shop
     sequence: {fileID: 0}
     message:
       type: 2
       customMessage: 
   - name: Cancel
+    nameKey: id_dialogue_option_name_cancel
     sequence: {fileID: 0}
     message:
       type: 3

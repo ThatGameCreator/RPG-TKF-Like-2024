@@ -9,9 +9,10 @@ namespace Gyvr.Mythril2D
     [Serializable]
     public struct InventoryDataBlock
     {
-        public int money;
+       public int money;
+       public int backpackCapacity;
         //public SerializableDictionary<DatabaseEntryReference<Item>, int> items;
-        public List<ItemInstance> items; // 改为 List<ItemInstance>
+       public List<ItemInstance> items; // 改为 List<ItemInstance>
     }
 
     [Serializable]
@@ -43,7 +44,7 @@ namespace Gyvr.Mythril2D
         public List<ItemInstance> backpackItems => m_backpackItems;
         private List<ItemInstance> m_backpackItems = new List<ItemInstance>();
         public int backpackCapacity => m_backpackCapacity;
-        private int m_backpackCapacity = 20; // 默认容量为 20
+        private int m_backpackCapacity = 20; // 默认容量
 
         public void AddMoney(int value)
         {
@@ -122,6 +123,12 @@ namespace Gyvr.Mythril2D
                 // 遍历多余的格子
                 for (int i = backpackCapacity + reducedCapacity - 1; i >= newCapacity; i--)
                 {
+                    if (i >= GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.Count || i < 0)
+                    {
+                        Debug.LogWarning($"Index {i} is out of range for slots. Skipping.");
+                        continue;
+                    }
+
                     UIInventoryBagSlot slot = GameManager.UIManagerSystem.UIMenu.inventory.bag.slots[i];
                     Item item = slot.GetItem();
                     int quantity = slot.GetItemNumber();
@@ -130,18 +137,42 @@ namespace Gyvr.Mythril2D
                     if (item != null && quantity > 0)
                     {
                         GameManager.ItemGenerationSystem.DropItemToPlayer(item, quantity);
+
+                        // 一个存的是list的item 下面是删除UI格子
+                        m_backpackItems.RemoveAt(i);
                     }
-                    m_backpackItems.RemoveAt(i);
 
                     // 删除格子的 GameObject
-                    Destroy(GameManager.UIManagerSystem.UIMenu.inventory.bag.slots[i].gameObject);
-                    Destroy(GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots[i].gameObject);
-                    Destroy(GameManager.UIManagerSystem.UIMenu.shop.bag.slots[i].gameObject);
-                    Destroy(GameManager.UIManagerSystem.UIMenu.craft.bag.slots[i].gameObject);
-                    GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.RemoveAt(i);
-                    GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots.RemoveAt(i);
-                    GameManager.UIManagerSystem.UIMenu.shop.bag.slots.RemoveAt(i);
-                    GameManager.UIManagerSystem.UIMenu.craft.bag.slots.RemoveAt(i);
+                    // 检查 inventory 是否初始化以及是否存在索引
+                    if (i < GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.Count && i >= 0)
+                    {
+                        Destroy(GameManager.UIManagerSystem.UIMenu.inventory.bag.slots[i].gameObject);
+                        GameManager.UIManagerSystem.UIMenu.inventory.bag.slots.RemoveAt(i);
+                    }
+
+                    // 检查 warehouse 是否初始化以及是否存在索引
+                    if (GameManager.UIManagerSystem.UIMenu.warehouse?.bag?.slots != null &&
+                        i < GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots.Count && i >= 0)
+                    {
+                        Destroy(GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots[i].gameObject);
+                        GameManager.UIManagerSystem.UIMenu.warehouse.bag.slots.RemoveAt(i);
+                    }
+
+                    // 检查 shop 是否初始化以及是否存在索引
+                    if (GameManager.UIManagerSystem.UIMenu.shop?.bag?.slots != null &&
+                        i < GameManager.UIManagerSystem.UIMenu.shop.bag.slots.Count && i >= 0)
+                    {
+                        Destroy(GameManager.UIManagerSystem.UIMenu.shop.bag.slots[i].gameObject);
+                        GameManager.UIManagerSystem.UIMenu.shop.bag.slots.RemoveAt(i);
+                    }
+
+                    // 检查 craft 是否初始化以及是否存在索引
+                    if (GameManager.UIManagerSystem.UIMenu.craft?.bag?.slots != null &&
+                        i < GameManager.UIManagerSystem.UIMenu.craft.bag.slots.Count && i >= 0)
+                    {
+                        Destroy(GameManager.UIManagerSystem.UIMenu.craft.bag.slots[i].gameObject);
+                        GameManager.UIManagerSystem.UIMenu.craft.bag.slots.RemoveAt(i);
+                    }
                 }
             }
 
@@ -155,42 +186,39 @@ namespace Gyvr.Mythril2D
             // 获取之前的装备
             Equipment previousEquipment = GameManager.Player.Equip(equipment);
 
-            // 检查新装备是否是背包
-            if (equipment.type == EEquipmentType.Backpack)
+            int capacityDifference = 0;
+
+            // 检查新装备的容量影响
+            if (equipment.capacity != 0)
             {
-                int additionalCapacity = equipment.capacity; // 新装备的背包容量
-
-                if (previousEquipment != null && previousEquipment.type == EEquipmentType.Backpack)
-                {
-                    // 对比新旧背包容量，决定增加或减少
-                    int capacityDifference = additionalCapacity - previousEquipment.capacity;
-
-                    if (capacityDifference > 0)
-                    {
-                        // 增加背包容量
-                        GameManager.InventorySystem.IncreaseBackpackCapacity(capacityDifference);
-                    }
-                    else if (capacityDifference < 0)
-                    {
-                         GameManager.InventorySystem.DecreaseBackpackCapacity(-capacityDifference);
-                    }
-                }
-                else
-                {
-                    // 如果之前没有背包，则直接增加容量
-                    GameManager.InventorySystem.IncreaseBackpackCapacity(additionalCapacity);
-                }
-
-                // 更新背包 UI
-                GameManager.UIManagerSystem.UIMenu.inventory.Init();
+                capacityDifference += equipment.capacity;
             }
+
+            // 检查旧装备的容量影响
+            if (previousEquipment != null && previousEquipment.capacity != 0)
+            {
+                capacityDifference -= previousEquipment.capacity;
+            }
+
+            // 调整容量
+            if (capacityDifference > 0)
+            {
+                GameManager.InventorySystem.IncreaseBackpackCapacity(capacityDifference);
+            }
+            else if (capacityDifference < 0)
+            {
+                GameManager.InventorySystem.DecreaseBackpackCapacity(-capacityDifference);
+            }
+
+            // 更新背包 UI
+            GameManager.UIManagerSystem.UIMenu.inventory.Init();
 
             // 移除新装备并处理之前的装备
             RemoveFromBag(equipment, 1, true);
 
             if (previousEquipment != null)
             {
-                if (IsBackpackFull())
+                if (IsBackpackFull(previousEquipment))
                 {
                     // 背包已满，掉落旧装备到地上
                     GameManager.ItemGenerationSystem.DropItemToPlayer(previousEquipment, 1);
@@ -209,19 +237,16 @@ namespace Gyvr.Mythril2D
 
             if (previousEquipment)
             {
-                // 如果卸下的是背包装备，减少背包容量
-                if (previousEquipment.type == EEquipmentType.Backpack)
+                // 检查卸下的装备容量影响
+                if (previousEquipment.capacity != 0)
                 {
-                    // 假设 previousEquipment 有 capacity 属性
-                    int reducedCapacity = previousEquipment.capacity;
-
-                    GameManager.InventorySystem.DecreaseBackpackCapacity(reducedCapacity);
+                    GameManager.InventorySystem.DecreaseBackpackCapacity(previousEquipment.capacity);
 
                     // 更新背包 UI
-                    GameManager.UIManagerSystem.UIMenu.inventory.Init(); // 根据新的容量更新 UI
+                    GameManager.UIManagerSystem.UIMenu.inventory.Init();
                 }
 
-                if(IsBackpackFull() == true)
+                if (IsBackpackFull(previousEquipment))
                 {
                     GameManager.ItemGenerationSystem.DropItemToPlayer(previousEquipment, 1);
                 }
@@ -231,6 +256,7 @@ namespace Gyvr.Mythril2D
                 }
             }
         }
+
 
         public void UnEquipAll()
         {
@@ -257,7 +283,7 @@ namespace Gyvr.Mythril2D
 
         public int GetItemCount(Item item)
         {
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 var instance = backpackItems.FirstOrDefault(i => i.GetItem() == item);
                 return instance?.quantity ?? 0;
@@ -270,7 +296,7 @@ namespace Gyvr.Mythril2D
 
         public bool HasItemInBag(Item item, int quantity = 1)
         {
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 var instance = backpackItems.FirstOrDefault(i => i.GetItem() == item);
                 return instance != null && instance.quantity >= quantity;
@@ -282,39 +308,43 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        public bool IsBackpackFull()
+        public bool IsBackpackFull(Item item)
         {
-            return GetCurrentItemCount() >= m_backpackCapacity;
+            if(GetCurrentItemCount() >= m_backpackCapacity)
+            {
+                if (item.IsStackable)
+                {
+                    // 返回是否背包有可堆叠物品 有则不满
+                    // 如果有堆叠应该是不满 得取反！
+                    return !HasItemInBag(item);
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public int GetCurrentItemCount()
         {
             // 背包的当前物品数量：非堆叠物品按实例数计算，堆叠物品按总堆叠数计算
-            return backpackItems.Sum(instance => instance.GetItem().isStackable ? 1 : instance.quantity);
+            return backpackItems.Sum(instance => instance.GetItem().IsStackable ? 1 : instance.quantity);
         }
-
-        public void TryAddItemToBag(Item item, int quantity = 1)
-        {
-            if (GameManager.InventorySystem.IsBackpackFull())
-            {
-                //GameManager.NotificationSystem.ShowMessage("背包已满，无法添加物品！");
-                return;
-            }
-
-            GameManager.InventorySystem.AddToBag(item, quantity);
-        }
-
 
         public void AddToBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
             // 如果背包已满且物品不可添加，直接返回
-            if (IsBackpackFull())
+            if (IsBackpackFull(item))
             {
                 Debug.LogWarning("背包已满，无法添加物品！");
                 return;
             }
 
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 // 如果可堆叠，检查是否已有相同物品
                 var instance = backpackItems.FirstOrDefault(i => i.GetItem() == item);
@@ -332,7 +362,7 @@ namespace Gyvr.Mythril2D
                 // 如果不可堆叠，每次添加一个新实例
                 for (int i = 0; i < quantity; i++)
                 {
-                    if (IsBackpackFull())
+                    if (IsBackpackFull(item))
                     {
                         Debug.LogWarning("背包已满，无法添加更多不可堆叠物品！");
                         break;
@@ -350,13 +380,12 @@ namespace Gyvr.Mythril2D
                 }
             }
         }
-
-
         public bool RemoveFromBag(Item item, int quantity = 1, bool forceNoEvent = false)
         {
+            //Debug.Log("RemoveFromBag");
             bool success = false;
 
-            if (item.isStackable)
+            if (item.IsStackable)
             {
                 // 如果可堆叠，减少数量或移除
                 var instance = backpackItems.FirstOrDefault(i => i.GetItem() == item);
@@ -407,6 +436,7 @@ namespace Gyvr.Mythril2D
         public void LoadDataBlock(InventoryDataBlock block)
         {
             m_backpackMoney = block.money;
+            m_backpackCapacity = block.backpackCapacity;
             m_backpackItems = block.items
                 .Select(instanceData => new ItemInstance(GameManager.Database.LoadFromReference(instanceData.itemReference), instanceData.quantity))
                 .ToList();
@@ -416,7 +446,8 @@ namespace Gyvr.Mythril2D
         {
             return new InventoryDataBlock
             {
-                money = m_backpackMoney,
+                money = backpackMoney,
+                backpackCapacity = backpackCapacity,
                 items = backpackItems.Select(instance => new ItemInstance(instance.GetItem(), instance.quantity)).ToList()
             };
         }

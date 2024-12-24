@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224282351dec5aa48bd0d1c7f7eb1c8f, type: 3}
+  m_Name: AUDIO_GSFX_Death Slime
+  m_EditorClassIdentifier: 
+  m_audioClips:
+  - {fileID: 8300000, guid: dbc3d298fe0b03c42a1740d6086208e4, type: 3}
+  - {fileID: 8300000, guid: a42f8b3d03f6fc447b77f4da96909800, type: 3}
+  - {fileID: 8300000, guid: a3f35b073146b5e4cb0a709639a99a21, type: 3}
+  - {fileID: 8300000, guid: 058c5f69577245f49a7d7c12a32dd6e0, type: 3}
+  m_targetChannel: 3
+  m_resolvingAlgorithm: 1

@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 4928962304513780153}
   - component: {fileID: 4928962304513780152}
   - component: {fileID: 4928962304513780148}
+  - component: {fileID: 7287014362455675261}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -334,6 +335,21 @@ MonoBehaviour:
   m_labelHash: 1.1037539e-22
   m_SpriteKey: 7.1446164e-19
   m_SpriteHash: 559079218
+--- !u!114 &7287014362455675261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928962304513780144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6fb646448451d4b9e10d48c5508a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_moveSound: {fileID: 11400000, guid: 10569ff5c33f6fd40b2b4fdfc1ac343b, type: 2}
+  m_runSound: {fileID: 11400000, guid: 2fa44d7becc40c64b8aef9daf0715b5f, type: 2}
+  m_body: {fileID: 4928962304513780144}
 --- !u!1 &5672777907548866790
 GameObject:
   m_ObjectHideFlags: 0

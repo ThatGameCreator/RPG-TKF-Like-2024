@@ -13,8 +13,10 @@ namespace Gyvr.Mythril2D
         public UnityEvent<CharacterBase, int> healthRecovered = new UnityEvent<CharacterBase, int>();
         public UnityEvent<CharacterBase, int> manaConsumed = new UnityEvent<CharacterBase, int>();
         public UnityEvent<CharacterBase, int> manaRecovered = new UnityEvent<CharacterBase, int>();
+
         public UnityEvent<Hero, float> staminaConsumed = new UnityEvent<Hero, float>();
         public UnityEvent<Hero, float> staminaRecovered = new UnityEvent<Hero, float>();
+        
         public UnityEvent<int> experienceGained = new UnityEvent<int>();
         public UnityEvent<int> levelUp = new UnityEvent<int>();
         public UnityEvent<AIController, Transform> targetDetected = new UnityEvent<AIController, Transform>();
@@ -38,11 +40,19 @@ namespace Gyvr.Mythril2D
         public UnityEvent mapTransitionCompleted = new UnityEvent();
         public UnityEvent mapLoaded = new UnityEvent();
         public UnityEvent mapUnloaded = new UnityEvent();
+
         public UnityEvent saveStart = new UnityEvent();
         public UnityEvent saveEnd = new UnityEvent();
+
         public UnityEvent<Hero> playerSpawned = new UnityEvent<Hero>();
         public UnityEvent<Hero, Entity> playerTryInteracte = new UnityEvent<Hero, Entity>();
         public UnityEvent<Hero, Entity> playerEndInteracte = new UnityEvent<Hero, Entity>();
+        public UnityEvent<string> SetActiveEvacuation = new UnityEvent<string>();
+
+        public UnityEvent<ItemInstance, EItemLocation> OnBagItemDiscarded = new UnityEvent<ItemInstance, EItemLocation>();
+        public UnityEvent<ItemInstance, EItemLocation> OnWarehouseItemDiscarded = new UnityEvent<ItemInstance, EItemLocation>();
+        public UnityEvent<ItemInstance, EItemLocation> OnShopItemDiscarded = new UnityEvent<ItemInstance, EItemLocation>();
+        public UnityEvent<Equipment, EItemLocation> OnEquipmentDiscarded = new UnityEvent<Equipment, EItemLocation>();
 
         public UnityEvent<TeleportLoadingDelegationParams> mapTransitionDelegationRequested = new UnityEvent<TeleportLoadingDelegationParams>();
 
@@ -70,6 +80,7 @@ namespace Gyvr.Mythril2D
         [Header("UI")]
         public UnityEvent<EItemCategory> UICategorySelected = new UnityEvent<EItemCategory>();
         public UnityEvent UIWarehouseClosed = new UnityEvent();
+        public UnityEvent<UINavigationCursorTarget, bool> MoveNavigationCursorAfterScrollRectSnap = new UnityEvent<UINavigationCursorTarget, bool>();
 
 
     }

@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_category: 1
   m_icon: {fileID: -416518199, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_localizationKey: id_dull_gem_item_name
   m_displayName: Dull Gem
   m_description: 
-  m_price: 5
+  m_descriptionKey: id_dull_gem_description
+  m_buyPrice: 12
+  m_sellPrice: 6
   m_isStackable: 0

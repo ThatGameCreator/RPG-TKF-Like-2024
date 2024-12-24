@@ -96,7 +96,14 @@ namespace Gyvr.Mythril2D
             {
                 OnLastNodeReached();
 
-                m_LastNode.toExecuteOnCompletion?.Execute();
+                if (m_LastNode != null)
+                {
+                    if(m_LastNode.toExecuteOnCompletion != null)
+                    {
+                        m_LastNode.toExecuteOnCompletion?.Execute();
+
+                    }
+                }
             }
             else
             {

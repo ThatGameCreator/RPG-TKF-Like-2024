@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224282351dec5aa48bd0d1c7f7eb1c8f, type: 3}
+  m_Name: AUDIO_GSFX_Death Broken Skeleton
+  m_EditorClassIdentifier: 
+  m_audioClips:
+  - {fileID: 8300000, guid: 3bb456b4345739940b76ff3deeba865c, type: 3}
+  - {fileID: 8300000, guid: 567906f7bd3d56a4cbcd67ea2da6692a, type: 3}
+  - {fileID: 8300000, guid: 39ffa5bc3c6789c44b74ff0c281e4c54, type: 3}
+  - {fileID: 8300000, guid: 5e9a34216ccc48b4fa328be32d6b6c6d, type: 3}
+  m_targetChannel: 3
+  m_resolvingAlgorithm: 1

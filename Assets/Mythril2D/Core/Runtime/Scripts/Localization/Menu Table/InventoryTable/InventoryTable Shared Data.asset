@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: InventoryTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: InventoryTable
+  m_TableCollectionNameGuidString: ddd10107358118e448ab8758de65012e
+  m_Entries:
+  - m_Id: 10606477312
+    m_Key: id_consumables_choice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 324495605760
+    m_Key: id_resources_choice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 543039815680
+    m_Key: id_gear_choice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 596655603712
+    m_Key: id_key_items_choice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 743552712704
+    m_Key: id_equipped_gear_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2391203332096000
+    m_Key: id_equipment_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 882472255488
+    m_Key: id_backpack_text
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529357206028292
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529357206028292
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732279545600

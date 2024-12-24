@@ -16,7 +16,8 @@ namespace Gyvr.Mythril2D
             {
                 DialogueNode current = new DialogueNode();
 
-                current.text = StringFormatter.Format(sequence.lines[i], args);
+                //current.text = StringFormatter.Format(sequence.lines[i], args);
+                current.text = StringFormatter.Format(LocalizationSystem.Instance.GetNPCDialogueLocalizedString(sequence.lineKeys[i]), args);
                 current.speaker = speaker;
 
                 if (i == sequence.lines.Length - 1)
@@ -28,6 +29,7 @@ namespace Gyvr.Mythril2D
                         current.options[j] = new DialogueNodeOption
                         {
                             name = StringFormatter.Format(sequence.options[j].name),
+                            nameKey = StringFormatter.Format(sequence.options[j].nameKey),
                             node = sequence.options[j].sequence ? CreateDialogueNodeRecursive(sequence.options[j].sequence, speaker, args) : null,
                             message = sequence.options[j].message
                         };

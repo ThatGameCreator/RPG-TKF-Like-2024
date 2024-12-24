@@ -17,11 +17,204 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 8f8038edf6dc5bf4b8692f6cb7e01d22
   m_SerializeEntries:
-  - m_GUID: 8a0ef3aba4c42a5428dd95790c167aa0
-    m_Address: New Table_ja
+  - m_GUID: 0028cbfff3794a74d8f7d33b3002469e
+    m_Address: OtherItemList_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04a60338844671949b22d40187f0232e
+    m_Address: NPCDialogueTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 073e7ba6c587dde40b75a2f9027ddc07
+    m_Address: TermDefinitionTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b2e1f0cc22a8dc41bd2eab14e5f44f2
+    m_Address: ShopTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e31f0de82272904f925c4a285ff4f4b
+    m_Address: EvacuationPositionTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f5a9beb37baaed47945b745a6d27cac
+    m_Address: AbilitiesTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bdfb9e069207f14a9e5c15aa97698f1
+    m_Address: Attack_TypeList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2007211c9edb1e9409b2be3e788eba90
+    m_Address: JournalTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 231c120b8c730ae47a564e6ab5adf628
+    m_Address: EquipmentsList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2791cfe67d54cf74bb10d5a8b50e8885
+    m_Address: MaterialsList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43bf6394e18c7a94a90d32f93473f929
+    m_Address: GeneralTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5110db8d23fb5a045b4746163e150c49
+    m_Address: DemonList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61aa56cb954ce54448596b0dfebe71b7
+    m_Address: HeroList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 656718583fd76f248b5b2dc3865f5185
+    m_Address: SettingsTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7163d70f0e2a1fe4eb15302c4a1b746e
+    m_Address: DialogueTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7297e63a7ec77474d980fa972397f7dc
+    m_Address: DeathTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76e80fcecff1fcc42828bee3ba0508c2
+    m_Address: ItemDescriptionTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82bc0a28bdb2f824fa0bf1dfb8deb944
+    m_Address: ConsumersList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 837fe85cd4ae38d4e8f0762015b48cd1
+    m_Address: NPCNameTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84911fa651d004e43a5970d17fbe035a
+    m_Address: Monster_DropsList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 864bc43c8ad30844a85e154b6425186c
+    m_Address: HUDTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b425aed39b3b1fa419be4a274874a749
+    m_Address: QuestsList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2272ab6be35d25498f04383512f59c4
+    m_Address: WarehouseTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6b552cb3dc971d4995ea74d6659c35e
+    m_Address: CharacterDetail_Related_Table_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9b1a49d0b01689478f03bf49b11fcf0
+    m_Address: SaveTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc893275108755342bad83fbdc6c065c
+    m_Address: InventoryTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d31d7acd82ff687448d7f33f080e54b7
+    m_Address: CraftTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d82f8006e682d2e44869f0bbb8a17ea9
+    m_Address: MainMenuTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfab763018b3bd64885a20c903d66e04
+    m_Address: NPCDialogueOptionTable_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e39ee6ad1ac1aa44f83507cfdd78ac98
+    m_Address: WeaponsList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: e464c33b12d229c44a427be0ef09436b, type: 2}

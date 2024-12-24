@@ -23,12 +23,24 @@ namespace Gyvr.Mythril2D
 
         private void OnDetailsOpened(Item item)
         {
+            //Debug.Log("OnDetailsOpened");
+
             if (item)
             {
                 m_itemDetailsBox.SetActive(true);
-                m_itemIcon.sprite = item.icon;
-                m_itemName.text = item.displayName;
-                m_itemDescription.text = item.description;
+                m_itemIcon.sprite = item.Icon;
+                m_itemName.text = LocalizationSystem.Instance.GetItemNameLocalizedString(item.LocalizationKey, item.Category);
+
+                // 比较两个字符串，如果两个字符串不相等返回-1，两个相等则返回0。
+                //if (string.Compare(item.DescriptionKey, string.Empty) == 0)
+                if (item.DescriptionKey.Length > 1)
+                {
+                    m_itemDescription.text = LocalizationSystem.Instance.GetItemDescriptionLocalizedString(item.DescriptionKey);
+                }
+                else
+                {
+                    m_itemDescription.text = string.Empty;
+                }
 
                 if (item is Equipment)
                 {
@@ -41,8 +53,20 @@ namespace Gyvr.Mythril2D
 
                         if (value != 0)
                         {
-                            m_itemDescription.text += $" <u>{(value > 0 ? '+' : '-')}{value}\u00A0{GameManager.Config.GetTermDefinition(stat).shortName}</u>";
+                            m_itemDescription.text += 
+                            $"<u>{(value > 0 ? '+' : '-')}{value}\u00A0" +
+                            $"{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString(GameManager.Config.GetTermDefinition(stat).fullName)}</u>";
                         }
+                    }
+
+                    if(equipment.stamina != 0)
+                    {
+                        m_itemDescription.text += $"<u>{(equipment.stamina > 0 ? '+' : '-')}{equipment.stamina}\u00A0{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString("id_term_definition_stamina")}</u>"; ;
+                    }
+
+                    if(equipment.capacity != 0)
+                    {
+                        m_itemDescription.text += $"<u>{(equipment.capacity > 0 ? '+' : '-')}{equipment.capacity}\u00A0{LocalizationSystem.Instance.GetStatsTermDefinitionLocalizedString("id_term_definition_capacity")}</u>"; ;
                     }
                 }
             }

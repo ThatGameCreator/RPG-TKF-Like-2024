@@ -18,7 +18,10 @@ namespace Gyvr.Mythril2D
 
             if (sheet)
             {
-                m_controllerButton.SetAction((UIControllerButtonManager.EAction)(index + (int)UIControllerButtonManager.EAction.FireAbility1));
+                if (m_controllerButton != null)
+                {
+                    m_controllerButton.SetAction((UIControllerButtonManager.EAction)(index + (int)UIControllerButtonManager.EAction.FireAbility1));
+                }
             }
         }
     }

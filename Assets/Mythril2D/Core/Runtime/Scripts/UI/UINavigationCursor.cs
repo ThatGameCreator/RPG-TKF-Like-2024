@@ -6,8 +6,20 @@ namespace Gyvr.Mythril2D
     public class UINavigationCursor : MonoBehaviour
     {
         [SerializeField] private Image m_image = null;
+        [SerializeField] private RectTransform m_rectTransform = null;
 
         private UINavigationCursorTarget m_target = null;
+
+        private void Start()
+        {
+            GameManager.NotificationSystem.MoveNavigationCursorAfterScrollRectSnap.AddListener(SetTarget);
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.NotificationSystem.MoveNavigationCursorAfterScrollRectSnap.RemoveListener(SetTarget);
+
+        }
 
         private Vector3 GetTargetPosition()
         {
@@ -24,39 +36,37 @@ namespace Gyvr.Mythril2D
             SetTarget(null);
         }
 
-        private void SetTarget(UINavigationCursorTarget currentTarget)
+        private void SetTarget(UINavigationCursorTarget currentTarget, bool isNeedUpdate = false)
         {
-            UINavigationCursorTarget previousTarget = m_target;
+            if (currentTarget == m_target && isNeedUpdate == false) return;
 
-            // If target changed
-            if (currentTarget != previousTarget)
+            if (m_target != null)
             {
-                if (previousTarget != null)
-                {
-                    previousTarget.destroyed.RemoveListener(OnTargetDestroyed);
-                }
-
-                m_target = currentTarget;
-
-
-                // New valid target found
-                if (m_target != null)
-                {
-                    m_target.destroyed.AddListener(OnTargetDestroyed);
-
-                    ((RectTransform)transform).sizeDelta = GetTargetSize();
-                    transform.position = GetTargetPosition();
-
-                    m_image.enabled = true;
-                    m_image.sprite = m_target.navigationCursorStyle.sprite;
-                    m_image.color = m_target.navigationCursorStyle.color;
-                }
-                else
-                // No target
-                {
-                    m_image.enabled = false;
-                }
+                m_target.destroyed.RemoveListener(OnTargetDestroyed);
             }
+
+            m_target = currentTarget;
+
+            if (m_target != null)
+            {
+                m_target.destroyed.AddListener(OnTargetDestroyed);
+                UpdateCursorAppearance();
+            }
+            else
+            {
+                m_image.enabled = false;
+            }
+        }
+
+        private void UpdateCursorAppearance()
+        {
+            ((RectTransform)transform).sizeDelta = GetTargetSize();
+            transform.position = GetTargetPosition();
+
+            m_image.enabled = true;
+            m_rectTransform.sizeDelta = new Vector2(68, 68);
+            m_image.sprite = m_target.navigationCursorStyle.sprite;
+            m_image.color = m_target.navigationCursorStyle.color;
         }
 
         private void Update()

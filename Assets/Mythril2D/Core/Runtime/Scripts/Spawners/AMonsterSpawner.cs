@@ -5,20 +5,11 @@ using UnityEngine;
 
 namespace Gyvr.Mythril2D
 {
-    [Serializable]
-    public struct MonsterSpawn
-    {
-        public GameObject prefab;
-        public int rate;
-    }
-
     public abstract class AMonsterSpawner : MonoBehaviour
     {
         [Header("General Settings")]
-        //[SerializeField] private MonsterSpawn[] m_monsters = null;
         [SerializeField] private bool isUseGroup = false;
-        [SerializeField] private GameObject monsterPrefabs = null;
-        [SerializeField] private int rate = 100;
+        [SerializeField] private EntityTable monsterTable = null;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_minLevel = Stats.MinLevel;
         [SerializeField][Range(Stats.MinLevel, Stats.MaxLevel)] private int m_maxLevel = Stats.MaxLevel;
 
@@ -72,13 +63,45 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        private GameObject FindMonsterToSpawn()
+        private EntityTable.EntityData GetRandomEntry()
+        {
+            float totalWeight = 0f;
+
+            foreach (var entry in monsterTable.entries)
+            {
+                totalWeight += entry.weight;
+            }
+
+            float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+
+            foreach (var entry in monsterTable.entries)
+            {
+                if (randomValue < entry.weight)
+                {
+                    return entry;
+                }
+
+                randomValue -= entry.weight;
+            }
+
+            return null;
+        }
+
+        private Entity FindMonsterToSpawn()
         {
             int randomNumber = UnityEngine.Random.Range(0, 100);
 
-            if (randomNumber <= rate)
+            if (monsterTable.entries != null)
             {
-                return monsterPrefabs;
+                if (randomNumber <= monsterTable.generateRate && monsterTable.entries.Length > 0)
+                {
+                    // 随机选择一个 entitiy 预制体
+                    return GetRandomEntry().entity;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {
@@ -102,11 +125,11 @@ namespace Gyvr.Mythril2D
         private void Spawn()
         {
             Vector2 position = FindSpawnLocation();
-            GameObject monster = FindMonsterToSpawn();
+            Entity monster = FindMonsterToSpawn();
 
             if (monster != null)
             {
-                GameObject instance = Instantiate(monster, position, Quaternion.identity, transform);
+                Entity instance = Instantiate(monster, position, Quaternion.identity, transform);
                 instance.transform.parent = null;
 
                 if (isUseGroup == true)
@@ -128,7 +151,7 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                Debug.LogError("Couldn't find a monster to spawn, please check your spawn rates and make sure their sum is 100");
+                //Debug.LogError("Couldn't find a monster to spawn, please check your spawn rates and make sure their sum is 100");
             }
         }
 

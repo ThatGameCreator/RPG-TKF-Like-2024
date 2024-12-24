@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: -592417340943693092, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_sheet
       value: 
-      objectReference: {fileID: 11400000, guid: fbd558604520f6840b1f35393cc57204, type: 2}
+      objectReference: {fileID: 11400000, guid: 6bbef73a055cc9d4f80d8b984db17e08, type: 2}
     - target: {fileID: -592417340943693092, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_moveSpeed
       value: 2
@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.31244776
       objectReference: {fileID: 0}
+    - target: {fileID: 3431370290224538611, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
+      propertyPath: m_moveSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 9bd94701117a7524cb7550a6324fe0fa, type: 2}
     - target: {fileID: 3567045199918684122, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -111,6 +115,10 @@ PrefabInstance:
     - target: {fileID: 4395925964684122280, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709888431689883737, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
+      propertyPath: m_detectionRadius
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 5709888431689883737, guid: d2b0f6d4ebcd9ce44a4dafe88555f702, type: 3}
       propertyPath: m_soughtDistanceFromTarget

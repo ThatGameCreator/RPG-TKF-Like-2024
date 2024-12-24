@@ -15,6 +15,9 @@ MonoBehaviour:
   lines:
   - Alas, your souls are too few to restore you.
   - I regret that I cannot offer my aid at this time, dear knight.
+  lineKeys:
+  - id_dialogue_doll_can_pay_01
+  - id_dialogue_doll_can_pay_02
   options: []
   toExecuteOnStart:
     rid: -2

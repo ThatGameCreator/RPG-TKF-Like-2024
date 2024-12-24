@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: EquipmentsList Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: EquipmentsList
+  m_TableCollectionNameGuidString: 60a2c5f2ba5b9e44aa1c794f229ccea8
+  m_Entries:
+  - m_Id: 23168417792
+    m_Key: id_amber_earring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332352
+    m_Key: id_amber_necklace_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332353
+    m_Key: id_amber_ring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332354
+    m_Key: id_amethyst_earring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332355
+    m_Key: id_amethyst_necklace_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332356
+    m_Key: id_amethyst_ring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332357
+    m_Key: id_diamond_earring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332358
+    m_Key: id_diamond_necklace_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332359
+    m_Key: id_diamond_ring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332360
+    m_Key: id_emerald_earring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332361
+    m_Key: id_emerald_necklace_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332362
+    m_Key: id_emerald_ring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332363
+    m_Key: id_onyx_earring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332364
+    m_Key: id_onyx_necklace_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332365
+    m_Key: id_onyx_ring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332366
+    m_Key: id_ruby_earring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332367
+    m_Key: id_ruby_necklace_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332368
+    m_Key: id_ruby_ring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332369
+    m_Key: id_sapphire_earring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332370
+    m_Key: id_sapphire_necklace_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23231332371
+    m_Key: id_sapphire_ring_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4708844175994880
+    m_Key: id_cloth_wrap_item_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711481269137408
+    m_Key: id_bronze_armor_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711482946859008
+    m_Key: id_bronze_boots_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711484079321088
+    m_Key: id_bronze_gloves_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711485056593920
+    m_Key: id_bronze_helm_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711485811568640
+    m_Key: id_golded_armor_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711486516211712
+    m_Key: id_golden_boots_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711487191494656
+    m_Key: id_golden_gloves_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711487816445952
+    m_Key: id_golden_helm_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711488445591552
+    m_Key: id_iron_armor_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711489053765632
+    m_Key: id_iron_boots_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711489678716928
+    m_Key: id_iron_gloves_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711490261725184
+    m_Key: id_iron_helm_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711490899259392
+    m_Key: id_leather_armor_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711491566153728
+    m_Key: id_leather_boots_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711492207882240
+    m_Key: id_leather_gloves_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711492874776576
+    m_Key: id_leather_helm_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711493579419648
+    m_Key: id_mythril_armor_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711494170816512
+    m_Key: id_mythril_boots_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711494762213376
+    m_Key: id_mythril_gloves_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711495471050752
+    m_Key: id_mythril_helm_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711496142139392
+    m_Key: id_silver_armor_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711496859365376
+    m_Key: id_silver_boots_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711497526259712
+    m_Key: id_silver_gloves_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4711499329810432
+    m_Key: id_silver_helm_name
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529403776434177
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529403776434177
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732455952243

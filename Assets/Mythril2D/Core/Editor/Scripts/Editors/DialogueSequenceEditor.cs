@@ -8,6 +8,7 @@ namespace Gyvr.Mythril2D
     {
         // Private Members
         private SerializedProperty m_lines;
+        private SerializedProperty m_lineKeys;
         private SerializedProperty m_options;
         private SerializedProperty m_toExecuteOnStart;
         private SerializedProperty m_toExecuteOnCompletion;
@@ -17,6 +18,7 @@ namespace Gyvr.Mythril2D
         void OnEnable()
         {
             m_lines = serializedObject.FindProperty("lines");
+            m_lineKeys = serializedObject.FindProperty("lineKeys");
             m_options = serializedObject.FindProperty("options");
             m_toExecuteOnStart = serializedObject.FindProperty("toExecuteOnStart");
             m_toExecuteOnCompletion = serializedObject.FindProperty("toExecuteOnCompletion");
@@ -29,6 +31,7 @@ namespace Gyvr.Mythril2D
             serializedObject.UpdateIfRequiredOrScript();
 
             EditorGUILayout.PropertyField(m_lines);
+            EditorGUILayout.PropertyField(m_lineKeys);
             EditorGUILayout.Separator();
             m_options.arraySize = EditorGUILayout.IntSlider("Option Count", m_options.arraySize, 0, 3);
 
@@ -53,9 +56,10 @@ namespace Gyvr.Mythril2D
             {
                 EditorGUILayout.PropertyField(property.FindPropertyRelative("name"), GUIContent.none);
             }
-
+            EditorGUILayout.PropertyField(property.FindPropertyRelative("nameKey"), GUIContent.none);
             EditorGUILayout.PropertyField(property.FindPropertyRelative("sequence"), GUIContent.none);
             EditorGUILayout.PropertyField(property.FindPropertyRelative("message"), GUIContent.none);
+
             EditorGUILayout.EndHorizontal();
         }
     }

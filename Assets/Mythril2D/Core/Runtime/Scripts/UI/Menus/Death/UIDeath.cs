@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,6 +10,7 @@ namespace Gyvr.Mythril2D
     {
         [Header("References")]
         [SerializeField] private Button m_revivalButton = null;
+        [SerializeField] private Button m_payToRevivalButton = null;
         [SerializeField] private Button m_quitButton = null;
 
         public void Init()
@@ -46,9 +49,9 @@ namespace Gyvr.Mythril2D
             //return m_quitButton.gameObject;
         }
 
-        public void RevivePlayer()
+        private void ReviveFunction(bool isFullTORecover = false)
         {
-            GameManager.UIManagerSystem.UIMenu.PopDeathMenu();
+            GameManager.UIManagerSystem.UIMenu.ClearMenuStackOnDeath();
 
             GameManager.DayNightSystem.OnDisableDayNightSystem();
 
@@ -56,11 +59,45 @@ namespace Gyvr.Mythril2D
             // 而导致没办法控制人物各种行为？
             GameManager.GameStateSystem.AddLayer(EGameState.Gameplay);
 
-            GameManager.Player.TryPlayRevivalAnimation();
+            GameManager.TeleportLoadingSystem.RequestTransition(null, null, () => {
+                // 这里恢复不了血量
+                // 不是位置的问题 是tm currentStats 是只读的 虽然能够 = 但没修改任何角色身上的数据
+                GameManager.Player.RecoverPlayerStats(isFullTORecover);
+            },
+            () => {
+                // 这也恢复不了
+                GameManager.Player.TryPlayRevivalAnimation();
+            }, ETeleportType.Revival);
+        }
+
+        public void RevivePlayer()
+        {
+            ReviveFunction();
+        }
+
+        public void PayToRevivePlayer()
+        {
+            if (GameManager.WarehouseSystem.HasSufficientFunds(25))
+            {
+                GameManager.WarehouseSystem.RemoveMoney(25);
+
+                ReviveFunction(true);
+            }
+            else
+            {
+                GameManager.DialogueSystem.Main.PlayNow
+                (LocalizationSettings.StringDatabase.GetLocalizedString("NPCDialogueTable", "id_dialogue_Death_can_not_pay"));
+            }
         }
 
         public void GoToMainMenu()
         {
+            // 不是战斗场景则保存数据
+            if (GameManager.TeleportLoadingSystem.currentMap == "Pilgrimage_Place")
+            {
+                GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName);
+            }
+
             SceneManager.LoadScene(GameManager.Config.mainMenuSceneName);
         }
     }

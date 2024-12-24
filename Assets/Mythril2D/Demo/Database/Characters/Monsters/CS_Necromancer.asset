@@ -47,7 +47,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_evolutionScale: 1
+    m_evolutionScale: 0.5
   experience:
     m_initialValue: 10
     m_evolutionProfile:
@@ -74,42 +74,8 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    m_evolutionScale: 3
-  money:
-    m_initialValue: 20
-    m_evolutionProfile:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 1
-        outSlope: 1
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 1
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_evolutionScale: 3
-  potentialLoot:
-  - condition:
-      rid: -2
-    item: {fileID: 11400000, guid: 3a76970755e80814d9d79a3f02caba3c, type: 2}
-    quantity: 1
-    dropRate: 100
-    minimumMonsterLevel: 0
-    minimumPlayerLevel: 0
+    m_evolutionScale: 1
+  lootTable: {fileID: 0}
   executeOnDeath:
     rid: -2
   references:

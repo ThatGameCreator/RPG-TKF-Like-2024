@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: CharacterDetail_Related_Table Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: CharacterDetail_Related_Table
+  m_TableCollectionNameGuidString: 3d7ef05531733394cb7272e76ac5aa07
+  m_Entries:
+  - m_Id: 189946527744
+    m_Key: id_information_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4700147265679360
+    m_Key: id_character_level_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4700210528366592
+    m_Key: id_character_souls_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 297706586112
+    m_Key: id_attribute_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 449959821312
+    m_Key: id_health_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4321976099909632
+    m_Key: id_mana_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4693103607394304
+    m_Key: id_physical_attack_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4699535144759296
+    m_Key: id_physical_Defense_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4699578811658240
+    m_Key: id_magical_Defense_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1159409565696
+    m_Key: id_agility_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1281069547520
+    m_Key: id_luck_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606294114304
+    m_Key: id_focus_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 742080512000
+    m_Key: id_endurance_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 849408557056
+    m_Key: id_intelligence_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971861262336
+    m_Key: id_resistance_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1097354838016
+    m_Key: id_insight_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1412359651328
+    m_Key: id_remaining_points_inteltext
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2374001065328640
+    m_Key: id_character_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4700469975429120
+    m_Key: id_character_points_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5454160919638016
+    m_Key: id_character_points_button_text
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529359098445824
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529359098445824
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732285426414

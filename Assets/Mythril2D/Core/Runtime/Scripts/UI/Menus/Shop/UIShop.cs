@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 namespace Gyvr.Mythril2D
@@ -20,10 +22,22 @@ namespace Gyvr.Mythril2D
         [SerializeField] private GameObject m_itemSlotsRoot = null;
         [SerializeField] private TextMeshProUGUI m_money = null;
 
+
         public UIInventoryBag bag => m_inventoryBag;
 
         private UIShopEntry[] m_slots = null;
         private Shop m_shop = null;
+
+        private void Awake()
+        {
+            GameManager.NotificationSystem.OnShopItemDiscarded?.AddListener(OnBagItemDiscarded);
+
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.NotificationSystem.OnShopItemDiscarded?.RemoveListener(OnBagItemDiscarded);
+        }
 
         public void Init()
         {
@@ -80,7 +94,7 @@ namespace Gyvr.Mythril2D
             {
                 ClearSlots();
                 FillSlots();
-                RewireNavigation();
+                //RewireNavigation();
             }
         }
 
@@ -118,11 +132,27 @@ namespace Gyvr.Mythril2D
             {
                 m_money.text = GameManager.InventorySystem.backpackMoney.ToString();
             }
-            else
+            else if(transactionType == ETransactionType.Sell)
             {
-                m_money.text = string.Format("{0}\n({1}{2})",
+                UIInventoryBagSlot bagItem = selection.GetComponent<UIInventoryBagSlot>();
+
+                if (IsSellAbleItem(bagItem.GetItem()) == true)
+                {
+                    m_money.text = string.Format("{0}  ({1}{2})",
+                   GameManager.InventorySystem.backpackMoney,
+                  "+",
+                   selectedItemPrice);
+                }
+                else
+                {
+                    m_money.text = GameManager.InventorySystem.backpackMoney.ToString();
+                }
+            }
+            else if(transactionType == ETransactionType.Buy)
+            {
+                m_money.text = string.Format("{0}  ({1}{2})",
                     GameManager.InventorySystem.backpackMoney,
-                    transactionType == ETransactionType.Buy ? "-" : "+",
+                    "-",
                     selectedItemPrice);
             }
         }
@@ -155,24 +185,35 @@ namespace Gyvr.Mythril2D
                 Destroy(child.gameObject);
             }
         }
+        
+        private void OnBagItemDiscarded(ItemInstance itemInstance, EItemLocation location)
+        {
+            // 感觉这分开写是不是有点傻逼
+            // 要么就弄两个委托，要么就合成一个？
+            if (location == EItemLocation.Bag)
+            {
+                itemInstance.GetItem().Drop(itemInstance, GameManager.Player, location);
+                UpdateUI();
+            }
+        }
 
         private void OnShopSlotClicked(Item item)
         {
             int itemPrice = m_shop.GetPrice(item, ETransactionType.Buy);
 
-            if (GameManager.InventorySystem.IsBackpackFull() == false)
+            if (GameManager.InventorySystem.IsBackpackFull(item) == false)
             {
                 if (GameManager.InventorySystem.backpackMoney >= itemPrice)
                 {
                     GameManager.InventorySystem.RemoveMoney(itemPrice);
                     GameManager.InventorySystem.AddToBag(item);
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_buySellAudio);
-                    m_inventoryBag.SetCategory(item.category); // Navigate to the category of the purchased item for better UX
                     UpdateUI(true);
                 }
                 else
                 {
-                    GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotBuy, null, item.displayName));
+                    GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree
+                    (m_cannotBuy, null, LocalizationSystem.Instance.GetItemNameLocalizedString(item.LocalizationKey, item.Category)));
                 }
             }
             else
@@ -181,8 +222,30 @@ namespace Gyvr.Mythril2D
             }
         }
 
+        private bool IsSellAbleItem(Item item)
+        {
+            foreach (var sellType in m_shop.availableSellTypes)
+            {
+                if (sellType == item.Category)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void OnBagItemClicked(Item item)
         {
+            bool isSellable = IsSellAbleItem(item);
+
+            // 检查物品类型是否可出售
+            if (isSellable == false)
+            {
+                GameManager.DialogueSystem.Main.PlayNow
+                (LocalizationSettings.StringDatabase.GetLocalizedString("NPCDialogueTable", "id_dialogue_shop_doesnot_match_acquisition_type"));
+                return;
+            }
+
             int itemPrice = m_shop.GetPrice(item, ETransactionType.Sell);
 
             if (itemPrice > 0)
@@ -194,7 +257,7 @@ namespace Gyvr.Mythril2D
             }
             else
             {
-                GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotSell, null, item.displayName));
+                GameManager.DialogueSystem.Main.PlayNow(DialogueUtils.CreateDialogueTree(m_cannotSell, null, item.DisplayName));
             }
         }
 

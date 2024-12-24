@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Gyvr.Mythril2D
 {
@@ -36,6 +37,7 @@ namespace Gyvr.Mythril2D
             SceneManager.LoadSceneAsync(GameManager.Config.gameplayScene).completed += (operation) =>
             {
                 GameManager.SaveSystem.LoadDefaultSaveFile(saveFile, saveFileName);
+
             };
         }
 
@@ -61,9 +63,19 @@ namespace Gyvr.Mythril2D
                 {
                     case SaveFileActionType.Load:
                         GameManager.SaveSystem.LoadFromFile(desc.filename);
+
+                        // 传送后这个对象被销毁了 不能再用协程执行
                         break;
                 }
             };
+        }
+
+
+        private IEnumerator SaveWithDelay()
+        {
+            yield return new WaitForSeconds(1f); // 等待一秒
+
+            GameManager.Player.TryPlayRevivalAnimation();
         }
     }
 }

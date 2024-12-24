@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0289099dc5b3f49b3b9ca3cf8f6b7baa, type: 3}
   m_Name: ITEM_Silver Key
   m_EditorClassIdentifier: 
-  m_category: 1
+  m_category: 4
   m_icon: {fileID: 818132536, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_localizationKey: id_silver_key_item_name
   m_displayName: Silver Key
   m_description: 
-  m_price: 5
+  m_descriptionKey: id_silver_key_description
+  m_buyPrice: 10
+  m_sellPrice: 5
   m_isStackable: 0

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8421550761b2409fadfe5c6658b5395, type: 3}
+  m_Name: Solid Stone
+  m_EditorClassIdentifier: 
+  m_category: 2
+  m_icon: {fileID: 511619631, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_localizationKey: id_solid_stone_item_name
+  m_displayName: Solid Stone
+  m_description: 
+  m_descriptionKey: id_solid_stone_item_description
+  m_buyPrice: 2
+  m_sellPrice: 1
+  m_isStackable: 1
+  m_equipAudio: {fileID: 0}
+  m_unequipAudio: {fileID: 0}
+  m_type: 0
+  m_bonusStats:
+    m_values: 000000000000000000000000010000000000000000000000000000000000000000000000
+  m_visualOverride: {fileID: 0}
+  m_capacity: 0
+  m_ability:
+  - {fileID: 11400000, guid: 586bc32c63f39a540b24c67a91cdc7d4, type: 2}

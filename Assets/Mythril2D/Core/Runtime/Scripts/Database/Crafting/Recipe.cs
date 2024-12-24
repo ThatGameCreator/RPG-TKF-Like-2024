@@ -23,7 +23,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private SerializableDictionary<Item, int> m_ingredients = null;
 
         public Item item => m_item;
-        public Sprite icon => m_iconOverride ? m_iconOverride : (m_item ? m_item.icon : null);
+        public Sprite icon => m_iconOverride ? m_iconOverride : (m_item ? m_item.Icon : null);
         public string displayName => GetDisplayName();
         public int quantity => m_quantity;
         public SerializableDictionary<Item, int> ingredients => m_ingredients;
@@ -76,7 +76,7 @@ namespace Gyvr.Mythril2D
             }
             else if (m_item)
             {
-                string displayName = m_item.displayName;
+                string displayName = m_item.DisplayName;
 
                 if (m_quantity > 1)
                 {

@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: TermDefinitionTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: TermDefinitionTable
+  m_TableCollectionNameGuidString: efc0c7ff4acd425409f415d1d18aaaac
+  m_Entries:
+  - m_Id: 92201922560
+    m_Key: id_stats_term_definition_health_full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1055461584896
+    m_Key: id_stats_term_definition_mana_full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1084540694528
+    m_Key: id_stats_term_definition_physical_attack_full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1106191691776
+    m_Key: id_stats_term_definition_magical_attack_full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1117088493568
+    m_Key: id_stats_term_definition_physical_defense_full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1126592786432
+    m_Key: id_stats_term_definition_magical_defense_full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1139754512384
+    m_Key: id_stats_term_definition_agility_full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1150550650880
+    m_Key: id_stats_term_definition_luck_full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1162663800832
+    m_Key: id_stats_term_definition_Unknow_full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 395272725835776
+    m_Key: id_term_definition_souls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 395337498472448
+    m_Key: id_term_definition_gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 395438329540608
+    m_Key: id_term_definition_levelup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1511996678320128
+    m_Key: id_term_definition_capacity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1517075938521088
+    m_Key: id_term_definition_stamina
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5345252871542407226
+  references:
+    version: 2
+    RefIds:
+    - rid: 5345252871542407226
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1733645736734

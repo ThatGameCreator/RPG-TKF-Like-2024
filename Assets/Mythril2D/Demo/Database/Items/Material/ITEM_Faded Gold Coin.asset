@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_category: 1
   m_icon: {fileID: -1449128498, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_localizationKey: id_faded_gold_coin_item_name
   m_displayName: Faded Gold Coin
   m_description: 
-  m_price: 5
+  m_descriptionKey: id_faded_gold_coin_description
+  m_buyPrice: 20
+  m_sellPrice: 10
   m_isStackable: 1

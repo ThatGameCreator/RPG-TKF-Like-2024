@@ -48,9 +48,9 @@ namespace Gyvr.Mythril2D
         public void Initialize(Item item)
         {
             m_target = item;
-            m_name.text = item.displayName;
-            m_price.text = item.price.ToString();
-            m_image.sprite = item.icon;
+            m_name.text = LocalizationSystem.Instance.GetItemNameLocalizedString(item.LocalizationKey, item.Category);
+            m_price.text = item.buyPrice.ToString();
+            m_image.sprite = item.Icon;
         }
 
         public Item GetItem()

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224282351dec5aa48bd0d1c7f7eb1c8f, type: 3}
+  m_Name: AUDIO_GSFX_Run
+  m_EditorClassIdentifier: 
+  m_audioClips:
+  - {fileID: 8300000, guid: 4e058ac8a16fc3148bd4445142b687b6, type: 3}
+  - {fileID: 8300000, guid: cad45768a9d42ee47aece1339db08cc4, type: 3}
+  - {fileID: 8300000, guid: 9b3d00c05990f8c428a489014765baff, type: 3}
+  - {fileID: 8300000, guid: eba727a12b5d8524481454be75e05b57, type: 3}
+  - {fileID: 8300000, guid: 4c1b6da136ec73448ad02619b4cac951, type: 3}
+  - {fileID: 8300000, guid: f69bf8f7ac2d59d479e1fdc668bded0d, type: 3}
+  - {fileID: 8300000, guid: c4fd28ffaef0db748bb2a995da1010f7, type: 3}
+  - {fileID: 8300000, guid: ddfe0f0e2838fa34b8366da0d24d7b5d, type: 3}
+  m_targetChannel: 3
+  m_resolvingAlgorithm: 1

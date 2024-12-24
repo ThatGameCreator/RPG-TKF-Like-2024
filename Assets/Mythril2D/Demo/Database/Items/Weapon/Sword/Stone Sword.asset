@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8421550761b2409fadfe5c6658b5395, type: 3}
+  m_Name: Stone Sword
+  m_EditorClassIdentifier: 
+  m_category: 2
+  m_icon: {fileID: -1999083324, guid: f03b68ec21bc47e4787ad6057bf26849, type: 3}
+  m_localizationKey: id_stone_sword_name
+  m_displayName: 
+  m_description: 
+  m_descriptionKey: id_stone_sword_description
+  m_buyPrice: 30
+  m_sellPrice: 15
+  m_isStackable: 0
+  m_equipAudio: {fileID: 11400000, guid: 9fa8803b447617b48b9981e6b61432a2, type: 2}
+  m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
+  m_type: 0
+  m_bonusStats:
+    isEquip: 0
+    m_values: 000000000000000000000000020000000000000000000000000000000000000000000000
+  m_stamina: 0
+  m_visualOverride: {fileID: 7108339969198208228, guid: c3377c7d1d954994d93386f85166e8a3, type: 3}
+  m_capacity: 0
+  m_ability:
+  - {fileID: 11400000, guid: d451884129ab461459ca4a2fad3148b6, type: 2}
+  - {fileID: 11400000, guid: aee583002dde78a4e9594256eb9c8b73, type: 2}

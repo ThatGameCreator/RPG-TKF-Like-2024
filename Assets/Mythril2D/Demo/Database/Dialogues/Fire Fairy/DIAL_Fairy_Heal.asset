@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - Just a few souls will recover your strength.
+  lineKeys:
+  - id_dialogue_doll_heal_01
   options:
   - name: Accept
+    nameKey: id_dialogue_option_name_accept
     sequence: {fileID: 0}
     message:
       type: 2
       customMessage: Heal
   - name: Decline
+    nameKey: id_dialogue_option_name_decline
     sequence: {fileID: 0}
     message:
       type: 3

@@ -69,9 +69,9 @@ namespace Gyvr.Mythril2D
                     input.flatDamages,
                     input.scaledDamages,
                     input.scale,
-                    GetOffensiveStat(attacker.stats, input.damageType));
+                    GetOffensiveStat(attacker.maxStats, input.damageType));
 
-                if (GameManager.Config.canCriticalHit && EvaluateCritical(attacker.stats[EStat.Luck]))
+                if (GameManager.Config.canCriticalHit && EvaluateCritical(attacker.maxStats[EStat.Luck]))
                 {
                     damage = CalculateCriticalDamage(damage);
                     damageFlags |= EDamageFlag.Critical;
@@ -107,10 +107,10 @@ namespace Gyvr.Mythril2D
             {
                 CharacterBase attacker = output.attacker as CharacterBase;
 
-                int damage = CalculateDamageIn(output.damage, GetDefensiveStat(defender.stats, output.damageType));
+                int damage = CalculateDamageIn(output.damage, GetDefensiveStat(defender.maxStats, output.damageType));
                 bool missed =
                     GameManager.Config.canMissHit ?
-                    EvaluateMiss(attacker.stats[EStat.Agility], defender.stats[EStat.Agility]) :
+                    EvaluateMiss(attacker.maxStats[EStat.Agility], defender.maxStats[EStat.Agility]) :
                     false;
 
                 if (missed) UnityEngine.Debug.Log("Damage missed");

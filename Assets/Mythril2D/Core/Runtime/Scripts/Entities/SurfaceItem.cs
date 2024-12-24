@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 namespace Gyvr.Mythril2D
 {
@@ -8,45 +9,75 @@ namespace Gyvr.Mythril2D
         [Header("References")]
 
         [Header("SurfaceItem Settings")]
-        [SerializeField] private ChestLoot m_loot;
+        [SerializeField] private Loot m_loot;
         [SerializeField] private string m_gameFlagID = "SurfaceItem_00";
 
         [Header("Audio")]
-        [SerializeField] private AudioClipResolver m_openedSound;
+        [SerializeField] private AudioClipResolver m_lootedSound;
 
-        private bool m_opened = false;
+        private bool m_looted = false;
+        private int m_dropIndex = -1;
+
+
+
+        public int dropIndex
+        {
+            get => m_dropIndex;
+            set => m_dropIndex = value;
+        }
+        
+
+        public Loot Loot
+        {
+            get => m_loot;
+            set => m_loot = value;
+        }
 
         public bool TryLooted()
         {
-            if (m_opened == false)
-            {
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
+            // 表面物资只有第一个所以应该可以用下标0 先获取奖励对象
+            LootEntry lootItem = m_loot.entries[0];
 
-                if (m_loot.entries != null)
+            if (GameManager.InventorySystem.IsBackpackFull(lootItem.item))
+            {
+                GameManager.DialogueSystem.Main.PlayNow
+                    (LocalizationSettings.StringDatabase.GetLocalizedString("NPCDialogueTable", "id_dialogue_shop_backpack_full"));
+
+                return false;
+            }
+            else
+            {
+                if (m_looted == false)
                 {
-                    if (GameManager.InventorySystem.IsBackpackFull() == false)
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_lootedSound);
+
+                    if (m_loot.entries != null)
                     {
-                        foreach (var entry in m_loot.entries)
+                        if (GameManager.InventorySystem.IsBackpackFull(lootItem.item) == false)
                         {
-                            GameManager.InventorySystem.AddToBag(entry.item, entry.quantity);
+                            GameManager.InventorySystem.AddToBag(lootItem.item, lootItem.quantity);
+                        }
+                        else
+                        {
+                            return false;
+                        }
+
+                        if (m_loot.money != 0)
+                        {
+                            GameManager.InventorySystem.AddMoney(m_loot.money);
                         }
                     }
-                    else
-                    {
-                        return false;
-                    }
-                    
-                    if (m_loot.money != 0)
-                    {
-                        GameManager.InventorySystem.AddMoney(m_loot.money);
-                    }
+                    Destroy(this.gameObject);
+
+                    // 判断一下被检的是不是之前扔过的东西 避免传送地图时候清除空引用
+                    GameManager.ItemGenerationSystem.DeleteNullItem(this);
+
+                    return m_looted = true;
+
                 }
-                Destroy(this.gameObject);
 
-                return m_opened = true;
+                return false;
             }
-
-            return false;
         }
 
     }

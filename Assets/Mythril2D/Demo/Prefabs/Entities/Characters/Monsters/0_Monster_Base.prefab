@@ -619,6 +619,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4928962304513780144, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4928962304513780148, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       propertyPath: m_labelHash
       value: 1.1037539e-22
@@ -664,6 +668,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4928962302919589960, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5709888431689883737}
+    - targetCorrespondingSourceObject: {fileID: 4928962304513780144, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6491054580799481121}
     - targetCorrespondingSourceObject: {fileID: 7316959013917636646, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
       insertIndex: -1
       addedObject: {fileID: 592473561582033894}
@@ -738,6 +745,8 @@ MonoBehaviour:
   m_gameFlagID: monster_00
   m_aiController: {fileID: 5709888431689883737}
   m_weaponObject: {fileID: 290412488508111464}
+  m_lootedTime: 2
+  m_lootedSound: {fileID: 11400000, guid: b43b02a87d8d39d43b28b9798be0cab3, type: 2}
   references:
     version: 2
     RefIds:
@@ -759,9 +768,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_character: {fileID: -592417340943693092}
   m_rigidbody: {fileID: 8526076313025978402}
-  m_detectionRadius: 5
-  m_resetFromInitialPositionRadius: 10
-  m_resetFromTargetDistanceRadius: 10
+  m_detectionRadius: 9
+  m_resetFromInitialPositionRadius: 12
+  m_resetFromTargetDistanceRadius: 12
   m_targetOutOfRangeRetargetCooldown: 3
   m_soughtDistanceFromTarget: 1
   m_steeringDriftResponsiveness: 3
@@ -787,6 +796,46 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4928962304513780153, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
   m_PrefabInstance: {fileID: 5385744322253468302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1069940215254817598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4928962304513780144, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}
+  m_PrefabInstance: {fileID: 5385744322253468302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &6491054580799481121
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069940215254817598}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.1}
+  m_Size: {x: 0.62, y: 0.2}
+  m_Direction: 1
 --- !u!1 &3401641147437255336 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7316959013917636646, guid: 35b65aa833459fb48a5da6b625c71835, type: 3}

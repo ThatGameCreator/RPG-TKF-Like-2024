@@ -22,6 +22,16 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Button m_backpackIncreaseOneButton;
         public UIInventoryBag bag => m_bag;
 
+        private void Awake()
+        {
+            GameManager.NotificationSystem.OnWarehouseItemDiscarded?.AddListener(OnItemDiscarded);
+
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.NotificationSystem.OnWarehouseItemDiscarded?.RemoveListener(OnItemDiscarded);
+        }
 
         public void Init()
         {
@@ -30,11 +40,11 @@ namespace Gyvr.Mythril2D
             m_uiCurrency.RegisterCallbacks(new Dictionary<Button, UnityAction>
             {
                 { m_warehouseIncreaseAllButton, () => TransferMoney(true, GameManager.InventorySystem.backpackMoney) },
-                { m_warehouseIncreaseTenButton, () => TransferMoney(true, 10) },
-                { m_warehouseIncreaseOneButton, () => TransferMoney(true, 1) },
+                { m_warehouseIncreaseTenButton, () => TransferMoney(true, 100) },
+                { m_warehouseIncreaseOneButton, () => TransferMoney(true, 10) },
                 { m_backpackIncreaseAllButton, () => TransferMoney(false, GameManager.WarehouseSystem.warehouseMoney) },
-                { m_backpackIncreaseTenButton, () => TransferMoney(false, 10) },
-                { m_backpackIncreaseOneButton, () => TransferMoney(false, 1) }
+                { m_backpackIncreaseTenButton, () => TransferMoney(false, 100) },
+                { m_backpackIncreaseOneButton, () => TransferMoney(false, 10) }
             });
         }
 
@@ -106,6 +116,15 @@ namespace Gyvr.Mythril2D
             UpdateUI();
         }
 
+        private void OnItemDiscarded(ItemInstance itemInstance, EItemLocation location)
+        {
+            if (location == EItemLocation.Warehouse)
+            {
+                itemInstance.GetItem().Drop(itemInstance, GameManager.Player, location);
+                UpdateUI();
+            }
+        }
+
         private void OnBagItemClicked(Item item) => OnItemClicked(item, EItemLocation.Bag);
         private void OnWarehouseItemClicked(Item item) => OnItemClicked(item, EItemLocation.Warehouse);
 
@@ -130,6 +149,5 @@ namespace Gyvr.Mythril2D
 
             UpdateUI();
         }
-
     }
 }

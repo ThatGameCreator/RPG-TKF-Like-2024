@@ -381,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621145401353323685, guid: ee85c269e6f86154493a270ec83506e2, type: 3}
       propertyPath: m_Name
-      value: Character Menu
+      value: Character Menu 1
       objectReference: {fileID: 0}
     - target: {fileID: 5621145401353323685, guid: ee85c269e6f86154493a270ec83506e2, type: 3}
       propertyPath: m_IsActive
@@ -631,6 +631,10 @@ PrefabInstance:
       propertyPath: m_termID
       value: magical_defense
       objectReference: {fileID: 0}
+    - target: {fileID: 5396749917457882677, guid: d2570470599929641a359c82a2423f9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.2421875
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -847,6 +851,10 @@ PrefabInstance:
     - target: {fileID: 2292069367473478628, guid: d2570470599929641a359c82a2423f9d, type: 3}
       propertyPath: m_termID
       value: luck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396749917457882677, guid: d2570470599929641a359c82a2423f9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.2421875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1065,6 +1073,10 @@ PrefabInstance:
       propertyPath: m_termID
       value: mana
       objectReference: {fileID: 0}
+    - target: {fileID: 5396749917457882677, guid: d2570470599929641a359c82a2423f9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.2421875
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1273,6 +1285,10 @@ PrefabInstance:
     - target: {fileID: 104031430246590500, guid: d2570470599929641a359c82a2423f9d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396749917457882677, guid: d2570470599929641a359c82a2423f9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.2421875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1491,6 +1507,10 @@ PrefabInstance:
       propertyPath: m_termID
       value: magical_attack
       objectReference: {fileID: 0}
+    - target: {fileID: 5396749917457882677, guid: d2570470599929641a359c82a2423f9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.2421875
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1707,6 +1727,10 @@ PrefabInstance:
     - target: {fileID: 2292069367473478628, guid: d2570470599929641a359c82a2423f9d, type: 3}
       propertyPath: m_termID
       value: agility
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396749917457882677, guid: d2570470599929641a359c82a2423f9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.2421875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2078,6 +2102,10 @@ PrefabInstance:
       propertyPath: m_termID
       value: physical_defense
       objectReference: {fileID: 0}
+    - target: {fileID: 5396749917457882677, guid: d2570470599929641a359c82a2423f9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.2421875
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2447,6 +2475,10 @@ PrefabInstance:
     - target: {fileID: 2292069367473478628, guid: d2570470599929641a359c82a2423f9d, type: 3}
       propertyPath: m_termID
       value: physical_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5396749917457882677, guid: d2570470599929641a359c82a2423f9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.2421875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

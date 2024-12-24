@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
@@ -14,7 +14,7 @@ namespace Gyvr.Mythril2D
         // [实际血量]-瞬间掉血,  Slider组件里自带的那个Fill
         [SerializeField] private RectTransform m_topFillRect;
         // [缓动血量]-缓慢掉血,  自己复制出来的Fill_1
-        [SerializeField] private RectTransform m_midtFillRect;
+        [SerializeField] private RectTransform m_midFillRect;
         [SerializeField] private TextMeshProUGUI m_sliderText = null;
         [SerializeField] private float m_aniamtionSpeed = 0.001f; // 掉血速度
 
@@ -37,6 +37,7 @@ namespace Gyvr.Mythril2D
         private float statTotalChangedValue = 0f;
         private float statStartChangedValue = 0f;     // 缓慢掉血的血条-缓动起点
         private float statEndChangedValue = 0f;       // 缓慢掉血的血条-缓动终点
+        private float previousMaxStats = 0f;
 
         //private CharacterBase m_target = null;
         // 可能是因为我们把怪物的血条关了？所以现在这个基类没有报错
@@ -48,6 +49,11 @@ namespace Gyvr.Mythril2D
         const int kFramesToWaitBeforeAllowingShake = 1;
         private int m_elapsedFrames = 0;
         private bool CanShake() => m_elapsedFrames >= kFramesToWaitBeforeAllowingShake;
+
+
+        private Coroutine updateUICoroutine;
+        private bool isUIUpdateQueued = false;
+        private const float updateDelay = 0.1f; // 每次状态变化延迟更新（单位：秒）
 
         private void Start()
         {
@@ -65,28 +71,56 @@ namespace Gyvr.Mythril2D
             else
             {
                 // 基本属性写在了 Base 基类 精力属性只写在了 Hero 子类
-                m_target.maxStaminaChanged.AddListener(OnStaminaChanged);
+                m_target.maxStaminaChanged.AddListener(OnStaminaMaxChanged);
                 m_target.currentStaminaChanged.AddListener(OnStaminaChanged);
             }
             
-            m_elapsedFrames = 0;;
+            m_elapsedFrames = 0;
 
             UpdateUI();
         }
 
+        private void OnStaminaMaxChanged(float previousMaxStamina)
+        {
+            UpdateUI();
+        }
+
         // 原来没有接受 float 参数的方法 所以 invoke 调用的时候并没有对应的方法来接受参数来监听对象
+        // 精力变化监听
         private void OnStaminaChanged(float previousStamina)
         {
             UpdateUI();
         }
 
+        // 状态变化监听
         private void OnStatsChanged(Stats previous)
         {
-            // 感觉这个监听似乎也有问题，把精力值和其他状态都堆到一起写的结果就是
-            // 每次精力值被调用的时候，就会把其他状态也都记录和判断一遍
-            // 既精力变化和状态变化都会执行同样的方法
-            // 要么得把 Stats 放在一个基类里面，要么就得分开写，不然也太别扭了
             UpdateUI();
+        }
+
+        // 队列化更新：避免频繁更新UI，控制更新节奏
+        private void QueueUIUpdate()
+        {
+            if (isUIUpdateQueued) return; // 已经有更新在排队，跳过
+
+            isUIUpdateQueued = true;
+
+            // 如果有未完成的协程，先停止
+            if (updateUICoroutine != null)
+            {
+                StopCoroutine(updateUICoroutine);
+            }
+
+            // 启动协程延迟更新UI
+            updateUICoroutine = StartCoroutine(DelayedUIUpdate());
+        }
+
+        private IEnumerator DelayedUIUpdate()
+        {
+            yield return new WaitForSeconds(updateDelay); // 延迟固定时间
+
+            UpdateUI(); // 执行UI更新
+            isUIUpdateQueued = false; // 重置队列状态
         }
 
         private void Update()
@@ -116,7 +150,7 @@ namespace Gyvr.Mythril2D
                     statTotalChangedValue -= m_aniamtionSpeed;
 
                     // 锚点赋值 y 是顶部滑动条的值
-                    m_midtFillRect.anchorMax = new Vector2(m_midtFillRect.anchorMax.x - m_aniamtionSpeed, m_topFillRect.anchorMax.y);
+                    m_midFillRect.anchorMax = new Vector2(m_midFillRect.anchorMax.x - m_aniamtionSpeed, m_topFillRect.anchorMax.y);
 
                     // 如果一直不满会无法回复中间的条
                     // 如果回复的速度比等待速度快，那么先退到 now 和 end 一样，就会导致虚血在中间
@@ -130,36 +164,42 @@ namespace Gyvr.Mythril2D
 
         private void UpdateUI()
         {
-            float current, max; current = max = 0;
+            float currentStats, maxStats;
+            currentStats = maxStats = 0;
 
             if (useStamina)
             {
-                current = GameManager.Player.GetStamina();
-                max = GameManager.Player.maxStamina;
+                currentStats = GameManager.Player.GetStamina();
+                maxStats = GameManager.Player.maxStamina;
                 //m_label.text = "Stamina";
             }
             else
             {
-                current = m_target.currentStats[m_stat];
-                max = m_target.stats[m_stat];
+                currentStats = m_target.currentStats[m_stat];
+                maxStats = m_target.maxStats[m_stat];
                 //m_label.text = GameManager.Config.GetTermDefinition(m_stat).shortName;
             }
-
-            float previousSliderValue = m_slider.value;
+            // 检查最大值是否发生变化
+            bool maxStatsChanged = !Mathf.Approximately(maxStats, previousMaxStats);
+            float previousStats = m_slider.value;
 
             m_slider.minValue = 0;
-            m_slider.maxValue = max;
+            m_slider.maxValue = maxStats;
+            m_slider.value = currentStats;
 
-            // 这个 value 并不是 0 到 1 而是 角色状态的值 0 和 max 在上面有设置
-            // 取个整数 避免精力值有小数点
-            current = math.floor(current);
-
-            m_slider.value = current;
-
-            ChangeMiddleBar(current, previousSliderValue);
+            // 如果最大值发生变化，重置中间血条
+            if (maxStatsChanged)
+            {
+                ResetMiddleBar(currentStats, maxStats);
+                previousMaxStats = maxStats;
+            }
+            else
+            {
+                ChangeMiddleBar(currentStats, previousStats);
+            }
 
             // 得让顶层更新后再让中间的更新 不然在 start 时候更新的话， 还没有获取角色状态 只有一半
-            if(isStartSettingEnd == false)
+            if (isStartSettingEnd == false)
             {
                 isStartSettingEnd = true;
 
@@ -167,20 +207,29 @@ namespace Gyvr.Mythril2D
                 m_topFillRect.SetAsLastSibling();
 
                 // 初始的时候让[实际血量]和[缓动血量]一致
-                m_midtFillRect.anchorMax = m_topFillRect.anchorMax;
+                m_midFillRect.anchorMax = m_topFillRect.anchorMax;
             }
 
-            if (m_slider.value < previousSliderValue && CanShake() && m_shakeOnDecrease)
+            if (m_slider.value < previousStats && CanShake() && m_shakeOnDecrease)
             {
                 Shake();
             }
 
-            m_sliderText.text = StringFormatter.Format("{0} / {1}", current, max);
+            m_sliderText.text = StringFormatter.Format("{0} / {1}", currentStats, maxStats);
         }
 
         private float StatsValueToAnchor(float convertValue)
         {
             return convertValue / m_slider.maxValue;
+        }
+
+        // 重置中间血条，用于最大值发生变化的情况
+        private void ResetMiddleBar(float currentStats, float maxStats)
+        {
+            statStartChangedValue = statEndChangedValue = StatsValueToAnchor(currentStats);
+            statTotalChangedValue = 0f;
+            m_midFillRect.anchorMax = m_topFillRect.anchorMax;
+            isTurnMidAnimationOn = false;
         }
 
         // 启动减血效果(此时Slider的value已经变化过了, [实际血量]已经变化)
@@ -199,13 +248,13 @@ namespace Gyvr.Mythril2D
             // 增加且动画关闭的时候
             // 问题应该是动画并没有关闭 但是增加了
             // 如果是恢复数值 并且当前的虚血小于实际血量则直接赋值
-            if (current > previous && m_midtFillRect.anchorMax.x < m_topFillRect.anchorMax.x)
+            if (current > previous && m_midFillRect.anchorMax.x < m_topFillRect.anchorMax.x)
             {
                 statTotalChangedValue = 0f;
 
                 statEndChangedValue = statStartChangedValue = StatsValueToAnchor(m_slider.value);
 
-                m_midtFillRect.anchorMax = m_topFillRect.anchorMax;
+                m_midFillRect.anchorMax = m_topFillRect.anchorMax;
             }
         }
 

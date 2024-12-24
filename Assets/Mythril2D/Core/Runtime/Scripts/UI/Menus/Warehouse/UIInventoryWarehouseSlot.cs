@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Gyvr.Mythril2D
@@ -16,6 +17,44 @@ namespace Gyvr.Mythril2D
         private Item m_item = null;               // 基础物品信息
         private ItemInstance m_itemInstance = null; // 具体物品实例信息
         private bool m_selected = false;
+
+        private void Start()
+        {
+            GameManager.InputSystem.ui.drop.performed += OnDropItem;
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.InputSystem.ui.drop.performed -= OnDropItem;
+        }
+
+        private void Awake()
+        {
+            m_button.onClick.AddListener(OnSlotClicked);
+        }
+
+        public void setSlectedFalse()
+        {
+            m_selected = false;
+        }
+
+        private void OnDropItem(InputAction.CallbackContext context)
+        {
+            if (m_item != null && m_selected)
+            {
+                // 调用丢弃物品的逻辑
+                GameManager.NotificationSystem.OnWarehouseItemDiscarded?.Invoke(m_itemInstance, EItemLocation.Warehouse);
+                //Clear(); // 清空物品槽
+            }
+        }
+
+        private void OnSlotClicked()
+        {
+            if (m_item != null)
+            {
+                SendMessageUpwards("OnWarehouseItemClicked", m_item, SendMessageOptions.RequireReceiver);
+            }
+        }
 
         public void Clear() => SetItem(null, 0);
 
@@ -78,10 +117,10 @@ namespace Gyvr.Mythril2D
                 }
 
                 // 如果是堆叠物品，显示数量；否则只显示物品图标
-                m_quantity.text = item.isStackable ? quantity.ToString() : string.Empty;
+                m_quantity.text = item.IsStackable ? quantity.ToString() : string.Empty;
 
                 m_image.enabled = true;
-                m_image.sprite = item.icon;
+                m_image.sprite = item.Icon;
             }
             else
             {
@@ -95,20 +134,6 @@ namespace Gyvr.Mythril2D
             if (m_selected)
             {
                 GameManager.NotificationSystem.itemDetailsOpened.Invoke(m_item);
-            }
-
-        }
-
-        private void Awake()
-        {
-            m_button.onClick.AddListener(OnSlotClicked);
-        }
-
-        private void OnSlotClicked()
-        {
-            if (m_item != null)
-            {
-                SendMessageUpwards("OnWarehouseItemClicked", m_item, SendMessageOptions.RequireReceiver);
             }
         }
     }

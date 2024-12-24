@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: JournalTable
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 878e9b1816f286a458fd774e2bce7b84, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: f6cf4827b6db70f4cb8c7acd515a22b9, type: 2}
+  - {fileID: 11400000, guid: 35b5d37b0cb72de4caf9f24b78dc6459, type: 2}
+  - {fileID: 11400000, guid: 2007211c9edb1e9409b2be3e788eba90, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

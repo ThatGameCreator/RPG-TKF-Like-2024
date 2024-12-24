@@ -25,10 +25,6 @@ namespace Gyvr.Mythril2D
             {
                 ConsumeStamina();
                 ConsumeMana();
-                if (m_sheet.costedItem != null)
-                {
-                    ConsumeItem();
-                }
             }
         }
 
@@ -46,8 +42,9 @@ namespace Gyvr.Mythril2D
                 {
                     return m_character.Can(EActionFlags.UseAbility) &&
                     m_character.currentStats[EStat.Mana] >= m_sheet.manaCost &&
-                    GameManager.Player.GetStamina() >= m_sheet.staminaCost &&
-                    GameManager.InventorySystem.HasItemInBag(m_sheet.costedItem, m_sheet.itemCost);
+                    GameManager.Player.GetStamina() >= m_sheet.staminaCost;
+
+                    //GameManager.InventorySystem.HasItemInBag(m_sheet.costedItem, m_sheet.itemCost);
                 }
                 else
                 {
@@ -66,7 +63,17 @@ namespace Gyvr.Mythril2D
 
         protected virtual void ConsumeItem()
         {
-            GameManager.InventorySystem.RemoveFromBag(m_sheet.costedItem, m_sheet.itemCost);
+            // 先消耗背包的 再消耗装备栏的并脱下
+            if (GameManager.InventorySystem.HasItemInBag(m_sheet.costedItem))
+            {
+                GameManager.InventorySystem.RemoveFromBag(m_sheet.costedItem, m_sheet.itemCost);
+            }
+            else if (GameManager.Player.equipments[EEquipmentType.Weapon] == m_sheet.costedItem)
+            {
+                GameManager.Player.Unequip(EEquipmentType.Weapon);
+                GameManager.InventorySystem.RemoveFromBag(m_sheet.costedItem, m_sheet.itemCost);
+
+            }
         }
 
         protected virtual void ConsumeMana()

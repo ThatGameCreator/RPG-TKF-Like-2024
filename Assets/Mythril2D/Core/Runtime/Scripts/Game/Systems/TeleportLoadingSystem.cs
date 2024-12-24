@@ -27,6 +27,7 @@ namespace Gyvr.Mythril2D
         [SerializeField] private Vector2 m_defaultRevivalPostion = Vector2.zero;
         [SerializeField] private string m_defaultResurrectionMap = null;
 
+        public string currentMap => m_currentMap;
         private string m_currentMap = string.Empty;
         private Vector2 m_currentRevivalPostion = new Vector2();
 
@@ -57,6 +58,11 @@ namespace Gyvr.Mythril2D
             {
                 map = m_defaultResurrectionMap;
             }
+            // 加载前销毁生成在地图上的物品
+            GameManager.ItemGenerationSystem.DestroyAllItemsOnTeleport();
+
+            // 停止播放任何音频
+            GameManager.AudioSystem.StopAllChannels();
 
             // 传送地图也要设置当前地图
             // 好像在这里设置会出问题
@@ -69,6 +75,7 @@ namespace Gyvr.Mythril2D
                     //Debug.Log(String.Format("TryExcutePositionTelepot"));
                     TryExcutePositionTelepot(eTeleportType, destinationGameObjectName);
                 }
+
             };
 
             GameManager.NotificationSystem.mapTransitionStarted.Invoke();

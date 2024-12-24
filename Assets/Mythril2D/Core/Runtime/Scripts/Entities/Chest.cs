@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
+using UnityEngine.U2D.Animation;
+using static Gyvr.Mythril2D.LootTable;
 using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Gyvr.Mythril2D
@@ -8,21 +11,30 @@ namespace Gyvr.Mythril2D
     {
         [Header("References")]
         [SerializeField] private Animator m_chestAnimator = null;
-        [SerializeField] private Animator m_contentAnimator = null;
-        [SerializeField] private SpriteRenderer m_contentSpriteRenderer = null;
+        [SerializeField] private SpriteLibrary m_nowSpriteLibrary = null;
+        [SerializeField] private SpriteLibraryAsset m_emptySpriteLibraryAsset = null;
 
         [Header("Chest Settings")]
-        [SerializeField] private ChestLoot m_loot;
+        //[SerializeField] private Loot m_loot;
+        [SerializeField] private LootTable lootTable;   // 引用 ScriptableObject 数据表
+        [SerializeField] private Item[] m_requiredKeys = null;
         [SerializeField] private bool m_singleUse = false;
         [SerializeField] private string m_gameFlagID = "chest_00";
         [SerializeField] private string m_openedAnimationParameter = "opened";
         [SerializeField] private string m_contentRevealAnimationParameter = "reveal";
         [SerializeField] private float m_contentRevealIconCycleDuration = 1.0f;
-        [SerializeField] private DialogueSequence m_noItemDialogue = null;
-        [SerializeField] private DialogueSequence m_hasItemDialogue = null;
+        [SerializeField] private bool m_isMonsterChest = false;
+        [SerializeField] private bool m_isEmptyChest = false;
+        [SerializeField] private int m_damageAmount = 3;
+        [SerializeField] private EDamageType m_damageType = EDamageType.Physical;
+        [SerializeField] private EDistanceType m_distanceType = EDistanceType.Ranged;
+        [SerializeField] private bool m_randomGenerateKey = false;
 
         [Header("Audio")]
-        [SerializeField] private AudioClipResolver m_openingSound;
+        [SerializeField] private AudioClipResolver m_openedSound;
+        [SerializeField] private AudioClipResolver m_canNotOpenSound;
+
+        private Item m_requiredKey = null;
 
         private bool m_hasOpeningAnimation = false;
         private bool m_hasRevealAnimation = false;
@@ -32,17 +44,10 @@ namespace Gyvr.Mythril2D
         protected void Awake()
         {
             Debug.Assert(m_chestAnimator, ErrorMessages.InspectorMissingComponentReference<Animator>());
-            Debug.Assert(m_contentAnimator, ErrorMessages.InspectorMissingComponentReference<Animator>());
-            Debug.Assert(m_contentSpriteRenderer, ErrorMessages.InspectorMissingComponentReference<SpriteRenderer>());
 
             if (m_chestAnimator)
             {
                 m_hasOpeningAnimation = AnimationUtils.HasParameter(m_chestAnimator, m_openedAnimationParameter);
-            }
-
-            if (m_contentAnimator)
-            {
-                m_hasRevealAnimation = AnimationUtils.HasParameter(m_contentAnimator, m_contentRevealAnimationParameter);
             }
         }
 
@@ -50,6 +55,17 @@ namespace Gyvr.Mythril2D
         {
             base.Start();
 
+            if (m_randomGenerateKey)
+            {
+                // 随机决定是否需要钥匙
+                bool isNeedKey = Random.Range(0, 2) == 0;
+
+                if (isNeedKey && m_requiredKeys.Length != 0)
+                {
+                   m_requiredKey = m_requiredKeys[Random.Range(0, m_requiredKeys.Length)];
+                }
+            }
+            
             if (m_singleUse && GameManager.GameFlagSystem.Get(m_gameFlagID))
             {
                 m_opened = true;
@@ -64,15 +80,35 @@ namespace Gyvr.Mythril2D
                 return;
             }
 
-            if (this.opened == false)
+            if (m_requiredKey != null)
             {
-                Debug.Log(target);
+                if (GameManager.InventorySystem.HasItemInBag(m_requiredKey))
+                {
+                    if (this.opened == false)
+                    {
+                        GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+                    }
+                    else
+                    {
+                        base.OnEndInteract(sender, target);
+                    }
+                }
+                else
+                {
+                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_canNotOpenSound);
 
-                GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+                }
             }
             else
             {
-                base.OnEndInteract(sender, target);
+                if (this.opened == false)
+                {
+                    GameManager.Player.OnTryStartLoot(target, m_lootedTime);
+                }
+                else
+                {
+                    base.OnEndInteract(sender, target);
+                }
             }
         }
 
@@ -87,111 +123,132 @@ namespace Gyvr.Mythril2D
             return false;
         }
 
-        public bool TryPlayContentRevealAnimation()
+        private LootTable.LootEntryData GetRandomLootEntry()
         {
-            if (m_contentSpriteRenderer && m_contentAnimator && m_hasRevealAnimation)
-            {
-                Sprite[] sprites = m_loot.GetLootSprites();
+            float totalWeight = 0f;
 
-                if (sprites.Length > 0)
+            foreach (var entry in lootTable.entries)
+            {
+                totalWeight += entry.weight;
+            }
+
+            float randomValue = Random.Range(0f, totalWeight);
+
+            foreach (var entry in lootTable.entries)
+            {
+                if (randomValue < entry.weight)
                 {
-                    StartCoroutine(UpdateContentSprite(sprites, m_contentRevealIconCycleDuration));
-                    m_contentAnimator.SetTrigger(m_contentRevealAnimationParameter);
-                    return true;
+                    return entry;
                 }
 
-                return false;
+                randomValue -= entry.weight;
             }
 
-            return false;
-        }
-
-        private IEnumerator UpdateContentSprite(Sprite[] sprites, float duration)
-        {
-            if (sprites.Length == 0) yield break;
-
-            float interval = duration / sprites.Length;
-
-            for (int index = 0; index < sprites.Length; ++index)
-            {
-                m_contentSpriteRenderer.sprite = sprites[index];
-                yield return new WaitForSeconds(interval);
-            }
+            return null;
         }
 
         public bool TryOpen()
         {
+            if (m_isMonsterChest)
+            {
+                return MonsterChestOpen();
+            }
+            else
+            {
+                return ContentsChestOpen();
+            }
+        }
+        
+        private bool MonsterChestOpen()
+        {
             if (!m_opened)
             {
                 TryPlayOpeningAnimation(true);
-                TryPlayContentRevealAnimation();
 
-                if (!m_loot.IsEmpty())
+                GameManager.Player.Damage(new DamageOutputDescriptor
                 {
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openingSound);
+                    source = EDamageSource.Unknown,
+                    attacker = this,
+                    damage = m_damageAmount,
+                    damageType = m_damageType,
+                    distanceType = m_distanceType,
+                    flags = EDamageFlag.None
+                });
 
-                    if (m_loot.entries != null)
-                    {
-                        foreach (var entry in m_loot.entries)
-                        {
-                            if (m_hasItemDialogue)
-                                {
-                                    GameManager.DialogueSystem.Main.AddToQueue(
-                                    m_hasItemDialogue.ToDialogueTree(
-                                        string.Empty, $"{entry.item.displayName} x{entry.quantity}"
-                                    )
-                                );
-                            }
+                this.gameObject.layer = LayerMask.NameToLayer("Collision D");
 
-                            GameManager.InventorySystem.AddToBag(entry.item, entry.quantity);
-                        }
-
-                        if (m_loot.money != 0)
-                        {
-                            if (m_hasItemDialogue)
-                            {
-                                GameManager.DialogueSystem.Main.AddToQueue(
-                                    m_hasItemDialogue.ToDialogueTree(
-                                        string.Empty, $"{m_loot.money} <currency.fullName>"
-                                    )
-                                );
-                            }
-
-
-                            GameManager.InventorySystem.AddMoney(m_loot.money);
-                        }
-                    }
-                }
-                else
+                if (m_requiredKey)
                 {
-                    if (m_hasItemDialogue)
-                    {
-                        GameManager.DialogueSystem.Main.AddToQueue(
-                            m_noItemDialogue.ToDialogueTree(string.Empty)
-                        );
-                    }
+                    GameManager.InventorySystem.RemoveFromBag(m_requiredKey);
                 }
-
-                //GameManager.DialogueSystem.Main.PlayQueue();
 
                 m_opened = true;
-
-                if (m_singleUse)
-                {
-                    if (string.IsNullOrWhiteSpace(m_gameFlagID))
-                    {
-                        Debug.LogError("No ChestID provided while SingleUse is checked. Make sure to provide this chest with an ID");
-                    }
-                    else
-                    {
-                        GameManager.GameFlagSystem.Set(m_gameFlagID, true);
-                    }
-                }
 
                 return true;
             }
 
             return false;
+        }
+
+        private bool ContentsChestOpen()
+        {
+            LootEntryData randomEntry = null;
+            if (lootTable.entries != null && lootTable.entries.Length > 0)
+            {
+                // 使用基于权重的随机选择机制
+                randomEntry = GetRandomLootEntry();
+            }
+
+            // 空的是空宝箱 不能读取 会报错
+            if (randomEntry != null && GameManager.InventorySystem.IsBackpackFull(randomEntry.item))
+            {
+                GameManager.DialogueSystem.Main.PlayNow((LocalizationSettings.StringDatabase.GetLocalizedString
+                ("NPCDialogueTable", "id_dialogue_shop_backpack_full")));
+
+                return false;
+            }
+            else
+            {
+                if (!m_opened)
+                {
+                    TryPlayOpeningAnimation(true);
+
+                    if (m_isEmptyChest == false)
+                    {
+                        if (randomEntry != null)
+                        {
+                            int randomQuantity = Random.Range(1, randomEntry.maxQuantity + 1);
+                            GameManager.InventorySystem.AddToBag(randomEntry.item, randomQuantity);
+                            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
+                        }
+                        if (lootTable.money > 0)
+                        {
+                            int randomMoney = Random.Range(1, lootTable.money + 1);
+                            GameManager.InventorySystem.AddMoney(randomMoney);
+
+                            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_openedSound);
+                        }
+                    }
+
+                    this.gameObject.layer = LayerMask.NameToLayer("Collision D");
+
+                    //if (m_emptySpriteLibraryAsset)
+                    //{
+                    //    m_nowSpriteLibrary.spriteLibraryAsset = m_emptySpriteLibraryAsset;
+                    //}
+
+                    if (m_requiredKey)
+                    {
+                        GameManager.InventorySystem.RemoveFromBag(m_requiredKey);
+                    }
+
+                    m_opened = true;
+
+                    return true;
+                }
+
+                return false;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 namespace Gyvr.Mythril2D
@@ -75,14 +76,18 @@ namespace Gyvr.Mythril2D
         {
             UpdateInfoSection();
             UpdateStatsSection();
-            m_applyButtonText.text = $"Apply {m_tempStats.GetTotal()} points";
+            //m_applyButtonText.text = $"{m_tempStats.GetTotal()}";
         }
 
         private void UpdateInfoSection()
         {
             //m_class.text = m_character.characterSheet.displayName;
-            m_level.text = m_character.level.ToString();
-            m_experience.text = StringFormatter.Format("{0}", m_character.nextLevelExperience - m_character.experience);
+            
+            m_level.text = 
+            LocalizationSettings.StringDatabase.GetLocalizedString("CharacterDetail_Related_Table", "id_character_level_text") + 
+            m_character.level.ToString();
+
+            m_experience.text = StringFormatter.Format("{0}", m_character.totalNextLevelExperience - m_character.experience);
             m_skillPoints.text = m_availablePoints.ToString();
             //m_currency.text = StringFormatter.Format("{0}", GameManager.InventorySystem.backpackMoney.ToString());
         }
@@ -91,7 +96,7 @@ namespace Gyvr.Mythril2D
         {
             foreach (UICharacterStat stat in m_stats)
             {
-                stat.UpdateUI(m_character.stats, m_tempStats);
+                stat.UpdateUI(m_character.maxStats, m_tempStats);
             }
         }
 

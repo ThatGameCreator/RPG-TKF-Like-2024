@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 namespace Gyvr.Mythril2D
 {
@@ -65,14 +66,28 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.questCompleted.AddListener(OnQuestCompleted);
         }
 
-        private void OnExperienceGained(int experience) => Log(m_experienceAdded, experience);
-        private void OnLevelUp(int level) => Log(m_levelUp, level);
-        private void OnMoneyAdded(int money) => Log(m_moneyAdded, money);
-        private void OnMoneyRemoved(int money) => Log(m_moneyRemoved, money);
-        private void OnItemAdded(Item item, int count) => Log(m_itemAdded, item.displayName, count);
-        private void OnItemRemoved(Item item, int count) => Log(m_itemRemoved, item.displayName, count);
+        private void OnExperienceGained(int experience) => 
+        Log(m_experienceAdded, LocalizationSettings.StringDatabase.GetLocalizedString("TermDefinitionTable", "id_term_definition_souls"), experience);
+        
+        private void OnLevelUp(int level) => 
+        Log(m_levelUp, LocalizationSettings.StringDatabase.GetLocalizedString("TermDefinitionTable", "id_term_definition_levelup"));
+
+        private void OnMoneyAdded(int money) => 
+        Log(m_moneyAdded, LocalizationSettings.StringDatabase.GetLocalizedString("TermDefinitionTable", "id_term_definition_gold"), money);
+        
+        private void OnMoneyRemoved(int money) => 
+        Log(m_moneyRemoved, LocalizationSettings.StringDatabase.GetLocalizedString("TermDefinitionTable", "id_term_definition_gold"), money);
+
+        private void OnItemAdded(Item item, int count) 
+        {
+            Log(m_itemAdded, LocalizationSystem.Instance.GetItemNameLocalizedString(item.LocalizationKey, item.Category), count);
+        }
+        private void OnItemRemoved(Item item, int count) 
+            => Log(m_itemRemoved, LocalizationSystem.Instance.GetItemNameLocalizedString(item.LocalizationKey, item.Category), count);
+
         private void OnAbilityAdded(AbilitySheet ability) => Log(m_abilityAdded, ability.displayName);
         private void OnAbilityRemoved(AbilitySheet ability) => Log(m_abilityRemoved, ability.displayName);
+
         private void OnQuestStarted(Quest quest) => Log(m_questStarted, quest.title);
         private void OnQuestUpdated(Quest quest) => Log(m_questUpdated, quest.title);
         private void OnQuestCompleted(Quest quest) => Log(m_questCompleted, quest.title);

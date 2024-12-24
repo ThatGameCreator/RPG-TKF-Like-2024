@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Monster_DropsList Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Monster_DropsList
+  m_TableCollectionNameGuidString: 09c96000b4c31ba44863a5ea2618fd9c
+  m_Entries:
+  - m_Id: 25982795776
+    m_Key: id_behemoth_bloody_broken_bones_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710336
+    m_Key: id_behemoth_brain_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710337
+    m_Key: id_behemoth_eye_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710338
+    m_Key: id_behemoth_gold_tooth_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710339
+    m_Key: id_behemoth_heart_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710340
+    m_Key: id_behemoth_huge_skull_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710341
+    m_Key: id_behemoth_shining_pupil_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710342
+    m_Key: id_behemoth_turbid_dew_drop_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710343
+    m_Key: id_broken_skeleton_bloody_leg_bones_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710344
+    m_Key: id_broken_skeleton_bloody_spine_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710345
+    m_Key: id_broken_skeleton_breastbone_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710346
+    m_Key: id_broken_skeleton_complete_skull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710347
+    m_Key: id_broken_skeleton_deflated_skull_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710348
+    m_Key: id_broken_skeleton_ditytooth_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710349
+    m_Key: id_broken_skeleton_skull_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710350
+    m_Key: id_chaos_wizard_charredheart_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710351
+    m_Key: id_chaos_wizard_charred_meat_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710352
+    m_Key: id_chaos_wizard_charred_organ_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710353
+    m_Key: id_chaos_wizard_charred_organ_with_crystal_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710354
+    m_Key: id_chaos_wizard_clean_tooth_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710355
+    m_Key: id_chaos_wizard_shining_pupil_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710356
+    m_Key: id_deep_demon_slime_ball_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710357
+    m_Key: id_demon_slime_ball_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710358
+    m_Key: id_rotten_demon_bloody_breastbone_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710359
+    m_Key: id_rotten_demon_bloody_leg_bones_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710360
+    m_Key: id_rotten_demon_bloody_spine_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710361
+    m_Key: id_rotten_demon_complete_bloody_skull_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710362
+    m_Key: id_rotten_demon_darken_tooth_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26045710363
+    m_Key: id_rotten_demon_deflated_bloody_skull_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4703331715493888
+    m_Key: id_small_deep_demon_slime_ball_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4703335305818112
+    m_Key: id_small_demon_slime_ball_item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4705909106913280
+    m_Key: id_slime_residue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7173460516777984
+    m_Key: id_hardened_bone_item_name
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7641529403776434178
+  references:
+    version: 2
+    RefIds:
+    - rid: 7641529403776434178
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1732455977529

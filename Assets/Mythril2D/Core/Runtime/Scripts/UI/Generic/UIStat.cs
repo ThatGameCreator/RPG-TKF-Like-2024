@@ -7,6 +7,7 @@ namespace Gyvr.Mythril2D
     {
         [Header("References")]
         [SerializeField] protected TextMeshProUGUI m_value = null;
+        [SerializeField] protected TextMeshProUGUI m_tmpValue = null;
 
         [Header("Settings")]
         [SerializeField] protected EStat m_stat;

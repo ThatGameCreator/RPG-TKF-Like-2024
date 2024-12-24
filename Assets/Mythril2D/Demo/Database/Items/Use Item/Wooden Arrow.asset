@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0289099dc5b3f49b3b9ca3cf8f6b7baa, type: 3}
+  m_Name: Wooden Arrow
+  m_EditorClassIdentifier: 
+  m_category: 0
+  m_icon: {fileID: 616683029, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_localizationKey: id_normal_arrow_name
+  m_displayName: Arrow
+  m_description: 
+  m_descriptionKey: id_normal_arrow_description
+  m_buyPrice: 3
+  m_sellPrice: 1
+  m_isStackable: 1

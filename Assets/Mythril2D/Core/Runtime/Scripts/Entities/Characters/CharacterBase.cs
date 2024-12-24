@@ -91,7 +91,7 @@ namespace Gyvr.Mythril2D
         public int level => m_level;
         public bool invincible => characterSheet.alignment == EAlignment.Neutral || m_invincibleAnimationPlaying || dead;
         public Stats currentStats => m_currentStats.stats;
-        public Stats stats => m_maxStats.stats;
+        public Stats maxStats => m_maxStats.stats;
         public UnityEvent<Stats> currentStatsChanged => m_currentStats.changed;
         public UnityEvent<Stats> maxStatsChanged => m_maxStats.changed;
         public UnityEvent destroyed => m_destroyed;
@@ -144,19 +144,13 @@ namespace Gyvr.Mythril2D
 
             Debug.Assert(m_rigidbody, ErrorMessages.InspectorMissingComponentReference<Rigidbody2D>());
 
-            m_maxStats.changed.AddListener(OnStatsChanged);
+            m_maxStats.changed.AddListener(OnMaxStatsChanged);
+
             m_currentStats.changed.AddListener(OnCurrentStatsChanged);
 
             CheckForAnimations();
 
-            if (isPlayer == true)
-            {
-                InitializeAbilities();
-            }
-            else
-            {
-                InitializeAbilities();
-            }
+            InitializeAbilities();
 
             // 放这里还没开始实例化 会报错
             //int layermask = GameManager.Config.collisionContactFilter.layerMask;
@@ -164,23 +158,37 @@ namespace Gyvr.Mythril2D
 
         // 好像不能写 start 后面的子类还有其他方法要执行
         //protected void Start(){ }
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+
             m_destroyed.Invoke();
         }
 
-        private void OnStatsChanged(Stats previous)
+        private void OnMaxStatsChanged(Stats previous)
         {
-            // 似乎是在这里初始化属性和生命值
+            if (previous.isEquip == false)
+            {
+                // 似乎是在这里初始化属性和生命值
+                // maxStats最大属性变换注册了这个函数，而这个函数中包括了对当前状态的修改
+                // 所以穿戴装备的时候，不仅会修改最大值也会修改当前值
+                Stats difference = m_maxStats.stats - previous;
 
-            Stats difference = m_maxStats.stats - previous;
-            Stats newCurrentStats = m_currentStats.stats + difference;
-            // Make sure we don't kill the character when updating its maximum stats
-            newCurrentStats[EStat.Health] = math.max(newCurrentStats[EStat.Health], 1);
-            m_currentStats.Set(newCurrentStats);
+                //foreach(EStat stat in Enum.GetValues(typeof(EStat)))
+                //{
+                //    Debug.Log("max" + m_maxStats.stats[stat] + "previous" + previous[stat] + "difference" + difference[stat]);
+                //}
+
+                Stats newCurrentStats = m_currentStats.stats + difference;
+
+                // Make sure we don't kill the character when updating its maximum stats
+                newCurrentStats[EStat.Health] = math.max(newCurrentStats[EStat.Health], 1);
+
+                m_currentStats.Set(newCurrentStats);
+            }
         }
 
-        private void OnCurrentStatsChanged(Stats previous)
+        protected virtual void OnCurrentStatsChanged(Stats previous)
         {
             if (m_currentStats[EStat.Health] == 0)
             {
@@ -382,7 +390,8 @@ namespace Gyvr.Mythril2D
                     GameManager.Player.isExecutingAction = true;
                 }
 
-                GameManager.NotificationSystem.audioPlaybackRequested.Invoke(abilityBase.abilitySheet.fireAudio);
+                //GameManager.NotificationSystem.audioPlaybackRequested.Invoke(abilityBase.abilitySheet.fireAudio);
+                GameManager.AudioSystem.PlayAudioOnObject(abilityBase.abilitySheet.fireAudio, this.gameObject);
 
                 bool isAbilityStateAutomaticallyManaged = abilityBase.abilitySheet.abilityStateManagementMode == AbilitySheet.EAbilityStateManagementMode.Automatic;
 
@@ -572,13 +581,19 @@ namespace Gyvr.Mythril2D
 
                     m_currentStats[EStat.Health] -= math.min(damageInput.damage, m_currentStats[EStat.Health]);
 
-                    GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.hitAudio);
+                    //GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.hitAudio);
+                    GameManager.AudioSystem.PlayAudioOnObject(characterSheet.hitAudio, this.gameObject);
 
                     if (!dead)
                     {
                         if (m_invincibleOnHit)
                         {
                             TryPlayInvincibleAnimation();
+
+                            if (isPlayer)
+                            {
+                                GameManager.Player.CancelLooting();
+                            }
                         }
                     }
                 }
@@ -614,21 +629,6 @@ namespace Gyvr.Mythril2D
             GameManager.NotificationSystem.manaConsumed.Invoke(this, value);
         }
 
-        //public void RecoverStamina(int value)
-        //{
-        //    int missingStamina = m_maxStats[EStat.Stamina] - m_currentStats[EStat.Stamina];
-        //    m_currentStats[EStat.Stamina] += math.min(value, missingStamina);
-        //    GameManager.NotificationSystem.manaRecovered.Invoke(this, value);
-        //}
-
-        //public void consumStamina(int value)
-        //{
-        //    m_currentStats[EStat.Stamina] -= math.min(value, m_currentStats[EStat.Stamina]);
-        //    GameManager.NotificationSystem.manaConsumed.Invoke(this, value);
-
-        //    //Debug.Log("m_currentStats[EStat.Stamina] = " + m_currentStats[EStat.Stamina]);
-        //}
-
         public void EnableActions(EActionFlags actions)
         {
             m_actionFlags |= actions;
@@ -646,7 +646,8 @@ namespace Gyvr.Mythril2D
 
         protected virtual void Die()
         {
-            GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
+            //GameManager.NotificationSystem.audioPlaybackRequested.Invoke(characterSheet.deathAudio);
+            GameManager.AudioSystem.PlayAudioOnObject(characterSheet.deathAudio, this.gameObject);
 
             //Debug.Log("Die");
             // 执行子类 Hero 的 OnDeath 方法中的监听事件才会调用Death界面
@@ -660,7 +661,7 @@ namespace Gyvr.Mythril2D
 
             else
             {
-                Debug.Log("Die");
+                //Debug.Log("Die");
 
                 Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
                 Array.ForEach(colliders, (collider) => collider.enabled = false);
@@ -675,6 +676,23 @@ namespace Gyvr.Mythril2D
                 Destroy(gameObject);
             }
         }
+
+        private void OnDeathAnimationStart()
+        {
+            //Debug.Log("OnDeathAnimationStart");
+
+            DisableActions(EActionFlags.All);
+
+            TryPlayDeadAnimation();
+        }
+
+        protected virtual void OnDeathAnimationEnd()
+        {
+            //Debug.Log("OnDeathAnimationEnd");
+
+            OnDeath();
+        }
+
 
         [Obsolete("Deprecated, shouldn't be used anymore")]
         private void OnDamageReceived(DamageOutputDescriptor damageOutput)
@@ -695,22 +713,6 @@ namespace Gyvr.Mythril2D
         private void OnInvincibleAnimationEnd()
         {
             m_invincibleAnimationPlaying = false;
-        }
-
-        private void OnDeathAnimationStart()
-        {
-            //Debug.Log("OnDeathAnimationStart");
-
-            DisableActions(EActionFlags.All);
-
-            TryPlayDeadAnimation();
-        }
-
-        private void OnDeathAnimationEnd()
-        {
-            //Debug.Log("OnDeathAnimationEnd");
-
-            OnDeath();
         }
 
         #region Movement

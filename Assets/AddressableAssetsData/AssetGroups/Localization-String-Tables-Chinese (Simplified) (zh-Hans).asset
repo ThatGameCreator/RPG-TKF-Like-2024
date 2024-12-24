@@ -17,8 +17,201 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 22cee1a0c457d0a4a8d493111dd0bc57
   m_SerializeEntries:
-  - m_GUID: 3e102d4847255e7419cad340932bdd84
-    m_Address: New Table_zh-Hans
+  - m_GUID: 0849d7ee27a4eee4f92c0e4572dbdad5
+    m_Address: MainMenuTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e171ffe9553ebb479a2611e066fdaee
+    m_Address: SettingsTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e99f37ab3b0fa749869eff74353245a
+    m_Address: CraftTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 24f39817d3f89894ca12a4fe30c1cb32
+    m_Address: QuestsList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2504770efc4e6364a8df8e51af9775f0
+    m_Address: ConsumersList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4844856333abb2941958c037aaa28480
+    m_Address: NPCDialogueTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 512b29a9672a0264c974d51183007f90
+    m_Address: DeathTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e99df61c84e2134587d722a06ed0a84
+    m_Address: WeaponsList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63705a3babb79d3408b60c81d6ab2b61
+    m_Address: Attack_TypeList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66bb346d7180f334d9d4949cdbf8b54b
+    m_Address: HUDTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76d5806a996cad6419baecb5a1c3cc94
+    m_Address: NPCDialogueOptionTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77667beb421841241bcc99f7a5eedec8
+    m_Address: EvacuationPositionTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b9da5482cdd5db49b9bdeec91bee0e4
+    m_Address: HeroList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83003c4077fc1ac4c854c222c20da844
+    m_Address: InventoryTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91bc90429a8fd144e9e8762746e60a7b
+    m_Address: ItemDescriptionTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d41a0d2c10a47d49967816f1552569c
+    m_Address: EquipmentsList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ea488d18d0ee8246b1a2cf413d07c1f
+    m_Address: DialogueTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1f2ceb00d38d764f85706139afa5593
+    m_Address: MaterialsList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c490450ee3809684583ac5cae8de19ce
+    m_Address: GeneralTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c99f4172430ac0e42b961a9ca8a8d277
+    m_Address: TermDefinitionTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca722fea84e9f81498255ae9b4be2632
+    m_Address: SaveTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4d67c96f2ea9c145ad4cdea991b381d
+    m_Address: Monster_DropsList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de9f667eaa3b184499e6127dad869d76
+    m_Address: OtherItemList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e26a61e81a52a974bacbad6068907002
+    m_Address: AbilitiesTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5584bbe25482374db8c8b33bfe10135
+    m_Address: CharacterDetail_Related_Table_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eaa05f3e1a869d04b81a25f0e911bd63
+    m_Address: ShopTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed7ed0eeccbba9c48ba8e861a7f532e6
+    m_Address: DemonList_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3c5ede2715def74588f25634c487b06
+    m_Address: WarehouseTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f43d5c306d6a4f54b94a2ffe655c362d
+    m_Address: NPCNameTable_zh-Hans
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-zh-Hans
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6cf4827b6db70f4cb8c7acd515a22b9
+    m_Address: JournalTable_zh-Hans
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh-Hans

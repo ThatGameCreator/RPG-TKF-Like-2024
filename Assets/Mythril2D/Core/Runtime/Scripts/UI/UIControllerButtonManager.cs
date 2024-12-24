@@ -24,6 +24,7 @@ namespace Gyvr.Mythril2D
             FireAbility3,
             FireAbility4,
             OpenGameMenu,
+            Drop,
             Submit,
             Cancel,
             Run,
@@ -129,6 +130,9 @@ namespace Gyvr.Mythril2D
                 case EAction.FireAbility3: return GameManager.InputSystem.gameplay.fireAbility3;
                 case EAction.FireAbility4: return GameManager.InputSystem.gameplay.fireAbility4;
                 case EAction.OpenGameMenu: return GameManager.InputSystem.gameplay.openGameMenu;
+                case EAction.Drop: return GameManager.InputSystem.ui.drop;
+                case EAction.Run: return GameManager.InputSystem.gameplay.run;
+                case EAction.Dash: return GameManager.InputSystem.gameplay.dash;
             }
 
             return null;

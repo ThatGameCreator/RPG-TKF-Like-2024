@@ -10,7 +10,8 @@ namespace Gyvr.Mythril2D
         Torso,
         Hands,
         Feet,
-        Backpack
+        Backpack,
+        Jewelry
     }
 
     [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Items + nameof(Equipment))]
@@ -23,26 +24,70 @@ namespace Gyvr.Mythril2D
         [Header("Equipment")]
         [SerializeField] private EEquipmentType m_type;
         [SerializeField] private Stats m_bonusStats;
+        [SerializeField] private int m_stamina;
         [SerializeField] private SpriteLibraryAsset m_visualOverride;
         [SerializeField] private int m_capacity;
         [SerializeField] private AbilitySheet[] m_ability;
 
-        public EEquipmentType type => m_type;
-        public Stats bonusStats => m_bonusStats;
-        public int capacity => m_capacity;
-        public AbilitySheet[] ability => m_ability;
-        public SpriteLibraryAsset visualOverride => m_visualOverride;
+
+        public EEquipmentType type
+        {
+            get => m_type;
+            set => m_type = value;
+        }
+        
+        public AbilitySheet[] ability
+        {
+            get => m_ability;
+            set => m_ability = value;
+        }
+
+        public Stats bonusStats
+        {
+            get => m_bonusStats;
+            set => m_bonusStats = value;
+        }
+
+        public int stamina
+        {
+            get => m_stamina;
+            set => m_stamina = value;
+        }
+        
+        public int capacity
+        {
+            get => m_capacity;
+            set => m_capacity = value;
+        }
+        
+        public SpriteLibraryAsset visualOverride
+        {
+            get => m_visualOverride;
+            set => m_visualOverride = value;
+        }
+
+        public AudioClipResolver EquipAudio
+        {
+            get => m_equipAudio;
+            set => m_equipAudio = value;
+        }
+
+        public AudioClipResolver UnequipAudio
+        {
+            get => m_unequipAudio;
+            set => m_unequipAudio = value;
+        }
 
         public override void Use(CharacterBase user, EItemLocation location)
         {
             if (GameManager.WarehouseSystem.isOpenning == true)
             {
-                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull() == false)
+                if (location == EItemLocation.Bag && GameManager.WarehouseSystem.IsWarehouseFull(this) == false)
                 {
                     GameManager.InventorySystem.RemoveFromBag(this);
                     GameManager.WarehouseSystem.AddToWarehouse(this);
                 }
-                else if(location == EItemLocation.Warehouse && GameManager.InventorySystem.IsBackpackFull() == false)
+                else if(location == EItemLocation.Warehouse && GameManager.InventorySystem.IsBackpackFull(this) == false)
                 {
                     GameManager.InventorySystem.AddToBag(this);
                     GameManager.WarehouseSystem.RemoveFromWarehouse(this);
@@ -61,7 +106,6 @@ namespace Gyvr.Mythril2D
                     GameManager.NotificationSystem.audioPlaybackRequested.Invoke(m_unequipAudio);
                 }
             }
-            
         }
     }
 }

@@ -11,7 +11,13 @@ namespace Gyvr.Mythril2D
         [Header("Entity Settings")]
         [SerializeReference, SubclassSelector] private IInteraction m_interaction = null;
 
-        public virtual string GetSpeakerName() => string.Empty;
+        public IInteraction IInteraction
+        {
+            get => m_interaction;
+            set => m_interaction = value;
+        }
+
+        
 
         [Header("Lighting")]
         // 第一个是自己的精灵 其他的是阴影
@@ -22,6 +28,17 @@ namespace Gyvr.Mythril2D
 
         private Color m_initialSpriteColor = Color.white;
 
+        public SpriteRenderer[] SpriteRenderers
+        {
+            get => m_spriteRenderer;
+            set => m_spriteRenderer = value;
+        }
+
+        public LightEventListener LightEventListener
+        {
+            get => m_lightEventListener;
+            set => m_lightEventListener = value;
+        }
         protected virtual void Start()
         {
             GameManager.NotificationSystem.playerTryInteracte.AddListener(OnStartInteract);
@@ -61,6 +78,8 @@ namespace Gyvr.Mythril2D
                 }
             }
         }
+
+        public virtual string GetSpeakerName() => string.Empty;
 
         public virtual void Say(DialogueSequence sequence, UnityAction<DialogueMessageFeed> onDialogueEnded = null, params string[] args)
         {

@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_category: 1
   m_icon: {fileID: -1961879501, guid: 7f70c3353102d3e4593209468e8550a2, type: 3}
+  m_localizationKey: id_unopened_letter_item_name
   m_displayName: Unopened Letter
   m_description: 
-  m_price: 5
+  m_descriptionKey: id_unknown_note_description
+  m_buyPrice: 4
+  m_sellPrice: 2
   m_isStackable: 0

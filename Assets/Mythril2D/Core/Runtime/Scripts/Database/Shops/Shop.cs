@@ -12,9 +12,10 @@ namespace Gyvr.Mythril2D
     [CreateAssetMenu(menuName = AssetMenuIndexer.Mythril2D_Shops + nameof(Shop))]
     public class Shop : DatabaseEntry
     {
+
+        public EItemCategory[] availableSellTypes = null;
+
         public Item[] items = null;
-        public float sellingPriceMultiplier = 0.5f;
-        public float buyingPriceMultiplier = 1.0f;
 
         public int GetPrice(Item item, ETransactionType transaction)
         {
@@ -23,11 +24,11 @@ namespace Gyvr.Mythril2D
             switch (transaction)
             {
                 case ETransactionType.Buy:
-                    floatPrice = item.price * buyingPriceMultiplier;
+                    floatPrice = item.buyPrice;
                     break;
 
                 case ETransactionType.Sell:
-                    floatPrice = item.price * sellingPriceMultiplier;
+                    floatPrice = item.sellPrice;
                     break;
             }
 

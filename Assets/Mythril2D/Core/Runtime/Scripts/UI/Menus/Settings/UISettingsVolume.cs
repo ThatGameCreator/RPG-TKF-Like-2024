@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Gyvr.Mythril2D
@@ -8,13 +6,16 @@ namespace Gyvr.Mythril2D
     public class UISettingsVolume : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] protected TextMeshProUGUI m_value = null;
+        [SerializeField] protected Slider m_slider = null;
         [SerializeField] protected Button m_decreaseButton;
         [SerializeField] protected Button m_increaseButton;
 
-        public void UpdateUI(int volume, string suffix = "")
+        public void UpdateUI(int volume, int suffix)
         {
-            m_value.text = $"{volume}{suffix}";
+            m_slider.minValue = 0;
+            m_slider.maxValue = suffix;
+
+            m_slider.value = volume;
         }
 
         // Used for selection

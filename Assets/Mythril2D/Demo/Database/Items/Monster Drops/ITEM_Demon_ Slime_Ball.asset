@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0289099dc5b3f49b3b9ca3cf8f6b7baa, type: 3}
   m_Name: ITEM_Demon_ Slime_Ball
   m_EditorClassIdentifier: 
-  m_category: 1
+  m_category: 5
   m_icon: {fileID: -1806547695, guid: c94cf32db75ba2e429c4186822410ca0, type: 3}
+  m_localizationKey: id_demon_slime_ball_item
   m_displayName: Demon Slime Ball
-  m_description: A squishy slime ball, vibrant and gelatinous, perfect for concocting
-    potions
-  m_price: 5
+  m_description: 
+  m_descriptionKey: id_demon_slime_ball_description
+  m_buyPrice: 6
+  m_sellPrice: 3
   m_isStackable: 0

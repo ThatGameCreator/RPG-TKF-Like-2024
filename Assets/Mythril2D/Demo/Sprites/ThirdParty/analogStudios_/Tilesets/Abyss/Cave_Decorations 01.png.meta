@@ -1,0 +1,1321 @@
+fileFormatVersion: 2
+guid: c7d2fb8ca3f1bad43975fc5942bd6293
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cave_Decorations 01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -6}
+        - {x: 11, y: -3}
+        - {x: 5, y: -3}
+        - {x: 1, y: 2}
+        - {x: 0, y: 4}
+        - {x: -3, y: 5}
+        - {x: -8, y: 5}
+        - {x: -11, y: 4}
+        - {x: -13, y: 2}
+        - {x: -14, y: -1}
+        - {x: -16, y: -7}
+        - {x: -16, y: -12}
+        - {x: -12, y: -15}
+        - {x: -4, y: -15}
+        - {x: 2, y: -15}
+        - {x: 3, y: -13}
+        - {x: 5, y: -14}
+        - {x: 9, y: -14}
+        - {x: 15, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6524070dfe2a10742a58450fc26d38e3
+      internalID: -156013967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 12, y: 2}
+        - {x: 11, y: 4}
+        - {x: 9, y: 5}
+        - {x: 3, y: 5}
+        - {x: 1, y: 4}
+        - {x: -1, y: 2}
+        - {x: -4, y: -3}
+        - {x: -12, y: -3}
+        - {x: -15, y: -6}
+        - {x: -15, y: -10}
+        - {x: -9, y: -14}
+        - {x: -5, y: -14}
+        - {x: -2, y: -15}
+        - {x: 12, y: -15}
+        - {x: 16, y: -12}
+        - {x: 16, y: -7}
+        - {x: 14, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: abdca372e28cc094b823749d198bee4e
+      internalID: -650335033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 72
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 4, y: 5}
+        - {x: -3, y: 5}
+        - {x: -8, y: -5}
+        - {x: -8, y: -12}
+        - {x: -4, y: -15}
+        - {x: 4, y: -15}
+        - {x: 8, y: -12}
+        - {x: 8, y: -7}
+        - {x: 7, y: -4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663b89b14e0231e49b97ce5c564ece5a
+      internalID: 139407530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -15, y: 11}
+        - {x: -15, y: 4}
+        - {x: -12, y: 2}
+        - {x: -12, y: 1}
+        - {x: -15, y: -2}
+        - {x: -15, y: -6}
+        - {x: -12, y: -8}
+        - {x: -6, y: -8}
+        - {x: -6, y: -12}
+        - {x: -4, y: -14}
+        - {x: 0, y: -14}
+        - {x: 1, y: -12}
+        - {x: 8, y: -12}
+        - {x: 15, y: -7}
+        - {x: 15, y: -1}
+        - {x: 11, y: 2}
+        - {x: 14, y: 5}
+        - {x: 14, y: 8}
+        - {x: 11, y: 11}
+        - {x: 5, y: 11}
+        - {x: 3, y: 8}
+        - {x: 0, y: 10}
+        - {x: -1, y: 14}
+        - {x: -13, y: 14}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b886edcbbdb451d45b7a3a97aa059fcf
+      internalID: -278038078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_4
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 72
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -2, y: 4}
+        - {x: -8, y: -5}
+        - {x: -8, y: -12}
+        - {x: -5, y: -14}
+        - {x: 4, y: -14}
+        - {x: 8, y: -12}
+        - {x: 8, y: -4}
+        - {x: 3, y: 4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: aea0239dfc8fd574fb0a33277afd1384
+      internalID: 191816199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_5
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 72
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 2, y: 4}
+        - {x: -3, y: 4}
+        - {x: -8, y: -4}
+        - {x: -8, y: -12}
+        - {x: -4, y: -14}
+        - {x: 5, y: -14}
+        - {x: 8, y: -13}
+        - {x: 8, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d67e02e309556f459378cadac43714c
+      internalID: 703127005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 15, y: -6}
+        - {x: 11, y: -3}
+        - {x: 5, y: -3}
+        - {x: 1, y: 2}
+        - {x: -1, y: 4}
+        - {x: -3, y: 5}
+        - {x: -8, y: 5}
+        - {x: -10, y: 4}
+        - {x: -12, y: 2}
+        - {x: -14, y: -1}
+        - {x: -16, y: -7}
+        - {x: -16, y: -12}
+        - {x: -12, y: -15}
+        - {x: -4, y: -15}
+        - {x: 2, y: -15}
+        - {x: 3, y: -13}
+        - {x: 5, y: -14}
+        - {x: 9, y: -14}
+        - {x: 15, y: -10}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5436a8b9e63a1443bd66b86bfa8aafc
+      internalID: 143913761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_7
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 12, y: 2}
+        - {x: 11, y: 4}
+        - {x: 9, y: 5}
+        - {x: 3, y: 5}
+        - {x: 1, y: 4}
+        - {x: -1, y: 2}
+        - {x: -4, y: -3}
+        - {x: -12, y: -3}
+        - {x: -15, y: -6}
+        - {x: -15, y: -10}
+        - {x: -9, y: -14}
+        - {x: -5, y: -14}
+        - {x: -2, y: -15}
+        - {x: 12, y: -15}
+        - {x: 16, y: -12}
+        - {x: 16, y: -7}
+        - {x: 14, y: -7}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8119e593978fb6449ae2adbae53b9aa3
+      internalID: 1732022007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_8
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 72
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 5, y: 5}
+        - {x: -4, y: 5}
+        - {x: -8, y: -5}
+        - {x: -8, y: -12}
+        - {x: -4, y: -15}
+        - {x: 4, y: -15}
+        - {x: 8, y: -12}
+        - {x: 8, y: -7}
+        - {x: 7, y: -4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0b1598cf1e0434408a7e5b717405293
+      internalID: 532573677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_9
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -15, y: 11}
+        - {x: -15, y: 4}
+        - {x: -12, y: 2}
+        - {x: -12, y: 1}
+        - {x: -15, y: -2}
+        - {x: -15, y: -6}
+        - {x: -12, y: -8}
+        - {x: -6, y: -8}
+        - {x: -6, y: -12}
+        - {x: -4, y: -14}
+        - {x: 0, y: -14}
+        - {x: 1, y: -12}
+        - {x: 8, y: -12}
+        - {x: 15, y: -7}
+        - {x: 15, y: -1}
+        - {x: 11, y: 2}
+        - {x: 14, y: 5}
+        - {x: 14, y: 8}
+        - {x: 11, y: 11}
+        - {x: 5, y: 11}
+        - {x: 3, y: 8}
+        - {x: 0, y: 10}
+        - {x: -1, y: 14}
+        - {x: -13, y: 14}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e492dc4ab7d185d42b5e44c2a6bf072b
+      internalID: -950646524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 72
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 3}
+        - {x: -8, y: -5}
+        - {x: -8, y: -12}
+        - {x: -5, y: -14}
+        - {x: 4, y: -14}
+        - {x: 8, y: -12}
+        - {x: 8, y: -4}
+        - {x: 5, y: 3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7035625121ec8e4fb7d0a2cfb630486
+      internalID: -646909874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_11
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 72
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 3, y: 3}
+        - {x: -4, y: 3}
+        - {x: -8, y: -4}
+        - {x: -8, y: -12}
+        - {x: -4, y: -14}
+        - {x: 5, y: -14}
+        - {x: 8, y: -13}
+        - {x: 8, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f8bd9c460de7b54aa67a9926b88ad6c
+      internalID: -469291833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -1, y: 10}
+        - {x: -1, y: 7}
+        - {x: -2, y: 7}
+        - {x: -4, y: 11}
+        - {x: -9, y: 11}
+        - {x: -13, y: 8}
+        - {x: -13, y: 5}
+        - {x: -9, y: 2}
+        - {x: -9, y: -2}
+        - {x: -12, y: -2}
+        - {x: -15, y: -4}
+        - {x: -15, y: -7}
+        - {x: -13, y: -9}
+        - {x: -9, y: -9}
+        - {x: -7, y: -6}
+        - {x: -1, y: -6}
+        - {x: -1, y: -9}
+        - {x: 3, y: -13}
+        - {x: 7, y: -13}
+        - {x: 8, y: -12}
+        - {x: 12, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: -7}
+        - {x: 12, y: -5}
+        - {x: 8, y: -4}
+        - {x: 8, y: 0}
+        - {x: 14, y: 4}
+        - {x: 14, y: 10}
+        - {x: 11, y: 12}
+        - {x: 7, y: 12}
+        - {x: 5, y: 11}
+        - {x: 1, y: 11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270e4be079df0cf47b5f7d1c6f70447f
+      internalID: 1960978783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 12, y: -2}
+        - {x: 9, y: -2}
+        - {x: 9, y: 2}
+        - {x: 13, y: 5}
+        - {x: 13, y: 8}
+        - {x: 10, y: 11}
+        - {x: 5, y: 11}
+        - {x: 2, y: 8}
+        - {x: 1, y: 8}
+        - {x: -1, y: 12}
+        - {x: -11, y: 12}
+        - {x: -14, y: 10}
+        - {x: -14, y: 4}
+        - {x: -8, y: 0}
+        - {x: -8, y: -2}
+        - {x: -15, y: -7}
+        - {x: -15, y: -9}
+        - {x: -12, y: -12}
+        - {x: -8, y: -12}
+        - {x: -7, y: -13}
+        - {x: -3, y: -13}
+        - {x: 1, y: -9}
+        - {x: 1, y: -6}
+        - {x: 6, y: -6}
+        - {x: 9, y: -9}
+        - {x: 13, y: -9}
+        - {x: 15, y: -7}
+        - {x: 15, y: -4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0d76c9d17ea384e9b733501bf24f17
+      internalID: 256727769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 40
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 5}
+        - {x: -8, y: -7}
+        - {x: -8, y: -12}
+        - {x: -4, y: -15}
+        - {x: 4, y: -15}
+        - {x: 8, y: -12}
+        - {x: 8, y: -6}
+        - {x: 3, y: 5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d251c601be3a6224196f5aef9c325470
+      internalID: -726647531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_15
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 12, y: 13}
+        - {x: 10, y: 14}
+        - {x: 4, y: 14}
+        - {x: 2, y: 13}
+        - {x: 0, y: 9}
+        - {x: -3, y: 9}
+        - {x: -6, y: 11}
+        - {x: -10, y: 11}
+        - {x: -14, y: 8}
+        - {x: -14, y: 5}
+        - {x: -12, y: 4}
+        - {x: -12, y: 2}
+        - {x: -15, y: -2}
+        - {x: -15, y: -7}
+        - {x: -8, y: -12}
+        - {x: -4, y: -12}
+        - {x: 0, y: -14}
+        - {x: 4, y: -14}
+        - {x: 6, y: -12}
+        - {x: 6, y: -8}
+        - {x: 12, y: -8}
+        - {x: 15, y: -6}
+        - {x: 15, y: -2}
+        - {x: 12, y: 1}
+        - {x: 12, y: 2}
+        - {x: 15, y: 5}
+        - {x: 15, y: 10}
+      - - {x: -2, y: 6}
+        - {x: -2, y: 6}
+        - {x: -2, y: 6}
+        - {x: -2, y: 6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb278b09e3250447b389027fe205b48
+      internalID: -1511016747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 40
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 4}
+        - {x: -8, y: -7}
+        - {x: -8, y: -12}
+        - {x: -3, y: -15}
+        - {x: 3, y: -15}
+        - {x: 8, y: -12}
+        - {x: 8, y: -7}
+        - {x: 2, y: 4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 320623f46460ad341b65b32eda84f7e9
+      internalID: 150173411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 40
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 4, y: 4}
+        - {x: -3, y: 4}
+        - {x: -8, y: -8}
+        - {x: -8, y: -12}
+        - {x: -3, y: -15}
+        - {x: 3, y: -15}
+        - {x: 8, y: -12}
+        - {x: 8, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a3c443e3b8ba14abff2c431f96dbd4
+      internalID: -128007242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_18
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -1, y: 10}
+        - {x: -1, y: 7}
+        - {x: -2, y: 7}
+        - {x: -5, y: 11}
+        - {x: -9, y: 11}
+        - {x: -13, y: 8}
+        - {x: -13, y: 5}
+        - {x: -9, y: 2}
+        - {x: -9, y: -2}
+        - {x: -12, y: -2}
+        - {x: -15, y: -4}
+        - {x: -15, y: -7}
+        - {x: -13, y: -9}
+        - {x: -9, y: -9}
+        - {x: -7, y: -6}
+        - {x: -1, y: -6}
+        - {x: -1, y: -9}
+        - {x: 3, y: -13}
+        - {x: 7, y: -13}
+        - {x: 8, y: -12}
+        - {x: 12, y: -12}
+        - {x: 15, y: -9}
+        - {x: 15, y: -7}
+        - {x: 12, y: -5}
+        - {x: 8, y: -4}
+        - {x: 8, y: 0}
+        - {x: 14, y: 4}
+        - {x: 14, y: 10}
+        - {x: 11, y: 12}
+        - {x: 7, y: 12}
+        - {x: 5, y: 11}
+        - {x: 1, y: 11}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d697bef0a1eff4c814cf8c19a59b90
+      internalID: 772014291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_19
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 12, y: -2}
+        - {x: 9, y: -2}
+        - {x: 9, y: 2}
+        - {x: 13, y: 5}
+        - {x: 13, y: 8}
+        - {x: 9, y: 10}
+        - {x: 4, y: 10}
+        - {x: 2, y: 8}
+        - {x: 1, y: 8}
+        - {x: -1, y: 11}
+        - {x: -3, y: 12}
+        - {x: -11, y: 12}
+        - {x: -14, y: 10}
+        - {x: -14, y: 4}
+        - {x: -8, y: 0}
+        - {x: -8, y: -2}
+        - {x: -15, y: -7}
+        - {x: -15, y: -9}
+        - {x: -12, y: -12}
+        - {x: -8, y: -12}
+        - {x: -7, y: -13}
+        - {x: -3, y: -13}
+        - {x: 1, y: -9}
+        - {x: 1, y: -6}
+        - {x: 6, y: -6}
+        - {x: 9, y: -9}
+        - {x: 13, y: -9}
+        - {x: 15, y: -7}
+        - {x: 15, y: -4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5d30ac771ac4949979f07e2c10e3ef
+      internalID: 1337338187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_20
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 40
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 5}
+        - {x: -8, y: -7}
+        - {x: -8, y: -12}
+        - {x: -4, y: -15}
+        - {x: 4, y: -15}
+        - {x: 8, y: -12}
+        - {x: 8, y: -6}
+        - {x: 3, y: 5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2648b13891c7c7e44af46a1721710159
+      internalID: -677331552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_21
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 40
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 12, y: 13}
+        - {x: 11, y: 14}
+        - {x: 3, y: 14}
+        - {x: 2, y: 13}
+        - {x: 0, y: 9}
+        - {x: -3, y: 9}
+        - {x: -6, y: 11}
+        - {x: -10, y: 11}
+        - {x: -14, y: 8}
+        - {x: -14, y: 5}
+        - {x: -12, y: 4}
+        - {x: -12, y: 2}
+        - {x: -15, y: -2}
+        - {x: -15, y: -7}
+        - {x: -8, y: -12}
+        - {x: -4, y: -12}
+        - {x: 0, y: -14}
+        - {x: 4, y: -14}
+        - {x: 6, y: -12}
+        - {x: 6, y: -8}
+        - {x: 12, y: -8}
+        - {x: 15, y: -6}
+        - {x: 15, y: -2}
+        - {x: 12, y: 1}
+        - {x: 12, y: 2}
+        - {x: 15, y: 5}
+        - {x: 15, y: 10}
+      - - {x: -2, y: 6}
+        - {x: -2, y: 6}
+        - {x: -2, y: 6}
+        - {x: -2, y: 6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dd753ccb7395f444945a67402737de3
+      internalID: 413272398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 40
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: 4}
+        - {x: -8, y: -7}
+        - {x: -8, y: -12}
+        - {x: -3, y: -15}
+        - {x: 3, y: -15}
+        - {x: 8, y: -12}
+        - {x: 8, y: -7}
+        - {x: 3, y: 4}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd6ab592f13b314297134cdffdfa97a
+      internalID: 1152625639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_23
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 40
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 4, y: 4}
+        - {x: -3, y: 4}
+        - {x: -8, y: -8}
+        - {x: -8, y: -12}
+        - {x: -3, y: -15}
+        - {x: 3, y: -15}
+        - {x: 8, y: -12}
+        - {x: 8, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d993a28d3041a664f98e2a6e7cd28276
+      internalID: 2042979470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: 7}
+        - {x: -2, y: 7}
+        - {x: -8, y: 3}
+        - {x: -16, y: -9}
+        - {x: -16, y: -16}
+        - {x: -13, y: -18}
+        - {x: -4, y: -18}
+        - {x: -2, y: -16}
+        - {x: 1, y: -16}
+        - {x: 4, y: -19}
+        - {x: 12, y: -19}
+        - {x: 16, y: -16}
+        - {x: 16, y: -11}
+        - {x: 12, y: 3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e94f70ee685c441915a5ef9e2d9a94
+      internalID: 1860234907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: 5}
+        - {x: 6, y: 8}
+        - {x: -3, y: 10}
+        - {x: -7, y: 5}
+        - {x: -11, y: 1}
+        - {x: -16, y: -11}
+        - {x: -16, y: -16}
+        - {x: -11, y: -19}
+        - {x: -5, y: -19}
+        - {x: -1, y: -16}
+        - {x: 1, y: -16}
+        - {x: 4, y: -19}
+        - {x: 12, y: -19}
+        - {x: 16, y: -16}
+        - {x: 16, y: -9}
+        - {x: 11, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9655804001db21458e10603231f7ae7
+      internalID: 815833853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_26
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: 7}
+        - {x: -2, y: 7}
+        - {x: -8, y: 3}
+        - {x: -16, y: -9}
+        - {x: -16, y: -16}
+        - {x: -13, y: -18}
+        - {x: -4, y: -18}
+        - {x: -2, y: -16}
+        - {x: 1, y: -16}
+        - {x: 4, y: -19}
+        - {x: 12, y: -19}
+        - {x: 16, y: -16}
+        - {x: 16, y: -11}
+        - {x: 12, y: 3}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43490ac9742bf5f47bba9db079281dce
+      internalID: 634647399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_27
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 9, y: 5}
+        - {x: 6, y: 8}
+        - {x: -3, y: 10}
+        - {x: -7, y: 5}
+        - {x: -11, y: 1}
+        - {x: -16, y: -11}
+        - {x: -16, y: -16}
+        - {x: -11, y: -19}
+        - {x: -5, y: -19}
+        - {x: -1, y: -16}
+        - {x: 1, y: -16}
+        - {x: 4, y: -19}
+        - {x: 12, y: -19}
+        - {x: 16, y: -16}
+        - {x: 16, y: -9}
+        - {x: 11, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5811747718438c479d31238c503ec6a
+      internalID: 1608784770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_28
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -3, y: -8}
+        - {x: -4, y: -10}
+        - {x: -4, y: -15}
+        - {x: -3, y: -17}
+        - {x: -2, y: -18}
+        - {x: 2, y: -18}
+        - {x: 3, y: -17}
+        - {x: 3, y: -14}
+        - {x: 1, y: -13}
+        - {x: 1, y: -8}
+        - {x: 0, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f9c9cb0b41a884fa77cb14c12ee996
+      internalID: -67831679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_29
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -2, y: -18}
+        - {x: -3, y: -17}
+        - {x: -3, y: -14}
+        - {x: -1, y: -12}
+        - {x: -1, y: -8}
+        - {x: 3, y: -8}
+        - {x: 4, y: -10}
+        - {x: 4, y: -15}
+        - {x: 3, y: -17}
+        - {x: 2, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b86a7f2aec3cf843b656b9514a8f0cb
+      internalID: 637734727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_30
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -3, y: -8}
+        - {x: -4, y: -10}
+        - {x: -4, y: -15}
+        - {x: -3, y: -17}
+        - {x: -2, y: -18}
+        - {x: 2, y: -18}
+        - {x: 3, y: -17}
+        - {x: 3, y: -14}
+        - {x: 1, y: -13}
+        - {x: 1, y: -8}
+        - {x: 0, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd26b7c76e67a3f4f91cb6cc1d5ba1cf
+      internalID: -1372534387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cave_Decorations 01_31
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -2, y: -18}
+        - {x: -3, y: -17}
+        - {x: -3, y: -14}
+        - {x: -1, y: -12}
+        - {x: -1, y: -8}
+        - {x: 3, y: -8}
+        - {x: 4, y: -10}
+        - {x: 4, y: -15}
+        - {x: 3, y: -17}
+        - {x: 2, y: -18}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26184502c29c5ed4e8d92b0efa254ae3
+      internalID: -1257937985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Cave_Decorations 01_0: -156013967
+      Cave_Decorations 01_1: -650335033
+      Cave_Decorations 01_10: -646909874
+      Cave_Decorations 01_11: -469291833
+      Cave_Decorations 01_12: 1960978783
+      Cave_Decorations 01_13: 256727769
+      Cave_Decorations 01_14: -726647531
+      Cave_Decorations 01_15: -1511016747
+      Cave_Decorations 01_16: 150173411
+      Cave_Decorations 01_17: -128007242
+      Cave_Decorations 01_18: 772014291
+      Cave_Decorations 01_19: 1337338187
+      Cave_Decorations 01_2: 139407530
+      Cave_Decorations 01_20: -677331552
+      Cave_Decorations 01_21: 413272398
+      Cave_Decorations 01_22: 1152625639
+      Cave_Decorations 01_23: 2042979470
+      Cave_Decorations 01_24: 1860234907
+      Cave_Decorations 01_25: 815833853
+      Cave_Decorations 01_26: 634647399
+      Cave_Decorations 01_27: 1608784770
+      Cave_Decorations 01_28: -67831679
+      Cave_Decorations 01_29: 637734727
+      Cave_Decorations 01_3: -278038078
+      Cave_Decorations 01_30: -1372534387
+      Cave_Decorations 01_31: -1257937985
+      Cave_Decorations 01_4: 191816199
+      Cave_Decorations 01_5: 703127005
+      Cave_Decorations 01_6: 143913761
+      Cave_Decorations 01_7: 1732022007
+      Cave_Decorations 01_8: 532573677
+      Cave_Decorations 01_9: -950646524
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

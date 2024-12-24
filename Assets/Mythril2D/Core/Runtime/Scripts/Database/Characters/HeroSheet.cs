@@ -8,7 +8,7 @@ namespace Gyvr.Mythril2D
     {
         [Header("Hero")]
         [SerializeField] private DashAbilitySheet m_dashAbilitySheet;
-        [SerializeField] private float maxStamina = 0f;
+        public int maxStamina;
 
         public Stats baseStats;
         public int pointsPerLevel = 5;

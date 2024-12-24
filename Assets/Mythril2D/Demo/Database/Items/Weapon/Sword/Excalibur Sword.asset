@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8421550761b2409fadfe5c6658b5395, type: 3}
+  m_Name: Excalibur Sword
+  m_EditorClassIdentifier: 
+  m_category: 2
+  m_icon: {fileID: -1812001439, guid: f03b68ec21bc47e4787ad6057bf26849, type: 3}
+  m_localizationKey: id_excalibur_sword_name
+  m_displayName: 
+  m_description: 
+  m_descriptionKey: id_excalibur_sword_description
+  m_buyPrice: 200
+  m_sellPrice: 100
+  m_isStackable: 0
+  m_equipAudio: {fileID: 11400000, guid: 9fa8803b447617b48b9981e6b61432a2, type: 2}
+  m_unequipAudio: {fileID: 11400000, guid: 8201d83c769713b43808c98daf34f505, type: 2}
+  m_type: 0
+  m_bonusStats:
+    isEquip: 0
+    m_values: 000000000000000000000000060000000000000000000000000000000200000002000000
+  m_stamina: 0
+  m_visualOverride: {fileID: 7108339969198208228, guid: 1407b7d7c0525bf449d5a77be3e63fd5, type: 3}
+  m_capacity: 0
+  m_ability:
+  - {fileID: 11400000, guid: b4d476e0fd68e3c49879e90efec6500c, type: 2}
+  - {fileID: 11400000, guid: 6582a82021299404b8b2d370fb692bad, type: 2}
