@@ -147,13 +147,6 @@ MonoBehaviour:
     - Locale-en
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a25f3c1b1dec52b40bfbd65ecc989869
-    m_Address: EquipmentsList_en
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a3e9319a0bd55f7449b643524734d11f
     m_Address: MainMenuTable_en
     m_ReadOnly: 1
@@ -163,6 +156,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae87a75fd0401184c9d60f7810c03843
     m_Address: MaterialsList_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b063bcd6176d61947854c9c53b5330a1
+    m_Address: EquipmentsList_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

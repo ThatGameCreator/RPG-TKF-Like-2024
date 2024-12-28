@@ -69,13 +69,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ja
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 231c120b8c730ae47a564e6ab5adf628
-    m_Address: EquipmentsList_ja
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ja
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2791cfe67d54cf74bb10d5a8b50e8885
     m_Address: MaterialsList_ja
     m_ReadOnly: 1
@@ -211,6 +204,13 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e39ee6ad1ac1aa44f83507cfdd78ac98
     m_Address: WeaponsList_ja
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ja
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f14aaaa0c9defea4b9fca9f9f8aa5b34
+    m_Address: EquipmentsList_ja
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja
