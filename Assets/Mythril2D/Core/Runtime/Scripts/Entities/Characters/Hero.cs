@@ -24,13 +24,13 @@ namespace Gyvr.Mythril2D
         public ParticleSystem runParticleSystem => m_runParticleSystem;
 
         [Header("Stamina Paramenters")]
-        // Ã¿ÃëÏûºÄ¶àÉÙÄÍÁ¦
+        // Ã¿ÃEûºÄ¶àÉÙÄÍÁ¦
         [SerializeField] private float staminaMultiplier = 7;
-        // ÄÍÁ¦»Ø¸´Ç°£¬µÈ´ıÊ±¼ä
+        // ÄÍÁ¦»Ø¸´Ç°£¬µÈ´ıÊ±¼E
         [SerializeField] private float timeBeforeStaminaRengeStarts = 1.25f;
         // Ã¿´Îµ¥Î»ÄÍÁ¦»Ø¸´Á¿
         [SerializeField] private float staminaValueIncrement = 2;
-        // µ¥Î»ÄÍÁ¦»Ø¸´¼ä¸ôÊ±¼ä
+        // µ¥Î»ÄÍÁ¦»Ø¸´¼ä¸ôÊ±¼E
         [SerializeField] private float staminaTimeIncrement = 0.05f;
         // µ±Ç°ÄÍÁ¦
         public float currentStamina => m_currentStats.Stamina;
@@ -107,7 +107,7 @@ namespace Gyvr.Mythril2D
 
         private AbilitySheet[] m_equippedAbilities = new AbilitySheet[MaxEquipedAbilityCount];
 
-        // ÕâÀïÓÃµÄ»°£¬µÃÔÚÈËÎïsheetÏÂÃæµ¼Èë¶ÔÓ¦µÄ abilitysheet
+        // ÕâÀEÃµÄ»°£¬µÃÔÚÈËÎEheetÏÂÃæµ¼ÈEÔÓ¦µÄ abilitysheet
         //ScriptableObject.ctor is not allowed to be called from a MonoBehaviour constructor (or instance field initializer), call it in Awake or Start instead. 
         //private DashAbilitySheet m_dashAbility = ScriptableObject.CreateInstance<DashAbilitySheet>();
         private DashAbilitySheet m_dashAbility = null;
@@ -118,7 +118,7 @@ namespace Gyvr.Mythril2D
 
         public bool isStartGameRevival = false;
 
-        // Ã»¼Ì³Ğ¸¸Àà»á³öÊÂ ÎŞ·¨»ñµÃ¶ÔÏó
+        // Ã»¼Ì³Ğ¸¸Àà»á³öÊÂ ÎŞ·¨»ñµÃ¶ÔÏE
         // private new void Awake(){}
         protected override void Awake()
         {
@@ -139,7 +139,7 @@ namespace Gyvr.Mythril2D
             // Õâ·ÅAwakeÖ´ĞĞ²»ÁË
             if (isStartGameRevival == false)
             {
-                // Ò²ĞíÓ¦¸Ã¸Ä³ÉÖ»ÄÜ »¥¶¯£¿
+                // Ò²Ğúï¦¸Ã¸Ä³ÉÖ»ÄÜ »¥¶¯£¿
                 DisableActions(EActionFlags.All);
 
                 TryPlayRevivalAnimation();
@@ -148,7 +148,7 @@ namespace Gyvr.Mythril2D
             }
 
             // ¸Ğ¾õÈç¹ûÁ£×ÓĞ§¹ûÉèÖÃÎª isloop Õâ¸öÆô¶¯ÓÎÏ·Ê±ºò¾Í»áÆôÓÃ ËùÒÔÊÔ×ÅÔÚ Awake ÖĞ¹Ø±Õ
-            // ºÃÏñ Awake µÄÊ±ºò»¹Ã»ĞÂ½¨ºÃÈËÎï±¨´íÁË£¬ ÊÔÊÔÔÚ Start ÖĞ
+            // ºÃÏEAwake µÄÊ±ºò»¹Ã»ĞÂ½¨ºÃÈËÎE¨´úİË£¬ ÊÔÊÔÔÚ Start ÖĞ
             GameManager.Player.runParticleSystem.Stop();
 
             UpdateMaxStats();
@@ -199,7 +199,7 @@ namespace Gyvr.Mythril2D
 
         public void RecoverPlayerStats(bool fullRecover = false)
         {
-            // ³¯Ïòóô»ğ
+            // ³¯Ïòóô»E
             SetLookAtDirection(Vector2.right);
 
             // »Ö¸´ÑªÁ¿ 
@@ -217,7 +217,7 @@ namespace Gyvr.Mythril2D
             
             RecoverStamina((int)GameManager.Player.maxStamina);
 
-            // »Ö¸´Åö×²Ìå
+            // »Ö¸´Åö×²ÌE
             Collider2D[] colliders = GameManager.Player.GetComponentsInChildren<Collider2D>();
             Array.ForEach(colliders, (collider) => collider.enabled = true);
         }
@@ -226,7 +226,7 @@ namespace Gyvr.Mythril2D
         {
             GameManager.SaveSystem.SaveToFile(GameManager.SaveSystem.saveFileName); // ±£´æÊı¾İ
 
-            yield return new WaitForSeconds(1f); // µÈ´ıÒ»Ãë
+            yield return new WaitForSeconds(1f); // µÈ´ıÒ»ÃE
         }
 
         public int GetTotalExpRequirement(int level)
@@ -361,8 +361,8 @@ namespace Gyvr.Mythril2D
             }
         }
 
-        // ¸Ğ¾õÔÚÕâ¸ö¿ò¼ÜÏÂ£¬ÒªÃ´×ö³É¼¼ÄÜ£¬·Åµ½Íæ¼ÒÏÂ£¬ÒªÃ´µÃÓÃ¸ö¼àÌıÈ¥¼àÌıÆäËûĞĞÎªÀ´È¡Ïû/
-        // ²»È»Ò»¸öÍØÕ¹ĞÔ²»»á£¬ÔÙÕß²»Í£ÔÚUpdateÖĞ¼ì²âÒ²²»ºÃ
+        // ¸Ğ¾õÔÚÕâ¸ö¿ò¼ÜÏÂ£¬ÒªÃ´×ö³É¼¼ÄÜ£¬·Åµ½Íæ¼ÒÏÂ£¬ÒªÃ´µÃÓÃ¸ö¼àÌıÈ¥¼àÌıÆäËûĞĞÎªÀ´È¡ÏE
+        // ²»È»Ò»¸öÍØÕ¹ĞÔ²»»á£¬ÔÙÕß²»Í£ÔÚUpdateÖĞ¼EâÒ²²»ºÃ
         private void CancelEvacuate()
         {
             //TerminateCasting();
@@ -457,11 +457,11 @@ namespace Gyvr.Mythril2D
 
         private void HandleStamina()
         {
-            // ¸Ğ¾õÕâµ½´¦ÓÃ²¼¶ûÖµÅĞ¶Ï£¬È·Êµ²»ÈçÖ±½Ó°ÑÕâ¸öb·½·¨·Åµ½¼¼ÄÜÀïÃæ
-            // µ«ÏëÁËÏë£¬Õâ¸öÒ²Ã»ÓĞ¶¯»­£¬Èç¹ûÒª×öµ½¼¼ÄÜÀïÃæËÆºõÒ²µÃÍØÕ¹Ò»µãÆäËû¶«Î÷
+            // ¸Ğ¾õÕâµ½´¦ÓÃ²¼¶ûÖµÅĞ¶Ï£¬È·Êµ²»ÈçÖ±½Ó°ÑÕâ¸öb·½·¨·Åµ½¼¼ÄÜÀEE
+            // µ«ÏEËÏE¬Õâ¸öÒ²Ã»ÓĞ¶¯»­£¬Èç¹ûÒª×öµ½¼¼ÄÜÀEæËÆºõÒ²µÃÍØÕ¹Ò»µãÆäËû¶«ÎE
             if (isDashFinishing == false && isExecutingAction == false)
             {
-                // ³å´Ì×´Ì¬£¬ÇÒÓĞÒÆ¶¯ÊäÈë£¬´¦ÀíÄÍÁ¦
+                // ³å´Ì×´Ì¬£¬ÇÒÓĞÒÆ¶¯ÊäÈE¬´¦ÀúàÍÁ¦
                 if (isRunning == true && movementDirection != Vector2.zero)
                 {
                     // Èç¹ûÄÍÁ¦»Ø¸´Ğ­³Ì¿ªÆô£¬ÖĞ¶Ï
@@ -471,7 +471,7 @@ namespace Gyvr.Mythril2D
                         regeneratingStamina = null;
                     }
 
-                    // Èç¹ûÆäËû¼¼ÄÜÒ²ÓÃÍ¬Ò»¸öbool isExecutingActionÀ´¿ªÆô Ôò»áµ¼ÖÂ²»ÊÇÅÜ²½Ò²»á¿Û¾«Á¦Öµ
+                    // Èç¹ûÆäËû¼¼ÄÜÒ²ÓÃÍ¬Ò»¸öbool isExecutingActionÀ´¿ªÆEÔò»áµ¼ÖÂ²»ÊÇÅÜ²½Ò²»á¿Û¾«Á¦Öµ
                     m_currentStats.Stamina -= staminaMultiplier * Time.deltaTime;
 
                     if (m_currentStats.Stamina < 0) m_currentStats.Stamina = 0;
@@ -484,8 +484,8 @@ namespace Gyvr.Mythril2D
                     }
                 }
 
-                // ºÃÏñµ±Ê±Íü¼ÇĞŞÒ»¸öbug£¬ÏÖÔÚÖ»ÄÜ¼ì²â run µÄÊ±ºòµÄ×´Ì¬ ÆäËû±ÈÈç¹¥»÷ºÍ³å´ÌµÈ²¢²»ÄÜ¼ì²â£¬µ¼ÖÂ¿ÉÒÔÒ»±ß×ö¶¯×÷Ò»±ß»Ö¸´ÄÍÁ¦
-                // ÄÍÁ¦Öµ²»Âú£¬ÇÒÃ»ÓĞ³å´Ì£¬ÇÒÄÍÁ¦»Ø¸´Î´¿ªÆô
+                // ºÃÏñµ±Ê±ÍEÇĞŞÒ»¸öbug£¬ÏÖÔÚÖ»ÄÜ¼EErun µÄÊ±ºòµÄ×´Ì¬ ÆäËû±ÈÈç¹¥»÷ºÍ³å´ÌµÈ²¢²»ÄÜ¼Eâ£¬µ¼ÖÂ¿ÉÒÔÒ»±ß×ö¶¯×÷Ò»±ß»Ö¸´ÄÍÁ¦
+                // ÄÍÁ¦Öµ²»Âú£¬ÇÒÃ»ÓĞ³å´Ì£¬ÇÒÄÍÁ¦»Ø¸´Î´¿ªÆE
                 if (m_currentStats.Stamina < maxStamina && isRunning == false && regeneratingStamina == null)
                 {
                     //Debug.Log("RegenerateStamina");
@@ -513,7 +513,7 @@ namespace Gyvr.Mythril2D
 
                 yield return timeToWait;
             }
-            // ÄÍÁ¦»Ø¸´Íê±Ï£¬ÒıÓÃÖÃ¿Õ
+            // ÄÍÁ¦»Ø¸´ÍEÏ£¬ÒıÓÃÖÃ¿Õ
             regeneratingStamina = null;
         }
 
@@ -548,7 +548,7 @@ namespace Gyvr.Mythril2D
 
         public void DeathUnequipAll()
         {
-            // ºÃÏñÕâ¸ö×Ô¼ºĞ´µÄ×Öµä²»ÄÜÕâÃ´±éÀú
+            // ºÃÏñÕâ¸ö×Ô¼ºĞ´µÄ×Öµä²»ÄÜÕâÃ´±éÀE
             //foreach(EEquipmentType equipmentType in m_equipments.Keys)
 
             List<EEquipmentType> keysToRemove = new List<EEquipmentType>(m_equipments.Keys);
@@ -564,11 +564,11 @@ namespace Gyvr.Mythril2D
                         RemoveAbilitiesFromSlots(toUnequip.ability, 2);
                     }
 
-                    // ¼ì²éÈİÁ¿²¢µ÷Õû
+                    // ¼EéÈİÁ¿²¢µ÷ÕE
                     if (toUnequip.capacity != 0)
                     {
                         GameManager.InventorySystem.DecreaseBackpackCapacity(toUnequip.capacity);
-                        GameManager.UIManagerSystem.UIMenu.inventory.Init(); // ¸üĞÂ UI
+                        GameManager.UIManagerSystem.UIMenu.inventory.Init(); // ¸EÂ UI
                     }
 
                     m_equipments.Remove(equipmentType);
