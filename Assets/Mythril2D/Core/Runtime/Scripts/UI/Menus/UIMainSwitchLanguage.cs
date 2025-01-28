@@ -114,7 +114,7 @@ namespace Gyvr.Mythril2D
         public void SwitchLanguage()
         {
             //Debug.Log(LocalizationSystem.Instance.locales.Count);
-            Debug.Log(LocalizationSystem.Instance.currentLocaleIndex);
+            //Debug.Log(LocalizationSystem.Instance.currentLocaleIndex);
 
             // 切换到下一个语言
             LocalizationSystem.Instance.currentLocaleIndex = (LocalizationSystem.Instance.currentLocaleIndex + 1) % LocalizationSystem.Instance.locales.Count; // 循环更新语言索引
