@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EquipmentsList Shared Data
   m_EditorClassIdentifier: 
   m_TableCollectionName: EquipmentsList
-  m_TableCollectionNameGuidString: 60a2c5f2ba5b9e44aa1c794f229ccea8
+  m_TableCollectionNameGuidString: f1712a3d56b8fb1488983dcd9108fea8
   m_Entries:
   - m_Id: 23168417792
     m_Key: id_amber_earring_item_name
@@ -202,11 +202,11 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 7641529403776434177
+    rid: 5345253335359815688
   references:
     version: 2
     RefIds:
-    - rid: 7641529403776434177
+    - rid: 5345253335359815688
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1732455952243
+        m_CustomEpoch: 1735394216439

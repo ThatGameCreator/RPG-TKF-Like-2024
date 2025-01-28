@@ -31,7 +31,6 @@ namespace Gyvr.Mythril2D
             }
         }
         
-        // 从这里进入新游戏
         public void StartNewGameFromDefaultSaveFile(SaveFile saveFile, string saveFileName)
         {
             SceneManager.LoadSceneAsync(GameManager.Config.gameplayScene).completed += (operation) =>
@@ -64,7 +63,7 @@ namespace Gyvr.Mythril2D
                     case SaveFileActionType.Load:
                         GameManager.SaveSystem.LoadFromFile(desc.filename);
 
-                        // 传送后这个对象被销毁了 不能再用协程执行
+                        
                         break;
                 }
             };
@@ -73,7 +72,7 @@ namespace Gyvr.Mythril2D
 
         private IEnumerator SaveWithDelay()
         {
-            yield return new WaitForSeconds(1f); // 等待一秒
+            yield return new WaitForSeconds(1f); 
 
             GameManager.Player.TryPlayRevivalAnimation();
         }
